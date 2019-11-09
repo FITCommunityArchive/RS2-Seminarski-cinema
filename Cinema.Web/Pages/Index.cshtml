@@ -4,24 +4,33 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
-
-<div class="container">
-    <div class="row">
-            
-                @foreach (var item in Model.Movies)
-                {
-                    <div class="col-md-4">
-                        <div>@item.Title</div>
-                        <div>@item.Actors</div>
-                        <div>
-                            <img class="img-responsive" src="~/uploads/@item.Image" />
-                        </div>
-                    </div>
-                }
- 
+<section class="hero">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="content">
+                    <h1>DOCTOR SLEEP</h1>
+                    <p>Release: 6 Novemeber 2019</p>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+</section>
+<section class="showing-now">
+    <div class="container">
+        <div class="row">
+
+            @foreach (var item in Model.Movies)
+            {
+                <div class="col-md-3">
+                    <div class="movie-box">
+                        <img class="img-responsive" src="~/uploads/@item.Image" />
+                        <h3><strong>@item.Title</strong></h3>
+                        <div>@item.Actors</div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</section>
