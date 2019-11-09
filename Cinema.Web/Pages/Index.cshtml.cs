@@ -28,7 +28,7 @@ namespace Cinema.Web.Pages
 
         public async Task OnGetAsync()
         {
-            Movies = await _context.Movie
+            Movies = await _context.Movies
                 .ToListAsync();
         }
     }

@@ -2,7 +2,7 @@
 
 namespace Cinema.Domain.Entities
 {
-    public class Event : Blog
+    public class Event : Post
     {
         public DateTime DateAndTime { get; set; }
         public string Promoter { get; set; }
