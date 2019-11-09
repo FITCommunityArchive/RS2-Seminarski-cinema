@@ -28,7 +28,7 @@ namespace Cinema.Web.Pages.Movies
                 return NotFound();
             }
 
-            Movie = await _context.Movie.FirstOrDefaultAsync(m => m.Id == id);
+            Movie = await _context.Movies.FirstOrDefaultAsync(m => m.Id == id);
 
             if (Movie == null)
             {

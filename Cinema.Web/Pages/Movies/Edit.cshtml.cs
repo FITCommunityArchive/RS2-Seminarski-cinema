@@ -30,7 +30,7 @@ namespace Cinema.Web.Pages.Movies
                 return NotFound();
             }
 
-            Movie = await _context.Movie.FirstOrDefaultAsync(m => m.Id == id);
+            Movie = await _context.Movies.FirstOrDefaultAsync(m => m.Id == id);
 
             if (Movie == null)
             {
@@ -71,7 +71,7 @@ namespace Cinema.Web.Pages.Movies
 
         private bool MovieExists(int id)
         {
-            return _context.Movie.Any(e => e.Id == id);
+            return _context.Movies.Any(e => e.Id == id);
         }
     }
 }

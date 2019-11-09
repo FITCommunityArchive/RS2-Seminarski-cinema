@@ -23,7 +23,7 @@ namespace Cinema.Web.Pages.Movies
 
         public async Task OnGetAsync()
         {
-            Movie = await _context.Movie.ToListAsync();
+            Movie = await _context.Movies.ToListAsync();
         }
     }
 }
