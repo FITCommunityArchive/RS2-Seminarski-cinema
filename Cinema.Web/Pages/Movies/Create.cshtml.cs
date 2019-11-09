@@ -61,7 +61,7 @@ namespace Cinema.Web.Pages.Movies
                 this.Movie.Image = fileName; // Set the file name
             }
 
-            _context.Movie.Add(Movie);
+            _context.Movies.Add(Movie);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

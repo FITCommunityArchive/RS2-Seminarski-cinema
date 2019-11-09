@@ -32,6 +32,11 @@ namespace Cinema.Web.Data
         public DbSet<SeatReservation> SeatReservations { get; set; }
         public DbSet<User> AppUsers { get; set; }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseLazyLoadingProxies(true);
+            base.OnConfiguring(optionsBuilder);
+        }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<AppRole>().HasQueryFilter(x => !x.Deleted);
@@ -40,7 +45,8 @@ namespace Cinema.Web.Data
             builder.Entity<Genre>().HasQueryFilter(x => !x.Deleted);
             builder.Entity<GenreMovie>().HasQueryFilter(x => !x.Deleted);
             builder.Entity<Hall>().HasQueryFilter(x => !x.Deleted);
-            builder.Entity<Invoice>().HasQueryFilter(x => !x.Deleted);
+            //Adding this option for Invoice, migration shows an arror - "a filter may only be applied to the root entity type"
+            //builder.Entity<Invoice>().HasQueryFilter(x => !x.Deleted);
             builder.Entity<Movie>().HasQueryFilter(x => !x.Deleted);
             builder.Entity<News>().HasQueryFilter(x => !x.Deleted);
             builder.Entity<NewsType>().HasQueryFilter(x => !x.Deleted);
@@ -53,6 +59,8 @@ namespace Cinema.Web.Data
             builder.Entity<User>().HasQueryFilter(x => !x.Deleted);
             base.OnModelCreating(builder);
         }
+
+        //SaveChangesAsync is used, should that method be overriden instead?
         public override int SaveChanges()
         {
             foreach (var entry in ChangeTracker.Entries().Where(x => x.State == EntityState.Deleted && x.Entity is BaseClass))

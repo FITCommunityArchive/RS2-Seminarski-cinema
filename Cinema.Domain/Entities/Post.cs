@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Cinema.Domain.Entities
 {
-    public class Blog : BaseClass
+    public class Post : BaseClass
     {
         public string Title { get; set; }
         public string Description { get; set; }
