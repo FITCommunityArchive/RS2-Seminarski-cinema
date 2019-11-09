@@ -1,0 +1,27 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div class="container">
+    <div class="row">
+            
+                @foreach (var item in Model.Movies)
+                {
+                    <div class="col-md-4">
+                        <div>@item.Title</div>
+                        <div>@item.Actors</div>
+                        <div>
+                            <img class="img-responsive" src="~/uploads/@item.Image" />
+                        </div>
+                    </div>
+                }
+ 
+    </div>
+</div>

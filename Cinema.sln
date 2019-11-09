@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29503.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.Web", "Cinema.Web\Cinema.Web.csproj", "{923169DB-BD2F-471D-A178-5FEFC6D9DDA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinema.Domain", "Cinema.Domain\Cinema.Domain.csproj", "{76786E0F-B1F7-449B-8B29-2BBB32753F1A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{923169DB-BD2F-471D-A178-5FEFC6D9DDA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{923169DB-BD2F-471D-A178-5FEFC6D9DDA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{923169DB-BD2F-471D-A178-5FEFC6D9DDA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{923169DB-BD2F-471D-A178-5FEFC6D9DDA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76786E0F-B1F7-449B-8B29-2BBB32753F1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76786E0F-B1F7-449B-8B29-2BBB32753F1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76786E0F-B1F7-449B-8B29-2BBB32753F1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76786E0F-B1F7-449B-8B29-2BBB32753F1A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DE29FAC1-7A3D-45FE-81F2-94E85540C3AB}
+	EndGlobalSection
+EndGlobal
