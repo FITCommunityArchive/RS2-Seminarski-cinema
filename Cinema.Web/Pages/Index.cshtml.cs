@@ -7,17 +7,15 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Cinema.Domain.Entities;
+using Cinema.Web.Data;
 
 namespace Cinema.Web.Pages
 {
     public class IndexModel : PageModel
     {
+        private readonly ApplicationDbContext _context;
 
-
-
-        private readonly Cinema.Web.Data.ApplicationDbContext _context;
-
-        public IndexModel(Cinema.Web.Data.ApplicationDbContext context)
+        public IndexModel(ApplicationDbContext context)
         {
             _context = context;
         }

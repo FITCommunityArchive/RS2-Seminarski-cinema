@@ -45,7 +45,8 @@ namespace Cinema.Web.Data
             builder.Entity<Genre>().HasQueryFilter(x => !x.Deleted);
             builder.Entity<GenreMovie>().HasQueryFilter(x => !x.Deleted);
             builder.Entity<Hall>().HasQueryFilter(x => !x.Deleted);
-            builder.Entity<Invoice>().HasQueryFilter(x => !x.Deleted);
+            //Adding this option for Invoice, migration shows an arror - "a filter may only be applied to the root entity type"
+            //builder.Entity<Invoice>().HasQueryFilter(x => !x.Deleted);
             builder.Entity<Movie>().HasQueryFilter(x => !x.Deleted);
             builder.Entity<News>().HasQueryFilter(x => !x.Deleted);
             builder.Entity<NewsType>().HasQueryFilter(x => !x.Deleted);
