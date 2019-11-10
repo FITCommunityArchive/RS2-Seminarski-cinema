@@ -15,10 +15,10 @@ namespace Cinema.Web.Pages.Movies
 {
     public class CreateModel : PageModel
     {
-        private readonly Cinema.Web.Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
         private readonly IHostingEnvironment hostingEnvironment;
 
-        public CreateModel(Cinema.Web.Data.ApplicationDbContext context, IHostingEnvironment environment)
+        public CreateModel(ApplicationDbContext context, IHostingEnvironment environment)
         {
             _context = context;
             this.hostingEnvironment = environment;
