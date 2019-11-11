@@ -58,14 +58,65 @@ html {
   min-height: 100%;
 }
 
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+/*
+    ABA (neformalno :D)
+*/
+
+.nav li form {
+    padding-top:8px;
 }
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+
+.movie-box {
+    box-shadow: 0px 0px 2px rgba(0,0,0,0.2);
+    padding: 15px;
 }
+
+.movie-box img {
+    max-height: 450px;
+}
+
+section,
+footer {
+    padding:60px 0;
+}
+
+.hero {
+    background: url(/img/hero.jpeg);
+    position:relative;
+    min-height:450px;
+}
+
+.hero .col-md-12 {
+    position:static;
+}
+
+.hero .content {
+    position: absolute;
+    top: 50%;
+    left: 5%;
+}
+
+.hero .content h1,
+.hero .content p {
+    color: #fff;
+}
+
+.hero .content h1 {
+    font-weight: bold;
+    font-size: 60px;
+}
+.widget ul {
+    list-style: none;
+    padding: 0;
+}
+
+.widget ul li {
+    margin-bottom:5px;
+}
+
+.btn-subscribe {
+    background: red;
+    color: white;
+    border: 0;
+}
+
