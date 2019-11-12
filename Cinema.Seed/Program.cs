@@ -13,7 +13,8 @@ namespace Cinema.Seed
 
             ApplicationDbContext context = new ApplicationDbContext(connectionString);
 
-            context.SeedDatabase(file);            
+            //Uncomment to run database seed
+            //context.SeedDatabase(file);            
         }
     }
 }
