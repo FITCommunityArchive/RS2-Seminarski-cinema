@@ -8,7 +8,6 @@ namespace Cinema.Domain.Entities
 {
     public class Invoice : BaseClass
     {
-
         //An Invoice is practically an extension of an reservation, only it doesn't inherit the Reservation class
         [ForeignKey("Reservation")]
         public int ReservationId { get; set; }
@@ -18,7 +17,6 @@ namespace Cinema.Domain.Entities
         public virtual Pricing OfferType { get; set; }        
         public decimal Price { get; set; }        
         public decimal TaxAmount { get; set; }
-
 
     }
 }

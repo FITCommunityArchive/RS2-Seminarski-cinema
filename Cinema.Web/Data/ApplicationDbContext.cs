@@ -10,10 +10,15 @@ namespace Cinema.Web.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
+        private string _connectionString;
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            : base(options)
+            : base(options) { }
+
+        public ApplicationDbContext(string connectionString)
         {
+            _connectionString = connectionString;
         }
+
         public DbSet<AppRole>  AppRoles { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<EventType> EventTypes { get; set; }
@@ -34,6 +39,11 @@ namespace Cinema.Web.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            if(_connectionString != null)
+            {
+                optionsBuilder.UseSqlServer(_connectionString);
+            }
+            
             optionsBuilder.UseLazyLoadingProxies(true);
             base.OnConfiguring(optionsBuilder);
         }
