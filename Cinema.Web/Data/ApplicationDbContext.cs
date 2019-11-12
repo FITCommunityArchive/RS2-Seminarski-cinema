@@ -57,6 +57,12 @@ namespace Cinema.Web.Data
             builder.Entity<Seat>().HasQueryFilter(x => !x.Deleted);
             builder.Entity<SeatReservation>().HasQueryFilter(x => !x.Deleted);
             builder.Entity<User>().HasQueryFilter(x => !x.Deleted);
+
+            builder.Entity<Reservation>()
+                   .HasOne(r => r.Invoice)
+                   .WithOne(i => i.Reservation)
+                   .HasForeignKey<Invoice>(i => i.ReservationId);
+
             base.OnModelCreating(builder);
         }
 
