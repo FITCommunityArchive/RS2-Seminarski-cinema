@@ -12,6 +12,7 @@ namespace Cinema.Domain.Entities
         
         public virtual User User { get; set; }
         public virtual Screening Screening { get; set; }
+        public virtual Invoice Invoice { get; set; }
         public virtual IList<SeatReservation> SeatReservations { get; set; }
     }
 }

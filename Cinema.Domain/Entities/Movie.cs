@@ -15,7 +15,6 @@ namespace Cinema.Domain.Entities
             Reviews = new List<Review>();
         }
         public string Title { get; set; }
-        public virtual Genre Genre { get; set; }
         public int Duration { get; set; }
         public int Year { get; set; }
         public string Country { get; set; }
