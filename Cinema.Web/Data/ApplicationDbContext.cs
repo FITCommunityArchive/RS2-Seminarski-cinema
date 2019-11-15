@@ -13,7 +13,7 @@ namespace Cinema.Web.Data
         private string _connectionString;
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options) { }
-
+      
         public ApplicationDbContext(string connectionString)
         {
             _connectionString = connectionString;
