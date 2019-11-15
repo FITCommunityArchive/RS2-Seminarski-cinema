@@ -7,20 +7,18 @@ using System.Text;
 
 namespace Cinema.Seed.Collect
 {
-    public class HallsCollect
+    public class AppRolesCollect
     {
         public static void Collect(ExcelWorksheet rawData, ApplicationDbContext context)
         {
             for (int row = 2; row <= rawData.Dimension.Rows; row++)
             {
-                Hall hall = new Hall
+                AppRole role = new AppRole
                 {
-                    Name = rawData.ReadString(row, 2),
-                    NumberOfColumns = rawData.ReadInteger(row, 3),
-                    NumberOfRows = rawData.ReadInteger(row, 4)
+                    Name = rawData.ReadString(row, 2)
                 };
 
-                context.Add(hall);
+                context.Add(role);
                 context.SaveChanges();
             }
         }

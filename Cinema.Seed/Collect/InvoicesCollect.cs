@@ -7,20 +7,22 @@ using System.Text;
 
 namespace Cinema.Seed.Collect
 {
-    public class HallsCollect
+    public class InvoicesCollect
     {
         public static void Collect(ExcelWorksheet rawData, ApplicationDbContext context)
         {
             for (int row = 2; row <= rawData.Dimension.Rows; row++)
             {
-                Hall hall = new Hall
+                Invoice invoice = new Invoice
                 {
-                    Name = rawData.ReadString(row, 2),
-                    NumberOfColumns = rawData.ReadInteger(row, 3),
-                    NumberOfRows = rawData.ReadInteger(row, 4)
+                    Reservation = context.Reservations.Find(rawData.ReadInteger(row, 2)),
+                    OfferType = context.Pricing.Find(rawData.ReadInteger(row, 3)),
+                    Price = rawData.ReadDecimal(row, 4),
+                    TaxAmount = rawData.ReadDecimal(row, 5),
+                    TicketQuantity = rawData.ReadInteger(row, 6)
                 };
 
-                context.Add(hall);
+                context.Add(invoice);
                 context.SaveChanges();
             }
         }

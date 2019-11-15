@@ -7,20 +7,19 @@ using System.Text;
 
 namespace Cinema.Seed.Collect
 {
-    public class HallsCollect
+    public class GenreMoviesCollect
     {
         public static void Collect(ExcelWorksheet rawData, ApplicationDbContext context)
         {
             for (int row = 2; row <= rawData.Dimension.Rows; row++)
             {
-                Hall hall = new Hall
+                GenreMovie genreMovie = new GenreMovie
                 {
-                    Name = rawData.ReadString(row, 2),
-                    NumberOfColumns = rawData.ReadInteger(row, 3),
-                    NumberOfRows = rawData.ReadInteger(row, 4)
+                    Movie = context.Movies.Find(rawData.ReadInteger(row, 2)),
+                    Genre = context.Genres.Find(rawData.ReadInteger(row, 3))
                 };
 
-                context.Add(hall);
+                context.Add(genreMovie);
                 context.SaveChanges();
             }
         }

@@ -7,20 +7,19 @@ using System.Text;
 
 namespace Cinema.Seed.Collect
 {
-    public class HallsCollect
+    public class SeatReservationsCollect
     {
         public static void Collect(ExcelWorksheet rawData, ApplicationDbContext context)
         {
             for (int row = 2; row <= rawData.Dimension.Rows; row++)
             {
-                Hall hall = new Hall
+                SeatReservation seatReservation = new SeatReservation
                 {
-                    Name = rawData.ReadString(row, 2),
-                    NumberOfColumns = rawData.ReadInteger(row, 3),
-                    NumberOfRows = rawData.ReadInteger(row, 4)
+                    Reservation = context.Reservations.Find(rawData.ReadInteger(row, 2)),
+                    Seat = context.Seats.Find(rawData.ReadInteger(row, 3))
                 };
 
-                context.Add(hall);
+                context.Add(seatReservation);
                 context.SaveChanges();
             }
         }
