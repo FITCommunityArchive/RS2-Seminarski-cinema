@@ -1,4 +1,5 @@
-﻿using Cinema.Web.Data;
+﻿using Cinema.Services.DatabaseSeed;
+using Cinema.Web.Data;
 using System;
 using System.IO;
 
@@ -14,7 +15,7 @@ namespace Cinema.Seed
             ApplicationDbContext context = new ApplicationDbContext(connectionString);
 
             //Uncomment to run database seed
-            //context.SeedDatabase(file);            
+            context.SeedDatabase(file);            
         }
     }
 }
