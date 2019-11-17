@@ -60,7 +60,7 @@ namespace Cinema.Web.Data
             //This line is in order to prevent Cascade Delete
             foreach(var relationship in builder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
             {
-                relationship.DeleteBehavior = DeleteBehavior.SetNull;
+                relationship.DeleteBehavior = DeleteBehavior.Restrict;
             }
 
             builder.Entity<AppRole>().HasQueryFilter(x => !x.Deleted);
