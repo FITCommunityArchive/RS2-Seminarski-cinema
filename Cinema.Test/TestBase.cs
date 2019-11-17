@@ -1,6 +1,7 @@
 using Cinema.Services.DatabaseSeed;
 using Cinema.Web.Data;
 using NUnit.Framework;
+using System;
 using System.IO;
 
 namespace Cinema.Test
@@ -13,7 +14,12 @@ namespace Cinema.Test
         [OneTimeSetUp]
         public void SetUp()
         {
-            FileInfo file = new FileInfo(@"E:\Projects\Cinema\Cinema.Test\TestDatabase\TestCinemaDatabase.xlsx");
+            string path = "\\TestDatabase\\TestCinemaDatabase.xlsx";
+            string workingDirectory = Environment.CurrentDirectory;
+            string projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
+            string fullPath = projectDirectory + path;
+
+            FileInfo file = new FileInfo(fullPath);
             string connectionString = "Server=(localdb)\\mssqllocaldb;Database=TestCinemaReservations;Trusted_Connection=True;MultipleActiveResultSets=true";
 
             context = new ApplicationDbContext(connectionString);

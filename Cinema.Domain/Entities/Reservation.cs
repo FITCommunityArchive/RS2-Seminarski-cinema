@@ -8,11 +8,13 @@ namespace Cinema.Domain.Entities
         public Reservation()
         {
             SeatReservations = new List<SeatReservation>();
+            Invoices = new List<Invoice>();
         }       
         
         public virtual User User { get; set; }
         public virtual Screening Screening { get; set; }
-        public virtual Invoice Invoice { get; set; }
+        //public virtual Invoice Invoice { get; set; }
         public virtual IList<SeatReservation> SeatReservations { get; set; }
+        public virtual IList<Invoice> Invoices { get; set; }
     }
 }

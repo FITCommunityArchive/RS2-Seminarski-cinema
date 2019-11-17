@@ -63,8 +63,8 @@ namespace Cinema.Web.Pages.Screenings
             }
 
 
-            PopulateMoviesDropDownList(_context, Screening.MovieId);
-            PopulateHallsDropDownList(_context, Screening.HallId);
+            PopulateMoviesDropDownList(_context, Screening.Movie.Id);
+            PopulateHallsDropDownList(_context, Screening.Hall.Id);
 
             return Page();
         }

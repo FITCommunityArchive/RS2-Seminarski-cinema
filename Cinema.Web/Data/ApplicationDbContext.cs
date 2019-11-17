@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore;
 using Cinema.Domain.Entities;
 using System.Linq;
 using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Cinema.Web.Data
 {
@@ -18,6 +20,11 @@ namespace Cinema.Web.Data
         public ApplicationDbContext(string connectionString)
         {
             _connectionString = connectionString;
+        }
+
+        public ApplicationDbContext()
+        {
+            _connectionString = "Server=(localdb)\\mssqllocaldb;Database=CinemaReservations;Trusted_Connection=True;MultipleActiveResultSets=true";
         }
 
         public DbSet<AppRole>  AppRoles { get; set; }
@@ -50,6 +57,12 @@ namespace Cinema.Web.Data
         }
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            //This line is in order to prevent Cascade Delete
+            foreach(var relationship in builder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
+            {
+                relationship.DeleteBehavior = DeleteBehavior.SetNull;
+            }
+
             builder.Entity<AppRole>().HasQueryFilter(x => !x.Deleted);
             builder.Entity<Event>().HasQueryFilter(x => !x.Deleted);
             builder.Entity<EventType>().HasQueryFilter(x => !x.Deleted);
@@ -69,10 +82,11 @@ namespace Cinema.Web.Data
             builder.Entity<SeatReservation>().HasQueryFilter(x => !x.Deleted);
             builder.Entity<User>().HasQueryFilter(x => !x.Deleted);
 
+            /*
             builder.Entity<Reservation>()
                    .HasOne(r => r.Invoice)
                    .WithOne(i => i.Reservation)
-                   .HasForeignKey<Invoice>(i => i.ReservationId);
+                   .HasForeignKey<Invoice>(i => i.ReservationId);*/
 
             base.OnModelCreating(builder);
         }
@@ -86,6 +100,17 @@ namespace Cinema.Web.Data
                 entry.CurrentValues["Deleted"] = true;
             }
             return base.SaveChanges();
+        }
+
+        //SaveChangesAsync is used, should that method be overriden instead?
+        public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default)
+        {
+            foreach (var entry in ChangeTracker.Entries().Where(x => x.State == EntityState.Deleted && x.Entity is BaseClass))
+            {
+                entry.State = EntityState.Modified;
+                entry.CurrentValues["Deleted"] = true;
+            }
+            return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
         }
     }
 }
