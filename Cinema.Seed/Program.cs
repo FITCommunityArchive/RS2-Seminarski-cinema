@@ -8,11 +8,6 @@ namespace Cinema.Seed
     class Program
     {
 
-        public static string path = "\\LegacyDatabase\\CinemaDatabase.xlsx";
-        public static string workingDirectory = Environment.CurrentDirectory;
-        public static string projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
-        public static string fullPath = projectDirectory + path;
-
         static void Main(string[] args)
         {
             string connectionString = "Server=(localdb)\\mssqllocaldb;Database=CinemaReservations;Trusted_Connection=True;MultipleActiveResultSets=true";
