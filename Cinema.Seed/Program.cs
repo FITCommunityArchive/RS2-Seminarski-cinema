@@ -7,9 +7,9 @@ namespace Cinema.Seed
 {
     class Program
     {
+
         static void Main(string[] args)
         {
-            //FileInfo file = new FileInfo(@"E:\Projects\Cinema\Cinema.Seed\LegacyDatabase\CinemaDatabase.xlsx");
             string connectionString = "Server=(localdb)\\mssqllocaldb;Database=CinemaReservations;Trusted_Connection=True;MultipleActiveResultSets=true";
 
             string path = "\\LegacyDatabase\\CinemaDatabase.xlsx";
@@ -17,8 +17,6 @@ namespace Cinema.Seed
             string projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
             string fullPath = projectDirectory + path;
             FileInfo file = new FileInfo(fullPath);
-
-            Console.WriteLine(fullPath);
 
             ApplicationDbContext context = new ApplicationDbContext(connectionString);
 

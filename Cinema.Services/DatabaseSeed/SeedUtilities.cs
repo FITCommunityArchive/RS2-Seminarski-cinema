@@ -66,17 +66,5 @@ namespace Cinema.Services.DatabaseSeed
 
         public static decimal ReadDecimal(this ExcelWorksheet sht, int row, int col) => decimal.Parse(sht.ReadString(row, col));
 
-        public static string SelectCity(this ExcelWorksheet sht, int row, int col)
-        {
-            string addr = sht.ReadString(row, col);
-            string[] words = addr.Split(", ");
-            return words[0];
-        }
-        public static string SelectCountry(this ExcelWorksheet sht, int row, int col)
-        {
-            string addr = sht.ReadString(row, col);
-            string[] words = addr.Split(", ");
-            return words[1];
-        }
     }
 }
