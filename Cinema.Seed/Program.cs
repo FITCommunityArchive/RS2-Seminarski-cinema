@@ -9,13 +9,13 @@ namespace Cinema.Seed
     {
         static void Main(string[] args)
         {
-            FileInfo file = new FileInfo(@"C:\Users\Lazarus\FIT\webapps\webapp\Cinema.Seed\LegacyDatabase\CinemaDatabase.xlsx");
+            FileInfo file = new FileInfo(@"E:\Projects\Cinema\Cinema.Seed\LegacyDatabase\CinemaDatabase.xlsx");
             string connectionString = "Server=(localdb)\\mssqllocaldb;Database=CinemaReservations;Trusted_Connection=True;MultipleActiveResultSets=true";
 
             ApplicationDbContext context = new ApplicationDbContext(connectionString);
 
             //Uncomment to run database seed
-            context.SeedDatabase(file);            
+            //context.SeedDatabase(file);            
         }
     }
 }

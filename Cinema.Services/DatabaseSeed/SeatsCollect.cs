@@ -15,7 +15,7 @@ namespace Cinema.Services.DatabaseSeed
             {
                 Seat seat = new Seat
                 {
-                    Hall = context.Halls.Find(rawData.ReadInteger(row, 4))
+                    Hall = context.Halls.Find(rawData.ReadInteger(row, 2))
                 };
 
                 context.Add(seat);
