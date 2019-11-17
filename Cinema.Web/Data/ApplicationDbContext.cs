@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Cinema.Domain.Entities;
 using System.Linq;
+using System.IO;
 
 namespace Cinema.Web.Data
 {

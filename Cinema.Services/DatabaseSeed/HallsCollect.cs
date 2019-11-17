@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Cinema.Seed.Collect
+namespace Cinema.Services.DatabaseSeed
 {
     public class HallsCollect
     {

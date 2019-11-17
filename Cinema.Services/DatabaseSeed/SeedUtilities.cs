@@ -1,4 +1,4 @@
-﻿using Cinema.Seed.Collect;
+﻿using Cinema.Services.DatabaseSeed;
 using Cinema.Web.Data;
 using OfficeOpenXml;
 using System;
