@@ -5,23 +5,21 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Cinema.Seed.Collect
+namespace Cinema.Services.DatabaseSeed
 {
-    public class ReviewsCollect
+    public class SeatReservationsCollect
     {
         public static void Collect(ExcelWorksheet rawData, ApplicationDbContext context)
         {
             for (int row = 2; row <= rawData.Dimension.Rows; row++)
             {
-                Review review = new Review
+                SeatReservation seatReservation = new SeatReservation
                 {
-                    Text = rawData.ReadString(row, 2),
-                    Rating = rawData.ReadInteger(row, 3),
-                    User = context.AppUsers.Find(rawData.ReadInteger(row, 4)),
-                    Movie = context.Movies.Find(rawData.ReadInteger(row, 5))
+                    Reservation = context.Reservations.Find(rawData.ReadInteger(row, 2)),
+                    Seat = context.Seats.Find(rawData.ReadInteger(row, 3))
                 };
 
-                context.Add(review);
+                context.Add(seatReservation);
                 context.SaveChanges();
             }
         }

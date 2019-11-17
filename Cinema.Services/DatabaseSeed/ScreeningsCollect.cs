@@ -5,22 +5,22 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Cinema.Seed.Collect
+namespace Cinema.Services.DatabaseSeed
 {
-    public class HallsCollect
+    public class ScreeningsCollect
     {
         public static void Collect(ExcelWorksheet rawData, ApplicationDbContext context)
         {
             for (int row = 2; row <= rawData.Dimension.Rows; row++)
             {
-                Hall hall = new Hall
+                Screening screening = new Screening
                 {
-                    Name = rawData.ReadString(row, 2),
-                    NumberOfColumns = rawData.ReadInteger(row, 3),
-                    NumberOfRows = rawData.ReadInteger(row, 4)
+                    DateAndTime = rawData.ReadDate(row, 2),
+                    Hall = context.Halls.Find(rawData.ReadInteger(row, 3)),
+                    Movie = context.Movies.Find(rawData.ReadInteger(row, 4))
                 };
 
-                context.Add(hall);
+                context.Add(screening);
                 context.SaveChanges();
             }
         }

@@ -5,20 +5,20 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Cinema.Seed.Collect
+namespace Cinema.Services.DatabaseSeed
 {
-    public class NewsTypesCollect
+    public class GenresCollect
     {
         public static void Collect(ExcelWorksheet rawData, ApplicationDbContext context)
         {
             for (int row = 2; row <= rawData.Dimension.Rows; row++)
             {
-                NewsType newsType = new NewsType
+                Genre genre = new Genre
                 {
                     Name = rawData.ReadString(row, 2)
                 };
 
-                context.Add(newsType);
+                context.Add(genre);
                 context.SaveChanges();
             }
         }

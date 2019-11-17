@@ -5,20 +5,21 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Cinema.Seed.Collect
+namespace Cinema.Services.DatabaseSeed
 {
-    public class GenresCollect
+    public class ReservationsCollect
     {
         public static void Collect(ExcelWorksheet rawData, ApplicationDbContext context)
         {
             for (int row = 2; row <= rawData.Dimension.Rows; row++)
             {
-                Genre genre = new Genre
+                Reservation reservation = new Reservation
                 {
-                    Name = rawData.ReadString(row, 2)
+                    User = context.AppUsers.Find(rawData.ReadInteger(row, 2)),
+                    Screening = context.Screenings.Find(rawData.ReadInteger(row, 3)),
                 };
 
-                context.Add(genre);
+                context.Add(reservation);
                 context.SaveChanges();
             }
         }

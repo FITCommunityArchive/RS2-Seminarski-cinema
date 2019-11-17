@@ -5,21 +5,20 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Cinema.Seed.Collect
+namespace Cinema.Services.DatabaseSeed
 {
-    public class GenreMoviesCollect
+    public class EventTypesCollect
     {
         public static void Collect(ExcelWorksheet rawData, ApplicationDbContext context)
         {
             for (int row = 2; row <= rawData.Dimension.Rows; row++)
             {
-                GenreMovie genreMovie = new GenreMovie
+                EventType eventType = new EventType
                 {
-                    Movie = context.Movies.Find(rawData.ReadInteger(row, 2)),
-                    Genre = context.Genres.Find(rawData.ReadInteger(row, 3))
+                    Name = rawData.ReadString(row, 2)
                 };
 
-                context.Add(genreMovie);
+                context.Add(eventType);
                 context.SaveChanges();
             }
         }

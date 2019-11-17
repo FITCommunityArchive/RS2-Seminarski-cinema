@@ -5,20 +5,20 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Cinema.Seed.Collect
+namespace Cinema.Services.DatabaseSeed
 {
-    public class EventTypesCollect
+    public class AppRolesCollect
     {
         public static void Collect(ExcelWorksheet rawData, ApplicationDbContext context)
         {
             for (int row = 2; row <= rawData.Dimension.Rows; row++)
             {
-                EventType eventType = new EventType
+                AppRole role = new AppRole
                 {
                     Name = rawData.ReadString(row, 2)
                 };
 
-                context.Add(eventType);
+                context.Add(role);
                 context.SaveChanges();
             }
         }
