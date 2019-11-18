@@ -1,0 +1,36 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<section class="hero">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="content">
+                    <h1>DOCTOR SLEEP</h1>
+                    <p>Release: 6 Novemeber 2019</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="showing-now">
+    <div class="container">
+        <div class="row">
+
+            @foreach (var item in Model.Screenings)
+            {
+                <div class="col-md-3">
+                    <div class="movie-box">
+                        <img class="img-responsive" src="~/uploads/@item.Movie.Image" />
+                        <h3><strong>@item.Movie.Title</strong></h3>
+                        <div>@item.Movie.Actors</div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</section>

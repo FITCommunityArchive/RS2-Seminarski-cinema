@@ -1,0 +1,61 @@
+﻿@page
+@using Cinema.Domain.Entities
+@model Cinema.Web.Pages.Screenings.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Screening</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Screening.DateAndTime" class="control-label"></label>
+                <input asp-for="Screening.DateAndTime" class="form-control" />
+                <span asp-validation-for="Screening.DateAndTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Screening.Created" class="control-label"></label>
+                <input asp-for="Screening.Created" class="form-control" />
+                <span asp-validation-for="Screening.Created" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Screening.Movie" class="control-label"></label>
+                <select asp-for="Screening.Movie.Id" class="form-control"
+                        asp-items="ViewBag.MovieId">
+                    <option value="">-- Select Movie --</option>
+                </select>
+                <span asp-validation-for="Screening.Movie.Id" class="text-danger" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Screening.Hall" class="control-label"></label>
+                <select asp-for="Screening.Hall.Id" class="form-control"
+                        asp-items="ViewBag.HallId">
+                    <option value="">-- Select Hall --</option>
+                </select>
+                <span asp-validation-for="Screening.Hall.Id" class="text-danger" />
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Screening.Deleted" /> @Html.DisplayNameFor(model => model.Screening.Deleted)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
