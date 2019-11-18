@@ -9,7 +9,7 @@ using System.Text;
 namespace Cinema.Test.DALTests
 {
     [TestFixture]
-    class GenreGenreMoviesTest : TestBase
+    class GenreMoviesTest : TestBase
     {
         [Test, Order(1)]
         public void GetAllGenreMovies()
