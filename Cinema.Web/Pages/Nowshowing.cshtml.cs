@@ -18,14 +18,16 @@ namespace Cinema.Web.Pages
         {
             _context = context;
         }
-        public void OnGet()
-        {
-            Screenings = _context.Screenings
-                .ToList();
-        }
+        
 
         [BindProperty]
-        public IList<Screening> Screenings { get; set; }
+        public IList<Screening> NowShowingMovies { get; set; }
 
+
+        public void OnGet()
+        {
+            NowShowingMovies = _context.Screenings
+                .ToList();
+        }
     }
 }
