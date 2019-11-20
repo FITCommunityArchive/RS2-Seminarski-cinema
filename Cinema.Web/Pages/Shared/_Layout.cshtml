@@ -30,7 +30,7 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        @*<li><a asp-area="" asp-page="/Index">Home</a></li>*@
+                        <li><a asp-area="" asp-page="/Nowshowing">Now Showing</a></li>
                         @if (SignInManager.IsSignedIn(User))
                         {
                             <li><a asp-area="" asp-page="/Movies/Index">Movies</a></li>
@@ -66,7 +66,7 @@
                         <div class="widget">
                             <h3 class="h5"><strong>Useful links</strong></h3>
                             <ul>
-                                <li><a href="#">Now Showing</a></li>
+                                <li><a href="/Nowshowing">Now Showing</a></li>
                                 <li><a href="#">Opening this week</a></li>
                                 <li><a href="#">Cooming Soon</a></li>
 
@@ -90,6 +90,8 @@
                     <div class="col-md-3">
                         <div class="widget">
                             <h3 class="h5"><strong>About us</strong></h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            <a href="/contact">Contact us</a>
                         </div>
                     </div>
                 </div>
