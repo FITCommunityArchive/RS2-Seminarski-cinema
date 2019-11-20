@@ -4,10 +4,9 @@
     ViewData["Title"] = "Nowshowing";
 }
 
-<h1>Now showing</h1>
-
 <section class="showing-now">
     <div class="container">
+        <h1>Now showing</h1>
         @foreach (var item in Model.NowShowingMovies.GroupBy(x => x.Movie.Title).Select(y => y.First()).ToList())
         {
 
