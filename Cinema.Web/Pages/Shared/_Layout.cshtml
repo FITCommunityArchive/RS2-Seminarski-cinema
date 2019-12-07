@@ -9,6 +9,8 @@
     <title>@ViewData["Title"] - Cinema.Web</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700|Work+Sans:400,700,900&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <header>
@@ -22,13 +24,13 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/">Movies.net</a>
+                    <a class="navbar-brand" href="/"><img width="167" height="30" src="~/img/movie-logo.png" /></a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li><a asp-area="" asp-page="/Index">Home</a></li>
+                        <li><a asp-area="" asp-page="/Nowshowing">Now Showing</a></li>
                         @if (SignInManager.IsSignedIn(User))
                         {
                             <li><a asp-area="" asp-page="/Movies/Index">Movies</a></li>
@@ -41,11 +43,9 @@
             </div><!-- /.container-fluid -->
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+    <main role="main">
+        @RenderBody()
+    </main>
 
     <footer class="border-top footer text-muted">
         <div class="footer-widgets">
@@ -53,7 +53,7 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="widget">
-                            <h4><strong>Information</strong></h4>
+                            <h3 class="h5"><strong>Information</strong></h3>
                             <ul>
                                 <li><a href="#">About Us</a></li>
                                 <li><a href="#">Vouchers</a></li>
@@ -64,18 +64,18 @@
                     </div>
                     <div class="col-md-3">
                         <div class="widget">
-                            <h4><strong>Useful links</strong></h4>
+                            <h3 class="h5"><strong>Useful links</strong></h3>
                             <ul>
-                                <li><a href="#">Now Showing</a></li>
+                                <li><a href="/Nowshowing">Now Showing</a></li>
                                 <li><a href="#">Opening this week</a></li>
                                 <li><a href="#">Cooming Soon</a></li>
-                                
+
                             </ul>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="widget">
-                            <h4><strong>Newsletter</strong></h4>
+                            <h3 class="h5"><strong>Newsletter</strong></h3>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                             <form>
                                 <div class="form-group">
@@ -89,7 +89,9 @@
                     </div>
                     <div class="col-md-3">
                         <div class="widget">
-                            <h4><strong>About us</strong></h4>
+                            <h3 class="h5"><strong>About us</strong></h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            <a href="/contact">Contact us</a>
                         </div>
                     </div>
                 </div>
@@ -102,6 +104,7 @@
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/60727c837d.js" crossorigin="anonymous"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @RenderSection("Scripts", required: false)
