@@ -79,7 +79,7 @@ namespace Cinema.Test.DALTests
 
             Screening newScreening = context.Screenings.Find(id);
 
-            Assert.AreEqual("Black Widow", newScreening.Movie.Title); ;
+            Assert.AreEqual("Black Widow", newScreening.Movie.Title);
         }
 
         [Test, Order(6)]
