@@ -1,0 +1,85 @@
+﻿@page "{id:int?}"
+@model Cinema.Web.Pages.Nowshowing.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Movie Details (ID:  @Html.DisplayFor(model => model.Movie.Id))</h1>
+
+                    <div>
+                        <hr />
+                        <dl class="row">
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.Movie.Title)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.Movie.Title)
+                            </dd>
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.Movie.Year)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.Movie.Year)
+                            </dd>
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.Movie.Actors)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.Movie.Actors)
+                            </dd>
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.Movie.Country)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.Movie.Country)
+                            </dd>
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.Movie.Directors)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.Movie.Directors)
+                            </dd>
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.Movie.Duration)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.Movie.Duration)
+                            </dd>
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.Movie.GenreMovies)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.Movie.GenreMovies.Count)
+                            </dd>
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.Movie.VideoLink)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.Movie.VideoLink)
+                            </dd>
+                        </dl>
+                        <h4>Screening times</h4>
+                        <dl>
+                            @foreach(var item in Model.Movie.Screenings) {
+                            <dt class="col-sm-2">
+                                @Html.DisplayFor(modelItem => item.Hall.Name)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(modelItem => item.DateAndTime)
+                            </dd>
+                            }
+                        </dl>
+                    </div>
+                    <div>
+                        <a asp-page="./Index">Back to List</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
