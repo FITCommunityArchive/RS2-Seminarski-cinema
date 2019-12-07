@@ -15,7 +15,7 @@ namespace Cinema.Services.DatabaseSeed
             {
                 Screening screening = new Screening
                 {
-                    DateAndTime = rawData.ReadDate(row, 6),
+                    DateAndTime = rawData.ReadDateValue(row, 6),
                     Hall = context.Halls.Find(rawData.ReadInteger(row, 3)),
                     Movie = context.Movies.Find(rawData.ReadInteger(row, 4))
                 };

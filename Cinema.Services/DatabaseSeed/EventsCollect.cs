@@ -19,7 +19,7 @@ namespace Cinema.Services.DatabaseSeed
                     Description = rawData.ReadString(row, 3),
                     Image = rawData.ReadString(row, 4),
                     Author = context.AppUsers.Find(rawData.ReadInteger(row, 5)),
-                    DateAndTime = rawData.ReadDate(row, 6),
+                    DateAndTime = rawData.ReadDateValue(row, 6),
                     Promoter = rawData.ReadString(row, 7),
                     Type = context.EventTypes.Find(rawData.ReadInteger(row, 8))
                 };
