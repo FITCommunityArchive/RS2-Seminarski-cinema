@@ -2,7 +2,7 @@
 
 namespace Cinema.Web.IdentityEntities
 {
-    public class ApplicationUserClaim : IdentityUserClaim<int>
+    public class ApplicationUserClaim : IdentityUserClaim<string>
     {
         public virtual ApplicationUser User { get; set; }
     }

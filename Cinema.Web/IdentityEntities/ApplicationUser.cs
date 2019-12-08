@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Cinema.Web.IdentityEntities
 {
-    public class ApplicationUser : IdentityUser<int>
+    public class ApplicationUser : IdentityUser<string>
     {
         public ApplicationUser()
         {
@@ -23,8 +23,6 @@ namespace Cinema.Web.IdentityEntities
         public virtual IList<Reservation> Reservations { get; set; }
         public virtual IList<News> News { get; set; }
         public virtual IList<Event> Events { get; set; }
-        //string is the PK type of IdentityUser
-
         //public virtual ApplicationRole Role { get; set; }
         public virtual IList<ApplicationUserRole> UserRoles { get; set; }
         public virtual IList<ApplicationUserClaim> Claims { get; set; }

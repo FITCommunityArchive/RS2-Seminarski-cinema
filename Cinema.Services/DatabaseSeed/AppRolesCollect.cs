@@ -19,14 +19,16 @@ namespace Cinema.Services.DatabaseSeed
                     Name = rawData.ReadString(row, 2)
                 };
 
+                //int oldId = rawData.ReadInteger(row, 1);
                 ApplicationRole appRole = new ApplicationRole
                 {
                     Name = rawData.ReadString(row, 2)
                 };
 
                 context.Add(role);
-                context.Add(appRole);
+                context.Add(appRole);                
                 context.SaveChanges();
+                //SeedUtilities.RolesDictionary.Add(oldId, context.Roles.Find(appRole.Id).Id);
             }
         }
     }

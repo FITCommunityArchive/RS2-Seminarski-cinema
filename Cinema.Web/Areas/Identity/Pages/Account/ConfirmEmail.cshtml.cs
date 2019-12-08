@@ -25,15 +25,14 @@ namespace Cinema.Web.Areas.Identity.Pages.Account
         [TempData]
         public string StatusMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int userId, string code)
-        {
-            string userIdString = userId.ToString();
-            if (userIdString == null || code == null)
+        public async Task<IActionResult> OnGetAsync(string userId, string code)
+        { 
+            if (userId == null || code == null)
             {
                 return RedirectToPage("/Index");
             }
 
-            var user = await _userManager.FindByIdAsync(userIdString);
+            var user = await _userManager.FindByIdAsync(userId);
             if (user == null)
             {
                 return NotFound($"Unable to load user with ID '{userId}'.");

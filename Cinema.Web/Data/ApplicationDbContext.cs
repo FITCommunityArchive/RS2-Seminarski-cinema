@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Cinema.Web.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, int,
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string,
                                         ApplicationUserClaim, ApplicationUserRole, ApplicationUserLogin,
                                         ApplicationRoleClaim, ApplicationUserToken>
     {

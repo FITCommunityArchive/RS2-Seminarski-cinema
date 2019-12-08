@@ -18,7 +18,7 @@ namespace Cinema.Services.DatabaseSeed
             ApplicationRole role = new ApplicationRole();
             await roleManager.CreateAsync(role);
 
-            int adminId1;
+            string adminId1;
 
             //initialize some users here
             ApplicationUser user = new ApplicationUser();

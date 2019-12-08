@@ -24,6 +24,8 @@ namespace Cinema.Services.DatabaseSeed
                     Role = context.AppRoles.Find(rawData.ReadInteger(row, 7))
                 };
 
+                //int oldId = rawData.ReadInteger(row, 1);
+
                 ApplicationUser appUser = new ApplicationUser
                 {
                     UserName = rawData.ReadString(row, 2),
@@ -36,8 +38,9 @@ namespace Cinema.Services.DatabaseSeed
                 };
 
                 context.Add(user);
-                context.Add(appUser);
+                context.Add(appUser);               
                 context.SaveChanges();
+                //SeedUtilities.UsersDictionary.Add(oldId, context.Roles.Find(appUser.Id).Id);
             }
         }
     }
