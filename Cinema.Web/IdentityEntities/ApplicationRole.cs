@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Cinema.Web.IdentityEntities
 {
-    public class ApplicationRole : IdentityRole<string>
+    public class ApplicationRole : IdentityRole
     {
         public ApplicationRole()
         {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Cinema.Web.IdentityEntities
 {
-    public class ApplicationUser : IdentityUser<string>
+    public class ApplicationUser : IdentityUser
     {
         public ApplicationUser()
         {

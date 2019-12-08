@@ -19,7 +19,7 @@ namespace Cinema.Services.DatabaseSeed
                     Name = rawData.ReadString(row, 2)
                 };
 
-                //int oldId = rawData.ReadInteger(row, 1);
+                int oldId = rawData.ReadInteger(row, 1);
                 ApplicationRole appRole = new ApplicationRole
                 {
                     Name = rawData.ReadString(row, 2)
