@@ -10,7 +10,8 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
-using Cinema.Web.IdentityEntities;
+using Cinema.Domain.Entities.Identity;
+
 
 namespace Cinema.Web.Areas.Identity.Pages.Account
 {

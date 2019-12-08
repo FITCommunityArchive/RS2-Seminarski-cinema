@@ -18,7 +18,7 @@ namespace Cinema.Services.DatabaseSeed
                     Title = rawData.ReadString(row, 2),
                     Description = rawData.ReadString(row, 3),
                     Image = rawData.ReadString(row, 4),
-                    Author = context.AppUsers.Find(rawData.ReadInteger(row, 5)),
+                    Author = context.Users.Find(SeedUtilities.UsersDictionary[rawData.ReadInteger(row, 5)]),
                     Type = context.NewsTypes.Find(rawData.ReadInteger(row, 6))
                 };
 

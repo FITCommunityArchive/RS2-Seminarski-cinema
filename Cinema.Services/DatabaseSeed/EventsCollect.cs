@@ -18,7 +18,7 @@ namespace Cinema.Services.DatabaseSeed
                     Title = rawData.ReadString(row, 2),
                     Description = rawData.ReadString(row, 3),
                     Image = rawData.ReadString(row, 4),
-                    Author = context.AppUsers.Find(rawData.ReadInteger(row, 5)),
+                    Author = context.Users.Find(SeedUtilities.UsersDictionary[rawData.ReadInteger(row, 5)]),
                     DateAndTime = rawData.ReadDate(row, 6),
                     Promoter = rawData.ReadString(row, 7),
                     Type = context.EventTypes.Find(rawData.ReadInteger(row, 8))

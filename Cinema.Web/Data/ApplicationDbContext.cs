@@ -8,8 +8,8 @@ using System.Linq;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-using Cinema.Web.IdentityEntities;
 using Microsoft.AspNetCore.Identity;
+using Cinema.Domain.Entities.Identity;
 
 namespace Cinema.Web.Data
 {
@@ -31,7 +31,7 @@ namespace Cinema.Web.Data
             _connectionString = "Server=(localdb)\\mssqllocaldb;Database=CinemaReservations;Trusted_Connection=True;MultipleActiveResultSets=true";
         }
 
-        public DbSet<AppRole>  AppRoles { get; set; }
+        //public DbSet<AppRole>  AppRoles { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<EventType> EventTypes { get; set; }
         public DbSet<Genre> Genres { get; set; }
@@ -47,7 +47,7 @@ namespace Cinema.Web.Data
         public DbSet<Screening> Screenings { get; set; }
         public DbSet<Seat> Seats { get; set; }
         public DbSet<SeatReservation> SeatReservations { get; set; }
-        public DbSet<User> AppUsers { get; set; }
+        //public DbSet<User> AppUsers { get; set; }
         public override DbSet<ApplicationUser> Users { get; set; }
         public override DbSet<ApplicationRole> Roles { get; set; }
         //public override DbSet<ApplicationUserRole> UserRoles { get; set; }*/
@@ -73,7 +73,7 @@ namespace Cinema.Web.Data
                 relationship.DeleteBehavior = DeleteBehavior.Restrict;
             }
 
-            builder.Entity<AppRole>().HasQueryFilter(x => !x.Deleted);
+            //builder.Entity<AppRole>().HasQueryFilter(x => !x.Deleted);
             builder.Entity<Event>().HasQueryFilter(x => !x.Deleted);
             builder.Entity<EventType>().HasQueryFilter(x => !x.Deleted);
             builder.Entity<Genre>().HasQueryFilter(x => !x.Deleted);
@@ -90,8 +90,11 @@ namespace Cinema.Web.Data
             builder.Entity<Screening>().HasQueryFilter(x => !x.Deleted);
             builder.Entity<Seat>().HasQueryFilter(x => !x.Deleted);
             builder.Entity<SeatReservation>().HasQueryFilter(x => !x.Deleted);
-            builder.Entity<User>().HasQueryFilter(x => !x.Deleted);
-                        
+            //builder.Entity<User>().HasQueryFilter(x => !x.Deleted);
+
+            //Add Query filters to ApplicationUser and ApplicationRole
+                       
+            /*
             builder.Entity<ApplicationUser>(b =>
             {
                 // Each User can have many UserClaims
@@ -133,7 +136,7 @@ namespace Cinema.Web.Data
                     .WithOne(e => e.Role)
                     .HasForeignKey(rc => rc.RoleId)
                     .IsRequired();
-            });
+            });*/
 
         }
 

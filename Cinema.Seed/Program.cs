@@ -1,6 +1,6 @@
 ﻿using Cinema.Services.DatabaseSeed;
 using Cinema.Web.Data;
-using Cinema.Web.IdentityEntities;
+
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.IO;

@@ -8,7 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using Cinema.Web.IdentityEntities;
+using Cinema.Domain.Entities.Identity;
+
 
 namespace Cinema.Web.Areas.Identity.Pages.Account.Manage
 {

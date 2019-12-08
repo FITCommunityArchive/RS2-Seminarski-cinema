@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace Cinema.Web.IdentityEntities
+namespace Cinema.Domain.Entities.Identity
 {
     public class ApplicationRoleClaim : IdentityRoleClaim<string>
     {

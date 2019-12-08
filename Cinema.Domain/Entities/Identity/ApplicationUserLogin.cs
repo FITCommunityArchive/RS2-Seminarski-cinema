@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace Cinema.Web.IdentityEntities
+namespace Cinema.Domain.Entities.Identity
 {
-    public class ApplicationUserClaim : IdentityUserClaim<string>
+    public class ApplicationUserLogin : IdentityUserLogin<string>
     {
         public virtual ApplicationUser User { get; set; }
     }

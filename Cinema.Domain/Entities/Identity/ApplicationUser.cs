@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Cinema.Web.IdentityEntities
+namespace Cinema.Domain.Entities.Identity
 {
     public class ApplicationUser : IdentityUser
     {

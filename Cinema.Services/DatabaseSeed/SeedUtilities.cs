@@ -1,6 +1,6 @@
 ﻿using Cinema.Services.DatabaseSeed;
 using Cinema.Web.Data;
-using Cinema.Web.IdentityEntities;
+
 using Microsoft.AspNetCore.Identity;
 using OfficeOpenXml;
 using System;
@@ -27,7 +27,6 @@ namespace Cinema.Services.DatabaseSeed
                 //Type entities seed
                 GenresCollect.Collect(package.Workbook.Worksheets["Genres"], context);
                 AppRolesCollect.Collect(package.Workbook.Worksheets["AppRoles"], context);
-                //await ApplicationRolesCollect.Collect(package.Workbook.Worksheets["AppRoles"], context, roleManager);
                 NewsTypesCollect.Collect(package.Workbook.Worksheets["NewsTypes"], context);
                 EventTypesCollect.Collect(package.Workbook.Worksheets["EventTypes"], context);
                 PricingsCollect.Collect(package.Workbook.Worksheets["Pricings"], context);
