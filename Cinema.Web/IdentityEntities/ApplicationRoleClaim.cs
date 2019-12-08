@@ -2,7 +2,7 @@
 
 namespace Cinema.Web.IdentityEntities
 {
-    public class ApplicationRoleClaim : IdentityRoleClaim<string>
+    public class ApplicationRoleClaim : IdentityRoleClaim<int>
     {
         public virtual ApplicationRole Role { get; set; }
     }

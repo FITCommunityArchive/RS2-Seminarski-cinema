@@ -1,5 +1,6 @@
 ﻿using Cinema.Domain.Entities;
 using Cinema.Web.Data;
+using Cinema.Web.IdentityEntities;
 using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,13 @@ namespace Cinema.Services.DatabaseSeed
                     Name = rawData.ReadString(row, 2)
                 };
 
+                ApplicationRole appRole = new ApplicationRole
+                {
+                    Name = rawData.ReadString(row, 2)
+                };
+
                 context.Add(role);
+                context.Add(appRole);
                 context.SaveChanges();
             }
         }

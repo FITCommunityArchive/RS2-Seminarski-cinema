@@ -1,5 +1,6 @@
 ﻿using Cinema.Domain.Entities;
 using Cinema.Web.Data;
+using Cinema.Web.IdentityEntities;
 using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
@@ -23,7 +24,19 @@ namespace Cinema.Services.DatabaseSeed
                     Role = context.AppRoles.Find(rawData.ReadInteger(row, 7))
                 };
 
+                ApplicationUser appUser = new ApplicationUser
+                {
+                    UserName = rawData.ReadString(row, 2),
+                    //Hashing needs to be implemented here:
+                    PasswordHash = rawData.ReadString(row, 3),
+                    FirstName = rawData.ReadString(row, 4),
+                    LastName = rawData.ReadString(row, 5),
+                    Email = rawData.ReadString(row, 6),
+                    //Role = context.AppRoles.Find(rawData.ReadInteger(row, 7))
+                };
+
                 context.Add(user);
+                context.Add(appUser);
                 context.SaveChanges();
             }
         }

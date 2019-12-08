@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Cinema.Web.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string,
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, int,
                                         ApplicationUserClaim, ApplicationUserRole, ApplicationUserLogin,
                                         ApplicationRoleClaim, ApplicationUserToken>
     {
@@ -48,9 +48,9 @@ namespace Cinema.Web.Data
         public DbSet<Seat> Seats { get; set; }
         public DbSet<SeatReservation> SeatReservations { get; set; }
         public DbSet<User> AppUsers { get; set; }
-        /*public override DbSet<ApplicationUser> Users { get; set; }
+        public override DbSet<ApplicationUser> Users { get; set; }
         public override DbSet<ApplicationRole> Roles { get; set; }
-        public override DbSet<ApplicationUserRole> UserRoles { get; set; }*/
+        //public override DbSet<ApplicationUserRole> UserRoles { get; set; }*/
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -91,7 +91,7 @@ namespace Cinema.Web.Data
             builder.Entity<Seat>().HasQueryFilter(x => !x.Deleted);
             builder.Entity<SeatReservation>().HasQueryFilter(x => !x.Deleted);
             builder.Entity<User>().HasQueryFilter(x => !x.Deleted);
-            
+                        
             builder.Entity<ApplicationUser>(b =>
             {
                 // Each User can have many UserClaims
