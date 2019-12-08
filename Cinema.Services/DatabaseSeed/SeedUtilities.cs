@@ -63,7 +63,17 @@ namespace Cinema.Services.DatabaseSeed
         {
             var data = sht.Cells[row, col].Value;
             if (data == null) return DateTime.MinValue;
-            return DateTime.FromOADate(double.Parse(data.ToString()));
+            
+            /*If the date cell in Excel is set to format 'Date' that equals to the set System date format, 
+            the package will read it as a DateTime object, and not a OA value*/
+            if (data is DateTime)
+            {
+                DateTime date = DateTime.Parse(data.ToString());
+                return date;
+            }
+
+            double dateValue = double.Parse(data.ToString());            
+            return DateTime.FromOADate(dateValue);
         }
 
         public static bool ReadBool(this ExcelWorksheet sht, int row, int col) => sht.ReadString(row, col) == "-1";
