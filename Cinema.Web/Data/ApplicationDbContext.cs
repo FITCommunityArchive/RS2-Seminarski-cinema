@@ -8,10 +8,14 @@ using System.Linq;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
+using Cinema.Web.IdentityEntities;
+using Microsoft.AspNetCore.Identity;
 
 namespace Cinema.Web.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string,
+                                        ApplicationUserClaim, ApplicationUserRole, ApplicationUserLogin,
+                                        ApplicationRoleClaim, ApplicationUserToken>
     {
         private string _connectionString;
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
@@ -44,6 +48,10 @@ namespace Cinema.Web.Data
         public DbSet<Seat> Seats { get; set; }
         public DbSet<SeatReservation> SeatReservations { get; set; }
         public DbSet<User> AppUsers { get; set; }
+        /*public override DbSet<ApplicationUser> Users { get; set; }
+        public override DbSet<ApplicationRole> Roles { get; set; }
+        public override DbSet<ApplicationUserRole> UserRoles { get; set; }*/
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -57,8 +65,10 @@ namespace Cinema.Web.Data
         }
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            base.OnModelCreating(builder);
+
             //This line is in order to prevent Cascade Delete
-            foreach(var relationship in builder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
+            foreach (var relationship in builder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
             {
                 relationship.DeleteBehavior = DeleteBehavior.Restrict;
             }
@@ -81,14 +91,50 @@ namespace Cinema.Web.Data
             builder.Entity<Seat>().HasQueryFilter(x => !x.Deleted);
             builder.Entity<SeatReservation>().HasQueryFilter(x => !x.Deleted);
             builder.Entity<User>().HasQueryFilter(x => !x.Deleted);
+            
+            builder.Entity<ApplicationUser>(b =>
+            {
+                // Each User can have many UserClaims
+                b.HasMany(e => e.Claims)
+                    .WithOne(e => e.User)
+                    .HasForeignKey(uc => uc.UserId)
+                    .IsRequired();
 
-            /*
-            builder.Entity<Reservation>()
-                   .HasOne(r => r.Invoice)
-                   .WithOne(i => i.Reservation)
-                   .HasForeignKey<Invoice>(i => i.ReservationId);*/
+                // Each User can have many UserLogins
+                b.HasMany(e => e.Logins)
+                    .WithOne(e => e.User)
+                    .HasForeignKey(ul => ul.UserId)
+                    .IsRequired();
 
-            base.OnModelCreating(builder);
+                // Each User can have many UserTokens
+                b.HasMany(e => e.Tokens)
+                    .WithOne(e => e.User)
+                    .HasForeignKey(ut => ut.UserId)
+                    .IsRequired();
+
+                // Each User can have many entries in the UserRole join table
+                b.HasMany(e => e.UserRoles)
+                    .WithOne(e => e.User)
+                    .HasForeignKey(ur => ur.UserId)
+                    .IsRequired();
+            });
+
+            
+            builder.Entity<ApplicationRole>(b =>
+            {
+                // Each Role can have many entries in the UserRole join table
+                b.HasMany(e => e.UserRoles)
+                    .WithOne(e => e.Role)
+                    .HasForeignKey(ur => ur.RoleId)
+                    .IsRequired();
+
+                // Each Role can have many associated RoleClaims
+                b.HasMany(e => e.RoleClaims)
+                    .WithOne(e => e.Role)
+                    .HasForeignKey(rc => rc.RoleId)
+                    .IsRequired();
+            });
+
         }
 
         //SaveChangesAsync is used, should that method be overriden instead?
