@@ -91,10 +91,11 @@ namespace Cinema.Web.Data
             builder.Entity<Screening>().HasQueryFilter(x => !x.Deleted);
             builder.Entity<Seat>().HasQueryFilter(x => !x.Deleted);
             builder.Entity<SeatReservation>().HasQueryFilter(x => !x.Deleted);
-            //builder.Entity<User>().HasQueryFilter(x => !x.Deleted);
+            builder.Entity<ApplicationUser>().HasQueryFilter(x => !x.Deleted);
+            builder.Entity<ApplicationRole>().HasQueryFilter(x => !x.Deleted);
 
             //Add Query filters to ApplicationUser and ApplicationRole
-                       
+
             /*
             builder.Entity<ApplicationUser>(b =>
             {
@@ -139,6 +140,15 @@ namespace Cinema.Web.Data
                     .IsRequired();
             });*/
 
+            builder.Entity<ApplicationUser>(b =>
+            {
+                b.ToTable("Users");
+            });
+
+            builder.Entity<ApplicationRole>(b =>
+            {
+                b.ToTable("Roles");
+            });
         }
 
         //SaveChangesAsync is used, should that method be overriden instead?
