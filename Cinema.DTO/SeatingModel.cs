@@ -5,7 +5,8 @@ namespace Cinema.DTO
 {
     public class SeatingModel
     {
-        public virtual MasterModel Seat { get; set; }
+        public int OrderNumber { get; set; }
+        public virtual MasterModel Seat { get; set; }        
         public bool Reserved { get; set; }
     }
 }

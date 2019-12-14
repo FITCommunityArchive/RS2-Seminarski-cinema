@@ -9,10 +9,10 @@ using System.Text;
 
 namespace Cinema.BLL
 {
-    public class ReservationService
+    public class SeatingService
     {
         protected ApplicationDbContext _context;
-        public ReservationService(ApplicationDbContext context)
+        public SeatingService(ApplicationDbContext context)
         {
             _context = context;
         }

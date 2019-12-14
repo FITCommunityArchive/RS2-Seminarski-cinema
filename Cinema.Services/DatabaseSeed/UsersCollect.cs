@@ -34,17 +34,17 @@ namespace Cinema.Services.DatabaseSeed
                     UserName = rawData.ReadString(row, 2),
                     EmailConfirmed = true,
                     //Hashing needs to be implemented here:
-                    //PasswordHash = rawData.ReadString(row, 3),
+                    PasswordHash = rawData.ReadString(row, 3),
                     FirstName = rawData.ReadString(row, 4),
                     LastName = rawData.ReadString(row, 5),
                     Email = rawData.ReadString(row, 6),
                     //Role = context.AppRoles.Find(rawData.ReadInteger(row, 7))
                 };
 
-                _userManager.CreateAsync(appUser, rawData.ReadString(row, 3));
+                //_userManager.CreateAsync(appUser, rawData.ReadString(row, 3));
                 //context.Add(user);
-                //context.Add(appUser);               
-                //context.SaveChanges();
+                context.Add(appUser);               
+                context.SaveChanges();
                 SeedUtilities.UsersDictionary.Add(oldId, context.Users.Find(appUser.Id).Id);
             }
         }

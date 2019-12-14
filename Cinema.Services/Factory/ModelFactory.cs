@@ -12,7 +12,8 @@ namespace Cinema.Services.Factory
         {
             return new SeatingModel
             {
-                Seat = seat.Master(),
+                OrderNumber = seat.OrderNumber,
+                Seat = seat.Master(),                
                 Reserved = reserved
             };
         }

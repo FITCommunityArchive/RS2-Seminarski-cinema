@@ -12,9 +12,8 @@ namespace Cinema.Services.Factory
         {
             return new MasterModel
             {
-                Id = seat.Id,
-                //seats should have a descriptive name assigned to them
-                Name = ""
+                Id = seat.Id,                
+                Name = seat.Label
             };
         }
     }

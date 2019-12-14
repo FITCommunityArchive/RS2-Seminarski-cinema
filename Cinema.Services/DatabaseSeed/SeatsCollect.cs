@@ -15,8 +15,13 @@ namespace Cinema.Services.DatabaseSeed
             {
                 Seat seat = new Seat
                 {
-                    Hall = context.Halls.Find(rawData.ReadInteger(row, 2))
+                    Hall = context.Halls.Find(rawData.ReadInteger(row, 2)),
+                    OrderNumber = rawData.ReadInteger(row, 3),
+                    Label = "A1"
                 };
+
+                //This method will have to be implemented for the real seat label to be returned
+                //seat.CreateSeatLabel();
 
                 context.Add(seat);
                 context.SaveChanges();
