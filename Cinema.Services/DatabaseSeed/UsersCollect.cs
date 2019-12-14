@@ -29,6 +29,7 @@ namespace Cinema.Services.DatabaseSeed
                 ApplicationUser appUser = new ApplicationUser
                 {
                     UserName = rawData.ReadString(row, 2),
+                    EmailConfirmed = true,
                     //Hashing needs to be implemented here:
                     PasswordHash = rawData.ReadString(row, 3),
                     FirstName = rawData.ReadString(row, 4),
