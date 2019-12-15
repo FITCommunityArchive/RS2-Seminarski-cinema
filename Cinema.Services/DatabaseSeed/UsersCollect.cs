@@ -1,5 +1,6 @@
 ﻿using Cinema.Domain.Entities;
 using Cinema.Web.Data;
+using Cinema.Domain.Entities.Identity;
 using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace Cinema.Services.DatabaseSeed
         {
             for (int row = 2; row <= rawData.Dimension.Rows; row++)
             {
-                User user = new User
+                /*User user = new User
                 {
                     Username = rawData.ReadString(row, 2),
                     Password = rawData.ReadString(row, 3),
@@ -21,10 +22,25 @@ namespace Cinema.Services.DatabaseSeed
                     LastName = rawData.ReadString(row, 5),
                     EmailAddress = rawData.ReadString(row, 6),
                     Role = context.AppRoles.Find(rawData.ReadInteger(row, 7))
+                };*/
+
+                int oldId = rawData.ReadInteger(row, 1);
+
+                ApplicationUser appUser = new ApplicationUser
+                {
+                    UserName = rawData.ReadString(row, 2),
+                    //Hashing needs to be implemented here:
+                    PasswordHash = rawData.ReadString(row, 3),
+                    FirstName = rawData.ReadString(row, 4),
+                    LastName = rawData.ReadString(row, 5),
+                    Email = rawData.ReadString(row, 6),
+                    //Role = context.AppRoles.Find(rawData.ReadInteger(row, 7))
                 };
 
-                context.Add(user);
+                //context.Add(user);
+                context.Add(appUser);               
                 context.SaveChanges();
+                SeedUtilities.UsersDictionary.Add(oldId, context.Users.Find(appUser.Id).Id);
             }
         }
     }

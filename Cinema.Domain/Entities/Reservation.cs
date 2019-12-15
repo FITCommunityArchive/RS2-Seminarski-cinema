@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Cinema.Domain.Entities.Identity;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Cinema.Domain.Entities
@@ -11,7 +12,7 @@ namespace Cinema.Domain.Entities
             Invoices = new List<Invoice>();
         }       
         
-        public virtual User User { get; set; }
+        public virtual ApplicationUser User { get; set; }
         public virtual Screening Screening { get; set; }
         //public virtual Invoice Invoice { get; set; }
         public virtual IList<SeatReservation> SeatReservations { get; set; }

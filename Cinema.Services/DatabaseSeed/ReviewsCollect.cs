@@ -17,7 +17,7 @@ namespace Cinema.Services.DatabaseSeed
                 {
                     Text = rawData.ReadString(row, 2),
                     Rating = rawData.ReadInteger(row, 3),
-                    User = context.AppUsers.Find(rawData.ReadInteger(row, 4)),
+                    User = context.Users.Find(SeedUtilities.UsersDictionary[rawData.ReadInteger(row, 4)]),
                     Movie = context.Movies.Find(rawData.ReadInteger(row, 5))
                 };
 

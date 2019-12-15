@@ -15,7 +15,7 @@ namespace Cinema.Services.DatabaseSeed
             {
                 Reservation reservation = new Reservation
                 {
-                    User = context.AppUsers.Find(rawData.ReadInteger(row, 2)),
+                    User = context.Users.Find(SeedUtilities.UsersDictionary[rawData.ReadInteger(row, 2)]),
                     Screening = context.Screenings.Find(rawData.ReadInteger(row, 3)),
                 };
 

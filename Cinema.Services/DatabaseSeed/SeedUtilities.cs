@@ -1,19 +1,23 @@
 ﻿using Cinema.Services.DatabaseSeed;
 using Cinema.Web.Data;
+
+using Microsoft.AspNetCore.Identity;
 using OfficeOpenXml;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace Cinema.Services.DatabaseSeed
 {
     public static class SeedUtilities
     {
+        public static Dictionary<int, string> RolesDictionary = new Dictionary<int, string>();
+        public static Dictionary<int, string> UsersDictionary = new Dictionary<int, string>();
         public static void SeedDatabase(this ApplicationDbContext context, FileInfo fileData)
         {
             /*This methods drops the database, creates a new one, 
              * and performs the defined collect methods upon all tables*/
-
-
             context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
             context.ChangeTracker.AutoDetectChangesEnabled = false;
