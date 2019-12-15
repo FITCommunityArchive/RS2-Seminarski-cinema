@@ -21,8 +21,8 @@ namespace Cinema.DTO.DomainModels
         public string VideoLink { get; set; }
         public string Directors { get; set; }
         public string Actors { get; set; }
-        public virtual IList<MasterModel> Screenings { get; set; }
-        public virtual IList<MasterModel> GenreMovies { get; set; }
-        public virtual IList<MasterModel> Reviews { get; set; }
+        public IList<MasterModel> Screenings { get; set; }
+        public IList<MasterModel> GenreMovies { get; set; }
+        public IList<MasterModel> Reviews { get; set; }
     }
 }
