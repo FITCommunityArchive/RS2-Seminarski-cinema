@@ -9,8 +9,8 @@ namespace Cinema.Services
     {
         public static void CreateSeatLabel(this Seat seat)
         {
-            string seatRow = ((char)((seat.OrderNumber / seat.Hall.NumberOfRows) + 65)).ToString();
-            string seatNr = (seat.OrderNumber % seat.Hall.NumberOfColumns).ToString();
+            string seatRow = ((char)((seat.SeatNumber / seat.Hall.NumberOfRows) + 65)).ToString();
+            string seatNr = (seat.SeatNumber % seat.Hall.NumberOfColumns).ToString();
             seat.Label = seatRow + seatNr;
         }
     }

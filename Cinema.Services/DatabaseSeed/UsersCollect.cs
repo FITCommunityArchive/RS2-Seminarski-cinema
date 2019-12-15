@@ -11,7 +11,7 @@ namespace Cinema.Services.DatabaseSeed
 {
     public static class UsersCollect
     {
-        private static UserManager<ApplicationUser> _userManager;
+        //private static UserManager<ApplicationUser> _userManager;
 
         public static void Collect(ExcelWorksheet rawData, ApplicationDbContext context)
         {

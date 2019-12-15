@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -20,10 +21,16 @@ namespace Cinema.Domain.Entities.Identity
             Logins = new List<ApplicationUserLogin>();
             Tokens = new List<ApplicationUserToken>();
             Deleted = false;
-
         }
+
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        [NotMapped]
+        public string FullName { get
+            {
+                return FirstName + " " + LastName;
+            }
+        }
         public bool Deleted { get; set; }
         public virtual IList<Review> Reviews { get; set; }
         //Both invoices and reservations will be here - due to polymorphism - Invoice inherits Reservation

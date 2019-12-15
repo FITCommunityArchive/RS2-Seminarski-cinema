@@ -1,5 +1,5 @@
 ﻿using Cinema.Domain.Entities;
-using Cinema.DTO;
+using Cinema.DTO.SpecificModels;
 using Cinema.Services.Factory;
 using Cinema.Web.Data;
 using System;
