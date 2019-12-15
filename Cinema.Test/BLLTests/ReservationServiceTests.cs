@@ -1,5 +1,5 @@
 ﻿using Cinema.BLL;
-using Cinema.DTO;
+using Cinema.DTO.SpecificModels;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
