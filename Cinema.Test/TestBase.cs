@@ -1,4 +1,5 @@
 using Cinema.Services.DatabaseSeed;
+using Cinema.Domain.Entities;
 using Cinema.Web.Data;
 using NUnit.Framework;
 using System;

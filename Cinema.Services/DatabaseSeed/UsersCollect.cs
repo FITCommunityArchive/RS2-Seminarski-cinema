@@ -5,11 +5,14 @@ using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.AspNetCore.Identity;
 
 namespace Cinema.Services.DatabaseSeed
 {
-    public class UsersCollect
+    public static class UsersCollect
     {
+        private static UserManager<ApplicationUser> _userManager;
+
         public static void Collect(ExcelWorksheet rawData, ApplicationDbContext context)
         {
             for (int row = 2; row <= rawData.Dimension.Rows; row++)
@@ -29,6 +32,7 @@ namespace Cinema.Services.DatabaseSeed
                 ApplicationUser appUser = new ApplicationUser
                 {
                     UserName = rawData.ReadString(row, 2),
+                    EmailConfirmed = true,
                     //Hashing needs to be implemented here:
                     PasswordHash = rawData.ReadString(row, 3),
                     FirstName = rawData.ReadString(row, 4),
@@ -37,6 +41,7 @@ namespace Cinema.Services.DatabaseSeed
                     //Role = context.AppRoles.Find(rawData.ReadInteger(row, 7))
                 };
 
+                //_userManager.CreateAsync(appUser, rawData.ReadString(row, 3));
                 //context.Add(user);
                 context.Add(appUser);               
                 context.SaveChanges();

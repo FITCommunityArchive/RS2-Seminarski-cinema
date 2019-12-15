@@ -1,12 +1,13 @@
 ﻿using Cinema.Services.DatabaseSeed;
 using Cinema.Web.Data;
-
 using Microsoft.AspNetCore.Identity;
 using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using System.Linq;
+using Cinema.Domain.Entities;
 
 namespace Cinema.Services.DatabaseSeed
 {

@@ -1,9 +1,11 @@
-﻿using Cinema.Services.DatabaseSeed;
+﻿using Cinema.BLL;
+using Cinema.Services.DatabaseSeed;
 using Cinema.Web.Data;
 
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.IO;
+using System.Linq;
 
 namespace Cinema.Seed
 {
@@ -23,7 +25,7 @@ namespace Cinema.Seed
             ApplicationDbContext context = new ApplicationDbContext(connectionString);
 
             //Uncomment to run database seed            
-            context.SeedDatabase(file);            
+            context.SeedDatabase(file);
         }
     }
 }

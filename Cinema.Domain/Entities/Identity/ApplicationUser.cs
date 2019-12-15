@@ -15,9 +15,16 @@ namespace Cinema.Domain.Entities.Identity
             Reservations = new List<Reservation>();
             News = new List<News>();
             Events = new List<Event>();
+            UserRoles = new List<ApplicationUserRole>();
+            Claims = new List<ApplicationUserClaim>();
+            Logins = new List<ApplicationUserLogin>();
+            Tokens = new List<ApplicationUserToken>();
+            Deleted = false;
+
         }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public bool Deleted { get; set; }
         public virtual IList<Review> Reviews { get; set; }
         //Both invoices and reservations will be here - due to polymorphism - Invoice inherits Reservation
         public virtual IList<Reservation> Reservations { get; set; }
