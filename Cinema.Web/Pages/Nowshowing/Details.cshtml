@@ -72,6 +72,9 @@
                             <dd class="col-sm-10">
                                 @Html.DisplayFor(modelItem => item.DateAndTime)
                             </dd>
+                            <dd>
+                                <a asp-page="/ReservationTickets/Index" asp-route-id="@item.Hall.Id" asp-route-date="@item.DateAndTime.Ticks">Reserve tickets</a>
+                            </dd>
                             }
                         </dl>
                     </div>

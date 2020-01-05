@@ -1,0 +1,42 @@
+﻿@page "{id:int?}/{date:long?}" 
+@model Cinema.Web.Pages.ReservationTickets.IndexModel
+@{
+    ViewData["Title"] = "Reservation form";
+}
+
+
+
+<section class="showing-now">
+    <div class="container">
+        <h1>Reservation form</h1>
+        <div class="row">
+            <div class="col-md-12">
+
+
+                <ul>
+                    <li>ID: @Model.CurrentHall.Id</li>
+                    <li>Hall Name: @Model.CurrentHall.Name</li>
+                    <li>Number of columns: @Model.CurrentHall.NumberOfColumns</li>
+                    <li>Number of rows: @Model.CurrentHall.NumberOfRows</li>
+                    @*<li>Available seats: @Model.currentHall.Seats</li>*@
+                    <li>Time of the Screening: @Model.ScreeningDate</li>>
+                </ul>
+
+                <h3>Details of screening that was picked:</h3>
+                @foreach(var screening in Model.CurrentHall.Screenings) { 
+                <ul>
+                    <li>Screening id: @Model.CurrentScreening.Id</li>
+                    <li>Screening Movie title: @Model.CurrentScreening.Movie.Title</li>
+                    <li>Screening Movie Duration: @Model.CurrentScreening.Movie.Duration</li>
+                    <li>Number of reserved seats for this screening: </li>
+                </ul>
+                }
+                <h3>Current reserved seats for selected hall and screening</h3>
+                @*@foreach(var item in Model.SeatNumbers)
+                {
+                    @item.ToString()
+                }*@
+            </div>
+        </div>
+    </div>
+</section>
