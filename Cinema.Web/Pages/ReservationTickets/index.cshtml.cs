@@ -21,22 +21,11 @@ namespace Cinema.Web.Pages.ReservationTickets
 
         public Hall CurrentHall { get; set; }
         public DateTime ScreeningDate { get; set; }
-
         public Screening CurrentScreening { get; set; }
-
         public List<Reservation> ScreeningReservations { get; set; }
         public List<SeatReservation> SeatReservationsList { get; set; }
 
         public List<int> ReservedSeatNumbers { get; set; }
-        //public List<int> GetSeatNumbers()
-        //{
-        //    List<int> ReservedSeatNumbers = new List<int>();
-
-        //    ScreeningReservations = _context.Reservations.Where(x => x.Id == CurrentScreening.Id).ToList();
-        //    foreach 
-
-        //    return ReservedSeatNumbers;
-        //}
 
         public async Task<IActionResult> OnGetAsync(int? id, long date)
         {
@@ -47,22 +36,16 @@ namespace Cinema.Web.Pages.ReservationTickets
             }
 
             ScreeningDate = new DateTime(date);
+            CurrentHall = await _context.Halls
+                .FirstOrDefaultAsync(x => x.Id == id);
 
-            var aCurrentHall = await _context.Halls
-                .Where(x => x.Id == id)
-                .Where(c => c.Screenings.Any(i => i.DateAndTime == ScreeningDate))
-                .Select(c => new
-                {
-                    c,
-                    Screenings = c.Screenings.Where(i => i.DateAndTime == ScreeningDate)
-                })
-                .FirstOrDefaultAsync();
+            //CurrentScreening = CurrentHall.Screenings.FirstOrDefault(x => x.DateAndTime == ScreeningDate);
 
-            //CurrentScreening = await _context.Screenings.FirstOrDefaultAsync(y => y.DateAndTime == ScreeningDate);
-
+            CurrentScreening = _context.Halls.FirstOrDefault(x => x.Id == id).Screenings
+                .FirstOrDefault(x => x.DateAndTime == ScreeningDate);
 
             //ReservedSeatNumbers = GetSeatNumbers();
-            
+
 
             return Page();
         }
