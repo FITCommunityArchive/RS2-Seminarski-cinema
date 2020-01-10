@@ -11,6 +11,7 @@ namespace Cinema.Domain.Entities.Identity
         public ApplicationRole()
         {
             UserRoles = new List<ApplicationUserRole>();
+            //Users = new List<ApplicationUser>();
             RoleClaims = new List<ApplicationRoleClaim>();
             Deleted = false;
         }
