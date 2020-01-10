@@ -6,15 +6,19 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Cinema.Services.DatabaseSeed
 {
     public static class UsersCollect
-    {
-        //private static UserManager<ApplicationUser> _userManager;
-
+    {        
         public static void Collect(ExcelWorksheet rawData, ApplicationDbContext context)
         {
+            var store = new UserStore<ApplicationUser>(context);
+            var passwordHasher = new PasswordHasher<ApplicationUser>();
+            var userManager = new UserManager<ApplicationUser>(store, null, passwordHasher, null, null, null, null, null, null);
+
             for (int row = 2; row <= rawData.Dimension.Rows; row++)
             {
                 /*User user = new User
@@ -34,18 +38,19 @@ namespace Cinema.Services.DatabaseSeed
                     UserName = rawData.ReadString(row, 2),
                     EmailConfirmed = true,
                     //Hashing needs to be implemented here:
-                    PasswordHash = rawData.ReadString(row, 3),
+                    //PasswordHash = rawData.ReadString(row, 3),
                     FirstName = rawData.ReadString(row, 4),
                     LastName = rawData.ReadString(row, 5),
                     Email = rawData.ReadString(row, 6),
                     //Role = context.AppRoles.Find(rawData.ReadInteger(row, 7))
                 };
 
-                //_userManager.CreateAsync(appUser, rawData.ReadString(row, 3));
+                var password = rawData.ReadString(row, 3);
+                userManager.CreateAsync(appUser, password);
                 //context.Add(user);
-                context.Add(appUser);               
-                context.SaveChanges();
-                SeedUtilities.UsersDictionary.Add(oldId, context.Users.Find(appUser.Id).Id);
+                //context.Add(appUser);               
+                //context.SaveChanges();
+                //SeedUtilities.UsersDictionary.Add(oldId, context.Users.Find(appUser.Id).Id);
             }
         }
     }
