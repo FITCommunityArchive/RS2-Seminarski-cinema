@@ -5,6 +5,8 @@ using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Cinema.Services.DatabaseSeed
 {
@@ -12,22 +14,23 @@ namespace Cinema.Services.DatabaseSeed
     {
         public static void Collect(ExcelWorksheet rawData, ApplicationDbContext context)
         {
+            var store = new RoleStore<ApplicationRole>(context);
+            var normalizer = new UpperInvariantLookupNormalizer();
+            var roleManager = new RoleManager<ApplicationRole>(store, null, normalizer, null, null);
+
             for (int row = 2; row <= rawData.Dimension.Rows; row++)
             {
-                /*AppRole role = new AppRole
-                {
-                    Name = rawData.ReadString(row, 2)
-                };*/
-
                 int oldId = rawData.ReadInteger(row, 1);
                 ApplicationRole appRole = new ApplicationRole
                 {
                     Name = rawData.ReadString(row, 2)
                 };
 
+                var result = roleManager.CreateAsync(appRole).Result;
+
                 //context.Add(role);
-                context.Add(appRole);                
-                context.SaveChanges();
+                //context.Add(appRole);                
+                //context.SaveChanges();
                 SeedUtilities.RolesDictionary.Add(oldId, context.Roles.Find(appRole.Id).Id);
             }
         }

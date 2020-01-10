@@ -1,18 +1,11 @@
-﻿using Cinema.Domain.Entities;
-using Cinema.Web.Data;
-using Cinema.Domain.Entities.Identity;
-using OfficeOpenXml;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Options;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Cinema.Services.DatabaseSeed
 {
-    public static class UsersCollect
-    {        
+    public static class UserRolesCollect
+    {/*
         public static void Collect(ExcelWorksheet rawData, ApplicationDbContext context)
         {
             var store = new UserStore<ApplicationUser>(context);
@@ -40,6 +33,6 @@ namespace Cinema.Services.DatabaseSeed
 
                 SeedUtilities.UsersDictionary.Add(oldId, context.Users.Find(appUser.Id).Id);
             }
-        }
+        }*/
     }
 }
