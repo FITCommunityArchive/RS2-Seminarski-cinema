@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Cinema.Services.DatabaseSeed
 {
-    public class AppRolesCollect
+    public class RolesCollect
     {
         public static void Collect(ExcelWorksheet rawData, ApplicationDbContext context)
         {

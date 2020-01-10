@@ -27,7 +27,7 @@ namespace Cinema.Services.DatabaseSeed
             {
                 //Type entities seed
                 GenresCollect.Collect(package.Workbook.Worksheets["Genres"], context);
-                AppRolesCollect.Collect(package.Workbook.Worksheets["AppRoles"], context);
+                RolesCollect.Collect(package.Workbook.Worksheets["AppRoles"], context);
                 NewsTypesCollect.Collect(package.Workbook.Worksheets["NewsTypes"], context);
                 EventTypesCollect.Collect(package.Workbook.Worksheets["EventTypes"], context);
                 PricingsCollect.Collect(package.Workbook.Worksheets["Pricings"], context);

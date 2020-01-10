@@ -32,12 +32,22 @@ namespace Cinema.Services.DatabaseSeed
                     LastName = rawData.ReadString(row, 5),
                     Email = rawData.ReadString(row, 6),
                     PhoneNumber = "0038761000000"
-                    //Role = context.AppRoles.Find(rawData.ReadInteger(row, 7))
                 };
                 var password = rawData.ReadString(row, 3);
 
                 var result = userManager.CreateAsync(appUser, password).Result;
 
+                //Adding the user role for this user
+                /*Even though there is a many to many relationship between user and role in Identity, 
+                 * the legacy database has only one role per user*/
+                ApplicationUserRole userRole = new ApplicationUserRole
+                {
+                    User = context.Users.Find(appUser.Id),
+                    Role = context.Roles.Find(SeedUtilities.RolesDictionary[rawData.ReadInteger(row, 7)])
+                };
+
+                context.UserRoles.Add(userRole);
+                context.SaveChanges();
                 SeedUtilities.UsersDictionary.Add(oldId, context.Users.Find(appUser.Id).Id);
             }
         }
