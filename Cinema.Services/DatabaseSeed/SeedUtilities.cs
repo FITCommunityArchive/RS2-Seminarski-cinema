@@ -34,7 +34,7 @@ namespace Cinema.Services.DatabaseSeed
 
                 //Other entities seed
                 UsersCollect.Collect(package.Workbook.Worksheets["Users"], context);
-                /*HallsCollect.Collect(package.Workbook.Worksheets["Halls"], context);
+                HallsCollect.Collect(package.Workbook.Worksheets["Halls"], context);
                 MoviesCollect.Collect(package.Workbook.Worksheets["Movies"], context);
                 ReviewsCollect.Collect(package.Workbook.Worksheets["Reviews"], context);
                 ScreeningsCollect.Collect(package.Workbook.Worksheets["Screenings"], context);
@@ -44,7 +44,7 @@ namespace Cinema.Services.DatabaseSeed
                 SeatReservationsCollect.Collect(package.Workbook.Worksheets["SeatReservations"], context);
                 GenreMoviesCollect.Collect(package.Workbook.Worksheets["GenreMovies"], context);
                 EventsCollect.Collect(package.Workbook.Worksheets["Events"], context);
-                NewsCollect.Collect(package.Workbook.Worksheets["News"], context);*/
+                NewsCollect.Collect(package.Workbook.Worksheets["News"], context);
             }
 
             Console.WriteLine("Seed complete!");

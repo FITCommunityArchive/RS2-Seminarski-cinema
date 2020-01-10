@@ -17,40 +17,35 @@ namespace Cinema.Services.DatabaseSeed
         {
             var store = new UserStore<ApplicationUser>(context);
             var passwordHasher = new PasswordHasher<ApplicationUser>();
-            var userManager = new UserManager<ApplicationUser>(store, null, passwordHasher, null, null, null, null, null, null);
+            var normalizer = new UpperInvariantLookupNormalizer();
+            var userManager = new UserManager<ApplicationUser>(store, null, passwordHasher, null, null, normalizer, null, null, null);
 
             for (int row = 2; row <= rawData.Dimension.Rows; row++)
             {
-                /*User user = new User
-                {
-                    Username = rawData.ReadString(row, 2),
-                    Password = rawData.ReadString(row, 3),
-                    FirstName = rawData.ReadString(row, 4),
-                    LastName = rawData.ReadString(row, 5),
-                    EmailAddress = rawData.ReadString(row, 6),
-                    Role = context.AppRoles.Find(rawData.ReadInteger(row, 7))
-                };*/
-
                 int oldId = rawData.ReadInteger(row, 1);
 
                 ApplicationUser appUser = new ApplicationUser
                 {
                     UserName = rawData.ReadString(row, 2),
                     EmailConfirmed = true,
-                    //Hashing needs to be implemented here:
-                    //PasswordHash = rawData.ReadString(row, 3),
                     FirstName = rawData.ReadString(row, 4),
                     LastName = rawData.ReadString(row, 5),
                     Email = rawData.ReadString(row, 6),
+                    PhoneNumber = "0038761000000"
                     //Role = context.AppRoles.Find(rawData.ReadInteger(row, 7))
                 };
-
+                //string normalizedUsername = appUser.UserName.ToUpper();
+                //string normalizedEmail = appUser.Email.ToUpper();
                 var password = rawData.ReadString(row, 3);
-                userManager.CreateAsync(appUser, password);
+
+                var result = userManager.CreateAsync(appUser, password).Result;
+
+                //store.SetNormalizedUserNameAsync(appUser, normalizedUsername);
+                //store.SetNormalizedEmailAsync(appUser, normalizedEmail);
                 //context.Add(user);
                 //context.Add(appUser);               
                 //context.SaveChanges();
-                //SeedUtilities.UsersDictionary.Add(oldId, context.Users.Find(appUser.Id).Id);
+                SeedUtilities.UsersDictionary.Add(oldId, context.Users.Find(appUser.Id).Id);
             }
         }
     }
