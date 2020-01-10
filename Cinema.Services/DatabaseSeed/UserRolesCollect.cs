@@ -1,15 +1,18 @@
-﻿using System;
+﻿using Cinema.Domain.Entities.Identity;
+using Cinema.Web.Data;
+using OfficeOpenXml;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Cinema.Services.DatabaseSeed
 {
     public static class UserRolesCollect
-    {/*
+    {
         public static void Collect(ExcelWorksheet rawData, ApplicationDbContext context)
         {
+            /*
             var store = new UserStore<ApplicationUser>(context);
-            var passwordHasher = new PasswordHasher<ApplicationUser>();
             var normalizer = new UpperInvariantLookupNormalizer();
             var userManager = new UserManager<ApplicationUser>(store, null, passwordHasher, null, null, normalizer, null, null, null);
 
@@ -32,7 +35,7 @@ namespace Cinema.Services.DatabaseSeed
                 var result = userManager.CreateAsync(appUser, password).Result;
 
                 SeedUtilities.UsersDictionary.Add(oldId, context.Users.Find(appUser.Id).Id);
-            }
-        }*/
+            }*/
+        }
     }
 }
