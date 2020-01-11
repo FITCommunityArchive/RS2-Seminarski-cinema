@@ -5,8 +5,6 @@ using Cinema.DAL.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Cinema.Domain;
-using System.Text;
 
 namespace Cinema.BLL
 {

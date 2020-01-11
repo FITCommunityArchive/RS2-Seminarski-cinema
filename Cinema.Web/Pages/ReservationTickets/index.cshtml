@@ -39,7 +39,7 @@
                     <li>Reserved:  @item.Reserved</li>
                     }
                 </ul>
-                <div id="seat-map" data-rows="@Model.CurrentHall.NumberOfRows" data-columns="@Model.CurrentHall.NumberOfColumns" data-reserved-seats="@Model.ReservedSeats"></div>
+                <div id="seat-map" data-rows="@Model.CurrentHall.NumberOfRows" data-columns="@Model.CurrentHall.NumberOfColumns" data-reserved-seats="@Model.ReservedSeats" data-ticket-cat="@Model.PricingTier.Name" data-ticket-price="@Model.PricingTier.Price"></div>
                 <div class="booking-details">
                     <h2>Booking Details</h2>
                     <h3> Selected Seats (<span id="counter">0</span>):</h3>
