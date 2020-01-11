@@ -40,9 +40,9 @@ namespace Cinema.Test.DALTests
         public void GetNonExistingGenreMovie(int id)
         {
             //Try to get non-existing GenreMovie
-            GenreMovie genreMovie = unit.GenreMovies.Get(id);
+            var ex = Assert.Throws<ArgumentException>(() => unit.GenreMovies.Get(id));
 
-            Assert.IsNull(genreMovie);
+            Assert.AreEqual(ex.Message, $"There is no object with id: {id} in the database");
         }
 
         [Test, Order(4)]
@@ -90,11 +90,10 @@ namespace Cinema.Test.DALTests
 
             GenreMovie genreMovie = unit.GenreMovies.Get(id);
 
-            unit.GenreMovies.Delete(genreMovie);
-            unit.Save();
+            unit.GenreMovies.Delete(id);
 
-            GenreMovie genreMovieAfterDelete = unit.GenreMovies.Get(id);
-            Assert.IsNull(genreMovieAfterDelete);
+            int numberOfChanges = unit.Save();
+            Assert.AreEqual(1, numberOfChanges);
         }
     }
 }

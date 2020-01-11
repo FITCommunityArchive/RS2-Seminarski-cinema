@@ -45,9 +45,8 @@ namespace Cinema.DAL.Repository
 
         public virtual void Update(Entity entity, int id)
         {
-            Entity old = Get(id);
             ValidateUpdate(entity, id);
-            _context.Entry(old).CurrentValues.SetValues(entity);
+            _context.Update(entity);
         }
 
         public void Delete(Entity entity) => _dbSet.Remove(entity);
@@ -90,7 +89,7 @@ namespace Cinema.DAL.Repository
             if (oldEnt != null)
             {
                 if (typeof(Entity) == typeof(User)) (newEnt as User).Password = (oldEnt as User).Password;
-                _context.Entry(oldEnt).CurrentValues.SetValues(newEnt);
+                _context.Update(newEnt);
             }
         }
 

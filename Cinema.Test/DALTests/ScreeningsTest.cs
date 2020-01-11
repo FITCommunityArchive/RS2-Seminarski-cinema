@@ -41,9 +41,9 @@ namespace Cinema.Test.DALTests
         public void GetNonExistingScreening(int id)
         {
             //Try to get non-existing Screening
-            Screening screening = unit.Screenings.Get(id);
+            var ex = Assert.Throws<ArgumentException>(() => unit.Screenings.Get(id));
 
-            Assert.IsNull(screening);
+            Assert.AreEqual(ex.Message, $"There is no object with id: {id} in the database");
         }
 
         [Test, Order(4)]
@@ -91,10 +91,9 @@ namespace Cinema.Test.DALTests
             Screening screening = unit.Screenings.Get(id);
 
             unit.Screenings.Delete(screening);
-            unit.Save();
 
             Screening screeningAfterDelete = unit.Screenings.Get(id);
-            Assert.IsNull(screeningAfterDelete);
+            Assert.AreEqual(true, screeningAfterDelete.Deleted);
         }
     }
 }

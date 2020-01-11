@@ -42,8 +42,7 @@ namespace Cinema.DAL.Repository
 
         public virtual void Update(Entity entity, string id)
         {
-            Entity old = Get(id);
-            _context.Entry(old).CurrentValues.SetValues(entity);
+            _context.Update(entity);
         }
 
         public void Delete(Entity entity) => _dbSet.Remove(entity);

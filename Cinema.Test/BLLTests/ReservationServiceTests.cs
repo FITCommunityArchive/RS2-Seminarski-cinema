@@ -21,9 +21,10 @@ namespace Cinema.Test.BLLTests
             };
 
         [Test, Order(1), TestCaseSource("sourceLists")]
-        public void GetScreeningSeating(Screening screening, List<int> reservedSeats)
+        public void GetScreeningSeating(int screeningId, List<int> reservedSeats)
         {
             //Arrange
+            Screening screening = unit.Screenings.Get(screeningId);
             seatingService = new SeatingService(unit.Context);
             List<SeatingModel> seating = seatingService.GetScreeningSeating(screening);
 

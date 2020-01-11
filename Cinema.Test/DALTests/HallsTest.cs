@@ -50,9 +50,10 @@ namespace Cinema.Test.DALTests
         public void GetNonExistingHall(int id)
         {
             //Try to get non-existing Hall
-            Hall hall = unit.Halls.Get(id);
 
-            Assert.IsNull(hall);
+            var ex = Assert.Throws<ArgumentException>(() => unit.Halls.Get(id));
+
+            Assert.AreEqual(ex.Message, $"There is no object with id: {id} in the database");
         }
 
         [Test, Order(4)]
@@ -90,16 +91,16 @@ namespace Cinema.Test.DALTests
         [Test, Order(6)]
         public void DeleteHall()
         {
-            //Try to change the hall 
+            //Try to delete the hall 
             int id = 2;
 
             Hall hall = unit.Halls.Get(id); 
             
             unit.Halls.Delete(hall);
-            unit.Save();
 
             Hall hallAfterDelete = unit.Halls.Get(id);
-            Assert.IsNull(hallAfterDelete);            
+
+            Assert.AreEqual(true, hallAfterDelete.Deleted);
         }
 
         /*
