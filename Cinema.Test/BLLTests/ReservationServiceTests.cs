@@ -1,10 +1,12 @@
 ﻿using Cinema.BLL;
+using Cinema.Domain.Entities;
 using Cinema.DTO.SpecificModels;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+
 
 namespace Cinema.Test.BLLTests
 {
@@ -19,11 +21,11 @@ namespace Cinema.Test.BLLTests
             };
 
         [Test, Order(1), TestCaseSource("sourceLists")]
-        public void GetScreeningSeating(int screeningId, List<int> reservedSeats)
+        public void GetScreeningSeating(Screening screening, List<int> reservedSeats)
         {
             //Arrange
             seatingService = new SeatingService(context);
-            List<SeatingModel> seating = seatingService.GetScreeningSeating(screeningId);
+            List<SeatingModel> seating = seatingService.GetScreeningSeating(screening);
 
             //Act
             int numberOfReservations = seating.Where(x => x.Reserved == true).Count();
