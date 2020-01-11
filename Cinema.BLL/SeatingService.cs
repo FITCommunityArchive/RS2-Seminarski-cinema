@@ -1,7 +1,7 @@
 ﻿using Cinema.Domain.Entities;
 using Cinema.DTO.SpecificModels;
 using Cinema.Services.Factory;
-using Cinema.Web.Data;
+using Cinema.DAL.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Identity;
 using Cinema.Domain.Entities.Identity;
 
 
-namespace Cinema.Web.Data
+namespace Cinema.DAL.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string,
                                         ApplicationUserClaim, ApplicationUserRole, ApplicationUserLogin,
