@@ -10,25 +10,15 @@ using Cinema.DAL.Data;
 
 namespace Cinema.Web.Pages.Halles
 {
-    public class DetailsModel : PageModel
+    public class DetailsModel : CinemaPageModel
     {
-        private readonly Cinema.DAL.Data.ApplicationDbContext _context;
-
-        public DetailsModel(Cinema.DAL.Data.ApplicationDbContext context)
-        {
-            _context = context;
-        }
+        public DetailsModel(Cinema.DAL.Data.ApplicationDbContext context) : base(context) { }
 
         public Hall Hall { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            Hall = await _context.Halls.FirstOrDefaultAsync(m => m.Id == id);
+            Hall = await unit.Halls.GetAsync(id);
 
             if (Hall == null)
             {

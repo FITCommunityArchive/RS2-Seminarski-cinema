@@ -11,22 +11,16 @@ using Cinema.DAL.Data;
 
 namespace Cinema.Web.Pages.Screenings
 {
-    public class EditModel : PageModel
+    public class EditModel : CinemaPageModel
     {
-        private readonly Cinema.DAL.Data.ApplicationDbContext _context;
-
-        public EditModel(Cinema.DAL.Data.ApplicationDbContext context)
-        {
-            _context = context;
-        }
+        public EditModel(ApplicationDbContext context) : base(context) { }
 
         [BindProperty]
         public Screening Screening { get; set; }
-
         public SelectList MovieNameSL { get; set; }
         public SelectList HallNameSL { get; set; }
 
-        public void PopulateMoviesDropDownList(Cinema.DAL.Data.ApplicationDbContext _context,
+        public void PopulateMoviesDropDownList(ApplicationDbContext _context,
             object selectedMovie = null)
         {
             var moviesQuery = from d in _context.Movies
@@ -48,23 +42,17 @@ namespace Cinema.Web.Pages.Screenings
                         "Id", "Name", selectedHall);
         }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            Screening = await _context.Screenings.FirstOrDefaultAsync(m => m.Id == id);
+            Screening = await unit.Screenings.GetAsync(id);
 
             if (Screening == null)
             {
                 return NotFound();
             }
 
-
-            PopulateMoviesDropDownList(_context, Screening.Movie.Id);
-            PopulateHallsDropDownList(_context, Screening.Hall.Id);
+            PopulateMoviesDropDownList(unit.Context, Screening.Movie.Id);
+            PopulateHallsDropDownList(unit.Context, Screening.Hall.Id);
 
             return Page();
         }
@@ -78,11 +66,11 @@ namespace Cinema.Web.Pages.Screenings
                 return Page();
             }
 
-            _context.Attach(Screening).State = EntityState.Modified;
+            unit.Context.Attach(Screening).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+                await unit.SaveAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -101,7 +89,7 @@ namespace Cinema.Web.Pages.Screenings
 
         private bool ScreeningExists(int id)
         {
-            return _context.Screenings.Any(e => e.Id == id);
+            return unit.Context.Screenings.Any(e => e.Id == id);
         }
     }
 }

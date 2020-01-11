@@ -11,26 +11,16 @@ using Cinema.Domain.Entities;
 
 namespace Cinema.Web.Pages.Movies
 {
-    public class EditModel : PageModel
+    public class EditModel : CinemaPageModel
     {
-        private readonly Cinema.DAL.Data.ApplicationDbContext _context;
-
-        public EditModel(Cinema.DAL.Data.ApplicationDbContext context)
-        {
-            _context = context;
-        }
-
+        public EditModel(Cinema.DAL.Data.ApplicationDbContext context) : base(context) { }
+ 
         [BindProperty]
         public Movie Movie { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            Movie = await _context.Movies.FirstOrDefaultAsync(m => m.Id == id);
+            Movie = await unit.Movies.GetAsync(id);
 
             if (Movie == null)
             {
@@ -48,11 +38,11 @@ namespace Cinema.Web.Pages.Movies
                 return Page();
             }
 
-            _context.Attach(Movie).State = EntityState.Modified;
+            unit.Context.Attach(Movie).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+                await unit.SaveAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -71,7 +61,7 @@ namespace Cinema.Web.Pages.Movies
 
         private bool MovieExists(int id)
         {
-            return _context.Movies.Any(e => e.Id == id);
+            return unit.Context.Movies.Any(e => e.Id == id);
         }
     }
 }

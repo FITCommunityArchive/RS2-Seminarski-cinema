@@ -10,20 +10,15 @@ using Cinema.DAL.Data;
 
 namespace Cinema.Web.Pages.Halles
 {
-    public class IndexModel : PageModel
+    public class IndexModel : CinemaPageModel
     {
-        private readonly Cinema.DAL.Data.ApplicationDbContext _context;
-
-        public IndexModel(Cinema.DAL.Data.ApplicationDbContext context)
-        {
-            _context = context;
-        }
-
+        public IndexModel(Cinema.DAL.Data.ApplicationDbContext context) : base(context) { }
+                
         public IList<Hall> Hall { get;set; }
 
         public async Task OnGetAsync()
         {
-            Hall = await _context.Halls.ToListAsync();
+            Hall = await unit.Halls.GetAsync();
         }
     }
 }

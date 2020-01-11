@@ -10,25 +10,15 @@ using Cinema.DAL.Data;
 
 namespace Cinema.Web.Pages.Screenings
 {
-    public class DetailsModel : PageModel
+    public class DetailsModel : CinemaPageModel
     {
-        private readonly Cinema.DAL.Data.ApplicationDbContext _context;
-
-        public DetailsModel(Cinema.DAL.Data.ApplicationDbContext context)
-        {
-            _context = context;
-        }
+        public DetailsModel(Cinema.DAL.Data.ApplicationDbContext context) : base(context) { }
 
         public Screening Screening { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            Screening = await _context.Screenings.FirstOrDefaultAsync(m => m.Id == id);
+            Screening = await unit.Screenings.GetAsync(id);
 
             if (Screening == null)
             {
