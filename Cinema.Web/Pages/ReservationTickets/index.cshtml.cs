@@ -7,16 +7,18 @@ using Cinema.DTO.SpecificModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using Cinema.DAL.Data;
+using Cinema.BLL;
 
 namespace Cinema.Web.Pages.ReservationTickets
 {
     public class IndexModel : PageModel
     {
 
-        private readonly Cinema.Web.Data.ApplicationDbContext _context;
+        private readonly Cinema.DAL.Data.ApplicationDbContext _context;
         private SeatingService _seatingService;
 
-        public IndexModel(Cinema.Web.Data.ApplicationDbContext context)
+        public IndexModel(Cinema.DAL.Data.ApplicationDbContext context)
         {
             _context = context;
             _seatingService = new SeatingService(context);           
@@ -44,7 +46,7 @@ namespace Cinema.Web.Pages.ReservationTickets
                 //.FirstOrDefault(x => x.DateAndTime == ScreeningDate);
 
             ScreeningSeats = _seatingService.GetScreeningSeating(CurrentScreening);
-
+            
             return Page();
         }
     }

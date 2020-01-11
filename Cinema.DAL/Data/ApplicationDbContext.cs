@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Identity;
 using Cinema.Domain.Entities.Identity;
 
 
-namespace Cinema.Web.Data
+namespace Cinema.DAL.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string,
                                         ApplicationUserClaim, ApplicationUserRole, ApplicationUserLogin,
@@ -51,7 +51,7 @@ namespace Cinema.Web.Data
         //public DbSet<User> AppUsers { get; set; }
         public override DbSet<ApplicationUser> Users { get; set; }
         public override DbSet<ApplicationRole> Roles { get; set; }
-        //public override DbSet<ApplicationUserRole> UserRoles { get; set; }*/
+        public override DbSet<ApplicationUserRole> UserRoles { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -93,10 +93,11 @@ namespace Cinema.Web.Data
             builder.Entity<SeatReservation>().HasQueryFilter(x => !x.Deleted);
             builder.Entity<ApplicationUser>().HasQueryFilter(x => !x.Deleted);
             builder.Entity<ApplicationRole>().HasQueryFilter(x => !x.Deleted);
+            builder.Entity<ApplicationUserRole>().HasQueryFilter(x => !x.Deleted);
 
             //Add Query filters to ApplicationUser and ApplicationRole
 
-            /*
+            
             builder.Entity<ApplicationUser>(b =>
             {
                 // Each User can have many UserClaims
@@ -138,7 +139,7 @@ namespace Cinema.Web.Data
                     .WithOne(e => e.Role)
                     .HasForeignKey(rc => rc.RoleId)
                     .IsRequired();
-            });*/
+            });
 
             builder.Entity<ApplicationUser>(b =>
             {
@@ -148,6 +149,11 @@ namespace Cinema.Web.Data
             builder.Entity<ApplicationRole>(b =>
             {
                 b.ToTable("Roles");
+            });
+
+            builder.Entity<ApplicationUserRole>(b =>
+            {
+                b.ToTable("UserRoles");
             });
         }
 

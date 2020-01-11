@@ -1,6 +1,6 @@
 using Cinema.Services.DatabaseSeed;
 using Cinema.Domain.Entities;
-using Cinema.Web.Data;
+using Cinema.DAL.Data;
 using NUnit.Framework;
 using System;
 using System.IO;

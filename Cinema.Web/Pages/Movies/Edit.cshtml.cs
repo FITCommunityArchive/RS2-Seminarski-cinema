@@ -6,16 +6,16 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Cinema.Web.Data;
+using Cinema.DAL.Data;
 using Cinema.Domain.Entities;
 
 namespace Cinema.Web.Pages.Movies
 {
     public class EditModel : PageModel
     {
-        private readonly Cinema.Web.Data.ApplicationDbContext _context;
+        private readonly Cinema.DAL.Data.ApplicationDbContext _context;
 
-        public EditModel(Cinema.Web.Data.ApplicationDbContext context)
+        public EditModel(Cinema.DAL.Data.ApplicationDbContext context)
         {
             _context = context;
         }

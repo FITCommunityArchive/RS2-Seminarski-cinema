@@ -1,10 +1,11 @@
 ﻿using Cinema.Domain.Entities;
 using Cinema.DTO.SpecificModels;
 using Cinema.Services.Factory;
-using Cinema.Web.Data;
+using Cinema.DAL.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Cinema.Domain;
 using System.Text;
 
 namespace Cinema.BLL
@@ -21,8 +22,9 @@ namespace Cinema.BLL
             //Screening screening = _context.Screenings.Find(screeningId);
 
             //gets reserved seats first
-            List<SeatingModel> screeningSeats = screening.Reservations.SelectMany(x => x.SeatReservations).ToList()
-                                                             .Select(x => x.Seat.CreateSeating(true)).ToList();
+            List<SeatReservation> screeningReservations = screening.Reservations.SelectMany(x => x.SeatReservations).ToList();
+
+            List<SeatingModel> screeningSeats = screeningReservations.Select(x => x.Seat.CreateSeating(true)).ToList();
 
             //gets all seats
             List<Seat> hallSeats = screening.Hall.Seats.ToList();

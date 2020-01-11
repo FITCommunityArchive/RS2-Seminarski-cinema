@@ -7,15 +7,15 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Cinema.Domain.Entities;
-using Cinema.Web.Data;
+using Cinema.DAL.Data;
 
 namespace Cinema.Web.Pages.Screenings
 {
     public class EditModel : PageModel
     {
-        private readonly Cinema.Web.Data.ApplicationDbContext _context;
+        private readonly Cinema.DAL.Data.ApplicationDbContext _context;
 
-        public EditModel(Cinema.Web.Data.ApplicationDbContext context)
+        public EditModel(Cinema.DAL.Data.ApplicationDbContext context)
         {
             _context = context;
         }
@@ -26,7 +26,7 @@ namespace Cinema.Web.Pages.Screenings
         public SelectList MovieNameSL { get; set; }
         public SelectList HallNameSL { get; set; }
 
-        public void PopulateMoviesDropDownList(Cinema.Web.Data.ApplicationDbContext _context,
+        public void PopulateMoviesDropDownList(Cinema.DAL.Data.ApplicationDbContext _context,
             object selectedMovie = null)
         {
             var moviesQuery = from d in _context.Movies
@@ -37,7 +37,7 @@ namespace Cinema.Web.Pages.Screenings
                         "Id", "Title", selectedMovie);
         }
 
-        public void PopulateHallsDropDownList(Cinema.Web.Data.ApplicationDbContext _context,
+        public void PopulateHallsDropDownList(Cinema.DAL.Data.ApplicationDbContext _context,
             object selectedHall = null)
         {
             var hallsQuery = from d in _context.Halls

@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Cinema.Web.Data;
+using Cinema.DAL.Data;
 using Cinema.Domain.Entities;
 
 namespace Cinema.Web.Pages.Movies
