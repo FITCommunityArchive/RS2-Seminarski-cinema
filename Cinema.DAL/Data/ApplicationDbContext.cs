@@ -95,9 +95,7 @@ namespace Cinema.DAL.Data
             builder.Entity<ApplicationRole>().HasQueryFilter(x => !x.Deleted);
             builder.Entity<ApplicationUserRole>().HasQueryFilter(x => !x.Deleted);
 
-            //Add Query filters to ApplicationUser and ApplicationRole
-
-            
+            //Add Query filters to ApplicationUser and ApplicationRole            
             builder.Entity<ApplicationUser>(b =>
             {
                 // Each User can have many UserClaims
@@ -124,8 +122,7 @@ namespace Cinema.DAL.Data
                     .HasForeignKey(ur => ur.UserId)
                     .IsRequired();
             });
-
-            
+                        
             builder.Entity<ApplicationRole>(b =>
             {
                 // Each Role can have many entries in the UserRole join table

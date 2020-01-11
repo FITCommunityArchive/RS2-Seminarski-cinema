@@ -10,10 +10,10 @@ namespace Cinema.BLL
 {
     public class PricingService
     {
-        protected ApplicationDbContext _context;
-        public PricingService(ApplicationDbContext context)
+        protected UnitOfWork _unit;
+        public PricingService(UnitOfWork unit)
         {
-            _context = context;
+            _unit = unit;
         }
 
         public Pricing PricingTier { get; set; }
@@ -21,7 +21,7 @@ namespace Cinema.BLL
         public Pricing GetPricingTier(string tier)
         {
             //gets reserved seats first
-            PricingTier = _context.Pricing.FirstOrDefault(x => x.Name == tier);
+            PricingTier = _unit.Pricings.Get().FirstOrDefault(x => x.Name == tier);
 
             return PricingTier;
         }

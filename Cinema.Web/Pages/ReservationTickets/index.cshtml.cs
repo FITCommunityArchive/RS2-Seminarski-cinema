@@ -12,18 +12,15 @@ using Cinema.BLL;
 
 namespace Cinema.Web.Pages.ReservationTickets
 {
-    public class IndexModel : PageModel
+    public class IndexModel : CinemaPageModel
     {
-
-        private readonly Cinema.DAL.Data.ApplicationDbContext _context;
         private SeatingService _seatingService;
         private PricingService _pricingService;
 
-        public IndexModel(Cinema.DAL.Data.ApplicationDbContext context)
+        public IndexModel(Cinema.DAL.Data.ApplicationDbContext context) : base(context)
         {
-            _context = context;
-            _seatingService = new SeatingService(context);
-            _pricingService = new PricingService(context);
+            _seatingService = new SeatingService(unit);
+            _pricingService = new PricingService(unit);
         }
 
         public Hall CurrentHall { get; set; }
@@ -32,17 +29,10 @@ namespace Cinema.Web.Pages.ReservationTickets
         public string ReservedSeats { get; set; }
         public Pricing PricingTier { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id, long date)
+        public async Task<IActionResult> OnGetAsync(int id, long date)
         {
-
-            if (id == null)
-            {
-                return NotFound();
-            }
-
             var screeningDate = new DateTime(date);
-            CurrentHall = await _context.Halls
-                .FirstOrDefaultAsync(x => x.Id == id);
+            CurrentHall = await unit.Halls.GetAsync(id);
 
             CurrentScreening = CurrentHall.Screenings.FirstOrDefault(x => x.DateAndTime == screeningDate);
 

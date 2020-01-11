@@ -10,20 +10,15 @@ using Cinema.Domain.Entities;
 
 namespace Cinema.Web.Pages.Movies
 {
-    public class IndexModel : PageModel
+    public class IndexModel : CinemaPageModel
     {
-        private readonly Cinema.DAL.Data.ApplicationDbContext _context;
-
-        public IndexModel(Cinema.DAL.Data.ApplicationDbContext context)
-        {
-            _context = context;
-        }
+        public IndexModel(Cinema.DAL.Data.ApplicationDbContext context) : base(context) { }
 
         public IList<Movie> Movie { get;set; }
 
         public async Task OnGetAsync()
         {
-            Movie = await _context.Movies.ToListAsync();
+            Movie = await unit.Movies.GetAsync();
         }
     }
 }

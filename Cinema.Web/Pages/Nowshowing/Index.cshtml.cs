@@ -9,15 +9,9 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Cinema.Web.Pages.Nowshowing
 {
-    public class IndexModel : PageModel
+    public class IndexModel : CinemaPageModel
     {
-
-        private readonly ApplicationDbContext _context;
-
-        public IndexModel(ApplicationDbContext context)
-        {
-            _context = context;
-        }
+        public IndexModel(ApplicationDbContext context) : base(context) { }
 
         [BindProperty(SupportsGet = true)]
         public int CurrentPage { get; set; } = 1;
@@ -40,11 +34,11 @@ namespace Cinema.Web.Pages.Nowshowing
             if(screeningdate != null)
             {
                 DateTime DateFilter = Convert.ToDateTime(screeningdate);
-                var dataWithDate = _context.Screenings.Where(s => s.DateAndTime.Date == DateFilter.Date).ToList();
+                var dataWithDate = unit.Screenings.Get(s => s.DateAndTime.Date == DateFilter.Date);
                 return dataWithDate.OrderBy(d => d.Id).Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();
             }
 
-            var data = _context.Screenings.ToList();
+            var data = unit.Screenings.Get();
             return data.OrderBy(d => d.Id).Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();
 
         }
@@ -55,12 +49,12 @@ namespace Cinema.Web.Pages.Nowshowing
             if (ScreeningDate != null)
             {
                 DateTime DateFilter = Convert.ToDateTime(ScreeningDate);
-                var dataWithDate = _context.Screenings.Where(s => s.DateAndTime.Date == DateFilter.Date).ToList();
+                var dataWithDate = unit.Screenings.Get(s => s.DateAndTime.Date == DateFilter.Date);
                 return dataWithDate.Count;
             }
             
-            var data = _context.Screenings.ToList();
-            return data.Count;
+            var data = unit.Screenings.Get();
+            return data.Count();
         }
 
 

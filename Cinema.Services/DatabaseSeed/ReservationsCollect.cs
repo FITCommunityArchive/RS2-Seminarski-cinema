@@ -9,18 +9,18 @@ namespace Cinema.Services.DatabaseSeed
 {
     public class ReservationsCollect
     {
-        public static void Collect(ExcelWorksheet rawData, ApplicationDbContext context)
+        public static void Collect(ExcelWorksheet rawData, UnitOfWork unit)
         {
             for (int row = 2; row <= rawData.Dimension.Rows; row++)
             {
                 Reservation reservation = new Reservation
                 {
-                    User = context.Users.Find(SeedUtilities.UsersDictionary[rawData.ReadInteger(row, 2)]),
-                    Screening = context.Screenings.Find(rawData.ReadInteger(row, 3)),
+                    User = unit.Users.Get(SeedUtilities.UsersDictionary[rawData.ReadInteger(row, 2)]),
+                    Screening = unit.Screenings.Get(rawData.ReadInteger(row, 3)),
                 };
 
-                context.Add(reservation);
-                context.SaveChanges();
+                unit.Reservations.Insert(reservation);
+                unit.Save();
             }
         }
     }

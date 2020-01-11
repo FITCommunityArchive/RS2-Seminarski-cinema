@@ -9,7 +9,7 @@ namespace Cinema.Services.DatabaseSeed
 {
     public class PricingsCollect
     {
-        public static void Collect(ExcelWorksheet rawData, ApplicationDbContext context)
+        public static void Collect(ExcelWorksheet rawData, UnitOfWork unit)
         {
             for (int row = 2; row <= rawData.Dimension.Rows; row++)
             {
@@ -19,8 +19,8 @@ namespace Cinema.Services.DatabaseSeed
                     Price = rawData.ReadDecimal(row, 3)
                 };
 
-                context.Add(pricing);
-                context.SaveChanges();
+                unit.Pricings.Insert(pricing);
+                unit.Save();
             }
         }
     }

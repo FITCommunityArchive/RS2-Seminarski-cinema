@@ -10,26 +10,16 @@ using Cinema.Domain.Entities;
 
 namespace Cinema.Web.Pages.Movies
 {
-    public class DeleteModel : PageModel
+    public class DeleteModel : CinemaPageModel
     {
-        private readonly Cinema.DAL.Data.ApplicationDbContext _context;
-
-        public DeleteModel(Cinema.DAL.Data.ApplicationDbContext context)
-        {
-            _context = context;
-        }
-
+        public DeleteModel(Cinema.DAL.Data.ApplicationDbContext context) : base(context) { }
+ 
         [BindProperty]
         public Movie Movie { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            Movie = await _context.Movies.FirstOrDefaultAsync(m => m.Id == id);
+            Movie = await unit.Movies.GetAsync(id);
 
             if (Movie == null)
             {
@@ -38,19 +28,14 @@ namespace Cinema.Web.Pages.Movies
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(int? id)
+        public async Task<IActionResult> OnPostAsync(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            Movie = await _context.Movies.FindAsync(id);
+            Movie = await unit.Movies.GetAsync(id);
 
             if (Movie != null)
             {
-                _context.Movies.Remove(Movie);
-                await _context.SaveChangesAsync();
+                unit.Movies.Delete(Movie);
+                await unit.SaveAsync();
             }
 
             return RedirectToPage("./Index");

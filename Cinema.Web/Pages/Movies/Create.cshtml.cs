@@ -13,14 +13,12 @@ using Cinema.Domain.Entities;
 
 namespace Cinema.Web.Pages.Movies
 {
-    public class CreateModel : PageModel
+    public class CreateModel : CinemaPageModel
     {
-        private readonly ApplicationDbContext _context;
         private readonly IHostingEnvironment hostingEnvironment;
 
-        public CreateModel(ApplicationDbContext context, IHostingEnvironment environment)
+        public CreateModel(ApplicationDbContext context, IHostingEnvironment environment) : base(context)
         {
-            _context = context;
             this.hostingEnvironment = environment;
         }
 
@@ -61,8 +59,8 @@ namespace Cinema.Web.Pages.Movies
                 this.Movie.Image = fileName; // Set the file name
             }
 
-            _context.Movies.Add(Movie);
-            await _context.SaveChangesAsync();
+            unit.Movies.Insert(Movie);
+            await unit.SaveAsync();
 
             return RedirectToPage("./Index");
         }

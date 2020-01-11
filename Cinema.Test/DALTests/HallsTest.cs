@@ -17,13 +17,13 @@ namespace Cinema.Test.DALTests
         public void GetAllHalls()
         {
             //Arrange
-            DbSet<Hall> halls = context.Halls;
+            int hallsCount = unit.Halls.Get().Count();
                                              
             //Act
 
             //Assert
             //There are 2 halls in the test database
-             Assert.AreEqual(2, halls.Count());
+             Assert.AreEqual(2, hallsCount);
 
             /*
             IndexModel indexModel = new IndexModel(context);
@@ -39,7 +39,7 @@ namespace Cinema.Test.DALTests
         public void GetHallById(int id)
         {
             //Try to get Hall with id
-            Hall hall = context.Halls.FirstOrDefault(x => x.Id == id);       
+            Hall hall = unit.Halls.Get(id);       
 
             Assert.AreEqual("Movie Hall 2", hall.Name);            
         }
@@ -50,9 +50,10 @@ namespace Cinema.Test.DALTests
         public void GetNonExistingHall(int id)
         {
             //Try to get non-existing Hall
-            Hall hall = context.Halls.FirstOrDefault(x => x.Id == id);
 
-            Assert.IsNull(hall);
+            var ex = Assert.Throws<ArgumentException>(() => unit.Halls.Get(id));
+
+            Assert.AreEqual(ex.Message, $"There is no object with id: {id} in the database");
         }
 
         [Test, Order(4)]
@@ -63,11 +64,11 @@ namespace Cinema.Test.DALTests
                 Name = "New Hall"
             };
 
-            context.Halls.Add(hall);
-            context.SaveChanges();
+            unit.Halls.Insert(hall);
+            unit.Save();
 
             //id of the new hall will be 3
-            Hall newHall = context.Halls.Find(3);
+            Hall newHall = unit.Halls.Get(3);
 
             Assert.AreEqual("New Hall", newHall.Name);
         }
@@ -78,11 +79,11 @@ namespace Cinema.Test.DALTests
             //Try to change the hall 
             int id = 2;
 
-            Hall hall = context.Halls.Find(id);
+            Hall hall = unit.Halls.Get(id);
             hall.Name = "New Hall";
 
-            context.Halls.Update(hall);
-            context.SaveChanges();
+            unit.Halls.Update(hall, id);
+            unit.Save();
 
             Assert.AreEqual("New Hall", hall.Name);
         }
@@ -90,16 +91,16 @@ namespace Cinema.Test.DALTests
         [Test, Order(6)]
         public void DeleteHall()
         {
-            //Try to change the hall 
+            //Try to delete the hall 
             int id = 2;
 
-            Hall hall = context.Halls.Find(id); 
+            Hall hall = unit.Halls.Get(id); 
             
-            context.Halls.Remove(hall);
-            context.SaveChanges();
+            unit.Halls.Delete(hall);
 
-            Hall hallAfterDelete = context.Halls.FirstOrDefault(x => x.Id == id);
-            Assert.IsNull(hallAfterDelete);            
+            Hall hallAfterDelete = unit.Halls.Get(id);
+
+            Assert.AreEqual(true, hallAfterDelete.Deleted);
         }
 
         /*
@@ -109,7 +110,7 @@ namespace Cinema.Test.DALTests
             //Try to delete the hall 
             int id = 2;
 
-            Hall hall = context.Halls.Find(id);
+            Hall hall = unit.Halls.Get(id);
 
             //First delete all screenings and all child entities of each screening
             var screenings = context.Screenings.Where(x => x.Hall.Id == hall.Id);
@@ -131,7 +132,7 @@ namespace Cinema.Test.DALTests
             }
             
             context.Screenings.RemoveRange(screenings);
-            context.SaveChanges();
+            unit.Save();
 
             //Delete all seats and all child entities of each seat
             var seats = context.Seats.Where(x => x.Hall.Id == hall.Id);
@@ -142,12 +143,12 @@ namespace Cinema.Test.DALTests
             }
 
             context.Seats.RemoveRange(seats);
-            context.SaveChanges();        
+            unit.Save();        
 
             context.Halls.Remove(hall);
-            context.SaveChanges();
+            unit.Save();
 
-            Hall hallAfterDelete = context.Halls.FirstOrDefault(x => x.Id == id);            
+            Hall hallAfterDelete = unit.Halls.Get(id);            
             Assert.IsNull(hallAfterDelete);
         }*/
     }

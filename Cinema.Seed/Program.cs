@@ -23,9 +23,10 @@ namespace Cinema.Seed
             FileInfo file = new FileInfo(fullPath);
 
             ApplicationDbContext context = new ApplicationDbContext(connectionString);
+            UnitOfWork unit = new UnitOfWork(context);
 
             //Uncomment to run database seed            
-            context.SeedDatabase(file);
+            unit.SeedDatabase(file);
         }
     }
 }

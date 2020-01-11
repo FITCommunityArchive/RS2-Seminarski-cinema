@@ -10,26 +10,17 @@ using Cinema.DAL.Data;
 
 namespace Cinema.Web.Pages.Screenings
 {
-    public class DeleteModel : PageModel
+    public class DeleteModel : CinemaPageModel
     {
-        private readonly Cinema.DAL.Data.ApplicationDbContext _context;
+        public DeleteModel(ApplicationDbContext context) : base(context) { }
 
-        public DeleteModel(Cinema.DAL.Data.ApplicationDbContext context)
-        {
-            _context = context;
-        }
 
         [BindProperty]
         public Screening Screening { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            Screening = await _context.Screenings.FirstOrDefaultAsync(m => m.Id == id);
+            Screening = await unit.Screenings.GetAsync(id);
 
             if (Screening == null)
             {
@@ -38,20 +29,11 @@ namespace Cinema.Web.Pages.Screenings
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(int? id)
+        public async Task<IActionResult> OnPostAsync(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
 
-            Screening = await _context.Screenings.FindAsync(id);
-
-            if (Screening != null)
-            {
-                _context.Screenings.Remove(Screening);
-                await _context.SaveChangesAsync();
-            }
+            unit.Screenings.Delete(id);
+            await unit.SaveAsync();             
 
             return RedirectToPage("./Index");
         }

@@ -10,10 +10,10 @@ namespace Cinema.BLL
 {
     public class SeatingService
     {
-        protected ApplicationDbContext _context;
-        public SeatingService(ApplicationDbContext context)
+        protected UnitOfWork _unit;
+        public SeatingService(UnitOfWork unit)
         {
-            _context = context;
+            _unit = unit;
         }
 
         public List<string> ReservedSeats { get; set; }

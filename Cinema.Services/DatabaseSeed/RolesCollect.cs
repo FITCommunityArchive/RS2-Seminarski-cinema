@@ -12,9 +12,9 @@ namespace Cinema.Services.DatabaseSeed
 {
     public class RolesCollect
     {
-        public static void Collect(ExcelWorksheet rawData, ApplicationDbContext context)
+        public static void Collect(ExcelWorksheet rawData, UnitOfWork unit)
         {
-            var store = new RoleStore<ApplicationRole>(context);
+            var store = new RoleStore<ApplicationRole>(unit.Context);
             var normalizer = new UpperInvariantLookupNormalizer();
             var roleManager = new RoleManager<ApplicationRole>(store, null, normalizer, null, null);
 
@@ -31,7 +31,7 @@ namespace Cinema.Services.DatabaseSeed
                 //context.Add(role);
                 //context.Add(appRole);                
                 //context.SaveChanges();
-                SeedUtilities.RolesDictionary.Add(oldId, context.Roles.Find(appRole.Id).Id);
+                SeedUtilities.RolesDictionary.Add(oldId, unit.Roles.Get(appRole.Id).Id);
             }
         }
     }
