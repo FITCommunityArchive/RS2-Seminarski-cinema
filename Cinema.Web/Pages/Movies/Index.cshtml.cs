@@ -5,16 +5,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using Cinema.Web.Data;
+using Cinema.DAL.Data;
 using Cinema.Domain.Entities;
 
 namespace Cinema.Web.Pages.Movies
 {
     public class IndexModel : PageModel
     {
-        private readonly Cinema.Web.Data.ApplicationDbContext _context;
+        private readonly Cinema.DAL.Data.ApplicationDbContext _context;
 
-        public IndexModel(Cinema.Web.Data.ApplicationDbContext context)
+        public IndexModel(Cinema.DAL.Data.ApplicationDbContext context)
         {
             _context = context;
         }

@@ -6,16 +6,16 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Cinema.Domain.Entities;
-using Cinema.Web.Data;
+using Cinema.DAL.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace Cinema.Web.Pages.Screenings
 {
     public class CreateModel : PageModel
     {
-        private readonly Cinema.Web.Data.ApplicationDbContext _context;
+        private readonly Cinema.DAL.Data.ApplicationDbContext _context;
 
-        public CreateModel(Cinema.Web.Data.ApplicationDbContext context)
+        public CreateModel(Cinema.DAL.Data.ApplicationDbContext context)
         {
             _context = context;
         }
