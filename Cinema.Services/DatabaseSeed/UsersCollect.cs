@@ -13,9 +13,9 @@ namespace Cinema.Services.DatabaseSeed
 {
     public static class UsersCollect
     {        
-        public static void Collect(ExcelWorksheet rawData, ApplicationDbContext context)
+        public static void Collect(ExcelWorksheet rawData, UnitOfWork unit)
         {
-            var store = new UserStore<ApplicationUser>(context);
+            var store = new UserStore<ApplicationUser>(unit.Context);
             var passwordHasher = new PasswordHasher<ApplicationUser>();
             var normalizer = new UpperInvariantLookupNormalizer();
             var userManager = new UserManager<ApplicationUser>(store, null, passwordHasher, null, null, normalizer, null, null, null);
@@ -42,13 +42,13 @@ namespace Cinema.Services.DatabaseSeed
                  * the legacy database has only one role per user*/
                 ApplicationUserRole userRole = new ApplicationUserRole
                 {
-                    User = context.Users.Find(appUser.Id),
-                    Role = context.Roles.Find(SeedUtilities.RolesDictionary[rawData.ReadInteger(row, 7)])
+                    User = unit.Users.Get(appUser.Id),
+                    Role = unit.Roles.Get(SeedUtilities.RolesDictionary[rawData.ReadInteger(row, 7)])
                 };
 
-                context.UserRoles.Add(userRole);
-                context.SaveChanges();
-                SeedUtilities.UsersDictionary.Add(oldId, context.Users.Find(appUser.Id).Id);
+                unit.UserRoles.Insert(userRole);
+                unit.Save();
+                SeedUtilities.UsersDictionary.Add(oldId, unit.Users.Get(appUser.Id).Id);
             }
         }
     }

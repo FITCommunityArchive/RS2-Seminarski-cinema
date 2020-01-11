@@ -25,9 +25,9 @@ namespace Cinema.DAL.Data
         private IRepository<Screening> _screenings;
         private IRepository<Seat> _seats;
         private IRepository<SeatReservation> _seatReservations;
-        private IRepository<ApplicationUser> _users;
-        private IRepository<ApplicationRole> _roles;
-        private IRepository<ApplicationUserRole> _userRoles;
+        private IIdentityRepository<ApplicationUser> _users;
+        private IIdentityRepository<ApplicationRole> _roles;
+        private IIdentityRepository<ApplicationUserRole> _userRoles;
 
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -51,9 +51,9 @@ namespace Cinema.DAL.Data
         public IRepository<Screening> Screenings => _screenings ?? (_screenings = new Repository<Screening>(_context));
         public IRepository<Seat> Seats => _seats ?? (_seats = new Repository<Seat>(_context));
         public IRepository<SeatReservation> SeatReservations => _seatReservations ?? (_seatReservations = new Repository<SeatReservation>(_context));
-        public IRepository<ApplicationUser> Users => _users ?? (_users = new Repository<ApplicationUser>(_context));
-        public IRepository<ApplicationRole> Roles => _roles ?? (_roles = new Repository<ApplicationRole>(_context));
-        public IRepository<ApplicationUserRole> UserRoles => _userRoles ?? (_userRoles = new Repository<ApplicationUserRole>(_context));
+        public IIdentityRepository<ApplicationUser> Users => _users ?? (_users = new IdentityRepository<ApplicationUser>(_context));
+        public IIdentityRepository<ApplicationRole> Roles => _roles ?? (_roles = new IdentityRepository<ApplicationRole>(_context));
+        public IIdentityRepository<ApplicationUserRole> UserRoles => _userRoles ?? (_userRoles = new IdentityRepository<ApplicationUserRole>(_context));
 
         public int Save() => _context.SaveChanges();
 

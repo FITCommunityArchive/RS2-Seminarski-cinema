@@ -13,7 +13,7 @@ namespace Cinema.Test.DALTests
         [TestCase(20)]
         public void GetSeatLabel(int id)
         {
-            Seat seat = context.Seats.Find(id);
+            Seat seat = unit.Seats.Get(id);
             Assert.AreEqual("A5", seat.Label);
         }
     }

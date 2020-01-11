@@ -9,19 +9,19 @@ namespace Cinema.Services.DatabaseSeed
 {
     public class ScreeningsCollect
     {
-        public static void Collect(ExcelWorksheet rawData, ApplicationDbContext context)
+        public static void Collect(ExcelWorksheet rawData, UnitOfWork unit)
         {
             for (int row = 2; row <= rawData.Dimension.Rows; row++)
             {
                 Screening screening = new Screening
                 {
                     DateAndTime = rawData.ReadDateValue(row, 6),
-                    Hall = context.Halls.Find(rawData.ReadInteger(row, 3)),
-                    Movie = context.Movies.Find(rawData.ReadInteger(row, 4))
+                    Hall = unit.Halls.Get(rawData.ReadInteger(row, 3)),
+                    Movie = unit.Movies.Get(rawData.ReadInteger(row, 4))
                 };
 
-                context.Add(screening);
-                context.SaveChanges();
+                unit.Screenings.Insert(screening);
+                unit.Save();
             }
         }
     }

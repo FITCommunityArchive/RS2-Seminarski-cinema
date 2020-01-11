@@ -15,13 +15,13 @@ namespace Cinema.Test.DALTests
         [Test, Order(1)]
         public void GetUsers()
         {
-            DbSet<ApplicationUser> users = context.Users;
+           int usersCount = unit.Users.Get().Count();
 
             //Act
 
             //Assert
             //There are 10 users in the test database
-            Assert.AreEqual(10, users.Count());
+            Assert.AreEqual(10, usersCount);
         }
     }
 }
