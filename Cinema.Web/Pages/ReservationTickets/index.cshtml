@@ -2,6 +2,7 @@
 @model Cinema.Web.Pages.ReservationTickets.IndexModel
 @{
     ViewData["Title"] = "Reservation form";
+
 }
 
 
@@ -28,14 +29,26 @@
                     <li>Screening id: @Model.CurrentScreening.Id</li>
                     <li>Screening Movie title: @Model.CurrentScreening.Movie.Title</li>
                     <li>Screening Movie Duration: @Model.CurrentScreening.Movie.Duration</li>
-                    <li>Number of reserved seats for this screening: </li>
                 </ul>
                 
                 <h3>Current reserved seats for selected hall and screening</h3>
-                @*@foreach(var item in Model.SeatNumbers)
-                {
-                    @item.ToString()
-                }*@
+                <ul style="display:none;">
+                    @foreach (var item in Model.ScreeningSeats)
+                    {
+                    <li>Seat Number: @item.SeatNumber</li>
+                    <li>Reserved:  @item.Reserved</li>
+                    }
+                </ul>
+                <div id="seat-map" data-rows="@Model.CurrentHall.NumberOfRows" data-columns="@Model.CurrentHall.NumberOfColumns" data-reserved-seats="@Model.ReservedSeats"></div>
+                <div class="booking-details">
+                    <h2>Booking Details</h2>
+                    <h3> Selected Seats (<span id="counter">0</span>):</h3>
+                    <ul id="selected-seats">
+                    </ul>
+                    Total: <b>$<span id="total">0</span></b>
+                    <button class="btn btn-danger checkout-button">Checkout &raquo;</button>
+                    <div id="legend"></div>
+                </div>
             </div>
         </div>
     </div>
