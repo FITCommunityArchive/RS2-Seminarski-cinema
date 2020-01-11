@@ -17,18 +17,20 @@ namespace Cinema.Web.Pages.ReservationTickets
 
         private readonly Cinema.DAL.Data.ApplicationDbContext _context;
         private SeatingService _seatingService;
+        private PricingService _pricingService;
 
         public IndexModel(Cinema.DAL.Data.ApplicationDbContext context)
         {
             _context = context;
-            _seatingService = new SeatingService(context);           
+            _seatingService = new SeatingService(context);
+            _pricingService = new PricingService(context);
         }
 
         public Hall CurrentHall { get; set; }
         public Screening CurrentScreening { get; set; }
         public List<SeatingModel> ScreeningSeats { get; set; }
-
         public string ReservedSeats { get; set; }
+        public Pricing PricingTier { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id, long date)
         {
@@ -50,7 +52,9 @@ namespace Cinema.Web.Pages.ReservationTickets
             ScreeningSeats = _seatingService.GetScreeningSeating(CurrentScreening);
 
             ReservedSeats = string.Join(",", _seatingService.ReservedSeats);
-            
+            PricingTier = _pricingService.GetPricingTier("Premiere");
+
+
             return Page();
         }
     }

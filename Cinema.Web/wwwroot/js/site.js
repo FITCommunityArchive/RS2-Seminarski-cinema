@@ -36,6 +36,8 @@ jQuery(document).ready(function () {
     var seatColumns = seatMap.data("columns");
     var seatRows = seatMap.data("rows");
     var seatsReserved = seatMap.data("reserved-seats");
+    var ticketCat = seatMap.data("ticket-cat");
+    var ticketPrice = seatMap.data("ticket-price");
     var seatMap = [];
 
     // repeat :: Int -> String -> String
@@ -73,9 +75,9 @@ jQuery(document).ready(function () {
         map: seatMap,
         seats: {
             a: {
-                price: 40,
+                price: parseInt(ticketPrice),
                 classes: 'seat', //your custom CSS class
-                category: 'Regular'
+                category: ticketCat
             }
 
         },
