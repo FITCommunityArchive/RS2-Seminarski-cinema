@@ -28,6 +28,8 @@ namespace Cinema.Web.Pages.ReservationTickets
         public Screening CurrentScreening { get; set; }
         public List<SeatingModel> ScreeningSeats { get; set; }
 
+        public string ReservedSeats { get; set; }
+
         public async Task<IActionResult> OnGetAsync(int? id, long date)
         {
 
@@ -46,6 +48,8 @@ namespace Cinema.Web.Pages.ReservationTickets
                 //.FirstOrDefault(x => x.DateAndTime == ScreeningDate);
 
             ScreeningSeats = _seatingService.GetScreeningSeating(CurrentScreening);
+
+            ReservedSeats = string.Join(",", _seatingService.ReservedSeats);
             
             return Page();
         }
