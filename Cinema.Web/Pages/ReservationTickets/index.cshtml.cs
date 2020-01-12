@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Cinema.DAL.Data;
 using Cinema.BLL;
+using System.Security.Claims;
 
 namespace Cinema.Web.Pages.ReservationTickets
 {
@@ -28,6 +29,7 @@ namespace Cinema.Web.Pages.ReservationTickets
         public List<SeatingModel> ScreeningSeats { get; set; }
         public string ReservedSeats { get; set; }
         public Pricing PricingTier { get; set; }
+        public List<int> SelectedSeats { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int id, long date)
         {
@@ -46,6 +48,44 @@ namespace Cinema.Web.Pages.ReservationTickets
 
 
             return Page();
+        }
+        
+        public async Task<IActionResult> OnPostAsync()
+        {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            if(SelectedSeats == null)
+            {
+                return Page();
+            }
+
+            Reservation reservation = new Reservation
+            {
+                User = unit.Users.Get(User.FindFirstValue(ClaimTypes.NameIdentifier)),
+                Screening = CurrentScreening
+            };
+
+            unit.Reservations.Insert(reservation);
+
+            await unit.SaveAsync();
+
+            foreach(int seatId in SelectedSeats)
+            {
+                SeatReservation seatReservation = new SeatReservation
+                {
+                    Seat = unit.Seats.Get(seatId),
+                    Reservation = reservation
+                };
+
+                unit.SeatReservations.Insert(seatReservation);
+            }
+
+            await unit.SaveAsync();
+            
+            return RedirectToPage("./Index");
         }
     }
 }
