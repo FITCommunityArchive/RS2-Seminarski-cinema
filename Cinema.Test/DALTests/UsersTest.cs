@@ -15,7 +15,7 @@ namespace Cinema.Test.DALTests
         [Test, Order(1)]
         public void GetUsers()
         {
-           int usersCount = unit.Users.Get().Count();
+            int usersCount = unit.Users.Get().Count();
 
             //Act
 

@@ -7,21 +7,21 @@ using System.Threading.Tasks;
 
 namespace Cinema.DAL.Repository
 {
-    public interface IRepository<Entity>
+    public interface IRepository<Entity, Key>
     {
         IQueryable<Entity> Get();
-        Entity Get(int id);
+        Entity Get(Key id);
         IList<Entity> Get(Func<Entity, bool> where);
         void Insert(Entity entity);
-        void Update(Entity entity, int id);
+        void Update(Entity entity, Key id);
         void Delete(Entity entity);
-        void Delete(int id);
+        void Delete(Key id);
         Task<IList<Entity>> GetAsync();
-        Task<Entity> GetAsync(int id);
+        Task<Entity> GetAsync(Key id);
         Task<IList<Entity>> GetAsync(Expression<Func<Entity, bool>> where);
         Task InsertAsync(Entity entity);
-        Task UpdateAsync(Entity entity, int id);
+        Task UpdateAsync(Entity entity, Key id);
         void DeleteAsync(Entity entity);
-        Task DeleteAsync(int id);
+        Task DeleteAsync(Key id);
     }
 }
