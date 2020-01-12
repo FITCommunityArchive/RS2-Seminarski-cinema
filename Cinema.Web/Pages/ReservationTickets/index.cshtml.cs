@@ -36,8 +36,6 @@ namespace Cinema.Web.Pages.ReservationTickets
             var screeningDate = new DateTime(date);
             CurrentHall = await unit.Halls.GetAsync(id);
 
-            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
             CurrentScreening = CurrentHall.Screenings.FirstOrDefault(x => x.DateAndTime == screeningDate);
 
             //CurrentScreening = _context.Halls.FirstOrDefault(x => x.Id == id).Screenings
@@ -55,6 +53,11 @@ namespace Cinema.Web.Pages.ReservationTickets
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            if(SelectedSeats == null)
             {
                 return Page();
             }
