@@ -8,52 +8,52 @@ using Cinema.Domain.Entities;
 
 namespace Cinema.DAL
 {
-    public static class Builder
-    {               
-        public static void Build<T>(this T entity, ApplicationDbContext context)
+    public static class BuilderAsync
+    {
+        public static async Task BuildAsync<T>(this T entity, ApplicationDbContext context)
         {
-            if (typeof(T) == typeof(Reservation)) BuildRelations(entity as Reservation, context);
-            if (typeof(T) == typeof(Screening)) BuildRelations(entity as Screening, context);
-            if (typeof(T) == typeof(Review)) BuildRelations(entity as Review, context);
-            if (typeof(T) == typeof(Seat)) BuildRelations(entity as Seat, context);
-            if (typeof(T) == typeof(SeatReservation)) BuildRelations(entity as SeatReservation, context);
+            if (typeof(T) == typeof(Reservation)) await BuildRelations(entity as Reservation, context);
+            if (typeof(T) == typeof(Screening)) await BuildRelations(entity as Screening, context);
+            if (typeof(T) == typeof(Review)) await BuildRelations(entity as Review, context);
+            if (typeof(T) == typeof(Seat)) await BuildRelations(entity as Seat, context);
+            if (typeof(T) == typeof(SeatReservation)) await BuildRelations(entity as SeatReservation, context);
             //if (typeof(T) == typeof(User)) await BuildRelations(entity as User, context);
         }
 
-        private static void BuildRelations(Reservation entity, ApplicationDbContext context)
+        private static async Task BuildRelations(Reservation entity, ApplicationDbContext context)
         {
             //if (entity.Image == null) entity.Image = "";
-            entity.User = context.Users.Find(entity.User.Id);
-            entity.Screening = context.Screenings.Find(entity.Screening.Id);
+            entity.User = await context.Users.FindAsync(entity.User.Id);
+            entity.Screening = await context.Screenings.FindAsync(entity.Screening.Id);
         }
 
-        private static void BuildRelations(Screening entity, ApplicationDbContext context)
+        private static async Task BuildRelations(Screening entity, ApplicationDbContext context)
         {
             //if (entity.Image == null) entity.Image = "";
-            entity.Hall = context.Halls.Find(entity.Hall.Id);
-            entity.Movie = context.Movies.Find(entity.Movie.Id);
+            entity.Hall = await context.Halls.FindAsync(entity.Hall.Id);
+            entity.Movie = await context.Movies.FindAsync(entity.Movie.Id);
         }
 
-        private static void BuildRelations(Review entity, ApplicationDbContext context)
+        private static async Task BuildRelations(Review entity, ApplicationDbContext context)
         {
             //if (entity.Image == null) entity.Image = "";
-            entity.User = context.Users.Find(entity.User.Id);
-            entity.Movie = context.Movies.Find(entity.Movie.Id);
+            entity.User = await context.Users.FindAsync(entity.User.Id);
+            entity.Movie = await context.Movies.FindAsync(entity.Movie.Id);
         }
 
-        private static void BuildRelations(Seat entity, ApplicationDbContext context)
+        private static async Task BuildRelations(Seat entity, ApplicationDbContext context)
         {
-            entity.Hall = context.Halls.Find(entity.Hall.Id);
+            entity.Hall = await context.Halls.FindAsync(entity.Hall.Id);
         }
 
-        private static void BuildRelations(SeatReservation entity, ApplicationDbContext context)
+        private static async Task BuildRelations(SeatReservation entity, ApplicationDbContext context)
         {
             //if (entity.Image == null) entity.Image = "";
-            entity.Reservation = context.Reservations.Find(entity.Reservation.Id);
-            entity.Seat = context.Seats.Find(entity.Seat.Id);
+            entity.Reservation = await context.Reservations.FindAsync(entity.Reservation.Id);
+            entity.Seat = await context.Seats.FindAsync(entity.Seat.Id);
         }
 
-        public static void Update<T>(this T oldEnt, T newEnt)
+        public static void UpdateAsync<T>(this T oldEnt, T newEnt)
         {
             if (typeof(T) == typeof(Reservation)) UpdateRelations(oldEnt as Reservation, newEnt as Reservation);
             if (typeof(T) == typeof(Screening)) UpdateRelations(oldEnt as Screening, newEnt as Screening);

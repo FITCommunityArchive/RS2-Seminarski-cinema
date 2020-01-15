@@ -31,6 +31,10 @@ namespace Cinema.BLL
             {
                 int row = i.SeatNumber / screening.Hall.NumberOfRows;
                 int col = i.SeatNumber % screening.Hall.NumberOfColumns;
+                if(row == 0)
+                {
+                    row = 1;
+                }
                 if (col == 0)
                     col = screening.Hall.NumberOfColumns;
                 ReservedSeats.Add(row.ToString() + '_' + col.ToString());
