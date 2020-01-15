@@ -10,6 +10,8 @@ using Microsoft.EntityFrameworkCore;
 using Cinema.DAL.Data;
 using Cinema.BLL;
 using System.Security.Claims;
+using Cinema.Web.Helpers;
+using System.Reflection;
 
 namespace Cinema.Web.Pages.ReservationTickets
 {
@@ -24,11 +26,16 @@ namespace Cinema.Web.Pages.ReservationTickets
             _pricingService = new PricingService(unit);
         }
 
+        [BindProperty]
         public Hall CurrentHall { get; set; }
+        [BindProperty]
         public Screening CurrentScreening { get; set; }
+        [BindProperty]
         public List<SeatingModel> ScreeningSeats { get; set; }
         public string ReservedSeats { get; set; }
         public Pricing PricingTier { get; set; }
+        [BindProperty]
+        [HiddenInput]
         public List<int> SelectedSeats { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int id, long date)
@@ -49,7 +56,7 @@ namespace Cinema.Web.Pages.ReservationTickets
 
             return Page();
         }
-        
+
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)

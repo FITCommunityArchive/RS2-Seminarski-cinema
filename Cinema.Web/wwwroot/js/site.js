@@ -96,6 +96,9 @@ jQuery(document).ready(function () {
                     .data('seatId', this.settings.id)
                     .appendTo($cart);
 
+                var reservedSeats = $("#SelectedSeats").val();
+                $("#SelectedSeats").val(reservedSeats + " " + this.settings.label);
+
                 /*
                  * Lets update the counter and total
                  *
