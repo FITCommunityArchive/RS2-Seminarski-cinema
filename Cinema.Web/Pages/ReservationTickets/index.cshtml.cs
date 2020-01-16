@@ -12,6 +12,7 @@ using Cinema.BLL;
 using System.Security.Claims;
 using Cinema.Web.Helpers;
 using System.Reflection;
+using System.ComponentModel.DataAnnotations;
 
 namespace Cinema.Web.Pages.ReservationTickets
 {
@@ -32,14 +33,16 @@ namespace Cinema.Web.Pages.ReservationTickets
         public Screening CurrentScreening { get; set; }
         [BindProperty]
         public List<SeatingModel> ScreeningSeats { get; set; }
-        public string ReservedSeats { get; set; }
-        public Pricing PricingTier { get; set; }
         [BindProperty]
-        [HiddenInput]
+        public string ReservedSeats { get; set; }
+        [BindProperty]
+        public Pricing PricingTier { get; set; }
+        [BindProperty, HiddenInput, Required]
         public string SelectedSeatsString { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int id, long date)
         {
+            ViewData["errorMessage"] = "";
             var screeningDate = new DateTime(date);
             CurrentHall = await unit.Halls.GetAsync(id);
 
@@ -61,6 +64,7 @@ namespace Cinema.Web.Pages.ReservationTickets
         {
             if (!ModelState.IsValid)
             {
+                ViewData["errorMessage"] = "Model is invalid.";
                 return Page();
             }
 
@@ -68,13 +72,20 @@ namespace Cinema.Web.Pages.ReservationTickets
             CurrentHall = await unit.Halls.GetAsync(id);
 
             CurrentScreening = CurrentHall.Screenings.FirstOrDefault(x => x.DateAndTime == screeningDate);
-
             var selectedSeats = SelectedSeatsString.Split(',').Select(Int32.Parse).ToList();
-
+            
+            
             if (selectedSeats == null)
             {
+                ViewData["errorMessage"] = "You haven't picked your seats.";
                 return Page();
-            }            
+            }
+
+            if (await _seatingService.MaybeSeatsReservedAsync(selectedSeats, screeningDate, id) != true)
+            {
+                ViewData["errorMessage"] = "One of the seats that you are trying to book is reserved. Please try different seat.";
+                return Page();
+            }
 
             Reservation reservation = new Reservation
             {
