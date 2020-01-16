@@ -40,15 +40,16 @@
                     }
                 </ul>
                 <div id="seat-map" data-rows="@Model.CurrentHall.NumberOfRows" data-columns="@Model.CurrentHall.NumberOfColumns" data-reserved-seats="@Model.ReservedSeats" data-ticket-cat="@Model.PricingTier.Name" data-ticket-price="@Model.PricingTier.Price"></div>
-                <div class="booking-details">
+                <form method="post" class="booking-details">
                     <h2>Booking Details</h2>
                     <h3> Selected Seats (<span id="counter">0</span>):</h3>
                     <ul id="selected-seats">
                     </ul>
                     Total: <b>$<span id="total">0</span></b>
-                    <button class="btn btn-danger checkout-button">Checkout &raquo;</button>
+                    <input type="submit" value="Checkout" class="btn btn-danger checkout-button" />
                     <div id="legend"></div>
-                </div>
+                    <input asp-for="SelectedSeatsString" />
+                </form>
             </div>
         </div>
     </div>
