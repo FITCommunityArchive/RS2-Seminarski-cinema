@@ -57,21 +57,24 @@ namespace Cinema.Web.Pages.ReservationTickets
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int id, long date)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
+            var screeningDate = new DateTime(date);
+            CurrentHall = await unit.Halls.GetAsync(id);
+
+            CurrentScreening = CurrentHall.Screenings.FirstOrDefault(x => x.DateAndTime == screeningDate);
+
             var selectedSeats = SelectedSeatsString.Split(',').Select(Int32.Parse).ToList();
 
             if (selectedSeats == null)
             {
                 return Page();
-            }
-
-            
+            }            
 
             Reservation reservation = new Reservation
             {
@@ -95,7 +98,7 @@ namespace Cinema.Web.Pages.ReservationTickets
             }
 
             await unit.SaveAsync();
-            
+
             return RedirectToPage("./Index");
         }
     }
