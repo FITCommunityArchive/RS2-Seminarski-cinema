@@ -9,6 +9,14 @@
 
 <section class="showing-now">
     <div class="container">
+        @if (ViewData["successMessage"].Equals(""))
+        {
+
+        }
+        else
+        {
+            @:<div class="alert alert-success">@ViewData["successMessage"]</div>
+        }
         @if (ViewData["errorMessage"].Equals(""))
         {
 
@@ -21,29 +29,31 @@
         <div class="row">
             <div class="col-md-12">
 
-                @if (Model.CurrentHall != null) {
-                <ul>
-                    <li>ID: @Model.CurrentHall.Id</li>
-                    <li>Hall Name: @Model.CurrentHall.Name</li>
-                    <li>Number of columns: @Model.CurrentHall.NumberOfColumns</li>
-                    <li>Number of rows: @Model.CurrentHall.NumberOfRows</li>
-                    @*<li>Available seats: @Model.currentHall.Seats</li>*@
-                    @*<li>Time of the Screening: @Model.ScreeningDate</li>>*@
-                </ul>
+                @if (Model.CurrentHall != null)
+                {
+                    <ul>
+                        <li>ID: @Model.CurrentHall.Id</li>
+                        <li>Hall Name: @Model.CurrentHall.Name</li>
+                        <li>Number of columns: @Model.CurrentHall.NumberOfColumns</li>
+                        <li>Number of rows: @Model.CurrentHall.NumberOfRows</li>
+                        @*<li>Available seats: @Model.currentHall.Seats</li>*@
+                        @*<li>Time of the Screening: @Model.ScreeningDate</li>>*@
+                    </ul>
                 }
 
-                @if (Model.CurrentScreening != null) {
-                <h3>Details of screening that was picked:</h3>
+                @if (Model.CurrentScreening != null)
+                {
+                    <h3>Details of screening that was picked:</h3>
 
-                <ul>
-                    <li>Screening id: @Model.CurrentScreening.Id</li>
-                    @if (Model.CurrentScreening.Movie != null)
-                    {
-                    <li>Screening Movie title: @Model.CurrentScreening.Movie.Title</li>
-                    <li>Screening Movie Duration: @Model.CurrentScreening.Movie.Duration</li>
+                    <ul>
+                        <li>Screening id: @Model.CurrentScreening.Id</li>
+                        @if (Model.CurrentScreening.Movie != null)
+                        {
+                            <li>Screening Movie title: @Model.CurrentScreening.Movie.Title</li>
+                            <li>Screening Movie Duration: @Model.CurrentScreening.Movie.Duration</li>
 
-                    }
-                </ul>
+                        }
+                    </ul>
                 }
 
                 <h3>Current reserved seats for selected hall and screening</h3>
@@ -55,7 +65,7 @@
                     }
                 </ul>
                 <div id="seat-map" data-rows="@Model.CurrentHall.NumberOfRows" data-columns="@Model.CurrentHall.NumberOfColumns" data-reserved-seats="@Model.ReservedSeats" data-ticket-cat="@Model.PricingTier.Name" data-ticket-price="@Model.PricingTier.Price"></div>
-                <form method="post" class="booking-details" asp-action="Index">
+                <form method="post" class="booking-details">
                     <h2>Booking Details</h2>
                     <h3> Selected Seats (<span id="counter">0</span>):</h3>
                     <ul id="selected-seats">

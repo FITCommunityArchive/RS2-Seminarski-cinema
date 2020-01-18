@@ -42,6 +42,7 @@ namespace Cinema.Web.Pages.ReservationTickets
 
         public async Task<IActionResult> OnGetAsync(int id, long date)
         {
+            ViewData["successMessage"] = "";
             ViewData["errorMessage"] = "";
             var screeningDate = new DateTime(date);
             CurrentHall = await unit.Halls.GetAsync(id);
@@ -62,16 +63,23 @@ namespace Cinema.Web.Pages.ReservationTickets
 
         public async Task<IActionResult> OnPostAsync(int id, long date)
         {
+            ViewData["successMessage"] = "";
+            ViewData["errorMessage"] = "";
+            var screeningDate = new DateTime(date);
+            CurrentHall = await unit.Halls.GetAsync(id);
+
+            CurrentScreening = CurrentHall.Screenings.FirstOrDefault(x => x.DateAndTime == screeningDate);
+
+            ScreeningSeats = _seatingService.GetScreeningSeating(CurrentScreening);
+            ReservedSeats = string.Join(",", _seatingService.ReservedSeats);
+            PricingTier = _pricingService.GetPricingTier("Premiere");
+
             if (!ModelState.IsValid)
             {
                 ViewData["errorMessage"] = "Model is invalid.";
                 return Page();
             }
 
-            var screeningDate = new DateTime(date);
-            CurrentHall = await unit.Halls.GetAsync(id);
-
-            CurrentScreening = CurrentHall.Screenings.FirstOrDefault(x => x.DateAndTime == screeningDate);
             var selectedSeats = SelectedSeatsString.Split(',').Select(Int32.Parse).ToList();
             
             
@@ -110,7 +118,8 @@ namespace Cinema.Web.Pages.ReservationTickets
 
             await unit.SaveAsync();
 
-            return RedirectToPage("./Index");
+            ViewData["successMessage"] = "You have sucesufully reserved your tickets.";
+            return RedirectToPage();
         }
     }
 }
