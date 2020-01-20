@@ -58,7 +58,7 @@ namespace Cinema.BLL
             return screeningSeats.OrderBy(x => x.Seat.Id).ToList();
         }
 
-        public async System.Threading.Tasks.Task<bool> MaybeSeatsReservedAsync(List<int> list,DateTime screeningDate, int screeningID)
+        public async System.Threading.Tasks.Task<bool> AreSeatsReservedAsync(List<int> list,DateTime screeningDate, int screeningID)
         {
 
             var CurrentHall = await _unit.Halls.GetAsync(screeningID);
