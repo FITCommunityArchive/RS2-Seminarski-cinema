@@ -96,6 +96,12 @@ jQuery(document).ready(function () {
                     .data('seatId', this.settings.id)
                     .appendTo($cart);
 
+                var reservedSeats = $("#SelectedSeatsString").val();
+                if (reservedSeats.length == 0)
+                    $("#SelectedSeatsString").val(this.settings.label);
+                else
+                    $("#SelectedSeatsString").val(reservedSeats + "," + this.settings.label);
+
                 /*
                  * Lets update the counter and total
                  *
@@ -108,6 +114,19 @@ jQuery(document).ready(function () {
                 return 'selected';
 
             } else if (this.status() == 'selected') {
+
+                var reservedSeats = $("#SelectedSeatsString").val();
+
+                if (reservedSeats.lastIndexOf(",") == -1) {
+                    $("#SelectedSeatsString").val(reservedSeats.replace(this.settings.label, ""));
+                } else {
+                    if (reservedSeats.indexOf(this.settings.label) == 0) {
+                        $("#SelectedSeatsString").val(reservedSeats.replace(this.settings.label + ",", ""));
+                    } else {
+                        $("#SelectedSeatsString").val(reservedSeats.replace("," + this.settings.label, ""));
+                    }
+                }
+
                 //update the counter
                 $counter.text(sc.find('selected').length - 1);
                 //and total

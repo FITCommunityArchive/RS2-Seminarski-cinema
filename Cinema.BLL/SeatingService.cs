@@ -29,10 +29,17 @@ namespace Cinema.BLL
             ReservedSeats = new List<string>();
             foreach(var i in screeningSeats)
             {
-                int row = i.SeatNumber / screening.Hall.NumberOfRows;
+                int row = (i.SeatNumber / screening.Hall.NumberOfColumns);
+                row++;
                 int col = i.SeatNumber % screening.Hall.NumberOfColumns;
-                if (col == 0)
+                if(row == 0)
+                {
+                    row = 1;
+                }
+                if (col == 0) {
+                    row--;
                     col = screening.Hall.NumberOfColumns;
+                }
                 ReservedSeats.Add(row.ToString() + '_' + col.ToString());
             }
             
@@ -49,6 +56,30 @@ namespace Cinema.BLL
             }
 
             return screeningSeats.OrderBy(x => x.Seat.Id).ToList();
+        }
+
+        public async System.Threading.Tasks.Task<bool> MaybeSeatsReservedAsync(List<int> list,DateTime screeningDate, int screeningID)
+        {
+
+            var CurrentHall = await _unit.Halls.GetAsync(screeningID);
+
+            var CurrentScreening = CurrentHall.Screenings.FirstOrDefault(x => x.DateAndTime == screeningDate);
+
+            List<SeatingModel> screeningSeats = CurrentScreening.Reservations.SelectMany(x => x.SeatReservations).ToList()
+                                                .Select(x => x.Seat.CreateSeating(true)).ToList();
+
+            for (int i = 0; i < screeningSeats.Count; i++)
+            {
+                for(int j = 0; j < list.Count;j++)
+                {
+                    if (screeningSeats[i].SeatNumber == list[j])
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
         }
 
     }

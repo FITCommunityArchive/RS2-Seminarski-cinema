@@ -8,26 +8,26 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Cinema.Domain.Entities;
 using Cinema.DAL.Data;
+using Cinema.BLL;
 
 namespace Cinema.Web.Pages
 {
-    public class IndexModel : PageModel
+    public class IndexModel : CinemaPageModel
     {
-        private readonly ApplicationDbContext _context;
 
-        public IndexModel(ApplicationDbContext context)
+        protected MovieService _movieService;
+        public IndexModel(Cinema.DAL.Data.ApplicationDbContext context) : base(context)
         {
-            _context = context;
+            _movieService = new MovieService(unit);
         }
 
 
         [BindProperty]
-        public IList<Screening> Screenings { get; set; }
+        public List<Movie> Movies { get; set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGet()
         {
-            Screenings = await _context.Screenings
-                .ToListAsync();
+            Movies = _movieService.GetComingSoonMovies();
         }
     }
 }

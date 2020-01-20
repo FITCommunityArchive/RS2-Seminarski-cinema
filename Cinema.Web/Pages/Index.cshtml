@@ -2,7 +2,6 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
-    int i = 1;
 }
 
 <section class="hero">
@@ -22,22 +21,18 @@
         <h1 class="h2 section-title text-center">Cooming Soon</h1>
         <div class="row flex-row">
 
-            @foreach (var item in Model.Screenings)
+            @foreach (var item in Model.Movies)
             {
-                if (@i > 4)
-                    break;
                 <div class="col-md-3 flex-column">
                     <div class="movie-box">
                         <img class="img-responsive" src="~/img/placehold.png" />
                         <div class="movie-box_content">
-                            <h3 class="h5">@item.Movie.Title</h3>
-                            <p>@item.Movie.Actors</p>
-                            <small class="text-muted"><strong>Coming on @item.DateAndTime.ToString("dd MMM yyyy")</strong></small>
+                            <h3 class="h5">@item.Title</h3>
+                            <p>@item.Actors</p>
+                            <small class="text-muted"><strong>Coming on @item.Year</strong></small>
                         </div>
                     </div>
-
                 </div>
-                i++;
             }
 
         </div>
