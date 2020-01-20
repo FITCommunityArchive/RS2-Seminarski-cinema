@@ -12,6 +12,7 @@ using Cinema.BLL;
 using System.Security.Claims;
 using Cinema.Web.Helpers;
 using System.Reflection;
+using System.ComponentModel.DataAnnotations;
 
 namespace Cinema.Web.Pages.ReservationTickets
 {
@@ -32,14 +33,17 @@ namespace Cinema.Web.Pages.ReservationTickets
         public Screening CurrentScreening { get; set; }
         [BindProperty]
         public List<SeatingModel> ScreeningSeats { get; set; }
-        public string ReservedSeats { get; set; }
-        public Pricing PricingTier { get; set; }
         [BindProperty]
-        [HiddenInput]
+        public string ReservedSeats { get; set; }
+        [BindProperty]
+        public Pricing PricingTier { get; set; }
+        [BindProperty, HiddenInput, Required]
         public string SelectedSeatsString { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int id, long date)
         {
+            ViewData["successMessage"] = "";
+            ViewData["errorMessage"] = "";
             var screeningDate = new DateTime(date);
             CurrentHall = await unit.Halls.GetAsync(id);
             CurrentScreening = CurrentHall.Screenings.FirstOrDefault(x => x.DateAndTime == screeningDate);
@@ -58,27 +62,41 @@ namespace Cinema.Web.Pages.ReservationTickets
 
         public async Task<IActionResult> OnPostAsync(int id, long date)
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
-            var screeningDate = new DateTime(date);
+            ViewData["successMessage"] = "";
+            ViewData["errorMessage"] = "";
+            var screeningDate = new DateTime(date);            
+            
             CurrentHall = await unit.Halls.GetAsync(id);
-
             CurrentScreening = CurrentHall.Screenings.FirstOrDefault(x => x.DateAndTime == screeningDate);
 
             string userID = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
             var selectedSeats = SelectedSeatsString.Split(',').Select(Int32.Parse).ToList();
 
+            ScreeningSeats = _seatingService.GetScreeningSeating(CurrentScreening);
+            ReservedSeats = string.Join(",", _seatingService.ReservedSeats);
+            PricingTier = _pricingService.GetPricingTier("Premiere");
+
+
+            if (!ModelState.IsValid)
+            {
+                ViewData["errorMessage"] = "Model is invalid.";
+                return Page();
+            }          
+            
             if (selectedSeats == null)
             {
+                ViewData["errorMessage"] = "You haven't picked your seats.";
                 return Page();
             }    
             
             if(userID == null)
             {
+                return Page();
+            }
+
+            if (await _seatingService.AreSeatsReservedAsync(selectedSeats, screeningDate, id) != true)
+            {
+                ViewData["errorMessage"] = "One of the seats that you are trying to book is reserved. Please try different seat.";
                 return Page();
             }
 
@@ -105,7 +123,8 @@ namespace Cinema.Web.Pages.ReservationTickets
 
             await unit.SaveAsync();
 
-            return RedirectToPage("./Index");
+            ViewData["successMessage"] = "You have sucesufully reserved your tickets.";
+            return RedirectToPage();
         }
     }
 }
