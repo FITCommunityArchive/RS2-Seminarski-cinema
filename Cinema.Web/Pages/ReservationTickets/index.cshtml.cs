@@ -42,7 +42,6 @@ namespace Cinema.Web.Pages.ReservationTickets
         {
             var screeningDate = new DateTime(date);
             CurrentHall = await unit.Halls.GetAsync(id);
-
             CurrentScreening = CurrentHall.Screenings.FirstOrDefault(x => x.DateAndTime == screeningDate);
 
             //CurrentScreening = _context.Halls.FirstOrDefault(x => x.Id == id).Screenings
@@ -69,16 +68,23 @@ namespace Cinema.Web.Pages.ReservationTickets
 
             CurrentScreening = CurrentHall.Screenings.FirstOrDefault(x => x.DateAndTime == screeningDate);
 
+            string userID = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
             var selectedSeats = SelectedSeatsString.Split(',').Select(Int32.Parse).ToList();
 
             if (selectedSeats == null)
             {
                 return Page();
-            }            
+            }    
+            
+            if(userID == null)
+            {
+                return Page();
+            }
 
             Reservation reservation = new Reservation
             {
-                User = unit.Users.Get(User.FindFirstValue(ClaimTypes.NameIdentifier)),
+                User = unit.Users.Get(userID),
                 Screening = CurrentScreening
             };
 
