@@ -6,24 +6,19 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Cinema.Domain.Entities;
-using Cinema.Web.Data;
+using Cinema.DAL.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace Cinema.Web.Pages.Screenings
 {
-    public class CreateModel : PageModel
+    public class CreateModel : CinemaPageModel
     {
-        private readonly Cinema.Web.Data.ApplicationDbContext _context;
-
-        public CreateModel(Cinema.Web.Data.ApplicationDbContext context)
-        {
-            _context = context;
-        }
+        public CreateModel(Cinema.DAL.Data.ApplicationDbContext context) : base(context) { }
 
         public IActionResult OnGet()
         {
-            ViewData["MovieId"] = new SelectList(_context.Movies, "Id", "Title");
-            ViewData["HallId"] = new SelectList(_context.Halls, "Id", "Name");
+            ViewData["MovieId"] = new SelectList(unit.Movies.Get(), "Id", "Title");
+            ViewData["HallId"] = new SelectList(unit.Halls.Get(), "Id", "Name");
             return Page();
         }
 
@@ -41,8 +36,8 @@ namespace Cinema.Web.Pages.Screenings
                 return Page();
             }
             
-            _context.Screenings.Add(Screening);
-            await _context.SaveChangesAsync();
+            unit.Screenings.Insert(Screening);
+            await unit.SaveAsync();
 
             return RedirectToPage("./Index");
         }

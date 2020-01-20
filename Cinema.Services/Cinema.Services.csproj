@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
@@ -19,8 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Cinema.DAL\Cinema.DAL.csproj" />
     <ProjectReference Include="..\Cinema.Domain\Cinema.Domain.csproj" />
-    <ProjectReference Include="..\Cinema.Web\Cinema.Web.csproj" />
+    <ProjectReference Include="..\Cinema.DTO\Cinema.DTO.csproj" />
   </ItemGroup>
 
 </Project>

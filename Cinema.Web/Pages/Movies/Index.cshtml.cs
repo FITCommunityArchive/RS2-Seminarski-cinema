@@ -5,25 +5,20 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using Cinema.Web.Data;
+using Cinema.DAL.Data;
 using Cinema.Domain.Entities;
 
 namespace Cinema.Web.Pages.Movies
 {
-    public class IndexModel : PageModel
+    public class IndexModel : CinemaPageModel
     {
-        private readonly Cinema.Web.Data.ApplicationDbContext _context;
-
-        public IndexModel(Cinema.Web.Data.ApplicationDbContext context)
-        {
-            _context = context;
-        }
+        public IndexModel(Cinema.DAL.Data.ApplicationDbContext context) : base(context) { }
 
         public IList<Movie> Movie { get;set; }
 
         public async Task OnGetAsync()
         {
-            Movie = await _context.Movies.ToListAsync();
+            Movie = await unit.Movies.GetAsync();
         }
     }
 }

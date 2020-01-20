@@ -6,17 +6,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Cinema.Domain.Entities;
-using Cinema.Web.Data;
+using Cinema.DAL.Data;
 
 namespace Cinema.Web.Pages.Halles
 {
-    public class CreateModel : PageModel
+    public class CreateModel : CinemaPageModel
     {
-        private readonly Cinema.Web.Data.ApplicationDbContext _context;
-
-        public CreateModel(Cinema.Web.Data.ApplicationDbContext context)
+        public CreateModel(Cinema.DAL.Data.ApplicationDbContext context) : base(context)
         {
-            _context = context;
+  
         }
 
         public IActionResult OnGet()
@@ -36,8 +34,9 @@ namespace Cinema.Web.Pages.Halles
                 return Page();
             }
 
-            _context.Halls.Add(Hall);
-            await _context.SaveChangesAsync();
+            unit.Halls.Insert(Hall);
+
+            await unit.SaveAsync();
 
             return RedirectToPage("./Index");
         }

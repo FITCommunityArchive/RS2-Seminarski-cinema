@@ -5,30 +5,20 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using Cinema.Web.Data;
+using Cinema.DAL.Data;
 using Cinema.Domain.Entities;
 
 namespace Cinema.Web.Pages.Movies
 {
-    public class DetailsModel : PageModel
+    public class DetailsModel : CinemaPageModel
     {
-        private readonly Cinema.Web.Data.ApplicationDbContext _context;
-
-        public DetailsModel(Cinema.Web.Data.ApplicationDbContext context)
-        {
-            _context = context;
-        }
+        public DetailsModel(Cinema.DAL.Data.ApplicationDbContext context) : base(context) { }
 
         public Movie Movie { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            Movie = await _context.Movies.FirstOrDefaultAsync(m => m.Id == id);
+            Movie = await unit.Movies.GetAsync(id);
 
             if (Movie == null)
             {

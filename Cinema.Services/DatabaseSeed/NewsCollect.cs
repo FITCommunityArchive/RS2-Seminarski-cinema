@@ -1,5 +1,5 @@
 ﻿using Cinema.Domain.Entities;
-using Cinema.Web.Data;
+using Cinema.DAL.Data;
 using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ namespace Cinema.Services.DatabaseSeed
 {
     public class NewsCollect
     {
-        public static void Collect(ExcelWorksheet rawData, ApplicationDbContext context)
+        public static void Collect(ExcelWorksheet rawData, UnitOfWork unit)
         {
             for (int row = 2; row <= rawData.Dimension.Rows; row++)
             {
@@ -18,12 +18,12 @@ namespace Cinema.Services.DatabaseSeed
                     Title = rawData.ReadString(row, 2),
                     Description = rawData.ReadString(row, 3),
                     Image = rawData.ReadString(row, 4),
-                    Author = context.AppUsers.Find(rawData.ReadInteger(row, 5)),
-                    Type = context.NewsTypes.Find(rawData.ReadInteger(row, 6))
+                    Author = unit.Users.Get(SeedUtilities.UsersDictionary[rawData.ReadInteger(row, 5)]),
+                    Type = unit.NewsTypes.Get(rawData.ReadInteger(row, 6))
                 };
 
-                context.Add(news);
-                context.SaveChanges();
+                unit.News.Insert(news);
+                unit.Save();
             }
         }
     }

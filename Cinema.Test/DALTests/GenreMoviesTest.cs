@@ -15,13 +15,13 @@ namespace Cinema.Test.DALTests
         public void GetAllGenreMovies()
         {
             //Arrange
-            DbSet<GenreMovie> genreMovies = context.GenreMovies;
+            int genreMoviesCount = unit.GenreMovies.Get().Count();
 
             //Act
 
             //Assert
             //There are 5 genreMovies in the test database
-            Assert.AreEqual(5, genreMovies.Count());
+            Assert.AreEqual(5, genreMoviesCount);
         }
 
         [Test, Order(2)]
@@ -29,7 +29,7 @@ namespace Cinema.Test.DALTests
         public void GetGenreMovieById(int id)
         {
             //Try to get GenreMovie with id
-            GenreMovie genreMovie = context.GenreMovies.FirstOrDefault(x => x.Id == id);
+            GenreMovie genreMovie = unit.GenreMovies.Get(id);
 
             Assert.AreEqual("Police Academy 4: Citizens on Patrol", genreMovie.Movie.Title);
         }
@@ -40,9 +40,9 @@ namespace Cinema.Test.DALTests
         public void GetNonExistingGenreMovie(int id)
         {
             //Try to get non-existing GenreMovie
-            GenreMovie genreMovie = context.GenreMovies.FirstOrDefault(x => x.Id == id);
+            var ex = Assert.Throws<ArgumentException>(() => unit.GenreMovies.Get(id));
 
-            Assert.IsNull(genreMovie);
+            Assert.AreEqual(ex.Message, $"There is no object with id: {id} in the database");
         }
 
         [Test, Order(4)]
@@ -50,15 +50,15 @@ namespace Cinema.Test.DALTests
         {
             GenreMovie genreMovie = new GenreMovie
             {
-                Movie = context.Movies.Find(1),
-                Genre = context.Genres.Find(1)
+                Movie = unit.Movies.Get(1),
+                Genre = unit.Genres.Get(1)
             };
 
-            context.GenreMovies.Add(genreMovie);
-            context.SaveChanges();
+            unit.GenreMovies.Insert(genreMovie);
+            unit.Save();
 
             //Id of the new genreMovie will be 6
-            GenreMovie newGenreMovie = context.GenreMovies.Find(6);
+            GenreMovie newGenreMovie = unit.GenreMovies.Get(6);
 
             Assert.AreEqual("Bomb the System", newGenreMovie.Movie.Title);
         }
@@ -69,15 +69,15 @@ namespace Cinema.Test.DALTests
             //Try to change the genreMovie 
             int id = 2;
 
-            GenreMovie genreMovie = context.GenreMovies.Find(id);
+            GenreMovie genreMovie = unit.GenreMovies.Get(id);
 
-            Movie newMovie = context.Movies.Find(3);
+            Movie newMovie = unit.Movies.Get(3);
             genreMovie.Movie = newMovie;
 
-            context.GenreMovies.Update(genreMovie);
-            context.SaveChanges();
+            unit.GenreMovies.Update(genreMovie, id);
+            unit.Save();
 
-            GenreMovie newGenreMovie = context.GenreMovies.Find(id);
+            GenreMovie newGenreMovie = unit.GenreMovies.Get(id);
 
             Assert.AreEqual("Black Widow", newGenreMovie.Movie.Title); ;
         }
@@ -88,13 +88,12 @@ namespace Cinema.Test.DALTests
             //Try to change the genreMovie 
             int id = 2;
 
-            GenreMovie genreMovie = context.GenreMovies.Find(id);
+            GenreMovie genreMovie = unit.GenreMovies.Get(id);
 
-            context.GenreMovies.Remove(genreMovie);
-            context.SaveChanges();
+            unit.GenreMovies.Delete(id);
 
-            GenreMovie genreMovieAfterDelete = context.GenreMovies.FirstOrDefault(x => x.Id == id);
-            Assert.IsNull(genreMovieAfterDelete);
+            int numberOfChanges = unit.Save();
+            Assert.AreEqual(1, numberOfChanges);
         }
     }
 }

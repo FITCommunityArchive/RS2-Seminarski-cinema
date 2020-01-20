@@ -1,0 +1,92 @@
+﻿@page "{currentpage:int?}"
+@model Cinema.Web.Pages.Nowshowing.IndexModel
+@{
+    ViewData["Title"] = "Nowshowing";
+    var itemStack = Model.CurrentPage + 10;
+    var remaining = (itemStack < Model.TotalPages)? itemStack : Model.TotalPages;
+}
+
+<section class="showing-now">
+    <div class="container">
+        <h1>Now showing</h1>
+        <div class="row">
+            <div class="col-md-12">
+                <form method="post" id="MovieDatePicker">
+                    <div class="form-group">
+                        <!-- Date input -->
+                        <label class="control-label" for="ScreeningDate">Date</label>
+                        <input asp-for="ScreeningDate" class="form-control" type="text" />
+                    </div>
+                    <div class="form-group">
+                        <!-- Submit button -->
+                        <input class="btn btn-primary btn-dateFilter" name="submit" type="submit" value="Submit" />
+                    </div>
+                </form>
+            </div>
+        </div>
+        @foreach (var item in Model.NowShowingMovies)
+        {
+
+            <div class="screening">
+                <div class="col-md-3 col-sm-3 col-xs-12 screening-image">
+                    <a href="/case-studies/selling-your-amazon-business">
+                        <img src="~/img/placehold.png" class="img-responsive center-block" alt="@item.Movie.Title">
+                    </a>
+                </div>
+                <div class="col-md-9 col-sm-9 col-xs-10 col-sm-offset-0 col-xs-offset-1 case-study-text">
+                    <h3>
+                        <a asp-page="./Details" asp-route-id="@item.Movie.Id">@item.Movie.Title</a>
+                    </h3>
+                    <p>@item.Movie.Actors</p>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-4 col-xs-7">
+                            <strong>Hall</strong><br>
+                            @item.Hall.Name
+                        </div>
+                        <div class="col-md-4 col-xs-5">
+                            <strong>Time</strong><br>
+                            @item.DateAndTime
+                        </div>
+                        <div class="col-md-4 col-xs-12">
+                            <a href="#" class="btn btn-primary pull-right">Get Tickets</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    <div class="pagination-wrap">
+        <div>
+            <ul class="pagination">
+                <li class="page-item @(!Model.ShowFirst? "disabled":"")">
+                    <a asp-page="/Nowshowing" asp-route-CurrentPage="1" class="page-link"><i class="fas fa-fast-backward"></i></a>
+                </li>
+
+                <li class="page-item @(!Model.ShowPrevious? "disabled":"")">
+                    <a asp-page="/Nowshowing" asp-route-CurrentPage="@(Model.CurrentPage -1)" class="page-link"><i class="fas fa-step-backward"></i></a>
+                </li>
+                
+                @for (var i = Model.CurrentPage; i <= remaining; i++)
+                    {
+
+
+                    <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                        <a asp-page="/Nowshowing" asp-route-currentpage="@i" class="page-link">@i</a>
+                    </li>
+
+                }
+                <li class="page-item  @(!Model.ShowNext? "disabled":"")">
+                    <a asp-page="/Nowshowing" asp-route-CurrentPage="@(Model.CurrentPage + 1)" class="page-link"><i class="fas fa-step-forward"></i></a>
+                </li>
+
+                <li class="page-item  @(!Model.ShowLast? "disabled":"")">
+                    <a asp-page="/Nowshowing" asp-route-CurrentPage="@Model.TotalPages" class="page-link"><i class="fas fa-fast-forward"></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    </div>
+</section>
+
+

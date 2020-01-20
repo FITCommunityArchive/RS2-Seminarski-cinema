@@ -1,5 +1,6 @@
 using Cinema.Services.DatabaseSeed;
-using Cinema.Web.Data;
+using Cinema.Domain.Entities;
+using Cinema.DAL.Data;
 using NUnit.Framework;
 using System;
 using System.IO;
@@ -9,7 +10,8 @@ namespace Cinema.Test
     [TestFixture]
     public class TestBase
     {
-        public ApplicationDbContext context;
+        private ApplicationDbContext context;
+        protected UnitOfWork unit;
 
         [OneTimeSetUp]
         public void SetUp()
@@ -23,7 +25,8 @@ namespace Cinema.Test
             string connectionString = "Server=(localdb)\\mssqllocaldb;Database=TestCinemaReservations;Trusted_Connection=True;MultipleActiveResultSets=true";
 
             context = new ApplicationDbContext(connectionString);
-            context.SeedDatabase(file);
+            unit = new UnitOfWork(context);
+            unit.SeedDatabase(file);
         }
     }
 }

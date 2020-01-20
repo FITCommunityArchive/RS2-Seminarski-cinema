@@ -15,13 +15,13 @@ namespace Cinema.Test.DALTests
         public void GetAllScreenings()
         {
             //Arrange
-            DbSet<Screening> screenings = context.Screenings;
+            int screeningsCount = unit.Screenings.Get().Count();
 
             //Act
 
             //Assert
             //There are 42 screenings in the test database
-            Assert.AreEqual(42, screenings.Count());
+            Assert.AreEqual(42, screeningsCount);
         }
 
         [Test, Order(2)]
@@ -29,7 +29,7 @@ namespace Cinema.Test.DALTests
         public void GetScreeningById(int id)
         {
             //Try to get Screening with id
-            Screening screening = context.Screenings.FirstOrDefault(x => x.Id == id);
+            Screening screening = unit.Screenings.Get(id);
 
             //Id of the Movie the screening is for
             Assert.AreEqual(7, screening.Movie.Id);
@@ -41,9 +41,9 @@ namespace Cinema.Test.DALTests
         public void GetNonExistingScreening(int id)
         {
             //Try to get non-existing Screening
-            Screening screening = context.Screenings.FirstOrDefault(x => x.Id == id);
+            var ex = Assert.Throws<ArgumentException>(() => unit.Screenings.Get(id));
 
-            Assert.IsNull(screening);
+            Assert.AreEqual(ex.Message, $"There is no object with id: {id} in the database");
         }
 
         [Test, Order(4)]
@@ -51,14 +51,14 @@ namespace Cinema.Test.DALTests
         {
             Screening screening = new Screening
             {
-                Movie = context.Movies.Find(1)
+                Movie = unit.Movies.Get(1)
             };
 
-            context.Screenings.Add(screening);
-            context.SaveChanges();
+            unit.Screenings.Insert(screening);
+            unit.Save();
 
             //Id of the new screening will be 13
-            Screening newScreening = context.Screenings.Find(13);
+            Screening newScreening = unit.Screenings.Get(13);
 
             Assert.AreEqual("Bomb the System", newScreening.Movie.Title);
         }
@@ -69,17 +69,17 @@ namespace Cinema.Test.DALTests
             //Try to change the screening 
             int id = 2;
 
-            Screening screening = context.Screenings.Find(id);
+            Screening screening = unit.Screenings.Get(id);
 
-            Movie newMovie = context.Movies.Find(3);
+            Movie newMovie = unit.Movies.Get(3);
             screening.Movie = newMovie;
 
-            context.Screenings.Update(screening);
-            context.SaveChanges();
+            unit.Screenings.Update(screening, id);
+            unit.Save();
 
-            Screening newScreening = context.Screenings.Find(id);
+            Screening newScreening = unit.Screenings.Get(id);
 
-            Assert.AreEqual("Black Widow", newScreening.Movie.Title); ;
+            Assert.AreEqual("Black Widow", newScreening.Movie.Title);
         }
 
         [Test, Order(6)]
@@ -88,13 +88,12 @@ namespace Cinema.Test.DALTests
             //Try to change the screening 
             int id = 2;
 
-            Screening screening = context.Screenings.Find(id);
+            Screening screening = unit.Screenings.Get(id);
 
-            context.Screenings.Remove(screening);
-            context.SaveChanges();
+            unit.Screenings.Delete(screening);
 
-            Screening screeningAfterDelete = context.Screenings.FirstOrDefault(x => x.Id == id);
-            Assert.IsNull(screeningAfterDelete);
+            Screening screeningAfterDelete = unit.Screenings.Get(id);
+            Assert.AreEqual(true, screeningAfterDelete.Deleted);
         }
     }
 }
