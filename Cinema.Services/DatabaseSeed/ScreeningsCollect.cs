@@ -22,6 +22,7 @@ namespace Cinema.Services.DatabaseSeed
 
                 unit.Screenings.Insert(screening);
                 unit.Save();
+                Console.WriteLine($"Inserted screening nr. ${row}");
             }
         }
     }

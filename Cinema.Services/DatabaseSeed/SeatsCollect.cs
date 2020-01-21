@@ -25,6 +25,7 @@ namespace Cinema.Services.DatabaseSeed
 
                 unit.Seats.Insert(seat);
                 unit.Save();
+                Console.WriteLine($"Inserted seat nr. ${row}");
             }
         }
     }

@@ -24,6 +24,7 @@ namespace Cinema.Test
             FileInfo file = new FileInfo(fullPath);
             string connectionString = "Server=(localdb)\\mssqllocaldb;Database=TestCinemaReservations;Trusted_Connection=True;MultipleActiveResultSets=true";
 
+
             context = new ApplicationDbContext(connectionString);
             unit = new UnitOfWork(context);
             unit.SeedDatabase(file);

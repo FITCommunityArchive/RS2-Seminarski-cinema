@@ -21,6 +21,7 @@ namespace Cinema.Services.DatabaseSeed
 
                 unit.SeatReservations.Insert(seatReservation);
                 unit.Save();
+                Console.WriteLine($"Inserted seat reservation nr. ${row}");
             }
         }
     }

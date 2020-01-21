@@ -27,6 +27,7 @@ namespace Cinema.Services.DatabaseSeed
 
                 unit.Movies.Insert(movie);
                 unit.Save();
+                Console.WriteLine($"Inserted movie nr. ${row}");
             }
         }
     }
