@@ -15,6 +15,7 @@ namespace Cinema.Seed
         static void Main(string[] args)
         {
             string connectionString = "Server=(localdb)\\mssqllocaldb;Database=CinemaReservations;Trusted_Connection=True;MultipleActiveResultSets=true";
+            
 
             string path = "\\LegacyDatabase\\CinemaDatabase.xlsx";
             string workingDirectory = Environment.CurrentDirectory;
