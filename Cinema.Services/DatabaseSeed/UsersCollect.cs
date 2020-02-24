@@ -49,6 +49,7 @@ namespace Cinema.Services.DatabaseSeed
                 unit.UserRoles.Insert(userRole);
                 unit.Save();
                 SeedUtilities.UsersDictionary.Add(oldId, unit.Users.Get(appUser.Id).Id);
+                Console.WriteLine($"Inserted user nr. ${row}");
             }
         }
     }

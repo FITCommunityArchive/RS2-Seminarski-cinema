@@ -24,6 +24,7 @@ namespace Cinema.Services.DatabaseSeed
 
                 unit.Invoices.Insert(invoice);
                 unit.Save();
+                Console.WriteLine($"Inserted invoice nr. ${row}");
             }
         }
     }
