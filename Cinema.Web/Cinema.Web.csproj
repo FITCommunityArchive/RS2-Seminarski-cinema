@@ -25,4 +25,9 @@
     <ProjectReference Include="..\Cinema.DTO\Cinema.DTO.csproj" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
 </Project>
