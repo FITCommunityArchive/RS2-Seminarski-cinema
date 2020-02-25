@@ -19,7 +19,7 @@ namespace Cinema.Web.Mvc.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var movies = await _unit.Movies.Get().Select(x => x.ToIndexVM()).ToListAsync();
+            List<MovieIndexVM> movies = await _unit.Movies.Get().Select(x => x.ToIndexVM()).ToListAsync();
             return View(movies);            
         }
 
@@ -89,9 +89,7 @@ namespace Cinema.Web.Mvc.Controllers
         [HttpDelete]
         public async Task<IActionResult> Delete(MovieIndexVM model)
         {
-            Movie movie = await _unit.Movies.GetAsync(model.Id);
-
-            _unit.Movies.Delete(movie);
+            _unit.Movies.Delete(model.Id);
             await _unit.SaveAsync();
 
             return RedirectToAction(nameof(Index));
