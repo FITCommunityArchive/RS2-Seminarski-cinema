@@ -6,21 +6,30 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Cinema.Web.Mvc.Models;
+using Cinema.DTO.ViewModels.Movies;
+using Cinema.BLL;
+using Cinema.DAL.Data;
+using Cinema.Services.Factory;
 
 namespace Cinema.Web.Mvc.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private UnitOfWork _unit;
+        private MovieService _movieService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context)
         {
             _logger = logger;
+            _unit = new UnitOfWork(context);
+            _movieService = new MovieService(_unit);
         }
 
         public IActionResult Index()
         {
-            return View();
+            List<MovieIndexVM> movies = _movieService.GetComingSoonMovies().Select(x => x.ToIndexVM()).ToList();
+            return View(movies);
         }
 
         public IActionResult Privacy()
