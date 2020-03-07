@@ -32,6 +32,7 @@ namespace Cinema.Web.Mvc.Controllers
             return View(movies);
         }
 
+        [Route("Privacy")]
         public IActionResult Privacy()
         {
             return View();

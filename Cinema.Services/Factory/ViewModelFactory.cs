@@ -1,6 +1,7 @@
 ﻿using Cinema.Domain.Entities;
 using Cinema.DTO.ViewModels.Movies;
 using Cinema.DTO.ViewModels.Screenings;
+using Cinema.DTO.ViewModels.NowShowing;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
@@ -60,6 +61,23 @@ namespace Cinema.Services.Factory
                 Movies = movies,
                 Halls = halls,
                 DateAndTime = screening.DateAndTime
+            };
+        }
+
+        public static NowShowingDetailsVM ToNowShowingIndexVM(this Movie movie)
+        {
+            return new NowShowingDetailsVM
+            {
+                Id = movie.Id,
+                Directors = movie.Directors,
+                Duration = movie.Duration,
+                VideoLink = movie.VideoLink,
+                Actors = movie.Actors,
+                Country = movie.Country,
+                GenreMovies = movie.GenreMovies,
+                Screenings = movie.Screenings,
+                Title = movie.Title,
+                Year = movie.Year
             };
         }
     }

@@ -32,11 +32,11 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <!--    <li><a asp-area="" asp-page="/Nowshowing/Index">Now Showing</a></li>  -->
+                            <li>@Html.ActionLink("Now Showing","Index","NowShowing")</li>  
                         @if (SignInManager.IsSignedIn(User))
                         {
-                            <li><a asp-area="" asp-page="/Movies/Index">Movies</a></li>
-                            <!--   <li><a asp-area="" asp-page="/Screenings/Index">Screenings</a></li>  -->
+                            <li>@Html.ActionLink("Movies","Index","Movies")</li>
+                            <li>@Html.ActionLink("Screenings", "Index", "Screenings")</li>  
                             <!-- <li><a asp-area="" asp-page="/Halles/Index">Halls</a></li> -->
                         }
                     </ul>
@@ -100,12 +100,12 @@
             </div>
         </div>
         <div class="container">
-            &copy; 2019 - Cinema.Web - <a asp-area="" asp-page="/Privacy">Privacy</a> | <a asp-area="" asp-page="/Terms">Terms of Use</a>
+            &copy; 2019 - Cinema.Web - @Html.ActionLink("Privacy","Privacy","Home") | <a asp-area="" asp-page="/Terms">Terms of Use</a>
         </div>
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/60727c837d.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
     <script type="text/javascript" src="~/lib/jquery-seat-charts/jquery.seat-charts.min.js"></script>
