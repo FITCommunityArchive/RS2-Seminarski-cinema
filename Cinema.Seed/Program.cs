@@ -1,7 +1,6 @@
 ﻿using Cinema.BLL;
-using Cinema.Services.DatabaseSeed;
 using Cinema.DAL.Data;
-
+using Cinema.Seed.CollectMethods;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.IO;

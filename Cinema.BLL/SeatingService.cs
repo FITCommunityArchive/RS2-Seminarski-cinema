@@ -5,6 +5,7 @@ using Cinema.DAL.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Cinema.BLL
 {
@@ -23,7 +24,6 @@ namespace Cinema.BLL
             //gets reserved seats first
             List<SeatingModel> screeningSeats = screening.Reservations.SelectMany(x => x.SeatReservations).ToList()
                                                 .Select(x => x.Seat.CreateSeating(true)).ToList();
-
 
             //int row, col = 0;
             ReservedSeats = new List<string>();
@@ -58,7 +58,7 @@ namespace Cinema.BLL
             return screeningSeats.OrderBy(x => x.Seat.Id).ToList();
         }
 
-        public async System.Threading.Tasks.Task<bool> AreSeatsReservedAsync(List<int> list,DateTime screeningDate, int screeningID)
+        public async Task<bool> AreSeatsReservedAsync(List<int> list,DateTime screeningDate, int screeningID)
         {
 
             var CurrentHall = await _unit.Halls.GetAsync(screeningID);

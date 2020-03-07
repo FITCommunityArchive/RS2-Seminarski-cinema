@@ -11,9 +11,15 @@ using System.Text;
 namespace Cinema.Test.BLLTests
 {
     [TestFixture]
-    class ReservationServiceTests : TestBase
+    public class SeatingServiceTests : TestBase
     {
         SeatingService seatingService;
+
+        public SeatingServiceTests()
+        {
+            seatingService = new SeatingService(unit);
+        }
+
         private static object[] sourceLists = 
             {
                 new object[] {32, new List<int> { 309, 408 } },  //case 1
@@ -25,7 +31,6 @@ namespace Cinema.Test.BLLTests
         {
             //Arrange
             Screening screening = unit.Screenings.Get(screeningId);
-            seatingService = new SeatingService(unit);
             List<SeatingModel> seating = seatingService.GetScreeningSeating(screening);
 
             //Act

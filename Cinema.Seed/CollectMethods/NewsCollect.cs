@@ -5,26 +5,24 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Cinema.Services.DatabaseSeed
+namespace Cinema.Seed.CollectMethods
 {
-    public class EventsCollect
+    public class NewsCollect
     {
         public static void Collect(ExcelWorksheet rawData, UnitOfWork unit)
         {
             for (int row = 2; row <= rawData.Dimension.Rows; row++)
             {
-                Event cinemaEvent = new Event
+                News news = new News
                 {
                     Title = rawData.ReadString(row, 2),
                     Description = rawData.ReadString(row, 3),
                     Image = rawData.ReadString(row, 4),
                     Author = unit.Users.Get(SeedUtilities.UsersDictionary[rawData.ReadInteger(row, 5)]),
-                    DateAndTime = rawData.ReadDate(row, 6),
-                    Promoter = rawData.ReadString(row, 7),
-                    Type = unit.EventTypes.Get(rawData.ReadInteger(row, 8))
+                    Type = unit.NewsTypes.Get(rawData.ReadInteger(row, 6))
                 };
 
-                unit.Events.Insert(cinemaEvent);
+                unit.News.Insert(news);
                 unit.Save();
             }
         }

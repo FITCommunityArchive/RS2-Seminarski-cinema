@@ -18,6 +18,7 @@
     <ProjectReference Include="..\Cinema.BLL\Cinema.BLL.csproj" />
     <ProjectReference Include="..\Cinema.DAL\Cinema.DAL.csproj" />
     <ProjectReference Include="..\Cinema.Domain\Cinema.Domain.csproj" />
+    <ProjectReference Include="..\Cinema.Seed\Cinema.Seed.csproj" />
     <ProjectReference Include="..\Cinema.Services\Cinema.Services.csproj" />
     <ProjectReference Include="..\Cinema.Web\Cinema.Web.csproj" />
   </ItemGroup>

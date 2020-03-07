@@ -5,26 +5,23 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Cinema.Services.DatabaseSeed
+namespace Cinema.Seed.CollectMethods
 {
-    public class InvoicesCollect
+    public class SeatReservationsCollect
     {
         public static void Collect(ExcelWorksheet rawData, UnitOfWork unit)
         {
             for (int row = 2; row <= rawData.Dimension.Rows; row++)
             {
-                Invoice invoice = new Invoice
+                SeatReservation seatReservation = new SeatReservation
                 {
                     Reservation = unit.Reservations.Get(rawData.ReadInteger(row, 2)),
-                    OfferType = unit.Pricings.Get(rawData.ReadInteger(row, 3)),
-                    Price = rawData.ReadDecimal(row, 4),
-                    TaxAmount = rawData.ReadDecimal(row, 5),
-                    TicketQuantity = rawData.ReadInteger(row, 6)
+                    Seat = unit.Seats.Get(rawData.ReadInteger(row, 3))
                 };
 
-                unit.Invoices.Insert(invoice);
+                unit.SeatReservations.Insert(seatReservation);
                 unit.Save();
-                Console.WriteLine($"Inserted invoice nr. ${row}");
+                Console.WriteLine($"Inserted seat reservation nr. ${row}");
             }
         }
     }
