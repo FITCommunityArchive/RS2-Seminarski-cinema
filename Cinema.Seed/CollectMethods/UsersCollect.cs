@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
-namespace Cinema.Services.DatabaseSeed
+namespace Cinema.Seed.CollectMethods
 {
     public static class UsersCollect
     {        

@@ -1,5 +1,4 @@
-﻿using Cinema.Services.DatabaseSeed;
-using Cinema.DAL.Data;
+﻿using Cinema.DAL.Data;
 using Microsoft.AspNetCore.Identity;
 using OfficeOpenXml;
 using System;
@@ -9,7 +8,7 @@ using System.Threading.Tasks;
 using System.Linq;
 using Cinema.Domain.Entities;
 
-namespace Cinema.Services.DatabaseSeed
+namespace Cinema.Seed.CollectMethods
 {
     public static class SeedUtilities
     {

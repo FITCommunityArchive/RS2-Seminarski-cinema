@@ -5,20 +5,21 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Cinema.Services.DatabaseSeed
+namespace Cinema.Seed.CollectMethods
 {
-    public class EventTypesCollect
+    public class PricingsCollect
     {
         public static void Collect(ExcelWorksheet rawData, UnitOfWork unit)
         {
             for (int row = 2; row <= rawData.Dimension.Rows; row++)
             {
-                EventType eventType = new EventType
+                Pricing pricing = new Pricing
                 {
-                    Name = rawData.ReadString(row, 2)
+                    Name = rawData.ReadString(row, 2),
+                    Price = rawData.ReadDecimal(row, 3)
                 };
 
-                unit.EventTypes.Insert(eventType);
+                unit.Pricings.Insert(pricing);
                 unit.Save();
             }
         }

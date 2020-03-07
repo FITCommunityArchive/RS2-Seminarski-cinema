@@ -5,22 +5,20 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Cinema.Services.DatabaseSeed
+namespace Cinema.Seed.CollectMethods
 {
-    public class HallsCollect
+    public class NewsTypesCollect
     {
         public static void Collect(ExcelWorksheet rawData, UnitOfWork unit)
         {
             for (int row = 2; row <= rawData.Dimension.Rows; row++)
             {
-                Hall hall = new Hall
+                NewsType newsType = new NewsType
                 {
-                    Name = rawData.ReadString(row, 2),
-                    NumberOfColumns = rawData.ReadInteger(row, 3),
-                    NumberOfRows = rawData.ReadInteger(row, 4)
+                    Name = rawData.ReadString(row, 2)
                 };
 
-                unit.Halls.Insert(hall);
+                unit.NewsTypes.Insert(newsType);
                 unit.Save();
             }
         }

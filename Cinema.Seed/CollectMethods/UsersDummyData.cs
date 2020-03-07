@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Cinema.Domain.Entities.Identity;
 
-namespace Cinema.Services.DatabaseSeed
+namespace Cinema.Seed.CollectMethods
 {
     public class UsersDummyData
     {
