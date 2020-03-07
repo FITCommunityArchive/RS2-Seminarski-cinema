@@ -9,20 +9,27 @@ namespace Cinema.BLL
     {
         public static void CreateSeatLabel(this Seat seat)
         {
-            string seatRow = ((char)(((seat.SeatNumber - 1) / seat.Hall.NumberOfRows) + 65)).ToString();
+            string seatRow = ((char)(seat.GetSeatRow() + 65)).ToString();
+            string seatColumn = seat.GetSeatColumn().ToString();
 
-            string seatNr;
+            seat.Label = seatRow + seatColumn;
+        }
 
+        public static int GetSeatRow(this Seat seat)
+        {
+            return (seat.SeatNumber - 1) / seat.Hall.NumberOfColumns;
+        }
+
+        public static int GetSeatColumn(this Seat seat)
+        {
             if (seat.SeatNumber % seat.Hall.NumberOfColumns == 0)
             {
-                seatNr = seat.Hall.NumberOfColumns.ToString();
+                return seat.Hall.NumberOfColumns;
             }
             else
             {
-                seatNr = (seat.SeatNumber % seat.Hall.NumberOfColumns).ToString();
+                return seat.SeatNumber % seat.Hall.NumberOfColumns;
             }
-
-            seat.Label = seatRow + seatNr;
         }
     }
 }
