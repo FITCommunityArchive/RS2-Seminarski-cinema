@@ -25,8 +25,8 @@ namespace Cinema.Seed
             ApplicationDbContext context = new ApplicationDbContext(connectionString);
             UnitOfWork unit = new UnitOfWork(context);
 
-            //Uncomment to run database seed            
-            unit.SeedDatabase(file);
+            // Uncomment to run database seed.          
+            //unit.SeedDatabase(file);
         }
     }
 }
