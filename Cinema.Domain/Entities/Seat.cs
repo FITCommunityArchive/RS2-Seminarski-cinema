@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Cinema.Domain.Entities
 {
@@ -10,8 +11,8 @@ namespace Cinema.Domain.Entities
         }
 
         //Seat row and column number can be calculated via the Hall properties when neccessary
-        //public string Row { get; set; }
-        //public string Column { get; set; }
+/*        public string Row { get; set; }
+        public string Column { get; set; }*/
         public int SeatNumber { get; set; }
         public string Label { get; set; }
         public virtual Hall Hall { get; set; }
