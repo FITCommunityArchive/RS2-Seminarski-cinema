@@ -1,5 +1,4 @@
-﻿@page "{id:int?}/{date:long?}"
-@model Cinema.DTO.ViewModels.ReservationTickets.ReservationTicketIndexVM
+﻿@model Cinema.DTO.ViewModels.Reservations.ReservationIndexVM
 @{
     ViewData["Title"] = "Reservation form";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,24 +6,24 @@
 
 
 
-@*<section class="showing-now">
+<section class="showing-now">
     <div class="container">
-        @if (ViewData["successMessage"].Equals(""))
-        {
+        @*@if (ViewData["successMessage"].Equals(""))
+            {
 
-        }
-        else
-        {
-            @:<div class="alert alert-success">@ViewData["successMessage"]</div>
-        }
-        @if (ViewData["errorMessage"].Equals(""))
-        {
+            }
+            else
+            {
+                @:<div class="alert alert-success">@ViewData["successMessage"]</div>
+            }
+            @if (ViewData["errorMessage"].Equals(""))
+            {
 
-        }
-        else
-        {
-            @:<div class="alert alert-danger">@ViewData["errorMessage"]</div>
-        }
+            }
+            else
+            {
+                @:<div class="alert alert-danger">@ViewData["errorMessage"]</div>
+            }*@
         <h1>Reservation form</h1>
         <div class="row">
             <div class="col-md-12">
@@ -36,8 +35,8 @@
                         <li>Hall Name: @Model.CurrentHall.Name</li>
                         <li>Number of columns: @Model.CurrentHall.NumberOfColumns</li>
                         <li>Number of rows: @Model.CurrentHall.NumberOfRows</li>
-                        <li>Available seats: @Model.currentHall.Seats</li>
-                        <li>Time of the Screening: @Model.ScreeningDate</li>>
+                        <li>Available seats: @Model.CurrentHall.Seats.Count</li>
+                        <li>Time of the Screening: @Model.CurrentScreening.DateAndTime</li>
                     </ul>
                 }
 
@@ -73,11 +72,19 @@
                     Total: <b>$<span id="total">0</span></b>
                     <input type="submit" value="Checkout" class="btn btn-danger checkout-button" />
                     <div id="legend"></div>
-                    <input asp-for="SelectedSeatsString" />
+                    <input type="hidden" asp-for="SelectedSeatsString" />
                     <span asp-validation-for="SelectedSeatsString" class="text-danger"></span>
                 </form>
             </div>
         </div>
     </div>
-</section>*@
+</section>
 
+@section Scripts
+{
+    <script src="@Url.Content("~/lib/jquery-seat-charts/jquery.seat-charts.min.js")"></script>
+}
+
+@section css {
+    <link rel="stylesheet" href="@Url.Content("~/lib/jquery-seat-charts/jquery.seat-charts.css")" />
+}

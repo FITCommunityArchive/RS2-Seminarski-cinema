@@ -21,17 +21,17 @@
                                 <span asp-validation-for="DateAndTime" class="text-danger"></span>
                             </div>
                             <div class="form-group">
-                                <label asp-for="Movie" class="control-label"></label>
+                                <label asp-for="MovieId" class="control-label"></label>
                                 <select asp-for="MovieId" class="form-control"
-                                        asp-items="ViewBag.Movies">
+                                        asp-items="@Model.Movies">
                                     <option value="">-- Select Movie --</option>
                                 </select>
                                 <span asp-validation-for="MovieId" class="text-danger" />
                             </div>
                             <div class="form-group">
-                                <label asp-for="Hall" class="control-label"></label>
+                                <label asp-for="HallId" class="control-label"></label>
                                 <select asp-for="HallId" class="form-control"
-                                        asp-items="ViewBag.Halls">
+                                        asp-items="@Model.Halls">
                                     <option value="">-- Select Hall --</option>
                                 </select>
                                 <span asp-validation-for="HallId" class="text-danger" />

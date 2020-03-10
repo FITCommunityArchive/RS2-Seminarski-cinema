@@ -67,7 +67,7 @@ namespace Cinema.Web.Mvc.Controllers
             return View(movie.ToCreateVM());
         }
 
-        [HttpPut]
+        
         public async Task<IActionResult> Edit(MovieCreateVM model)
         {
             Movie movie = model.Create();

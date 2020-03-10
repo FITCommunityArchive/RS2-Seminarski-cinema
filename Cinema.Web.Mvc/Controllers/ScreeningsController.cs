@@ -34,6 +34,7 @@ namespace Cinema.Web.Mvc.Controllers
         {
             ScreeningCreateVM model = new ScreeningCreateVM
             {
+                
                 Movies = new SelectList(_unit.Movies.Get(), "Id", "Title"),
                 Halls = new SelectList(_unit.Halls.Get(), "Id", "Name")
             };
@@ -63,7 +64,7 @@ namespace Cinema.Web.Mvc.Controllers
             return View(screening.ToCreateVM(movies, halls));
         }
 
-        [HttpPut]
+        
         public async Task<IActionResult> Edit(ScreeningCreateVM model)
         {
             Screening screening = model.Create();

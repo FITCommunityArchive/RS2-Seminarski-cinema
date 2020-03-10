@@ -79,7 +79,7 @@
                             <dd>
                                 @if (SignInManager.IsSignedIn(User))
                                 {
-                                    <a asp-page="/ReservationTickets/Index" asp-route-id="@item.Hall.Id" asp-route-date="@item.DateAndTime.Ticks">Reserve tickets</a>
+                                    <a asp-action="Index" asp-controller="Reservations" asp-route-id="@item.Hall.Id" asp-route-date="@item.DateAndTime.Ticks">Reserve tickets</a>
                                 }
                             </dd>
                         }
