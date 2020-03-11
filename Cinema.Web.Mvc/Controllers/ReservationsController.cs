@@ -11,6 +11,7 @@ using Cinema.Services.Helpers;
 using Microsoft.EntityFrameworkCore;
 using Cinema.BLL;
 using Cinema.DTO.ViewModels.Reservations;
+using System.Security.Claims;
 
 namespace Cinema.Web.Mvc.Controllers
 {
@@ -25,6 +26,10 @@ namespace Cinema.Web.Mvc.Controllers
         [Route("Reservations/{id:int?}/{date:long?}")]
         public IActionResult Index(int id, long date)
         {
+
+            ViewData["successMessage"] = "";
+            ViewData["errorMessage"] = "";
+
             var screeningDate = new DateTime(date);
             var currentHall = _unit.Halls.Get(id);
             var currentScreening = currentHall.Screenings.FirstOrDefault(x => x.DateAndTime == screeningDate);
@@ -38,6 +43,48 @@ namespace Cinema.Web.Mvc.Controllers
             };
 
             return View(viewModel);
+        }
+
+        public IActionResult Checkout(int id, long date, string SelectedSeatsString)
+        {
+
+            if (SelectedSeatsString == null)
+            {
+                ViewData["errorMessage"] = "You haven't picked your seats.";
+                return RedirectToAction("Index", new { id = id, date = date });
+            }
+
+            var selectedSeats = SelectedSeatsString.Split(',').Select(Int32.Parse).ToList();
+            string userID = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            var screeningDate = new DateTime(date);
+            var currentHall = _unit.Halls.Get(id);
+            var currentScreening = currentHall.Screenings.FirstOrDefault(x => x.DateAndTime == screeningDate);
+
+            Reservation reservation = new Reservation
+            {
+                User = _unit.Users.Get(userID),
+                Screening = currentScreening
+            };
+
+            _unit.Reservations.Insert(reservation);
+
+            _unit.Save();
+
+            foreach (int seatId in selectedSeats)
+            {
+                SeatReservation seatReservation = new SeatReservation
+                {
+                    Seat = _unit.Seats.Get(seatId),
+                    Reservation = reservation
+                };
+
+                _unit.SeatReservations.Insert(seatReservation);
+            }
+
+            _unit.Save();
+
+            return RedirectToAction("Index", new { id = id, date = date });
         }
     }
 }
