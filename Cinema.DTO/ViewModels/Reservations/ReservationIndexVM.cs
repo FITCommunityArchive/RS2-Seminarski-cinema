@@ -16,5 +16,7 @@ namespace Cinema.DTO.ViewModels.Reservations
         public Pricing PricingTier { get; set; }
         [Required]
         public string SelectedSeatsString { get; set; }
+        public decimal Price { get; set; }
+        public int Quantity { get; set; }
     }
 }

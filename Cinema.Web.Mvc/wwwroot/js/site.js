@@ -73,6 +73,9 @@ jQuery(document).ready(function () {
     var $cart = $('#selected-seats'),
         $counter = $('#counter'),
         $total = $('#total');
+        $price = $("#price");
+        $quantity = $("#quantity");
+        
 
     var firstSeatLabel = 1;
 
@@ -115,7 +118,9 @@ jQuery(document).ready(function () {
                  */
 
                 $counter.text(sc.find('selected').length + 1);
+                $quantity.val(sc.find('selected').length + 1);
                 $total.text(recalculateTotal(sc) + this.data().price);
+                $price.val(recalculateTotal(sc) + this.data().price);
                 return 'selected';
 
             } else if (this.status() == 'selected') {
@@ -134,8 +139,10 @@ jQuery(document).ready(function () {
 
                 //update the counter
                 $counter.text(sc.find('selected').length - 1);
+                $quantity.val(sc.find('selected').length - 1);
                 //and total
                 $total.text(recalculateTotal(sc) - this.data().price);
+                $price.val(recalculateTotal(sc) - this.data().price);
 
                 //remove the item from our cart
                 $('#cart-item-' + this.settings.id).remove();

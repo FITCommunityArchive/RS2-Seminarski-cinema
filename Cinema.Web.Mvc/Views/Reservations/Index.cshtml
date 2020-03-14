@@ -9,6 +9,7 @@
 <section class="showing-now">
     <div class="container">
         <div class="content-wrap">
+            @ViewData["test"]
             @if (ViewData["successMessage"].Equals(""))
             {
 
@@ -48,20 +49,22 @@
                     <div id="seat-map" data-rows="@Model.CurrentHall.NumberOfRows" data-columns="@Model.CurrentHall.NumberOfColumns" data-reserved-seats="@Model.ReservedSeats" data-ticket-cat="@Model.PricingTier.Name" data-ticket-price="@Model.PricingTier.Price"></div>
                     @using (@Html.BeginForm("Checkout", "Reservations", FormMethod.Post, new { @class = "booking-details" }))
                     {
-                        <div class="form-group">
-                            <h1 class="h3">Booking Details</h1>
-                            <p> Selected Seats (<span id="counter">0</span>)</p>
-                            <ul id="selected-seats">
-                            </ul>
-                            Total: <b>$<span id="total">0</span></b>
-                            <input type="submit" value="Reserve" class="btn btn-danger checkout-button" />
-                            <div id="legend"></div>
-                            @Html.Hidden("SelectedSeatsString", Model.SelectedSeatsString, new { @id = "SelectedSeatsString" })
-                            @Html.ValidationMessageFor(x => x.SelectedSeatsString, "", new { @class = "text-danger" })
-                            @Html.Hidden("id", Model.CurrentHall.Id, new { @id = "id" })
-                            @Html.Hidden("date", Model.CurrentScreening.DateAndTime, new { @id = "date" })
+                    <div class="form-group">
+                        <h1 class="h3">Booking Details</h1>
+                        <p> Selected Seats (<span id="counter">0</span>)</p>
+                        <ul id="selected-seats">
+                        </ul>
+                        Total: <b>$<span id="total">0</span></b>
+                        <input type="submit" value="Reserve" class="btn btn-danger checkout-button" />
+                        <div id="legend"></div>
+                        @Html.Hidden("SelectedSeatsString", Model.SelectedSeatsString, new { @id = "SelectedSeatsString" })
+                        @Html.ValidationMessageFor(x => x.SelectedSeatsString, "", new { @class = "text-danger" })
+                        @Html.Hidden("id", Model.CurrentHall.Id, new { @id = "id" })
+                        @Html.Hidden("date", Model.CurrentScreening.DateAndTime, new { @id = "date" })
+                        @Html.Hidden("price", Model.Price, new { @id = "price" })
+                        @Html.Hidden("quantity", Model.Quantity, new { @id = "quantity" })
 
-                        </div>
+                    </div>
                     }
                 </div>
             </div>
