@@ -1,5 +1,4 @@
 ﻿using Cinema.Domain.Entities;
-using Cinema.Web.Pages.Halles;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
 using System;

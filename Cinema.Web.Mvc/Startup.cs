@@ -16,6 +16,8 @@ using Cinema.Domain.Entities.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Cinema.Authorization.Handlers;
+using Cinema.Authorization.Requirements;
+using Cinema.Authorization.Constants;
 
 namespace Cinema.Web.Mvc
 {
@@ -58,6 +60,12 @@ namespace Cinema.Web.Mvc
                 config.Filters.Add(new AuthorizeFilter(policy));
             });
             services.AddRazorPages();
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy(Policies.IsAdmin, policy =>
+                    policy.Requirements.Add(new IsAdminRequirement()));
+            });
 
             //services.AddRazorPages().AddRazorPagesOptions(options =>
             //{

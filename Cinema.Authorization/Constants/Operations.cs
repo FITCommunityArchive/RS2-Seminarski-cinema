@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Cinema.Authorization
+namespace Cinema.Authorization.Constants
 {
     public static class Operations
     {

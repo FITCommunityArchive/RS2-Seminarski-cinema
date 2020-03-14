@@ -1,5 +1,8 @@
-﻿using Cinema.Domain.Entities;
+﻿using Cinema.Authorization.Constants;
+using Cinema.Authorization.Requirements;
+using Cinema.Domain.Entities;
 using Cinema.Domain.Entities.Identity;
+using Cinema.DTO.ViewModels.Movies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Microsoft.AspNetCore.Identity;
@@ -11,10 +14,10 @@ using static Cinema.Authorization.Handlers.IsAdminHandler;
 
 namespace Cinema.Authorization.Handlers
 {
-    public class IsAdminHandler : AuthorizationHandler<OperationAuthorizationRequirement, Movie>
+    public class IsAdminHandler : AuthorizationHandler<IsAdminRequirement>
     {
         protected override Task HandleRequirementAsync(AuthorizationHandlerContext context,
-                                   OperationAuthorizationRequirement requirement, Movie movie)
+                                   IsAdminRequirement requirement)
         {
             if (context.User == null)
             {
@@ -28,7 +31,5 @@ namespace Cinema.Authorization.Handlers
 
             return Task.CompletedTask;
         }
-
-        public class IsAdminRequirement : IAuthorizationRequirement { }
     }
 }
