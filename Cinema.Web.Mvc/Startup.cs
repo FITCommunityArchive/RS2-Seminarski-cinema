@@ -13,6 +13,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Cinema.DAL.Data;
 using Cinema.Domain.Entities.Identity;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
+using Cinema.Authorization.Handlers;
+using Cinema.Authorization.Requirements;
+using Cinema.Authorization.Constants;
 
 namespace Cinema.Web.Mvc
 {
@@ -42,15 +47,32 @@ namespace Cinema.Web.Mvc
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders()*/
             services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
-            .AddEntityFrameworkStores<ApplicationDbContext>();
+                    .AddRoles<ApplicationRole>()
+                    .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            services.AddControllersWithViews();
+            services.AddControllersWithViews(config =>
+            {
+                // To require users to be authenticated
+                var policy = new AuthorizationPolicyBuilder()
+                                 .RequireAuthenticatedUser()
+                                 .Build();
+
+                config.Filters.Add(new AuthorizeFilter(policy));
+            });
             services.AddRazorPages();
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy(Policies.IsAdmin, policy =>
+                    policy.Requirements.Add(new IsAdminRequirement()));
+            });
 
             //services.AddRazorPages().AddRazorPagesOptions(options =>
             //{
             //    options.Conventions.AuthorizeFolder("/Movies");
             //});
+
+            services.AddScoped<IAuthorizationHandler, IsAdminHandler>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

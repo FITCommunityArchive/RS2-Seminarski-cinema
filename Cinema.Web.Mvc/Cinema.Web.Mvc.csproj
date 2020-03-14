@@ -17,10 +17,12 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.1.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
+    <PackageReference Include="TagHelperSamples.Authorization" Version="3.0.56" />
   </ItemGroup>
 
 
   <ItemGroup>
+    <ProjectReference Include="..\Cinema.Authorization\Cinema.Authorization.csproj" />
     <ProjectReference Include="..\Cinema.BLL\Cinema.BLL.csproj" />
     <ProjectReference Include="..\Cinema.DAL\Cinema.DAL.csproj" />
     <ProjectReference Include="..\Cinema.DTO\Cinema.DTO.csproj" />
