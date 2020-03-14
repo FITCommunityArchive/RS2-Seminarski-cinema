@@ -56,5 +56,14 @@ namespace Cinema.Services.Factory
                 Name = genre.Name
             };
         }
+
+        public static MasterModel CreateMaster(this User user)
+        {
+            return new MasterModel
+            {
+                Id = user.Id,
+                Name = user.FullName
+            };
+        }
     }
 }

@@ -96,6 +96,8 @@ namespace Cinema.DAL.Data
             builder.Entity<ApplicationRole>().HasQueryFilter(x => !x.Deleted);
             builder.Entity<ApplicationUserRole>().HasQueryFilter(x => !x.Deleted);
 
+            builder.Entity<ApplicationUser>().Ignore(x => x.FullName);
+
             //Add Query filters to ApplicationUser and ApplicationRole            
             builder.Entity<ApplicationUser>(b =>
             {

@@ -80,5 +80,22 @@ namespace Cinema.Services.Factory
                 Year = movie.Year
             };
         }
+
+        public static ReviewIndexVM ToIndexVM(this Review review)
+        {
+            return new ReviewIndexVM
+            {
+                Id = review.Id,
+                Text = review.Text,
+                Rating = review.Rating,
+                Movie = review.Movie.CreateMaster(),
+                User = review.User,
+                Country = movie.Country,
+                GenreMovies = movie.GenreMovies,
+                Screenings = movie.Screenings,
+                Title = movie.Title,
+                Year = movie.Year
+            };
+        }
     }
 }

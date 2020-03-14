@@ -15,6 +15,8 @@ namespace Cinema.Domain.Entities
         public string Password { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        
+        public string FullName { get { return ($"{ FirstName } { LastName }"); } }
         public string EmailAddress { get; set; }
         public virtual AppRole Role { get; set; }
         public virtual IList<Review> Reviews { get; set; }
