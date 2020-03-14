@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Cinema.Authorization;
 using Cinema.DAL.Data;
 using Cinema.Domain.Entities;
+using Cinema.Domain.Entities.Identity;
 using Cinema.DTO.ViewModels.Movies;
 using Cinema.Services.Factory;
 using Cinema.Services.Helpers;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,12 +21,14 @@ namespace Cinema.Web.Mvc.Controllers
     {
         public MoviesController(ApplicationDbContext context) : base(context) { }
 
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             List<MovieIndexVM> movies = await _unit.Movies.Get().Select(x => x.ToIndexVM()).ToListAsync();
             return View(movies);            
         }
 
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
             Movie movie = await _unit.Movies.GetAsync(id);
@@ -31,6 +37,7 @@ namespace Cinema.Web.Mvc.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = Roles.Administrator)]
         public async Task<IActionResult> Create()
         {
             MovieCreateVM model = new MovieCreateVM();
@@ -39,6 +46,7 @@ namespace Cinema.Web.Mvc.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = Roles.Administrator)]
         public async Task<IActionResult> Create(MovieCreateVM model)
         {
 
@@ -60,14 +68,17 @@ namespace Cinema.Web.Mvc.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = Roles.Administrator)]
         public async Task<IActionResult> Edit(int id)
         {
+            
             Movie movie = await _unit.Movies.GetAsync(id);
 
             return View(movie.ToCreateVM());
         }
 
         [HttpPut]
+        [Authorize(Roles = Roles.Administrator)]
         public async Task<IActionResult> Edit(MovieCreateVM model)
         {
             Movie movie = model.Create();
@@ -79,6 +90,7 @@ namespace Cinema.Web.Mvc.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Delete(int id)
         {
             Movie movie = await _unit.Movies.GetAsync(id);
@@ -87,6 +99,7 @@ namespace Cinema.Web.Mvc.Controllers
         }
 
         [HttpDelete]
+        [Authorize(Roles = Roles.Administrator)]
         public async Task<IActionResult> Delete(MovieIndexVM model)
         {
             _unit.Movies.Delete(model.Id);

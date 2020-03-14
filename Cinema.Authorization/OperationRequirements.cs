@@ -5,18 +5,18 @@ using System.Text;
 
 namespace Cinema.Authorization
 {
-    public class OperationRequirements
+    public static class OperationRequirements
     {
-        public static OperationAuthorizationRequirement Create =
-          new OperationAuthorizationRequirement { Name = Operations.Create };
+        public static readonly OperationAuthorizationRequirement Create =
+          new OperationAuthorizationRequirement { Name = Operations.CreateOperationName };
 
-        public static OperationAuthorizationRequirement Read =
-          new OperationAuthorizationRequirement { Name = Operations.Read };
+        public static readonly OperationAuthorizationRequirement Read =
+          new OperationAuthorizationRequirement { Name = Operations.ReadOperationName };
 
-        public static OperationAuthorizationRequirement Update =
-          new OperationAuthorizationRequirement { Name = Operations.Update };
+        public static readonly OperationAuthorizationRequirement Update =
+          new OperationAuthorizationRequirement { Name = Operations.UpdateOperationName };
 
-        public static OperationAuthorizationRequirement Delete =
-          new OperationAuthorizationRequirement { Name = Operations.Delete };
+        public static readonly OperationAuthorizationRequirement Delete =
+          new OperationAuthorizationRequirement { Name = Operations.DeleteOperationName };
     }
 }

@@ -21,6 +21,7 @@
 
 
   <ItemGroup>
+    <ProjectReference Include="..\Cinema.Authorization\Cinema.Authorization.csproj" />
     <ProjectReference Include="..\Cinema.BLL\Cinema.BLL.csproj" />
     <ProjectReference Include="..\Cinema.DAL\Cinema.DAL.csproj" />
     <ProjectReference Include="..\Cinema.DTO\Cinema.DTO.csproj" />
