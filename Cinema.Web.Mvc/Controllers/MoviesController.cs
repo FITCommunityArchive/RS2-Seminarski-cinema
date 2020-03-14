@@ -91,7 +91,7 @@ namespace Cinema.Web.Mvc.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = Roles.Administrator)]
         public async Task<IActionResult> Delete(int id)
         {
             Movie movie = await _unit.Movies.GetAsync(id);
