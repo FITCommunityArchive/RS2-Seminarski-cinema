@@ -26,6 +26,7 @@ namespace Cinema.Web.Mvc.Controllers
         public async Task<IActionResult> Index()
         {
             List<MovieIndexVM> movies = await _unit.Movies.Get().Select(x => x.ToIndexVM()).ToListAsync();
+
             return View(movies);            
         }
 
@@ -60,7 +61,7 @@ namespace Cinema.Web.Mvc.Controllers
 
             Movie movie = model.Create();
 
-            _unit.Movies.Insert(movie);
+            await _unit.Movies.InsertAsync(movie);
             await _unit.SaveAsync();
 
             return RedirectToAction(nameof(Details), new { id = movie.Id });
@@ -79,7 +80,7 @@ namespace Cinema.Web.Mvc.Controllers
         {
             Movie movie = model.Create();
 
-            _unit.Movies.Update(movie, model.Id);
+            await _unit.Movies.UpdateAsync(movie, model.Id);
             await _unit.SaveAsync();
 
             return RedirectToAction(nameof(Details), new { id = movie.Id });
@@ -95,7 +96,7 @@ namespace Cinema.Web.Mvc.Controllers
 
         public async Task<IActionResult> Delete(MovieIndexVM model)
         {
-            _unit.Movies.Delete(model.Id);
+            await _unit.Movies.DeleteAsync(model.Id);
             await _unit.SaveAsync();
 
             return RedirectToAction(nameof(Index));

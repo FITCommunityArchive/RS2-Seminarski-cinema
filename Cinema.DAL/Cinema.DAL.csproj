@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Cinema.Domain\Cinema.Domain.csproj" />
+    <ProjectReference Include="..\Cinema.Services\Cinema.Services.csproj" />
   </ItemGroup>
 
 </Project>
