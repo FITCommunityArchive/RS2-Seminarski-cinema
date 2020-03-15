@@ -78,7 +78,6 @@ namespace Cinema.Web.Mvc.Controllers
             return View(movie.ToCreateVM());
         }
 
-        [HttpPut]
         [Authorize(Roles = Roles.Administrator)]
         public async Task<IActionResult> Edit(MovieCreateVM model)
         {
@@ -99,7 +98,6 @@ namespace Cinema.Web.Mvc.Controllers
             return View(movie.ToIndexVM());
         }
 
-        [HttpDelete]
         [Authorize(Roles = Roles.Administrator)]
         public async Task<IActionResult> Delete(MovieIndexVM model)
         {

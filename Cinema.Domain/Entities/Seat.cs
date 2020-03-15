@@ -15,7 +15,10 @@ namespace Cinema.Domain.Entities
         public string Column { get; set; }*/
         public int SeatNumber { get; set; }
         public string Label { get; set; }
+
+        public int HallId { get; set; }
         public virtual Hall Hall { get; set; }
+
         public virtual IList<SeatReservation> SeatReservations { get; set; }
     }
 }
