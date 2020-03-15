@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-    <section>
+    <section asp-authorize asp-roles="@Roles.Administrator">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -42,8 +42,8 @@
                                     </td>
                                     <td>
                                         <a asp-action="Details" asp-route-id="@item.Id">Details</a>
-                                        <a asp-authorize asp-roles="@Roles.Administrator" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                                        <a asp-authorize asp-roles="@Roles.Administrator" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                                     </td>
                                 </tr>
                             }

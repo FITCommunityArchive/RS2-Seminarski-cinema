@@ -36,7 +36,7 @@ namespace Cinema.Web.Mvc.Controllers
             _webHostEnvironment = webHostEnvironment;
         }
 
-        [Route("Reservations/{id:int?}/{date:long?}")]
+        [Route("/Reservations/{id:int?}/{date:long?}")]
         public IActionResult Index(int id, long date)
         {
 

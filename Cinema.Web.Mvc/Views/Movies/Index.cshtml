@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Index";
 }
-    <section>
+    <section asp-authorize asp-roles="@Roles.Administrator">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
