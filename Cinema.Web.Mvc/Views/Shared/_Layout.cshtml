@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Cinema.Web</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/lib/jquery-seat-charts/jquery.seat-charts.css" />
+    @RenderSection("css", false)
     <link rel="stylesheet" href="~/css/site.css" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700|Work+Sans:400,700,900&display=swap" rel="stylesheet">
 
@@ -108,7 +108,6 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/60727c837d.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-    <script type="text/javascript" src="~/lib/jquery-seat-charts/jquery.seat-charts.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
     <script src="~/js/site.js" asp-append-version="true"></script>
 
