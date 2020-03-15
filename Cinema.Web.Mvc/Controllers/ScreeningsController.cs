@@ -39,6 +39,7 @@ namespace Cinema.Web.Mvc.Controllers
         {
             ScreeningCreateVM model = new ScreeningCreateVM
             {
+                
                 Movies = new SelectList(_unit.Movies.Get(), "Id", "Title"),
                 Halls = new SelectList(_unit.Halls.Get(), "Id", "Name")
             };
@@ -71,7 +72,6 @@ namespace Cinema.Web.Mvc.Controllers
         }
 
         [Authorize(Roles = Roles.Administrator)]
-        [HttpPut]
         public async Task<IActionResult> Edit(ScreeningCreateVM model)
         {
             Screening screening = model.Create();
@@ -92,7 +92,6 @@ namespace Cinema.Web.Mvc.Controllers
         }
 
         [Authorize(Roles = Roles.Administrator)]
-        [HttpDelete]
         public async Task<IActionResult> Delete(ScreeningIndexVM model)
         {
             _unit.Screenings.Delete(model.Id);
