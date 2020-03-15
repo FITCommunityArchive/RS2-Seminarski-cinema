@@ -1,5 +1,6 @@
 ﻿using Cinema.DAL.Data;
 using Cinema.Domain.Entities;
+using Cinema.Domain.Entities.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -91,7 +92,6 @@ namespace Cinema.DAL.Repository
             //ValidateUpdate(newEnt, id);
             if (oldEnt != null)
             {
-                if (typeof(Entity) == typeof(User)) (newEnt as User).Password = (oldEnt as User).Password;
                 _context.Update(newEnt);
             }
         }

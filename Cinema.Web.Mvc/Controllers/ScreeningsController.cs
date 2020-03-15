@@ -72,7 +72,6 @@ namespace Cinema.Web.Mvc.Controllers
         }
 
         [Authorize(Roles = Roles.Administrator)]
-        [HttpPut]
         public async Task<IActionResult> Edit(ScreeningCreateVM model)
         {
             Screening screening = model.Create();
@@ -93,7 +92,6 @@ namespace Cinema.Web.Mvc.Controllers
         }
 
         [Authorize(Roles = Roles.Administrator)]
-        [HttpDelete]
         public async Task<IActionResult> Delete(ScreeningIndexVM model)
         {
             _unit.Screenings.Delete(model.Id);
