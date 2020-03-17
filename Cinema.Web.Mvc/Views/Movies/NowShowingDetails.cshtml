@@ -1,0 +1,109 @@
+﻿@model Cinema.DTO.ViewModels.Movies.NowShowingDetailsVM
+@using Microsoft.AspNetCore.Identity
+@using Cinema.Domain.Entities.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    bool first = true;
+    DateTime currentDate = DateTime.Now;
+}
+
+<section>
+    <div class="container">
+        <div class="content-wrap">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="h2">@Html.DisplayFor(model => model.Title)</h1>
+                    <img id="movie-poster" class="pull-left" src="~/img/movie-poster.png" />
+                    <ul class="list-unstyled movie-info">
+                        <li>
+                            <span>@Html.DisplayNameFor(model => model.Title)</span>
+                            @Html.DisplayFor(model => model.Title)
+                        </li>
+                        <li>
+                            <span>@Html.DisplayNameFor(model => model.Year)</span>
+                            @Html.DisplayFor(model => model.Year)
+                        </li>
+                        <li>
+                            <span>@Html.DisplayNameFor(model => model.Actors)</span>
+                            @Html.DisplayFor(model => model.Actors)
+                        </li>
+                        <li>
+                            <span>@Html.DisplayNameFor(model => model.Country)</span>
+                            @Html.DisplayFor(model => model.Country)
+                        </li>
+                        <li>
+                            <span>@Html.DisplayNameFor(model => model.Directors)</span>
+                            @Html.DisplayFor(model => model.Directors)
+                        </li>
+                        <li>
+                            <span>@Html.DisplayNameFor(model => model.Duration)</span>
+                            @Html.DisplayFor(model => model.Duration)
+                        </li>
+                        @*<li>
+                            <span>@Html.DisplayNameFor(model => model.GenreMovies)</span>
+                            @Html.DisplayFor(model => model.GenreMovies)
+                        </li>*@
+                        <li>
+                            <span>@Html.DisplayNameFor(model => model.VideoLink)</span>
+                            @Html.DisplayFor(model => model.VideoLink)
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div>
+                        <hr />
+                        <h4>Screening times</h4>
+                        <ul class="list-unstyled screening-list">
+                            @foreach (var item in Model.ScreeningList)
+                            {
+                                @if (first == true)
+                                {
+                                    currentDate = item.Playing.Date;
+                                    first = false;
+                                    <strong>@item.Playing.ToShortDateString()</strong><br />
+                                }
+
+                                @if (item.Playing.Date != currentDate)
+                                {
+                                    <hr />
+                                    currentDate = item.Playing.Date;
+                                   <strong>@item.Playing.ToShortDateString()</strong><br />
+                                }
+                                <li>
+
+                                    <div>
+                                        @Html.DisplayFor(modelItem => item.HallName)<br />
+                                        @item.Playing.ToShortTimeString()<br />
+                                        @if (SignInManager.IsSignedIn(User))
+                                        {
+                                            <a asp-action="Index" asp-controller="Reservations" asp-route-id="@item.HallId" class="btn btn-success btn-sm" asp-route-date="@item.Playing.Ticks">Reserve</a>
+                                        }
+                                    </div>
+
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                    <div>
+                        <a asp-action="Index">Back to List</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+<script>
+    jQuery(document).ready(function () {
+        $.get("https://www.omdbapi.com/?apikey=f4ff906b&t=@Model.Title", function (data) {
+            jQuery("#movie-poster").attr("src",data.Poster)
+        })
+    });
+</script>
+}

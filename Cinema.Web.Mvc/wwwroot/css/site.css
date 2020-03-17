@@ -322,3 +322,35 @@ span.seatCharts-legendDescription {
     border-bottom: 1px solid #dadada;
     overflow: hidden;
 }
+
+
+
+/* NowShowing Details page
+-------------------------------------------------- */
+#movie-poster {
+    margin-right:15px;
+}
+
+.movie-info {
+    margin-top: 30px;
+}
+
+.movie-info li {
+    margin-bottom:7px;
+}
+
+.movie-info li span {
+    min-width: 120px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.screening-list li {
+    display:inline-block;
+}
+
+.screening-list li div {
+    padding: 15px;
+    border: 1px dashed #dadada;
+    margin: 10px 10px 10px 0;
+}
