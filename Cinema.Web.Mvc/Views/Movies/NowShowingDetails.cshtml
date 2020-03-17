@@ -102,7 +102,11 @@
 <script>
     jQuery(document).ready(function () {
         $.get("https://www.omdbapi.com/?apikey=f4ff906b&t=@Model.Title", function (data) {
-            jQuery("#movie-poster").attr("src",data.Poster)
+            if (data.Poster != "N/A") {
+                jQuery("#movie-poster").attr("src", data.Poster)
+            } else {
+                console.log("No image found.");
+            }
         })
     });
 </script>
