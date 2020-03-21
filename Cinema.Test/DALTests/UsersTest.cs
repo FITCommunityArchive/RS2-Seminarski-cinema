@@ -14,7 +14,7 @@ namespace Cinema.Test.DALTests
     class UsersTest : TestBase
     {
         [Test, Order(1)]
-        public async Task GetUsers()
+        public void GetUsers()
         {
             int usersCount = unit.Users.Get().Count();
 

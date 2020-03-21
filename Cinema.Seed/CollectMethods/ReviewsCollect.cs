@@ -4,12 +4,13 @@ using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Cinema.Seed.CollectMethods
 {
     public class ReviewsCollect
     {
-        public static void Collect(ExcelWorksheet rawData, UnitOfWork unit)
+        public static async Task Collect(ExcelWorksheet rawData, UnitOfWork unit)
         {
             for (int row = 2; row <= rawData.Dimension.Rows; row++)
             {
@@ -17,13 +18,13 @@ namespace Cinema.Seed.CollectMethods
                 {
                     Text = rawData.ReadString(row, 2),
                     Rating = rawData.ReadInteger(row, 3),
-                    User = unit.Users.Get(SeedUtilities.UsersDictionary[rawData.ReadInteger(row, 4)]),
-                    Movie = unit.Movies.Get(rawData.ReadInteger(row, 5))
+                    User = await unit.Users.GetAsync(SeedUtilities.UsersDictionary[rawData.ReadInteger(row, 4)]),
+                    Movie = await unit.Movies.GetAsync(rawData.ReadInteger(row, 5))
                 };
 
-                unit.Reviews.Insert(review);
-                unit.Save();
+                await unit.Reviews.InsertAsync(review);                
             }
+            await unit.SaveAsync();
         }
     }
 }

@@ -8,12 +8,13 @@ using System.Text;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace Cinema.Seed.CollectMethods
 {
     public static class UsersCollect
     {        
-        public static void Collect(ExcelWorksheet rawData, UnitOfWork unit)
+        public static async Task Collect(ExcelWorksheet rawData, UnitOfWork unit)
         {
             var store = new UserStore<ApplicationUser>(unit.Context);
             var passwordHasher = new PasswordHasher<ApplicationUser>();
@@ -35,20 +36,20 @@ namespace Cinema.Seed.CollectMethods
                 };
                 var password = rawData.ReadString(row, 3);
 
-                var result = userManager.CreateAsync(appUser, password).Result;
+                await userManager.CreateAsync(appUser, password);
 
                 //Adding the user role for this user
                 /*Even though there is a many to many relationship between user and role in Identity, 
                  * the legacy database has only one role per user*/
                 ApplicationUserRole userRole = new ApplicationUserRole
                 {
-                    User = unit.Users.Get(appUser.Id),
-                    Role = unit.Roles.Get(SeedUtilities.RolesDictionary[rawData.ReadInteger(row, 7)])
+                    User = await unit.Users.GetAsync(appUser.Id),
+                    Role = await unit.Roles.GetAsync(SeedUtilities.RolesDictionary[rawData.ReadInteger(row, 7)])
                 };
 
-                unit.UserRoles.Insert(userRole);
-                unit.Save();
-                SeedUtilities.UsersDictionary.Add(oldId, unit.Users.Get(appUser.Id).Id);
+                await unit.UserRoles.InsertAsync(userRole);
+                await unit.SaveAsync();
+                SeedUtilities.UsersDictionary.Add(oldId, (await unit.Users.GetAsync(appUser.Id)).Id);
                 Console.WriteLine($"Inserted user nr. ${row}");
             }
         }

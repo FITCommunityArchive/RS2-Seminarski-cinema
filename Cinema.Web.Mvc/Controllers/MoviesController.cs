@@ -39,7 +39,7 @@ namespace Cinema.Web.Mvc.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Create()
+        public IActionResult Create()
         {
             MovieCreateVM model = new MovieCreateVM();
 
