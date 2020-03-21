@@ -1,0 +1,22 @@
+﻿@model Cinema.DTO.ViewModels.Reviews.ReviewCreateVM
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/js/addons/rating.js"></script>
+
+<div class="container">
+    <span id="rateMe2" class="empty-stars"></span>
+</div>
+
+<script src="js/addons/rating.js">
+
+//Rating Initialization
+$(document).ready(function() {
+  $('#rateMe2').mdbRate();
+});
+</script>
+
+
+

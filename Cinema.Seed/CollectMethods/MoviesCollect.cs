@@ -27,7 +27,7 @@ namespace Cinema.Seed.CollectMethods
 
                 unit.Movies.Insert(movie);
                 unit.Save();
-                Console.WriteLine($"Inserted movie nr. ${row}");
+                Console.WriteLine($"Inserted movie nr. ${row - 1}");
             }
         }
     }

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Cinema.Authorization.Constants;
 using Cinema.DAL.Data;
 using Cinema.Domain.Entities;
+using Cinema.DTO.ViewModels.Reviews;
 using Cinema.Services.Factory;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -34,6 +35,15 @@ namespace Cinema.Web.Mvc.Controllers
             Review review = await _unit.Reviews.GetAsync(id);
 
             return View(review.ToIndexVM());
+        }
+
+        [HttpGet]
+        [Authorize(Roles = Roles.User)]
+        public IActionResult Create(int movieId)
+        {
+            ReviewCreateVM model = new ReviewCreateVM(movieId);            
+
+            return PartialView(model);
         }
 
     }

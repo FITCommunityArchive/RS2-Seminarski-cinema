@@ -41,7 +41,7 @@ namespace Cinema.DAL.Repository
 
         public virtual void Insert(Entity entity)
         {
-            entity.Build(_context);
+            //entity.Build(_context);
             _dbSet.Add(entity);
         }
 
