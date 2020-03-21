@@ -22,6 +22,7 @@ namespace Cinema.Web.Mvc.Controllers
         public async Task<IActionResult> Index()
         {
             List<ScreeningIndexVM> screenings = await _unit.Screenings.Get().Select(x => x.ToIndexVM()).ToListAsync();
+
             return View(screenings);
         }
 
@@ -51,7 +52,7 @@ namespace Cinema.Web.Mvc.Controllers
         {
             Screening screening = model.Create();
 
-            _unit.Screenings.Insert(screening);
+            await _unit.Screenings.InsertAsync(screening);
             await _unit.SaveAsync();
 
             return RedirectToAction(nameof(Index));
@@ -63,7 +64,7 @@ namespace Cinema.Web.Mvc.Controllers
             SelectList movies = new SelectList(_unit.Movies.Get(), "Id", "Title");
             SelectList halls = new SelectList(_unit.Halls.Get(), "Id", "Name");
 
-            Screening screening = _unit.Screenings.Get(id);
+            Screening screening = await _unit.Screenings.GetAsync(id);
 
             return View(screening.ToCreateVM(movies, halls));
         }
@@ -72,7 +73,7 @@ namespace Cinema.Web.Mvc.Controllers
         {
             Screening screening = model.Create();
 
-            _unit.Screenings.Update(screening, model.Id);
+            await _unit.Screenings.UpdateAsync(screening, model.Id);
             await _unit.SaveAsync();
 
             return RedirectToAction(nameof(Index));
@@ -88,7 +89,7 @@ namespace Cinema.Web.Mvc.Controllers
 
         public async Task<IActionResult> Delete(ScreeningIndexVM model)
         {
-            _unit.Screenings.Delete(model.Id);
+            await _unit.Screenings.DeleteAsync(model.Id);
             await _unit.SaveAsync();
 
             return RedirectToAction(nameof(Index));

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Cinema.Domain.Entities
 {
-    public class BaseClass
+    public abstract class BaseClass
     {
         public BaseClass()
         {

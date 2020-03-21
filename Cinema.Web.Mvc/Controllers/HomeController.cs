@@ -10,13 +10,14 @@ using Cinema.DTO.ViewModels.Movies;
 using Cinema.BLL;
 using Cinema.DAL.Data;
 using Cinema.Services.Factory;
+using Cinema.Domain.Entities;
 
 namespace Cinema.Web.Mvc.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private UnitOfWork _unit;
+        private readonly UnitOfWork _unit;
         private MovieService _movieService;
 
         public HomeController(ILogger<HomeController> logger, ApplicationDbContext context)
@@ -26,9 +27,10 @@ namespace Cinema.Web.Mvc.Controllers
             _movieService = new MovieService(_unit);
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            List<MovieIndexVM> movies = _movieService.GetComingSoonMovies().Select(x => x.ToIndexVM()).ToList();
+            List<Movie> comingSoonMovies = await _movieService.GetComingSoonMovies();
+            List<MovieIndexVM> movies = comingSoonMovies.Select(x => x.ToIndexVM()).ToList();
             return View(movies);
         }
 
