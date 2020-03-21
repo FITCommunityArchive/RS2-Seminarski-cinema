@@ -1,0 +1,16 @@
+﻿@page 
+@model Cinema.Web.Mvc.Areas.Identity.Pages.Account.Manage.ReservationsModel
+@{
+    ViewData["Title"] = "Your Reservations";
+    ViewData["ActivePage"] = ManageNavPages.Reservations;
+}
+    <h4>@ViewData["Title"]</h4>
+
+    <div>
+        <ul>
+            @foreach (var reservation in Model.UserReservationsList)
+            {
+                <li>@reservation.Screening.Movie.Title</li>
+            }
+        </ul>
+    </div>

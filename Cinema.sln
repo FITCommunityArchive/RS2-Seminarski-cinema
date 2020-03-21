@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.DAL", "Cinema.DAL\Ci
 		{76786E0F-B1F7-449B-8B29-2BBB32753F1A} = {76786E0F-B1F7-449B-8B29-2BBB32753F1A}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinema.Authorization", "Cinema.Authorization\Cinema.Authorization.csproj", "{0064450C-2ACB-4A60-AF03-7A8434676ACF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.Authorization", "Cinema.Authorization\Cinema.Authorization.csproj", "{0064450C-2ACB-4A60-AF03-7A8434676ACF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.Web.Mvc", "Cinema.Web.Mvc\Cinema.Web.Mvc.csproj", "{09A89119-5483-44EA-AAD2-FEF50F01A340}"
 EndProject
