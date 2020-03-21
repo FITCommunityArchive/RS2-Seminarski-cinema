@@ -53,39 +53,39 @@ namespace Cinema.DAL
             entity.Seat = await context.Seats.FindAsync(entity.Seat.Id);
         }
 
-        public static void UpdateAsync<T>(this T oldEnt, T newEnt)
+        public static void UpdateRelationsAsync<T>(this T oldEnt, T newEnt)
         {
-            if (typeof(T) == typeof(Reservation)) UpdateRelations(oldEnt as Reservation, newEnt as Reservation);
-            if (typeof(T) == typeof(Screening)) UpdateRelations(oldEnt as Screening, newEnt as Screening);
-            if (typeof(T) == typeof(Review)) UpdateRelations(oldEnt as Review, newEnt as Review);
-            if (typeof(T) == typeof(Seat)) UpdateRelations(oldEnt as Seat, newEnt as Seat);
-            if (typeof(T) == typeof(SeatReservation)) UpdateRelations(oldEnt as SeatReservation, newEnt as SeatReservation);
+            if (typeof(T) == typeof(Reservation)) Update(oldEnt as Reservation, newEnt as Reservation);
+            if (typeof(T) == typeof(Screening)) Update(oldEnt as Screening, newEnt as Screening);
+            if (typeof(T) == typeof(Review)) Update(oldEnt as Review, newEnt as Review);
+            if (typeof(T) == typeof(Seat)) Update(oldEnt as Seat, newEnt as Seat);
+            if (typeof(T) == typeof(SeatReservation)) Update(oldEnt as SeatReservation, newEnt as SeatReservation);
         }
 
-        private static void UpdateRelations(Reservation oldEnt, Reservation newEnt)
+        private static void Update(Reservation oldEnt, Reservation newEnt)
         {
             oldEnt.User = newEnt.User;
             oldEnt.Screening = newEnt.Screening;
         }
 
-        private static void UpdateRelations(Screening oldEnt, Screening newEnt)
+        private static void Update(Screening oldEnt, Screening newEnt)
         {
             oldEnt.Hall = newEnt.Hall;
             oldEnt.Movie = newEnt.Movie;
         }
 
-        private static void UpdateRelations(Review oldEnt, Review newEnt)
+        private static void Update(Review oldEnt, Review newEnt)
         {
             oldEnt.User = newEnt.User;
             oldEnt.Movie = newEnt.Movie;
         }
 
-        private static void UpdateRelations(Seat oldEnt, Seat newEnt)
+        private static void Update(Seat oldEnt, Seat newEnt)
         {
             oldEnt.Hall = newEnt.Hall;
         }
 
-        private static void UpdateRelations(SeatReservation oldEnt, SeatReservation newEnt)
+        private static void Update(SeatReservation oldEnt, SeatReservation newEnt)
         {
             oldEnt.Reservation = newEnt.Reservation;
             oldEnt.Seat = newEnt.Seat;

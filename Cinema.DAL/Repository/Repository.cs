@@ -41,16 +41,14 @@ namespace Cinema.DAL.Repository
 
         public virtual void Insert(Entity entity)
         {
-            entity.Build(_context);
             _dbSet.Add(entity);
         }
 
         public virtual void Update(Entity entity, Key id)
-        {
-            entity.Build(_context);
+        {            
             Entity old = Get(id);
             _context.Update(entity);
-            old.Update(entity);
+            old.UpdateRelations(entity);
         }
 
         public void Delete(Entity entity) => _dbSet.Remove(entity);
