@@ -4,12 +4,13 @@ using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Cinema.Seed.CollectMethods
 {
     public class EventTypesCollect
     {
-        public static void Collect(ExcelWorksheet rawData, UnitOfWork unit)
+        public static async Task Collect(ExcelWorksheet rawData, UnitOfWork unit)
         {
             for (int row = 2; row <= rawData.Dimension.Rows; row++)
             {
@@ -18,9 +19,9 @@ namespace Cinema.Seed.CollectMethods
                     Name = rawData.ReadString(row, 2)
                 };
 
-                unit.EventTypes.Insert(eventType);
-                unit.Save();
+                await unit.EventTypes.InsertAsync(eventType);                
             }
+            await unit.SaveAsync();
         }
     }
 }

@@ -4,12 +4,13 @@ using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Cinema.Seed.CollectMethods
 {
     public class NewsCollect
     {
-        public static void Collect(ExcelWorksheet rawData, UnitOfWork unit)
+        public static async Task Collect(ExcelWorksheet rawData, UnitOfWork unit)
         {
             for (int row = 2; row <= rawData.Dimension.Rows; row++)
             {
@@ -18,13 +19,13 @@ namespace Cinema.Seed.CollectMethods
                     Title = rawData.ReadString(row, 2),
                     Description = rawData.ReadString(row, 3),
                     Image = rawData.ReadString(row, 4),
-                    Author = unit.Users.Get(SeedUtilities.UsersDictionary[rawData.ReadInteger(row, 5)]),
-                    Type = unit.NewsTypes.Get(rawData.ReadInteger(row, 6))
+                    Author = await unit.Users.GetAsync(SeedUtilities.UsersDictionary[rawData.ReadInteger(row, 5)]),
+                    Type = await unit.NewsTypes.GetAsync(rawData.ReadInteger(row, 6))
                 };
 
-                unit.News.Insert(news);
-                unit.Save();
+                await unit.News.InsertAsync(news);                
             }
+            await unit.SaveAsync();
         }
     }
 }

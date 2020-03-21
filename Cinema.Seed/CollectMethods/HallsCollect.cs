@@ -4,12 +4,13 @@ using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Cinema.Seed.CollectMethods
 {
     public class HallsCollect
     {
-        public static void Collect(ExcelWorksheet rawData, UnitOfWork unit)
+        public static async Task Collect(ExcelWorksheet rawData, UnitOfWork unit)
         {
             for (int row = 2; row <= rawData.Dimension.Rows; row++)
             {
@@ -20,9 +21,9 @@ namespace Cinema.Seed.CollectMethods
                     NumberOfRows = rawData.ReadInteger(row, 4)
                 };
 
-                unit.Halls.Insert(hall);
-                unit.Save();
+                await unit.Halls.InsertAsync(hall);                
             }
+            await unit.SaveAsync();
         }
     }
 }

@@ -3,6 +3,7 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Cinema.Test.DALTests
 {
@@ -11,9 +12,9 @@ namespace Cinema.Test.DALTests
     {
         [Test, Order(1)]
         [TestCase(20)]
-        public void GetSeatLabel(int id)
+        public async Task GetSeatLabel(int id)
         {
-            Seat seat = unit.Seats.Get(id);
+            Seat seat = await unit.Seats.GetAsync(id);
             Assert.AreEqual("A5", seat.Label);
         }
     }

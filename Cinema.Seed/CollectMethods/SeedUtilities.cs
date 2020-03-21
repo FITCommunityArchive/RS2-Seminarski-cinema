@@ -14,7 +14,7 @@ namespace Cinema.Seed.CollectMethods
     {
         public static Dictionary<int, string> RolesDictionary = new Dictionary<int, string>();
         public static Dictionary<int, string> UsersDictionary = new Dictionary<int, string>();
-        public static void SeedDatabase(this UnitOfWork unit, FileInfo fileData)
+        public static async Task SeedDatabase(this UnitOfWork unit, FileInfo fileData)
         {
             /*This methods drops the database, creates a new one, 
              * and performs the defined collect methods upon all tables*/
@@ -25,25 +25,25 @@ namespace Cinema.Seed.CollectMethods
             using (ExcelPackage package = new ExcelPackage(fileData))
             {
                 //Type entities seed
-                GenresCollect.Collect(package.Workbook.Worksheets["Genres"], unit);
-                RolesCollect.Collect(package.Workbook.Worksheets["AppRoles"], unit);
-                NewsTypesCollect.Collect(package.Workbook.Worksheets["NewsTypes"], unit);
-                EventTypesCollect.Collect(package.Workbook.Worksheets["EventTypes"], unit);
-                PricingsCollect.Collect(package.Workbook.Worksheets["Pricings"], unit);
+                await GenresCollect.Collect(package.Workbook.Worksheets["Genres"], unit);
+                await RolesCollect.Collect(package.Workbook.Worksheets["AppRoles"], unit);
+                await NewsTypesCollect.Collect(package.Workbook.Worksheets["NewsTypes"], unit);
+                await EventTypesCollect.Collect(package.Workbook.Worksheets["EventTypes"], unit);
+                await PricingsCollect.Collect(package.Workbook.Worksheets["Pricings"], unit);
 
                 //Other entities seed
-                UsersCollect.Collect(package.Workbook.Worksheets["Users"], unit);
-                HallsCollect.Collect(package.Workbook.Worksheets["Halls"], unit);
-                MoviesCollect.Collect(package.Workbook.Worksheets["Movies"], unit);
-                ReviewsCollect.Collect(package.Workbook.Worksheets["Reviews"], unit);
-                ScreeningsCollect.Collect(package.Workbook.Worksheets["Screenings"], unit);
-                ReservationsCollect.Collect(package.Workbook.Worksheets["Reservations"], unit);
-                InvoicesCollect.Collect(package.Workbook.Worksheets["Invoices"], unit);
-                SeatsCollect.Collect(package.Workbook.Worksheets["Seat"], unit);
-                SeatReservationsCollect.Collect(package.Workbook.Worksheets["SeatReservations"], unit);
-                GenreMoviesCollect.Collect(package.Workbook.Worksheets["GenreMovies"], unit);
-                EventsCollect.Collect(package.Workbook.Worksheets["Events"], unit);
-                NewsCollect.Collect(package.Workbook.Worksheets["News"], unit);
+                await UsersCollect.Collect(package.Workbook.Worksheets["Users"], unit);
+                await HallsCollect.Collect(package.Workbook.Worksheets["Halls"], unit);
+                await MoviesCollect.Collect(package.Workbook.Worksheets["Movies"], unit);
+                await ReviewsCollect.Collect(package.Workbook.Worksheets["Reviews"], unit);
+                await ScreeningsCollect.Collect(package.Workbook.Worksheets["Screenings"], unit);
+                await ReservationsCollect.Collect(package.Workbook.Worksheets["Reservations"], unit);
+                await InvoicesCollect.Collect(package.Workbook.Worksheets["Invoices"], unit);
+                await SeatsCollect.Collect(package.Workbook.Worksheets["Seat"], unit);
+                await SeatReservationsCollect.Collect(package.Workbook.Worksheets["SeatReservations"], unit);
+                await GenreMoviesCollect.Collect(package.Workbook.Worksheets["GenreMovies"], unit);
+                await EventsCollect.Collect(package.Workbook.Worksheets["Events"], unit);
+                await NewsCollect.Collect(package.Workbook.Worksheets["News"], unit);
             }
 
             Console.WriteLine("Seed complete!");

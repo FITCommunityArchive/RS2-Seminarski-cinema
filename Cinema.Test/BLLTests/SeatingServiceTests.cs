@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.Threading.Tasks;
 
 namespace Cinema.Test.BLLTests
 {
@@ -27,10 +27,10 @@ namespace Cinema.Test.BLLTests
             };
 
         [Test, Order(1), TestCaseSource("sourceLists")]
-        public void GetScreeningSeating(int screeningId, List<int> reservedSeats)
+        public async Task GetScreeningSeating(int screeningId, List<int> reservedSeats)
         {
             //Arrange
-            Screening screening = unit.Screenings.Get(screeningId);
+            Screening screening = await unit.Screenings.GetAsync(screeningId);
             List<SeatingModel> seating = seatingService.GetScreeningSeating(screening);
 
             //Act

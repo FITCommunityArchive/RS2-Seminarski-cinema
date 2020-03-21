@@ -9,7 +9,6 @@ using Cinema.DTO.ViewModels.NowShowing;
 using Cinema.Services.Factory;
 using Cinema.Services.Helpers;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
 using System.Linq.Expressions;
 
 namespace Cinema.Web.Mvc.Controllers

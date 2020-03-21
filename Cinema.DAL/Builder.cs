@@ -85,7 +85,7 @@ namespace Cinema.DAL
             oldEnt.Hall = newEnt.Hall;
         }
 
-        private static void Update(SeatReservation oldEnt, SeatReservation newEnt)
+        private static void UpdateRelations(SeatReservation oldEnt, SeatReservation newEnt)
         {
             oldEnt.Reservation = newEnt.Reservation;
             oldEnt.Seat = newEnt.Seat;

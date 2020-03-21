@@ -4,12 +4,13 @@ using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Cinema.Seed.CollectMethods
 {
     public class PricingsCollect
     {
-        public static void Collect(ExcelWorksheet rawData, UnitOfWork unit)
+        public static async Task Collect(ExcelWorksheet rawData, UnitOfWork unit)
         {
             for (int row = 2; row <= rawData.Dimension.Rows; row++)
             {
@@ -19,9 +20,9 @@ namespace Cinema.Seed.CollectMethods
                     Price = rawData.ReadDecimal(row, 3)
                 };
 
-                unit.Pricings.Insert(pricing);
-                unit.Save();
+                await unit.Pricings.InsertAsync(pricing);                
             }
+            await unit.SaveAsync();
         }
     }
 }

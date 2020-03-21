@@ -13,7 +13,7 @@ namespace Cinema.Test.DALTests
     public class HallsTest : TestBase
     {
         [Test, Order(1)]
-        public async Task GetAllHalls()
+        public void GetAllHalls()
         {
             //Arrange
             int hallsCount = unit.Halls.Get().Count();
@@ -46,11 +46,11 @@ namespace Cinema.Test.DALTests
 
         [Test, Order(3)]
         [TestCase(5)]
-        public async Task GetNonExistingHall(int id)
+        public void GetNonExistingHall(int id)
         {
             //Try to get non-existing Hall
 
-            var ex = Assert.Throws<ArgumentException>(() => unit.Halls.GetAsync(id));
+            var ex = Assert.ThrowsAsync<ArgumentException>( async () => await unit.Halls.GetAsync(id));
 
             Assert.AreEqual(ex.Message, $"There is no object with id: {id} in the database");
         }
