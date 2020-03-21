@@ -35,9 +35,9 @@ namespace Cinema.Web.Mvc.Controllers
             return View(screenings);
         }
 
-        public ActionResult Details(int id)
+        public async Task<ActionResult> Details(int id)
         {
-            Movie movie = _unit.Movies.Get(id);
+            Movie movie = await _unit.Movies.GetAsync(id);
             //var movie = _unit.Movies.Get(id).Select(x => new NowShowingDetailsVM
             //{
             //    Title = x.Title,

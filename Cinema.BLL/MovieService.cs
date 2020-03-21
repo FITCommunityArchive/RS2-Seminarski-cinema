@@ -6,6 +6,7 @@ using Cinema.DTO.SpecificModels;
 using Cinema.Services.Factory;
 using Cinema.DAL.Data;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Cinema.BLL
 {
@@ -17,7 +18,7 @@ namespace Cinema.BLL
             _unit = unit;
         }
 
-        public List<Movie> GetComingSoonMovies(int quantity = 3)
+        public async Task<List<Movie>> GetComingSoonMovies(int quantity = 3)
         {
 
             //TODO:
@@ -25,7 +26,7 @@ namespace Cinema.BLL
             // problem is we don't have movies higher then 2019 year.
 
             //additionally we need quantity as well to give back 3 movies 
-            List<Movie> movies = _unit.Movies.Get(x => x.Year == 2019).ToList();
+            List<Movie> movies = await _unit.Movies.GetAsync(x => x.Year == 2019);
             return movies;
         }
     }
