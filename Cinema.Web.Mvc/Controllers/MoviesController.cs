@@ -102,5 +102,39 @@ namespace Cinema.Web.Mvc.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Route("NowShowing"), AllowAnonymous]
+        public IActionResult NowShowing()
+        {
+
+            var screenings = new NowShowingIndexVM
+            {
+                ScreeningsList = _unit.Screenings.Get().Select(x => new NowShowingIndexVM.Row
+                {
+                    MovieId = x.MovieId,
+                    MovieTitle = x.Movie.Title,
+                    MovieActors = x.Movie.Actors,
+                    HallName = x.Hall.Name,
+                    StartTime = x.DateAndTime
+                }).ToList()
+            };
+            return View(screenings);
+        }
+
+        [Route("NowShowing/Details/{id:int}"), AllowAnonymous]
+        public async Task<ActionResult> NowShowingDetailsAsync(int id)
+        {
+            Movie movie = await _unit.Movies.GetAsync(id);
+
+            var viewModel = movie.ToNowShowingIndexVM();
+            viewModel.ScreeningList = movie.Screenings.OrderBy(x=>x.DateAndTime).Select(x => new NowShowingDetailsVM.Row
+            {
+                HallName = x.Hall.Name,
+                Playing = x.DateAndTime,
+                HallId = x.Hall.Id
+            }).ToList();
+
+            return View(viewModel);
+        }
+
     }
 }

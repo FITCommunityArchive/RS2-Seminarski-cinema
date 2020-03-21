@@ -11,9 +11,11 @@ using Cinema.BLL;
 using Cinema.DAL.Data;
 using Cinema.Services.Factory;
 using Cinema.Domain.Entities;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Cinema.Web.Mvc.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -45,5 +47,6 @@ namespace Cinema.Web.Mvc.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
     }
 }
