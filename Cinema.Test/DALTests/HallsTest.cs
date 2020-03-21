@@ -35,10 +35,10 @@ namespace Cinema.Test.DALTests
 
         [Test, Order(2)]
         [TestCase(2)]
-        public void GetHallById(int id)
+        public async Task GetHallById(int id)
         {
             //Try to get Hall with id
-            Hall hall = unit.Halls.Get(id);       
+            Hall hall = await unit.Halls.GetAsync(id);       
 
             Assert.AreEqual("Movie Hall 2", hall.Name);            
         }
@@ -50,54 +50,54 @@ namespace Cinema.Test.DALTests
         {
             //Try to get non-existing Hall
 
-            var ex = Assert.Throws<ArgumentException>(() => unit.Halls.Get(id));
+            var ex = Assert.ThrowsAsync<ArgumentException>( async () => await unit.Halls.GetAsync(id));
 
             Assert.AreEqual(ex.Message, $"There is no object with id: {id} in the database");
         }
 
         [Test, Order(4)]
-        public void InsertHall()
+        public async Task InsertHall()
         {
             Hall hall = new Hall
             {
                 Name = "New Hall"
             };
 
-            unit.Halls.Insert(hall);
+            await unit.Halls.InsertAsync(hall);
             unit.Save();
 
             //id of the new hall will be 3
-            Hall newHall = unit.Halls.Get(3);
+            Hall newHall = await unit.Halls.GetAsync(3);
 
             Assert.AreEqual("New Hall", newHall.Name);
         }
 
         [Test, Order(5)]
-        public void ChangeHallName()
+        public async Task ChangeHallName()
         {
             //Try to change the hall 
             int id = 2;
 
-            Hall hall = unit.Halls.Get(id);
+            Hall hall = await unit.Halls.GetAsync(id);
             hall.Name = "New Hall";
 
-            unit.Halls.Update(hall, id);
+            await unit.Halls.UpdateAsync(hall, id);
             unit.Save();
 
             Assert.AreEqual("New Hall", hall.Name);
         }
 
         [Test, Order(6)]
-        public void DeleteHall()
+        public async Task DeleteHall()
         {
             //Try to delete the hall 
             int id = 2;
 
-            Hall hall = unit.Halls.Get(id); 
+            Hall hall = await unit.Halls.GetAsync(id); 
             
-            unit.Halls.Delete(hall);
+            await unit.Halls.DeleteAsync(hall.Id);
 
-            Hall hallAfterDelete = unit.Halls.Get(id);
+            Hall hallAfterDelete = await unit.Halls.GetAsync(id);
 
             Assert.AreEqual(true, hallAfterDelete.Deleted);
         }

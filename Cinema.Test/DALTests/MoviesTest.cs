@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Cinema.Test.DALTests
 {
@@ -26,10 +27,10 @@ namespace Cinema.Test.DALTests
 
         [Test, Order(2)]
         [TestCase(3)]
-        public void GetMovieById(int id)
+        public async Task GetMovieById(int id)
         {
             //Try to get Movie with id
-            Movie movie = unit.Movies.Get(id);
+            Movie movie = await unit.Movies.GetAsync(id);
 
             Assert.AreEqual("Black Widow", movie.Title);
         }
@@ -40,56 +41,54 @@ namespace Cinema.Test.DALTests
         public void GetNonExistingMovie(int id)
         {
             //Try to get non-existing Movie
-            var ex = Assert.Throws<ArgumentException>(() => unit.Movies.Get(id));
+            var ex = Assert.Throws<ArgumentException>(() => unit.Movies.GetAsync(id));
 
             Assert.AreEqual(ex.Message, $"There is no object with id: {id} in the database");
         }
 
         [Test, Order(4)]
-        public void InsertMovie()
+        public async Task InsertMovie()
         {
             Movie movie = new Movie
             {
                 Title = "New Movie"
             };
 
-            unit.Movies.Insert(movie);
-            unit.Save();
+            await unit.Movies.InsertAsync(movie);
+            await unit.SaveAsync();
 
             //Id of the new movie will be 13
-            Movie newMovie = unit.Movies.Get(13);
+            Movie newMovie = await unit.Movies.GetAsync(13);
 
             Assert.AreEqual("New Movie", newMovie.Title);
         }
 
         [Test, Order(5)]
-        public void ChangeMovieName()
+        public async Task ChangeMovieName()
         {
             //Try to change the movie 
             int id = 2;
 
-            Movie movie = unit.Movies.Get(id);
+            Movie movie = await unit.Movies.GetAsync(id);
             movie.Title = "New Movie";
 
-            unit.Movies.Update(movie, id);
+            await unit.Movies.UpdateAsync(movie, id);
             unit.Save();
 
-            Movie newMovie = unit.Movies.Get(id);
+            Movie newMovie = await unit.Movies.GetAsync(id);
 
             Assert.AreEqual("New Movie", newMovie.Title); ;
         }
 
         [Test, Order(6)]
-        public void DeleteMovie()
+        public async Task DeleteMovie()
         {
             //Try to change the movie 
             int id = 2;
 
-            Movie movie = unit.Movies.Get(id);
+            await unit.Movies.DeleteAsync(id);
 
-            unit.Movies.Delete(movie);
-
-            Movie movieAftedDelete = unit.Movies.Get(id);
+            Movie movieAftedDelete = await unit.Movies.GetAsync(id);
 
             Assert.AreEqual(true, movieAftedDelete.Deleted);
         }

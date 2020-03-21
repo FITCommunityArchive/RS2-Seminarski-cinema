@@ -26,6 +26,7 @@ namespace Cinema.Web.Mvc.Controllers
         public async Task<IActionResult> Index()
         {
             List<MovieIndexVM> movies = await _unit.Movies.Get().Select(x => x.ToIndexVM()).ToListAsync();
+
             return View(movies);            
         }
 
@@ -38,7 +39,7 @@ namespace Cinema.Web.Mvc.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Create()
+        public IActionResult Create()
         {
             MovieCreateVM model = new MovieCreateVM();
 
@@ -60,7 +61,7 @@ namespace Cinema.Web.Mvc.Controllers
 
             Movie movie = model.Create();
 
-            _unit.Movies.Insert(movie);
+            await _unit.Movies.InsertAsync(movie);
             await _unit.SaveAsync();
 
             return RedirectToAction(nameof(Details), new { id = movie.Id });
@@ -79,7 +80,7 @@ namespace Cinema.Web.Mvc.Controllers
         {
             Movie movie = model.Create();
 
-            _unit.Movies.Update(movie, model.Id);
+            await _unit.Movies.UpdateAsync(movie, model.Id);
             await _unit.SaveAsync();
 
             return RedirectToAction(nameof(Details), new { id = movie.Id });
@@ -95,10 +96,44 @@ namespace Cinema.Web.Mvc.Controllers
 
         public async Task<IActionResult> Delete(MovieIndexVM model)
         {
-            _unit.Movies.Delete(model.Id);
+            await _unit.Movies.DeleteAsync(model.Id);
             await _unit.SaveAsync();
 
             return RedirectToAction(nameof(Index));
+        }
+
+        [Route("NowShowing"), AllowAnonymous]
+        public IActionResult NowShowing()
+        {
+
+            var screenings = new NowShowingIndexVM
+            {
+                ScreeningsList = _unit.Screenings.Get().Select(x => new NowShowingIndexVM.Row
+                {
+                    MovieId = x.MovieId,
+                    MovieTitle = x.Movie.Title,
+                    MovieActors = x.Movie.Actors,
+                    HallName = x.Hall.Name,
+                    StartTime = x.DateAndTime
+                }).ToList()
+            };
+            return View(screenings);
+        }
+
+        [Route("NowShowing/Details/{id:int}"), AllowAnonymous]
+        public async Task<ActionResult> NowShowingDetailsAsync(int id)
+        {
+            Movie movie = await _unit.Movies.GetAsync(id);
+
+            var viewModel = movie.ToNowShowingIndexVM();
+            viewModel.ScreeningList = movie.Screenings.OrderBy(x=>x.DateAndTime).Select(x => new NowShowingDetailsVM.Row
+            {
+                HallName = x.Hall.Name,
+                Playing = x.DateAndTime,
+                HallId = x.Hall.Id
+            }).ToList();
+
+            return View(viewModel);
         }
 
     }

@@ -1,7 +1,6 @@
 ﻿using Cinema.Domain.Entities;
 using Cinema.DTO.ViewModels.Movies;
 using Cinema.DTO.ViewModels.Screenings;
-using Cinema.DTO.ViewModels.NowShowing;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
@@ -77,7 +76,8 @@ namespace Cinema.Services.Factory
                 GenreMovies = movie.GenreMovies,
                 Screenings = movie.Screenings,
                 Title = movie.Title,
-                Year = movie.Year
+                Year = movie.Year,
+                ScreeningList = new List<NowShowingDetailsVM.Row>()
             };
         }
 

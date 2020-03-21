@@ -4,25 +4,26 @@ using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Cinema.Seed.CollectMethods
 {
     public class ReservationsCollect
     {
-        public static void Collect(ExcelWorksheet rawData, UnitOfWork unit)
+        public static async Task Collect(ExcelWorksheet rawData, UnitOfWork unit)
         {
             for (int row = 2; row <= rawData.Dimension.Rows; row++)
             {
                 Reservation reservation = new Reservation
                 {
-                    User = unit.Users.Get(SeedUtilities.UsersDictionary[rawData.ReadInteger(row, 2)]),
-                    Screening = unit.Screenings.Get(rawData.ReadInteger(row, 3)),
+                    User = await unit.Users.GetAsync(SeedUtilities.UsersDictionary[rawData.ReadInteger(row, 2)]),
+                    Screening = await unit.Screenings.GetAsync(rawData.ReadInteger(row, 3)),
                 };
 
-                unit.Reservations.Insert(reservation);
-                unit.Save();
+                await unit.Reservations.InsertAsync(reservation);                
                 Console.WriteLine($"Inserted reservation nr. ${row}");
-            }            
+            }
+            await unit.SaveAsync();
         }
     }
 }

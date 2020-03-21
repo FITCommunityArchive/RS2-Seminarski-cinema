@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Cinema.DTO.ViewModels.NowShowing
+namespace Cinema.DTO.ViewModels.Movies
 {
     public class NowShowingDetailsVM
     {
@@ -17,5 +17,15 @@ namespace Cinema.DTO.ViewModels.NowShowing
         public IList<GenreMovie> GenreMovies { get; set; }
         public string VideoLink { get; set; }
         public IList<Screening> Screenings { get; set; }
+
+        public List<Row> ScreeningList { get; set; }
+
+        public class Row
+        {
+            public int HallId { get; set; }
+            public string HallName { get; set; }
+            public DateTime Playing { get; set; }
+
+        }
     }
 }

@@ -31,8 +31,6 @@ namespace Cinema.Seed.CollectMethods
                 await userManager.AddPasswordAsync(user, password);
                 await userManager.AddToRoleAsync(user, "role as string");
             }
-
-            adminId1 = user.Id;
         }
         
         

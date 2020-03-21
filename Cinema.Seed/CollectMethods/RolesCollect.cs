@@ -7,12 +7,13 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace Cinema.Seed.CollectMethods
 {
     public class RolesCollect
     {
-        public static void Collect(ExcelWorksheet rawData, UnitOfWork unit)
+        public static async Task Collect(ExcelWorksheet rawData, UnitOfWork unit)
         {
             var store = new RoleStore<ApplicationRole>(unit.Context);
             var normalizer = new UpperInvariantLookupNormalizer();
@@ -26,12 +27,12 @@ namespace Cinema.Seed.CollectMethods
                     Name = rawData.ReadString(row, 2)
                 };
 
-                var result = roleManager.CreateAsync(appRole).Result;
+                await roleManager.CreateAsync(appRole);
 
                 //context.Add(role);
                 //context.Add(appRole);                
                 //context.SaveChanges();
-                SeedUtilities.RolesDictionary.Add(oldId, unit.Roles.Get(appRole.Id).Id);
+                SeedUtilities.RolesDictionary.Add(oldId, (await unit.Roles.GetAsync(appRole.Id)).Id);
             }
         }
     }

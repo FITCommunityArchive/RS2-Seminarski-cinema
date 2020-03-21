@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Cinema.Test.DALTests
 {
@@ -26,10 +27,10 @@ namespace Cinema.Test.DALTests
 
         [Test, Order(2)]
         [TestCase(3)]
-        public void GetScreeningById(int id)
+        public async Task GetScreeningById(int id)
         {
             //Try to get Screening with id
-            Screening screening = unit.Screenings.Get(id);
+            Screening screening = await unit.Screenings.GetAsync(id);
 
             //Id of the Movie the screening is for
             Assert.AreEqual(7, screening.Movie.Id);
@@ -41,58 +42,56 @@ namespace Cinema.Test.DALTests
         public void GetNonExistingScreening(int id)
         {
             //Try to get non-existing Screening
-            var ex = Assert.Throws<ArgumentException>(() => unit.Screenings.Get(id));
+            var ex = Assert.Throws<ArgumentException>(() => unit.Screenings.GetAsync(id));
 
             Assert.AreEqual(ex.Message, $"There is no object with id: {id} in the database");
         }
 
         [Test, Order(4)]
-        public void InsertScreening()
+        public async Task InsertScreening()
         {
             Screening screening = new Screening
             {
-                Movie = unit.Movies.Get(1)
+                Movie = await unit.Movies.GetAsync(1)
             };
 
-            unit.Screenings.Insert(screening);
+            await unit.Screenings.InsertAsync(screening);
             unit.Save();
 
             //Id of the new screening will be 13
-            Screening newScreening = unit.Screenings.Get(13);
+            Screening newScreening = await unit.Screenings.GetAsync(13);
 
             Assert.AreEqual("Bomb the System", newScreening.Movie.Title);
         }
 
         [Test, Order(5)]
-        public void ChangeScreeningMovie()
+        public async Task ChangeScreeningMovie()
         {
             //Try to change the screening 
             int id = 2;
 
-            Screening screening = unit.Screenings.Get(id);
+            Screening screening = await unit.Screenings.GetAsync(id);
 
-            Movie newMovie = unit.Movies.Get(3);
+            Movie newMovie = await unit.Movies.GetAsync(3);
             screening.Movie = newMovie;
 
-            unit.Screenings.Update(screening, id);
+            await unit.Screenings.UpdateAsync(screening, id);
             unit.Save();
 
-            Screening newScreening = unit.Screenings.Get(id);
+            Screening newScreening = await unit.Screenings.GetAsync(id);
 
             Assert.AreEqual("Black Widow", newScreening.Movie.Title);
         }
 
         [Test, Order(6)]
-        public void DeleteScreening()
+        public async Task DeleteScreening()
         {
             //Try to change the screening 
             int id = 2;
 
-            Screening screening = unit.Screenings.Get(id);
+            await unit.Screenings.DeleteAsync(id);
 
-            unit.Screenings.Delete(screening);
-
-            Screening screeningAfterDelete = unit.Screenings.Get(id);
+            Screening screeningAfterDelete = await unit.Screenings.GetAsync(id);
             Assert.AreEqual(true, screeningAfterDelete.Deleted);
         }
     }
