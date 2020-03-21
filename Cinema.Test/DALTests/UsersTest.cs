@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Cinema.Test.DALTests
 {
@@ -13,7 +14,7 @@ namespace Cinema.Test.DALTests
     class UsersTest : TestBase
     {
         [Test, Order(1)]
-        public void GetUsers()
+        public async Task GetUsers()
         {
             int usersCount = unit.Users.Get().Count();
 

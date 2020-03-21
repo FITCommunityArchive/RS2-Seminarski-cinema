@@ -5,6 +5,8 @@ using Cinema.DTO.SpecificModels;
 using Cinema.Services.Factory;
 using Cinema.DAL.Data;
 using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Cinema.BLL
 {
@@ -18,10 +20,10 @@ namespace Cinema.BLL
 
         public Pricing PricingTier { get; set; }
 
-        public Pricing GetPricingTier(string tier)
+        public async Task<Pricing> GetPricingTierAsync(string tier)
         {
             //gets reserved seats first
-            PricingTier = _unit.Pricings.Get().FirstOrDefault(x => x.Name == tier);
+            PricingTier = await _unit.Pricings.Get().FirstOrDefaultAsync(x => x.Name == tier);
 
             return PricingTier;
         }

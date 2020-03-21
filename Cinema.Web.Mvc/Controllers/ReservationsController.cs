@@ -37,28 +37,28 @@ namespace Cinema.Web.Mvc.Controllers
         }
 
         [Route("/Reservations/{id:int?}/{date:long?}")]
-        public IActionResult Index(int id, long date)
+        public async Task<IActionResult> Index(int id, long date)
         {
 
             ViewData["successMessage"] = "";
             ViewData["errorMessage"] = "";
 
             var screeningDate = new DateTime(date);
-            var currentHall = _unit.Halls.Get(id);
+            var currentHall = await _unit.Halls.GetAsync(id);
             var currentScreening = currentHall.Screenings.FirstOrDefault(x => x.DateAndTime == screeningDate);
             var viewModel = new ReservationIndexVM
             {
-                CurrentHall = _unit.Halls.Get(id),
+                CurrentHall = await _unit.Halls.GetAsync(id),
                 CurrentScreening = currentHall.Screenings.FirstOrDefault(x => x.DateAndTime == screeningDate),
                 ScreeningSeats = _seatingService.GetScreeningSeating(currentScreening),
                 ReservedSeats = string.Join(",", _seatingService.ReservedSeats),
-                PricingTier = _pricingService.GetPricingTier("Premiere")
+                PricingTier = await _pricingService.GetPricingTierAsync("Premiere")
             };
 
             return View(viewModel);
         }
 
-        public IActionResult Checkout(int id, long date, decimal price, int quantity, string SelectedSeatsString)
+        public async Task<IActionResult> Checkout(int id, long date, decimal price, int quantity, string SelectedSeatsString)
         {
 
             if (SelectedSeatsString == null)
@@ -71,7 +71,7 @@ namespace Cinema.Web.Mvc.Controllers
             string userID = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             var screeningDate = new DateTime(date);
-            var currentHall = _unit.Halls.Get(id);
+            var currentHall = await _unit.Halls.GetAsync(id);
             var currentScreening = currentHall.Screenings.FirstOrDefault(x => x.DateAndTime == screeningDate);
 
             var invoice = new Invoice
@@ -82,13 +82,13 @@ namespace Cinema.Web.Mvc.Controllers
 
             Reservation reservation = new Reservation
             {
-                User = _unit.Users.Get(userID),
+                User = await _unit.Users.GetAsync(userID),
                 Screening = currentScreening,
             };
 
             reservation.Invoices.Add(invoice);
 
-            _unit.Reservations.Insert(reservation);
+            await _unit.Reservations.InsertAsync(reservation);
 
             _unit.Save();
 
@@ -96,13 +96,13 @@ namespace Cinema.Web.Mvc.Controllers
             {
                 SeatReservation seatReservation = new SeatReservation
                 {
-                    Seat = _unit.Seats.Get(seatId),
+                    Seat = await _unit.Seats.GetAsync(seatId),
                     Reservation = reservation
                 };
 
                 seatReservation.Seat.CreateSeatLabel();
 
-                _unit.SeatReservations.Insert(seatReservation);
+                await _unit.SeatReservations.InsertAsync(seatReservation);
             }
 
             _unit.Save();
