@@ -4,6 +4,7 @@ using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Cinema.Domain.Entities.Identity;
 
 namespace Cinema.Seed.CollectMethods
 {
@@ -12,7 +13,7 @@ namespace Cinema.Seed.CollectMethods
         public static void Collect(ExcelWorksheet rawData, UnitOfWork unit)
         {
             for (int row = 2; row <= rawData.Dimension.Rows; row++)
-            {
+            {                
                 Review review = new Review
                 {
                     Text = rawData.ReadString(row, 2),

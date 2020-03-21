@@ -14,11 +14,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Cinema.Web.Mvc.Controllers
 {
+    [Authorize(Roles = Roles.Administrator)]
     public class ScreeningsController : BaseController
     {
         public ScreeningsController(ApplicationDbContext context) : base(context) { }
 
-        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             List<ScreeningIndexVM> screenings = await _unit.Screenings.Get().Select(x => x.ToIndexVM()).ToListAsync();
@@ -33,12 +33,12 @@ namespace Cinema.Web.Mvc.Controllers
             return View(screening.ToIndexVM());
         }
 
-        [Authorize(Roles = Roles.Administrator)]
         [HttpGet]
         public async Task<IActionResult> Create()
         {
             ScreeningCreateVM model = new ScreeningCreateVM
             {
+                
                 Movies = new SelectList(_unit.Movies.Get(), "Id", "Title"),
                 Halls = new SelectList(_unit.Halls.Get(), "Id", "Name")
             };
@@ -46,7 +46,6 @@ namespace Cinema.Web.Mvc.Controllers
             return View(model);
         }
 
-        [Authorize(Roles = Roles.Administrator)]
         [HttpPost]
         public async Task<IActionResult> Create(ScreeningCreateVM model)
         {
@@ -58,7 +57,6 @@ namespace Cinema.Web.Mvc.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        [Authorize(Roles = Roles.Administrator)]
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
@@ -70,8 +68,6 @@ namespace Cinema.Web.Mvc.Controllers
             return View(screening.ToCreateVM(movies, halls));
         }
 
-        [Authorize(Roles = Roles.Administrator)]
-        [HttpPut]
         public async Task<IActionResult> Edit(ScreeningCreateVM model)
         {
             Screening screening = model.Create();
@@ -82,7 +78,6 @@ namespace Cinema.Web.Mvc.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        [Authorize(Roles = Roles.Administrator)]
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
@@ -91,8 +86,6 @@ namespace Cinema.Web.Mvc.Controllers
             return View(screening.ToIndexVM());
         }
 
-        [Authorize(Roles = Roles.Administrator)]
-        [HttpDelete]
         public async Task<IActionResult> Delete(ScreeningIndexVM model)
         {
             _unit.Screenings.Delete(model.Id);

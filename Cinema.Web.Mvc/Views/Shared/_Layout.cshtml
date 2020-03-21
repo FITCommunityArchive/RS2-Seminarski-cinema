@@ -9,7 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Cinema.Web</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/lib/jquery-seat-charts/jquery.seat-charts.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.6/css/mdb.min.css" />
+    @RenderSection("css", false)
     <link rel="stylesheet" href="~/css/site.css" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700|Work+Sans:400,700,900&display=swap" rel="stylesheet">
 
@@ -32,11 +33,12 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                            <li>@Html.ActionLink("Now Showing","Index","NowShowing")</li>  
+                        <li>@Html.ActionLink("Now Showing", "Index", "NowShowing")</li>
                         @if (SignInManager.IsSignedIn(User))
                         {
-                            <li>@Html.ActionLink("Movies","Index","Movies")</li>
-                            <li>@Html.ActionLink("Screenings", "Index", "Screenings")</li>  
+                            <li>@Html.ActionLink("Movies", "Index", "Movies")</li>
+                            <li>@Html.ActionLink("Screenings", "Index", "Screenings")</li>
+
                             <!-- <li><a asp-area="" asp-page="/Halles/Index">Halls</a></li> -->
                         }
                     </ul>
@@ -100,15 +102,15 @@
             </div>
         </div>
         <div class="container">
-            &copy; 2019 - Cinema.Web - @Html.ActionLink("Privacy","Privacy","Home") | <a asp-area="" asp-page="/Terms">Terms of Use</a>
+            &copy; 2019 - Cinema.Web - @Html.ActionLink("Privacy", "Privacy", "Home") | <a asp-area="" asp-page="/Terms">Terms of Use</a>
         </div>
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.6/js/mdb.min.js"></script>
     <script src="https://kit.fontawesome.com/60727c837d.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-    <script type="text/javascript" src="~/lib/jquery-seat-charts/jquery.seat-charts.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
     <script src="~/js/site.js" asp-append-version="true"></script>
 

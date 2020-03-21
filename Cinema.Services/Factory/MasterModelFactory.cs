@@ -1,4 +1,5 @@
 ﻿using Cinema.Domain.Entities;
+using Cinema.Domain.Entities.Identity;
 using Cinema.DTO;
 using System;
 using System.Collections.Generic;
@@ -57,9 +58,9 @@ namespace Cinema.Services.Factory
             };
         }
 
-        public static MasterModel CreateMaster(this User user)
+        public static IdentityMasterModel CreateMaster(this ApplicationUser user)
         {
-            return new MasterModel
+            return new IdentityMasterModel
             {
                 Id = user.Id,
                 Name = user.FullName

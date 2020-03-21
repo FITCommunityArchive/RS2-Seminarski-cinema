@@ -18,11 +18,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Cinema.Web.Mvc.Controllers
 {
+    [Authorize(Roles = Roles.Administrator)]
     public class MoviesController : BaseController
     {
         public MoviesController(ApplicationDbContext context) : base(context) { }
 
-        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             List<MovieIndexVM> movies = await _unit.Movies.Get().Select(x => x.ToIndexVM()).ToListAsync();
@@ -38,7 +38,6 @@ namespace Cinema.Web.Mvc.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = Roles.Administrator)]
         public async Task<IActionResult> Create()
         {
             MovieCreateVM model = new MovieCreateVM();
@@ -47,7 +46,6 @@ namespace Cinema.Web.Mvc.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = Roles.Administrator)]
         public async Task<IActionResult> Create(MovieCreateVM model)
         {
 
@@ -69,7 +67,6 @@ namespace Cinema.Web.Mvc.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = Roles.Administrator)]
         public async Task<IActionResult> Edit(int id)
         {
             
@@ -78,8 +75,6 @@ namespace Cinema.Web.Mvc.Controllers
             return View(movie.ToCreateVM());
         }
 
-        [HttpPut]
-        [Authorize(Roles = Roles.Administrator)]
         public async Task<IActionResult> Edit(MovieCreateVM model)
         {
             Movie movie = model.Create();
@@ -91,7 +86,6 @@ namespace Cinema.Web.Mvc.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = Roles.Administrator)]
         public async Task<IActionResult> Delete(int id)
         {
             Movie movie = await _unit.Movies.GetAsync(id);
@@ -99,8 +93,6 @@ namespace Cinema.Web.Mvc.Controllers
             return View(movie.ToIndexVM());
         }
 
-        [HttpDelete]
-        [Authorize(Roles = Roles.Administrator)]
         public async Task<IActionResult> Delete(MovieIndexVM model)
         {
             _unit.Movies.Delete(model.Id);

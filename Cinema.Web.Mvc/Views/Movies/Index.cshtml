@@ -3,12 +3,14 @@
 @{
     ViewData["Title"] = "Index";
 }
-    <section>
+    <section asp-authorize asp-roles="@Roles.Administrator">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h1>Index</h1>
-
+                    <h1>Movies</h1>
+                    <p>
+                        <a asp-action="Create">Add New</a>
+                    </p>
                     <table class="table">
                         <thead>
                             <tr>

@@ -89,12 +89,7 @@ namespace Cinema.Services.Factory
                 Text = review.Text,
                 Rating = review.Rating,
                 Movie = review.Movie.CreateMaster(),
-                User = review.User,
-                Country = movie.Country,
-                GenreMovies = movie.GenreMovies,
-                Screenings = movie.Screenings,
-                Title = movie.Title,
-                Year = movie.Year
+                User = review.User.CreateMaster()
             };
         }
     }

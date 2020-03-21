@@ -23,22 +23,22 @@ namespace Cinema.DAL
         private static void BuildRelations(Reservation entity, ApplicationDbContext context)
         {
             //if (entity.Image == null) entity.Image = "";
-            entity.User = context.Users.Find(entity.User.Id);
-            entity.Screening = context.Screenings.Find(entity.Screening.Id);
+            entity.User = context.Users.Find(entity.UserId);
+            entity.Screening = context.Screenings.Find(entity.ScreeningId);
         }
 
         private static void BuildRelations(Screening entity, ApplicationDbContext context)
         {
             //if (entity.Image == null) entity.Image = "";
-            entity.Hall = context.Halls.Find(entity.Hall.Id);
-            entity.Movie = context.Movies.Find(entity.Movie.Id);
+            entity.Hall = context.Halls.Find(entity.HallId);
+            entity.Movie = context.Movies.Find(entity.MovieId);
         }
 
         private static void BuildRelations(Review entity, ApplicationDbContext context)
         {
             //if (entity.Image == null) entity.Image = "";
-            entity.User = context.Users.Find(entity.User.Id);
-            entity.Movie = context.Movies.Find(entity.Movie.Id);
+            entity.User = context.Users.Find(entity.UserId);
+            entity.Movie = context.Movies.Find(entity.MovieId);
         }
 
         private static void BuildRelations(Seat entity, ApplicationDbContext context)
