@@ -41,7 +41,7 @@ namespace Cinema.Web.Mvc.Areas.Identity.Pages.Account.Manage
             }
 
             //UserReservations = _unit.Reservations.Get(x=>x.UserId == user.)
-            UserReservationsList = user.Reservations;
+            UserReservationsList = user.Reservations.Where(x=>x.IsCancelled == false).ToList();
 
             return Page();
         }
