@@ -77,7 +77,8 @@ namespace Cinema.Web.Mvc.Controllers
             var invoice = new Invoice
             {
                 Price = price,
-                TicketQuantity = quantity
+                TicketQuantity = quantity,
+                OfferTypeId = 1 //for now hardcode offer type ID to premiere as we get that on the beginning of the checkout.
             };
 
             Reservation reservation = new Reservation
@@ -85,19 +86,22 @@ namespace Cinema.Web.Mvc.Controllers
                 User = await _unit.Users.GetAsync(userID),
                 Screening = currentScreening,
             };
-
+            invoice.ReservationId = reservation.Id;
             reservation.Invoices.Add(invoice);
 
             await _unit.Reservations.InsertAsync(reservation);
 
             _unit.Save();
 
-            foreach (int seatId in selectedSeats)
+            foreach (int seatNumber in selectedSeats)
             {
+                var getSeatByNumber = _unit.Seats.Get().Where(x => x.SeatNumber == seatNumber && x.HallId == id).FirstOrDefault();
                 SeatReservation seatReservation = new SeatReservation
                 {
-                    Seat = await _unit.Seats.GetAsync(seatId),
-                    Reservation = reservation
+                    Seat = getSeatByNumber,
+                    Reservation = reservation,
+                    SeatId = getSeatByNumber.Id,
+                    ReservationId = reservation.Id
                 };
 
                 seatReservation.Seat.CreateSeatLabel();
