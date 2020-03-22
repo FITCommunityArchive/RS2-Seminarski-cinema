@@ -45,5 +45,15 @@ namespace Cinema.Services.Factory
             };
         }
 
+        public static Review Create(this ReviewUpdateVM review)
+        {
+            return new Review
+            {
+                Id = review.Id,
+                MovieId = review.Movie.Id,
+                UserId = review.UserId,
+                Rating = review.Rating
+            };
+        }
     }
 }

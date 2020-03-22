@@ -47,10 +47,11 @@ namespace Cinema.DAL.Repository
         public virtual async Task UpdateAsync(Entity newEnt, Key id)
         {
             Entity oldEnt = await GetAsync(id);
-            //ValidateUpdate(newEnt, id);
+
             if (oldEnt != null)
             {
-                _context.Update(newEnt);
+                _context.Entry(oldEnt).CurrentValues.SetValues(newEnt);
+                oldEnt.UpdateAsync(newEnt);
             }
         }
 

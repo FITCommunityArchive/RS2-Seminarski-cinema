@@ -76,8 +76,8 @@ namespace Cinema.DAL
 
         private static void UpdateRelations(Review oldEnt, Review newEnt)
         {
-            oldEnt.User = newEnt.User;
-            oldEnt.Movie = newEnt.Movie;
+            oldEnt.UserId = newEnt.UserId;
+            oldEnt.MovieId = newEnt.MovieId;
         }
 
         private static void UpdateRelations(Seat oldEnt, Seat newEnt)

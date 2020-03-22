@@ -1,5 +1,6 @@
 ﻿using Cinema.Domain.Entities;
 using Cinema.DTO.ViewModels.Movies;
+using Cinema.DTO.ViewModels.Reviews;
 using Cinema.DTO.ViewModels.Screenings;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -90,6 +91,17 @@ namespace Cinema.Services.Factory
                 Rating = review.Rating,
                 Movie = review.Movie.CreateMaster(),
                 User = review.User.CreateMaster()
+            };
+        }
+
+        public static ReviewUpdateVM ToUpdateVM(this Review review)
+        {
+            return new ReviewUpdateVM
+            {
+                Id = review.Id,
+                Rating = review.Rating,
+                Movie = review.Movie.CreateMaster(),
+                UserId = review.User.Id
             };
         }
     }

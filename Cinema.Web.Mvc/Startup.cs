@@ -48,7 +48,7 @@ namespace Cinema.Web.Mvc
                 .AddDefaultTokenProviders()*/
             services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
                     .AddRoles<ApplicationRole>()
-                    .AddEntityFrameworkStores<ApplicationDbContext>();
+                    .AddEntityFrameworkStores<ApplicationDbContext>();            
 
             services.AddControllersWithViews(config =>
             {
@@ -70,6 +70,7 @@ namespace Cinema.Web.Mvc
             });
 
             services.AddScoped<IAuthorizationHandler, IsAdminHandler>();
+            services.AddScoped<IAuthorizationHandler, ReviewAuthorizationHandler>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -88,12 +89,9 @@ namespace Cinema.Web.Mvc
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
-            app.UseRouting();
-
             app.UseAuthentication();
+            app.UseRouting();
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
