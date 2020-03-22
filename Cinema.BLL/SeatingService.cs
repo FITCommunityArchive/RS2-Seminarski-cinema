@@ -22,7 +22,7 @@ namespace Cinema.BLL
         public List<SeatingModel> GetScreeningSeating(Screening screening)
         {
             //gets reserved seats first
-            List<SeatingModel> screeningSeats = screening.Reservations.SelectMany(x => x.SeatReservations).ToList()
+            List<SeatingModel> screeningSeats = screening.Reservations.Where(x=>x.IsCancelled == false).SelectMany(x => x.SeatReservations).ToList()
                                                 .Select(x => x.Seat.CreateSeating(true)).ToList();
 
             //int row, col = 0;

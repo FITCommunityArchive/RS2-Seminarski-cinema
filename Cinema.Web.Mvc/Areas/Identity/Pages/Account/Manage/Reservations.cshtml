@@ -24,7 +24,7 @@
                     <li>@seatReservation.Seat.Label</li>
                 }
             </ul>
-            <a href="#" class="btn btn-danger btn-sm">Cancel Reservation</a>
+            <a asp-controller="Reservations" asp-action="CancelReservation" asp-route-id="@reservation.Id" class="btn btn-danger btn-sm">Cancel Reservation</a>
         </li>
         }
     </ul>
