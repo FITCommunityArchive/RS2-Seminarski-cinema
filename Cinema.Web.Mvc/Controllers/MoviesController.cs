@@ -11,6 +11,7 @@ using Cinema.Domain.Entities.Identity;
 using Cinema.DTO.ViewModels.Movies;
 using Cinema.Services.Factory;
 using Cinema.Services.Helpers;
+using Cinema.Web.Mvc.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -23,11 +24,56 @@ namespace Cinema.Web.Mvc.Controllers
     {
         public MoviesController(ApplicationDbContext context) : base(context) { }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder, string searchString, string currentFilter, int? pageNumber)
         {
-            List<MovieIndexVM> movies = await _unit.Movies.Get().Select(x => x.ToIndexVM()).ToListAsync();
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["TitleSortParm"] = String.IsNullOrEmpty(sortOrder) ? "title_desc" : "";
+            ViewData["DurationSortParm"] = sortOrder == "Duration" ? "duration_desc" : "Duration";
+            ViewData["YearSortParm"] = sortOrder == "Year" ? "year_desc" : "Year";
+            ViewData["CurrentFilter"] = searchString;
 
-            return View(movies);            
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            List<MovieIndexVM> movies = new List<MovieIndexVM>();
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                movies = await _unit.Movies.Get().Where(x => x.Title.Contains(searchString)).Select(x => x.ToIndexVM()).ToListAsync();
+            } else
+            {
+                movies = await _unit.Movies.Get().Select(x => x.ToIndexVM()).ToListAsync();
+            }
+            switch (sortOrder)
+            {
+                case "title_desc":
+                    movies = movies.OrderByDescending(s => s.Title).ToList();
+                    break;
+                case "Duration":
+                    movies = movies.OrderBy(s => s.Duration).ToList();
+                    break;
+                case "duration_desc":
+                    movies = movies.OrderByDescending(s => s.Duration).ToList();
+                    break;
+                case "Year":
+                    movies = movies.OrderBy(s => s.Year).ToList();
+                    break;
+                case "year_desc":
+                    movies = movies.OrderByDescending(s => s.Year).ToList();
+                    break;
+                default:
+                    movies = movies.OrderBy(s => s.Title).ToList();
+                    break;
+            }
+
+            //List<MovieIndexVM> movies = await _unit.Movies.Get().Select(x => x.ToIndexVM()).ToListAsync();
+            int pageSize = 10;
+            return View(PaginatedList<MovieIndexVM>.Create(movies.AsQueryable(), pageNumber ?? 1, pageSize));            
         }
 
         [AllowAnonymous]

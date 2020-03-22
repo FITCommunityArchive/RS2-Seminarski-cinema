@@ -176,6 +176,18 @@ footer {
     background:#fff;
 }
 
+.m-t-5 {
+    margin-top:5px!important;
+}
+
+.m-b-15 {
+    margin-bottom:15px!important;
+}
+
+.m-b-30 {
+    margin-bottom:30px!important;
+}
+
 .m-t-15 {
     margin-top:15px!important;
 }
