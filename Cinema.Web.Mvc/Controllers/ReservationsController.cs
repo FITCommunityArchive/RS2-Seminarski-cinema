@@ -22,6 +22,7 @@ using System.DrawingCore.Imaging;
 using System.Text;
 using System.Net.Mime;
 using Microsoft.AspNetCore.Hosting;
+using Cinema.DAL;
 
 namespace Cinema.Web.Mvc.Controllers
 {
@@ -77,27 +78,32 @@ namespace Cinema.Web.Mvc.Controllers
             var invoice = new Invoice
             {
                 Price = price,
-                TicketQuantity = quantity
+                TicketQuantity = quantity,
+                OfferTypeId = 1 //for now hardcode offer type ID to premiere as we get that on the beginning of the checkout.
             };
 
             Reservation reservation = new Reservation
             {
                 User = await _unit.Users.GetAsync(userID),
                 Screening = currentScreening,
+                IsCancelled = false
             };
-
+            invoice.ReservationId = reservation.Id;
             reservation.Invoices.Add(invoice);
 
             await _unit.Reservations.InsertAsync(reservation);
 
             _unit.Save();
 
-            foreach (int seatId in selectedSeats)
+            foreach (int seatNumber in selectedSeats)
             {
+                var getSeatByNumber = _unit.Seats.Get().Where(x => x.SeatNumber == seatNumber && x.HallId == id).FirstOrDefault();
                 SeatReservation seatReservation = new SeatReservation
                 {
-                    Seat = await _unit.Seats.GetAsync(seatId),
-                    Reservation = reservation
+                    Seat = getSeatByNumber,
+                    Reservation = reservation,
+                    SeatId = getSeatByNumber.Id,
+                    ReservationId = reservation.Id
                 };
 
                 seatReservation.Seat.CreateSeatLabel();
@@ -142,9 +148,9 @@ namespace Cinema.Web.Mvc.Controllers
             var body = "<html><body><p>Email From: {0} ({1})</p><p>Message:</p><p>{2}</p>"+ imageContent + "</body></html>";
             var message = new MailMessage();
             message.To.Add(new MailAddress("boris.huseincehajic@gmail.com"));  // replace with valid value 
-            message.From = new MailAddress("administrator@nutrialist.com");  // replace with valid value
+            message.From = new MailAddress("movienet@cloudronin.website");  // replace with valid value
             message.Subject = "Your Ticket for the movie " + currentScreening.Movie.Title;
-            message.Body = string.Format(body, "Cinema Website", "info@nutrialist.com", "Thank you for buying ticket from us");
+            message.Body = string.Format(body, "Cinema Website", "info@cloudronin.website", "Thank you for buying ticket from us");
             message.BodyEncoding = Encoding.GetEncoding("ISO-8859-1");
             //var imageToInline = new LinkedResource(ms, MediaTypeNames.Image.Jpeg);
             //imageToInline.ContentId = "MyImage";
@@ -167,11 +173,21 @@ namespace Cinema.Web.Mvc.Controllers
                 smtp.Port = 587;
                 smtp.EnableSsl = true;
                 //smtp.Send(message);
-                //return RedirectToAction("Sent");
             }
 
 
             return View("Thankyou", reservation);
+        }
+
+        public async Task<IActionResult> CancelReservation(int id)
+        {
+
+            var reservation = await _unit.Reservations.GetAsync(id);
+            reservation.IsCancelled = true;
+            _unit.Save();
+
+            return LocalRedirect("/Identity/Account/Manage/Reservations");
+            //return View("Index");
         }
     }
 }
