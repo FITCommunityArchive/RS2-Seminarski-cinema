@@ -2,12 +2,9 @@
 {
     public class ReviewCreateVM
     {
-        public ReviewCreateVM(int movieId)
-        {
-            MovieId = movieId;
-        }
-
-        public int MovieId { get; set; }
+        public MasterModel Movie { get; set; }
+        public string UserId { get; set; }
         public int Rating { get; set; }
+        public bool IsAlreadyRated { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Cinema.Domain.Entities;
 using Cinema.DTO.ViewModels.Movies;
+using Cinema.DTO.ViewModels.Reviews;
 using Cinema.DTO.ViewModels.Screenings;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,16 @@ namespace Cinema.Services.Factory
                 MovieId = screening.MovieId,
                 HallId = screening.HallId,
                 DateAndTime = screening.DateAndTime
+            };
+        }
+
+        public static Review Create(this ReviewCreateVM review)
+        {
+            return new Review
+            {
+                MovieId = review.Movie.Id,
+                UserId = review.UserId,
+                Rating = review.Rating
             };
         }
 

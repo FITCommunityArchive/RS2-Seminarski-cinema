@@ -59,18 +59,15 @@ namespace Cinema.Web.Mvc
 
                 config.Filters.Add(new AuthorizeFilter(policy));
             });
-            services.AddRazorPages();
+
+            services.AddRazorPages().AddRazorRuntimeCompilation();
+
 
             services.AddAuthorization(options =>
             {
                 options.AddPolicy(Policies.IsAdmin, policy =>
                     policy.Requirements.Add(new IsAdminRequirement()));
             });
-
-            //services.AddRazorPages().AddRazorPagesOptions(options =>
-            //{
-            //    options.Conventions.AuthorizeFolder("/Movies");
-            //});
 
             services.AddScoped<IAuthorizationHandler, IsAdminHandler>();
         }
@@ -81,7 +78,7 @@ namespace Cinema.Web.Mvc
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage();
+                app.UseDatabaseErrorPage();               
             }
             else
             {

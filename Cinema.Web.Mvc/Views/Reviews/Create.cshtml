@@ -4,19 +4,64 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<script src="~/js/addons/rating.js"></script>
+<section>
+    <div class="container">
+        <span id="rateMe1"></span>
+    </div>
+</section>
 
-<div class="container">
-    <span id="rateMe2" class="empty-stars"></span>
-</div>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
 
-<script src="js/addons/rating.js">
+                <h6>Rate @Model.Movie.Name</h6>
 
-//Rating Initialization
-$(document).ready(function() {
-  $('#rateMe2').mdbRate();
-});
-</script>
+                @if (Model.IsAlreadyRated)
+                {
+                    <p>You already rated this movie: </p>
 
-
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form class="rating-form" asp-controller="Reviews" asp-action="Create">
+                                <input asp-for="Movie.Id" hidden />
+                                <input asp-for="UserId" hidden />
+                                <div class="existing">
+                                    @for (int i = 10; i > 0; i--)
+                                    {
+                                        @if (Model.Rating >= i)
+                                        {
+                                            <input style="opacity: 1;" type="radio" value="@i" id="@($"rating-star-{i}")"><label for="@($"rating-star-{i}")"></label>
+                                        }
+                                        else
+                                        {
+                                            <input style="opacity: 0;" type="radio" value="@i" id="@($"rating-star-{i}")"><label for="@($"rating-star-{i}")"></label>
+                                        }
+                                    }
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form class="rating-form" asp-controller="Reviews" asp-action="Create">
+                                <input asp-for="Movie.Id" hidden />
+                                <input asp-for="UserId" hidden />
+                                <div class="rating">
+                                    @for (int i = 10; i > 0; i--)
+                                    {
+                                        <input asp-for="Rating" type="radio" value="@i" id="@($"rating-star-{i}")" onclick="this.form.submit();"><label for="@($"rating-star-{i}")"></label>
+                                    }
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
 
