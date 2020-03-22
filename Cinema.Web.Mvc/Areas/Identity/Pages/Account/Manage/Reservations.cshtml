@@ -1,16 +1,32 @@
-﻿@page 
+﻿@page
+
 @model Cinema.Web.Mvc.Areas.Identity.Pages.Account.Manage.ReservationsModel
 @{
     ViewData["Title"] = "Your Reservations";
     ViewData["ActivePage"] = ManageNavPages.Reservations;
 }
-    <h4>@ViewData["Title"]</h4>
-
-    <div>
-        <ul>
-            @foreach (var reservation in Model.UserReservationsList)
-            {
-                <li>@reservation.Screening.Movie.Title</li>
-            }
-        </ul>
-    </div>
+<h4>@ViewData["Title"]</h4>
+<div>
+    @if (!Model.UserReservationsList.Any())
+    {
+        <p>There are no reservations for this user.</p>
+    }
+    else
+    {
+    <ul class="list-unstyled user-reservations">
+        @foreach (var reservation in Model.UserReservationsList)
+        {
+        <li>
+            @reservation.Screening.Movie.Title | @reservation.Screening.Hall.Name | @reservation.Screening.DateAndTime.ToShortDateString() - @reservation.Screening.DateAndTime.ToShortTimeString()
+            <ul>
+                @foreach (var seatReservation in reservation.SeatReservations)
+                {
+                    <li>@seatReservation.Seat.Label</li>
+                }
+            </ul>
+            <a href="#" class="btn btn-danger btn-sm">Cancel Reservation</a>
+        </li>
+        }
+    </ul>
+    }
+</div>
