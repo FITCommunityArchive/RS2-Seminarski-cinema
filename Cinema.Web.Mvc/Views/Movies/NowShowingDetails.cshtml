@@ -14,9 +14,13 @@
     <div class="container">
         <div class="content-wrap">
             <div class="row">
-                <div class="col-md-12">
-                    <h1 class="h2">@Html.DisplayFor(model => model.Title)</h1>
+                <h1 class="h2">@Html.DisplayFor(model => model.Title)</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
                     <img id="movie-poster" class="pull-left" src="~/img/movie-poster.png" />
+                </div>
+                <div class="col-md-8">
                     <ul class="list-unstyled movie-info">
                         <li>
                             <span>@Html.DisplayNameFor(model => model.Title)</span>
@@ -54,7 +58,7 @@
 
                     Average rating <span class="badge">@Model.AverageRating</span>
                     <hr />
-                    Your rating: 
+                    Your rating:
 
                     @if (@Model.CurrentUserReviewId == null)
                     {
@@ -66,50 +70,51 @@
                     }
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div>
-                        <hr />
-                        <h4>Screening times</h4>
-                        <ul class="list-unstyled screening-list">
-                            @foreach (var item in Model.ScreeningList)
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div>
+                    <hr />
+                    <h4>Screening times</h4>
+                    <ul class="list-unstyled screening-list">
+                        @foreach (var item in Model.ScreeningList)
+                        {
+                            @if (first == true)
                             {
-                                @if (first == true)
-                                {
-                                    currentDate = item.Playing.Date;
-                                    first = false;
-                                    <strong>@item.Playing.ToShortDateString()</strong>
-                                    <br />
-                                }
-
-                                @if (item.Playing.Date != currentDate)
-                                {
-                                    <hr />
-                                    currentDate = item.Playing.Date;
-                                    <strong>@item.Playing.ToShortDateString()</strong>
-                                    <br />
-                                }
-                                <li>
-
-                                    <div>
-                                        @Html.DisplayFor(modelItem => item.HallName)<br />
-                                        @item.Playing.ToShortTimeString()<br />
-                                        @if (SignInManager.IsSignedIn(User))
-                                        {
-                                            <a asp-action="Index" asp-controller="Reservations" asp-route-id="@item.HallId" class="btn btn-success btn-sm" asp-route-date="@item.Playing.Ticks">Reserve</a>
-                                        }
-                                    </div>
-
-                                </li>
+                                currentDate = item.Playing.Date;
+                                first = false;
+                                <strong>@item.Playing.ToShortDateString()</strong>
+                                <br />
                             }
-                        </ul>
-                    </div>
-                    <div>
-                        <a asp-action="Index">Back to List</a>
-                    </div>
+
+                            @if (item.Playing.Date != currentDate)
+                            {
+                                <hr />
+                                currentDate = item.Playing.Date;
+                                <strong>@item.Playing.ToShortDateString()</strong>
+                                <br />
+                            }
+                            <li>
+
+                                <div>
+                                    @Html.DisplayFor(modelItem => item.HallName)<br />
+                                    @item.Playing.ToShortTimeString()<br />
+                                    @if (SignInManager.IsSignedIn(User))
+                                    {
+                                        <a asp-action="Index" asp-controller="Reservations" asp-route-id="@item.HallId" class="btn btn-success btn-sm" asp-route-date="@item.Playing.Ticks">Reserve</a>
+                                    }
+                                </div>
+
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <div>
+                    <a asp-action="Index">Back to List</a>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </section>
 
@@ -124,5 +129,11 @@
             }
         })
     });
+
+    $(document).ready(function () {
+            $('.rating-star-label').mouseover(function () {
+                $('.rating-star').prop('checked', false);
+            });
+     });
     </script>
 }
