@@ -88,7 +88,7 @@ namespace Cinema.Web.Mvc.Controllers
 
         [HttpPost]
         [Authorize(Roles = Roles.User)]
-        public async Task<IActionResult> Create(ReviewCreateVM model)
+        public async Task<IActionResult> Create(ReviewIndexVM model)
         {
             Review review = model.Create();
 
@@ -123,7 +123,7 @@ namespace Cinema.Web.Mvc.Controllers
         }
 
         [Authorize(Roles = Roles.User)]
-        public async Task<IActionResult> Edit(ReviewUpdateVM model)
+        public async Task<IActionResult> Edit(ReviewIndexVM model)
         {
             Review review = model.Create();
             var authorizationResult = await _authorizationService.AuthorizeAsync(User, review, OperationRequirements.Update);

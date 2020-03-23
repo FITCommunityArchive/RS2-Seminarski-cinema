@@ -17,8 +17,10 @@ namespace Cinema.DTO.ViewModels.Movies
         public IList<GenreMovie> GenreMovies { get; set; }
         public string VideoLink { get; set; }
         public IList<Screening> Screenings { get; set; }
-
         public List<Row> ScreeningList { get; set; }
+        public string AverageRating { get; set; }
+        public string NumberOfReviews { get; set; }
+        public int? CurrentUserReviewId { get; set; }
 
         public class Row
         {

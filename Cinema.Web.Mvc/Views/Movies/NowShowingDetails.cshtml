@@ -43,14 +43,27 @@
                             @Html.DisplayFor(model => model.Duration)
                         </li>
                         @*<li>
-                            <span>@Html.DisplayNameFor(model => model.GenreMovies)</span>
-                            @Html.DisplayFor(model => model.GenreMovies)
-                        </li>*@
+                                <span>@Html.DisplayNameFor(model => model.GenreMovies)</span>
+                                @Html.DisplayFor(model => model.GenreMovies)
+                            </li>*@
                         <li>
                             <span>@Html.DisplayNameFor(model => model.VideoLink)</span>
                             @Html.DisplayFor(model => model.VideoLink)
                         </li>
                     </ul>
+
+                    Average rating <span class="badge">@Model.AverageRating</span>
+                    <hr />
+                    Your rating: 
+
+                    @if (@Model.CurrentUserReviewId == null)
+                    {
+                        @await Component.InvokeAsync("Review", new { methodName = "Create", movieId = @Model.Id, reviewId = 0 })
+                    }
+                    else
+                    {
+                        @await Component.InvokeAsync("Review", new { methodName = "Update", movieId = @Model.Id, reviewId = @Model.CurrentUserReviewId })
+                    }
                 </div>
             </div>
             <div class="row">
@@ -65,14 +78,16 @@
                                 {
                                     currentDate = item.Playing.Date;
                                     first = false;
-                                    <strong>@item.Playing.ToShortDateString()</strong><br />
+                                    <strong>@item.Playing.ToShortDateString()</strong>
+                                    <br />
                                 }
 
                                 @if (item.Playing.Date != currentDate)
                                 {
                                     <hr />
                                     currentDate = item.Playing.Date;
-                                   <strong>@item.Playing.ToShortDateString()</strong><br />
+                                    <strong>@item.Playing.ToShortDateString()</strong>
+                                    <br />
                                 }
                                 <li>
 
@@ -99,7 +114,7 @@
 </section>
 
 @section Scripts {
-<script>
+    <script>
     jQuery(document).ready(function () {
         $.get("https://www.omdbapi.com/?apikey=f4ff906b&t=@Model.Title", function (data) {
             if (data.Poster != "N/A") {
@@ -109,5 +124,5 @@
             }
         })
     });
-</script>
+    </script>
 }

@@ -5,6 +5,7 @@ using Cinema.DTO.ViewModels.Screenings;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Cinema.Services.Factory
@@ -64,7 +65,7 @@ namespace Cinema.Services.Factory
             };
         }
 
-        public static NowShowingDetailsVM ToNowShowingIndexVM(this Movie movie)
+        public static NowShowingDetailsVM ToNowShowingIndexVM(this Movie movie, string currentUserId)
         {
             return new NowShowingDetailsVM
             {
@@ -78,6 +79,9 @@ namespace Cinema.Services.Factory
                 Screenings = movie.Screenings,
                 Title = movie.Title,
                 Year = movie.Year,
+                NumberOfReviews = movie.Reviews?.Count() > 0 ? movie.Reviews.Count().ToString() : "N/A",
+                AverageRating = movie.Reviews?.Count() > 0 ? movie.Reviews?.Average(x => x.Rating).ToString("#.##") : "N/A",
+                CurrentUserReviewId = movie.Reviews?.FirstOrDefault(x => x.UserId == currentUserId)?.Id,
                 ScreeningList = new List<NowShowingDetailsVM.Row>()
             };
         }

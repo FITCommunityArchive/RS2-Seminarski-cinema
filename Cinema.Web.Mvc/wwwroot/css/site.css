@@ -379,25 +379,23 @@ span.seatCharts-legendDescription {
 /* Star rating
 -------------------------------------------------- */
 
-.rating, .rating-uneditable {
-    position: absolute;
-    top: 50%;
-    left: 50%;
+.rating {
+    position: relative;
     transform: translate(-50%, -50%) rotateY(180deg);
-    display: flex;
+    display: inline-flex;
 }
 
-.rating input, .rating-uneditable input {
+.rating input {
     display: none;
 }
 
-.rating label, .rating-uneditable label {
+.rating label {
     display: block;
     cursor: pointer;
     width: 25px;
 }
 
-.rating label:before, .rating-uneditable label:before {
+.rating label:before {
     content: '\f005';
     font-family: fontAwesome;
     position: relative;
@@ -406,7 +404,7 @@ span.seatCharts-legendDescription {
     color: #101010;
 }
 
-.rating label:after, .rating-uneditable label:after {
+.rating label:after {
     content: '\f005';
     font-family: fontAwesome;
     position: absolute;
@@ -425,7 +423,4 @@ span.seatCharts-legendDescription {
     opacity: 1;
 }
 
-.rating-uneditable input:checked ~ label:after {
-    opacity: 1;
-}
 

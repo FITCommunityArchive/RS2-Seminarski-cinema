@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Cinema.Authorization;
 using Cinema.Authorization.Constants;
@@ -170,8 +171,9 @@ namespace Cinema.Web.Mvc.Controllers
         public async Task<ActionResult> NowShowingDetailsAsync(int id)
         {
             Movie movie = await _unit.Movies.GetAsync(id);
+            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            var viewModel = movie.ToNowShowingIndexVM();
+            var viewModel = movie.ToNowShowingIndexVM(userId);
             viewModel.ScreeningList = movie.Screenings.OrderBy(x=>x.DateAndTime).Select(x => new NowShowingDetailsVM.Row
             {
                 HallName = x.Hall.Name,
