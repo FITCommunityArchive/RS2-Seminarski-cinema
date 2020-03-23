@@ -150,21 +150,45 @@ namespace Cinema.Web.Mvc.Controllers
         }
 
         [Route("NowShowing"), AllowAnonymous]
-        public IActionResult NowShowing()
+        public IActionResult NowShowing(int? pageNumber, string? filterDate,string currentFilter)
         {
 
-            var screenings = new NowShowingIndexVM
+            DateTime DateFilter = Convert.ToDateTime(filterDate);
+            var dataWithDate = _unit.Screenings.Get().Where(s => s.DateAndTime.Date == DateFilter.Date);
+            ViewData["CurrentFilter"] = filterDate;
+
+            var screenings = new NowShowingIndexVM();
+
+            if (filterDate != null)
             {
-                ScreeningsList = _unit.Screenings.Get().Select(x => new NowShowingIndexVM.Row
+                pageNumber = 1;
+                screenings.ScreeningsList = _unit.Screenings.Get().Where(s => s.DateAndTime.Date == DateFilter.Date).Select(x => new NowShowingIndexVM.Row
                 {
                     MovieId = x.MovieId,
                     MovieTitle = x.Movie.Title,
                     MovieActors = x.Movie.Actors,
                     HallName = x.Hall.Name,
                     StartTime = x.DateAndTime
-                }).ToList()
-            };
-            return View(screenings);
+                }).ToList();
+                
+            }
+            else
+            {
+                filterDate = currentFilter;
+                screenings.ScreeningsList = _unit.Screenings.Get().Select(x => new NowShowingIndexVM.Row
+                {
+                    MovieId = x.MovieId,
+                    MovieTitle = x.Movie.Title,
+                    MovieActors = x.Movie.Actors,
+                    HallName = x.Hall.Name,
+                    StartTime = x.DateAndTime
+                }).ToList();
+                
+            }
+
+            
+            int pageSize = 12;
+            return View(PaginatedList<NowShowingIndexVM.Row>.Create(screenings.ScreeningsList.AsQueryable(), pageNumber ?? 1, pageSize));
         }
 
         [Route("NowShowing/Details/{id:int}"), AllowAnonymous]
