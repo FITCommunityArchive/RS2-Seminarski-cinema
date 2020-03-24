@@ -53,7 +53,6 @@ namespace Cinema.Web.Mvc.Controllers
             {
                 return new ChallengeResult();
             }
-
         }
 
         [HttpGet]
@@ -95,7 +94,7 @@ namespace Cinema.Web.Mvc.Controllers
             await _unit.Reviews.InsertAsync(review);
             await _unit.SaveAsync();
 
-            return RedirectToAction(nameof(ReviewsController.Details), new { reviewId = review.Id });
+            return ViewComponent("Review");
         }
 
         [HttpGet]
@@ -130,10 +129,10 @@ namespace Cinema.Web.Mvc.Controllers
 
             if (authorizationResult.Succeeded)
             {
-                await _unit.Reviews.UpdateAsync(review, model.Id);
+                await _unit.Reviews.UpdateAsync(review, model.ReviewId);
                 await _unit.SaveAsync();
 
-                return RedirectToAction(nameof(ReviewsController.Details), new { reviewId = model.Id });
+                return ViewComponent("Review");
             }
             else if (User.Identity.IsAuthenticated)
             {

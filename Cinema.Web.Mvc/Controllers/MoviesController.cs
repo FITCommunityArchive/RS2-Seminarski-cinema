@@ -9,7 +9,9 @@ using Cinema.Authorization.Constants;
 using Cinema.DAL.Data;
 using Cinema.Domain.Entities;
 using Cinema.Domain.Entities.Identity;
+using Cinema.DTO;
 using Cinema.DTO.ViewModels.Movies;
+using Cinema.DTO.ViewModels.Reviews;
 using Cinema.Services.Factory;
 using Cinema.Services.Helpers;
 using Cinema.Web.Mvc.Models;
@@ -198,12 +200,23 @@ namespace Cinema.Web.Mvc.Controllers
             string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             var viewModel = movie.ToNowShowingIndexVM(userId);
-            viewModel.ScreeningList = movie.Screenings.OrderBy(x=>x.DateAndTime).Select(x => new NowShowingDetailsVM.Row
+
+            if (viewModel.CurrentUserReview == null)
+            {
+                viewModel.CurrentUserReview = new ReviewIndexVM
+                {
+                    ReviewId = 0,
+                    Movie = movie.CreateMaster(),
+                    User = new IdentityMasterModel { Id = userId },
+                    Rating = 5
+                };
+            }
+/*            viewModel.ScreeningList = movie.Screenings.OrderBy(x=>x.DateAndTime).Select(x => new NowShowingDetailsVM.Row
             {
                 HallName = x.Hall.Name,
                 Playing = x.DateAndTime,
                 HallId = x.Hall.Id
-            }).ToList();
+            }).ToList();*/
 
             return View(viewModel);
         }

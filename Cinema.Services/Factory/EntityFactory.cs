@@ -60,7 +60,7 @@ namespace Cinema.Services.Factory
         {
             return new Review
             {
-                Id = review.Id,
+                Id = review.ReviewId,
                 MovieId = review.Movie.Id,
                 UserId = review.User.Id,
                 Rating = review.Rating

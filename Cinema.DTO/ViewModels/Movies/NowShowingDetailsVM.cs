@@ -1,4 +1,5 @@
 ﻿using Cinema.Domain.Entities;
+using Cinema.DTO.ViewModels.Reviews;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,7 +21,7 @@ namespace Cinema.DTO.ViewModels.Movies
         public List<Row> ScreeningList { get; set; }
         public string AverageRating { get; set; }
         public string NumberOfReviews { get; set; }
-        public int? CurrentUserReviewId { get; set; }
+        public ReviewIndexVM CurrentUserReview { get; set; }
 
         public class Row
         {

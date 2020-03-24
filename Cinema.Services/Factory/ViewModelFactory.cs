@@ -81,8 +81,13 @@ namespace Cinema.Services.Factory
                 Year = movie.Year,
                 NumberOfReviews = movie.Reviews?.Count() > 0 ? movie.Reviews.Count().ToString() : "N/A",
                 AverageRating = movie.Reviews?.Count() > 0 ? movie.Reviews?.Average(x => x.Rating).ToString("#.##") : "N/A",
-                CurrentUserReviewId = movie.Reviews?.FirstOrDefault(x => x.UserId == currentUserId)?.Id,
-                ScreeningList = new List<NowShowingDetailsVM.Row>()
+                CurrentUserReview = movie.Reviews?.SingleOrDefault(x => x.UserId == currentUserId)?.ToIndexVM(),
+                ScreeningList = movie.Screenings.OrderBy(x => x.DateAndTime).Select(x => new NowShowingDetailsVM.Row
+                {
+                    HallName = x.Hall.Name,
+                    Playing = x.DateAndTime,
+                    HallId = x.Hall.Id
+                }).ToList()
             };
         }
 
@@ -90,11 +95,11 @@ namespace Cinema.Services.Factory
         {
             return new ReviewIndexVM
             {
-                Id = review.Id,
+                ReviewId = review.Id,
                 Text = review.Text,
                 Rating = review.Rating,
-                Movie = review.Movie.CreateMaster(),
-                User = review.User.CreateMaster()
+                Movie = review.Movie?.CreateMaster(),
+                User = review.User?.CreateMaster()
             };
         }
 

@@ -23,22 +23,10 @@ namespace Cinema.Web.Mvc.ViewComponents
             _userManager = userManager;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync(string methodName, int movieId, int reviewId = 0)
+        public async Task<IViewComponentResult> InvokeAsync(string methodName, ReviewIndexVM review)
         {
-            Movie movie = await _unit.Movies.GetAsync(movieId);
-            ApplicationUser user = await _userManager.GetUserAsync(HttpContext.User);
-
-            ReviewIndexVM model = new ReviewIndexVM
-            {
-                Id = reviewId,
-                Movie = movie.CreateMaster(),
-                User = user.CreateMaster(),
-                Rating = 5
-            };
-
             ViewBag.Method = methodName;
-
-            return View(model);
+            return View(review);
         }
     }
 }

@@ -58,16 +58,21 @@
 
                     Average rating <span class="badge">@Model.AverageRating</span>
                     <hr />
-                    Your rating:
 
-                    @if (@Model.CurrentUserReviewId == null)
-                    {
-                        @await Component.InvokeAsync("Review", new { methodName = "Create", movieId = @Model.Id, reviewId = 0 })
-                    }
-                    else
-                    {
-                        @await Component.InvokeAsync("Review", new { methodName = "Update", movieId = @Model.Id, reviewId = @Model.CurrentUserReviewId })
-                    }
+                    <div asp-authorize asp-roles="@Roles.User">
+
+                        Your rating:
+
+                        @if (@Model.CurrentUserReview.ReviewId == 0)
+                        {
+                            @await Component.InvokeAsync("Review", new { methodName = "Create", review = @Model.CurrentUserReview })
+                        }
+                        else
+                        {
+                            @await Component.InvokeAsync("Review", new { methodName = "Edit", review = @Model.CurrentUserReview })
+                        }
+                    </div>
+
                 </div>
             </div>
         </div>

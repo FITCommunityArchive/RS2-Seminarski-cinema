@@ -15,7 +15,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <form class="rating-form" asp-controller="Reviews" asp-action="Edit">
-                            <input asp-for="Id" hidden />
+                            <input asp-for="ReviewId" hidden />
                             <input asp-for="Movie.Id" hidden />
                             <input asp-for="User.Id" hidden />
                             <div class="rating-uneditable">
@@ -28,7 +28,7 @@
                     </div>
                 </div>
 
-                <a asp-controller="Reviews" asp-action="Edit" asp-route-reviewId="@Model.Id" class="btn btn-info">Change rating</a>
+                <a asp-controller="Reviews" asp-action="Edit" asp-route-reviewId="@Model.ReviewId" class="btn btn-info">Change rating</a>
             </div>
         </div>
     </div>
