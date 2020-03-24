@@ -63,14 +63,16 @@
 
                         Your rating:
 
-                        @if (@Model.CurrentUserReview.ReviewId == 0)
-                        {
-                            @await Component.InvokeAsync("Review", new { methodName = "Create", review = @Model.CurrentUserReview })
-                        }
-                        else
-                        {
-                            @await Component.InvokeAsync("Review", new { methodName = "Edit", review = @Model.CurrentUserReview })
-                        }
+                        <div id="now-showing-details-rating-div">
+                            @if (@Model.CurrentUserReview.ReviewId == 0)
+                            {
+                                @await Component.InvokeAsync("Review", new { methodName = "Create", review = @Model.CurrentUserReview })
+                            }
+                            else
+                            {
+                                @await Component.InvokeAsync("Review", new { methodName = "Edit", review = @Model.CurrentUserReview })
+                            }
+                        </div>
                     </div>
 
                 </div>
@@ -139,6 +141,12 @@
             $('.rating-star-label').mouseover(function () {
                 $('.rating-star').prop('checked', false);
             });
-     });
+    });
+
+
+/*    $.get("/Reviews/Edit?reviewId=*/@Model.CurrentUserReview.ReviewId/*", function (response, status){
+        $("#now-showing-details-rating-div").html(response);
+    });*/
+
     </script>
 }

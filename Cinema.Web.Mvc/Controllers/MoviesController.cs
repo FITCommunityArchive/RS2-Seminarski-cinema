@@ -187,7 +187,6 @@ namespace Cinema.Web.Mvc.Controllers
                 }).ToList();
                 
             }
-
             
             int pageSize = 12;
             return View(PaginatedList<NowShowingIndexVM.Row>.Create(screenings.ScreeningsList.AsQueryable(), pageNumber ?? 1, pageSize));
@@ -211,12 +210,6 @@ namespace Cinema.Web.Mvc.Controllers
                     Rating = 5
                 };
             }
-/*            viewModel.ScreeningList = movie.Screenings.OrderBy(x=>x.DateAndTime).Select(x => new NowShowingDetailsVM.Row
-            {
-                HallName = x.Hall.Name,
-                Playing = x.DateAndTime,
-                HallId = x.Hall.Id
-            }).ToList();*/
 
             return View(viewModel);
         }

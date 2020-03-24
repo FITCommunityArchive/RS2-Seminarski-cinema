@@ -3,7 +3,7 @@
     ViewData["Title"] = "Default";
 }
 
-<form asp-controller="Reviews" asp-action="@ViewBag.Method">
+<form asp-controller="Reviews" asp-action="@ViewBag.Method" ajax-poziv="da" ajax-rezultat="now-showing-details-rating-div">
     <input asp-for="ReviewId" hidden />
     <input asp-for="Movie.Id" hidden />
     <input asp-for="User.Id" hidden />

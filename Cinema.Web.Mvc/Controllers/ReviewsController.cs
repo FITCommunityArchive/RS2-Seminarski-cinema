@@ -95,6 +95,7 @@ namespace Cinema.Web.Mvc.Controllers
             await _unit.SaveAsync();
 
             return ViewComponent("Review");
+            //return RedirectToAction("Details", "NowShowing", new { id = review.MovieId });
         }
 
         [HttpGet]
@@ -133,6 +134,7 @@ namespace Cinema.Web.Mvc.Controllers
                 await _unit.SaveAsync();
 
                 return ViewComponent("Review");
+                //return Redirect("/Reviews/Details?reviewId=" + review.Id); //(nameof(Details), new { reviewId = review.Id });
             }
             else if (User.Identity.IsAuthenticated)
             {

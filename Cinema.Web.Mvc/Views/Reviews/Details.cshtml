@@ -1,7 +1,6 @@
 ﻿@model Cinema.DTO.ViewModels.Reviews.ReviewIndexVM
 @{
     ViewData["Title"] = "Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <section>
@@ -18,7 +17,7 @@
                             <input asp-for="ReviewId" hidden />
                             <input asp-for="Movie.Id" hidden />
                             <input asp-for="User.Id" hidden />
-                            <div class="rating-uneditable">
+                            <div class="rating">
                                 @for (int i = 10; i > 0; i--)
                                 {
                                     <input asp-for="Rating" type="radio" value="@i" id="@($"rating-star-{i}")" disabled><label for="@($"rating-star-{i}")"></label>

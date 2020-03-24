@@ -15,14 +15,6 @@ namespace Cinema.Web.Mvc.ViewComponents
 {
     public class ReviewViewComponent : ViewComponent
     {
-        private UnitOfWork _unit;
-        private UserManager<ApplicationUser> _userManager;
-        public ReviewViewComponent(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
-        {
-            _unit = new UnitOfWork(context);
-            _userManager = userManager;
-        }
-
         public async Task<IViewComponentResult> InvokeAsync(string methodName, ReviewIndexVM review)
         {
             ViewBag.Method = methodName;
