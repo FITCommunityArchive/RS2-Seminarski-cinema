@@ -15,9 +15,8 @@ namespace Cinema.Web.Mvc.ViewComponents
 {
     public class ReviewViewComponent : ViewComponent
     {
-        public async Task<IViewComponentResult> InvokeAsync(string methodName, ReviewIndexVM review)
+        public async Task<IViewComponentResult> InvokeAsync(ReviewIndexVM review)
         {
-            ViewBag.Method = methodName;
             return View(review);
         }
     }

@@ -64,14 +64,7 @@
                         Your rating:
 
                         <div id="now-showing-details-rating-div">
-                            @if (@Model.CurrentUserReview.ReviewId == 0)
-                            {
-                                @await Component.InvokeAsync("Review", new { methodName = "Create", review = @Model.CurrentUserReview })
-                            }
-                            else
-                            {
-                                @await Component.InvokeAsync("Review", new { methodName = "Edit", review = @Model.CurrentUserReview })
-                            }
+                            @await Component.InvokeAsync("Review", new { review = @Model.CurrentUserReview })
                         </div>
                     </div>
 
@@ -144,18 +137,9 @@
     });
 
         function Update() {
-            var actionUrl = "/Reviews";
-
-            if ("@Model.CurrentUserReview.ReviewId" == 0) {
-                actionUrl += "/Create?movieId=@Model.Id";
-            } else {
-                actionUrl += "/Edit?reviewId=@Model.CurrentUserReview.ReviewId";
-            }
-
             $.ajax({
                 type: "POST",
-                //url: "/Reviews/Edit/@Model.CurrentUserReview.ReviewId",
-                url: actionUrl,
+                url: "/Reviews/Create/@Model.Id",
                 data: $("form").serialize(),
                 success: function (data) {
                     $("#now-showing-details-rating-div").html(data);

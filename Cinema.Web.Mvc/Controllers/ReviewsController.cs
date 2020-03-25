@@ -92,6 +92,20 @@ namespace Cinema.Web.Mvc.Controllers
         {
             Review review = model.Create();
 
+            Movie movie = await _unit.Movies.GetAsync(model.Movie.Id);
+
+            if (movie == null)
+            {
+                return RedirectToAction(nameof(HomeController.Error), nameof(HomeController));
+            }
+
+            Review existingReview = movie.Reviews.FirstOrDefault(x => x.UserId == model.User.Id);
+
+            if (existingReview != null)
+            {
+                return RedirectToAction(nameof(ReviewsController.Update), model);
+            }
+
             await _unit.Reviews.InsertAsync(review);
             await _unit.SaveAsync();
 
@@ -106,7 +120,7 @@ namespace Cinema.Web.Mvc.Controllers
                 Rating = review.Rating
             };
 
-            return ViewComponent("Review", new { methodName = "Edit", review = model  });
+            return ViewComponent("Review", new { review = model  });
         }
 
         [HttpGet]
@@ -134,17 +148,17 @@ namespace Cinema.Web.Mvc.Controllers
         }
 
         [Authorize(Roles = Roles.User)]
-        public async Task<IActionResult> Edit(ReviewIndexVM model)
+        public async Task<IActionResult> Update(ReviewIndexVM reviewModel)
         {
-            Review review = model.Create();
+            Review review = reviewModel.Create();
             var authorizationResult = await _authorizationService.AuthorizeAsync(User, review, OperationRequirements.Update);
 
             if (authorizationResult.Succeeded)
             {
-                await _unit.Reviews.UpdateAsync(review, model.ReviewId);
+                await _unit.Reviews.UpdateAsync(review, reviewModel.ReviewId);
                 await _unit.SaveAsync();
 
-                return ViewComponent("Review", new { methodName = "Edit", review = model });
+                return ViewComponent("Review", new { review = reviewModel });
             }
             else if (User.Identity.IsAuthenticated)
             {
