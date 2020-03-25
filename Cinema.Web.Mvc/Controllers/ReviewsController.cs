@@ -34,85 +34,31 @@ namespace Cinema.Web.Mvc.Controllers
             return View(reviews);
         }
 
-        [HttpGet]
         [Authorize(Roles = Roles.User)]
-        public async Task<IActionResult> Details(int reviewId)
+        public async Task<IActionResult> SetRating(ReviewIndexVM reviewModel)
         {
-            Review review = await _unit.Reviews.GetAsync(reviewId);
-            
-            var authorizationResult = await _authorizationService.AuthorizeAsync(User, review, OperationRequirements.Update);
-            
-            if (authorizationResult.Succeeded)
+            Review oldReview = await _unit.Reviews.GetAsync(reviewModel.ReviewId);
+            Review review = reviewModel.Create();
+
+            if (oldReview == null)
             {
-                return PartialView(review.ToIndexVM());
-            }
-            else if (User.Identity.IsAuthenticated)
-            {
-                return new ForbidResult();
+                await _unit.Reviews.InsertAsync(review);
             }
             else
             {
-                return new ChallengeResult();
-            }
-        }
-
-        [HttpGet]
-        [Authorize(Roles = Roles.User)]
-        public async Task<IActionResult> Create(int movieId)
-        {
-            Movie movie = await _unit.Movies.GetAsync(movieId);
-            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
-            if (movie == null)
-            {
-                return RedirectToAction(nameof(HomeController.Error), nameof(HomeController));
-            }
-
-            Review existingReview = movie.Reviews.FirstOrDefault(x => x.UserId == userId);
-
-            if (existingReview != null)
-            {
-                return RedirectToAction(nameof(ReviewsController.Edit), new { reviewId = existingReview.Id });
-            }
-            else
-            {
-                ReviewCreateVM model = new ReviewCreateVM
+                var authorizationResult = await _authorizationService.AuthorizeAsync(User, review, OperationRequirements.Update);
+                
+                if (authorizationResult.Succeeded)
                 {
-                    Movie = movie.CreateMaster(),
-                    UserId = userId,
-                    Rating = 1
-                };
-                return PartialView(model);
-            }
-        }
-
-        [HttpPost]
-        [Authorize(Roles = Roles.User)]
-        public async Task<IActionResult> Create(ReviewIndexVM model)
-        {
-            Review review = model.Create();
-
-            Movie movie = await _unit.Movies.GetAsync(model.Movie.Id);
-
-            if (movie == null)
-            {
-                return RedirectToAction(nameof(HomeController.Error), nameof(HomeController));
+                    await _unit.Reviews.UpdateAsync(review, reviewModel.ReviewId);
+                }
             }
 
-            Review existingReview = movie.Reviews.FirstOrDefault(x => x.UserId == model.User.Id);
-
-            if (existingReview != null)
-            {
-                return RedirectToAction(nameof(ReviewsController.Update), model);
-            }
-
-            await _unit.Reviews.InsertAsync(review);
             await _unit.SaveAsync();
 
             // This is in order to set the model with the new Id value
             review = await _unit.Reviews.GetAsync(review.Id);
-
-            model = new ReviewIndexVM
+            reviewModel = new ReviewIndexVM
             {
                 ReviewId = review.Id,
                 Movie = new MasterModel { Id = review.MovieId },
@@ -120,54 +66,8 @@ namespace Cinema.Web.Mvc.Controllers
                 Rating = review.Rating
             };
 
-            return ViewComponent("Review", new { review = model  });
-        }
+            return ViewComponent("Review", reviewModel);
 
-        [HttpGet]
-        [Authorize(Roles = Roles.User)]
-        public async Task<IActionResult> Edit(int reviewId)
-        {
-
-            Review review = await _unit.Reviews.GetAsync(reviewId);
-
-            var authorizationResult = await _authorizationService.AuthorizeAsync(User, review, OperationRequirements.Update);
-
-            if (authorizationResult.Succeeded)
-            {
-                ReviewUpdateVM model = review.ToUpdateVM();
-                return PartialView(model);
-            }
-            else if (User.Identity.IsAuthenticated)
-            {
-                return new ForbidResult();
-            }
-            else
-            {
-                return new ChallengeResult();
-            }           
-        }
-
-        [Authorize(Roles = Roles.User)]
-        public async Task<IActionResult> Update(ReviewIndexVM reviewModel)
-        {
-            Review review = reviewModel.Create();
-            var authorizationResult = await _authorizationService.AuthorizeAsync(User, review, OperationRequirements.Update);
-
-            if (authorizationResult.Succeeded)
-            {
-                await _unit.Reviews.UpdateAsync(review, reviewModel.ReviewId);
-                await _unit.SaveAsync();
-
-                return ViewComponent("Review", new { review = reviewModel });
-            }
-            else if (User.Identity.IsAuthenticated)
-            {
-                return new ForbidResult();
-            }
-            else
-            {
-                return new ChallengeResult();
-            }
         }
 
     }

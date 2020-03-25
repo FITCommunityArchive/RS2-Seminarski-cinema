@@ -27,10 +27,11 @@ namespace Cinema.DAL.Repository
         public virtual async Task<Entity> GetAsync(Key id)
         { 
             Entity entity = await _dbSet.FindAsync(id);
-            if (entity == null)
+            // Exception handling needs to be implemented here:
+/*            if (entity == null)
             {
                 throw new ArgumentException($"There is no object with id: {id} in the database");
-            }
+            }*/
             return entity;
         }
 

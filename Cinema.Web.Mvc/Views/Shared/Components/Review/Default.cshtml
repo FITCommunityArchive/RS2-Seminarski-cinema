@@ -3,7 +3,7 @@
     ViewData["Title"] = "Default";
 }
 
-<form asp-controller="Reviews" asp-action="Create">
+<form asp-controller="Reviews" asp-action="SetRating">
     <input asp-for="ReviewId" hidden />
     <input asp-for="Movie.Id" hidden />
     <input asp-for="User.Id" hidden />
@@ -15,3 +15,11 @@
         }
     </div>
 </form>
+
+<script>
+    $(document).ready(function () {
+            $('.rating-star-label').mouseover(function () {
+                $('.rating-star').prop('checked', false);
+            });
+    });
+</script>

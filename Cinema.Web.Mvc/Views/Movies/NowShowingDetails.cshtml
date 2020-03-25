@@ -130,16 +130,17 @@
         })
     });
 
-    $(document).ready(function () {
-            $('.rating-star-label').mouseover(function () {
-                $('.rating-star').prop('checked', false);
-            });
-    });
+        // This should be within the Default view of the Review View Component
+    /*    $(document).ready(function () {
+                $('.rating-star-label').mouseover(function () {
+                    $('.rating-star').prop('checked', false);
+                });
+        });*/
 
         function Update() {
             $.ajax({
                 type: "POST",
-                url: "/Reviews/Create/@Model.Id",
+                url: "/Reviews/SetRating/@Model.CurrentUserReview.ReviewId",
                 data: $("form").serialize(),
                 success: function (data) {
                     $("#now-showing-details-rating-div").html(data);
