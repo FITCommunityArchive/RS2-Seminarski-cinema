@@ -143,10 +143,25 @@
             });
     });
 
+        function Update() {
+            var actionUrl = "/Reviews";
 
-/*    $.get("/Reviews/Edit?reviewId=*/@Model.CurrentUserReview.ReviewId/*", function (response, status){
-        $("#now-showing-details-rating-div").html(response);
-    });*/
+            if ("@Model.CurrentUserReview.ReviewId" == 0) {
+                actionUrl += "/Create?movieId=@Model.Id";
+            } else {
+                actionUrl += "/Edit?reviewId=@Model.CurrentUserReview.ReviewId";
+            }
+
+            $.ajax({
+                type: "POST",
+                //url: "/Reviews/Edit/@Model.CurrentUserReview.ReviewId",
+                url: actionUrl,
+                data: $("form").serialize(),
+                success: function (data) {
+                    $("#now-showing-details-rating-div").html(data);
+                }
+            });
+    }
 
     </script>
 }

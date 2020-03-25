@@ -8,6 +8,7 @@ using Cinema.Authorization.Requirements;
 using Cinema.DAL.Data;
 using Cinema.Domain.Entities;
 using Cinema.Domain.Entities.Identity;
+using Cinema.DTO;
 using Cinema.DTO.ViewModels.Reviews;
 using Cinema.Services.Factory;
 using Microsoft.AspNetCore.Authorization;
@@ -94,8 +95,18 @@ namespace Cinema.Web.Mvc.Controllers
             await _unit.Reviews.InsertAsync(review);
             await _unit.SaveAsync();
 
-            return ViewComponent("Review");
-            //return RedirectToAction("Details", "NowShowing", new { id = review.MovieId });
+            // This is in order to set the model with the new Id value
+            review = await _unit.Reviews.GetAsync(review.Id);
+
+            model = new ReviewIndexVM
+            {
+                ReviewId = review.Id,
+                Movie = new MasterModel { Id = review.MovieId },
+                User = new IdentityMasterModel { Id = review.UserId },
+                Rating = review.Rating
+            };
+
+            return ViewComponent("Review", new { methodName = "Edit", review = model  });
         }
 
         [HttpGet]
@@ -133,8 +144,7 @@ namespace Cinema.Web.Mvc.Controllers
                 await _unit.Reviews.UpdateAsync(review, model.ReviewId);
                 await _unit.SaveAsync();
 
-                return ViewComponent("Review");
-                //return Redirect("/Reviews/Details?reviewId=" + review.Id); //(nameof(Details), new { reviewId = review.Id });
+                return ViewComponent("Review", new { methodName = "Edit", review = model });
             }
             else if (User.Identity.IsAuthenticated)
             {
