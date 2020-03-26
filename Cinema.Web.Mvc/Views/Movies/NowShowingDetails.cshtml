@@ -56,10 +56,10 @@
                         </li>
                     </ul>
 
-                    Average rating <span class="badge">@Model.AverageRating</span>
+                    Average rating <span id="now-showing-details-average-rating-div" class="badge">@Model.AverageRating</span>
                     <hr />
 
-                    <div asp-authorize asp-roles="@Roles.User">
+                    <div asp-authorize asp-roles="@($"{Roles.User},{Roles.Administrator}")">
 
                         Your rating:
 
@@ -144,9 +144,16 @@
                 data: $("form").serialize(),
                 success: function (data) {
                     $("#now-showing-details-rating-div").html(data);
+                    $.ajax({
+                            type: "GET",
+                            url: "/Movies/GetAverageRating",
+                            data: "id=@Model.Id",
+                            success: function (data) {
+                                $("#now-showing-details-average-rating-div").html(data);
+                            }
+                    })
                 }
-            });
-    }
-
+            })
+        }; 
     </script>
 }

@@ -18,6 +18,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Cinema.Web.Mvc.Controllers
 {
+    [Authorize]
     public class ReviewsController : BaseController
     {
         private readonly IAuthorizationService _authorizationService;
@@ -34,7 +35,7 @@ namespace Cinema.Web.Mvc.Controllers
             return View(reviews);
         }
 
-        [Authorize(Roles = Roles.User)]
+        [Authorize(Roles = Roles.User+","+Roles.Administrator)]
         public async Task<IActionResult> SetRating(ReviewIndexVM reviewModel)
         {
             Review oldReview = await _unit.Reviews.GetAsync(reviewModel.ReviewId);
@@ -67,7 +68,6 @@ namespace Cinema.Web.Mvc.Controllers
             };
 
             return ViewComponent("Review", reviewModel);
-
         }
 
     }

@@ -87,6 +87,21 @@ namespace Cinema.Web.Mvc.Controllers
             return View(movie.ToIndexVM());
         }
 
+        [AllowAnonymous]
+        public async Task<IActionResult> GetAverageRating(int id)
+        {
+            Movie movie = await _unit.Movies.GetAsync(id);
+
+            if (movie.Reviews.Count == 0)
+            {
+                return Ok("N/A");
+            }
+            else
+            {
+                return Ok(movie.Reviews.Average(x => x.Rating).ToString("##.00"));
+            }
+        }
+
         [HttpGet]
         public IActionResult Create()
         {
