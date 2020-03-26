@@ -5,6 +5,7 @@ using NUnit.Framework;
 using System;
 using System.IO;
 using Cinema.Seed.CollectMethods;
+using System.Threading.Tasks;
 
 namespace Cinema.Test
 {
@@ -15,7 +16,7 @@ namespace Cinema.Test
         protected UnitOfWork unit;
 
         [OneTimeSetUp]
-        public void SetUp()
+        public async Task SetUp()
         {
             string path = "\\TestDatabase\\TestCinemaDatabase.xlsx";
             string workingDirectory = Environment.CurrentDirectory;
@@ -28,7 +29,7 @@ namespace Cinema.Test
 
             context = new ApplicationDbContext(connectionString);
             unit = new UnitOfWork(context);
-            unit.SeedDatabase(file);
+            await unit.SeedDatabase(file);
         }
     }
 }
