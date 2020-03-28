@@ -1,5 +1,6 @@
 ﻿using Cinema.Domain.Entities;
 using Cinema.DTO.ViewModels.Movies;
+using Cinema.DTO.ViewModels.Reviews;
 using Cinema.DTO.ViewModels.Screenings;
 using System;
 using System.Collections.Generic;
@@ -34,5 +35,36 @@ namespace Cinema.Services.Factory
             };
         }
 
+        public static Review Create(this ReviewCreateVM review)
+        {
+            return new Review
+            {
+                MovieId = review.Movie.Id,
+                UserId = review.UserId,
+                Rating = review.Rating
+            };
+        }
+
+        public static Review Create(this ReviewUpdateVM review)
+        {
+            return new Review
+            {
+                Id = review.Id,
+                MovieId = review.Movie.Id,
+                UserId = review.UserId,
+                Rating = review.Rating
+            };
+        }
+
+        public static Review Create(this ReviewIndexVM review)
+        {
+            return new Review
+            {
+                Id = review.ReviewId,
+                MovieId = review.Movie.Id,
+                UserId = review.User.Id,
+                Rating = review.Rating
+            };
+        }
     }
 }

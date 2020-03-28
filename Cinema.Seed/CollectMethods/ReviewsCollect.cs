@@ -13,7 +13,7 @@ namespace Cinema.Seed.CollectMethods
         public static async Task Collect(ExcelWorksheet rawData, UnitOfWork unit)
         {
             for (int row = 2; row <= rawData.Dimension.Rows; row++)
-            {
+            {                
                 Review review = new Review
                 {
                     Text = rawData.ReadString(row, 2),

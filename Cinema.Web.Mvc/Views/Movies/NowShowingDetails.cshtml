@@ -14,9 +14,13 @@
     <div class="container">
         <div class="content-wrap">
             <div class="row">
-                <div class="col-md-12">
-                    <h1 class="h2">@Html.DisplayFor(model => model.Title)</h1>
+                <h1 class="h2">@Html.DisplayFor(model => model.Title)</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
                     <img id="movie-poster" class="pull-left" src="~/img/movie-poster.png" />
+                </div>
+                <div class="col-md-8">
                     <ul class="list-unstyled movie-info">
                         <li>
                             <span>@Html.DisplayNameFor(model => model.Title)</span>
@@ -43,63 +47,79 @@
                             @Html.DisplayFor(model => model.Duration)
                         </li>
                         @*<li>
-                            <span>@Html.DisplayNameFor(model => model.GenreMovies)</span>
-                            @Html.DisplayFor(model => model.GenreMovies)
-                        </li>*@
+                                <span>@Html.DisplayNameFor(model => model.GenreMovies)</span>
+                                @Html.DisplayFor(model => model.GenreMovies)
+                            </li>*@
                         <li>
                             <span>@Html.DisplayNameFor(model => model.VideoLink)</span>
                             @Html.DisplayFor(model => model.VideoLink)
                         </li>
                     </ul>
+
+                    Average rating <span id="now-showing-details-average-rating-div" class="badge">@Model.AverageRating</span>
+                    <hr />
+
+                    <div asp-authorize asp-roles="@($"{Roles.User},{Roles.Administrator}")">
+
+                        Your rating:
+
+                        <div id="now-showing-details-rating-div">
+                            @await Component.InvokeAsync("Review", new { review = @Model.CurrentUserReview })
+                        </div>
+                    </div>
+
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div>
-                        <hr />
-                        <h4>Screening times</h4>
-                        <ul class="list-unstyled screening-list">
-                            @foreach (var item in Model.ScreeningList)
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div>
+                    <hr />
+                    <h4>Screening times</h4>
+                    <ul class="list-unstyled screening-list">
+                        @foreach (var item in Model.ScreeningList)
+                        {
+                            @if (first == true)
                             {
-                                @if (first == true)
-                                {
-                                    currentDate = item.Playing.Date;
-                                    first = false;
-                                    <strong>@item.Playing.ToShortDateString()</strong><br />
-                                }
-
-                                @if (item.Playing.Date != currentDate)
-                                {
-                                    <hr />
-                                    currentDate = item.Playing.Date;
-                                   <strong>@item.Playing.ToShortDateString()</strong><br />
-                                }
-                                <li>
-
-                                    <div>
-                                        @Html.DisplayFor(modelItem => item.HallName)<br />
-                                        @item.Playing.ToShortTimeString()<br />
-                                        @if (SignInManager.IsSignedIn(User))
-                                        {
-                                            <a asp-action="Index" asp-controller="Reservations" asp-route-id="@item.HallId" class="btn btn-success btn-sm" asp-route-date="@item.Playing.Ticks">Reserve</a>
-                                        }
-                                    </div>
-
-                                </li>
+                                currentDate = item.Playing.Date;
+                                first = false;
+                                <strong>@item.Playing.ToShortDateString()</strong>
+                                <br />
                             }
-                        </ul>
-                    </div>
-                    <div>
-                        <a asp-action="Index">Back to List</a>
-                    </div>
+
+                            @if (item.Playing.Date != currentDate)
+                            {
+                                <hr />
+                                currentDate = item.Playing.Date;
+                                <strong>@item.Playing.ToShortDateString()</strong>
+                                <br />
+                            }
+                            <li>
+
+                                <div>
+                                    @Html.DisplayFor(modelItem => item.HallName)<br />
+                                    @item.Playing.ToShortTimeString()<br />
+                                    @if (SignInManager.IsSignedIn(User))
+                                    {
+                                        <a asp-action="Index" asp-controller="Reservations" asp-route-id="@item.HallId" class="btn btn-success btn-sm" asp-route-date="@item.Playing.Ticks">Reserve</a>
+                                    }
+                                </div>
+
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <div>
+                    <a asp-action="Index">Back to List</a>
                 </div>
             </div>
         </div>
     </div>
+    </div>
 </section>
 
 @section Scripts {
-<script>
+    <script>
     jQuery(document).ready(function () {
         $.get("https://www.omdbapi.com/?apikey=f4ff906b&t=@Model.Title", function (data) {
             if (data.Poster != "N/A") {
@@ -109,5 +129,31 @@
             }
         })
     });
-</script>
+
+        // This should be within the Default view of the Review View Component
+    /*    $(document).ready(function () {
+                $('.rating-star-label').mouseover(function () {
+                    $('.rating-star').prop('checked', false);
+                });
+        });*/
+
+        function Update() {
+            $.ajax({
+                type: "POST",
+                url: "/Reviews/SetRating/@Model.CurrentUserReview.ReviewId",
+                data: $("form").serialize(),
+                success: function (data) {
+                    $("#now-showing-details-rating-div").html(data);
+                    $.ajax({
+                            type: "GET",
+                            url: "/Movies/GetAverageRating",
+                            data: "id=@Model.Id",
+                            success: function (data) {
+                                $("#now-showing-details-average-rating-div").html(data);
+                            }
+                    })
+                }
+            })
+        }; 
+    </script>
 }
