@@ -1,0 +1,25 @@
+﻿@model Cinema.DTO.ViewModels.Reviews.ReviewIndexVM
+@{
+    ViewData["Title"] = "Default";
+}
+
+<form asp-controller="Reviews" asp-action="SetRating">
+    <input asp-for="ReviewId" hidden />
+    <input asp-for="Movie.Id" hidden />
+    <input asp-for="User.Id" hidden />
+
+    <div class="rating form-group">
+        @for (int i = 10; i > 0; i--)
+        {
+            <input asp-for="Rating" type="radio" value="@i" id="@($"rating-star-{i}")" onclick="Update();" class="form-control rating-star"><label class="rating-star-label" for="@($"rating-star-{i}")"></label>
+        }
+    </div>
+</form>
+
+<script>
+    $(document).ready(function () {
+            $('.rating-star-label').mouseover(function () {
+                $('.rating-star').prop('checked', false);
+            });
+    });
+</script>

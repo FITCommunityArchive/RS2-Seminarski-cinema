@@ -48,7 +48,7 @@ namespace Cinema.Web.Mvc
                 .AddDefaultTokenProviders()*/
             services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
                     .AddRoles<ApplicationRole>()
-                    .AddEntityFrameworkStores<ApplicationDbContext>();
+                    .AddEntityFrameworkStores<ApplicationDbContext>();            
 
             services.AddControllersWithViews(config =>
             {
@@ -59,7 +59,9 @@ namespace Cinema.Web.Mvc
 
                 config.Filters.Add(new AuthorizeFilter(policy));
             });
-            services.AddRazorPages();
+
+            services.AddRazorPages().AddRazorRuntimeCompilation();
+
 
             services.AddAuthorization(options =>
             {
@@ -67,12 +69,8 @@ namespace Cinema.Web.Mvc
                     policy.Requirements.Add(new IsAdminRequirement()));
             });
 
-            //services.AddRazorPages().AddRazorPagesOptions(options =>
-            //{
-            //    options.Conventions.AuthorizeFolder("/Movies");
-            //});
-
             services.AddScoped<IAuthorizationHandler, IsAdminHandler>();
+            services.AddScoped<IAuthorizationHandler, ReviewAuthorizationHandler>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -81,7 +79,7 @@ namespace Cinema.Web.Mvc
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage();
+                app.UseDatabaseErrorPage();               
             }
             else
             {
@@ -91,12 +89,9 @@ namespace Cinema.Web.Mvc
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
-            app.UseRouting();
-
             app.UseAuthentication();
+            app.UseRouting();
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
