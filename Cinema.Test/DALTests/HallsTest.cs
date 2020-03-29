@@ -56,13 +56,13 @@ namespace Cinema.Test.DALTests
 
         [Test, Order(3)]
         [TestCase(5)]
-        public void GetNonExistingHall(int id)
+        public async Task GetNonExistingHall(int id)
         {
             //Try to get non-existing Hall
 
-            var ex = Assert.ThrowsAsync<ArgumentException>(async () => await unit.Halls.GetAsync(id));
+            var result = await unit.Halls.GetAsync(id);
 
-            Assert.AreEqual(ex.Message, $"There is no object with id: {id} in the database");
+            Assert.IsNull(result);
         }
 
         [Test, Order(4)]
@@ -116,8 +116,8 @@ namespace Cinema.Test.DALTests
             await unit.Halls.DeleteAsync(hallId);
             await unit.SaveAsync();
 
-            var deletedHall = unit.Halls.GetAsync(hallId);
-            Assert.IsNull(deletedHall);
+            Hall deletedHall = await unit.Halls.GetAsync(hallId);
+            Assert.True(deletedHall.Deleted);
         }
     }
 }
