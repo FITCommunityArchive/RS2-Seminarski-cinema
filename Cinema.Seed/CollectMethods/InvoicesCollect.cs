@@ -25,8 +25,8 @@ namespace Cinema.Seed.CollectMethods
 
                 await unit.Invoices.InsertAsync(invoice);                
                 Console.WriteLine($"Inserted invoice nr. ${row}");
+                await unit.SaveAsync();
             }
-            await unit.SaveAsync();
         }
     }
 }

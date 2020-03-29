@@ -28,8 +28,8 @@ namespace Cinema.Seed.CollectMethods
 
                 await unit.Movies.InsertAsync(movie);                
                 Console.WriteLine($"Inserted movie nr. ${row}");
-            }
-            await unit.SaveAsync();
+                await unit.SaveAsync();
+            }  
         }
     }
 }

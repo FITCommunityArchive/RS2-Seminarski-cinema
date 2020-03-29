@@ -64,14 +64,14 @@ namespace Cinema.DAL
 
         private static void UpdateRelations(Reservation oldEnt, Reservation newEnt)
         {
-            oldEnt.User = newEnt.User;
-            oldEnt.Screening = newEnt.Screening;
+            oldEnt.UserId = newEnt.UserId;
+            oldEnt.ScreeningId = newEnt.ScreeningId;
         }
 
         private static void UpdateRelations(Screening oldEnt, Screening newEnt)
         {
-            oldEnt.Hall = newEnt.Hall;
-            oldEnt.Movie = newEnt.Movie;
+            oldEnt.HallId = newEnt.HallId;
+            oldEnt.MovieId = newEnt.MovieId;
         }
 
         private static void UpdateRelations(Review oldEnt, Review newEnt)
@@ -82,13 +82,13 @@ namespace Cinema.DAL
 
         private static void UpdateRelations(Seat oldEnt, Seat newEnt)
         {
-            oldEnt.Hall = newEnt.Hall;
+            oldEnt.HallId = newEnt.HallId;
         }
 
         private static void UpdateRelations(SeatReservation oldEnt, SeatReservation newEnt)
         {
-            oldEnt.Reservation = newEnt.Reservation;
-            oldEnt.Seat = newEnt.Seat;
+            oldEnt.ReservationId = newEnt.ReservationId;
+            oldEnt.SeatId = newEnt.SeatId;
         }
 
 

@@ -20,9 +20,9 @@ namespace Cinema.Seed.CollectMethods
                     Price = rawData.ReadDecimal(row, 3)
                 };
 
-                await unit.Pricings.InsertAsync(pricing);                
+                await unit.Pricings.InsertAsync(pricing);
+                await unit.SaveAsync();
             }
-            await unit.SaveAsync();
         }
     }
 }

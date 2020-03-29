@@ -61,7 +61,6 @@ namespace Cinema.Test.DALTests
             //Try to get non-existing Hall
 
             var result = await unit.Halls.GetAsync(id);
-
             Assert.IsNull(result);
         }
 

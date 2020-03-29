@@ -20,9 +20,9 @@ namespace Cinema.Seed.CollectMethods
                     Genre = await unit.Genres.GetAsync(rawData.ReadInteger(row, 3))
                 };
 
-                await unit.GenreMovies.InsertAsync(genreMovie);                
+                await unit.GenreMovies.InsertAsync(genreMovie);
+                await unit.SaveAsync();
             }
-            await unit.SaveAsync();
         }
     }
 }

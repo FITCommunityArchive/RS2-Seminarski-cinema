@@ -23,8 +23,8 @@ namespace Cinema.Seed.CollectMethods
 
                 await unit.Screenings.InsertAsync(screening);                
                 Console.WriteLine($"Inserted screening nr. ${row}");
+                await unit.SaveAsync();
             }
-            await unit.SaveAsync();
         }
     }
 }

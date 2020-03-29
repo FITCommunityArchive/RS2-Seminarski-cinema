@@ -25,9 +25,9 @@ namespace Cinema.Seed.CollectMethods
                     Type = await unit.EventTypes.GetAsync(rawData.ReadInteger(row, 8))
                 };
 
-                await unit.Events.InsertAsync(cinemaEvent);                
+                await unit.Events.InsertAsync(cinemaEvent);
+                await unit.SaveAsync();
             }
-            await unit.SaveAsync();
         }
     }
 }

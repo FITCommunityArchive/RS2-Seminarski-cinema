@@ -41,10 +41,10 @@ namespace Cinema.Test.DALTests
 
         [Test, Order(3)]
         [TestCase(100)]
-        public void GetNonExistingGenreMovie(int id)
+        public async Task GetNonExistingGenreMovie(int id)
         {
             //Try to get non-existing GenreMovie
-            var result = unit.GenreMovies.GetAsync(id);
+            var result = await unit.GenreMovies.GetAsync(id);
 
             Assert.IsNull(result);
         }
