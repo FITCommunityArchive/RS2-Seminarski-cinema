@@ -21,9 +21,9 @@ namespace Cinema.Seed.CollectMethods
                     NumberOfRows = rawData.ReadInteger(row, 4)
                 };
 
-                await unit.Halls.InsertAsync(hall);                
+                await unit.Halls.InsertAsync(hall);
+                await unit.SaveAsync();
             }
-            await unit.SaveAsync();
         }
     }
 }

@@ -16,7 +16,6 @@ namespace Cinema.Domain.Entities
         public virtual Reservation Reservation { get; set; }
         //should be calculated from count of SeatReservations in Reservation
         public int TicketQuantity { get; set; }
-
         public int OfferTypeId { get; set; }
         public virtual Pricing OfferType { get; set; }        
         public decimal Price { get; set; }        

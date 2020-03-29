@@ -1,8 +1,11 @@
-﻿using Cinema.Domain.Entities;
+﻿using Cinema.DAL.Data;
+using Cinema.Domain.Entities;
+using Cinema.Seed.CollectMethods;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,12 +41,12 @@ namespace Cinema.Test.DALTests
 
         [Test, Order(3)]
         [TestCase(100)]
-        public void GetNonExistingGenreMovie(int id)
+        public async Task GetNonExistingGenreMovie(int id)
         {
             //Try to get non-existing GenreMovie
-            var ex = Assert.Throws<ArgumentException>(() => unit.GenreMovies.GetAsync(id));
+            var result = await unit.GenreMovies.GetAsync(id);
 
-            Assert.AreEqual(ex.Message, $"There is no object with id: {id} in the database");
+            Assert.IsNull(result);
         }
 
         [Test, Order(4)]
@@ -61,7 +64,9 @@ namespace Cinema.Test.DALTests
             //Id of the new genreMovie will be 6
             GenreMovie newGenreMovie = await unit.GenreMovies.GetAsync(6);
 
-            Assert.AreEqual("Bomb the System", newGenreMovie.Movie.Title);
+            Assert.NotNull(newGenreMovie);
+            Assert.NotNull(newGenreMovie.Movie.Title);
+            Assert.NotNull(newGenreMovie.Genre.Name);
         }
 
         [Test, Order(5)]
@@ -85,8 +90,7 @@ namespace Cinema.Test.DALTests
 
         [Test, Order(6)]
         public async Task DeleteGenreMovie()
-        {
-            //Try to change the genreMovie 
+        {            
             int id = 2;
 
             await unit.GenreMovies.DeleteAsync(id);

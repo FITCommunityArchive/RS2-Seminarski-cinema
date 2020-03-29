@@ -1,4 +1,5 @@
 ﻿using Cinema.Domain.Entities;
+using Cinema.DTO.SpecificModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,6 +21,11 @@ namespace Cinema.BLL
             return (seat.SeatNumber - 1) / seat.Hall.NumberOfColumns;
         }
 
+        public static int GetSeatRow(this SeatingModel seat, Hall hall)
+        {
+            return (seat.SeatNumber - 1) / hall.NumberOfColumns;
+        }
+
         public static int GetSeatColumn(this Seat seat)
         {
             if (seat.SeatNumber % seat.Hall.NumberOfColumns == 0)
@@ -29,6 +35,18 @@ namespace Cinema.BLL
             else
             {
                 return seat.SeatNumber % seat.Hall.NumberOfColumns;
+            }
+        }
+
+        public static int GetSeatColumn(this SeatingModel seat, Hall hall)
+        {
+            if (seat.SeatNumber % hall.NumberOfColumns == 0)
+            {
+                return hall.NumberOfColumns;
+            }
+            else
+            {
+                return seat.SeatNumber % hall.NumberOfColumns;
             }
         }
     }

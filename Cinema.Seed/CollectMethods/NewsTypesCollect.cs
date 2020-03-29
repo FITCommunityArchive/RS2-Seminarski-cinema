@@ -19,9 +19,9 @@ namespace Cinema.Seed.CollectMethods
                     Name = rawData.ReadString(row, 2)
                 };
 
-                await unit.NewsTypes.InsertAsync(newsType);                
+                await unit.NewsTypes.InsertAsync(newsType);
+                await unit.SaveAsync();
             }
-            await unit.SaveAsync();
         }
     }
 }

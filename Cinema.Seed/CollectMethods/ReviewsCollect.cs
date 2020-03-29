@@ -22,9 +22,9 @@ namespace Cinema.Seed.CollectMethods
                     Movie = await unit.Movies.GetAsync(rawData.ReadInteger(row, 5))
                 };
 
-                await unit.Reviews.InsertAsync(review);                
+                await unit.Reviews.InsertAsync(review);
+                await unit.SaveAsync();
             }
-            await unit.SaveAsync();
         }
     }
 }

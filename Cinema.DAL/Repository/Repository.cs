@@ -68,8 +68,10 @@ namespace Cinema.DAL.Repository
                 {
                     Delete(entity);
                 }
-
-                throw new DependentObjectsPresentException();
+                else
+                {
+                    throw new DependentObjectsPresentException();
+                }
             }
         }
     }

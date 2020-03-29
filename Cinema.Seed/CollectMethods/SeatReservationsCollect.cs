@@ -22,8 +22,8 @@ namespace Cinema.Seed.CollectMethods
 
                 await unit.SeatReservations.InsertAsync(seatReservation);
                 Console.WriteLine($"Inserted seat reservation nr. ${row}");
-            }
-            await unit.SaveAsync();
+                await unit.SaveAsync();
+            }            
         }
     }
 }
