@@ -12,11 +12,11 @@ namespace Cinema.Test
     [TestFixture]
     public class TestBase
     {
-        private ApplicationDbContext context;
+        protected ApplicationDbContext context;
         protected UnitOfWork unit;
 
         [OneTimeSetUp]
-        public async Task SetUp()
+        public virtual async Task SetUp()
         {
             string path = "\\TestDatabase\\TestCinemaDatabase.xlsx";
             string workingDirectory = Environment.CurrentDirectory;
@@ -29,7 +29,7 @@ namespace Cinema.Test
 
             context = new ApplicationDbContext(connectionString);
             unit = new UnitOfWork(context);
-            await unit.SeedDatabase(file);
+            await unit.SeedTestDatabase(file);
         }
     }
 }

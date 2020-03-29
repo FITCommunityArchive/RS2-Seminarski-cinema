@@ -1,8 +1,12 @@
-﻿using Cinema.Domain.Entities;
+﻿using Cinema.DAL.Data;
+using Cinema.Domain.Entities;
+using Cinema.Seed.CollectMethods;
+using Cinema.Services.Exceptions;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,28 +38,6 @@ namespace Cinema.Test.DALTests
         }
 
         [Test, Order(2)]
-        [TestCase(2)]
-        public async Task GetHallById(int id)
-        {
-            //Try to get Hall with id
-            Hall hall = await unit.Halls.GetAsync(id);       
-
-            Assert.AreEqual("Movie Hall 2", hall.Name);            
-        }
-
-
-        [Test, Order(3)]
-        [TestCase(5)]
-        public void GetNonExistingHall(int id)
-        {
-            //Try to get non-existing Hall
-
-            var ex = Assert.ThrowsAsync<ArgumentException>( async () => await unit.Halls.GetAsync(id));
-
-            Assert.AreEqual(ex.Message, $"There is no object with id: {id} in the database");
-        }
-
-        [Test, Order(4)]
         public async Task InsertHall()
         {
             Hall hall = new Hall
@@ -70,6 +52,27 @@ namespace Cinema.Test.DALTests
             Hall newHall = await unit.Halls.GetAsync(3);
 
             Assert.AreEqual("New Hall", newHall.Name);
+        }
+
+        [Test, Order(3)]
+        [TestCase(5)]
+        public void GetNonExistingHall(int id)
+        {
+            //Try to get non-existing Hall
+
+            var ex = Assert.ThrowsAsync<ArgumentException>(async () => await unit.Halls.GetAsync(id));
+
+            Assert.AreEqual(ex.Message, $"There is no object with id: {id} in the database");
+        }
+
+        [Test, Order(4)]
+        [TestCase(3)]
+        public async Task GetHallById(int id)
+        {
+            //Try to get Hall with id
+            Hall hall = await unit.Halls.GetAsync(id);
+
+            Assert.AreEqual("New Hall", hall.Name);
         }
 
         [Test, Order(5)]
@@ -93,62 +96,28 @@ namespace Cinema.Test.DALTests
             //Try to delete the hall 
             int id = 2;
 
-            Hall hall = await unit.Halls.GetAsync(id); 
-            
-            await unit.Halls.DeleteAsync(hall.Id);
+            Hall hall = await unit.Halls.GetAsync(id);
 
-            Hall hallAfterDelete = await unit.Halls.GetAsync(id);
-
-            Assert.AreEqual(true, hallAfterDelete.Deleted);
+            var ex = Assert.ThrowsAsync<DependentObjectsPresentException>(async () => await unit.Halls.DeleteAsync(hall.Id));
         }
 
-        /*
         [Test, Order(7)]
-        public void DeleteHall()
+        public async Task DeleteHallWithoutChildObjects()
         {
-            //Try to delete the hall 
-            int id = 2;
-
-            Hall hall = unit.Halls.Get(id);
-
-            //First delete all screenings and all child entities of each screening
-            var screenings = context.Screenings.Where(x => x.Hall.Id == hall.Id);
-
-            foreach(Screening screening in screenings)
+            Hall hall = new Hall
             {
-                var reservations = context.Reservations.Where(x => x.Screening.Id == screening.Id);
+                Name = "New Hall"
+            };
 
-                foreach(Reservation reservation in reservations)
-                {
-                    var invoices = context.Invoices.Where(x => x.Reservation.Id == reservation.Id);
-                    context.Invoices.RemoveRange(invoices);
+            await unit.Halls.InsertAsync(hall);
+            await unit.SaveAsync();
+            int hallId = hall.Id;
 
-                    var seatReservations = context.SeatReservations.Where(x => x.Reservation.Id == reservation.Id);
-                    context.SeatReservations.RemoveRange(seatReservations);
-                }
-                
-                context.Reservations.RemoveRange(reservations);
-            }
-            
-            context.Screenings.RemoveRange(screenings);
-            unit.Save();
+            await unit.Halls.DeleteAsync(hallId);
+            await unit.SaveAsync();
 
-            //Delete all seats and all child entities of each seat
-            var seats = context.Seats.Where(x => x.Hall.Id == hall.Id);
-            foreach(Seat seat in seats)
-            {
-                var seatReservations = context.SeatReservations.Where(x => x.Seat.Id == seat.Id);
-                context.SeatReservations.RemoveRange(seatReservations);
-            }
-
-            context.Seats.RemoveRange(seats);
-            unit.Save();        
-
-            context.Halls.Remove(hall);
-            unit.Save();
-
-            Hall hallAfterDelete = unit.Halls.Get(id);            
-            Assert.IsNull(hallAfterDelete);
-        }*/
+            var deletedHall = unit.Halls.GetAsync(hallId);
+            Assert.IsNull(deletedHall);
+        }
     }
 }

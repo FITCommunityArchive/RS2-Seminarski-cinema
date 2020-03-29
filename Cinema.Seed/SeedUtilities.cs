@@ -7,13 +7,14 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Linq;
 using Cinema.Domain.Entities;
+using Cinema.Seed.CollectMethods;
 
-namespace Cinema.Seed.CollectMethods
+namespace Cinema.Seed
 {
     public static class SeedUtilities
     {
-        public static Dictionary<int, string> RolesDictionary = new Dictionary<int, string>();
-        public static Dictionary<int, string> UsersDictionary = new Dictionary<int, string>();
+        public static Dictionary<int, string> RolesDictionary;
+        public static Dictionary<int, string> UsersDictionary;
         public static async Task SeedDatabase(this UnitOfWork unit, FileInfo fileData)
         {
             /*This methods drops the database, creates a new one, 
@@ -21,6 +22,16 @@ namespace Cinema.Seed.CollectMethods
             unit.Context.Database.EnsureDeleted();
             unit.Context.Database.EnsureCreated();
             unit.Context.ChangeTracker.AutoDetectChangesEnabled = false;
+
+            await CollectEntities(unit, fileData);
+
+            Console.WriteLine("Seed complete!");
+        }
+
+        public static async Task CollectEntities(this UnitOfWork unit, FileInfo fileData)
+        {
+            RolesDictionary = new Dictionary<int, string>();
+            UsersDictionary = new Dictionary<int, string>();
 
             using (ExcelPackage package = new ExcelPackage(fileData))
             {
@@ -45,8 +56,6 @@ namespace Cinema.Seed.CollectMethods
                 await EventsCollect.Collect(package.Workbook.Worksheets["Events"], unit);
                 await NewsCollect.Collect(package.Workbook.Worksheets["News"], unit);
             }
-
-            Console.WriteLine("Seed complete!");
         }
 
         public static string ReadString(this ExcelWorksheet sht, int row, int col) => sht.Cells[row, col].Value.ToString().Trim();

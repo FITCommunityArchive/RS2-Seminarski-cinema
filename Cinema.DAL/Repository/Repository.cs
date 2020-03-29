@@ -27,10 +27,10 @@ namespace Cinema.DAL.Repository
         public virtual async Task<Entity> GetAsync(Key id)
         { 
             Entity entity = await _dbSet.FindAsync(id);
-            if (entity == null)
+/*            if (entity == null)
             {
                 throw new ArgumentException($"There is no object with id: {id} in the database");
-            }
+            }*/
             return entity;
         }
 
@@ -47,10 +47,11 @@ namespace Cinema.DAL.Repository
         public virtual async Task UpdateAsync(Entity newEnt, Key id)
         {
             Entity oldEnt = await GetAsync(id);
-            //ValidateUpdate(newEnt, id);
+
             if (oldEnt != null)
             {
-                _context.Update(newEnt);
+                _context.Entry(oldEnt).CurrentValues.SetValues(newEnt);
+                oldEnt.UpdateAsync(newEnt);
             }
         }
 
@@ -66,8 +67,10 @@ namespace Cinema.DAL.Repository
                 {
                     Delete(entity);
                 }
-
-                throw new DependentObjectsPresentException();
+                else
+                {
+                    throw new DependentObjectsPresentException();
+                }
             }
         }
     }
