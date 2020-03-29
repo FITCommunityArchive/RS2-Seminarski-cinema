@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Cinema.Authorization;
 using Cinema.Authorization.Constants;
 using Cinema.DAL.Data;
 using Cinema.Domain.Entities;
 using Cinema.Domain.Entities.Identity;
+using Cinema.DTO;
 using Cinema.DTO.ViewModels.Movies;
+using Cinema.DTO.ViewModels.Reviews;
 using Cinema.Services.Factory;
 using Cinema.Services.Helpers;
 using Cinema.Web.Mvc.Models;
@@ -82,6 +85,21 @@ namespace Cinema.Web.Mvc.Controllers
             Movie movie = await _unit.Movies.GetAsync(id);
 
             return View(movie.ToIndexVM());
+        }
+
+        [AllowAnonymous]
+        public async Task<IActionResult> GetAverageRating(int id)
+        {
+            Movie movie = await _unit.Movies.GetAsync(id);
+
+            if (movie.Reviews.Count == 0)
+            {
+                return Ok("N/A");
+            }
+            else
+            {
+                return Ok(movie.Reviews.Average(x => x.Rating).ToString("##.00"));
+            }
         }
 
         [HttpGet]
@@ -184,7 +202,6 @@ namespace Cinema.Web.Mvc.Controllers
                 }).ToList();
                 
             }
-
             
             int pageSize = 12;
             return View(PaginatedList<NowShowingIndexVM.Row>.Create(screenings.ScreeningsList.AsQueryable(), pageNumber ?? 1, pageSize));
@@ -194,14 +211,20 @@ namespace Cinema.Web.Mvc.Controllers
         public async Task<ActionResult> NowShowingDetailsAsync(int id)
         {
             Movie movie = await _unit.Movies.GetAsync(id);
+            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            var viewModel = movie.ToNowShowingIndexVM();
-            viewModel.ScreeningList = movie.Screenings.OrderBy(x=>x.DateAndTime).Select(x => new NowShowingDetailsVM.Row
+            var viewModel = movie.ToNowShowingIndexVM(userId);
+
+            if (viewModel.CurrentUserReview == null)
             {
-                HallName = x.Hall.Name,
-                Playing = x.DateAndTime,
-                HallId = x.Hall.Id
-            }).ToList();
+                viewModel.CurrentUserReview = new ReviewIndexVM
+                {
+                    ReviewId = 0,
+                    Movie = movie.CreateMaster(),
+                    User = new IdentityMasterModel { Id = userId },
+                    Rating = 5
+                };
+            }
 
             return View(viewModel);
         }

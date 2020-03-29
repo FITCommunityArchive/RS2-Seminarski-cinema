@@ -368,8 +368,6 @@ span.seatCharts-legendDescription {
     margin: 10px 10px 10px 0;
 }
 
-
-
 .user-reservations > li {
     width: 48%;
     float: left;
@@ -378,3 +376,53 @@ span.seatCharts-legendDescription {
     margin-bottom: 10px;
     padding: 15px;
 }
+
+/* Star rating
+-------------------------------------------------- */
+
+.rating {
+    position: relative;
+    transform: translate(-50%, -50%) rotateY(180deg);
+    display: inline-flex;
+}
+
+.rating input {
+    display: none;
+}
+
+.rating label {
+    display: block;
+    cursor: pointer;
+    width: 25px;
+}
+
+.rating label:before {
+    content: '\f005';
+    font-family: fontAwesome;
+    position: relative;
+    display: block;
+    font-size: 25px;
+    color: #101010;
+}
+
+.rating label:after {
+    content: '\f005';
+    font-family: fontAwesome;
+    position: absolute;
+    display: block;
+    font-size: 25px;
+    color: rgb(248, 195, 39);
+    top: 0;
+    opacity: 0;
+    transition: .5s;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, .5);
+}
+
+.rating label:hover:after,
+.rating label:hover ~ label:after,
+.rating input:checked ~ label:after {
+    opacity: 1;
+}
+
+
+

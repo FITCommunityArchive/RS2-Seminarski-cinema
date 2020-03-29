@@ -1,9 +1,11 @@
 ﻿using Cinema.Domain.Entities;
 using Cinema.DTO.ViewModels.Movies;
+using Cinema.DTO.ViewModels.Reviews;
 using Cinema.DTO.ViewModels.Screenings;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Cinema.Services.Factory
@@ -63,7 +65,7 @@ namespace Cinema.Services.Factory
             };
         }
 
-        public static NowShowingDetailsVM ToNowShowingIndexVM(this Movie movie)
+        public static NowShowingDetailsVM ToNowShowingIndexVM(this Movie movie, string currentUserId)
         {
             return new NowShowingDetailsVM
             {
@@ -77,7 +79,15 @@ namespace Cinema.Services.Factory
                 Screenings = movie.Screenings,
                 Title = movie.Title,
                 Year = movie.Year,
-                ScreeningList = new List<NowShowingDetailsVM.Row>()
+                NumberOfReviews = movie.Reviews?.Count() > 0 ? movie.Reviews.Count().ToString() : "N/A",
+                AverageRating = movie.Reviews?.Count() > 0 ? movie.Reviews?.Average(x => x.Rating).ToString("##.00") : "N/A",
+                CurrentUserReview = movie.Reviews?.SingleOrDefault(x => x.UserId == currentUserId)?.ToIndexVM(),
+                ScreeningList = movie.Screenings.OrderBy(x => x.DateAndTime).Select(x => new NowShowingDetailsVM.Row
+                {
+                    HallName = x.Hall.Name,
+                    Playing = x.DateAndTime,
+                    HallId = x.Hall.Id
+                }).ToList()
             };
         }
 
@@ -85,11 +95,22 @@ namespace Cinema.Services.Factory
         {
             return new ReviewIndexVM
             {
-                Id = review.Id,
+                ReviewId = review.Id,
                 Text = review.Text,
                 Rating = review.Rating,
+                Movie = review.Movie?.CreateMaster(),
+                User = review.User?.CreateMaster()
+            };
+        }
+
+        public static ReviewUpdateVM ToUpdateVM(this Review review)
+        {
+            return new ReviewUpdateVM
+            {
+                Id = review.Id,
+                Rating = review.Rating,
                 Movie = review.Movie.CreateMaster(),
-                User = review.User.CreateMaster()
+                UserId = review.User.Id
             };
         }
     }

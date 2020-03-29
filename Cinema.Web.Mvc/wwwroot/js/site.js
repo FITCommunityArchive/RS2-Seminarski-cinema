@@ -179,4 +179,6 @@ jQuery(document).ready(function () {
 
     //disable reserved seats
     sc.status(seatsReserved.split(","), 'unavailable'); //set status for two seats
+    
+
 });
