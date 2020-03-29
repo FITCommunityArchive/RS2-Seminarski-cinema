@@ -66,5 +66,14 @@ namespace Cinema.Services.Factory
                 Name = user.FullName
             };
         }
+
+        public static IdentityMasterModel CreateMaster(this ApplicationRole role)
+        {
+            return new IdentityMasterModel
+            {
+                Id = role.Id,
+                Name = role.Name
+            };
+        }
     }
 }

@@ -12,6 +12,7 @@ using Cinema.DAL.Data;
 using Cinema.Services.Factory;
 using Cinema.Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
+using Cinema.Services.Factory.ViewModels;
 
 namespace Cinema.Web.Mvc.Controllers
 {

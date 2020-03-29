@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cinema.Services.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -15,5 +16,6 @@ namespace Cinema.DAL.Repository
         Task InsertAsync(Entity entity);
         Task UpdateAsync(Entity entity, Key id);
         Task DeleteAsync(Key id);
+        IQueryable<Entity> Sort(IQueryable<Entity> query, SortOrder? sortOrder, string sortProperty);
     }
 }

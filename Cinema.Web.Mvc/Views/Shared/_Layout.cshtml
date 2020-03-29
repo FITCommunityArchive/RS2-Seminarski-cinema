@@ -31,12 +31,13 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                            <li>@Html.ActionLink("Now Showing","Index","NowShowing")</li>  
-                        @if (SignInManager.IsSignedIn(User) 
-                            && (await AuthorizationService.AuthorizeAsync(User, Policies.IsAdmin)).Succeeded)
-                        {  
-                            <li>@Html.ActionLink("Movies","Index","Movies")</li>
-                            <li>@Html.ActionLink("Screenings", "Index", "Screenings")</li>  
+                        <li>@Html.ActionLink("Now Showing", "Index", "NowShowing")</li>
+                        @if (SignInManager.IsSignedIn(User)
+                           && (await AuthorizationService.AuthorizeAsync(User, Policies.IsAdmin)).Succeeded)
+                        {
+                            <li>@Html.ActionLink("Movies", "Index", "Movies")</li>
+                            <li>@Html.ActionLink("Screenings", "Index", "Screenings")</li>
+                            <li>@Html.ActionLink("Staff", "Index", "Users")</li>
                             <!-- <li><a asp-area="" asp-page="/Halles/Index">Halls</a></li> -->
                         }
                     </ul>
