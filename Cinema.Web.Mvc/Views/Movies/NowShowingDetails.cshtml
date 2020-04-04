@@ -70,7 +70,7 @@
 
                 </div>
             </div>
-        </div>
+
         <div class="row">
             <div class="col-md-12">
                 <div>
@@ -130,30 +130,18 @@
         })
     });
 
-        // This should be within the Default view of the Review View Component
-    /*    $(document).ready(function () {
-                $('.rating-star-label').mouseover(function () {
-                    $('.rating-star').prop('checked', false);
-                });
-        });*/
-
-        function Update() {
-            $.ajax({
-                type: "POST",
-                url: "/Reviews/SetRating/@Model.CurrentUserReview.ReviewId",
-                data: $("form").serialize(),
-                success: function (data) {
-                    $("#now-showing-details-rating-div").html(data);
-                    $.ajax({
-                            type: "GET",
-                            url: "/Movies/GetAverageRating",
-                            data: "id=@Model.Id",
-                            success: function (data) {
-                                $("#now-showing-details-average-rating-div").html(data);
-                            }
-                    })
-                }
-            })
-        }; 
+    function Update() {
+        $.ajax({
+            type: "POST",
+            url: "/Reviews/SetRating/@Model.CurrentUserReview",
+            data: $("form").serialize(),
+            error: function (response) {
+                console.log(response);
+            },
+            success: function (data) {
+                location.reload();
+            }
+        })
+    }; 
     </script>
 }

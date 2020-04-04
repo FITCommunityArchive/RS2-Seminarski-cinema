@@ -382,7 +382,7 @@ span.seatCharts-legendDescription {
 
 .rating {
     position: relative;
-    transform: translate(-50%, -50%) rotateY(180deg);
+    transform: translate(0%, 0%) rotateY(180deg);
     display: inline-flex;
 }
 
