@@ -20,6 +20,7 @@ using Cinema.Authorization.Requirements;
 using Cinema.Authorization.Constants;
 using EmailService;
 using Microsoft.AspNetCore.Http.Features;
+using Cinema.BLL;
 
 namespace Cinema.Web.Mvc
 {
@@ -81,6 +82,8 @@ namespace Cinema.Web.Mvc
 
             services.AddSingleton(emailConfig);
             services.AddScoped<IEmailSender, EmailSender>();
+
+            services.AddScoped<QRCodeService>();
 
             services.Configure<FormOptions>(o => {
                 o.ValueLengthLimit = int.MaxValue;
