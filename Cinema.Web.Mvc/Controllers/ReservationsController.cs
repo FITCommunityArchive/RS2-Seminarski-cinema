@@ -10,6 +10,8 @@ using Cinema.DTO.ViewModels.Reservations;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Hosting;
 using EmailService;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace Cinema.Web.Mvc.Controllers
 {
@@ -17,14 +19,17 @@ namespace Cinema.Web.Mvc.Controllers
     {
         private SeatingService _seatingService;
         private PricingService _pricingService;
-        private readonly IWebHostEnvironment _webHostEnvironment;
-
+        private QRCodeService _qRCodeService;
         private readonly IEmailSender _emailSender;
-        public ReservationsController(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment, IEmailSender emailSender) : base(context) {
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        public ReservationsController(ApplicationDbContext context, IEmailSender emailSender, IWebHostEnvironment webHostEnvironment) : base(context) {
             _seatingService = new SeatingService(_unit);
             _pricingService = new PricingService(_unit);
-            _webHostEnvironment = webHostEnvironment;
+            
             _emailSender = emailSender;
+            _webHostEnvironment = webHostEnvironment;
+
+            _qRCodeService = new QRCodeService(_webHostEnvironment);
         }
 
         [Route("/Reservations/{id:int?}/{date:long?}")]
@@ -103,15 +108,43 @@ namespace Cinema.Web.Mvc.Controllers
 
             _unit.Save();
 
-            var imageByteCode = new QRCoderController().GenerateCode("This is how we do.");
+
+
+
+            var imageByteCode = _qRCodeService.GenerateCode("This is how we do.");
+            var imageFileName = _qRCodeService.CreateImage(Convert.ToBase64String(imageByteCode));
             var imageUrl = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(imageByteCode));
-            var image = "<img src='" + imageUrl + "' />";
 
             @ViewData["QRCodeData"] = imageUrl;
 
-            var message = new Message(new string[] { "boris@cloudronin.com" }, "Your Ticket for the movie " + currentScreening.Movie.Title, image);
-            await _emailSender.SendEmailAsync(message);
+            var attachment = new FormFileCollection();
+            var messageContent = "";
 
+            messageContent += "<p>You can pick up your movie tickets with your booking number directly from the box office during business hours.</p>";
+            messageContent += "<p>Please note that your tickets must be raised no later than 30 minutes before the screening begins, otherwise the computer will cancel them. Please bring your booking confirmation with you.</p>";
+            messageContent += "<p>During the evenings and weekends, count on the longer wait.</p>";
+            messageContent += "<p>Cancellation: Under \"My Cinema Tickets\" in your membership section, you can print, edit or cancel your reservation at any time. Please sign up for this on our website in the membership section.You will be shown the \"My Cinema Tickets\" category in the upper black section.</p>";
+            messageContent += "<p>Information: Discounts are only possible with the appropriate membership card before printing cinema tickets(e.g.Family Movie Club Card, Cineplexx Bonus Card)";
+            messageContent += "<h4>Have a great time at our cinema!</h4>"; 
+
+            using (var stream = System.IO.File.OpenRead("wwwroot/qrr/f9899d012392550227.jpg"))
+            {
+                var file = new FormFile(stream, 0, stream.Length, null, Path.GetFileName(stream.Name))
+                {
+                    Headers = new HeaderDictionary(),
+                    ContentType = "image/jpg"
+                };
+                attachment.Add(file);
+
+                var message = new Message(new string[] { "boris@cloudronin.com" }, "Your Ticket for the movie " + currentScreening.Movie.Title, messageContent, attachment);
+                await _emailSender.SendEmailAsync(message);
+            }
+
+            // when we go live we can just use the path of the image and add it to the image tag and link it directly. That way we don't have to create FormFile and then send the message.
+
+            //var path = _webHostEnvironment.WebRootFileProvider.GetFileInfo("qrr/f9899d012392550227.jpg");
+            //var message2 = new Message(new string[] { "boris@cloudronin.com" }, "Your Ticket for the movie " + currentScreening.Movie.Title, "<img src='"+ path+"' />");
+            //await _emailSender.SendEmailAsync(message2);
 
             return View("Thankyou", reservation);
         }
