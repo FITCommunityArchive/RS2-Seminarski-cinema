@@ -27,6 +27,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.Authorization", "Cin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.Web.Mvc", "Cinema.Web.Mvc\Cinema.Web.Mvc.csproj", "{09A89119-5483-44EA-AAD2-FEF50F01A340}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinema.Email", "Cinema.Email\Cinema.Email.csproj", "{C6811FC2-A0BE-415B-B3D2-011B940A48C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailService", "EmailService\EmailService.csproj", "{DA1303B8-B8DA-4365-8053-01F0E31DE451}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +73,14 @@ Global
 		{09A89119-5483-44EA-AAD2-FEF50F01A340}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09A89119-5483-44EA-AAD2-FEF50F01A340}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09A89119-5483-44EA-AAD2-FEF50F01A340}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6811FC2-A0BE-415B-B3D2-011B940A48C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6811FC2-A0BE-415B-B3D2-011B940A48C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6811FC2-A0BE-415B-B3D2-011B940A48C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6811FC2-A0BE-415B-B3D2-011B940A48C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA1303B8-B8DA-4365-8053-01F0E31DE451}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA1303B8-B8DA-4365-8053-01F0E31DE451}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA1303B8-B8DA-4365-8053-01F0E31DE451}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA1303B8-B8DA-4365-8053-01F0E31DE451}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

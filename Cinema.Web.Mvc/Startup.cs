@@ -18,6 +18,8 @@ using Microsoft.AspNetCore.Mvc.Authorization;
 using Cinema.Authorization.Handlers;
 using Cinema.Authorization.Requirements;
 using Cinema.Authorization.Constants;
+using EmailService;
+using Microsoft.AspNetCore.Http.Features;
 
 namespace Cinema.Web.Mvc
 {
@@ -71,6 +73,20 @@ namespace Cinema.Web.Mvc
 
             services.AddScoped<IAuthorizationHandler, IsAdminHandler>();
             services.AddScoped<IAuthorizationHandler, ReviewAuthorizationHandler>();
+
+            // Here we add the EmailService and setup the FormOptions for attachments to be properly sent
+            var emailConfig = Configuration
+                .GetSection("EmailConfiguration")
+                .Get<EmailConfiguration>();
+
+            services.AddSingleton(emailConfig);
+            services.AddScoped<IEmailSender, EmailSender>();
+
+            services.Configure<FormOptions>(o => {
+                o.ValueLengthLimit = int.MaxValue;
+                o.MultipartBodyLengthLimit = int.MaxValue;
+                o.MemoryBufferThreshold = int.MaxValue;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

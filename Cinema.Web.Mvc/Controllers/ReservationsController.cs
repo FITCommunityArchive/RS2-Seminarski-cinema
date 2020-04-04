@@ -5,24 +5,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Cinema.DAL.Data;
 using Cinema.Domain.Entities;
-using Cinema.DTO.ViewModels.Movies;
-using Cinema.Services.Factory;
-using Cinema.Services.Helpers;
-using Microsoft.EntityFrameworkCore;
 using Cinema.BLL;
 using Cinema.DTO.ViewModels.Reservations;
 using System.Security.Claims;
-using Cinema.Web.Mvc.Models;
-using System.Net;
-using System.Net.Mail;
-using QRCoder;
-using System.IO;
-using System.DrawingCore;
-using System.DrawingCore.Imaging;
-using System.Text;
-using System.Net.Mime;
 using Microsoft.AspNetCore.Hosting;
-using Cinema.DAL;
+using EmailService;
 
 namespace Cinema.Web.Mvc.Controllers
 {
@@ -31,10 +18,13 @@ namespace Cinema.Web.Mvc.Controllers
         private SeatingService _seatingService;
         private PricingService _pricingService;
         private readonly IWebHostEnvironment _webHostEnvironment;
-        public ReservationsController(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment) : base(context) {
+
+        private readonly IEmailSender _emailSender;
+        public ReservationsController(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment, IEmailSender emailSender) : base(context) {
             _seatingService = new SeatingService(_unit);
             _pricingService = new PricingService(_unit);
             _webHostEnvironment = webHostEnvironment;
+            _emailSender = emailSender;
         }
 
         [Route("/Reservations/{id:int?}/{date:long?}")]
@@ -113,67 +103,14 @@ namespace Cinema.Web.Mvc.Controllers
 
             _unit.Save();
 
+            var imageByteCode = new QRCoderController().GenerateCode("This is how we do.");
+            var imageUrl = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(imageByteCode));
+            var image = "<img src='" + imageUrl + "' />";
 
-            QRCodeGenerator qrGenerator = new QRCodeGenerator();
-            QRCodeData qrCodeData = qrGenerator.CreateQrCode("The text which should be encoded.", QRCodeGenerator.ECCLevel.Q);
-            QRCode qrCode = new QRCode(qrCodeData);
-            Bitmap qrCodeImage = qrCode.GetGraphic(20);
+            @ViewData["QRCodeData"] = imageUrl;
 
-
-            var gen = new QRCodeGenerator();
-            var data = gen.CreateQrCode("This is a quick test! 123#?", QRCodeGenerator.ECCLevel.H);
-            var bmp = new QRCode(data).GetGraphic(10);
-
-
-            var ms = new MemoryStream();
-            bmp.Save(ms, ImageFormat.Jpeg);
-            
-            byte[] byteImage = ms.ToArray();
-
-            
-            //System.Drawing.Image img = System.Drawing.Image.FromStream(ms);
-
-            //string webRootPath = _webHostEnvironment.WebRootPath;
-            ////var fullPath = Path.Combine(Directory.GetCurrentDirectory(), "appsettings.json");
-
-            //img.Save("~/img/test.jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
-
-            string imageData = "data:image/png;base64," + Convert.ToBase64String(byteImage);
-            ViewData["QRCodeData"] = imageData;
-
-
-
-
-            var imageContent = "<img src='" + imageData + "' />";
-            var body = "<html><body><p>Email From: {0} ({1})</p><p>Message:</p><p>{2}</p>"+ imageContent + "</body></html>";
-            var message = new MailMessage();
-            message.To.Add(new MailAddress("boris.huseincehajic@gmail.com"));  // replace with valid value 
-            message.From = new MailAddress("movienet@cloudronin.website");  // replace with valid value
-            message.Subject = "Your Ticket for the movie " + currentScreening.Movie.Title;
-            message.Body = string.Format(body, "Cinema Website", "info@cloudronin.website", "Thank you for buying ticket from us");
-            message.BodyEncoding = Encoding.GetEncoding("ISO-8859-1");
-            //var imageToInline = new LinkedResource(ms, MediaTypeNames.Image.Jpeg);
-            //imageToInline.ContentId = "MyImage";
-            //var content = "test";
-            //AlternateView alternateView = AlternateView.CreateAlternateViewFromString(content, new ContentType("text/html"));
-            //alternateView.LinkedResources.Add(imageToInline);
-            //message.AlternateViews.Add(alternateView);
-
-            message.IsBodyHtml = true;
-
-            using (var smtp = new SmtpClient())
-            {
-                var credential = new NetworkCredential
-                {
-                    UserName = "moviesnet@cloudronin.website",  // replace with valid value
-                    Password = "ckAjWnOPyEYUQstJ"  // replace with valid value
-                };
-                smtp.Credentials = credential;
-                smtp.Host = "smtp-relay.sendinblue.com";
-                smtp.Port = 587;
-                smtp.EnableSsl = true;
-                smtp.Send(message);
-            }
+            var message = new Message(new string[] { "boris@cloudronin.com" }, "Your Ticket for the movie " + currentScreening.Movie.Title, image);
+            await _emailSender.SendEmailAsync(message);
 
 
             return View("Thankyou", reservation);
@@ -187,7 +124,6 @@ namespace Cinema.Web.Mvc.Controllers
             _unit.Save();
 
             return LocalRedirect("/Identity/Account/Manage/Reservations");
-            //return View("Index");
         }
     }
 }
