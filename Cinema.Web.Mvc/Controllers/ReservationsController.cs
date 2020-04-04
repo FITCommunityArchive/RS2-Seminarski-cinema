@@ -172,7 +172,7 @@ namespace Cinema.Web.Mvc.Controllers
                 smtp.Host = "smtp-relay.sendinblue.com";
                 smtp.Port = 587;
                 smtp.EnableSsl = true;
-                //smtp.Send(message);
+                smtp.Send(message);
             }
 
 

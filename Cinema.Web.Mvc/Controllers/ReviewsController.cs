@@ -58,7 +58,7 @@ namespace Cinema.Web.Mvc.Controllers
             await _unit.SaveAsync();
 
             // This is in order to set the model with the new Id value
-            review = await _unit.Reviews.GetAsync(review.Id);
+            //review = await _unit.Reviews.GetAsync(review.Id);
             reviewModel = new ReviewIndexVM
             {
                 ReviewId = review.Id,

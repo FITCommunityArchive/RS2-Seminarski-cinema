@@ -16,10 +16,12 @@
     </div>
 </form>
 
-<script>
-    $(document).ready(function () {
-            $('.rating-star-label').mouseover(function () {
-                $('.rating-star').prop('checked', false);
+@section Scripts {
+    <script>
+        jQuery(document).ready(function () {
+            jQuery('.rating-star-label').mouseover(function () {
+                jQuery('.rating-star').prop('checked', false);
             });
-    });
-</script>
+        });
+    </script>
+}
