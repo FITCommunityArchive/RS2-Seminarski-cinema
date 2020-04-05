@@ -81,7 +81,8 @@ namespace Cinema.Web.Mvc.Controllers
             {
                 User = await _unit.Users.GetAsync(userID),
                 Screening = currentScreening,
-                IsCancelled = false
+                IsCancelled = false,
+                ReservationCode = Convert.ToString(System.Guid.NewGuid()).Substring(0, 7).ToUpper()
             };
             invoice.ReservationId = reservation.Id;
             reservation.Invoices.Add(invoice);
@@ -108,18 +109,14 @@ namespace Cinema.Web.Mvc.Controllers
 
             _unit.Save();
 
-
-
-
-            var imageByteCode = _qRCodeService.GenerateCode("This is how we do.");
-            var imageFileName = _qRCodeService.CreateImage(Convert.ToBase64String(imageByteCode));
-            var imageUrl = String.Format("data:image/png;base64,{0}", Convert.ToBase64String(imageByteCode));
+            var imageUri = _qRCodeService.GenerateCode(reservation.ReservationCode);
+            var imageUrl = String.Format("data:image/png;base64,{0}", imageUri);
 
             @ViewData["QRCodeData"] = imageUrl;
 
             var attachment = new FormFileCollection();
             var messageContent = "";
-
+            messageContent += "<h3>Your reservation code: " + reservation.ReservationCode + "</h3>"; 
             messageContent += "<p>You can pick up your movie tickets with your booking number directly from the box office during business hours.</p>";
             messageContent += "<p>Please note that your tickets must be raised no later than 30 minutes before the screening begins, otherwise the computer will cancel them. Please bring your booking confirmation with you.</p>";
             messageContent += "<p>During the evenings and weekends, count on the longer wait.</p>";
@@ -127,7 +124,7 @@ namespace Cinema.Web.Mvc.Controllers
             messageContent += "<p>Information: Discounts are only possible with the appropriate membership card before printing cinema tickets(e.g.Family Movie Club Card, Cineplexx Bonus Card)";
             messageContent += "<h4>Have a great time at our cinema!</h4>"; 
 
-            using (var stream = System.IO.File.OpenRead("wwwroot/qrr/f9899d012392550227.jpg"))
+            using (var stream = System.IO.File.OpenRead("wwwroot/qrr/"+reservation.ReservationCode+".jpg"))
             {
                 var file = new FormFile(stream, 0, stream.Length, null, Path.GetFileName(stream.Name))
                 {
