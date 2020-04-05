@@ -27,25 +27,28 @@ namespace Cinema.BLL
             }
         }
 
-        public byte[] GenerateCode(string qrText)
+        public string GenerateCode(string qrText)
         {
-            Bitmap qrCodeImage = null;
+            String dataUri = "";
+
             if (qrText != null)
             {
                 QRCodeGenerator qrGenerator = new QRCodeGenerator();
                 QRCodeData qrCodeData = qrGenerator.CreateQrCode(qrText,
                 QRCodeGenerator.ECCLevel.Q);
                 QRCode qrCode = new QRCode(qrCodeData);
-                qrCodeImage = qrCode.GetGraphic(20);
+                Bitmap qrCodeImage = qrCode.GetGraphic(20);
+                dataUri = Convert.ToBase64String(BitmapToBytes(qrCodeImage));
+                CreateImage(dataUri, qrText);
             }
 
-            return BitmapToBytes(qrCodeImage);
+            return dataUri;
         }
 
-        public string CreateImage(string Byt)
+        public bool CreateImage(string Byt, string ImageName)
         {
             byte[] data = Convert.FromBase64String(Byt);
-            var filename = Convert.ToString(System.Guid.NewGuid()).Substring(0, 5) + Convert.ToString(System.Guid.NewGuid()).Substring(0, 5) + System.DateTime.Now.ToString("FFFFFF") + System.DateTime.Now.Minute;
+            //var filename = Convert.ToString(System.Guid.NewGuid()).Substring(0, 5) + Convert.ToString(System.Guid.NewGuid()).Substring(0, 5) + System.DateTime.Now.ToString("FFFFFF") + System.DateTime.Now.Minute;
             String path = Path.Combine(_webHostEnvironment.WebRootPath, "qrr"); //Path
 
             //Check if directory exist
@@ -54,12 +57,12 @@ namespace Cinema.BLL
                 Directory.CreateDirectory(path); //Create directory if it doesn't exist
             }
 
-            string imageName = filename + ".jpg";
+            string imageName = ImageName + ".jpg";
             //set the image path
             string imgPath = Path.Combine(path, imageName);
 
             File.WriteAllBytes(imgPath, data);
-            return filename;
+            return true;
         }
     }
 }

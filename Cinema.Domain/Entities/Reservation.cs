@@ -23,5 +23,7 @@ namespace Cinema.Domain.Entities
         public virtual IList<Invoice> Invoices { get; set; }
 
         public bool IsCancelled { get; set; }
+
+        public string ReservationCode {get;set;}
     }
 }
