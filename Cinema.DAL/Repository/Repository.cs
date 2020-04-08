@@ -1,6 +1,7 @@
 ﻿using Cinema.DAL.Data;
 using Cinema.Domain.Entities;
 using Cinema.Domain.Entities.Identity;
+using Cinema.Services.Enums;
 using Cinema.Services.Exceptions;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -73,6 +74,11 @@ namespace Cinema.DAL.Repository
                     throw new DependentObjectsPresentException();
                 }
             }
+        }
+
+        public virtual IQueryable<Entity> Sort(IQueryable<Entity> query, SortOrder? sortOrder, string sortProperty)
+        {
+            throw new NotFiniteNumberException();
         }
     }
 }

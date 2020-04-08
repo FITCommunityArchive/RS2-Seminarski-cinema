@@ -11,6 +11,7 @@ using Cinema.Domain.Entities.Identity;
 using Cinema.DTO;
 using Cinema.DTO.ViewModels.Reviews;
 using Cinema.Services.Factory;
+using Cinema.Services.Factory.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;

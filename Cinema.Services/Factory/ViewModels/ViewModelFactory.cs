@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Cinema.Services.Factory
+namespace Cinema.Services.Factory.ViewModels
 {
     public static class ViewModelFactory
     {

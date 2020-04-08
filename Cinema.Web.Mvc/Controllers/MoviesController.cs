@@ -13,6 +13,7 @@ using Cinema.DTO;
 using Cinema.DTO.ViewModels.Movies;
 using Cinema.DTO.ViewModels.Reviews;
 using Cinema.Services.Factory;
+using Cinema.Services.Factory.ViewModels;
 using Cinema.Services.Helpers;
 using Cinema.Web.Mvc.Models;
 using Microsoft.AspNetCore.Authorization;
