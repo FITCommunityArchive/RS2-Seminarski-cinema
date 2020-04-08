@@ -123,7 +123,8 @@ namespace Cinema.DAL.Data
                 b.HasMany(e => e.UserRoles)
                     .WithOne(e => e.User)
                     .HasForeignKey(ur => ur.UserId)
-                    .IsRequired();
+                    .IsRequired()
+                    .OnDelete(DeleteBehavior.Cascade);
             });
                         
             builder.Entity<ApplicationRole>(b =>

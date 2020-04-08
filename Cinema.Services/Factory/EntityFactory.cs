@@ -1,10 +1,9 @@
 ﻿using Cinema.Domain.Entities;
+using Cinema.Domain.Entities.Identity;
 using Cinema.DTO.ViewModels.Movies;
 using Cinema.DTO.ViewModels.Reviews;
 using Cinema.DTO.ViewModels.Screenings;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Cinema.DTO.ViewModels.Users;
 
 namespace Cinema.Services.Factory
 {
@@ -64,6 +63,20 @@ namespace Cinema.Services.Factory
                 MovieId = review.Movie.Id,
                 UserId = review.User.Id,
                 Rating = review.Rating
+            };
+        }
+
+        public static ApplicationUser Create(this ApplicationUserCreateVM user)
+        {
+            return new ApplicationUser
+            {
+                Email = user.Email,
+                UserName = user.Email,
+                EmailConfirmed = true,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                NormalizedEmail = user.Email.ToUpper(),
+                NormalizedUserName = user.Email.ToUpper()
             };
         }
     }

@@ -19,17 +19,34 @@ using Cinema.Services.Factory.ViewModels;
 using Cinema.Web.Mvc.Models;
 using Microsoft.EntityFrameworkCore;
 using Cinema.Services.Enums;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Cinema.Services.Factory;
+using Microsoft.AspNetCore.Identity;
+using Cinema.Services.Helpers;
+using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.WebUtilities;
+using System.Text;
+using EmailService;
 
 namespace Cinema.Web.Mvc.Controllers
 {
     [Authorize(Roles = Roles.Administrator)]
     public class UsersController : BaseController
     {
-        public UsersController(ApplicationDbContext context) : base(context) { }
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly ILogger<UsersController> _logger;
+        private readonly IEmailSender _emailSender;
+
+        public UsersController(ApplicationDbContext context, UserManager<ApplicationUser> userManager,
+           ILogger<UsersController> logger, IEmailSender emailSender) : base(context) 
+        {
+            _userManager = userManager;
+            _emailSender = emailSender;
+            _logger = logger;
+        }
 
         public async Task<IActionResult> Index(SortOrder? sortOrder, string sortProperty, string searchString, string currentFilter, int? pageNumber)
         {
-
             if (searchString != null)
             {
                 pageNumber = 1;
@@ -67,6 +84,58 @@ namespace Cinema.Web.Mvc.Controllers
                 sortOrder, sortProperty, searchString);
 
             return View(paginatedModel);
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> Create()
+        {
+            ApplicationUserCreateVM model = new ApplicationUserCreateVM
+            {
+                Roles = new SelectList((await _unit.Roles.GetAsync(x => x.Name != Roles.User))
+                                                         .Select(x => x.CreateMaster()), "Id", "Name")
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(ApplicationUserCreateVM model)
+        {
+            ApplicationUser user = model.Create();
+            ApplicationRole role = await _unit.Roles.GetAsync(model.RoleId);
+
+            PasswordGenerator passwordGenerator = new PasswordGenerator();
+            string password = passwordGenerator.CreateRandomPassword();
+
+            if (user != null && role != null)
+            {
+                
+                var result = await _userManager.CreateAsync(user, password);
+
+                if (result.Succeeded)
+                {
+                    _logger.LogInformation("User created a new account with password.");
+                    var addRoleResult = await _userManager.AddToRoleAsync(user, role.Name);
+
+                    if (addRoleResult.Succeeded)
+                    {
+                        var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                        code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+
+                        var messageContent = "";
+                        messageContent += $"<p>Hello {user.FirstName},</p>";
+                        messageContent += $"<p>Your new Cinema account with username {user.UserName} and password {password} was successfully created!</p>";
+                        messageContent += "<p>";
+                        messageContent += "<p>Your Cinema Team!</p>";
+
+                        var message = new Message(new string[] { user.Email }, "New account notification", messageContent);
+                        await _emailSender.SendEmailAsync(message);
+                    }
+                }
+            }          
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }
