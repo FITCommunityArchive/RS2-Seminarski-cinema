@@ -9,7 +9,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h1>
-                            Staff
+                            Staff members
                             <a class="btn btn-primary btn-sm" asp-action="Create">Add New</a>
                         </h1>
 
@@ -31,13 +31,13 @@
                                 <thead>
                                     <tr>
                                         <th>
-                                            <a asp-action="Index" asp-route-sortOrder="@Model.CurrentSortOrder" asp-route-sortProperty="FirstName" asp-route-currentFilter="@Model.CurrentFilter">@Html.DisplayNameFor(model => model[0].FirstName)</a>
+                                            <a asp-action="Index" asp-route-sortOrder="@Model.CurrentSortOrder" asp-route-sortProperty="FirstName" asp-route-currentFilter="@Model.CurrentFilter">First name</a>
                                         </th>
                                         <th>
-                                            <a asp-action="Index" asp-route-sortOrder="@Model.CurrentSortOrder" asp-route-sortProperty="LastName" asp-route-currentFilter="@Model.CurrentFilter">@Html.DisplayNameFor(model => model[0].LastName)</a>
+                                            <a asp-action="Index" asp-route-sortOrder="@Model.CurrentSortOrder" asp-route-sortProperty="LastName" asp-route-currentFilter="@Model.CurrentFilter">Last name</a>
                                         </th>
                                         <th>
-                                            <a asp-action="Index" asp-route-sortOrder="@Model.CurrentSortOrder" asp-route-sortProperty="Role" asp-route-currentFilter="@Model.CurrentFilter">@Html.DisplayNameFor(model => model[0].Role.Name)</a>
+                                            <a asp-action="Index" asp-route-sortOrder="@Model.CurrentSortOrder" asp-route-sortProperty="Role" asp-route-currentFilter="@Model.CurrentFilter">Role</a>
                                         </th>       
                                         <th></th>
                                     </tr>
