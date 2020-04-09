@@ -60,10 +60,10 @@ namespace Cinema.Web.Mvc.Controllers
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                var firstNameQuery = staff.Where(x => x.FirstName.Contains(searchString));
+                var leftQuery = staff.Where(x => x.FirstName.Contains(searchString));
                 var rightQuery = staff.Where(x => x.LastName.Contains(searchString));
 
-                staff = firstNameQuery.Union(rightQuery);
+                staff = leftQuery.Union(rightQuery);
             }
 
             if (sortOrder != null)
