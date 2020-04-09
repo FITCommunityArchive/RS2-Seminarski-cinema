@@ -37,30 +37,37 @@
                                             <a asp-action="Index" asp-route-sortOrder="@Model.CurrentSortOrder" asp-route-sortProperty="LastName" asp-route-currentFilter="@Model.CurrentFilter">Last name</a>
                                         </th>
                                         <th>
+                                            <a asp-action="Index" asp-route-sortOrder="@Model.CurrentSortOrder" asp-route-sortProperty="Email" asp-route-currentFilter="@Model.CurrentFilter">Email address</a>
+                                        </th>
+                                        <th>
                                             <a asp-action="Index" asp-route-sortOrder="@Model.CurrentSortOrder" asp-route-sortProperty="Role" asp-route-currentFilter="@Model.CurrentFilter">Role</a>
-                                        </th>       
+                                        </th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach (var item in Model)
                                     {
-                                        <tr>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.FirstName)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.LastName)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.Role.Name)
-                                            </td>
-                                            <td style="min-width:200px;">
-                                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary btn-xs">Details</a>
-                                                <a asp-authorize asp-roles="@Roles.Administrator" class="btn btn-warning btn-xs" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                                                <a asp-authorize asp-roles="@Roles.Administrator" class="btn btn-danger btn-xs" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                                            </td>
-                                        </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.FirstName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.LastName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Email)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Role.Name)
+                                        </td>
+
+                                        <td style="min-width:200px;">
+                                            <a asp-authorize asp-roles="@Roles.Administrator" class="btn btn-primary btn-xs" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                                            <a asp-authorize asp-roles="@Roles.Administrator" class="btn btn-warning btn-xs" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                                            <a asp-authorize asp-roles="@Roles.Administrator" class="btn btn-danger btn-xs" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                        </td>
+                                    </tr>
                                     }
                                 </tbody>
                             </table>

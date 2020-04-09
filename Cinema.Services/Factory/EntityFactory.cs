@@ -4,6 +4,8 @@ using Cinema.DTO.ViewModels.Movies;
 using Cinema.DTO.ViewModels.Reviews;
 using Cinema.DTO.ViewModels.Screenings;
 using Cinema.DTO.ViewModels.Users;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Cinema.Services.Factory
 {
@@ -73,11 +75,25 @@ namespace Cinema.Services.Factory
                 Email = user.Email,
                 UserName = user.Email,
                 EmailConfirmed = true,
+                PhoneNumber = user.PhoneNumber,
+                PhoneNumberConfirmed = true,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 NormalizedEmail = user.Email.ToUpper(),
                 NormalizedUserName = user.Email.ToUpper()
             };
+        }
+
+        public static void Update(this ApplicationUserCreateVM userModel, ApplicationUser user)
+        {
+            user.UserName = userModel.Email;
+            user.EmailConfirmed = true;
+            user.PhoneNumber = userModel.PhoneNumber;
+            user.PhoneNumberConfirmed = true;
+            user.FirstName = userModel.FirstName;
+            user.LastName = userModel.LastName;
+            user.NormalizedEmail = userModel.Email.ToUpper();
+            user.NormalizedUserName = userModel.Email.ToUpper();
         }
     }
 }

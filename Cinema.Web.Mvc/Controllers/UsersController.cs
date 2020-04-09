@@ -60,10 +60,10 @@ namespace Cinema.Web.Mvc.Controllers
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                var leftQuery = staff.Where(x => x.FirstName.Contains(searchString));
+                var firstNameQuery = staff.Where(x => x.FirstName.Contains(searchString));
                 var rightQuery = staff.Where(x => x.LastName.Contains(searchString));
 
-                staff = leftQuery.Union(rightQuery);
+                staff = firstNameQuery.Union(rightQuery);
             }
 
             if (sortOrder != null)
@@ -86,6 +86,12 @@ namespace Cinema.Web.Mvc.Controllers
             return View(paginatedModel);
         }
 
+        public async Task<IActionResult> Details(string id)
+        {
+            ApplicationUser user = await _unit.Users.GetAsync(id);
+
+            return View(user.ToDetailsVM());
+        }
 
         [HttpGet]
         public async Task<IActionResult> Create()
@@ -134,6 +140,46 @@ namespace Cinema.Web.Mvc.Controllers
                     }
                 }
             }          
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(string id)
+        {
+            SelectList roles = new SelectList((await _unit.Roles.GetAsync(x => x.Name != Roles.User))
+                                                         .Select(x => x.CreateMaster()), "Id", "Name");
+
+            ApplicationUser user = await _unit.Users.GetAsync(id);
+
+            return View(user.ToCreateVM(roles));
+        }
+
+        public async Task<IActionResult> Edit(ApplicationUserCreateVM model)
+        {
+            ApplicationUser user = await _unit.Users.GetAsync(model.Id);
+
+            model.Update(user);
+
+            ApplicationUserRole userRole = user.UserRoles.First();
+
+            if (userRole.RoleId != model.RoleId)
+            {
+                await _userManager.RemoveFromRoleAsync(user, userRole.Role.Name);
+
+                ApplicationRole newRole = await _unit.Roles.GetAsync(model.RoleId);
+                await _userManager.AddToRoleAsync(user, newRole.Name);
+            }
+
+            await _unit.SaveAsync();
+
+            return RedirectToAction(nameof(Details), new { id = user.Id });
+        }
+
+        public async Task<IActionResult> Delete(string id)
+        {
+            await _unit.Users.DeleteAsync(id);
+            await _unit.SaveAsync();
 
             return RedirectToAction(nameof(Index));
         }

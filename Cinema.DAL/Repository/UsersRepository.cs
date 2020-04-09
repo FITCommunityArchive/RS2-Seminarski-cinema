@@ -13,6 +13,24 @@ namespace Cinema.DAL.Repository
     {
         public ApplicationUsersRepository(ApplicationDbContext context) : base(context) { }
 
+        public override async Task UpdateAsync(ApplicationUser newEnt, string id)
+        {
+            ApplicationUser oldEnt = await GetAsync(id);            
+
+            if (oldEnt != null)
+            {
+                ApplicationUserRole userRole = oldEnt.UserRoles.First();
+
+                if (userRole != null)
+                {
+                    userRole.RoleId = newEnt.UserRoles.First().RoleId;
+                }
+
+                _context.Entry(oldEnt).CurrentValues.SetValues(newEnt);
+                oldEnt.UpdateAsync(newEnt);
+            }
+        }
+
         public override IQueryable<ApplicationUser> Sort(IQueryable<ApplicationUser> query, SortOrder? sortOrder, string sortProperty)
         {
             if (sortOrder == SortOrder.ASC)
@@ -24,6 +42,9 @@ namespace Cinema.DAL.Repository
                         break;
                     case "LastName":
                         query = query.OrderBy(s => s.LastName);
+                        break;
+                    case "Email":
+                        query = query.OrderBy(s => s.Email);
                         break;
                     case "Role":
                         query = query.OrderBy(s => s.UserRoles.First().Role.Name);
@@ -39,6 +60,9 @@ namespace Cinema.DAL.Repository
                         break;
                     case "LastName":
                         query = query.OrderByDescending(s => s.LastName);
+                        break;
+                    case "Email":
+                        query = query.OrderByDescending(s => s.Email);
                         break;
                     case "Role":
                         query = query.OrderByDescending(s => s.UserRoles.First().Role.Name);
