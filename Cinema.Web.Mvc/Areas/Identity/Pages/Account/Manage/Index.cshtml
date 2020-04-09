@@ -8,22 +8,91 @@
 <h4>@ViewData["Title"]</h4>
 <partial name="_StatusMessage" model="Model.StatusMessage" />
 <div class="row">
-    <div class="col-md-6">
-        <form id="profile-form" method="post">
+    <div class="col-12 col-lg-6">
+        <form id="profile-form" method="post" class="card shadow-soft border p-4 mb-4">
             <div asp-validation-summary="All" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Username"></label>
-                <input asp-for="Username" class="form-control" disabled />
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <div class="form-group">
+                        <label asp-for="Username"></label>
+                        <input asp-for="Username" disabled class="form-control shadow-soft" id="Username" placeholder="Username" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;">
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <div class="form-group">
+                        <label asp-for="Input.PhoneNumber">Phone number</label>
+                        <input asp-for="Input.PhoneNumber" class="form-control shadow-soft" id="PhoneNumber" placeholder="Phone number" required="">
+                    </div>
+                    <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Input.PhoneNumber"></label>
-                <input asp-for="Input.PhoneNumber" class="form-control" />
-                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+            @*<div class="row">
+                <div class="col-12 col-lg-6">
+                    <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input type="email" class="form-control shadow-soft" id="email" placeholder="Enter email" required="">
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <div class="form-group">
+                        <label for="lastname">Last name</label>
+                        <input type="text" class="form-control shadow-soft" id="lastname" placeholder="Last name" required="">
+                    </div>
+                </div>
+            </div>*@
+            <div class="row">
+                <div class="col">
+                    <button id="update-profile-button" class="btn btn-primary btn-dark mt-2 animate-up-2" type="submit">Update</button>
+                </div>
             </div>
-            <button id="update-profile-button" type="submit" class="btn btn-primary">Save</button>
         </form>
+        @*<form action="#" method="post" class="card shadow-soft border p-4 mb-4 mb-lg-0">
+            <h6 class="mb-4">Settings</h6>
+            <div class="custom-control custom-switch mb-2">
+                <input type="checkbox" class="custom-control-input" id="promotions">
+                <label class="custom-control-label" for="promotions">Promotions</label>
+            </div>
+            <div class="custom-control custom-switch mb-2">
+                <input type="checkbox" class="custom-control-input" checked="checked" id="news">
+                <label class="custom-control-label" for="news">Weekly news</label>
+            </div>
+        </form>*@
     </div>
+    @*<div class="col-12 col-lg-6">
+        <form action="#" method="post" class="card shadow-soft border p-4 mb-4">
+            <label>Profile picture</label>
+            <div class="d-flex justify-content-between align-items-center mt-2">
+                <div class="profile-image-small fmxw-100 mr-4"><img src="../../assets/img/team/profile-image-2.jpg" class="card-img-top rounded-circle" alt="image"></div>
+                <div class="custom-file">
+                    <input id="profile-image" type="file" class="custom-file-input">
+                    <label class="custom-file-label" for="profile-image">Choose file</label>
+                </div>
+            </div><small class="text-gray-500 font-weight-light font-xs d-block mt-2">Image should be 75x75 pixels and only *.jpg, *.png and *.jpeg formats are accepted.</small>
+        </form>
+        <form action="#" method="post" class="card shadow-soft border p-4">
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <div class="form-group">
+                        <label for="currentpassword">Current password</label>
+                        <input type="password" class="form-control shadow-soft" id="currentpassword" placeholder="Current password" required="" autocomplete="off" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAPhJREFUOBHlU70KgzAQPlMhEvoQTg6OPoOjT+JWOnRqkUKHgqWP4OQbOPokTk6OTkVULNSLVc62oJmbIdzd95NcuGjX2/3YVI/Ts+t0WLE2ut5xsQ0O+90F6UxFjAI8qNcEGONia08e6MNONYwCS7EQAizLmtGUDEzTBNd1fxsYhjEBnHPQNG3KKTYV34F8ec/zwHEciOMYyrIE3/ehKAqIoggo9inGXKmFXwbyBkmSQJqmUNe15IRhCG3byphitm1/eUzDM4qR0TTNjEixGdAnSi3keS5vSk2UDKqqgizLqB4YzvassiKhGtZ/jDMtLOnHz7TE+yf8BaDZXA509yeBAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;">
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <div class="form-group">
+                        <label for="newpassword">New password</label>
+                        <input type="password" class="form-control shadow-soft" id="newpassword" placeholder="New password" required="" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACIUlEQVQ4EX2TOYhTURSG87IMihDsjGghBhFBmHFDHLWwSqcikk4RRKJgk0KL7C8bMpWpZtIqNkEUl1ZCgs0wOo0SxiLMDApWlgOPrH7/5b2QkYwX7jvn/uc//zl3edZ4PPbNGvF4fC4ajR5VrNvt/mo0Gr1ZPOtfgWw2e9Lv9+chX7cs64CS4Oxg3o9GI7tUKv0Q5o1dAiTfCgQCLwnOkfQOu+oSLyJ2A783HA7vIPLGxX0TgVwud4HKn0nc7Pf7N6vV6oZHkkX8FPG3uMfgXC0Wi2vCg/poUKGGcagQI3k7k8mcp5slcGswGDwpl8tfwGJg3xB6Dvey8vz6oH4C3iXcFYjbwiDeo1KafafkC3NjK7iL5ESFGQEUF7Sg+ifZdDp9GnMF/KGmfBdT2HCwZ7TwtrBPC7rQaav6Iv48rqZwg+F+p8hOMBj0IbxfMdMBrW5pAVGV/ztINByENkU0t5BIJEKRSOQ3Aj+Z57iFs1R5NK3EQS6HQqF1zmQdzpFWq3W42WwOTAf1er1PF2USFlC+qxMvFAr3HcexWX+QX6lUvsKpkTyPSEXJkw6MQ4S38Ljdbi8rmM/nY+CvgNcQqdH6U/xrYK9t244jZv6ByUOSiDdIfgBZ12U6dHEHu9TpdIr8F0OP692CtzaW/a6y3y0Wx5kbFHvGuXzkgf0xhKnPzA4UTyaTB8Ph8AvcHi3fnsrZ7Wore02YViqVOrRXXPhfqP8j6MYlawoAAAAASUVORK5CYII=&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-outline-dark mt-2" type="submit">Change password</button>
+                </div>
+            </div>
+        </form>
+    </div>*@
 </div>
+
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
