@@ -131,8 +131,7 @@ namespace Cinema.DAL
 
         private static bool HasNoChildren(ApplicationUser user)
         {
-            return user.Reviews.Count + user.Reservations.Count + user.News.Count + user.Events.Count +
-                user.Claims.Count + user.Logins.Count + user.Tokens.Count == 0;
+            return user.Reviews.Count + user.Reservations.Count + user.News.Count + user.Events.Count == 0;
         }
 
         private static bool HasNoChildren(ApplicationRole role)
