@@ -15,6 +15,10 @@ namespace Cinema.DTO.ViewModels.Movies
             public string MovieActors { get; set; }
             public string HallName { get; set; }
             public DateTime StartTime { get; set; }
+            public string MovieRating { get; set; }
+            public int Duration { get; set; }
+            public int Year { get; set; }
+            public string Country { get; set; }
         }
     }
 }

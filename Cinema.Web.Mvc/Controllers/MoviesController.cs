@@ -185,7 +185,11 @@ namespace Cinema.Web.Mvc.Controllers
                     MovieTitle = x.Movie.Title,
                     MovieActors = x.Movie.Actors,
                     HallName = x.Hall.Name,
-                    StartTime = x.DateAndTime
+                    StartTime = x.DateAndTime,
+                    //MovieRating = x.Movie.Reviews.Average(x => x.Rating).ToString("#.00") ?? "N/A",
+                    Duration = x.Movie.Duration,
+                    Year = x.Movie.Year,
+                    Country = x.Movie.Country
                 }).ToList();
                 
             }
@@ -198,12 +202,16 @@ namespace Cinema.Web.Mvc.Controllers
                     MovieTitle = x.Movie.Title,
                     MovieActors = x.Movie.Actors,
                     HallName = x.Hall.Name,
-                    StartTime = x.DateAndTime
+                    StartTime = x.DateAndTime,
+                    //MovieRating = x.Movie.Reviews.Average(x => x.Rating).ToString("#.00") ?? "N/A",
+                    Duration = x.Movie.Duration,
+                    Year = x.Movie.Year,
+                    Country = x.Movie.Country
                 }).ToList();
                 
             }
             
-            int pageSize = 12;
+            int pageSize = 6;
             return View(PaginatedList<NowShowingIndexVM.Row>.Create(screenings.ScreeningsList.AsQueryable(), pageNumber ?? 1, pageSize));
         }
 
