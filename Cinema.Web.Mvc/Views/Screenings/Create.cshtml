@@ -3,53 +3,63 @@
 @{
     ViewData["Title"] = "Create";
 }
-<section asp-authorize asp-roles="@Roles.Administrator">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h1>Create</h1>
 
-                <h4>Screening</h4>
-                <hr />
-                <div class="row">
-                    <div class="col-md-4">
-                        <form method="post">
-                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                            <div class="form-group">
-                                <label asp-for="DateAndTime" class="control-label"></label>
-                                <input asp-for="DateAndTime" class="form-control" />
-                                <span asp-validation-for="DateAndTime" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="MovieId" class="control-label"></label>
-                                <select asp-for="MovieId" class="form-control"
-                                        asp-items="@Model.Movies">
-                                    <option value="">-- Select Movie --</option>
-                                </select>
-                                <span asp-validation-for="MovieId" class="text-danger" />
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="HallId" class="control-label"></label>
-                                <select asp-for="HallId" class="form-control"
-                                        asp-items="@Model.Halls">
-                                    <option value="">-- Select Hall --</option>
-                                </select>
-                                <span asp-validation-for="HallId" class="text-danger" />
-                            </div>
-                            <div class="form-group">
-                                <input type="submit" value="Create" class="btn btn-primary" />
-                            </div>
-                        </form>
+
+    <div class="section section-md" asp-authorize asp-roles="@Roles.Administrator">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Create screening</h1>
+
+                    <div class="row">
+                        <div class="col-12 col-lg-12">
+                            <form method="post" class="card shadow-soft border p-4 mb-4">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="row">
+                                    <div class="col-12 col-lg-6">
+                                        <div class="form-group">
+                                            <label asp-for="DateAndTime"></label>
+                                            <input asp-for="DateAndTime" class="form-control shadow-soft" id="DateAndTime" placeholder="DateAndTime">
+                                            <span asp-validation-for="DateAndTime" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-6">
+                                        <div class="form-group">
+                                            <label asp-for="Movie"></label>
+                                            <select asp-for="MovieId" class="form-control shadow-soft" id="MovieId"
+                                                    asp-items="@Model.Movies">
+                                                <option value="">-- Select Movie --</option>
+                                            </select>
+                                        </div>
+                                        <span asp-validation-for="MovieId" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-12 col-lg-6">
+                                        <div class="form-group">
+                                            <label asp-for="Hall" class="control-label"></label>
+                                            <select asp-for="HallId" class="form-control shadow-soft" id="HallId"
+                                                    asp-items="@Model.Halls">
+                                                <option value="">-- Select Hall --</option>
+                                            </select>
+                                            <span asp-validation-for="HallId" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <button class="btn btn-primary btn-dark mt-2 animate-up-2" type="submit">Save</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                </div>
-
-                <div>
-                    <a asp-action="Index">Back to List</a>
+                    <div>
+                        <a asp-action="Index">Back to List</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
+
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

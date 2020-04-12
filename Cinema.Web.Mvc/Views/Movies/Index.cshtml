@@ -92,7 +92,7 @@
                                     <td style="min-width:200px;">
                                         <a asp-action="Details" asp-route-id="@item.Id" class="text-dark" data-toggle="tooltip" title="" data-original-title="Details movie"><i class="far fa-eye mr-2"></i></a>
                                         <a asp-authorize asp-roles="@Roles.Administrator" asp-action="Edit" asp-route-id="@item.Id" class="text-dark" data-toggle="tooltip" title="" data-original-title="Edit movie"><i class="far fa-edit mr-2"></i></a>
-                                        <a asp-authorize asp-roles="@Roles.Administrator" asp-action="Delete" asp-route-id="@item.Id" data-toggle="modal" data-target="#modal-confirm-delete" class="text-danger"><i class="far fa-trash-alt" data-toggle="tooltip" title="" data-original-title="Delete movie"></i></a>
+                                        <a asp-authorize asp-roles="@Roles.Administrator" asp-action="Delete" asp-route-id="@item.Id" class="text-danger"><i class="far fa-trash-alt" title="" ></i></a>
                                     </td>
                                 </tr>
                             }

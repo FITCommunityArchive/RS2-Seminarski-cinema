@@ -155,7 +155,7 @@
                     <!-- End of About Tab -->
                     <!-- Video Tab -->
                     <div class="tab-pane fade" id="nav-video" role="tabpanel" aria-labelledby="nav-video-tab">
-                        <div class="video-poster overlay-dark position-relative rounded"><a data-fancybox="" href="https://vimeo.com/40842620"><span class="icon icon-white icon-xl"><i class="fas fa-play-circle"></i></span> </a><img src="assets/img/lifestyle-office.jpg" alt="Image"></div>
+                        <iframe width="560" height="315" id="movie-trailer" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                     <!-- End of Video Tab -->      
                 </div>
@@ -327,6 +327,15 @@
                 console.log("No image found.");
             }
         })
+
+
+        $.get("https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=@Model.Title trailer&type=video&key=AIzaSyBcUEg4NHBs3WIMj1qlEimxhTyswxgoFIU", function (data) {
+            if (data.items) {
+                //console.log(data.items[0].id['videoId']);
+                jQuery("#movie-trailer").attr("src", "https://www.youtube.com/embed/" + data.items[0].id['videoId']);
+            }
+        });
+
     });
 
     function Update() {
