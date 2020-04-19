@@ -32,6 +32,7 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li>@Html.ActionLink("Now Showing", "Index", "NowShowing")</li>
+                        <li>@Html.ActionLink("Events", "Index", "Events")</li>
                         @if (SignInManager.IsSignedIn(User)
                            && (await AuthorizationService.AuthorizeAsync(User, Policies.IsAdmin)).Succeeded)
                         {

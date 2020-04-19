@@ -36,7 +36,7 @@ namespace Cinema.DAL.Data
 
         public ApplicationDbContext Context => _context;
 
-        public IRepository<Event, int> Events => _events ?? (_events = new Repository<Event, int>(_context));
+        public IRepository<Event, int> Events => _events ?? (_events = new EventsRepository(_context));
         public IRepository<EventType, int> EventTypes => _eventTypes ?? (_eventTypes = new Repository<EventType, int>(_context));
         public IRepository<Genre, int> Genres => _genres ?? (_genres = new Repository<Genre, int>(_context));
         public IRepository<GenreMovie, int> GenreMovies => _genreMovies ?? (_genreMovies = new Repository<GenreMovie, int>(_context));

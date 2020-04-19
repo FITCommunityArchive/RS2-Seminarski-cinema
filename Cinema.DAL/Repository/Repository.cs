@@ -78,7 +78,7 @@ namespace Cinema.DAL.Repository
 
         public virtual IQueryable<Entity> Sort(IQueryable<Entity> query, SortOrder? sortOrder, string sortProperty)
         {
-            throw new NotFiniteNumberException();
+            throw new NotImplementedException();
         }
     }
 }

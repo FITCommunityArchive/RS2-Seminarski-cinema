@@ -58,6 +58,15 @@ namespace Cinema.Services.Factory
             };
         }
 
+        public static MasterModel CreateMaster(this EventType eventType)
+        {
+            return new MasterModel
+            {
+                Id = eventType.Id,
+                Name = eventType.Name
+            };
+        }
+
         public static IdentityMasterModel CreateMaster(this ApplicationUser user)
         {
             return new IdentityMasterModel
