@@ -36,7 +36,13 @@
                                             <a asp-action="Index" asp-route-sortOrder="@Model.CurrentSortOrder" asp-route-sortProperty="Title" asp-route-currentFilter="@Model.CurrentFilter">@Html.DisplayNameFor(model => model[0].Title)</a>
                                         </th>
                                         <th>
-                                            <a asp-action="Index" asp-route-sortOrder="@Model.CurrentSortOrder" asp-route-sortProperty="DateAndTime" asp-route-currentFilter="@Model.CurrentFilter">@Html.DisplayNameFor(model => model[0].DateAndTime)</a>
+                                            <a asp-action="Index" asp-route-sortOrder="@Model.CurrentSortOrder" asp-route-sortProperty="Date" asp-route-currentFilter="@Model.CurrentFilter">@Html.DisplayNameFor(model => model[0].Date)</a>
+                                        </th>
+                                        <th>
+                                            <a asp-action="Index" asp-route-sortOrder="@Model.CurrentSortOrder" asp-route-sortProperty="Time" asp-route-currentFilter="@Model.CurrentFilter">@Html.DisplayNameFor(model => model[0].Time)</a>
+                                        </th>
+                                        <th>
+                                            <a asp-action="Index" asp-route-sortOrder="@Model.CurrentSortOrder" asp-route-sortProperty="Description" asp-route-currentFilter="@Model.CurrentFilter">@Html.DisplayNameFor(model => model[0].Description)</a>
                                         </th>
                                         <th>
                                             <a asp-action="Index" asp-route-sortOrder="@Model.CurrentSortOrder" asp-route-sortProperty="Type" asp-route-currentFilter="@Model.CurrentFilter">@Html.DisplayNameFor(model => model[0].Type.Name)</a>
@@ -52,16 +58,20 @@
                                             @Html.DisplayFor(modelItem => item.Title)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.DateAndTime)
+                                            @Html.DisplayFor(modelItem => item.Date)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Time)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Description)
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.Type.Name)
                                         </td>
 
                                         <td style="min-width:200px;">
-                                            <a class="btn btn-primary btn-xs" asp-action="Details" asp-route-id="@item.Id">Details</a>
-                                            <a asp-authorize asp-roles="@Roles.ContentEditor" class="btn btn-warning btn-xs" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                                            <a asp-authorize asp-roles="@Roles.ContentEditor" class="btn btn-danger btn-xs" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                            <a class="btn btn-primary btn-xs" asp-action="Details" asp-route-id="@item.Id">See more</a>
                                         </td>
                                     </tr>
                                     }

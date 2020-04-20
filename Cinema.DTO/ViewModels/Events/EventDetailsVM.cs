@@ -1,8 +1,9 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Cinema.DTO.ViewModels.Events
 {
-    public class EventIndexVM
+    public class EventDetailsVM
     {
         public int Id { get; set; }
         public string Title { get; set; }
@@ -13,6 +14,9 @@ namespace Cinema.DTO.ViewModels.Events
         public string Date { get; set; }
         public string Time { get; set; }
         public string Promoter { get; set; }
+
+
+        [Display(Name = "Event type")]
         public MasterModel Type { get; set; }
     }
 }

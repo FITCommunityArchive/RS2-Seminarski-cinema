@@ -1,5 +1,6 @@
 ﻿using Cinema.Domain.Entities;
 using Cinema.Domain.Entities.Identity;
+using Cinema.DTO.ViewModels.Events;
 using Cinema.DTO.ViewModels.Movies;
 using Cinema.DTO.ViewModels.Reviews;
 using Cinema.DTO.ViewModels.Screenings;
@@ -94,6 +95,19 @@ namespace Cinema.Services.Factory
             user.LastName = userModel.LastName;
             user.NormalizedEmail = userModel.Email.ToUpper();
             user.NormalizedUserName = userModel.Email.ToUpper();
+        }
+
+        public static Event Create(this EventCreateVM model)
+        {
+            return new Event
+            {
+                AuthorId = model.AuthorId,
+                Description = model.Description,
+                Title = model.Title,
+                DateAndTime = model.DateAndTime,
+                Promoter = model.Title,
+                TypeId = model.EventTypeId
+            };
         }
     }
 }

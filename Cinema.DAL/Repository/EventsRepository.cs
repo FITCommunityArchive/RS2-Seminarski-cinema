@@ -20,8 +20,14 @@ namespace Cinema.DAL.Repository
                     case "Title":
                         query = query.OrderBy(s => s.Title);
                         break;
-                    case "DateAndTime":
+                    case "Date":
                         query = query.OrderBy(s => s.DateAndTime);
+                        break;
+                    case "Time":
+                        query = query.OrderBy(s => s.DateAndTime.TimeOfDay);
+                        break;
+                    case "Description":
+                        query = query.OrderBy(s => s.Description);
                         break;
                     case "Type":
                         query = query.OrderBy(s => s.Type.Name);
@@ -35,8 +41,14 @@ namespace Cinema.DAL.Repository
                     case "Title":
                         query = query.OrderByDescending(s => s.Title);
                         break;
-                    case "DateAndTime":
+                    case "Date":
                         query = query.OrderByDescending(s => s.DateAndTime);
+                        break;
+                    case "Time":
+                        query = query.OrderByDescending(s => s.DateAndTime.TimeOfDay);
+                        break;
+                    case "Description":
+                        query = query.OrderByDescending(s => s.Description);
                         break;
                     case "Type":
                         query = query.OrderByDescending(s => s.Type.Name);

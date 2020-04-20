@@ -2,7 +2,7 @@
 
 namespace Cinema.Services.Helpers
 {
-    public static class TimeHelper
+    public static class DateTimeHelper
     {
         public static DateTime GenerateFutureTime(int additionalMonthsLimit = 0, int additionalDaysLimit = 0, int lowerHourOfDayLimit = 0, int upperHourOfDayLimit = 0, int additionalMinutesLimit = 0)
         {
@@ -15,6 +15,16 @@ namespace Cinema.Services.Helpers
             dateTime = dateTime.AddMinutes(random.Next(additionalMinutesLimit));
 
             return dateTime;
+        }
+
+        public static string ToFormattedDate(this DateTime dateTime)
+        {
+            return dateTime.ToString("dd.MM.yyyy");
+        }
+
+        public static string ToFormattedTime(this DateTime dateTime)
+        {
+            return dateTime.ToString("t");
         }
     }
 }
