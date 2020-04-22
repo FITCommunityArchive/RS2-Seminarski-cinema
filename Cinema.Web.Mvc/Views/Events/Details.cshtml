@@ -1,0 +1,59 @@
+﻿@model Cinema.DTO.ViewModels.Events.EventDetailsVM
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section>
+    <div class="container">
+        <div class="content-wrap">
+            <div class="row">
+                <h1 class="h2">@Html.DisplayFor(model => model.Title)</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <img id="movie-poster" class="pull-left" src="~/img/movie-poster.png" />
+                </div>
+                <div class="col-md-8">
+                    <ul class="list-unstyled movie-info">
+                        <li>
+                            <span>@Html.DisplayNameFor(model => model.Title)</span>
+                            @Html.DisplayFor(model => model.Title)
+                        </li>
+                        <li>
+                            <span>@Html.DisplayNameFor(model => model.Description)</span>
+                            @Html.DisplayFor(model => model.Description)
+                        </li>
+                        <li>
+                            <span>@Html.DisplayNameFor(model => model.Date)</span>
+                            @Html.DisplayFor(model => model.Date)
+                        </li>
+                        <li>
+                            <span>@Html.DisplayNameFor(model => model.Time)</span>
+                            @Html.DisplayFor(model => model.Time)
+                        </li>
+                        <li>
+                            <span>@Html.DisplayNameFor(model => model.Promoter)</span>
+                            @Html.DisplayFor(model => model.Promoter)
+                        </li>
+                        <li>
+                            <span>@Html.DisplayNameFor(model => model.Type)</span>
+                            @Html.DisplayFor(model => model.Type.Name)
+                        </li>
+                        <li>
+                            <span>@Html.DisplayNameFor(model => model.Author)</span>
+                            @Html.DisplayFor(model => model.Author.Name)
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-4">
+                    <a asp-action="Index" class="btn btn-info btn-xs">Back to List</a>
+                    <a asp-authorize asp-roles="@Roles.ContentEditor,@Roles.Administrator" class="btn btn-warning btn-xs" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+                    <a asp-authorize asp-roles="@Roles.ContentEditor,@Roles.Administrator" class="btn btn-danger btn-xs" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

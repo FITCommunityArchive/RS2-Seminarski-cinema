@@ -1,0 +1,54 @@
+﻿@model Cinema.DTO.ViewModels.News.NewsCreateVM
+@{
+    ViewData["Title"] = "Create";
+}
+<section asp-authorize asp-roles="@Roles.ContentEditor,@Roles.Administrator">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Create</h1>
+
+                <h4>News</h4>
+                <hr />
+                <div class="row">
+                    <div class="col-md-4">
+                        <form method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <input asp-for="AuthorId" hidden />
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Title" class="control-label">Title</label>
+                                <input asp-for="Title" class="form-control" />
+                                <span asp-validation-for="Title" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Description" class="control-label">Description</label>
+                                <input asp-for="Description" class="form-control" />
+                                <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="NewsTypeId" class="control-label">News Type</label>
+                                <select asp-for="NewsTypeId" class="form-control"
+                                        asp-items="@Model.NewsTypes">
+                                    <option value="">-- Select News Type --</option>
+                                </select>
+                                <span asp-validation-for="NewsTypeId" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Create" class="btn btn-success" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div>
+                    <a asp-action="Index">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

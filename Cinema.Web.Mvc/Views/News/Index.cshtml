@@ -1,0 +1,110 @@
+﻿@model PaginatedList<Cinema.DTO.ViewModels.News.NewsIndexVM>
+
+@{
+    ViewData["Title"] = "Index";
+}
+    <section>
+        <div class="container">
+            <div class="content-wrap">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>
+                            News
+                            <span asp-authorize asp-roles="@Roles.ContentEditor">
+                                <a class="btn btn-primary btn-sm" asp-action="Create">Add New</a>
+                            </span>
+                        </h1>
+
+                        <form asp-action="Index" method="get" class="m-b-30">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" name="SearchString" value="@Model.CurrentFilter" placeholder="Search for...">
+                                        <span class="input-group-btn">
+                                            <button type="submit" class="btn btn-default">Search</button>
+                                            <a class="btn btn-xs" asp-action="Index">Back to Full List</a>
+                                        </span>
+                                    </div><!-- /input-group -->
+                                </div>
+                            </div>
+                        </form>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <a asp-action="Index" asp-route-sortOrder="@Model.CurrentSortOrder" asp-route-sortProperty="Title" asp-route-currentFilter="@Model.CurrentFilter">@Html.DisplayNameFor(model => model[0].Title)</a>
+                                        </th>
+                                        <th>
+                                            <a asp-action="Index" asp-route-sortOrder="@Model.CurrentSortOrder" asp-route-sortProperty="DateCreated" asp-route-currentFilter="@Model.CurrentFilter">@Html.DisplayNameFor(model => model[0].DateCreated)</a>
+                                        </th>
+                                        <th>
+                                            <a asp-action="Index" asp-route-sortOrder="@Model.CurrentSortOrder" asp-route-sortProperty="TimeCreated" asp-route-currentFilter="@Model.CurrentFilter">@Html.DisplayNameFor(model => model[0].TimeCreated)</a>
+                                        </th>
+                                        <th>
+                                            <a asp-action="Index" asp-route-sortOrder="@Model.CurrentSortOrder" asp-route-sortProperty="Description" asp-route-currentFilter="@Model.CurrentFilter">@Html.DisplayNameFor(model => model[0].Description)</a>
+                                        </th>
+                                        <th>
+                                            <a asp-action="Index" asp-route-sortOrder="@Model.CurrentSortOrder" asp-route-sortProperty="Type" asp-route-currentFilter="@Model.CurrentFilter">@Html.DisplayNameFor(model => model[0].Type.Name)</a>
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Title)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DateCreated)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TimeCreated)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Description)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Type.Name)
+                                        </td>
+
+                                        <td style="min-width:200px;">
+                                            <a class="btn btn-primary btn-xs" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                                        </td>
+                                    </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        @{
+                            var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+                            var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+                        }
+
+                        <a asp-action="Index"
+                           asp-route-sortOrder="@Model.CurrentSortOrder"
+                           asp-route-sortProperty="@Model.CurrentSort"
+                           asp-route-pageNumber="@(Model.PageIndex - 1)"
+                           asp-route-currentFilter="@Model.CurrentFilter"
+                           class="btn btn-default @prevDisabled">
+                            Previous
+                        </a>
+                        <a asp-action="Index"
+                           asp-route-sortOrder="@Model.CurrentSortOrder"
+                           asp-route-sortProperty="@Model.CurrentSort"
+                           asp-route-pageNumber="@(Model.PageIndex + 1)"
+                           asp-route-currentFilter="@Model.CurrentFilter"
+                           class="btn btn-default @nextDisabled">
+                            Next
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

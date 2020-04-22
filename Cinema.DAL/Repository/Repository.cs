@@ -28,11 +28,6 @@ namespace Cinema.DAL.Repository
         public virtual async Task<Entity> GetAsync(Key id)
         { 
             Entity entity = await _dbSet.FindAsync(id);
-            // Exception handling needs to be implemented here:
-/*            if (entity == null)
-            {
-                throw new ArgumentException($"There is no object with id: {id} in the database");
-            }*/
             return entity;
         }
 
@@ -52,8 +47,9 @@ namespace Cinema.DAL.Repository
 
             if (oldEnt != null)
             {
+                await newEnt.BuildAsync(_context);
                 _context.Entry(oldEnt).CurrentValues.SetValues(newEnt);
-                oldEnt.UpdateAsync(newEnt);
+                oldEnt.Update(newEnt);
             }
         }
 
@@ -78,7 +74,7 @@ namespace Cinema.DAL.Repository
 
         public virtual IQueryable<Entity> Sort(IQueryable<Entity> query, SortOrder? sortOrder, string sortProperty)
         {
-            throw new NotFiniteNumberException();
+            throw new NotImplementedException();
         }
     }
 }
