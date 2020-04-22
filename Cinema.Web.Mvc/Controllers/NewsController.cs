@@ -7,6 +7,7 @@ using Cinema.Authorization.Constants;
 using Cinema.DAL.Data;
 using Cinema.Domain.Entities;
 using Cinema.DTO.ViewModels.Events;
+using Cinema.DTO.ViewModels.News;
 using Cinema.Services.Enums;
 using Cinema.Services.Factory;
 using Cinema.Services.Factory.ViewModels;
@@ -19,9 +20,9 @@ using Microsoft.EntityFrameworkCore;
 namespace Cinema.Web.Mvc.Controllers
 {
     [Authorize(Roles = Roles.ContentEditor + "," + Roles.Administrator)]
-    public class EventsController : BaseController
+    public class NewsController : BaseController
     {
-        public EventsController(ApplicationDbContext context) : base(context) { }
+        public NewsController(ApplicationDbContext context) : base(context) { }
 
         [AllowAnonymous]
         public async Task<IActionResult> Index(SortOrder? sortOrder, string sortProperty, string searchString, string currentFilter, int? pageNumber)
@@ -35,59 +36,59 @@ namespace Cinema.Web.Mvc.Controllers
                 searchString = currentFilter;
             }
 
-            IQueryable<Event> eventsQuery = _unit.Events.Get();
+            IQueryable<News> newsQuery = _unit.News.Get();
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                eventsQuery = eventsQuery.Where(x => x.Title.Contains(searchString));
+                newsQuery = newsQuery.Where(x => x.Title.Contains(searchString));
             }
 
             if (sortOrder != null)
             {
                 sortOrder = sortOrder == SortOrder.ASC ? SortOrder.DESC : SortOrder.ASC;
-                eventsQuery = _unit.Events.Sort(eventsQuery, sortOrder, sortProperty);
+                newsQuery = _unit.News.Sort(newsQuery, sortOrder, sortProperty);
             }
             else
             {
                 sortOrder = SortOrder.ASC;
-                eventsQuery = eventsQuery.OrderBy(s => s.Title);
+                newsQuery = newsQuery.OrderBy(s => s.Title);
             }
 
-            List<EventIndexVM> events = await eventsQuery.Select(x => x.ToIndexVM()).ToListAsync();
+            List<NewsIndexVM> news = await newsQuery.Select(x => x.ToIndexVM()).ToListAsync();
 
-            PaginatedList<EventIndexVM> paginatedModel
-                = PaginatedList<EventIndexVM>.Create(events.AsQueryable(), pageNumber ?? 1, 10,
+            PaginatedList<NewsIndexVM> paginatedModel
+                = PaginatedList<NewsIndexVM>.Create(news.AsQueryable(), pageNumber ?? 1, 10,
                 sortOrder, sortProperty, searchString);
 
             return View(paginatedModel);
         }
 
-        [AllowAnonymous]
-        public async Task<IActionResult> Details(int id)
-        {
-            Event cinemaEvent = await _unit.Events.GetAsync(id);
-
-            return View(cinemaEvent.ToDetailsVM());
-        }
-
         [HttpGet]
         public IActionResult Create()
         {
-            EventCreateVM model = new EventCreateVM
+            NewsCreateVM model = new NewsCreateVM
             {
-                EventTypes = new SelectList(_unit.EventTypes.Get().Select(x => x.CreateMaster()), "Id", "Name"),
+                NewsTypes = new SelectList(_unit.NewsTypes.Get().Select(x => x.CreateMaster()), "Id", "Name"),
                 AuthorId = User.FindFirstValue(ClaimTypes.NameIdentifier)
             };
 
             return View(model);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Create(EventCreateVM model)
+        [AllowAnonymous]
+        public async Task<IActionResult> Details(int id)
         {
-            Event eventEntity = model.Create();
+            News news = await _unit.News.GetAsync(id);
 
-            await _unit.Events.InsertAsync(eventEntity);
+            return View(news.ToDetailsVM());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(NewsCreateVM model)
+        {
+            News news = model.Create();
+
+            await _unit.News.InsertAsync(news);
             await _unit.SaveAsync();
 
             return RedirectToAction(nameof(Index));
@@ -96,25 +97,25 @@ namespace Cinema.Web.Mvc.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
-            SelectList eventTypes = new SelectList(_unit.EventTypes.Get().Select(x => x.CreateMaster()), "Id", "Name");
+            SelectList newsTypes = new SelectList(_unit.NewsTypes.Get().Select(x => x.CreateMaster()), "Id", "Name");
 
-            Event eventEntity = await _unit.Events.GetAsync(id);
+            News news = await _unit.News.GetAsync(id);
 
-            return View(eventEntity.ToCreateVM(eventTypes));
+            return View(news.ToCreateVM(newsTypes));
         }
 
-        public async Task<IActionResult> Edit(EventCreateVM model)
+        public async Task<IActionResult> Edit(NewsCreateVM model)
         {
-            Event eventEntity = model.Create();
-            await _unit.Events.UpdateAsync(eventEntity, model.Id);
+            News news = model.Create();
+            await _unit.News.UpdateAsync(news, model.Id);
             await _unit.SaveAsync();
 
-            return RedirectToAction(nameof(Details), new { id = eventEntity.Id });
+            return RedirectToAction(nameof(Details), new { id = news.Id });
         }
-        
+
         public async Task<IActionResult> Delete(int id)
         {
-            await _unit.Events.DeleteAsync(id);
+            await _unit.News.DeleteAsync(id);
             await _unit.SaveAsync();
 
             return RedirectToAction(nameof(Index));

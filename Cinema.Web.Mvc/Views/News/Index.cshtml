@@ -1,4 +1,4 @@
-﻿@model PaginatedList<Cinema.DTO.ViewModels.Events.EventIndexVM>
+﻿@model PaginatedList<Cinema.DTO.ViewModels.News.NewsIndexVM>
 
 @{
     ViewData["Title"] = "Index";
@@ -9,7 +9,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h1>
-                            Events
+                            News
                             <span asp-authorize asp-roles="@Roles.ContentEditor">
                                 <a class="btn btn-primary btn-sm" asp-action="Create">Add New</a>
                             </span>
@@ -36,10 +36,10 @@
                                             <a asp-action="Index" asp-route-sortOrder="@Model.CurrentSortOrder" asp-route-sortProperty="Title" asp-route-currentFilter="@Model.CurrentFilter">@Html.DisplayNameFor(model => model[0].Title)</a>
                                         </th>
                                         <th>
-                                            <a asp-action="Index" asp-route-sortOrder="@Model.CurrentSortOrder" asp-route-sortProperty="Date" asp-route-currentFilter="@Model.CurrentFilter">@Html.DisplayNameFor(model => model[0].Date)</a>
+                                            <a asp-action="Index" asp-route-sortOrder="@Model.CurrentSortOrder" asp-route-sortProperty="DateCreated" asp-route-currentFilter="@Model.CurrentFilter">@Html.DisplayNameFor(model => model[0].DateCreated)</a>
                                         </th>
                                         <th>
-                                            <a asp-action="Index" asp-route-sortOrder="@Model.CurrentSortOrder" asp-route-sortProperty="Time" asp-route-currentFilter="@Model.CurrentFilter">@Html.DisplayNameFor(model => model[0].Time)</a>
+                                            <a asp-action="Index" asp-route-sortOrder="@Model.CurrentSortOrder" asp-route-sortProperty="TimeCreated" asp-route-currentFilter="@Model.CurrentFilter">@Html.DisplayNameFor(model => model[0].TimeCreated)</a>
                                         </th>
                                         <th>
                                             <a asp-action="Index" asp-route-sortOrder="@Model.CurrentSortOrder" asp-route-sortProperty="Description" asp-route-currentFilter="@Model.CurrentFilter">@Html.DisplayNameFor(model => model[0].Description)</a>
@@ -58,10 +58,10 @@
                                             @Html.DisplayFor(modelItem => item.Title)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.Date)
+                                            @Html.DisplayFor(modelItem => item.DateCreated)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.Time)
+                                            @Html.DisplayFor(modelItem => item.TimeCreated)
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.Description)

@@ -27,7 +27,7 @@ namespace Cinema.DAL.Repository
                 }
 
                 _context.Entry(oldEnt).CurrentValues.SetValues(newEnt);
-                oldEnt.UpdateAsync(newEnt);
+                oldEnt.Update(newEnt);
             }
         }
 

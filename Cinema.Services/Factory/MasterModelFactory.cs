@@ -67,6 +67,15 @@ namespace Cinema.Services.Factory
             };
         }
 
+        public static MasterModel CreateMaster(this NewsType newsType)
+        {
+            return new MasterModel
+            {
+                Id = newsType.Id,
+                Name = newsType.Name
+            };
+        }
+
         public static IdentityMasterModel CreateMaster(this ApplicationUser user)
         {
             return new IdentityMasterModel

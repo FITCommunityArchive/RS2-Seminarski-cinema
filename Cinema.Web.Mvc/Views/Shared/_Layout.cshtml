@@ -32,7 +32,6 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li>@Html.ActionLink("Now Showing", "Index", "NowShowing")</li>
-                        <li>@Html.ActionLink("Events", "Index", "Events")</li>
                         @if (SignInManager.IsSignedIn(User)
                            && (await AuthorizationService.AuthorizeAsync(User, Policies.IsAdmin)).Succeeded)
                         {
@@ -41,6 +40,8 @@
                             <li>@Html.ActionLink("Staff", "Index", "Users")</li>
                             <!-- <li><a asp-area="" asp-page="/Halles/Index">Halls</a></li> -->
                         }
+                        <li>@Html.ActionLink("Events", "Index", "Events")</li>
+                        <li>@Html.ActionLink("News", "Index", "News")</li>
                     </ul>
                     <partial name="_LoginPartial" />
                 </div><!-- /.navbar-collapse -->

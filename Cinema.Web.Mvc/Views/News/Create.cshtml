@@ -1,4 +1,4 @@
-﻿@model Cinema.DTO.ViewModels.Events.EventCreateVM
+﻿@model Cinema.DTO.ViewModels.News.NewsCreateVM
 @{
     ViewData["Title"] = "Create";
 }
@@ -8,7 +8,7 @@
             <div class="col-md-12">
                 <h1>Create</h1>
 
-                <h4>New Event</h4>
+                <h4>News</h4>
                 <hr />
                 <div class="row">
                     <div class="col-md-4">
@@ -28,22 +28,12 @@
                                 <span asp-validation-for="Description" class="text-danger"></span>
                             </div>
                             <div class="form-group">
-                                <label asp-for="DateAndTime" class="control-label">Date and time of the event</label>
-                                <input asp-for="DateAndTime" class="form-control" />
-                                <span asp-validation-for="DateAndTime" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="Promoter" class="control-label">Promoter</label>
-                                <input asp-for="Promoter" class="form-control" />
-                                <span asp-validation-for="Promoter" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="EventTypeId" class="control-label">Event type</label>
-                                <select asp-for="EventTypeId" class="form-control"
-                                        asp-items="@Model.EventTypes">
-                                    <option value="">-- Select event type --</option>
+                                <label asp-for="NewsTypeId" class="control-label">News Type</label>
+                                <select asp-for="NewsTypeId" class="form-control"
+                                        asp-items="@Model.NewsTypes">
+                                    <option value="">-- Select News Type --</option>
                                 </select>
-                                <span asp-validation-for="EventTypeId" class="text-danger"></span>
+                                <span asp-validation-for="NewsTypeId" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <input type="submit" value="Create" class="btn btn-success" />

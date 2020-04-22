@@ -1,21 +1,24 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Cinema.DTO.ViewModels.Events
+namespace Cinema.DTO.ViewModels.News
 {
-    public class EventIndexVM
+    public class NewsDetailsVM
     {
         public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public string Image { get; set; }
-        public IdentityMasterModel Author { get; set; }
-        public DateTime DateAndTime { get; set; }
-        public string Date { get; set; }
-        public string Time { get; set; }
-        public string Promoter { get; set; }
 
-        [Display(Name = "Event Type")]
+        [Display(Name = "Date created")]
+        public string DateCreated { get; set; }
+
+        [Display(Name = "Time created")]
+        public string TimeCreated { get; set; }
+
+        public IdentityMasterModel Author { get; set; }
+
+        [Display(Name = "News type")]
         public MasterModel Type { get; set; }
     }
 }

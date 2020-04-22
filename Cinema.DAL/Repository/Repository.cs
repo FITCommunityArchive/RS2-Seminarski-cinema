@@ -47,8 +47,9 @@ namespace Cinema.DAL.Repository
 
             if (oldEnt != null)
             {
+                await newEnt.BuildAsync(_context);
                 _context.Entry(oldEnt).CurrentValues.SetValues(newEnt);
-                oldEnt.UpdateAsync(newEnt);
+                oldEnt.Update(newEnt);
             }
         }
 

@@ -1,14 +1,14 @@
 ﻿@model Cinema.DTO.ViewModels.Events.EventCreateVM
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Edit";
 }
 <section asp-authorize asp-roles="@Roles.ContentEditor,@Roles.Administrator">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Create</h1>
+                <h1>Edit</h1>
 
-                <h4>New Event</h4>
+                <h4>Event</h4>
                 <hr />
                 <div class="row">
                     <div class="col-md-4">
@@ -46,7 +46,7 @@
                                 <span asp-validation-for="EventTypeId" class="text-danger"></span>
                             </div>
                             <div class="form-group">
-                                <input type="submit" value="Create" class="btn btn-success" />
+                                <input type="submit" value="Save" class="btn btn-success" />
                             </div>
                         </form>
                     </div>
