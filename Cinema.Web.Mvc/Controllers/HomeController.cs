@@ -14,6 +14,7 @@ using Cinema.Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Cinema.Services.Factory.ViewModels;
 using EmailService;
+using RestSharp;
 
 namespace Cinema.Web.Mvc.Controllers
 {
@@ -85,7 +86,22 @@ namespace Cinema.Web.Mvc.Controllers
             return View();
         }
 
+        [Route("Subscribe")]
+        public IActionResult SubscribeToNewsletter(string email)
+        {
 
+            var client = new RestClient("https://api.sendinblue.com/v3/contacts");
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("accept", "application/json");
+            request.AddHeader("content-type", "application/json");
+            request.AddHeader("api-key", "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");
+            //request.AddParameter("application/json", "{\"listIds\":[3],\"updateEnabled\":false,\"email\":\"" + email + "\",\"attributes\":{\"FIRSTNAME\":\"Boris\",\"LASTNAME\":\"Husein\"}}", ParameterType.RequestBody);
+            request.AddParameter("application/json", "{\"listIds\":[3],\"updateEnabled\":false,\"email\":\"" + email + "\"}", ParameterType.RequestBody);
+
+            IRestResponse response = client.Execute(request);
+
+            return RedirectToAction("Index");
+        }
 
     }
 }
