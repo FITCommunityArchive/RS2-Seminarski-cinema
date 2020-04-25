@@ -112,7 +112,7 @@ namespace Cinema.Web.Mvc.Controllers
         public async Task<IActionResult> Create(MovieCreateVM model)
         {
 
-            /*if (model.ImageFile != null)
+/*            if (model.ImageFile != null)
             {
                 var fileName = FileHelper.GetUniqueName(model.ImageFile.FileName);
                 var uploads = Path.Combine(hostingEnvironment.WebRootPath, "uploads");

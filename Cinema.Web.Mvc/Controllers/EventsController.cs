@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -10,6 +11,7 @@ using Cinema.DTO.ViewModels.Events;
 using Cinema.Services.Enums;
 using Cinema.Services.Factory;
 using Cinema.Services.Factory.ViewModels;
+using Cinema.Services.Helpers;
 using Cinema.Web.Mvc.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -86,6 +88,17 @@ namespace Cinema.Web.Mvc.Controllers
         public async Task<IActionResult> Create(EventCreateVM model)
         {
             Event eventEntity = model.Create();
+
+            if (model.ImageFile != null)
+            {
+                var fileName = FileHelper.GetUniqueName(model.ImageFile.FileName);
+                string workingDirectory = Environment.CurrentDirectory;
+                string projectDirectory = Directory.GetParent(workingDirectory).FullName;
+                string fullPath = projectDirectory + "uploads/events";
+                var filePath = Path.Combine(fullPath, fileName);
+                model.ImageFile.CopyTo(new FileStream(filePath, FileMode.Create));
+                model.Image = fileName; // Set the file name
+            }
 
             await _unit.Events.InsertAsync(eventEntity);
             await _unit.SaveAsync();
