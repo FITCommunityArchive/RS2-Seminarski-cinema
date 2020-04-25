@@ -10,11 +10,11 @@ using Cinema.Domain.Entities.Identity;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using EmailService;
 
 namespace Cinema.Web.Mvc.Areas.Identity.Pages.Account
 {
@@ -92,8 +92,9 @@ namespace Cinema.Web.Mvc.Areas.Identity.Pages.Account
                             values: new { area = "Identity", userId = user.Id, code = code },
                             protocol: Request.Scheme);
 
-                        await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
+                        var message = new Message(new string[] { Input.Email }, "Confirm your email",
                             $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                        await _emailSender.SendEmailAsync(message);
 
                         if (_userManager.Options.SignIn.RequireConfirmedAccount)
                         {
