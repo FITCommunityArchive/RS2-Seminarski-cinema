@@ -6,30 +6,34 @@
     ViewData["ActivePage"] = ManageNavPages.Reservations;
 }
 <h4>@ViewData["Title"]</h4>
-<div>
-    @if (!Model.UserReservationsList.Any())
-    {
-        <p>There are no reservations for this user.</p>
-    }
-    else
-    {
-    <ul class="list-unstyled user-reservations">
-        @foreach (var reservation in Model.UserReservationsList)
-        {
-         
-        <li>
-            <strong>Reservation Code:</strong> @reservation.ReservationCode<br />
-            @reservation.Screening.Movie.Title | @reservation.Screening.Hall.Name | @reservation.Screening.DateAndTime.ToShortDateString() - @reservation.Screening.DateAndTime.ToShortTimeString()
-            <ul>
-                @foreach (var seatReservation in reservation.SeatReservations)
-                {
-                    <li>@seatReservation.Seat.Label</li>
-                }
-            </ul>
-            <img width="100" height="100" src="~/qrr/@(reservation.ReservationCode + ".jpg")" />
-            <a asp-controller="Reservations" asp-action="CancelReservation" asp-route-id="@reservation.Id" class="btn btn-danger btn-sm">Cancel Reservation</a>
-        </li>
-        }
-    </ul>
-    }
+<div class="row">
+    <div class="col-12 col-lg-12">
+        <div class="card shadow-soft border p-4 mb-4">
+            @if (!Model.UserReservationsList.Any())
+            {
+                <p>There are no reservations for this user.</p>
+            }
+            else
+            {
+                <ul class="list-unstyled user-reservations">
+                    @foreach (var reservation in Model.UserReservationsList)
+                    {
+
+                        <li>
+                            <strong>Reservation Code:</strong> @reservation.ReservationCode<br />
+                            @reservation.Screening.Movie.Title | @reservation.Screening.Hall.Name | @reservation.Screening.DateAndTime.ToShortDateString() - @reservation.Screening.DateAndTime.ToShortTimeString()
+                            <ul>
+                                @foreach (var seatReservation in reservation.SeatReservations)
+                                {
+                                    <li>@seatReservation.Seat.Label</li>
+                                }
+                            </ul>
+                            <img width="100" height="100" src="~/qrr/@(reservation.ReservationCode + ".jpg")" />
+                            <a asp-controller="Reservations" asp-action="CancelReservation" asp-route-id="@reservation.Id" class="btn btn-danger btn-sm">Cancel Reservation</a>
+                        </li>
+                    }
+                </ul>
+            }
+        </div>
+    </div>
 </div>

@@ -8,6 +8,7 @@ using Cinema.Domain.Entities;
 using Cinema.DTO.ViewModels.Screenings;
 using Cinema.Services.Factory;
 using Cinema.Services.Factory.ViewModels;
+using Cinema.Web.Mvc.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -20,11 +21,50 @@ namespace Cinema.Web.Mvc.Controllers
     {
         public ScreeningsController(ApplicationDbContext context) : base(context) { }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder, string searchString, string currentFilter, int? pageNumber)
         {
-            List<ScreeningIndexVM> screenings = await _unit.Screenings.Get().Select(x => x.ToIndexVM()).ToListAsync();
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["TitleSortParm"] = String.IsNullOrEmpty(sortOrder) ? "title_desc" : "";
+            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewData["CurrentFilter"] = searchString;
 
-            return View(screenings);
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            List<ScreeningIndexVM> screenings = new List<ScreeningIndexVM>();
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                screenings = await _unit.Screenings.Get().Where(x => x.Movie.Title.Contains(searchString)).Select(x => x.ToIndexVM()).ToListAsync();
+            } else
+            {
+                screenings = await _unit.Screenings.Get().Select(x => x.ToIndexVM()).ToListAsync();
+            }
+            switch (sortOrder)
+            {
+                case "title_desc":
+                    screenings = screenings.OrderByDescending(s => s.Movie).ToList();
+                    break;
+                case "Date":
+                    screenings = screenings.OrderBy(s => s.DateAndTime).ToList();
+                    break;
+                case "date" +
+                "_desc":
+                    screenings = screenings.OrderByDescending(s => s.DateAndTime).ToList();
+                    break;
+                default:
+                    screenings = screenings.OrderBy(s => s.Movie).ToList();
+                    break;
+            }
+
+            //List<MovieIndexVM> movies = await _unit.Movies.Get().Select(x => x.ToIndexVM()).ToListAsync();
+            int pageSize = 10;
+            return View(PaginatedList<ScreeningIndexVM>.Create(screenings.AsQueryable(), pageNumber ?? 1, pageSize)); 
         }
 
         [AllowAnonymous]

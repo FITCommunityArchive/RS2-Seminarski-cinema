@@ -18,16 +18,16 @@ namespace Cinema.BLL
             _unit = unit;
         }
 
-        public async Task<List<Movie>> GetComingSoonMovies(int quantity = 3)
+        public async Task<IEnumerable<Movie>> GetComingSoonMovies(int quantity)
         {
-
-            //TODO:
-            //this is just for a dummy data to give back something. Basically we just need to check if the release date of the movie is newer then the current date
-            // problem is we don't have movies higher then 2019 year.
-
-            //additionally we need quantity as well to give back 3 movies 
-            List<Movie> movies = await _unit.Movies.GetAsync(x => x.Year == 2019);
+            IEnumerable<Movie> movies = (await _unit.Movies.GetAsync(x => x.Year >= 2015)).Take(quantity);
             return movies;
+        }
+
+        public async Task<IEnumerable<Screening>> GetNowShowingScreenings(int quantity)
+        {
+            IEnumerable<Screening> screenings = (await _unit.Screenings.GetAsync(x=>x.Movie.Year >= 2005)).GroupBy(y=>y.MovieId).Select(z=>z.First()).Take(quantity);
+            return screenings;
         }
     }
 }

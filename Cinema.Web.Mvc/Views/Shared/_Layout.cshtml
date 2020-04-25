@@ -8,13 +8,54 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Cinema.Web</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
     @RenderSection("css", false)
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/lib/fontawesome/fontawesome.min.css" />
+    <link rel="stylesheet" href="~/css/theme.css" />
+    <link rel="stylesheet" href="~/css/custom.css" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700|Work+Sans:400,700,900&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
+        <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-dark navbar-theme-primary py-lg-2 px-lg-6">
+            <div class="container">
+                <a class="navbar-brand" href="/">
+                    <img class="navbar-brand-dark" src="~/img/logo-white.png" width="119" height="40" alt="Logo light">
+                    <img class="navbar-brand-light" src="~/img/logo-white.png" width="119" height="40" alt="Logo dark">
+                </a>
+                <div class="navbar-collapse collapse" id="navbar_global">
+                    <div class="navbar-collapse-header">
+                        <div class="row">
+                            <div class="col-6 collapse-brand">
+                                <a href="/"><img src="~/img/movie-logo.png" alt="Menu logo"></a>
+                            </div>
+                            <div class="col-6 collapse-close">
+                                <a href="#navbar_global" class="fas fa-times" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="navbar-nav navbar-nav-hover ml-3">
+                        <li class="nav-item">@Html.ActionLink("Now Showing", "Index", "NowShowing", null, new { @class = "nav-link" })</li>
+                        @if (SignInManager.IsSignedIn(User)
+                         && (await AuthorizationService.AuthorizeAsync(User, Policies.IsAdmin)).Succeeded)
+                        {
+                            <li class="nav-item">@Html.ActionLink("Movies", "Index", "Movies", null, new { @class = "nav-link" })</li>
+                            <li class="nav-item">@Html.ActionLink("Screenings", "Index", "Screenings", null, new { @class = "nav-link" })</li>
+
+                        }
+                    </ul>
+                </div>
+                <div class="d-none d-lg-block">
+                    <partial name="_LoginPartial" />
+                </div>
+                <div class="d-flex d-lg-none align-items-center">
+                    <a href="https://demo.themesberg.com/bootstrap/spaces/html/pages/sign-in.html" class="btn btn-sm btn-primary animate-up-1 ml-3">Login</a> <a href="https://demo.themesberg.com/bootstrap/spaces/html/pages/sign-up.html" class="btn btn-sm btn-white animate-up-1 ml-3">Sign up</a>
+                    <button class="navbar-toggler ml-2" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                </div>
+            </div>
+        </nav>
+
+
         <nav class="navbar navbar-default">
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -52,68 +93,65 @@
         @RenderBody()
     </main>
 
-    <footer class="border-top footer text-muted">
-        <div class="footer-widgets">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="widget">
-                            <h3 class="h5"><strong>Information</strong></h3>
-                            <ul>
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="#">Vouchers</a></li>
-                                <li><a href="#">Family pack</a></li>
-                                <li><a href="#">Only Thursday</a></li>
-                            </ul>
+    <footer class="footer section bg-dark text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <a class="footer-brand" href="/"><img src="~/img/logo-white.png" width="119" height="40" alt="Brand logo footer"></a>
+                    <p class="mt-4 text-gray">For those seeking the finest in services and technology in a downtown business center, without the high cost.</p>
+                    <ul class="social-buttons mb-5 mb-lg-0">
+                        <li><a href="https://twitter.com/themesberg" target="_blank" rel="nofollow" class="btn btn-lg btn-link btn-twitter text-white" data-toggle="tooltip" data-placement="top" title="" data-original-title="Follow us on Twitter"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="https://www.facebook.com/themesberg" target="_blank" rel="nofollow" class="btn btn-lg btn-link btn-facebook text-white" data-toggle="tooltip" data-placement="top" title="" data-original-title="Like us on Facebook"><i class="fab fa-facebook"></i></a></li>
+                        <li><a href="https://github.com/themesberg" target="_blank" rel="nofollow" class="btn btn-lg btn-link btn-github text-white" data-toggle="tooltip" data-placement="top" title="" data-original-title="Star us on Github"><i class="fab fa-github"></i></a></li>
+                        <li><a href="https://dribbble.com/themesberg" target="_blank" rel="nofollow" class="btn btn-lg btn-link btn-dribbble text-white" data-toggle="tooltip" data-placement="top" title="" data-original-title="Like us on Dribbble"><i class="fab fa-dribbble"></i></a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-6 col-md-3 col-lg-2 mt-4 mt-md-0">
+                    <h6 class="font-weight-normal">About Us</h6>
+                    <ul class="links-vertical">
+                        <li><a class="text-gray" href="https://themesberg.com/blog" target="_blank">Blog</a></li>
+                        <li><a class="text-gray" href="https://themesberg.com/about" target="_blank">About Us</a></li>
+                        <li><a class="text-gray" href="https://themesberg.com/products" target="_blank">Products</a></li>
+                        <li><a class="text-gray" href="https://themesberg.com/contact" target="_blank">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-6 col-md-3 col-lg-3 mt-4 mt-md-0">
+                    <h6 class="font-weight-normal">Market</h6>
+                    <ul class="links-vertical">
+                        <li><a class="text-gray" href="#">Sales FAQ</a></li>
+                        <li><a class="text-gray" href="#">How to Register</a></li>
+                        <li><a class="text-gray" href="#">Sell Goods</a></li>
+                        <li><a class="text-gray" href="#">Receive Payment</a></li>
+                        <li><a class="text-gray" href="#">Sell Goods</a></li>
+                        <li><a class="text-gray" href="#">Receive Payment</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-lg-4 col-xl-4 mt-3 mt-lg-0 mt-4 mt-md-0">
+                    <h6 class="font-weight-normal">Subscribe</h6>
+                    <p class="text-gray">Join our mailing list. We write rarely, but only the best content.</p>
+                    <form>
+                        <div class="form-row">
+                            <div class="col-12">
+                                <input type="email" class="form-control mb-2" placeholder="Email Address" name="email" required="">
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-secondary shadow-soft btn-block" data-loading-text="Sending"><span>Subscribe</span></button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="widget">
-                            <h3 class="h5"><strong>Useful links</strong></h3>
-                            <ul>
-                                <li><a href="/Nowshowing">Now Showing</a></li>
-                                <li><a href="#">Opening this week</a></li>
-                                <li><a href="#">Cooming Soon</a></li>
-
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="widget">
-                            <h3 class="h5"><strong>Newsletter</strong></h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                            <form>
-                                <div class="form-group">
-                                    <input type="email" class="form-control" placeholder="Enter your email" />
-                                </div>
-                                <div class="form-group">
-                                    <input type="submit" class="btn btn-default btn-subscribe" value="Subscribe" />
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="widget">
-                            <h3 class="h5"><strong>About us</strong></h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                            <a href="/contact">Contact us</a>
-                        </div>
-                    </div>
+                    </form><small class="text-gray mt-3 form-text">We’ll never share your details. See our <a class="text-light" href="https://demo.themesberg.com/bootstrap/spaces/html/pages/legal.html">Privacy Policy</a></small>
                 </div>
             </div>
-        </div>
-        <div class="container">
-            &copy; 2019 - Cinema.Web - @Html.ActionLink("Privacy", "Privacy", "Home") | <a asp-area="" asp-page="/Terms">Terms of Use</a>
+            <hr>
+            <div class="copyright text-center mt-5">© <span id="current-year">2020</span> <a href="https://themesberg.com/">Movies.net</a>. All rights reserved.</div>
         </div>
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="https://kit.fontawesome.com/60727c837d.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src="~/lib/bootstrap-popper/popper.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/lib/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    @*<script src="~/js/theme.js" asp-append-version="true"></script>*@
 
     @RenderSection("Scripts", required: false)
 </body>

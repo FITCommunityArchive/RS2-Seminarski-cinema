@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Cinema.Web.Mvc.Models;
-using Cinema.DTO.ViewModels.Movies;
+using Cinema.DTO.ViewModels.Home;
 using Cinema.BLL;
 using Cinema.DAL.Data;
 using Cinema.Services.Factory;
@@ -32,9 +32,14 @@ namespace Cinema.Web.Mvc.Controllers
 
         public async Task<IActionResult> Index()
         {
-            List<Movie> comingSoonMovies = await _movieService.GetComingSoonMovies();
-            List<MovieIndexVM> movies = comingSoonMovies.Select(x => x.ToIndexVM()).ToList();
-            return View(movies);
+            IEnumerable<Movie> comingSoonMovies = await _movieService.GetComingSoonMovies(4);
+            IEnumerable<Screening> NowShowingScreenings = await _movieService.GetNowShowingScreenings(6);
+            var viewModel = new HomeIndexVM
+            {
+                Movies = comingSoonMovies,
+                Screenings = NowShowingScreenings
+            };
+            return View(viewModel);
         }
 
         [Route("Privacy")]

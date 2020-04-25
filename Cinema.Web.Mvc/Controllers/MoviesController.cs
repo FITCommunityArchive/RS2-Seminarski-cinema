@@ -4,11 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Cinema.Authorization;
 using Cinema.Authorization.Constants;
 using Cinema.DAL.Data;
 using Cinema.Domain.Entities;
-using Cinema.Domain.Entities.Identity;
 using Cinema.DTO;
 using Cinema.DTO.ViewModels.Movies;
 using Cinema.DTO.ViewModels.Reviews;
@@ -17,7 +15,6 @@ using Cinema.Services.Factory.ViewModels;
 using Cinema.Services.Helpers;
 using Cinema.Web.Mvc.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -186,7 +183,11 @@ namespace Cinema.Web.Mvc.Controllers
                     MovieTitle = x.Movie.Title,
                     MovieActors = x.Movie.Actors,
                     HallName = x.Hall.Name,
-                    StartTime = x.DateAndTime
+                    StartTime = x.DateAndTime,
+                    //MovieRating = x.Movie.Reviews.Average(x => x.Rating).ToString("#.00") ?? "N/A",
+                    Duration = x.Movie.Duration,
+                    Year = x.Movie.Year,
+                    Country = x.Movie.Country
                 }).ToList();
                 
             }
@@ -199,12 +200,16 @@ namespace Cinema.Web.Mvc.Controllers
                     MovieTitle = x.Movie.Title,
                     MovieActors = x.Movie.Actors,
                     HallName = x.Hall.Name,
-                    StartTime = x.DateAndTime
+                    StartTime = x.DateAndTime,
+                    //MovieRating = x.Movie.Reviews.Average(x => x.Rating).ToString("#.00") ?? "N/A",
+                    Duration = x.Movie.Duration,
+                    Year = x.Movie.Year,
+                    Country = x.Movie.Country
                 }).ToList();
                 
             }
             
-            int pageSize = 12;
+            int pageSize = 6;
             return View(PaginatedList<NowShowingIndexVM.Row>.Create(screenings.ScreeningsList.AsQueryable(), pageNumber ?? 1, pageSize));
         }
 
