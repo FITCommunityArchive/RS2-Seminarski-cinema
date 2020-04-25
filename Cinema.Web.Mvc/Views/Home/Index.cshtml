@@ -1,87 +1,240 @@
-﻿@model List<Cinema.DTO.ViewModels.Movies.MovieIndexVM>
+﻿@model Cinema.DTO.ViewModels.Home.HomeIndexVM
 @{
     ViewData["Title"] = "Home page";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<section class="hero">
+<!-- Hero -->
+<section class="section section-xl pb-100 bg-primary overlay-dark text-white rounded" data-background="/img/hero.jpeg" style="background-image: url('/img/hero.jpeg');">
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="content">
-                    <h1>DOCTOR SLEEP</h1>
-                    <p>Release: 6 Novemeber 2019</p>
-                </div>
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-6">
+                <!-- Heading -->
+                <h1 class="display-2 font-weight-bolder">DOCTOR SLEEP</h1>
+                <!-- Text -->
+                <p class="lead text-muted mt-4">
+                    Years following the events of "The Shining," a now-adult Dan Torrance must protect a young girl with similar powers from a cult known as The True Knot, who prey on children with powers to remain immortal.
+
+                </p>
+                <a href="/NowShowing/" class="btn btn-primary btn-white animate-up-2 mb-2">Get your tickets</a>
+            </div>
+            <div class="col-12 col-lg-6">
+
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col">
+                <img src="~/img/cinema-features.png" class="mt-50" style="opacity:0.5" />
             </div>
         </div>
     </div>
 </section>
-<section class="showing-now">
+<section class="section pb-lg-6 pb-5">
     <div class="container">
-        <h1 class="h2 section-title text-center">Cooming Soon</h1>
-        <div class="row flex-row">
-
-            @foreach (var item in Model)
-            {
-                <div class="col-md-3 flex-column">
-                    <div class="movie-box">
-                        <img class="img-responsive" src="~/img/placehold.png" />
-                        <div class="movie-box_content">
-                            <h3 class="h5">@item.Title</h3>
-                            <p>@item.Actors</p>
-                            <small class="text-muted"><strong>Coming on @item.Year</strong></small>
+        <div class="row">
+            <div class="col-6 col-lg-3">
+                <!-- Icon box -->
+                <div class="icon-box text-center">
+                    <div class="icon icon-primary icon-xl"><i class="fas fa-clock"></i></div>
+                    <h6 class="font-weight-normal text-gray mt-4 mb-3">No wait in lines</h6>
+                </div>
+                <!-- End of Icon box -->
+            </div>
+            <div class="col-6 col-lg-3">
+                <!-- Icon box -->
+                <div class="icon-box text-center">
+                    <div class="icon icon-warning icon-xl"><i class="fas fa-star"></i></div>
+                    <h6 class="font-weight-normal text-gray mt-4 mb-3">The best of movies</h6>
+                </div>
+                <!-- End of Icon box -->
+            </div>
+            <div class="col-6 col-lg-3">
+                <!-- Icon box -->
+                <div class="icon-box text-center">
+                    <div class="icon icon-warning icon-xl"><i class="fas fa-hamburger"></i></div>
+                    <h6 class="font-weight-normal text-gray mt-4 mb-3">Best food</h6>
+                </div>
+                <!-- End of Icon box -->
+            </div>
+            <div class="col-6 col-lg-3">
+                <!-- Icon box -->
+                <div class="icon-box text-center">
+                    <div class="icon icon-primary icon-xl"><i class="fas fa-film"></i></div>
+                    <h6 class="font-weight-normal text-gray mt-4 mb-3">High Quality Setups</h6>
+                </div>
+                <!-- End of Icon box -->
+            </div>
+        </div>
+        <div class="row mt-6">
+            <div class="col-md-4">
+                <h2 class="h1 mb-5">Explore our <span class="font-weight-bold">one of a kind</span><br>cinema.</h2>
+            </div>
+            <div class="col-md-4">
+                <p class="lead">Cinema is not only about the movies, but about having a great time with your friends and family. Its benefits are countless.</p>
+                <p class="lead mt-4">Request a tour to our cinema and see for yourself.</p>
+            </div>
+            <div class="col-md-4">
+                <p class="lead">One would ask what is the difference between this cinema and any other in the world.</p>
+                <p class="lead mt-4">We are doing our best to keep your experience at its peak each time you visit it and if not satisfied rest assured, your money will be in your pocket.</p>
+            </div>
+        </div>
+        <div class="row mt-6">
+            <div class="col-12">
+                <!-- Card -->
+                <div class="card-group shadow-soft border border-soft">
+                    <div class="card">
+                        <div class="card-body p-5">
+                            <div class="progress-wrapper mb-5">
+                                <div class="progress-info info-xl">
+                                    <div class="progress-label">
+                                        <h6 class="font-weight-normal text-dark">Cinema tour reservations</h6>
+                                    </div>
+                                    <div class="progress-percentage"><span class="text-dark">85%</span></div>
+                                </div>
+                                <div class="progress progress-lg">
+                                    <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%; animation: 3s ease 0s 1 normal none running animate-positive; opacity: 1;"></div>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-column flex-lg-row d-sm-flex justify-content-between align-items-center">
+                                <div class="mb-5 mb-lg-0">
+                                    <h4 class="font-weight-normal">Book your cinema tour experience today!</h4>
+                                    <p class="lead mb-0">
+                                        Schedule a tour, make a reservation to one of our movies
+                                        <br class="d-none d-lg-inline">at Movies.net, or ask for more information.
+                                    </p>
+                                </div>
+                                <div class="align-content-end">
+                                    <!-- Button Modal -->
+                                    <button type="button" class="btn btn-primary animate-up-2" data-toggle="modal" data-target="#modal-form">Schedule a cinema tour</button>
+                                </div>
+                                <!-- Modal Content -->
+                                <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-body p-0">
+                                                <div class="card bg-soft shadow-md border-0">
+                                                    <div class="card-header bg-white py-4">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                        <div class="text-muted text-center mb-3">
+                                                            <h3>Interested?</h3>
+                                                            <p>We would love to show you our inner quarters. Please let us know when you are available and we will make our best to receive you on that date and time.</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <form class="mt-3">
+                                                            <div class="form-group">
+                                                                <div class="input-group mb-4">
+                                                                    <div class="input-group-prepend"><span class="input-group-text"><i class="far fa-user"></i></span></div>
+                                                                    <input class="form-control" placeholder="Name" type="text" required="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <div class="input-group mb-4">
+                                                                    <div class="input-group-prepend"><span class="input-group-text"><i class="far fa-envelope"></i></span></div>
+                                                                    <input class="form-control" placeholder="Email" type="email" required="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <div class="input-group mb-4">
+                                                                    <div class="input-group-prepend"><span class="input-group-text"><i class="fas fa-mobile"></i></span></div>
+                                                                    <input class="form-control" placeholder="Phone" type="number" required="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="input-group input-group-lg mb-lg-0">
+                                                                <div class="input-group-prepend"><span class="input-group-text"><i class="far fa-calendar-alt"></i></span></div>
+                                                                <input class="form-control datepicker" placeholder="Select date" type="text" data-position="top">
+                                                            </div>
+                                                            <div class="text-center">
+                                                                <button type="submit" class="btn btn-block btn-primary mt-4">Send Request Reservation</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End of Modal Content -->
+                            </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-6">
+            <div class="col-12">
+                <h5 class="font-weight-normal mb-5">Top Movies</h5>
+            </div>
+
+            @foreach (var movie in Model.Movies)
+            {
+                <div class="col-12 col-sm-6 col-lg-3 mb-4 mb-lg-0">
+                    <!-- Card -->
+                    <a href="/NowShowing/Details/@movie.Id" class="card img-card fh-400 border-0 outer-bg" data-background-inner="assets/img/newyork.jpg">
+                        <div class="inner-bg overlay-dark screening-image" data-title="@movie.Title" style="background-image: url('/img/placehold.png');"></div>
+                        <div class="card-img-overlay d-flex align-items-center">
+                            <div class="card-body text-white p-3">
+                                <h5 class="font-weight-normal text-uppercase text-center">@movie.Title</h5>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- End of Card -->
                 </div>
             }
 
         </div>
-    </div>
-</section>
-
-<section class="showing-now bg-white">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <img src="~/img/ApocolypseNow-Poster_IMAX_1200x600px.jpg" class="img-responsive img-rounded" />
+        <div class="row mt-6">
+            <div class="col-12">
+                <h5 class="font-weight-normal mb-5">Now Showing</h5>
             </div>
-            <div class="col-md-6">
-                <h3 class="h5">Apocalypse Now (final cut) coming to IMAX</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <a href="#" class="btn btn-primary m-t-15">Book Tickets Now</a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="cinema-features">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <img src="~/img/icon1.png" class="img-responsive img-rounded" />
-                <h3 class="h5">4DX Xperience</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <a href="#" class="btn--learn-more m-t-30">Learn More</a>
-            </div>
-            <div class="col-md-3">
-                <img src="~/img/icon2.png" class="img-responsive img-rounded" />
-                <h3 class="h5">High Screen Definitions</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <a href="#" class="btn--learn-more m-t-30">Learn More</a>
-            </div>
-            <div class="col-md-3">
-                <img src="~/img/icon3.png" class="img-responsive img-rounded" />
-                <h3 class="h5">VIP Seats for fans</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <a href="#" class="btn--learn-more m-t-30">Learn More</a>
-            </div>
-            <div class="col-md-3">
-                <img src="~/img/icon4.png" class="img-responsive img-rounded" />
-                <h3 class="h5">Enjoy your love seats</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <a href="#" class="btn--learn-more m-t-30">Learn More</a>
+            @foreach (var screening in Model.Screenings)
+            {
+                <div class="col-md-6 col-lg-4">
+                    <!-- Card -->
+                    <div class="card shadow-sm border-soft mb-4 animate-up-5">
+                        <a href="/NowShowing/Details/@screening.Movie.Id" class="position-relative">
+                            <img src="/img/placehold.png" data-title="@screening.Movie.Title" class="card-img-top space-image screening-image" alt="image"> <span class="badge badge-primary position-absolute listing-badge"><span class="font-weight-normal font-xs">Label for movie category</span></span>
+                        </a>
+                        <div class="card-body">
+                            <a href="/NowShowing/Details/@screening.Movie.Id"><h5 class="font-weight-normal">@screening.Movie.Title</h5></a>
+                            <div class="post-meta"><span class="small lh-120"><i class="fas fa-user mr-2"></i>@screening.Movie.Directors</span></div>
+                            <div class="d-flex my-4"><i class="star fas fa-star text-warning"></i> <i class="star fas fa-star text-warning"></i> <i class="star fas fa-star text-warning"></i> <i class="star fas fa-star text-warning"></i> <i class="star fas fa-star text-warning"></i> <span class="badge badge-pill badge-secondary ml-2">5.0</span></div>
+                            <div class="d-flex justify-content-between">
+                                <div class="col pl-0"><span class="text-muted font-small d-block mb-2">Duration</span> <span class="h5 text-dark font-weight-bold">@screening.Movie.Duration</span></div>
+                                <div class="col"><span class="text-muted font-small d-block mb-2">Year</span> <span class="h5 text-dark font-weight-bold">@screening.Movie.Year</span></div>
+                                <div class="col pr-0"><span class="text-muted font-small d-block mb-2">Country</span> <span class="h5 text-dark font-weight-bold">@screening.Movie.Country</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End of Card -->
+                </div>
+            }
+           
+            <div class="col mt-lg-6 mt-3 d-flex flex-column text-center">
+                <div><a href="/NowShowing" class="btn btn-primary animate-up-2 mb-2">Browse All</a></div><span class="font-xs">142 movies in Now Showing</span>
             </div>
         </div>
     </div>
 </section>
+
+@section Scripts {
+    <script>
+        jQuery(document).ready(function () {
+            jQuery('.screening-image').each(function () {
+                var getTitle = jQuery(this).data("title");
+                var $this = jQuery(this);
+                $.get("https://www.omdbapi.com/?apikey=f4ff906b&t=" + getTitle, function (data) {
+                    if (data.Poster != "N/A") {
+                        if ($this.is('img')) {
+                            $this.attr("src", data.Poster);
+                        } else {
+                            $this.css({ "background-image": "url(" + data.Poster + ")" });
+                        }
+                    } else {
+                        console.log("No image found.");
+                    }
+                })
+            });
+        });
+    </script>
+}
