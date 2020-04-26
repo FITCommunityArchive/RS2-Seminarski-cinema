@@ -3,13 +3,13 @@
 @{
     ViewData["Title"] = "Index";
 }
-<div class="section section-header bg-primary bg-size-cover overlay-dark text-white" asp-authorize asp-roles="@Roles.Administrator" data-background="img/event.jpg" style="background-image: url('img/event.jpg');">
+<div class="section section-header bg-primary bg-size-cover overlay-dark text-white" data-background="img/event.jpg" style="background-image: url('img/event.jpg');">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <h1>
                     Events
-                    <a class="btn btn-white btn-sm" asp-action="Create">Add New</a>
+                    <a asp-authorize asp-roles="@Roles.ContentEditor,@Roles.Administrator" class="btn btn-white btn-sm" asp-action="Create">Add New</a>
                 </h1>
             </div>
         </div>
@@ -79,7 +79,9 @@
                                         </td>
 
                                         <td style="min-width:200px;">
-                                            <a class="btn btn-primary btn-xs" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                                            <a asp-action="Details" asp-route-id="@item.Id" class="text-dark" data-toggle="tooltip" title="" data-original-title="Details event"><i class="far fa-eye mr-2"></i></a>
+                                            <a asp-authorize asp-roles="@Roles.ContentEditor,@Roles.Administrator" asp-action="Edit" asp-route-id="@item.Id" class="text-dark" data-toggle="tooltip" title="" data-original-title="Edit movie"><i class="far fa-edit mr-2"></i></a>
+                                            <a asp-authorize asp-roles="@Roles.ContentEditor,@Roles.Administrator" asp-action="Delete" asp-route-id="@item.Id" class="text-danger"><i class="far fa-trash-alt" title=""></i></a>
                                         </td>
                                     </tr>
                                 }

@@ -1,54 +1,65 @@
 ﻿@model Cinema.DTO.ViewModels.News.NewsCreateVM
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Edit";
 }
-<section asp-authorize asp-roles="@Roles.ContentEditor,@Roles.Administrator">
+<div class="section section-md" asp-roles="@Roles.ContentEditor,@Roles.Administrator">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <h1>Edit</h1>
+            <div class="col-12">
+                <h1>Edit News</h1>
 
-                <h4>News</h4>
-                <hr />
                 <div class="row">
-                    <div class="col-md-4">
-                        <form method="post">
+                    <div class="col-12 col-lg-12">
+                        <form enctype="multipart/form-data" method="post" class="card shadow-soft border p-4 mb-4">
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                            <div class="form-group">
-                                <input asp-for="AuthorId" hidden />
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="Title" class="control-label">Title</label>
-                                <input asp-for="Title" class="form-control" />
-                                <span asp-validation-for="Title" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="Description" class="control-label">Description</label>
-                                <input asp-for="Description" class="form-control" />
-                                <span asp-validation-for="Description" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="NewsTypeId" class="control-label">News Type</label>
-                                <select asp-for="NewsTypeId" class="form-control"
-                                        asp-items="@Model.NewsTypes">
-                                    <option value="">-- Select News Type --</option>
-                                </select>
-                                <span asp-validation-for="NewsTypeId" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <input type="submit" value="Save" class="btn btn-success" />
+                            <div class="row">
+                                <div class="form-group">
+                                    <input asp-for="Id" hidden />
+                                </div>
+                                <div class="form-group">
+                                    <input asp-for="AuthorId" hidden />
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <div class="form-group">
+                                        <label asp-for="Title" class="control-label"></label>
+                                        <input asp-for="Title" class="form-control shadow-soft" id="Title" placeholder="Title" />
+                                        <span asp-validation-for="Title" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <div class="form-group">
+                                        <label asp-for="NewsTypeId" class="control-label">News Type</label>
+                                        <select asp-for="NewsTypeId" class="form-control shadow-soft" id="@nameof(Model.NewsTypeId)" placeholder="News Type"
+                                                asp-items="@Model.NewsTypes">
+                                            <option value="">-- Select news type --</option>
+                                        </select>
+                                        <span asp-validation-for="NewsTypeId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-12">
+                                    <div class="form-group">
+                                        <label asp-for="Description" class="control-label"></label>
+                                        <textarea asp-for="Description" rows="10" class="form-control shadow-soft" id="@nameof(Model.Description)" placeholder="@nameof(Model.Description)"></textarea>
+                                        <span asp-validation-for="Description" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>                            
+                            <div class="row">
+                                <div class="col">
+                                    <button type="submit" class="btn btn-primary btn-dark mt-2 animate-up-2">Save</button>
+                                </div>
                             </div>
                         </form>
                     </div>
                 </div>
 
                 <div>
-                    <a asp-action="Index">Back to List</a>
+                    <a class="btn btn-primary btn-dark mt-2 animate-up-2" asp-action="Index">Back to List</a>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</div>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

@@ -16,7 +16,7 @@ namespace Cinema.Services.Factory.ViewModels
                 DateAndTime = eventEntity.DateAndTime,
                 Date = eventEntity.DateAndTime.ToFormattedDate(),
                 Time = eventEntity.DateAndTime.ToFormattedTime(),
-                Description = eventEntity.Description.LimitStringLength(),
+                Description = eventEntity.Description.Truncate(),
                 Image = eventEntity.Image,
                 Promoter = eventEntity.Promoter,
                 Title = eventEntity.Title,
