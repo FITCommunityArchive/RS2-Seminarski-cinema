@@ -45,7 +45,7 @@ namespace Cinema.DAL.Data
         public IRepository<Movie, int> Movies => _movies ?? (_movies = new Repository<Movie, int>(_context));
         public IRepository<News, int> News => _news ?? (_news = new NewsRepository(_context));
         public IRepository<NewsType, int> NewsTypes => _newsTypes ?? (_newsTypes = new Repository<NewsType, int>(_context));
-        public IRepository<Pricing, int> Pricings => _pricings ?? (_pricings = new Repository<Pricing, int>(_context));
+        public IRepository<Pricing, int> Pricings => _pricings ?? (_pricings = new PricingsRepository(_context));
         public IRepository<Reservation, int> Reservations => _reservations ?? (_reservations = new Repository<Reservation, int>(_context));
         public IRepository<Review, int> Reviews => _reviews ?? (_reviews = new Repository<Review, int>(_context));
         public IRepository<Screening, int> Screenings => _screenings ?? (_screenings = new Repository<Screening, int>(_context));

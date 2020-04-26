@@ -120,6 +120,7 @@ namespace Cinema.DAL
             if (typeof(T) == typeof(Reservation)) return HasNoChildren(entity as Reservation);
             if (typeof(T) == typeof(ApplicationUser)) return HasNoChildren(entity as ApplicationUser);
             if (typeof(T) == typeof(ApplicationRole)) return HasNoChildren(entity as ApplicationRole);
+            if (typeof(T) == typeof(Pricing)) return HasNoChildren(entity as Pricing);
 
             return true;
         }
@@ -157,6 +158,11 @@ namespace Cinema.DAL
         private static bool HasNoChildren(ApplicationRole role)
         {
             return role.RoleClaims.Count == 0;
+        }
+
+        private static bool HasNoChildren(Pricing pricing)
+        {
+            return pricing.Invoices.Count == 0;
         }
     }
 }

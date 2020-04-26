@@ -3,6 +3,7 @@ using Cinema.Domain.Entities.Identity;
 using Cinema.DTO.ViewModels.Events;
 using Cinema.DTO.ViewModels.Movies;
 using Cinema.DTO.ViewModels.News;
+using Cinema.DTO.ViewModels.Pricings;
 using Cinema.DTO.ViewModels.Reviews;
 using Cinema.DTO.ViewModels.Screenings;
 using Cinema.DTO.ViewModels.Users;
@@ -123,6 +124,16 @@ namespace Cinema.Services.Factory
                 Title = model.Title,
                 TypeId = model.NewsTypeId,
                 Image = model.Image              
+            };
+        }
+
+        public static Pricing Create(this PricingCreateVM model)
+        {
+            return new Pricing
+            {
+                Id = model.Id,
+                Name = model.Name,
+                Price = (decimal)model.Price
             };
         }
     }
