@@ -114,16 +114,16 @@ $(document).ready(function () {
         })
     });
 
-    $('[data-fancybox="images"]').fancybox({
-        afterLoad : function(instance, current) {
-          var pixelRatio = window.devicePixelRatio || 1;
+    //$('[data-fancybox="images"]').fancybox({
+    //    afterLoad : function(instance, current) {
+    //      var pixelRatio = window.devicePixelRatio || 1;
       
-          if ( pixelRatio > 1.5 ) {
-            current.width  = current.width  / pixelRatio;
-            current.height = current.height / pixelRatio;
-          }
-        }
-    });
+    //      if ( pixelRatio > 1.5 ) {
+    //        current.width  = current.width  / pixelRatio;
+    //        current.height = current.height / pixelRatio;
+    //      }
+    //    }
+    //});
 
     // Additional .focus class on form-groups
     $('.form-control').on('focus blur', function (e) {
@@ -220,21 +220,21 @@ $(document).ready(function () {
         })
     }
 
-    $(".progress-bar").each(function () {
-        $(this).waypoint(function () {
-            var progressBar = $(".progress-bar");
-            progressBar.each(function (indx) {
-                $(this).css("width", $(this).attr("aria-valuenow") + "%");
-            });
-            $('.progress-bar').css({
-                animation: "animate-positive 3s",
-                opacity: "1"
-            });
-        }, {
-                triggerOnce: true,
-                offset: '60%'
-            });
-    });
+    //$(".progress-bar").each(function () {
+    //    $(this).waypoint(function () {
+    //        var progressBar = $(".progress-bar");
+    //        progressBar.each(function (indx) {
+    //            $(this).css("width", $(this).attr("aria-valuenow") + "%");
+    //        });
+    //        $('.progress-bar').css({
+    //            animation: "animate-positive 3s",
+    //            opacity: "1"
+    //        });
+    //    }, {
+    //            triggerOnce: true,
+    //            offset: '60%'
+    //        });
+    //});
 
     // When in viewport
     $('[data-toggle="on-screen"]')[0] && $('[data-toggle="on-screen"]').onScreen({
@@ -276,26 +276,26 @@ $(document).ready(function () {
         }
     });
 
-    //CounterUp
-    $('.counter').counterUp({
-        delay: 10,
-        time: 1000,
-        offset: 70,
-        beginAt: 100,
-        formatter: function (n) {
-            return n.replace(/,/g, '.');
-        }
-    });
+    ////CounterUp
+    //$('.counter').counterUp({
+    //    delay: 10,
+    //    time: 1000,
+    //    offset: 70,
+    //    beginAt: 100,
+    //    formatter: function (n) {
+    //        return n.replace(/,/g, '.');
+    //    }
+    //});
 
-    //Countdown
-    $('#clock').countdown('2020/10/10').on('update.countdown', function (event) {
-        var $this = $(this).html(event.strftime(''
-            + '<span>%-w</span> week%!w '
-            + '<span>%-d</span> day%!d '
-            + '<span>%H</span> hr '
-            + '<span>%M</span> min '
-            + '<span>%S</span> sec'));
-    });
+    ////Countdown
+    //$('#clock').countdown('2020/10/10').on('update.countdown', function (event) {
+    //    var $this = $(this).html(event.strftime(''
+    //        + '<span>%-w</span> week%!w '
+    //        + '<span>%-d</span> day%!d '
+    //        + '<span>%H</span> hr '
+    //        + '<span>%M</span> min '
+    //        + '<span>%S</span> sec'));
+    //});
 
     // Equalize height to the max of the elements
     if ($(document).width() >= breakpoints.lg) {
@@ -431,11 +431,11 @@ $(document).ready(function () {
 
     $('#current-year').text(new Date().getFullYear());
 
-    var $slideForm = $('#spaceSubmitForm');
-    $('#slideform-btn-submit').text('Send');
-    $('#spaceSubmitForm').slideform({
+    //var $slideForm = $('#spaceSubmitForm');
+    //$('#slideform-btn-submit').text('Send');
+    //$('#spaceSubmitForm').slideform({
 
-    });
+    //});
 
     $('#loadOnClick').click(function () {
         var $button = $(this);

@@ -1,0 +1,14 @@
+﻿@model List<Cinema.Domain.Entities.NewsType>
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+    <ul class="card list-group list-group-flush shadow-soft border-soft p-3">
+        @*<li class="list-group-item border-0 py-2 d-flex align-items-center justify-content-between"><a class="text-primary"><i class="fas fa-gamepad mr-3"></i>Games</a><span class="badge badge-danger"><i class="fas fa-fire"></i> hot</span></li>
+        <li class="list-group-item border-0 py-2 d-flex align-items-center justify-content-between"><a class="text-primary"><i class="fas fa-briefcase mr-3"></i>Jobs</a><span class="badge badge-info"><i class="fas fa-clock"></i> new</span></li>
+        <li class="list-group-item border-0 py-2 d-flex align-items-center justify-content-between"><a class="text-primary"><i class="fas fa-wallet mr-3"></i>Economy</a><span class="badge badge-soft text-uppercase">3</span></li>*@
+        @foreach (var newsType in Model)
+        {
+            <li class="list-group-item border-0 py-2"><a class="text-primary"><i class="fas fa-book mr-3"></i>@newsType.Name</a></li>
+        }
+    </ul>

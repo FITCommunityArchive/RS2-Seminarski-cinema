@@ -17,8 +17,23 @@
     <link rel="stylesheet" href="~/css/custom.css" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700|Work+Sans:400,700,900&display=swap" rel="stylesheet">
 </head>
-<body>
-    <header>
+<body class="@(SignInManager.IsSignedIn(User) ? "logged-in" : "")">
+    <header class="fixed-top">
+        @if (SignInManager.IsSignedIn(User)
+                 && (await AuthorizationService.AuthorizeAsync(User, Policies.IsAdmin)).Succeeded)
+        {
+            <div class="top-bar p-2 bg-white">
+                <div class="container">
+                    <ul class="list-inline m-0">
+                        <li class="list-inline-item">@Html.ActionLink("Movies", "Index", "Movies")</li>
+                        <li class="list-inline-item">@Html.ActionLink("Screenings", "Index", "Screenings")</li>
+                        <li class="list-inline-item">@Html.ActionLink("Staff", "Index", "Users")</li>
+                        <li class="list-inline-item">@Html.ActionLink("Events", "Index", "Events")</li>
+                        <li class="list-inline-item">@Html.ActionLink("News", "Index", "News")</li>
+                    </ul>
+                </div>
+            </div>
+        }
         <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-dark navbar-theme-primary py-lg-2 px-lg-6">
             <div class="container">
                 <a class="navbar-brand" href="/">
@@ -38,57 +53,18 @@
                     </div>
                     <ul class="navbar-nav navbar-nav-hover ml-3">
                         <li class="nav-item">@Html.ActionLink("Now Showing", "Index", "NowShowing", null, new { @class = "nav-link" })</li>
-                        @if (SignInManager.IsSignedIn(User)
-                         && (await AuthorizationService.AuthorizeAsync(User, Policies.IsAdmin)).Succeeded)
-                        {
-                            <li class="nav-item">@Html.ActionLink("Movies", "Index", "Movies", null, new { @class = "nav-link" })</li>
-                            <li class="nav-item">@Html.ActionLink("Screenings", "Index", "Screenings", null, new { @class = "nav-link" })</li>
-
-                        }
+                        <li class="nav-item">@Html.ActionLink("Latest News", "Index", "LatestNews", null, new { @class = "nav-link" })</li>
+                        <li class="nav-item">@Html.ActionLink("Latest Events", "Index", "LatestEvents", null, new { @class = "nav-link" })</li>
                     </ul>
                 </div>
                 <div class="d-none d-lg-block">
                     <partial name="_LoginPartial" />
                 </div>
                 <div class="d-flex d-lg-none align-items-center">
-                    <a href="https://demo.themesberg.com/bootstrap/spaces/html/pages/sign-in.html" class="btn btn-sm btn-primary animate-up-1 ml-3">Login</a> <a href="https://demo.themesberg.com/bootstrap/spaces/html/pages/sign-up.html" class="btn btn-sm btn-white animate-up-1 ml-3">Sign up</a>
+                    <a href="/Identity/Account/Login" class="btn btn-sm btn-primary animate-up-1 ml-3">Login</a> <a href="/Identity/Account/Register" class="btn btn-sm btn-white animate-up-1 ml-3">Sign up</a>
                     <button class="navbar-toggler ml-2" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 </div>
             </div>
-        </nav>
-
-
-        <nav class="navbar navbar-default">
-            <div class="container">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="/"><img width="167" height="30" src="~/img/movie-logo.png" /></a>
-                </div>
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Now Showing", "Index", "NowShowing")</li>
-                        @if (SignInManager.IsSignedIn(User)
-                           && (await AuthorizationService.AuthorizeAsync(User, Policies.IsAdmin)).Succeeded)
-                        {
-                            <li>@Html.ActionLink("Movies", "Index", "Movies")</li>
-                            <li>@Html.ActionLink("Screenings", "Index", "Screenings")</li>
-                            <li>@Html.ActionLink("Staff", "Index", "Users")</li>
-                            <!-- <li><a asp-area="" asp-page="/Halles/Index">Halls</a></li> -->
-                        }
-                        <li>@Html.ActionLink("Events", "Index", "Events")</li>
-                        <li>@Html.ActionLink("News", "Index", "News")</li>
-                    </ul>
-                    <partial name="_LoginPartial" />
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
         </nav>
     </header>
     <main role="main">
@@ -111,10 +87,10 @@
                 <div class="col-sm-6 col-md-3 col-lg-2 mt-4 mt-md-0">
                     <h6 class="font-weight-normal">About Us</h6>
                     <ul class="links-vertical">
-                        <li><a class="text-gray" href="/blog" >Blog</a></li>
+                        <li><a class="text-gray" href="/blog">Blog</a></li>
                         <li><a class="text-gray" href="/about">About Us</a></li>
                         <li><a class="text-gray" href="/NowShowing">Now Showing</a></li>
-                        <li><a class="text-gray" href="/contact" >Contact Us</a></li>
+                        <li><a class="text-gray" href="/contact">Contact Us</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-6 col-md-3 col-lg-3 mt-4 mt-md-0">
@@ -153,7 +129,7 @@
     <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="~/lib/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    @*<script src="~/js/theme.js" asp-append-version="true"></script>*@
+    <script src="~/js/theme.js" asp-append-version="true"></script>
 
     @RenderSection("Scripts", required: false)
 </body>
