@@ -132,5 +132,18 @@ namespace Cinema.Web.Mvc.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+
+        [Route("LatestEvents"), AllowAnonymous]
+        public IActionResult LatestEvents(int? pageNumber)
+        {
+            IQueryable<Event> eventsQuery = _unit.Events.Get();
+
+            ViewData["RecentNews"] = _unit.News.Get().Take(3).ToList();
+            ViewData["NewsTypes"] = _unit.NewsTypes.Get().ToList();
+
+            PaginatedList<Event> paginatedModel = PaginatedList<Event>.Create(eventsQuery.AsQueryable(), pageNumber ?? 1, 4);
+            return View("Events", paginatedModel);
+        }
     }
 }

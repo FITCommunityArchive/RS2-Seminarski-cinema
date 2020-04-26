@@ -2,6 +2,27 @@
 for details on configuring this project to bundle and minify static web assets. */
 
 
+/* Top bar / admin bar
+-------------------------------------------------- */
+
+.top-bar {
+    height:46px;
+}
+
+.logged-in .navbar-main {
+    top:46px;
+}
+
+body {
+    padding-top:78px;
+}
+
+.logged-in body {
+    padding-top: 125px;
+}
+
+
+
 /* Seats Charts plugin
 -------------------------------------------------- */
 
