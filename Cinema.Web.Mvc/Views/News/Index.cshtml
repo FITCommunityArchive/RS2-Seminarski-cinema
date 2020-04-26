@@ -79,9 +79,9 @@
                                         </td>
 
                                         <td style="min-width:200px;">
-                                            <a asp-action="Details" asp-route-id="@item.Id" class="text-dark" data-toggle="tooltip" title="" data-original-title="Details news"><i class="far fa-eye mr-2"></i></a>
+                                            <a asp-action="Details" asp-route-id="@item.Id" class="text-dark" data-toggle="tooltip" title="" data-original-title="News details"><i class="far fa-eye mr-2"></i></a>
                                             <a asp-authorize asp-roles="@Roles.ContentEditor,@Roles.Administrator" asp-action="Edit" asp-route-id="@item.Id" class="text-dark" data-toggle="tooltip" title="" data-original-title="Edit news"><i class="far fa-edit mr-2"></i></a>
-                                            <a asp-authorize asp-roles="@Roles.ContentEditor,@Roles.Administrator" asp-action="Delete" asp-route-id="@item.Id" class="text-danger"><i class="far fa-trash-alt" title=""></i></a>
+                                            <a asp-authorize asp-roles="@Roles.ContentEditor,@Roles.Administrator" asp-action="Delete" asp-route-id="@item.Id" class="text-danger"><i class="far fa-trash-alt" data-original-title="Delete news" title=""></i></a>
                                         </td>
                                     </tr>
                                 }
