@@ -20,8 +20,7 @@ namespace Cinema.DTO.ViewModels.News
 
         [Required]
         public string AuthorId { get; set; }
-
-
+        
         [Required(ErrorMessage = "The field is required!")]
         public int NewsTypeId { get; set; }
 

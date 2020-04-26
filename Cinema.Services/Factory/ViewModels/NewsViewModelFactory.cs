@@ -14,7 +14,7 @@ namespace Cinema.Services.Factory.ViewModels
             {
                 Id = news.Id,
                 Author = news.Author.CreateMaster(),
-                Description = news.Description.LimitStringLength(),
+                Description = news.Description.Truncate(),
                 Image = news.Image,
                 Title = news.Title,
                 DateCreated = news.Created.ToFormattedDate(),

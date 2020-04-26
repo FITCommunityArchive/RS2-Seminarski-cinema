@@ -6,7 +6,7 @@ namespace Cinema.Services.Helpers
 {
     public static class StringHelper
     {
-        public static string LimitStringLength(this string text, int characterLimit = 50, string postfix = "...")
+        public static string Truncate(this string text, int characterLimit = 50, string postfix = "...")
         {
             if (text == null || text.Length < characterLimit)
                 return text;
