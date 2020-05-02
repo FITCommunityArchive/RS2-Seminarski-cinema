@@ -35,7 +35,7 @@ namespace Cinema.Services.Factory.ViewModels
             {
                 Id = pricing.Id,
                 Name = pricing.Name,
-                Price = (float)pricing.Price
+                Price = pricing.Price
             };
         }
     }

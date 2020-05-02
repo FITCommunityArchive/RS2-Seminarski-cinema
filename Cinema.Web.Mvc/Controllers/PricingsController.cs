@@ -69,8 +69,11 @@ namespace Cinema.Web.Mvc.Controllers
         {
             Pricing pricing = model.Create();
 
-            await _unit.Pricings.InsertAsync(pricing);
-            await _unit.SaveAsync();
+            if (_unit.Pricings.ValidatePrice(pricing))
+            {
+                await _unit.Pricings.InsertAsync(pricing);
+                await _unit.SaveAsync();
+            }
 
             return RedirectToAction(nameof(Index));
         }
@@ -84,10 +87,14 @@ namespace Cinema.Web.Mvc.Controllers
         }
 
         public async Task<IActionResult> Edit(PricingCreateVM model)
-        {
+        {            
             Pricing pricing = model.Create();
-            await _unit.Pricings.UpdateAsync(pricing, model.Id);
-            await _unit.SaveAsync();
+
+            if (_unit.Pricings.ValidatePrice(pricing))
+            {
+                await _unit.Pricings.UpdateAsync(pricing, model.Id);
+                await _unit.SaveAsync();
+            }            
 
             return RedirectToAction(nameof(Index));
         }

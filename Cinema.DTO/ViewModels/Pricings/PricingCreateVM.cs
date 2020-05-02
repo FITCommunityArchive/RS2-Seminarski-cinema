@@ -12,6 +12,6 @@ namespace Cinema.DTO.ViewModels.Pricings
         [Required(ErrorMessage = "The field is required!")]
         [Range(0, 100)]
         [DisplayFormat(DataFormatString = "{0:#,###.00}", ApplyFormatInEditMode = true)]
-        public float Price { get; set; }
+        public decimal Price { get; set; }
     }
 }
