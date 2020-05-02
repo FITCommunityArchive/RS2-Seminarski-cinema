@@ -23,14 +23,13 @@ namespace Cinema.Web.Mvc.Controllers
         private QRCodeService _qRCodeService;
         private readonly IEmailSender _emailSender;
         private readonly IWebHostEnvironment _webHostEnvironment;
-        private readonly IConfiguration _configuration;
+
         public ReservationsController(ApplicationDbContext context, IEmailSender emailSender, IWebHostEnvironment webHostEnvironment, IConfiguration configuration) : base(context, configuration) {
             _seatingService = new SeatingService(_unit);
             _pricingService = new PricingService(_unit);
             
             _emailSender = emailSender;
             _webHostEnvironment = webHostEnvironment;
-            _configuration = configuration;
 
             _qRCodeService = new QRCodeService(_webHostEnvironment);
         }
