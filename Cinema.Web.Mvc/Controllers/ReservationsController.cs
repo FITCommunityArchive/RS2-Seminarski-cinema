@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Hosting;
 using EmailService;
 using Microsoft.AspNetCore.Http;
 using System.IO;
+using Microsoft.Extensions.Configuration;
 
 namespace Cinema.Web.Mvc.Controllers
 {
@@ -22,12 +23,14 @@ namespace Cinema.Web.Mvc.Controllers
         private QRCodeService _qRCodeService;
         private readonly IEmailSender _emailSender;
         private readonly IWebHostEnvironment _webHostEnvironment;
-        public ReservationsController(ApplicationDbContext context, IEmailSender emailSender, IWebHostEnvironment webHostEnvironment) : base(context) {
+        private readonly IConfiguration _configuration;
+        public ReservationsController(ApplicationDbContext context, IEmailSender emailSender, IWebHostEnvironment webHostEnvironment, IConfiguration configuration) : base(context, configuration) {
             _seatingService = new SeatingService(_unit);
             _pricingService = new PricingService(_unit);
             
             _emailSender = emailSender;
             _webHostEnvironment = webHostEnvironment;
+            _configuration = configuration;
 
             _qRCodeService = new QRCodeService(_webHostEnvironment);
         }
@@ -35,7 +38,6 @@ namespace Cinema.Web.Mvc.Controllers
         [Route("/Reservations/{id:int?}/{date:long?}")]
         public async Task<IActionResult> Index(int id, long date)
         {
-
             ViewData["successMessage"] = "";
             ViewData["errorMessage"] = "";
 
@@ -45,69 +47,73 @@ namespace Cinema.Web.Mvc.Controllers
             var viewModel = new ReservationIndexVM
             {
                 CurrentHall = await _unit.Halls.GetAsync(id),
-                CurrentScreening = currentHall.Screenings.FirstOrDefault(x => x.DateAndTime == screeningDate),
+                CurrentScreening = currentScreening,
                 ScreeningSeats = _seatingService.GetScreeningSeating(currentScreening),
                 ReservedSeats = string.Join(",", _seatingService.ReservedSeats),
-                PricingTier = await _pricingService.GetPricingTierAsync("Premiere")
+                PricingTier = currentScreening.Pricing
             };
 
             return View(viewModel);
         }
 
-        public async Task<IActionResult> Checkout(int id, long date, decimal price, int quantity, string SelectedSeatsString)
+        public async Task<IActionResult> Checkout(int screeningId, int quantity, string SelectedSeatsString)
         {
+            Screening screening = await _unit.Screenings.GetAsync(screeningId);
 
             if (SelectedSeatsString == null)
             {
                 ViewData["errorMessage"] = "You haven't picked your seats.";
-                return RedirectToAction("Index", new { id = id, date = date });
+                return RedirectToAction("Index", new { id = screeningId, date = screening.DateAndTime.Ticks });
             }
 
             var selectedSeats = SelectedSeatsString.Split(',').Select(Int32.Parse).ToList();
             string userID = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
-            var screeningDate = new DateTime(date);
-            var currentHall = await _unit.Halls.GetAsync(id);
-            var currentScreening = currentHall.Screenings.FirstOrDefault(x => x.DateAndTime == screeningDate);
-
-            var invoice = new Invoice
-            {
-                Price = price,
-                TicketQuantity = quantity,
-                OfferTypeId = 1 //for now hardcode offer type ID to premiere as we get that on the beginning of the checkout.
-            };
-
+                       
             Reservation reservation = new Reservation
             {
                 User = await _unit.Users.GetAsync(userID),
-                Screening = currentScreening,
+                Screening = screening,
                 IsCancelled = false,
                 ReservationCode = Convert.ToString(System.Guid.NewGuid()).Substring(0, 7).ToUpper()
             };
-            invoice.ReservationId = reservation.Id;
-            reservation.Invoices.Add(invoice);
 
             await _unit.Reservations.InsertAsync(reservation);
 
-            _unit.Save();
+            Invoice invoice = new Invoice
+            {
+                Reservation = reservation,
+                TicketQuantity = quantity,
+                OfferTypeId = screening.PricingId
+            };
+
+            _unit.Invoices.SetInvoicePrice(invoice, quantity);
+            await _unit.Invoices.InsertAsync(invoice);
 
             foreach (int seatNumber in selectedSeats)
             {
-                var getSeatByNumber = _unit.Seats.Get().Where(x => x.SeatNumber == seatNumber && x.HallId == id).FirstOrDefault();
-                SeatReservation seatReservation = new SeatReservation
+                var seat = (await _unit.Seats.GetAsync(x => x.HallId == screening.HallId && x.SeatNumber == seatNumber)).FirstOrDefault();
+
+                if (seat != null)
                 {
-                    Seat = getSeatByNumber,
-                    Reservation = reservation,
-                    SeatId = getSeatByNumber.Id,
-                    ReservationId = reservation.Id
-                };
+                    SeatReservation seatReservation = new SeatReservation
+                    {
+                        Seat = seat,
+                        Reservation = reservation,
+                        SeatId = seat.Id
+                    };
 
-                seatReservation.Seat.CreateSeatLabel();
+                    seatReservation.Seat.CreateSeatLabel();
 
-                await _unit.SeatReservations.InsertAsync(seatReservation);
+                    await _unit.SeatReservations.InsertAsync(seatReservation);
+                }
+                else
+                {
+                    ViewData["errorMessage"] = "Something went wrong.";
+                    return RedirectToAction("Index", new { id = screeningId, date = screening.DateAndTime.Ticks });
+                }
             }
 
-            _unit.Save();
+            await _unit.SaveAsync();
 
             var imageUri = _qRCodeService.GenerateCode(reservation.ReservationCode);
             var imageUrl = String.Format("data:image/png;base64,{0}", imageUri);
@@ -133,7 +139,7 @@ namespace Cinema.Web.Mvc.Controllers
                 };
                 attachment.Add(file);
 
-                var message = new Message(new string[] { "boris@cloudronin.com" }, "Your Ticket for the movie " + currentScreening.Movie.Title, messageContent, attachment);
+                var message = new Message(new string[] { "boris@cloudronin.com" }, "Your Ticket for the movie " + screening.Movie.Title, messageContent, attachment);
                 await _emailSender.SendEmailAsync(message);
             }
 
@@ -142,7 +148,7 @@ namespace Cinema.Web.Mvc.Controllers
             //var path = _webHostEnvironment.WebRootFileProvider.GetFileInfo("qrr/f9899d012392550227.jpg");
             //var message2 = new Message(new string[] { "boris@cloudronin.com" }, "Your Ticket for the movie " + currentScreening.Movie.Title, "<img src='"+ path+"' />");
             //await _emailSender.SendEmailAsync(message2);
-
+            
             return View("Thankyou", reservation);
         }
 

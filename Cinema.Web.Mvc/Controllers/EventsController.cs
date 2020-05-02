@@ -17,13 +17,14 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace Cinema.Web.Mvc.Controllers
 {
     [Authorize(Roles = Roles.ContentEditor + "," + Roles.Administrator)]
     public class EventsController : BaseController
     {
-        public EventsController(ApplicationDbContext context) : base(context) { }
+        public EventsController(ApplicationDbContext context, IConfiguration configuration) : base(context, configuration) { }
 
         [AllowAnonymous]
         public async Task<IActionResult> Index(SortOrder? sortOrder, string sortProperty, string searchString, string currentFilter, int? pageNumber)

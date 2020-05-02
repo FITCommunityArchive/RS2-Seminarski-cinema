@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Authorization;
 using Cinema.Services.Factory.ViewModels;
 using EmailService;
 using RestSharp;
+using Microsoft.Extensions.Configuration;
 
 namespace Cinema.Web.Mvc.Controllers
 {
@@ -25,13 +26,15 @@ namespace Cinema.Web.Mvc.Controllers
         private readonly UnitOfWork _unit;
         private MovieService _movieService;
         private readonly IEmailSender _emailSender;
+        private readonly IConfiguration _configuration;
 
-        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context, IEmailSender emailSender)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context, IEmailSender emailSender, IConfiguration configuration)
         {
             _logger = logger;
-            _unit = new UnitOfWork(context);
+            _unit = new UnitOfWork(context, configuration);
             _movieService = new MovieService(_unit);
             _emailSender = emailSender;
+            _configuration = configuration;
         }
 
         public async Task<IActionResult> Index()

@@ -8,6 +8,7 @@ using Cinema.Domain.Entities.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
 namespace Cinema.Web.Mvc.Areas.Identity.Pages.Account.Manage
@@ -21,11 +22,12 @@ namespace Cinema.Web.Mvc.Areas.Identity.Pages.Account.Manage
         public ReservationsModel(
             UserManager<ApplicationUser> userManager,
             ILogger<PersonalDataModel> logger,
-            ApplicationDbContext context)
+            ApplicationDbContext context, 
+            IConfiguration configuration)
         {
             _userManager = userManager;
             _logger = logger;
-            _unit = new UnitOfWork(context);
+            _unit = new UnitOfWork(context, configuration);
         }
 
         public List<Reservation> UserReservations { get; set; }
