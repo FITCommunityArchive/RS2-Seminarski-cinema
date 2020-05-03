@@ -25,6 +25,7 @@ namespace Cinema.DTO.ViewModels.Movies
 
         public class Row
         {
+            public int ScreeningId { get; set; }
             public int HallId { get; set; }
             public string HallName { get; set; }
             public DateTime Playing { get; set; }

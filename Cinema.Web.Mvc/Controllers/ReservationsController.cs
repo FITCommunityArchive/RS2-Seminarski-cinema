@@ -32,23 +32,23 @@ namespace Cinema.Web.Mvc.Controllers
             _qRCodeService = new QRCodeService(_webHostEnvironment);
         }
 
-        [Route("/Reservations/{id:int?}/{date:long?}")]
-        public async Task<IActionResult> Index(int id, long date)
+        [Route("/Reservations/{screeningId:int?}/{date:long?}")]
+        public async Task<IActionResult> Index(int screeningId)
         {
 
             ViewData["successMessage"] = "";
             ViewData["errorMessage"] = "";
 
-            var screeningDate = new DateTime(date);
-            var currentHall = await _unit.Halls.GetAsync(id);
-            var currentScreening = currentHall.Screenings.FirstOrDefault(x => x.DateAndTime == screeningDate);
+            var currentScreening = await _unit.Screenings.GetAsync(screeningId);
+            var currentHall = currentScreening.Hall;
+
             var viewModel = new ReservationIndexVM
             {
-                CurrentHall = await _unit.Halls.GetAsync(id),
-                CurrentScreening = currentHall.Screenings.FirstOrDefault(x => x.DateAndTime == screeningDate),
+                CurrentHall = currentHall,
+                CurrentScreening = currentScreening,
                 ScreeningSeats = _seatingService.GetScreeningSeating(currentScreening),
                 ReservedSeats = string.Join(",", _seatingService.ReservedSeats),
-                PricingTier = await _pricingService.GetPricingTierAsync("Premiere")
+                PricingTier = currentScreening.Pricing
             };
 
             return View(viewModel);

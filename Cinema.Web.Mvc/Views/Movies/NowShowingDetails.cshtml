@@ -194,7 +194,7 @@
                                     </div>
                                     @if (SignInManager.IsSignedIn(User))
                                     {
-                                        <a asp-action="Index" asp-controller="Reservations" asp-route-id="@item.HallId" class="btn btn-success btn-sm" asp-route-date="@item.Playing.Ticks">Reserve</a>
+                                        <a asp-action="Index" asp-controller="Reservations" asp-route-screeningId="@item.ScreeningId" class="btn btn-success btn-sm">Reserve</a>
                                     }
                                 </div>
 

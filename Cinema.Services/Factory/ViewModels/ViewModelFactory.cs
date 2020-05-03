@@ -84,9 +84,10 @@ namespace Cinema.Services.Factory.ViewModels
                 CurrentUserReview = movie.Reviews?.SingleOrDefault(x => x.UserId == currentUserId)?.ToIndexVM(),
                 ScreeningList = movie.Screenings.OrderBy(x => x.DateAndTime).Select(x => new NowShowingDetailsVM.Row
                 {
+                    ScreeningId = x.Id,
+                    HallId = x.Hall.Id,
                     HallName = x.Hall.Name,
-                    Playing = x.DateAndTime,
-                    HallId = x.Hall.Id
+                    Playing = x.DateAndTime
                 }).ToList()
             };
         }
