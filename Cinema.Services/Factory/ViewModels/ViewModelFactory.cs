@@ -48,11 +48,12 @@ namespace Cinema.Services.Factory.ViewModels
                 Id = screening.Id,
                 Movie = screening.Movie.Title,
                 Hall = screening.Hall.Name,
-                DateAndTime = screening.DateAndTime
+                DateAndTime = screening.DateAndTime,
+                Pricing = screening.Pricing.CreateMaster()
             };
         }
 
-        public static ScreeningCreateVM ToCreateVM(this Screening screening, SelectList movies, SelectList halls)
+        public static ScreeningCreateVM ToCreateVM(this Screening screening, SelectList movies, SelectList halls, SelectList pricings)
         {
             return new ScreeningCreateVM
             {
@@ -61,6 +62,7 @@ namespace Cinema.Services.Factory.ViewModels
                 Hall = screening.Hall.Name,
                 Movies = movies,
                 Halls = halls,
+                Pricings = pricings,
                 DateAndTime = screening.DateAndTime
             };
         }

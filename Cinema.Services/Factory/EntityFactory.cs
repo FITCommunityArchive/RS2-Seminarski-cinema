@@ -18,6 +18,7 @@ namespace Cinema.Services.Factory
         {
             return new Movie
             {
+                Id = movie.Id,
                 Title = movie.Title,
                 Duration = movie.Duration,
                 Actors = movie.Actors,
@@ -33,8 +34,10 @@ namespace Cinema.Services.Factory
         {
             return new Screening
             {
+                Id = screening.Id,
                 MovieId = screening.MovieId,
                 HallId = screening.HallId,
+                PricingId = screening.PricingId,
                 DateAndTime = screening.DateAndTime
             };
         }

@@ -78,12 +78,12 @@ namespace Cinema.Web.Mvc.Controllers
 
         [HttpGet]
         public IActionResult Create()
-        {
+        {            
             ScreeningCreateVM model = new ScreeningCreateVM
-            {
-                
-                Movies = new SelectList(_unit.Movies.Get(), "Id", "Title"),
-                Halls = new SelectList(_unit.Halls.Get(), "Id", "Name")
+            {                
+                Movies = new SelectList(_unit.Movies.Get().Select(x => x.CreateMaster()), "Id", "Name"),
+                Halls = new SelectList(_unit.Halls.Get().Select(x => x.CreateMaster()), "Id", "Name"),
+                Pricings = new SelectList(_unit.Pricings.Get().Select(x => x.CreateMaster()), "Id", "Name")
             };
 
             return View(model);
@@ -103,12 +103,13 @@ namespace Cinema.Web.Mvc.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
-            SelectList movies = new SelectList(_unit.Movies.Get(), "Id", "Title");
-            SelectList halls = new SelectList(_unit.Halls.Get(), "Id", "Name");
+            SelectList movies = new SelectList(_unit.Movies.Get().Select(x => x.CreateMaster()), "Id", "Name");
+            SelectList halls = new SelectList(_unit.Halls.Get().Select(x => x.CreateMaster()), "Id", "Name");
+            SelectList pricings = new SelectList(_unit.Pricings.Get().Select(x => x.CreateMaster()), "Id", "Name");
 
             Screening screening = await _unit.Screenings.GetAsync(id);
 
-            return View(screening.ToCreateVM(movies, halls));
+            return View(screening.ToCreateVM(movies, halls, pricings));
         }
 
         public async Task<IActionResult> Edit(ScreeningCreateVM model)
