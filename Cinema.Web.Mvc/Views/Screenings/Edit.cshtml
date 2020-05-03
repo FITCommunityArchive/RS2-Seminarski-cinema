@@ -12,7 +12,7 @@
 
                     <div class="row">
                         <div class="col-12 col-lg-12">
-                            <form method="post" class="card shadow-soft border p-4 mb-4">
+                            <form method="post" class="card shadow-soft border p-4 mb-4">                                
                                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                                 <input type="hidden" asp-for="Id" />
                                 <div class="row">
@@ -38,7 +38,15 @@
                                                     asp-items="@Model.Halls"></select>
                                             <span asp-validation-for="HallId" class="text-danger"></span>
                                         </div>
-                                    </div>            
+                                    </div>
+                                    <div class="col-12 col-lg-6">
+                                        <div class="form-group">
+                                            <label asp-for="PricingId" class="control-label"></label>
+                                            <select asp-for="PricingId" class="form-control shadow-soft" id="PricingId"
+                                                    asp-items="@Model.Pricings"></select>
+                                            <span asp-validation-for="PricingId" class="text-danger"></span>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col">

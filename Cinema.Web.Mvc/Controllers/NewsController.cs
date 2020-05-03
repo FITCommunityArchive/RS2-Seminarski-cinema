@@ -16,13 +16,14 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace Cinema.Web.Mvc.Controllers
 {
     [Authorize(Roles = Roles.ContentEditor + "," + Roles.Administrator)]
     public class NewsController : BaseController
     {
-        public NewsController(ApplicationDbContext context) : base(context) { }
+        public NewsController(ApplicationDbContext context, IConfiguration configuration) : base(context, configuration) { }
 
         [AllowAnonymous]
         public async Task<IActionResult> Index(SortOrder? sortOrder, string sortProperty, string searchString, string currentFilter, int? pageNumber)
@@ -62,6 +63,14 @@ namespace Cinema.Web.Mvc.Controllers
 
             return View(paginatedModel);
         }
+        
+        [AllowAnonymous]
+        public async Task<IActionResult> Details(int id)
+        {
+            News news = await _unit.News.GetAsync(id);
+
+            return View(news.ToDetailsVM());
+        }
 
         [HttpGet]
         public IActionResult Create()
@@ -74,15 +83,7 @@ namespace Cinema.Web.Mvc.Controllers
 
             return View(model);
         }
-
-        [AllowAnonymous]
-        public async Task<IActionResult> Details(int id)
-        {
-            News news = await _unit.News.GetAsync(id);
-
-            return View(news.ToDetailsVM());
-        }
-
+        
         [HttpPost]
         public async Task<IActionResult> Create(NewsCreateVM model)
         {
@@ -120,8 +121,7 @@ namespace Cinema.Web.Mvc.Controllers
 
             return RedirectToAction(nameof(Index));
         }
-
-
+        
         [Route("LatestNews"), AllowAnonymous]
         public IActionResult LatestNews(int? pageNumber)
         {

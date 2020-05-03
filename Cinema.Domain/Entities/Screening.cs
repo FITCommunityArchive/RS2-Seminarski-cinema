@@ -21,6 +21,9 @@ namespace Cinema.Domain.Entities
         public int MovieId { get; set; }
         public virtual Movie Movie { get; set; }
 
+        public int PricingId { get; set; }
+        public virtual Pricing Pricing { get; set; }
+
         public virtual IList<Reservation> Reservations { get; set; }
     }
 }

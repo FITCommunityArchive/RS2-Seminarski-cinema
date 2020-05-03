@@ -13,13 +13,14 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace Cinema.Web.Mvc.Controllers
 {
     [Authorize(Roles = Roles.Administrator)]
     public class ScreeningsController : BaseController
     {
-        public ScreeningsController(ApplicationDbContext context) : base(context) { }
+        public ScreeningsController(ApplicationDbContext context, IConfiguration configuration) : base(context, configuration) { }
 
         public async Task<IActionResult> Index(string sortOrder, string searchString, string currentFilter, int? pageNumber)
         {
@@ -77,12 +78,12 @@ namespace Cinema.Web.Mvc.Controllers
 
         [HttpGet]
         public IActionResult Create()
-        {
+        {            
             ScreeningCreateVM model = new ScreeningCreateVM
-            {
-                
-                Movies = new SelectList(_unit.Movies.Get(), "Id", "Title"),
-                Halls = new SelectList(_unit.Halls.Get(), "Id", "Name")
+            {                
+                Movies = new SelectList(_unit.Movies.Get().Select(x => x.CreateMaster()), "Id", "Name"),
+                Halls = new SelectList(_unit.Halls.Get().Select(x => x.CreateMaster()), "Id", "Name"),
+                Pricings = new SelectList(_unit.Pricings.Get().Select(x => x.CreateMaster()), "Id", "Name")
             };
 
             return View(model);
@@ -102,12 +103,13 @@ namespace Cinema.Web.Mvc.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
-            SelectList movies = new SelectList(_unit.Movies.Get(), "Id", "Title");
-            SelectList halls = new SelectList(_unit.Halls.Get(), "Id", "Name");
+            SelectList movies = new SelectList(_unit.Movies.Get().Select(x => x.CreateMaster()), "Id", "Name");
+            SelectList halls = new SelectList(_unit.Halls.Get().Select(x => x.CreateMaster()), "Id", "Name");
+            SelectList pricings = new SelectList(_unit.Pricings.Get().Select(x => x.CreateMaster()), "Id", "Name");
 
             Screening screening = await _unit.Screenings.GetAsync(id);
 
-            return View(screening.ToCreateVM(movies, halls));
+            return View(screening.ToCreateVM(movies, halls, pricings));
         }
 
         public async Task<IActionResult> Edit(ScreeningCreateVM model)

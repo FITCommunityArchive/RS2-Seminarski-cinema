@@ -93,5 +93,23 @@ namespace Cinema.Services.Factory
                 Name = role.Name
             };
         }
+
+        public static MasterModel CreateMaster(this Pricing pricing)
+        {
+            return new MasterModel
+            {
+                Id = pricing.Id,
+                Name = $"{pricing.Name} | {pricing.Price}"
+            };
+        }
+
+        public static MasterModel CreateMaster(this Hall hall)
+        {
+            return new MasterModel
+            {
+                Id = hall.Id,
+                Name = hall.Name
+            };
+        }
     }
 }

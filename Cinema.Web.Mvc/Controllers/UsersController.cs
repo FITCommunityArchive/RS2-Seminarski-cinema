@@ -27,6 +27,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.WebUtilities;
 using System.Text;
 using EmailService;
+using Microsoft.Extensions.Configuration;
 
 namespace Cinema.Web.Mvc.Controllers
 {
@@ -38,7 +39,7 @@ namespace Cinema.Web.Mvc.Controllers
         private readonly IEmailSender _emailSender;
 
         public UsersController(ApplicationDbContext context, UserManager<ApplicationUser> userManager,
-           ILogger<UsersController> logger, IEmailSender emailSender) : base(context) 
+           ILogger<UsersController> logger, IEmailSender emailSender, IConfiguration configuration) : base(context, configuration) 
         {
             _userManager = userManager;
             _emailSender = emailSender;

@@ -31,6 +31,7 @@ namespace Cinema.DAL
         {
             entity.Hall = await context.Halls.FindAsync(entity.HallId);
             entity.Movie = await context.Movies.FindAsync(entity.MovieId);
+            entity.Pricing = await context.Pricing.FindAsync(entity.PricingId);
         }
 
         private static async Task BuildRelations(Review entity, ApplicationDbContext context)
@@ -82,6 +83,7 @@ namespace Cinema.DAL
         {
             oldEnt.HallId = newEnt.HallId;
             oldEnt.MovieId = newEnt.MovieId;
+            oldEnt.PricingId = newEnt.PricingId;
         }
 
         private static void UpdateRelations(Review oldEnt, Review newEnt)
@@ -120,6 +122,7 @@ namespace Cinema.DAL
             if (typeof(T) == typeof(Reservation)) return HasNoChildren(entity as Reservation);
             if (typeof(T) == typeof(ApplicationUser)) return HasNoChildren(entity as ApplicationUser);
             if (typeof(T) == typeof(ApplicationRole)) return HasNoChildren(entity as ApplicationRole);
+            if (typeof(T) == typeof(Pricing)) return HasNoChildren(entity as Pricing);
 
             return true;
         }
@@ -157,6 +160,11 @@ namespace Cinema.DAL
         private static bool HasNoChildren(ApplicationRole role)
         {
             return role.RoleClaims.Count == 0;
+        }
+
+        private static bool HasNoChildren(Pricing pricing)
+        {
+            return pricing.Invoices.Count == 0 && pricing.Screenings.Count == 0;
         }
     }
 }

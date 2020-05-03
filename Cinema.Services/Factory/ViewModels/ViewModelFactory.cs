@@ -48,11 +48,12 @@ namespace Cinema.Services.Factory.ViewModels
                 Id = screening.Id,
                 Movie = screening.Movie.Title,
                 Hall = screening.Hall.Name,
-                DateAndTime = screening.DateAndTime
+                DateAndTime = screening.DateAndTime,
+                Pricing = screening.Pricing.CreateMaster()
             };
         }
 
-        public static ScreeningCreateVM ToCreateVM(this Screening screening, SelectList movies, SelectList halls)
+        public static ScreeningCreateVM ToCreateVM(this Screening screening, SelectList movies, SelectList halls, SelectList pricings)
         {
             return new ScreeningCreateVM
             {
@@ -61,6 +62,7 @@ namespace Cinema.Services.Factory.ViewModels
                 Hall = screening.Hall.Name,
                 Movies = movies,
                 Halls = halls,
+                Pricings = pricings,
                 DateAndTime = screening.DateAndTime
             };
         }
@@ -84,9 +86,10 @@ namespace Cinema.Services.Factory.ViewModels
                 CurrentUserReview = movie.Reviews?.SingleOrDefault(x => x.UserId == currentUserId)?.ToIndexVM(),
                 ScreeningList = movie.Screenings.OrderBy(x => x.DateAndTime).Select(x => new NowShowingDetailsVM.Row
                 {
+                    ScreeningId = x.Id,
+                    HallId = x.Hall.Id,
                     HallName = x.Hall.Name,
-                    Playing = x.DateAndTime,
-                    HallId = x.Hall.Id
+                    Playing = x.DateAndTime
                 }).ToList()
             };
         }

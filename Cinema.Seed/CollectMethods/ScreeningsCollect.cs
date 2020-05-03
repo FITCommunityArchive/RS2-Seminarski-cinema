@@ -12,13 +12,16 @@ namespace Cinema.Seed.CollectMethods
     {
         public static async Task Collect(ExcelWorksheet rawData, UnitOfWork unit)
         {
+            Random random = new Random();
+
             for (int row = 2; row <= rawData.Dimension.Rows; row++)
             {
                 Screening screening = new Screening
                 {
                     DateAndTime = rawData.ReadDateValue(row, 6),
                     Hall = await unit.Halls.GetAsync(rawData.ReadInteger(row, 3)),
-                    Movie = await unit.Movies.GetAsync(rawData.ReadInteger(row, 4))
+                    Movie = await unit.Movies.GetAsync(rawData.ReadInteger(row, 4)),
+                    Pricing = await unit.Pricings.GetAsync(random.Next(1, 5))
                 };
 
                 await unit.Screenings.InsertAsync(screening);                

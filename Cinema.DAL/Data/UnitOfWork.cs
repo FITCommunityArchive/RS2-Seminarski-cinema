@@ -1,6 +1,7 @@
 ﻿using Cinema.DAL.Repository;
 using Cinema.Domain.Entities;
 using Cinema.Domain.Entities.Identity;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Threading.Tasks;
 
@@ -9,17 +10,17 @@ namespace Cinema.DAL.Data
     public class UnitOfWork : IDisposable
     {
         protected ApplicationDbContext _context;
-
+        private readonly IConfiguration _configuration;
         private IRepository<Event, int> _events;
         private IRepository<EventType, int> _eventTypes;
         private IRepository<Genre, int> _genres;
         private IRepository<GenreMovie, int> _genreMovies;
         private IRepository<Hall, int> _halls;
-        private IRepository<Invoice, int> _invoices;
+        private InvoiceRepository _invoices;
         private IRepository<Movie, int> _movies;
         private IRepository<News, int> _news;
         private IRepository<NewsType, int> _newsTypes;
-        private IRepository<Pricing, int> _pricings;
+        private PricingsRepository _pricings;
         private IRepository<Reservation, int> _reservations;
         private IRepository<Review, int> _reviews;
         private IRepository<Screening, int> _screenings;
@@ -28,6 +29,12 @@ namespace Cinema.DAL.Data
         private IRepository<ApplicationUser, string> _users;
         private IRepository<ApplicationRole, string> _roles;
         private IRepository<ApplicationUserRole, string> _userRoles;
+
+        public UnitOfWork(ApplicationDbContext context, IConfiguration configuration)
+        {
+            _context = context;
+            _configuration = configuration;
+        }
 
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -41,11 +48,11 @@ namespace Cinema.DAL.Data
         public IRepository<Genre, int> Genres => _genres ?? (_genres = new Repository<Genre, int>(_context));
         public IRepository<GenreMovie, int> GenreMovies => _genreMovies ?? (_genreMovies = new Repository<GenreMovie, int>(_context));
         public IRepository<Hall, int> Halls => _halls ?? (_halls = new Repository<Hall, int>(_context));
-        public IRepository<Invoice, int> Invoices => _invoices ?? (_invoices = new Repository<Invoice, int>(_context));
+        public InvoiceRepository Invoices => _invoices ?? (_invoices = new InvoiceRepository(_context, _configuration));
         public IRepository<Movie, int> Movies => _movies ?? (_movies = new Repository<Movie, int>(_context));
         public IRepository<News, int> News => _news ?? (_news = new NewsRepository(_context));
         public IRepository<NewsType, int> NewsTypes => _newsTypes ?? (_newsTypes = new Repository<NewsType, int>(_context));
-        public IRepository<Pricing, int> Pricings => _pricings ?? (_pricings = new Repository<Pricing, int>(_context));
+        public PricingsRepository Pricings => _pricings ?? (_pricings = new PricingsRepository(_context));
         public IRepository<Reservation, int> Reservations => _reservations ?? (_reservations = new Repository<Reservation, int>(_context));
         public IRepository<Review, int> Reviews => _reviews ?? (_reviews = new Repository<Review, int>(_context));
         public IRepository<Screening, int> Screenings => _screenings ?? (_screenings = new Repository<Screening, int>(_context));

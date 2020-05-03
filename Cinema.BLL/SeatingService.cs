@@ -59,14 +59,13 @@ namespace Cinema.BLL
             return screeningSeats.OrderBy(x => x.Seat.Id).ToList();
         }
 
-        public async Task<bool> AreSeatsReservedAsync(List<int> list,DateTime screeningDate, int screeningID)
+        public async Task<bool> AreSeatsReservedAsync(List<int> list, int screeningId)
         {
+            var currentScreening = await _unit.Screenings.GetAsync(screeningId);
 
-            var CurrentHall = await _unit.Halls.GetAsync(screeningID);
+            var currentHall = currentScreening.Hall;            
 
-            var CurrentScreening = CurrentHall.Screenings.FirstOrDefault(x => x.DateAndTime == screeningDate);
-
-            List<SeatingModel> screeningSeats = CurrentScreening.Reservations.SelectMany(x => x.SeatReservations).ToList()
+            List<SeatingModel> screeningSeats = currentScreening.Reservations.SelectMany(x => x.SeatReservations).ToList()
                                                 .Select(x => x.Seat.CreateSeating(true)).ToList();
 
             for (int i = 0; i < screeningSeats.Count; i++)
@@ -81,6 +80,14 @@ namespace Cinema.BLL
             }
 
             return true;
+        }
+
+        public async Task<bool> IsSeatReservedAsync(int seatId, int screeningId)
+        {
+            var currentScreening = await _unit.Screenings.GetAsync(screeningId);
+            var screeningReservations = await _unit.SeatReservations.GetAsync(x => x.Reservation.ScreeningId == screeningId);
+
+            return screeningReservations.Any(x => x.SeatId == seatId);
         }
 
     }

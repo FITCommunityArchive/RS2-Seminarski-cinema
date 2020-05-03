@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace Cinema.Web.Mvc.Controllers
 {
@@ -23,7 +24,7 @@ namespace Cinema.Web.Mvc.Controllers
     public class ReviewsController : BaseController
     {
         private readonly IAuthorizationService _authorizationService;
-        public ReviewsController(ApplicationDbContext context, IAuthorizationService authorizationService) : base(context) 
+        public ReviewsController(ApplicationDbContext context, IAuthorizationService authorizationService, IConfiguration configuration) : base(context, configuration) 
         {
             _authorizationService = authorizationService;
         }
