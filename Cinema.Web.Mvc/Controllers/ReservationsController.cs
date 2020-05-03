@@ -55,22 +55,27 @@ namespace Cinema.Web.Mvc.Controllers
             return View(viewModel);
         }
 
-        public async Task<IActionResult> Checkout(int screeningId, int quantity, string SelectedSeatsString)
+        public async Task<IActionResult> Checkout(int screeningId, int quantity, string selectedSeatsString)
         {
-            Screening screening = await _unit.Screenings.GetAsync(screeningId);
+            Screening screening = await _unit.Screenings.GetAsync(screeningId);            
+            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            if (SelectedSeatsString == null)
+            if (selectedSeatsString == null)
             {
                 ViewData["errorMessage"] = "You haven't picked your seats.";
-                return RedirectToAction("Index", new { screeningId = screeningId});
+                return RedirectToAction("Index", new { screeningId = screeningId });
+            }
+            else if(screening == null || string.IsNullOrEmpty(userId))
+            {
+                ViewData["errorMessage"] = "Something went wrong.";
+                return RedirectToAction("Index", new { screeningId = screeningId });
             }
 
-            var selectedSeats = SelectedSeatsString.Split(',').Select(Int32.Parse).ToList();
-            string userID = User.FindFirstValue(ClaimTypes.NameIdentifier);
-                       
+            var selectedSeats = selectedSeatsString.Split(',').Select(Int32.Parse).ToList();
+
             Reservation reservation = new Reservation
             {
-                User = await _unit.Users.GetAsync(userID),
+                User = await _unit.Users.GetAsync(userId),
                 Screening = screening,
                 IsCancelled = false,
                 ReservationCode = Convert.ToString(System.Guid.NewGuid()).Substring(0, 7).ToUpper()
