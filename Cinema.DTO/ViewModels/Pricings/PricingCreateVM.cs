@@ -10,8 +10,8 @@ namespace Cinema.DTO.ViewModels.Pricings
         public string Name { get; set; }
 
         [Required(ErrorMessage = "The field is required!")]
-        [Range(0, 100)]
-        [DisplayFormat(DataFormatString = "{0:#,###.00}", ApplyFormatInEditMode = true)]
+        [Range(0, int.MaxValue)]
+        [DisplayFormat(DataFormatString = "{0:#,##0.00}", ApplyFormatInEditMode = true)]
         public decimal Price { get; set; }
     }
 }

@@ -20,13 +20,13 @@
                                         <span asp-validation-for="Name" class="text-danger"></span>
                                     </div>
                                 </div>
-                                <div class="col-12 col-lg-6">
+                                
                                     <div class="form-group">
                                         <label asp-for="Price" class="control-label"></label>
-                                        <input asp-for="Price" class="form-control shadow-soft" id="Price" placeholder="Price" />
+                                        <input asp-for="Price" class="form-control" />
                                         <span asp-validation-for="Price" class="text-danger"></span>
                                     </div>
-                                </div>
+
                             </div>                            
                             <div class="row">
                                 <div class="col">
@@ -41,6 +41,3 @@
         </div>
     </div>
 </div>
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

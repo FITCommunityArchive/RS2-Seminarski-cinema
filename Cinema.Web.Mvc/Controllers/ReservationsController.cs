@@ -34,18 +34,18 @@ namespace Cinema.Web.Mvc.Controllers
             _qRCodeService = new QRCodeService(_webHostEnvironment);
         }
 
-        [Route("/Reservations/{id:int?}/{date:long?}")]
-        public async Task<IActionResult> Index(int id, long date)
+        [Route("/Reservations/{screeningId:int?}")]
+        public async Task<IActionResult> Index(int screeningId)
         {
             ViewData["successMessage"] = "";
             ViewData["errorMessage"] = "";
 
-            var screeningDate = new DateTime(date);
-            var currentHall = await _unit.Halls.GetAsync(id);
-            var currentScreening = currentHall.Screenings.FirstOrDefault(x => x.DateAndTime == screeningDate);
+            var currentScreening = await _unit.Screenings.GetAsync(screeningId);
+            var currentHall = currentScreening.Hall;
+
             var viewModel = new ReservationIndexVM
             {
-                CurrentHall = await _unit.Halls.GetAsync(id),
+                CurrentHall = currentHall,
                 CurrentScreening = currentScreening,
                 ScreeningSeats = _seatingService.GetScreeningSeating(currentScreening),
                 ReservedSeats = string.Join(",", _seatingService.ReservedSeats),
@@ -62,7 +62,7 @@ namespace Cinema.Web.Mvc.Controllers
             if (SelectedSeatsString == null)
             {
                 ViewData["errorMessage"] = "You haven't picked your seats.";
-                return RedirectToAction("Index", new { id = screeningId, date = screening.DateAndTime.Ticks });
+                return RedirectToAction("Index", new { screeningId = screeningId});
             }
 
             var selectedSeats = SelectedSeatsString.Split(',').Select(Int32.Parse).ToList();
@@ -74,25 +74,20 @@ namespace Cinema.Web.Mvc.Controllers
                 Screening = screening,
                 IsCancelled = false,
                 ReservationCode = Convert.ToString(System.Guid.NewGuid()).Substring(0, 7).ToUpper()
-            };
-
-            await _unit.Reservations.InsertAsync(reservation);
+            };                        
 
             Invoice invoice = new Invoice
             {
                 Reservation = reservation,
                 TicketQuantity = quantity,
                 OfferTypeId = screening.PricingId
-            };
-
-            _unit.Invoices.SetInvoicePrice(invoice, quantity);
-            await _unit.Invoices.InsertAsync(invoice);
+            };                      
 
             foreach (int seatNumber in selectedSeats)
             {
                 var seat = (await _unit.Seats.GetAsync(x => x.HallId == screening.HallId && x.SeatNumber == seatNumber)).FirstOrDefault();
 
-                if (seat != null)
+                if (seat != null && !await _seatingService.IsSeatReservedAsync(seat.Id, screeningId))
                 {
                     SeatReservation seatReservation = new SeatReservation
                     {
@@ -108,9 +103,13 @@ namespace Cinema.Web.Mvc.Controllers
                 else
                 {
                     ViewData["errorMessage"] = "Something went wrong.";
-                    return RedirectToAction("Index", new { id = screeningId, date = screening.DateAndTime.Ticks });
+                    return RedirectToAction("Index", new { screeningId = screeningId});
                 }
             }
+
+            _unit.Invoices.SetInvoicePrice(invoice, quantity);
+            await _unit.Invoices.InsertAsync(invoice);
+            await _unit.Reservations.InsertAsync(reservation);
 
             await _unit.SaveAsync();
 
