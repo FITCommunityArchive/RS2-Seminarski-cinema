@@ -1,10 +1,6 @@
 ﻿using Cinema.DAL.Data;
 using Cinema.Domain.Entities;
-using Cinema.Domain.Entities.Identity;
-using Cinema.Services.Enums;
 using Microsoft.Extensions.Configuration;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Cinema.DAL.Repository
 {

@@ -37,7 +37,8 @@ namespace Cinema.Test.DALTests
             Screening screening = new Screening
             {
                 Movie = await unit.Movies.GetAsync(1),
-                Hall = await unit.Halls.GetAsync(1)
+                Hall = await unit.Halls.GetAsync(1),
+                Pricing = await unit.Pricings.GetAsync(1)
             };
 
             Movie movie = await unit.Movies.GetAsync(1);
@@ -80,12 +81,14 @@ namespace Cinema.Test.DALTests
 
             Screening screening = await unit.Screenings.GetAsync(id);
             Movie newMovie = await unit.Movies.GetAsync(3);
+            Pricing pricing = await unit.Pricings.GetAsync(2);
 
             Screening updatedScreening = new Screening
             {
                 Id = screening.Id,
                 MovieId = newMovie.Id,
                 HallId = screening.HallId,
+                PricingId = pricing.Id,
                 Reservations = screening.Reservations
             };
 
@@ -95,6 +98,7 @@ namespace Cinema.Test.DALTests
             Screening newScreening = await unit.Screenings.GetAsync(id);
 
             Assert.AreEqual(newMovie.Title, newScreening.Movie.Title);
+            Assert.AreEqual(pricing.Id, newScreening.PricingId);
         }
 
         [Test, Order(6)]
@@ -111,7 +115,8 @@ namespace Cinema.Test.DALTests
             Screening screening = new Screening
             {
                 HallId = 1,
-                MovieId = 1
+                MovieId = 1,
+                PricingId = 1
             };
 
             await unit.Screenings.InsertAsync(screening);
