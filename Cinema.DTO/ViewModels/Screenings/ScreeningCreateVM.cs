@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Cinema.DTO.ModelValidation;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
+
 
 namespace Cinema.DTO.ViewModels.Screenings
 {
@@ -14,6 +14,7 @@ namespace Cinema.DTO.ViewModels.Screenings
 
         [Required(ErrorMessage = "The field is required!")]
         [Display(Name = "Movie Schedule")]
+        [CurrentDate(ErrorMessage = "Date must be after or equal to current date")]
         public DateTime DateAndTime { get; set; }
 
         [Required(ErrorMessage = "The field is required!")]

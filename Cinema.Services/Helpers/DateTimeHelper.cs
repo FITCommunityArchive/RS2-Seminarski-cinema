@@ -26,5 +26,11 @@ namespace Cinema.Services.Helpers
         {
             return dateTime.ToString("t");
         }
+
+        public static DateTime ToDate(this string source)
+        {
+            if (source == null) return DateTime.MinValue;
+            return DateTime.Parse(source);
+        }
     }
 }

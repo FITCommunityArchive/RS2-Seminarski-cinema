@@ -27,7 +27,7 @@ namespace Cinema.Seed
             UnitOfWork unit = new UnitOfWork(context);
 
             // Uncomment to run database seed.          
-           // await unit.SeedDatabase(file);
+            //await unit.SeedDatabase(file);
         }
     }
 }

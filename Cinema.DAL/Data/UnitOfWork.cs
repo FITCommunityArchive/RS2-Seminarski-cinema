@@ -20,10 +20,10 @@ namespace Cinema.DAL.Data
         private IRepository<Movie, int> _movies;
         private IRepository<News, int> _news;
         private IRepository<NewsType, int> _newsTypes;
-        private PricingsRepository _pricings;
+        private PricingRepository _pricings;
         private IRepository<Reservation, int> _reservations;
         private IRepository<Review, int> _reviews;
-        private IRepository<Screening, int> _screenings;
+        private ScreeningRepository _screenings;
         private IRepository<Seat, int> _seats;
         private IRepository<SeatReservation, int> _seatReservations;
         private IRepository<ApplicationUser, string> _users;
@@ -52,10 +52,10 @@ namespace Cinema.DAL.Data
         public IRepository<Movie, int> Movies => _movies ?? (_movies = new Repository<Movie, int>(_context));
         public IRepository<News, int> News => _news ?? (_news = new NewsRepository(_context));
         public IRepository<NewsType, int> NewsTypes => _newsTypes ?? (_newsTypes = new Repository<NewsType, int>(_context));
-        public PricingsRepository Pricings => _pricings ?? (_pricings = new PricingsRepository(_context));
+        public PricingRepository Pricings => _pricings ?? (_pricings = new PricingRepository(_context));
         public IRepository<Reservation, int> Reservations => _reservations ?? (_reservations = new Repository<Reservation, int>(_context));
         public IRepository<Review, int> Reviews => _reviews ?? (_reviews = new Repository<Review, int>(_context));
-        public IRepository<Screening, int> Screenings => _screenings ?? (_screenings = new Repository<Screening, int>(_context));
+        public ScreeningRepository Screenings => _screenings ?? (_screenings = new ScreeningRepository(_context));
         public IRepository<Seat, int> Seats => _seats ?? (_seats = new Repository<Seat, int> (_context));
         public IRepository<SeatReservation, int> SeatReservations => _seatReservations ?? (_seatReservations = new Repository<SeatReservation, int>(_context));
         public IRepository<ApplicationUser, string> Users => _users ?? (_users = new ApplicationUsersRepository(_context));

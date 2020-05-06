@@ -84,7 +84,8 @@ namespace Cinema.Services.Factory.ViewModels
                 NumberOfReviews = movie.Reviews?.Count() > 0 ? movie.Reviews.Count().ToString() : "N/A",
                 AverageRating = movie.Reviews?.Count() > 0 ? movie.Reviews?.Average(x => x.Rating).ToString("##.00") : "N/A",
                 CurrentUserReview = movie.Reviews?.SingleOrDefault(x => x.UserId == currentUserId)?.ToIndexVM(),
-                ScreeningList = movie.Screenings.OrderBy(x => x.DateAndTime).Select(x => new NowShowingDetailsVM.Row
+                ScreeningList = movie.Screenings?.Where(x => x.DateAndTime >= DateTime.UtcNow && x.DateAndTime <= DateTime.UtcNow.AddDays(30))
+                                                .OrderBy(x => x.DateAndTime).Select(x => new NowShowingDetailsVM.Row
                 {
                     ScreeningId = x.Id,
                     HallId = x.Hall.Id,

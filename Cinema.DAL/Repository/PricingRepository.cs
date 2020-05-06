@@ -1,16 +1,14 @@
 ﻿using Cinema.DAL.Data;
 using Cinema.Domain.Entities;
-using Cinema.Domain.Entities.Identity;
 using Cinema.Services.Constants;
 using Cinema.Services.Enums;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Cinema.DAL.Repository
 {
-    public class PricingsRepository : Repository<Pricing, int>
+    public class PricingRepository : Repository<Pricing, int>
     {
-        public PricingsRepository(ApplicationDbContext context) : base(context) { }
+        public PricingRepository(ApplicationDbContext context) : base(context) { }
 
         public bool ValidatePrice(Pricing pricing)
         {
