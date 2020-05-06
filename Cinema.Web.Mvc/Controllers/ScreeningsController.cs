@@ -94,8 +94,12 @@ namespace Cinema.Web.Mvc.Controllers
         {
             Screening screening = model.Create();
 
-            await _unit.Screenings.InsertAsync(screening);
-            await _unit.SaveAsync();
+            if (await _unit.Screenings.ValidateScreeningHallAvailabilityAsync(screening)
+                && _unit.Screenings.ValidateScreeningDate(screening))
+            {
+                await _unit.Screenings.InsertAsync(screening);
+                await _unit.SaveAsync();
+            }
 
             return RedirectToAction(nameof(Index));
         }
@@ -116,9 +120,12 @@ namespace Cinema.Web.Mvc.Controllers
         {
             Screening screening = model.Create();
 
-            await _unit.Screenings.UpdateAsync(screening, model.Id);
-            await _unit.SaveAsync();
-
+            if (await _unit.Screenings.ValidateScreeningHallAvailabilityAsync(screening))
+            {
+                await _unit.Screenings.UpdateAsync(screening, model.Id);
+                await _unit.SaveAsync();
+            }
+            
             return RedirectToAction(nameof(Index));
         }
 

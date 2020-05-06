@@ -166,19 +166,21 @@ namespace Cinema.Web.Mvc.Controllers
         }
 
         [Route("NowShowing"), AllowAnonymous]
-        public IActionResult NowShowing(int? pageNumber, string? filterDate,string currentFilter)
+        public IActionResult NowShowing(int? pageNumber, string? filterDate, string currentFilter)
         {
-
             DateTime DateFilter = Convert.ToDateTime(filterDate);
             var dataWithDate = _unit.Screenings.Get().Where(s => s.DateAndTime.Date == DateFilter.Date);
             ViewData["CurrentFilter"] = filterDate;
 
             var screenings = new NowShowingIndexVM();
 
+            var query = _unit.Screenings.Get().Where(x => x.DateAndTime >= DateTime.UtcNow && x.DateAndTime <= DateTime.UtcNow.AddDays(30))
+                                              .OrderBy(x => x.DateAndTime);
+
             if (filterDate != null)
             {
                 pageNumber = 1;
-                screenings.ScreeningsList = _unit.Screenings.Get().Where(s => s.DateAndTime.Date == DateFilter.Date).Select(x => new NowShowingIndexVM.Row
+                screenings.ScreeningsList = query.Where(s => s.DateAndTime.Date == DateFilter.Date).Select(x => new NowShowingIndexVM.Row
                 {
                     MovieId = x.MovieId,
                     MovieTitle = x.Movie.Title,
@@ -195,7 +197,7 @@ namespace Cinema.Web.Mvc.Controllers
             else
             {
                 filterDate = currentFilter;
-                screenings.ScreeningsList = _unit.Screenings.Get().Select(x => new NowShowingIndexVM.Row
+                screenings.ScreeningsList = query.Select(x => new NowShowingIndexVM.Row
                 {
                     MovieId = x.MovieId,
                     MovieTitle = x.Movie.Title,

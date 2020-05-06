@@ -57,7 +57,13 @@ namespace Cinema.Web.Mvc.Controllers
 
         public async Task<IActionResult> Checkout(int screeningId, int quantity, string selectedSeatsString)
         {
-            Screening screening = await _unit.Screenings.GetAsync(screeningId);            
+            Screening screening = await _unit.Screenings.GetAsync(screeningId);
+
+            if (screening.DateAndTime < DateTime.UtcNow)
+            {
+                return RedirectToAction("Index", new { screeningId = screeningId });
+            }
+
             string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             if (selectedSeatsString == null)
