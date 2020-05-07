@@ -1,4 +1,6 @@
 ﻿@model Cinema.DTO.ViewModels.Reservations.ReservationIndexVM
+@using Cinema.DTO.ViewModels
+
 @{
     ViewData["Title"] = "Reservation form";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -18,15 +20,11 @@
             {
                 @:<div class="alert alert-success">@ViewData["successMessage"]</div>
             }
-            @if (ViewData["errorMessage"].Equals(""))
-            {
 
-            }
-            else
-            {
-                @:<div class="alert alert-danger">@ViewData["errorMessage"]</div>
-            }
             <h1 class="h2">Reserve your tickets</h1>
+
+            @await Component.InvokeAsync("ValidationMessage", new ValidationMessageVM { Message = ViewBag.ErrorMessage })
+
             <h3 class="h4">@Model.CurrentScreening.Movie.Title (@Model.CurrentScreening.Movie.Duration min)</h3>
             <div class="meta">
                 <span class="pull-left">
@@ -49,19 +47,19 @@
                     <div id="seat-map" data-rows="@Model.CurrentHall.NumberOfRows" data-columns="@Model.CurrentHall.NumberOfColumns" data-reserved-seats="@Model.ReservedSeats" data-ticket-cat="@Model.PricingTier.Name" data-ticket-price="@Model.PricingTier.Price"></div>
                     @using (@Html.BeginForm("Checkout", "Reservations", FormMethod.Post, new { @class = "booking-details" }))
                     {
-                    <div class="form-group">
-                        <h1 class="h3">Booking Details</h1>
-                        <p> Selected Seats (<span id="counter">0</span>)</p>
-                        <ul id="selected-seats">
-                        </ul>
-                        Total: <b>$<span id="total">0</span></b>
-                        <input type="submit" value="Reserve" class="btn btn-danger checkout-button" />
-                        <div id="legend"></div>
-                        @Html.Hidden("SelectedSeatsString", Model.SelectedSeatsString, new { @id = "SelectedSeatsString" })
-                        @Html.ValidationMessageFor(x => x.SelectedSeatsString, "", new { @class = "text-danger" })
-                        @Html.Hidden("screeningId", Model.CurrentScreening.Id, new { @id = "screeningId" })
-                        @Html.Hidden("quantity", Model.Quantity, new { @id = "quantity" })
-                    </div>
+                        <div class="form-group">
+                            <h1 class="h3">Booking Details</h1>
+                            <p> Selected Seats (<span id="counter">0</span>)</p>
+                            <ul id="selected-seats">
+                            </ul>
+                            Total: <b>$<span id="total">0</span></b>
+                            <input type="submit" value="Reserve" class="btn btn-danger checkout-button" />
+                            <div id="legend"></div>
+                            @Html.Hidden("SelectedSeatsString", Model.SelectedSeatsString, new { @id = "SelectedSeatsString" })
+                            @Html.ValidationMessageFor(x => x.SelectedSeatsString, "", new { @class = "text-danger" })
+                            @Html.Hidden("screeningId", Model.CurrentScreening.Id, new { @id = "screeningId" })
+                            @Html.Hidden("quantity", Model.Quantity, new { @id = "quantity" })
+                        </div>
                     }
                 </div>
             </div>

@@ -9,6 +9,7 @@ using Cinema.DAL.Data;
 using Cinema.Domain.Entities;
 using Cinema.DTO.ViewModels.Events;
 using Cinema.DTO.ViewModels.Pricings;
+using Cinema.Services.Constants;
 using Cinema.Services.Enums;
 using Cinema.Services.Factory;
 using Cinema.Services.Factory.ViewModels;
@@ -58,8 +59,10 @@ namespace Cinema.Web.Mvc.Controllers
         }
 
         [HttpGet]
-        public IActionResult Create()
+        public IActionResult Create(string errorMessage = "")
         {
+            ViewBag.ErrorMessage = errorMessage;
+
             PricingCreateVM model = new PricingCreateVM();
 
             return View(model);
@@ -70,11 +73,17 @@ namespace Cinema.Web.Mvc.Controllers
         {
             Pricing pricing = model.Create();
 
-            if (_unit.Pricings.ValidatePrice(pricing))
+            if (!_unit.Pricings.ValidatePrice(pricing))
             {
-                await _unit.Pricings.InsertAsync(pricing);
-                await _unit.SaveAsync();
+                return RedirectToAction(nameof(Create), new { errorMessage = ValidationMessages.PRICE_INVALID });
             }
+            else if (string.IsNullOrEmpty(model.Name))
+            {
+                return RedirectToAction(nameof(Create), new { errorMessage = ValidationMessages.ALL_FIELDS_REQUIRED });
+            }
+
+            await _unit.Pricings.InsertAsync(pricing);
+            await _unit.SaveAsync();
 
             return RedirectToAction(nameof(Index));
         }
@@ -91,11 +100,17 @@ namespace Cinema.Web.Mvc.Controllers
         {            
             Pricing pricing = model.Create();
 
-            if (_unit.Pricings.ValidatePrice(pricing))
+            if (!_unit.Pricings.ValidatePrice(pricing))
             {
-                await _unit.Pricings.UpdateAsync(pricing, model.Id);
-                await _unit.SaveAsync();
-            }            
+                return RedirectToAction(nameof(Edit), new { id = pricing.Id, errorMessage = ValidationMessages.PRICE_INVALID });
+            }
+            else if (string.IsNullOrEmpty(model.Name))
+            {
+                return RedirectToAction(nameof(Edit), new { id = pricing.Id, errorMessage = ValidationMessages.ALL_FIELDS_REQUIRED });
+            }
+
+            await _unit.Pricings.UpdateAsync(pricing, model.Id);
+            await _unit.SaveAsync();            
 
             return RedirectToAction(nameof(Index));
         }

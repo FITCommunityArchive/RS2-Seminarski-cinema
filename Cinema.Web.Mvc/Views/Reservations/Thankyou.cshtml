@@ -1,4 +1,6 @@
 ﻿@model Cinema.Domain.Entities.Reservation
+@using Cinema.Services.Constants
+
 @{
     ViewData["Title"] = "Thankyou";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -39,9 +41,9 @@
                                 }
                             </ul>
                         </li>
-                        <li>Price: @(Model.Invoices[0].Price) USD</li>
-                        <li>VAT: @String.Format("{0:#,##0.00}",Model.Invoices[0].TaxAmount) USD</li>
-                        <li>Total: @String.Format("{0:#,##0.00}", @Model.Invoices[0].Price + @Model.Invoices[0].TaxAmount) USD</li>
+                        <li>Price: @(Model.Invoices[0].Price) @Currencies.DEFAULT</li>
+                        <li>VAT: @String.Format("{0:#,##0.00}", Model.Invoices[0].TaxAmount) @Currencies.DEFAULT</li>
+                        <li>Total: @String.Format("{0:#,##0.00}", @Model.Invoices[0].Price + @Model.Invoices[0].TaxAmount) @Currencies.DEFAULT</li>
                     </ul>
                 </div>
                 <div class="col-md-6">

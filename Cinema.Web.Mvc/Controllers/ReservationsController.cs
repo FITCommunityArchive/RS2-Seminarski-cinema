@@ -13,6 +13,7 @@ using EmailService;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using Microsoft.Extensions.Configuration;
+using Cinema.Services.Constants;
 
 namespace Cinema.Web.Mvc.Controllers
 {
@@ -35,10 +36,10 @@ namespace Cinema.Web.Mvc.Controllers
         }
 
         [Route("/Reservations/{screeningId:int?}")]
-        public async Task<IActionResult> Index(int screeningId)
+        public async Task<IActionResult> Index(int screeningId, string errorMessage)
         {
             ViewData["successMessage"] = "";
-            ViewData["errorMessage"] = "";
+            ViewBag.ErrorMessage = errorMessage;
 
             var currentScreening = await _unit.Screenings.GetAsync(screeningId);
             var currentHall = currentScreening.Hall;
@@ -68,13 +69,11 @@ namespace Cinema.Web.Mvc.Controllers
 
             if (selectedSeatsString == null)
             {
-                ViewData["errorMessage"] = "You haven't picked your seats.";
-                return RedirectToAction("Index", new { screeningId = screeningId });
+                return RedirectToAction("Index", new { screeningId = screeningId, errorMessage = ValidationMessages.NO_SEATS_SELECTED });
             }
             else if(screening == null || string.IsNullOrEmpty(userId))
             {
-                ViewData["errorMessage"] = "Something went wrong.";
-                return RedirectToAction("Index", new { screeningId = screeningId });
+                return RedirectToAction("Index", new { screeningId = screeningId, errorMessage = "" });
             }
 
             var selectedSeats = selectedSeatsString.Split(',').Select(Int32.Parse).ToList();
@@ -113,8 +112,7 @@ namespace Cinema.Web.Mvc.Controllers
                 }
                 else
                 {
-                    ViewData["errorMessage"] = "Something went wrong.";
-                    return RedirectToAction("Index", new { screeningId = screeningId});
+                    return RedirectToAction("Index", new { screeningId = screeningId, errorMessage = "" });
                 }
             }
 
