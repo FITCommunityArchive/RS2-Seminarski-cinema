@@ -58,7 +58,9 @@ namespace Cinema.Services.Factory.ViewModels
             return new ScreeningCreateVM
             {
                 Id = screening.Id,
+                MovieId = screening.MovieId,
                 Movie = screening.Movie.Title,
+                HallId = screening.HallId,
                 Hall = screening.Hall.Name,
                 Movies = movies,
                 Halls = halls,

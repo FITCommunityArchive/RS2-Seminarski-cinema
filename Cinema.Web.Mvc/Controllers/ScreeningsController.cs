@@ -6,6 +6,7 @@ using Cinema.Authorization.Constants;
 using Cinema.DAL.Data;
 using Cinema.Domain.Entities;
 using Cinema.DTO.ViewModels.Screenings;
+using Cinema.Services.Constants;
 using Cinema.Services.Factory;
 using Cinema.Services.Factory.ViewModels;
 using Cinema.Web.Mvc.Models;
@@ -63,7 +64,6 @@ namespace Cinema.Web.Mvc.Controllers
                     break;
             }
 
-            //List<MovieIndexVM> movies = await _unit.Movies.Get().Select(x => x.ToIndexVM()).ToListAsync();
             int pageSize = 10;
             return View(PaginatedList<ScreeningIndexVM>.Create(screenings.AsQueryable(), pageNumber ?? 1, pageSize)); 
         }
@@ -77,8 +77,10 @@ namespace Cinema.Web.Mvc.Controllers
         }
 
         [HttpGet]
-        public IActionResult Create()
-        {            
+        public IActionResult Create(string errorMessage = "")
+        {
+            ViewBag.ErrorMessage = errorMessage;
+
             ScreeningCreateVM model = new ScreeningCreateVM
             {                
                 Movies = new SelectList(_unit.Movies.Get().Select(x => x.CreateMaster()), "Id", "Name"),
@@ -94,19 +96,26 @@ namespace Cinema.Web.Mvc.Controllers
         {
             Screening screening = model.Create();
 
-            if (await _unit.Screenings.ValidateScreeningHallAvailabilityAsync(screening)
-                && _unit.Screenings.ValidateScreeningDate(screening))
+            if (!await _unit.Screenings.ValidateScreeningHallAvailabilityAsync(screening))
             {
-                await _unit.Screenings.InsertAsync(screening);
-                await _unit.SaveAsync();
+                return RedirectToAction(nameof(Create), new { errorMessage = ValidationMessages.HALL_ALREADY_OCCUPIED });
             }
+            else if(!_unit.Screenings.ValidateScreeningDate(screening))
+            {
+                return RedirectToAction(nameof(Create), new { errorMessage = ValidationMessages.DATE_NOT_FUTURE });
+            }
+
+            await _unit.Screenings.InsertAsync(screening);
+            await _unit.SaveAsync();
 
             return RedirectToAction(nameof(Index));
         }
 
         [HttpGet]
-        public async Task<IActionResult> Edit(int id)
+        public async Task<IActionResult> Edit(int id, string errorMessage = "")
         {
+            ViewBag.ErrorMessage = errorMessage;
+
             SelectList movies = new SelectList(_unit.Movies.Get().Select(x => x.CreateMaster()), "Id", "Name");
             SelectList halls = new SelectList(_unit.Halls.Get().Select(x => x.CreateMaster()), "Id", "Name");
             SelectList pricings = new SelectList(_unit.Pricings.Get().Select(x => x.CreateMaster()), "Id", "Name");
@@ -120,11 +129,13 @@ namespace Cinema.Web.Mvc.Controllers
         {
             Screening screening = model.Create();
 
-            if (await _unit.Screenings.ValidateScreeningHallAvailabilityAsync(screening))
+            if (!await _unit.Screenings.ValidateScreeningHallAvailabilityAsync(screening))
             {
-                await _unit.Screenings.UpdateAsync(screening, model.Id);
-                await _unit.SaveAsync();
+                return RedirectToAction(nameof(Edit), new { id = screening.Id, errorMessage = ValidationMessages.HALL_ALREADY_OCCUPIED });
             }
+
+            await _unit.Screenings.UpdateAsync(screening, model.Id);
+            await _unit.SaveAsync();
             
             return RedirectToAction(nameof(Index));
         }
