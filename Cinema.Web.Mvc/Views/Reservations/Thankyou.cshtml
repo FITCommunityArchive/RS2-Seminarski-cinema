@@ -6,11 +6,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<section class="showing-now">
-    <div class="container">
-        <div class="content-wrap">
+    <div class="section section-md">
+        <div class="container">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-12">
                     <h1 class="h2">Thank you</h1>
                     <div class="alert alert-success">Your tickets have been reserved.</div>
                     <p>
@@ -20,7 +19,7 @@
 
                         During the evenings and weekends, count on the longer wait.
                     </p>
-                    
+
                 </div>
             </div>
             <div class="row">
@@ -28,7 +27,7 @@
                     <h3 class="h5">Your details:</h3>
                     <ul>
                         <li>Reservation code: @Model.ReservationCode</li>
-                        <li>Date: @Model.Screening.DateAndTime.Date</li>
+                        <li>Date: @Model.Screening.DateAndTime.Date.ToShortDateString()</li>
                         <li>Time: @Model.Screening.DateAndTime.ToShortTimeString()</li>
                         <li>Movie: @Model.Screening.Movie.Title</li>
                         <li>Hall: @Model.Screening.Hall.Name</li>
@@ -53,5 +52,4 @@
             </div>
         </div>
     </div>
-</section>
 

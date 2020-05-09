@@ -133,5 +133,19 @@ namespace Cinema.Web.Mvc.Controllers
             PaginatedList<News> paginatedModel = PaginatedList<News>.Create(newsQuery.AsQueryable(), pageNumber ?? 1, 4);
             return View("News", paginatedModel);
         }
+
+        [Route("News/{title:minlength(4)}"), AllowAnonymous]
+        public IActionResult Single(string title)
+        {
+            //ViewData["RecentEvents"] = _unit.Events.Get().Take(3).ToList();
+            ViewData["RecentEvents"] = _unit.Events.Get().Take(3).ToList();
+            ViewData["EventTypes"] = _unit.EventTypes.Get().ToList();
+            var viewModel = _unit.News.Get().Where(x => x.Title == title.Replace("-", " ")).FirstOrDefault();
+
+            //if (viewModel == null)
+            //    throw new HttpException(404, "Post not found");
+
+            return View("Single", viewModel);
+        }
     }
 }

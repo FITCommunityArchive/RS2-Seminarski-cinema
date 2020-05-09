@@ -125,7 +125,7 @@ namespace Cinema.Web.Mvc.Controllers
 
             return RedirectToAction(nameof(Details), new { id = eventEntity.Id });
         }
-        
+
         public async Task<IActionResult> Delete(int id)
         {
             await _unit.Events.DeleteAsync(id);
@@ -145,6 +145,20 @@ namespace Cinema.Web.Mvc.Controllers
 
             PaginatedList<Event> paginatedModel = PaginatedList<Event>.Create(eventsQuery.AsQueryable(), pageNumber ?? 1, 4);
             return View("Events", paginatedModel);
+        }
+
+        [Route("Event/{title:minlength(4)}"), AllowAnonymous]
+        public IActionResult Single(string title)
+        {
+            //ViewData["RecentEvents"] = _unit.Events.Get().Take(3).ToList();
+            ViewData["RecentNews"] = _unit.News.Get().Take(3).ToList();
+            ViewData["NewsTypes"] = _unit.NewsTypes.Get().ToList();
+            var viewModel = _unit.Events.Get().Where(x => x.Title == title.Replace("-", " ")).FirstOrDefault();
+
+            //if (viewModel == null)
+            //    throw new HttpException(404, "Post not found");
+
+            return View("Single", viewModel);
         }
     }
 }
