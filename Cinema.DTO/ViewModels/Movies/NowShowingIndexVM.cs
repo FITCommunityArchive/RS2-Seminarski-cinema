@@ -5,7 +5,7 @@ namespace Cinema.DTO.ViewModels.Movies
 {
     public class NowShowingIndexVM
     {
-        public List<Row> ScreeningsList { get; set; }
+        public List<Row> MoviesList { get; set; }
 
         public class Row
         {
