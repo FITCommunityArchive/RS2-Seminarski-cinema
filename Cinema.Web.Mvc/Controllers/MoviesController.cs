@@ -191,7 +191,8 @@ namespace Cinema.Web.Mvc.Controllers
                 MovieId = x.Id,
                 MovieTitle = x.Title,
                 MovieActors = x.Actors,
-                //MovieRating = x.Movie.Reviews.Average(x => x.Rating).ToString("#.00") ?? "N/A",
+                MovieRating = !x.Reviews.Any() ?  0 : (int)x.Reviews.Average(x => x.Rating),
+                MovieRatingDescription = x.Reviews.Average(x => x.Rating).ToString("#.00") ?? "N/A",
                 Duration = x.Duration,
                 Year = x.Year,
                 Country = x.Country
