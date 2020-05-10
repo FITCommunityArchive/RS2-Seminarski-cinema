@@ -70,9 +70,12 @@ namespace Cinema.Web.Mvc
             {
                 options.AddPolicy(Policies.IsAdmin, policy =>
                     policy.Requirements.Add(new IsAdminRequirement()));
+                options.AddPolicy(Policies.IsContentEditor, policy =>
+                    policy.Requirements.Add(new IsContentEditorRequirement()));
             });
 
             services.AddScoped<IAuthorizationHandler, IsAdminHandler>();
+            services.AddScoped<IAuthorizationHandler, IsContentEditorHandler>();
             services.AddScoped<IAuthorizationHandler, ReviewAuthorizationHandler>();
 
             // Here we add the EmailService and setup the FormOptions for attachments to be properly sent

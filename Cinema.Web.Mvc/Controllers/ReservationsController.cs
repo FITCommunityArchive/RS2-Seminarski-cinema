@@ -125,8 +125,6 @@ namespace Cinema.Web.Mvc.Controllers
             var imageUri = _qRCodeService.GenerateCode(reservation.ReservationCode);
             var imageUrl = String.Format("data:image/png;base64,{0}", imageUri);
 
-            @ViewData["QRCodeData"] = imageUrl;
-
             var attachment = new FormFileCollection();
             var messageContent = "";
             messageContent += "<h3>Your reservation code: " + reservation.ReservationCode + "</h3>"; 
@@ -146,7 +144,7 @@ namespace Cinema.Web.Mvc.Controllers
                 };
                 attachment.Add(file);
 
-                var message = new Message(new string[] { "boris@cloudronin.com" }, "Your Ticket for the movie " + screening.Movie.Title, messageContent, attachment);
+                var message = new Message(new string[] { reservation.User.Email }, "Your Ticket for the movie " + screening.Movie.Title, messageContent, attachment);
                 await _emailSender.SendEmailAsync(message);
             }
 
@@ -156,8 +154,20 @@ namespace Cinema.Web.Mvc.Controllers
             //var message2 = new Message(new string[] { "boris@cloudronin.com" }, "Your Ticket for the movie " + currentScreening.Movie.Title, "<img src='"+ path+"' />");
             //await _emailSender.SendEmailAsync(message2);
             
-            return View("Thankyou", reservation);
+            return RedirectToAction("Thankyou",new { reservationID = reservation.Id });
         }
+
+        [HttpGet,Route("/Reservations/Thankyou")]
+        public IActionResult Thankyou(int reservationID)
+        {
+            var viewModel = _unit.Reservations.Get().Where(x => x.Id == reservationID).FirstOrDefault();
+            var qrCodeUri = _qRCodeService.GenerateCode(viewModel.ReservationCode);
+            var qrCode = String.Format("data:image/png;base64,{0}", qrCodeUri);
+            @ViewData["QRCodeData"] = qrCode;
+
+            return View(viewModel);
+        }
+
 
         public async Task<IActionResult> CancelReservation(int id)
         {

@@ -17,12 +17,12 @@
     <link rel="stylesheet" href="~/css/custom.css" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700|Work+Sans:400,700,900&display=swap" rel="stylesheet">
 </head>
-<body class="@(SignInManager.IsSignedIn(User) ? "logged-in" : "")">
+<body class="@(SignInManager.IsSignedIn(User) ? (await AuthorizationService.AuthorizeAsync(User, Policies.IsAdmin)).Succeeded ? "logged-in admin" : (await AuthorizationService.AuthorizeAsync(User, Policies.IsContentEditor)).Succeeded ? "logged-in content-editor" : "logged-in user" : "")">
     <header class="fixed-top">
         @if (SignInManager.IsSignedIn(User)
                  && (await AuthorizationService.AuthorizeAsync(User, Policies.IsAdmin)).Succeeded)
         {
-            <div class="top-bar p-2 bg-white">
+            <div class="top-bar py-lg-2 px-lg-6 bg-white navbar navbar-expand-lg">
                 <div class="container">
                     <ul class="list-inline m-0">
                         <li class="list-inline-item">@Html.ActionLink("Movies", "Index", "Movies")</li>
