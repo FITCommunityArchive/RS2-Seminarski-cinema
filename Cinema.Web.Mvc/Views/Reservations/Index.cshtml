@@ -8,64 +8,67 @@
 
 
 
-<section class="showing-now">
+<div class="section section-md">
     <div class="container">
-        <div class="content-wrap">
-            @ViewData["test"]
-            @if (ViewData["successMessage"].Equals(""))
-            {
+        <div class="row">
+            <div class="col-12">
+                @ViewData["test"]
+                @if (ViewData["successMessage"].Equals(""))
+                {
 
-            }
-            else
-            {
-                @:<div class="alert alert-success">@ViewData["successMessage"]</div>
-            }
+                }
+                else
+                {
+                    @:<div class="alert alert-success">@ViewData["successMessage"]</div>
+                }
 
-            <h1 class="h2">Reserve your tickets</h1>
+                <h1 class="h2">Reserve your tickets</h1>
 
-            @await Component.InvokeAsync("ValidationMessage", new ValidationMessageVM { Message = ViewBag.ErrorMessage })
+                @await Component.InvokeAsync("ValidationMessage", new ValidationMessageVM { Message = ViewBag.ErrorMessage })
 
-            <h3 class="h4">@Model.CurrentScreening.Movie.Title (@Model.CurrentScreening.Movie.Duration min)</h3>
-            <div class="meta">
-                <span class="pull-left">
-                    <strong>@Model.CurrentHall.Name</strong>
-                </span>
-                <span class="pull-right">
-                    <strong>@Model.CurrentScreening.DateAndTime</strong>
-                </span>
+                <h3 class="h4">@Model.CurrentScreening.Movie.Title (@Model.CurrentScreening.Movie.Duration min)</h3>
+                <div class="meta">
+                    <span class="pull-left">
+                        <strong>@Model.CurrentHall.Name</strong>
+                    </span>
+                    <span class="pull-right">
+                        <strong>@Model.CurrentScreening.DateAndTime</strong>
+                    </span>
 
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <ul style="display:none;">
-                        @foreach (var item in Model.ScreeningSeats)
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul style="display:none;">
+                            @foreach (var item in Model.ScreeningSeats)
+                            {
+                                <li>Seat Number: @item.SeatNumber</li>
+                                <li>Reserved:  @item.Reserved</li>
+                            }
+                        </ul>
+                        <div id="seat-map" data-rows="@Model.CurrentHall.NumberOfRows" data-columns="@Model.CurrentHall.NumberOfColumns" data-reserved-seats="@Model.ReservedSeats" data-ticket-cat="@Model.PricingTier.Name" data-ticket-price="@Model.PricingTier.Price"></div>
+                        @using (@Html.BeginForm("Checkout", "Reservations", FormMethod.Post, new { @class = "booking-details" }))
                         {
-                            <li>Seat Number: @item.SeatNumber</li>
-                            <li>Reserved:  @item.Reserved</li>
+                            <div class="form-group">
+                                <h1 class="h3">Booking Details</h1>
+                                <p> Selected Seats (<span id="counter">0</span>)</p>
+                                <ul id="selected-seats">
+                                </ul>
+                                Total: <b>$<span id="total">0</span></b>
+                                <input type="submit" value="Reserve" class="btn btn-danger checkout-button" />
+                                <div id="legend"></div>
+                                @Html.Hidden("SelectedSeatsString", Model.SelectedSeatsString, new { @id = "SelectedSeatsString" })
+                                @Html.ValidationMessageFor(x => x.SelectedSeatsString, "", new { @class = "text-danger" })
+                                @Html.Hidden("screeningId", Model.CurrentScreening.Id, new { @id = "screeningId" })
+                                @Html.Hidden("quantity", Model.Quantity, new { @id = "quantity" })
+                            </div>
                         }
-                    </ul>
-                    <div id="seat-map" data-rows="@Model.CurrentHall.NumberOfRows" data-columns="@Model.CurrentHall.NumberOfColumns" data-reserved-seats="@Model.ReservedSeats" data-ticket-cat="@Model.PricingTier.Name" data-ticket-price="@Model.PricingTier.Price"></div>
-                    @using (@Html.BeginForm("Checkout", "Reservations", FormMethod.Post, new { @class = "booking-details" }))
-                    {
-                        <div class="form-group">
-                            <h1 class="h3">Booking Details</h1>
-                            <p> Selected Seats (<span id="counter">0</span>)</p>
-                            <ul id="selected-seats">
-                            </ul>
-                            Total: <b>$<span id="total">0</span></b>
-                            <input type="submit" value="Reserve" class="btn btn-danger checkout-button" />
-                            <div id="legend"></div>
-                            @Html.Hidden("SelectedSeatsString", Model.SelectedSeatsString, new { @id = "SelectedSeatsString" })
-                            @Html.ValidationMessageFor(x => x.SelectedSeatsString, "", new { @class = "text-danger" })
-                            @Html.Hidden("screeningId", Model.CurrentScreening.Id, new { @id = "screeningId" })
-                            @Html.Hidden("quantity", Model.Quantity, new { @id = "quantity" })
-                        </div>
-                    }
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</div>
+
 
 @section Scripts
 {
