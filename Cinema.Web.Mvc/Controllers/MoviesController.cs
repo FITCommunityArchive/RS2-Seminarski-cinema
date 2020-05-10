@@ -176,43 +176,29 @@ namespace Cinema.Web.Mvc.Controllers
             var query = _unit.Screenings.Get().Where(x => x.DateAndTime >= DateTime.UtcNow && x.DateAndTime <= DateTime.UtcNow.AddDays(30))
                                               .OrderBy(x => x.DateAndTime);
 
-            if (filterDate != null)
+            if (!string.IsNullOrEmpty(filterDate) && DateFilter != DateTime.MinValue)
             {
-                pageNumber = 1;
-                screenings.ScreeningsList = query.Where(s => s.DateAndTime.Date == DateFilter.Date).Select(x => new NowShowingIndexVM.Row
-                {
-                    MovieId = x.MovieId,
-                    MovieTitle = x.Movie.Title,
-                    MovieActors = x.Movie.Actors,
-                    HallName = x.Hall.Name,
-                    StartTime = x.DateAndTime,
-                    //MovieRating = x.Movie.Reviews.Average(x => x.Rating).ToString("#.00") ?? "N/A",
-                    Duration = x.Movie.Duration,
-                    Year = x.Movie.Year,
-                    Country = x.Movie.Country
-                }).ToList();
-
-            }
-            else
-            {
+                query = query.Where(x => x.DateAndTime == DateFilter).OrderBy(x => x.DateAndTime);
                 filterDate = currentFilter;
-                screenings.ScreeningsList = query.Select(x => new NowShowingIndexVM.Row
-                {
-                    MovieId = x.MovieId,
-                    MovieTitle = x.Movie.Title,
-                    MovieActors = x.Movie.Actors,
-                    HallName = x.Hall.Name,
-                    StartTime = x.DateAndTime,
-                    //MovieRating = x.Movie.Reviews.Average(x => x.Rating).ToString("#.00") ?? "N/A",
-                    Duration = x.Movie.Duration,
-                    Year = x.Movie.Year,
-                    Country = x.Movie.Country
-                }).ToList();
-
             }
+
+            var queryMovies = query.Select(x => x.Movie).Distinct();
+
+            if (filterDate != null) pageNumber = 1;
+
+            screenings.MoviesList = queryMovies.Select(x => new NowShowingIndexVM.Row
+            {
+                MovieId = x.Id,
+                MovieTitle = x.Title,
+                MovieActors = x.Actors,
+                //MovieRating = x.Movie.Reviews.Average(x => x.Rating).ToString("#.00") ?? "N/A",
+                Duration = x.Duration,
+                Year = x.Year,
+                Country = x.Country
+            }).ToList();
 
             int pageSize = 6;
-            return View(PaginatedList<NowShowingIndexVM.Row>.Create(screenings.ScreeningsList.AsQueryable(), pageNumber ?? 1, pageSize));
+            return View(PaginatedList<NowShowingIndexVM.Row>.Create(screenings.MoviesList.AsQueryable(), pageNumber ?? 1, pageSize));
         }
 
         [Route("NowShowing/Details/{id:int}"), AllowAnonymous]
