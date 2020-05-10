@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Cinema.Authorization.Constants;
+﻿using Cinema.Authorization.Constants;
 using Cinema.DAL.Data;
 using Cinema.Domain.Entities;
-using Cinema.DTO.ViewModels.Events;
 using Cinema.DTO.ViewModels.News;
 using Cinema.Services.Enums;
 using Cinema.Services.Factory;
@@ -17,6 +11,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace Cinema.Web.Mvc.Controllers
 {
@@ -63,7 +62,7 @@ namespace Cinema.Web.Mvc.Controllers
 
             return View(paginatedModel);
         }
-        
+
         [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
@@ -83,7 +82,7 @@ namespace Cinema.Web.Mvc.Controllers
 
             return View(model);
         }
-        
+
         [HttpPost]
         public async Task<IActionResult> Create(NewsCreateVM model)
         {
@@ -121,7 +120,7 @@ namespace Cinema.Web.Mvc.Controllers
 
             return RedirectToAction(nameof(Index));
         }
-        
+
         [Route("LatestNews"), AllowAnonymous]
         public IActionResult LatestNews(int? pageNumber)
         {

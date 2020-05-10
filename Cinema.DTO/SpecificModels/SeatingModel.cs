@@ -1,7 +1,4 @@
-﻿using Cinema.Domain.Entities;
-using System;
-
-namespace Cinema.DTO.SpecificModels
+﻿namespace Cinema.DTO.SpecificModels
 {
     public class SeatingModel
     {

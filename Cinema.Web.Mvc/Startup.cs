@@ -1,26 +1,19 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Cinema.Authorization.Constants;
+using Cinema.Authorization.Handlers;
+using Cinema.Authorization.Requirements;
+using Cinema.BLL;
+using Cinema.DAL.Data;
+using Cinema.Domain.Entities.Identity;
+using EmailService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Http.Features;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Cinema.DAL.Data;
-using Cinema.Domain.Entities.Identity;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc.Authorization;
-using Cinema.Authorization.Handlers;
-using Cinema.Authorization.Requirements;
-using Cinema.Authorization.Constants;
-using EmailService;
-using Microsoft.AspNetCore.Http.Features;
-using Cinema.BLL;
 
 namespace Cinema.Web.Mvc
 {
@@ -51,7 +44,7 @@ namespace Cinema.Web.Mvc
                 .AddDefaultTokenProviders()*/
             services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
                     .AddRoles<ApplicationRole>()
-                    .AddEntityFrameworkStores<ApplicationDbContext>();            
+                    .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddControllersWithViews(config =>
             {
@@ -63,7 +56,7 @@ namespace Cinema.Web.Mvc
                 config.Filters.Add(new AuthorizeFilter(policy));
             });
 
-            services.AddRazorPages().AddRazorRuntimeCompilation();
+            services.AddRazorPages();
 
 
             services.AddAuthorization(options =>
@@ -85,7 +78,8 @@ namespace Cinema.Web.Mvc
 
             services.AddScoped<QRCodeService>();
 
-            services.Configure<FormOptions>(o => {
+            services.Configure<FormOptions>(o =>
+            {
                 o.ValueLengthLimit = int.MaxValue;
                 o.MultipartBodyLengthLimit = int.MaxValue;
                 o.MemoryBufferThreshold = int.MaxValue;
@@ -98,7 +92,7 @@ namespace Cinema.Web.Mvc
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage();               
+                app.UseDatabaseErrorPage();
             }
             else
             {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Cinema.DTO.Constants
+﻿namespace Cinema.DTO.Constants
 {
     public static class ValidationRegex
     {

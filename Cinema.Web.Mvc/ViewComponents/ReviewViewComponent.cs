@@ -1,14 +1,5 @@
-﻿using Cinema.DAL.Data;
-using Cinema.Domain.Entities;
-using Cinema.Domain.Entities.Identity;
-using Cinema.DTO.ViewModels.Reviews;
-using Cinema.Services.Factory;
-using Microsoft.AspNetCore.Identity;
+﻿using Cinema.DTO.ViewModels.Reviews;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Cinema.Web.Mvc.ViewComponents

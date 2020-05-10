@@ -1,14 +1,7 @@
-﻿using Cinema.DAL.Data;
-using Cinema.Domain.Entities;
-using Cinema.Seed.CollectMethods;
+﻿using Cinema.Domain.Entities;
 using Cinema.Services.Exceptions;
-using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Cinema.Test.DALTests
@@ -21,12 +14,12 @@ namespace Cinema.Test.DALTests
         {
             //Arrange
             int hallsCount = unit.Halls.Get().Count();
-                                             
+
             //Act
 
             //Assert
             //There are 2 halls in the test database
-             Assert.AreEqual(2, hallsCount);
+            Assert.AreEqual(2, hallsCount);
 
             /*
             IndexModel indexModel = new IndexModel(context);

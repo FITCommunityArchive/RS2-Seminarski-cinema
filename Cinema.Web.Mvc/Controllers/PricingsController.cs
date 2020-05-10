@@ -1,25 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Cinema.Authorization.Constants;
+﻿using Cinema.Authorization.Constants;
 using Cinema.DAL.Data;
 using Cinema.Domain.Entities;
-using Cinema.DTO.ViewModels.Events;
 using Cinema.DTO.ViewModels.Pricings;
 using Cinema.Services.Constants;
 using Cinema.Services.Enums;
 using Cinema.Services.Factory;
 using Cinema.Services.Factory.ViewModels;
-using Cinema.Services.Helpers;
 using Cinema.Web.Mvc.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Cinema.Web.Mvc.Controllers
 {
@@ -97,7 +92,7 @@ namespace Cinema.Web.Mvc.Controllers
         }
 
         public async Task<IActionResult> Edit(PricingCreateVM model)
-        {            
+        {
             Pricing pricing = model.Create();
 
             if (!_unit.Pricings.ValidatePrice(pricing))
@@ -110,7 +105,7 @@ namespace Cinema.Web.Mvc.Controllers
             }
 
             await _unit.Pricings.UpdateAsync(pricing, model.Id);
-            await _unit.SaveAsync();            
+            await _unit.SaveAsync();
 
             return RedirectToAction(nameof(Index));
         }

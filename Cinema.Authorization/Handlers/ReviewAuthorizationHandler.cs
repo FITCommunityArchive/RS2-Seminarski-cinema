@@ -1,13 +1,8 @@
-﻿using Cinema.Authorization.Requirements;
-using Cinema.Domain.Entities;
-using Cinema.Domain.Entities.Identity;
+﻿using Cinema.Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authorization.Infrastructure;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Cinema.Authorization.Handlers

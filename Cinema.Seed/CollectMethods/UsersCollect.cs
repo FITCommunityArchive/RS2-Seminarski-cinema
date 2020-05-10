@@ -1,19 +1,15 @@
-﻿using Cinema.Domain.Entities;
-using Cinema.DAL.Data;
+﻿using Cinema.DAL.Data;
 using Cinema.Domain.Entities.Identity;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using OfficeOpenXml;
 using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Options;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using System.Threading.Tasks;
 
 namespace Cinema.Seed.CollectMethods
 {
     public static class UsersCollect
-    {        
+    {
         public static async Task Collect(ExcelWorksheet rawData, UnitOfWork unit)
         {
             var store = new UserStore<ApplicationUser>(unit.Context);

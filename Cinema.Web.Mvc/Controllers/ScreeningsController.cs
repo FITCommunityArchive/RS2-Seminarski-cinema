@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Cinema.Authorization.Constants;
+﻿using Cinema.Authorization.Constants;
 using Cinema.DAL.Data;
 using Cinema.Domain.Entities;
 using Cinema.DTO.ViewModels.Screenings;
@@ -15,6 +11,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Cinema.Web.Mvc.Controllers
 {
@@ -43,7 +43,8 @@ namespace Cinema.Web.Mvc.Controllers
             if (!String.IsNullOrEmpty(searchString))
             {
                 screenings = await _unit.Screenings.Get().Where(x => x.Movie.Title.Contains(searchString)).Select(x => x.ToIndexVM()).ToListAsync();
-            } else
+            }
+            else
             {
                 screenings = await _unit.Screenings.Get().Select(x => x.ToIndexVM()).ToListAsync();
             }
@@ -65,7 +66,7 @@ namespace Cinema.Web.Mvc.Controllers
             }
 
             int pageSize = 10;
-            return View(PaginatedList<ScreeningIndexVM>.Create(screenings.AsQueryable(), pageNumber ?? 1, pageSize)); 
+            return View(PaginatedList<ScreeningIndexVM>.Create(screenings.AsQueryable(), pageNumber ?? 1, pageSize));
         }
 
         [AllowAnonymous]
@@ -82,7 +83,7 @@ namespace Cinema.Web.Mvc.Controllers
             ViewBag.ErrorMessage = errorMessage;
 
             ScreeningCreateVM model = new ScreeningCreateVM
-            {                
+            {
                 Movies = new SelectList(_unit.Movies.Get().Select(x => x.CreateMaster()), "Id", "Name"),
                 Halls = new SelectList(_unit.Halls.Get().Select(x => x.CreateMaster()), "Id", "Name"),
                 Pricings = new SelectList(_unit.Pricings.Get().Select(x => x.CreateMaster()), "Id", "Name")
@@ -100,7 +101,7 @@ namespace Cinema.Web.Mvc.Controllers
             {
                 return RedirectToAction(nameof(Create), new { errorMessage = ValidationMessages.HALL_ALREADY_OCCUPIED });
             }
-            else if(!_unit.Screenings.ValidateScreeningDate(screening))
+            else if (!_unit.Screenings.ValidateScreeningDate(screening))
             {
                 return RedirectToAction(nameof(Create), new { errorMessage = ValidationMessages.DATE_NOT_FUTURE });
             }
@@ -136,7 +137,7 @@ namespace Cinema.Web.Mvc.Controllers
 
             await _unit.Screenings.UpdateAsync(screening, model.Id);
             await _unit.SaveAsync();
-            
+
             return RedirectToAction(nameof(Index));
         }
 

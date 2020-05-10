@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Cinema.Domain.Entities
+﻿namespace Cinema.Domain.Entities
 {
     public class GenreMovie : BaseClass
     {

@@ -1,9 +1,6 @@
 ﻿using Cinema.Domain.Entities;
 using Cinema.Domain.Entities.Identity;
 using Cinema.DTO;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Cinema.Services.Factory
 {
@@ -13,7 +10,7 @@ namespace Cinema.Services.Factory
         {
             return new MasterModel
             {
-                Id = seat.Id,                
+                Id = seat.Id,
                 Name = seat.Label
             };
         }

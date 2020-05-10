@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using Cinema.DAL.Data;
+﻿using Cinema.DAL.Data;
 using Cinema.Domain.Entities;
 using Cinema.Domain.Entities.Identity;
+using System.Threading.Tasks;
 
 namespace Cinema.DAL
 {
@@ -50,7 +47,7 @@ namespace Cinema.DAL
             entity.Reservation = await context.Reservations.FindAsync(entity.ReservationId);
             entity.Seat = await context.Seats.FindAsync(entity.SeatId);
         }
-        
+
         private static async Task BuildRelations(Event entity, ApplicationDbContext context)
         {
             entity.Author = await context.Users.FindAsync(entity.AuthorId);

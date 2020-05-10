@@ -1,9 +1,7 @@
-﻿using Cinema.Domain.Entities;
-using Cinema.DAL.Data;
+﻿using Cinema.DAL.Data;
+using Cinema.Domain.Entities;
 using OfficeOpenXml;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Cinema.Seed.CollectMethods
@@ -12,7 +10,7 @@ namespace Cinema.Seed.CollectMethods
     {
         public static async Task Collect(ExcelWorksheet rawData, UnitOfWork unit)
         {
-            for(int row = 2; row <= rawData.Dimension.Rows; row++)
+            for (int row = 2; row <= rawData.Dimension.Rows; row++)
             {
                 Movie movie = new Movie
                 {
@@ -26,10 +24,10 @@ namespace Cinema.Seed.CollectMethods
                     Actors = rawData.ReadString(row, 9)
                 };
 
-                await unit.Movies.InsertAsync(movie);                
+                await unit.Movies.InsertAsync(movie);
                 Console.WriteLine($"Inserted movie nr. ${row}");
                 await unit.SaveAsync();
-            }  
+            }
         }
     }
 }

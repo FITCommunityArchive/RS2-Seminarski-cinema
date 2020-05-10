@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Cinema.Authorization.Constants;
+﻿using Cinema.Authorization.Constants;
 using Cinema.DAL.Data;
 using Cinema.Domain.Entities;
 using Cinema.DTO;
@@ -12,12 +6,16 @@ using Cinema.DTO.ViewModels.Movies;
 using Cinema.DTO.ViewModels.Reviews;
 using Cinema.Services.Factory;
 using Cinema.Services.Factory.ViewModels;
-using Cinema.Services.Helpers;
 using Cinema.Web.Mvc.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace Cinema.Web.Mvc.Controllers
 {
@@ -47,7 +45,8 @@ namespace Cinema.Web.Mvc.Controllers
             if (!String.IsNullOrEmpty(searchString))
             {
                 movies = await _unit.Movies.Get().Where(x => x.Title.Contains(searchString)).Select(x => x.ToIndexVM()).ToListAsync();
-            } else
+            }
+            else
             {
                 movies = await _unit.Movies.Get().Select(x => x.ToIndexVM()).ToListAsync();
             }
@@ -75,7 +74,7 @@ namespace Cinema.Web.Mvc.Controllers
 
             //List<MovieIndexVM> movies = await _unit.Movies.Get().Select(x => x.ToIndexVM()).ToListAsync();
             int pageSize = 10;
-            return View(PaginatedList<MovieIndexVM>.Create(movies.AsQueryable(), pageNumber ?? 1, pageSize));            
+            return View(PaginatedList<MovieIndexVM>.Create(movies.AsQueryable(), pageNumber ?? 1, pageSize));
         }
 
         [AllowAnonymous]
@@ -113,14 +112,14 @@ namespace Cinema.Web.Mvc.Controllers
         public async Task<IActionResult> Create(MovieCreateVM model)
         {
 
-/*            if (model.ImageFile != null)
-            {
-                var fileName = FileHelper.GetUniqueName(model.ImageFile.FileName);
-                var uploads = Path.Combine(hostingEnvironment.WebRootPath, "uploads");
-                var filePath = Path.Combine(uploads, fileName);
-                model.ImageFile.CopyTo(new FileStream(filePath, FileMode.Create));
-                model.Image = fileName; // Set the file name
-            }*/
+            /*            if (model.ImageFile != null)
+                        {
+                            var fileName = FileHelper.GetUniqueName(model.ImageFile.FileName);
+                            var uploads = Path.Combine(hostingEnvironment.WebRootPath, "uploads");
+                            var filePath = Path.Combine(uploads, fileName);
+                            model.ImageFile.CopyTo(new FileStream(filePath, FileMode.Create));
+                            model.Image = fileName; // Set the file name
+                        }*/
 
             Movie movie = model.Create();
 
@@ -133,7 +132,7 @@ namespace Cinema.Web.Mvc.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
-            
+
             Movie movie = await _unit.Movies.GetAsync(id);
 
             return View(movie.ToCreateVM());
@@ -192,7 +191,7 @@ namespace Cinema.Web.Mvc.Controllers
                     Year = x.Movie.Year,
                     Country = x.Movie.Country
                 }).ToList();
-                
+
             }
             else
             {
@@ -209,9 +208,9 @@ namespace Cinema.Web.Mvc.Controllers
                     Year = x.Movie.Year,
                     Country = x.Movie.Country
                 }).ToList();
-                
+
             }
-            
+
             int pageSize = 6;
             return View(PaginatedList<NowShowingIndexVM.Row>.Create(screenings.ScreeningsList.AsQueryable(), pageNumber ?? 1, pageSize));
         }

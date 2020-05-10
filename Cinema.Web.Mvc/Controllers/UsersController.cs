@@ -1,33 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Cinema.Authorization;
-using Cinema.Authorization.Constants;
+﻿using Cinema.Authorization.Constants;
 using Cinema.DAL.Data;
-using Cinema.Domain.Entities;
 using Cinema.Domain.Entities.Identity;
-using Cinema.DTO;
-using Cinema.DTO.ViewModels.Movies;
-using Cinema.DTO.ViewModels.Reviews;
 using Cinema.DTO.ViewModels.Users;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Cinema.Services.Factory.ViewModels;
-using Cinema.Web.Mvc.Models;
-using Microsoft.EntityFrameworkCore;
 using Cinema.Services.Enums;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Cinema.Services.Factory;
-using Microsoft.AspNetCore.Identity;
+using Cinema.Services.Factory.ViewModels;
 using Cinema.Services.Helpers;
-using Microsoft.Extensions.Logging;
-using Microsoft.AspNetCore.WebUtilities;
-using System.Text;
+using Cinema.Web.Mvc.Models;
 using EmailService;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Cinema.Web.Mvc.Controllers
 {
@@ -39,7 +32,7 @@ namespace Cinema.Web.Mvc.Controllers
         private readonly IEmailSender _emailSender;
 
         public UsersController(ApplicationDbContext context, UserManager<ApplicationUser> userManager,
-           ILogger<UsersController> logger, IEmailSender emailSender, IConfiguration configuration) : base(context, configuration) 
+           ILogger<UsersController> logger, IEmailSender emailSender, IConfiguration configuration) : base(context, configuration)
         {
             _userManager = userManager;
             _emailSender = emailSender;
@@ -81,7 +74,7 @@ namespace Cinema.Web.Mvc.Controllers
             List<ApplicationUserIndexVM> users = await staff.Select(x => x.ToIndexVM()).ToListAsync();
 
             PaginatedList<ApplicationUserIndexVM> paginatedModel
-                = PaginatedList<ApplicationUserIndexVM>.Create(users.AsQueryable(), pageNumber ?? 1, 10, 
+                = PaginatedList<ApplicationUserIndexVM>.Create(users.AsQueryable(), pageNumber ?? 1, 10,
                 sortOrder, sortProperty, searchString);
 
             return View(paginatedModel);
@@ -117,7 +110,7 @@ namespace Cinema.Web.Mvc.Controllers
 
             if (user != null && role != null)
             {
-                
+
                 var result = await _userManager.CreateAsync(user, password);
 
                 if (result.Succeeded)
@@ -140,7 +133,7 @@ namespace Cinema.Web.Mvc.Controllers
                         await _emailSender.SendEmailAsync(message);
                     }
                 }
-            }          
+            }
 
             return RedirectToAction(nameof(Index));
         }

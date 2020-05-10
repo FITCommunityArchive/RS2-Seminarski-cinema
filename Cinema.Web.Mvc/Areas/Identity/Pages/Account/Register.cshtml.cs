@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Text.Encodings.Web;
-using System.Threading.Tasks;
-using Cinema.Authorization.Constants;
+﻿using Cinema.Authorization.Constants;
 using Cinema.Domain.Entities.Identity;
+using EmailService;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -14,7 +8,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
-using EmailService;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Text.Encodings.Web;
+using System.Threading.Tasks;
 
 namespace Cinema.Web.Mvc.Areas.Identity.Pages.Account
 {
@@ -82,7 +81,7 @@ namespace Cinema.Web.Mvc.Areas.Identity.Pages.Account
                 {
                     _logger.LogInformation("User created a new account with password.");
                     var addRoleResult = await _userManager.AddToRoleAsync(user, Roles.User);
-                    if(addRoleResult.Succeeded)
+                    if (addRoleResult.Succeeded)
                     {
                         var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                         code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
@@ -105,7 +104,7 @@ namespace Cinema.Web.Mvc.Areas.Identity.Pages.Account
                             await _signInManager.SignInAsync(user, isPersistent: false);
                             return LocalRedirect(returnUrl);
                         }
-                    }                    
+                    }
                 }
                 foreach (var error in result.Errors)
                 {

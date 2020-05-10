@@ -16,7 +16,7 @@ namespace Cinema.DTO.ViewModels.Events
         [MinLength(5)]
         [MaxLength(5000)]
         public string Description { get; set; }
-               
+
         [Required]
         public string AuthorId { get; set; }
 

@@ -1,6 +1,4 @@
 ﻿using Cinema.DAL.Data;
-using Cinema.Domain.Entities;
-using Cinema.Domain.Entities.Identity;
 using Cinema.Services.Enums;
 using Cinema.Services.Exceptions;
 using Microsoft.EntityFrameworkCore;
@@ -26,7 +24,7 @@ namespace Cinema.DAL.Repository
         public virtual IQueryable<Entity> Get() => _dbSet;
 
         public virtual async Task<Entity> GetAsync(Key id)
-        { 
+        {
             Entity entity = await _dbSet.FindAsync(id);
             return entity;
         }
@@ -53,7 +51,7 @@ namespace Cinema.DAL.Repository
             }
         }
 
-        private void Delete (Entity entity) => _dbSet.Remove(entity);
+        private void Delete(Entity entity) => _dbSet.Remove(entity);
 
         public virtual async Task DeleteAsync(Key id)
         {

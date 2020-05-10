@@ -1,10 +1,7 @@
 ﻿using Cinema.DAL.Data;
 using Cinema.Domain.Entities.Identity;
 using Cinema.Services.Enums;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Cinema.DAL.Repository
@@ -15,7 +12,7 @@ namespace Cinema.DAL.Repository
 
         public override async Task UpdateAsync(ApplicationUser newEnt, string id)
         {
-            ApplicationUser oldEnt = await GetAsync(id);            
+            ApplicationUser oldEnt = await GetAsync(id);
 
             if (oldEnt != null)
             {

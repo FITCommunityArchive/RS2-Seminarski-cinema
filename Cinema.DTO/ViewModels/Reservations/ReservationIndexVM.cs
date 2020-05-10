@@ -1,9 +1,7 @@
 ﻿using Cinema.Domain.Entities;
 using Cinema.DTO.SpecificModels;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace Cinema.DTO.ViewModels.Reservations
 {

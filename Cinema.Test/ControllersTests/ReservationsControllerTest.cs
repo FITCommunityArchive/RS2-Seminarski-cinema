@@ -8,7 +8,7 @@ namespace Cinema.Test.DALTests
     [TestFixture]
     public class ReservationsControllerTest : TestBase
     {
-        private readonly Mock<IConfiguration> _configuration;        
+        private readonly Mock<IConfiguration> _configuration;
 
         public ReservationsControllerTest()
         {

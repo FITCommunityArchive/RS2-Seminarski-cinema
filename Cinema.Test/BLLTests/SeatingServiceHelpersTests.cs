@@ -1,9 +1,6 @@
 ﻿using Cinema.BLL;
 using Cinema.Domain.Entities;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Cinema.Test.BLLTests
 {

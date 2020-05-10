@@ -1,9 +1,7 @@
-﻿using Cinema.Domain.Entities;
-using Cinema.DAL.Data;
+﻿using Cinema.DAL.Data;
+using Cinema.Domain.Entities;
 using OfficeOpenXml;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Cinema.Seed.CollectMethods
@@ -20,7 +18,7 @@ namespace Cinema.Seed.CollectMethods
                     Screening = await unit.Screenings.GetAsync(rawData.ReadInteger(row, 3)),
                 };
 
-                await unit.Reservations.InsertAsync(reservation);                
+                await unit.Reservations.InsertAsync(reservation);
                 Console.WriteLine($"Inserted reservation nr. ${row}");
                 await unit.SaveAsync();
             }

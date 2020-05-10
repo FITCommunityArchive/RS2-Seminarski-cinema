@@ -1,5 +1,4 @@
 ﻿using Cinema.Domain.Entities;
-using Cinema.DTO.ViewModels.Events;
 using Cinema.DTO.ViewModels.News;
 using Cinema.Services.Helpers;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -33,7 +32,7 @@ namespace Cinema.Services.Factory.ViewModels
                 Image = news.Image,
                 Title = news.Title,
                 DateCreated = news.Created.ToFormattedDate(),
-                TimeCreated = news.Created.ToFormattedTime(),                
+                TimeCreated = news.Created.ToFormattedTime(),
                 Type = news.Type.CreateMaster()
             };
         }
@@ -46,7 +45,7 @@ namespace Cinema.Services.Factory.ViewModels
                 Description = news.Description,
                 Image = news.Image,
                 Title = news.Title,
-                AuthorId = news.AuthorId,  
+                AuthorId = news.AuthorId,
                 NewsTypeId = news.TypeId,
                 NewsTypes = newsTypes
             };

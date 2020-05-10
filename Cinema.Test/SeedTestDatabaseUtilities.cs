@@ -1,9 +1,7 @@
 ﻿using Cinema.DAL.Data;
 using Cinema.Seed;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Cinema.Test

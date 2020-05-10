@@ -1,7 +1,4 @@
-﻿using Cinema.Domain.Entities.Identity;
-using Cinema.DTO;
-
-namespace Cinema.DTO.ViewModels.Reviews
+﻿namespace Cinema.DTO.ViewModels.Reviews
 {
     public class ReviewIndexVM
     {

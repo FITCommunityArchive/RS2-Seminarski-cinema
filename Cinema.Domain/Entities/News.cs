@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Cinema.Domain.Entities
+﻿namespace Cinema.Domain.Entities
 {
     public class News : Post
     {

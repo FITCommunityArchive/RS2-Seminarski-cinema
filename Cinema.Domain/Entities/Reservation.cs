@@ -1,6 +1,5 @@
 ﻿using Cinema.Domain.Entities.Identity;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Cinema.Domain.Entities
 {
@@ -24,6 +23,6 @@ namespace Cinema.Domain.Entities
 
         public bool IsCancelled { get; set; }
 
-        public string ReservationCode {get;set;}
+        public string ReservationCode { get; set; }
     }
 }

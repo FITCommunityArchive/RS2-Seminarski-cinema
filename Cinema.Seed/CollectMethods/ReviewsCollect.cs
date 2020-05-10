@@ -1,9 +1,6 @@
-﻿using Cinema.Domain.Entities;
-using Cinema.DAL.Data;
+﻿using Cinema.DAL.Data;
+using Cinema.Domain.Entities;
 using OfficeOpenXml;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Cinema.Seed.CollectMethods
@@ -13,7 +10,7 @@ namespace Cinema.Seed.CollectMethods
         public static async Task Collect(ExcelWorksheet rawData, UnitOfWork unit)
         {
             for (int row = 2; row <= rawData.Dimension.Rows; row++)
-            {                
+            {
                 Review review = new Review
                 {
                     Text = rawData.ReadString(row, 2),

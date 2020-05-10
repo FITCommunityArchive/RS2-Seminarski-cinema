@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Cinema.Domain.Entities;
+using Cinema.Domain.Entities.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Cinema.Domain.Entities;
 using System.Linq;
-using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
-using Cinema.Domain.Entities.Identity;
 
 
 namespace Cinema.DAL.Data
@@ -21,7 +16,7 @@ namespace Cinema.DAL.Data
         private string _connectionString;
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options) { }
-      
+
         public ApplicationDbContext(string connectionString)
         {
             _connectionString = connectionString;
@@ -30,7 +25,6 @@ namespace Cinema.DAL.Data
         public ApplicationDbContext()
         {
             _connectionString = "Server=(localdb)\\mssqllocaldb;Database=CinemaReservations;Trusted_Connection=True;MultipleActiveResultSets=true";
-            //_connectionString = "Server=app.fit.ba, 1431; Database=CinemaReservations; Trusted_Connection=false; User ID=p1872; Password=C!n3m4R3s; MultipleActiveResultSets=true";
         }
 
         //public DbSet<AppRole>  AppRoles { get; set; }
@@ -57,11 +51,11 @@ namespace Cinema.DAL.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if(_connectionString != null)
+            if (_connectionString != null)
             {
                 optionsBuilder.UseSqlServer(_connectionString);
             }
-            
+
             optionsBuilder.UseLazyLoadingProxies(true);
             base.OnConfiguring(optionsBuilder);
         }
@@ -126,7 +120,7 @@ namespace Cinema.DAL.Data
                     .IsRequired()
                     .OnDelete(DeleteBehavior.Cascade);
             });
-                        
+
             builder.Entity<ApplicationRole>(b =>
             {
                 // Each Role can have many entries in the UserRole join table

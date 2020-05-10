@@ -1,9 +1,7 @@
-﻿using Cinema.Domain.Entities;
-using Cinema.DAL.Data;
+﻿using Cinema.DAL.Data;
+using Cinema.Domain.Entities;
 using OfficeOpenXml;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Cinema.Seed.CollectMethods
@@ -23,7 +21,7 @@ namespace Cinema.Seed.CollectMethods
                     TicketQuantity = rawData.ReadInteger(row, 6)
                 };
 
-                await unit.Invoices.InsertAsync(invoice);                
+                await unit.Invoices.InsertAsync(invoice);
                 Console.WriteLine($"Inserted invoice nr. ${row}");
                 await unit.SaveAsync();
             }

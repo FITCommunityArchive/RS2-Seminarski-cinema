@@ -1,8 +1,5 @@
 ﻿using Cinema.Authorization.Constants;
 using Microsoft.AspNetCore.Authorization.Infrastructure;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Cinema.Authorization.Requirements
 {

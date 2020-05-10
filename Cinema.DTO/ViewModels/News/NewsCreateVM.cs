@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Cinema.DTO.ViewModels.News
@@ -20,7 +19,7 @@ namespace Cinema.DTO.ViewModels.News
 
         [Required]
         public string AuthorId { get; set; }
-        
+
         [Required(ErrorMessage = "The field is required!")]
         public int NewsTypeId { get; set; }
 

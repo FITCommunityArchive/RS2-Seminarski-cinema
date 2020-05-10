@@ -56,7 +56,7 @@ namespace Cinema.DAL.Data
         public IRepository<Reservation, int> Reservations => _reservations ?? (_reservations = new Repository<Reservation, int>(_context));
         public IRepository<Review, int> Reviews => _reviews ?? (_reviews = new Repository<Review, int>(_context));
         public ScreeningRepository Screenings => _screenings ?? (_screenings = new ScreeningRepository(_context));
-        public IRepository<Seat, int> Seats => _seats ?? (_seats = new Repository<Seat, int> (_context));
+        public IRepository<Seat, int> Seats => _seats ?? (_seats = new Repository<Seat, int>(_context));
         public IRepository<SeatReservation, int> SeatReservations => _seatReservations ?? (_seatReservations = new Repository<SeatReservation, int>(_context));
         public IRepository<ApplicationUser, string> Users => _users ?? (_users = new ApplicationUsersRepository(_context));
         public IRepository<ApplicationRole, string> Roles => _roles ?? (_roles = new Repository<ApplicationRole, string>(_context));

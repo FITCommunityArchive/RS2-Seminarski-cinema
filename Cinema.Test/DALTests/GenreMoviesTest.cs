@@ -1,13 +1,6 @@
-﻿using Cinema.DAL.Data;
-using Cinema.Domain.Entities;
-using Cinema.Seed.CollectMethods;
-using Microsoft.EntityFrameworkCore;
+﻿using Cinema.Domain.Entities;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Cinema.Test.DALTests
@@ -90,7 +83,7 @@ namespace Cinema.Test.DALTests
 
         [Test, Order(6)]
         public async Task DeleteGenreMovie()
-        {            
+        {
             int id = 2;
 
             await unit.GenreMovies.DeleteAsync(id);

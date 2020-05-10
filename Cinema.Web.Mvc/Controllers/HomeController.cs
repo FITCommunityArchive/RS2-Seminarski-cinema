@@ -1,21 +1,17 @@
-﻿using System;
+﻿using Cinema.BLL;
+using Cinema.DAL.Data;
+using Cinema.Domain.Entities;
+using Cinema.DTO.ViewModels.Home;
+using Cinema.Web.Mvc.Models;
+using EmailService;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using RestSharp;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using Cinema.Web.Mvc.Models;
-using Cinema.DTO.ViewModels.Home;
-using Cinema.BLL;
-using Cinema.DAL.Data;
-using Cinema.Services.Factory;
-using Cinema.Domain.Entities;
-using Microsoft.AspNetCore.Authorization;
-using Cinema.Services.Factory.ViewModels;
-using EmailService;
-using RestSharp;
-using Microsoft.Extensions.Configuration;
 
 namespace Cinema.Web.Mvc.Controllers
 {
@@ -74,11 +70,11 @@ namespace Cinema.Web.Mvc.Controllers
         }
 
         [Route("Contact/SendForm")]
-        public async Task<IActionResult> ContactSendForm(string content,string name, string email)
+        public async Task<IActionResult> ContactSendForm(string content, string name, string email)
         {
 
             var messageContent = "<strong>Name</strong><br />" + name + "<br /><br /><strong>Email</strong><br />" + email + "<br /><br /><strong>Content</strong><br />" + content;
-            var message = new Message(new string[] { "boris.huseincehajic@gmail.com" }, "Contact form submission", messageContent,null);
+            var message = new Message(new string[] { "boris.huseincehajic@gmail.com" }, "Contact form submission", messageContent, null);
             await _emailSender.SendEmailAsync(message);
             return View("Contact");
         }

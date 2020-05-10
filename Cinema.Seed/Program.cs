@@ -1,10 +1,6 @@
-﻿using Cinema.BLL;
-using Cinema.DAL.Data;
-using Cinema.Seed.CollectMethods;
-using Microsoft.AspNetCore.Identity;
+﻿using Cinema.DAL.Data;
 using System;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Cinema.Seed

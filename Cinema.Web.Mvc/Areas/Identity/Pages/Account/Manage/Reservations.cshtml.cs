@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Cinema.DAL.Data;
 using Cinema.Domain.Entities;
 using Cinema.Domain.Entities.Identity;
@@ -10,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Cinema.Web.Mvc.Areas.Identity.Pages.Account.Manage
 {
@@ -22,7 +21,7 @@ namespace Cinema.Web.Mvc.Areas.Identity.Pages.Account.Manage
         public ReservationsModel(
             UserManager<ApplicationUser> userManager,
             ILogger<PersonalDataModel> logger,
-            ApplicationDbContext context, 
+            ApplicationDbContext context,
             IConfiguration configuration)
         {
             _userManager = userManager;
@@ -43,7 +42,7 @@ namespace Cinema.Web.Mvc.Areas.Identity.Pages.Account.Manage
             }
 
             //UserReservations = _unit.Reservations.Get(x=>x.UserId == user.)
-            UserReservationsList = user.Reservations.Where(x=>x.IsCancelled == false).ToList();
+            UserReservationsList = user.Reservations.Where(x => x.IsCancelled == false).ToList();
 
             return Page();
         }

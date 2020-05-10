@@ -1,11 +1,7 @@
 ﻿using MailKit.Net.Smtp;
 using MimeKit;
-using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Security.Authentication;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace EmailService
@@ -36,7 +32,7 @@ namespace EmailService
         private MimeMessage CreateEmailMessage(Message message)
         {
 
-            
+
             var emailMessage = new MimeMessage();
             emailMessage.From.Add(new MailboxAddress(_emailConfig.From));
             emailMessage.To.AddRange(message.To);
