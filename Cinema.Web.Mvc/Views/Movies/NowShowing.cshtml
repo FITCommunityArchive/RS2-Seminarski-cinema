@@ -33,7 +33,7 @@
                     <div class="col-12 col-lg-3">
                         <div class="input-group input-group-md mb-3 mb-lg-0">
                             <div class="input-group-prepend"><span class="input-group-text"><i class="far fa-calendar-alt"></i></span></div>
-                            <input class="form-control datepicker" id="ScreeningDate" name="filterDate" placeholder="Select date" type="text" required="">
+                            <input class="form-control " id="ScreeningDate" name="filterDate" placeholder="Select date" type="text" required="">
                         </div>
                     </div>
                     <div class="col-12 col-lg-2">
@@ -103,10 +103,9 @@
                                 @for (int i = 0; i < item.MovieRating; i++)
                                 {
                                     <i class="star fas fa-star text-warning"></i>
-                                }                                
+                                }
                                 <span class="badge badge-pill badge-secondary ml-2">@item.MovieRatingDescription</span>
-                            </div>
-                            <div class="d-flex justify-content-between">
+                            </div>                                <div class="d-flex justify-content-between">
                                 <div class="col pl-0"><span class="text-muted font-small d-block mb-2">Duration</span> <span class="h5 text-dark font-weight-bold">@item.Duration min</span></div>
                                 <div class="col"><span class="text-muted font-small d-block mb-2">Year</span> <span class="h5 text-dark font-weight-bold">@item.Year</span></div>
                                 <div class="col pr-0"><span class="text-muted font-small d-block mb-2">Country</span> <span class="h5 text-dark font-weight-bold">@item.Country</span></div>
@@ -167,11 +166,13 @@
                 format: 'dd.mm.yyyy',
                 todayHighlight: true,
                 autoclose: true,
+                startDate: new Date(),
+                minDate: new Date()
             };
             jQuery("#ScreeningDate").datepicker(options);
 
             //function for setting up date properly and returning it
-            $.date = function (dateObject) {
+            var date = function (dateObject) {
                 var d = new Date(dateObject);
                 var day = d.getDate();
                 var month = d.getMonth() + 1;
@@ -182,7 +183,7 @@
                 if (month < 10) {
                     month = "0" + month;
                 }
-                var date = day + "/" + month + "/" + year;
+                var date = day + "." + month + "." + year;
 
                 return date;
             };
