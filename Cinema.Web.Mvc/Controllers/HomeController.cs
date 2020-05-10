@@ -66,13 +66,32 @@ namespace Cinema.Web.Mvc.Controllers
         [Route("Contact")]
         public IActionResult Contact()
         {
+            ViewData["SuccessMessage"] = "";
+            ViewData["ErrorMessage"] = "";
             return View();
+        }
+
+        [Route("Contact")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Contact(HomeContactVM contactModel)
+        {
+
+            if(ModelState.IsValid)
+            {
+                return RedirectToAction("ContactSendForm", new { content = contactModel.Content, name = contactModel.Name, email = contactModel.Email });
+            }
+            ViewData["SuccessMessage"] = "";
+            ViewData["ErrorMessage"] = "Please check below for the following errors.";
+
+            return View(contactModel);
         }
 
         [Route("Contact/SendForm")]
         public async Task<IActionResult> ContactSendForm(string content, string name, string email)
         {
-
+            ViewData["SuccessMessage"] = "Message has been sent. Thank you for your submission.";
+            ViewData["ErrorMessage"] = "";
             var messageContent = "<strong>Name</strong><br />" + name + "<br /><br /><strong>Email</strong><br />" + email + "<br /><br /><strong>Content</strong><br />" + content;
             var message = new Message(new string[] { "boris.huseincehajic@gmail.com" }, "Contact form submission", messageContent, null);
             await _emailSender.SendEmailAsync(message);

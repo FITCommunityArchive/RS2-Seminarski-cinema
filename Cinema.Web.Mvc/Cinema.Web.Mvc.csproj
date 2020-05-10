@@ -5,6 +5,12 @@
     <UserSecretsId>aspnet-Cinema.Web.Mvc-8E4011C0-A0F6-4F65-AB79-D90E86D6C666</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml.user" />
+    <None Include="Properties\PublishProfiles\CustomProfile1.pubxml.user" />
+    <None Include="Properties\PublishProfiles\CustomProfile2.pubxml.user" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.2" />

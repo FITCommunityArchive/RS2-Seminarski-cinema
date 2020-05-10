@@ -451,35 +451,35 @@ $(document).ready(function () {
         }, 1500);
     });
 
-    if($('#filters-sidebar').length && $(window).width() > 1200) {
-        var sidebar = new StickySidebar('#filters-sidebar', {
-            containerSelector: '#spaces-container',
-            innerWrapperSelector: '.sidebar-inner',
-            topSpacing: 20,
-            leftSpacing: 40
-        });
-    } else {
-        if ($('#filters-sidebar').length) {
-            $('#show-filters-button').on('click', function () {
-                if($(this).text() === 'Show filters') {
-                    $('#filters-sidebar').removeClass('d-none');
-                    $(this).text('Hide filters');
-                } else {
-                    $('#filters-sidebar').addClass('d-none');
-                    $(this).text('Show filters');
-                }
+    //if($('#filters-sidebar').length && $(window).width() > 1200) {
+    //    var sidebar = new StickySidebar('#filters-sidebar', {
+    //        containerSelector: '#spaces-container',
+    //        innerWrapperSelector: '.sidebar-inner',
+    //        topSpacing: 20,
+    //        leftSpacing: 40
+    //    });
+    //} else {
+    //    if ($('#filters-sidebar').length) {
+    //        $('#show-filters-button').on('click', function () {
+    //            if($(this).text() === 'Show filters') {
+    //                $('#filters-sidebar').removeClass('d-none');
+    //                $(this).text('Hide filters');
+    //            } else {
+    //                $('#filters-sidebar').addClass('d-none');
+    //                $(this).text('Show filters');
+    //            }
                 
-            });
-        }
-    }
+    //        });
+    //    }
+    //}
 
-    if($('#profile-sidebar').length) {
-        var profileSidebar = new StickySidebar('#profile-sidebar', {
-            containerSelector: '#spaces-container',
-            innerWrapperSelector: '.sidebar-inner',
-            topSpacing: 150,
-            leftSpacing: 40
-        });
-    }
+    //if($('#profile-sidebar').length) {
+    //    var profileSidebar = new StickySidebar('#profile-sidebar', {
+    //        containerSelector: '#spaces-container',
+    //        innerWrapperSelector: '.sidebar-inner',
+    //        topSpacing: 150,
+    //        leftSpacing: 40
+    //    });
+    //}
 
 });   
