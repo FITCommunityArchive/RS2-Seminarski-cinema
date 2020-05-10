@@ -2,7 +2,6 @@
 using Cinema.DTO.ViewModels.Reviews;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Cinema.DTO.ViewModels.Movies
 {

@@ -1,7 +1,6 @@
 ﻿using Cinema.Domain.Entities;
 using Cinema.DTO.ViewModels.Pricings;
 using Cinema.Services.Helpers;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Cinema.Services.Factory.ViewModels
 {

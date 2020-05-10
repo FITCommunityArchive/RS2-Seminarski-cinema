@@ -1,13 +1,10 @@
 ﻿using Cinema.DAL.Data;
-using Microsoft.AspNetCore.Identity;
+using Cinema.Seed.CollectMethods;
 using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
-using System.Linq;
-using Cinema.Domain.Entities;
-using Cinema.Seed.CollectMethods;
 
 namespace Cinema.Seed
 {
@@ -19,8 +16,8 @@ namespace Cinema.Seed
         {
             /*This methods drops the database, creates a new one, 
              * and performs the defined collect methods upon all tables*/
-            unit.Context.Database.EnsureDeleted();
-            unit.Context.Database.EnsureCreated();
+            //unit.Context.Database.EnsureDeleted();
+            //unit.Context.Database.EnsureCreated();
             unit.Context.ChangeTracker.AutoDetectChangesEnabled = false;
 
             await CollectEntities(unit, fileData);
@@ -72,7 +69,7 @@ namespace Cinema.Seed
         {
             var data = sht.Cells[row, col].Value;
             if (data == null) return DateTime.MinValue;
-            
+
             /*If the date cell in Excel is set to format 'Date' that equals to the set System date format, 
             the package will read it as a DateTime object, and not a OA value*/
             if (data is DateTime)
@@ -81,7 +78,7 @@ namespace Cinema.Seed
                 return date;
             }
 
-            double dateValue = double.Parse(data.ToString());            
+            double dateValue = double.Parse(data.ToString());
             return DateTime.FromOADate(dateValue);
         }
 

@@ -1,9 +1,6 @@
 ﻿using Cinema.DTO.Constants;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace Cinema.DTO.ViewModels.Users
 {
@@ -30,7 +27,7 @@ namespace Cinema.DTO.ViewModels.Users
         public string Email { get; set; }
 
         public bool EmailConfirmed { get; set; }
-        
+
         [Phone]
         [Display(Name = "Phone number")]
         public string PhoneNumber { get; set; }

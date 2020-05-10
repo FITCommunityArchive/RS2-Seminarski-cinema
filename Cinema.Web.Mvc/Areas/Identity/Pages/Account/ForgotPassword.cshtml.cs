@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text.Encodings.Web;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Cinema.Domain.Entities.Identity;
+using EmailService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
-using Cinema.Domain.Entities.Identity;
-using EmailService;
+using System.ComponentModel.DataAnnotations;
+using System.Text;
+using System.Text.Encodings.Web;
+using System.Threading.Tasks;
 
 namespace Cinema.Web.Mvc.Areas.Identity.Pages.Account
 {
@@ -59,7 +57,7 @@ namespace Cinema.Web.Mvc.Areas.Identity.Pages.Account
 
                 var message = new Message(new string[] { Input.Email },
                     "Reset Password",
-                    $"Please reset your password by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.",null);
+                    $"Please reset your password by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.", null);
                 await _emailSender.SendEmailAsync(message);
 
                 return RedirectToPage("./ForgotPasswordConfirmation");

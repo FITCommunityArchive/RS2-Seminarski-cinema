@@ -1,9 +1,7 @@
-﻿using Cinema.Domain.Entities;
-using Cinema.DAL.Data;
+﻿using Cinema.DAL.Data;
+using Cinema.Domain.Entities;
 using OfficeOpenXml;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Cinema.Seed.CollectMethods
@@ -23,7 +21,7 @@ namespace Cinema.Seed.CollectMethods
                 await unit.SeatReservations.InsertAsync(seatReservation);
                 Console.WriteLine($"Inserted seat reservation nr. ${row}");
                 await unit.SaveAsync();
-            }            
+            }
         }
     }
 }

@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Cinema.DAL.Data;
 using Cinema.Domain.Entities;
-using Cinema.DTO.SpecificModels;
-using Cinema.Services.Factory;
-using Cinema.DAL.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace Cinema.BLL
 {

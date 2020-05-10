@@ -1,16 +1,7 @@
-﻿using Cinema.DAL.Data;
-using Cinema.Domain.Entities;
-using Cinema.DTO.ViewModels.Screenings;
-using Cinema.Seed.CollectMethods;
+﻿using Cinema.Domain.Entities;
 using Cinema.Services.Exceptions;
-using Cinema.Services.Factory;
-using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Cinema.Test.DALTests
@@ -105,7 +96,7 @@ namespace Cinema.Test.DALTests
         public void DeleteScreeningWithChildObjects()
         {
             //Try to delete the screening 
-            int id = 39;    
+            int id = 39;
             var ex = Assert.ThrowsAsync<DependentObjectsPresentException>(async () => await unit.Screenings.DeleteAsync(id));
         }
 

@@ -1,12 +1,8 @@
-﻿using Cinema.Domain.Entities;
-using Cinema.DAL.Data;
+﻿using Cinema.DAL.Data;
 using Cinema.Domain.Entities.Identity;
-using OfficeOpenXml;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using OfficeOpenXml;
 using System.Threading.Tasks;
 
 namespace Cinema.Seed.CollectMethods

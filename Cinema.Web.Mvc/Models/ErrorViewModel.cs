@@ -1,5 +1,3 @@
-using System;
-
 namespace Cinema.Web.Mvc.Models
 {
     public class ErrorViewModel

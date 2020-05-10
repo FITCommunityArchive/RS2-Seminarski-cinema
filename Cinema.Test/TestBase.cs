@@ -1,10 +1,7 @@
-
-using Cinema.Domain.Entities;
 using Cinema.DAL.Data;
 using NUnit.Framework;
 using System;
 using System.IO;
-using Cinema.Seed.CollectMethods;
 using System.Threading.Tasks;
 
 namespace Cinema.Test

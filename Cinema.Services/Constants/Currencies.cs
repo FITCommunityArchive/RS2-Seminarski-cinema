@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Cinema.Services.Constants
+﻿namespace Cinema.Services.Constants
 {
     public static class Currencies
     {

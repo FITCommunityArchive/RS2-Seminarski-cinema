@@ -1,10 +1,5 @@
 ﻿using Cinema.Domain.Entities;
-using Cinema.DTO.DomainModels;
 using Cinema.DTO.SpecificModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Cinema.Services.Factory
 {
@@ -15,7 +10,7 @@ namespace Cinema.Services.Factory
             return new SeatingModel
             {
                 SeatNumber = seat.SeatNumber,
-                Seat = seat.CreateMaster(),                
+                Seat = seat.CreateMaster(),
                 Reserved = reserved
             };
         }

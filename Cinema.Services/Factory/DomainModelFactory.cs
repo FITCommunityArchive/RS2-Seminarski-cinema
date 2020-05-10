@@ -1,9 +1,6 @@
 ﻿using Cinema.Domain.Entities;
 using Cinema.DTO.DomainModels;
 using System.Linq;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Cinema.Services.Factory
 {
@@ -11,7 +8,7 @@ namespace Cinema.Services.Factory
      where the only difference between a model and the corresponding domain class is 
      that MasterModels are used as parent/child object properties instead of domain classes*/
     public static class DomainModelFactory
-    {        
+    {
         public static MovieModel Create(this Movie movie)
         {
             return new MovieModel

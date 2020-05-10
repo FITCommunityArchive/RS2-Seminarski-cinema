@@ -7,8 +7,6 @@ using Cinema.DTO.ViewModels.Pricings;
 using Cinema.DTO.ViewModels.Reviews;
 using Cinema.DTO.ViewModels.Screenings;
 using Cinema.DTO.ViewModels.Users;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Cinema.Services.Factory
 {
@@ -113,7 +111,7 @@ namespace Cinema.Services.Factory
                 DateAndTime = model.DateAndTime,
                 Promoter = model.Title,
                 TypeId = model.EventTypeId,
-                Image = model.Image 
+                Image = model.Image
             };
         }
 
@@ -126,7 +124,7 @@ namespace Cinema.Services.Factory
                 Description = model.Description,
                 Title = model.Title,
                 TypeId = model.NewsTypeId,
-                Image = model.Image              
+                Image = model.Image
             };
         }
 

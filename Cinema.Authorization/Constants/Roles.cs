@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Cinema.Authorization.Constants
+﻿namespace Cinema.Authorization.Constants
 {
     public static class Roles
     {

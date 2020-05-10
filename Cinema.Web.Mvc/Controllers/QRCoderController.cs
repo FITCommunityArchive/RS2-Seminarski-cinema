@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using QRCoder;
+using System;
 using System.Drawing;
 using System.IO;
-using QRCoder;
-using Microsoft.AspNetCore.Hosting;
-using System.Drawing.Imaging;
 
 namespace Cinema.Web.Mvc.Controllers
 {
@@ -23,7 +19,8 @@ namespace Cinema.Web.Mvc.Controllers
         public IActionResult Index(string qrText)
         {
             Bitmap qrCodeImage = null;
-            if (qrText != null) { 
+            if (qrText != null)
+            {
                 QRCodeGenerator qrGenerator = new QRCodeGenerator();
                 QRCodeData qrCodeData = qrGenerator.CreateQrCode(qrText,
                 QRCodeGenerator.ECCLevel.Q);

@@ -1,8 +1,5 @@
 ﻿using Cinema.Domain.Entities;
 using Cinema.DTO.SpecificModels;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Cinema.BLL
 {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Cinema.DTO.ViewModels.Users
+﻿namespace Cinema.DTO.ViewModels.Users
 {
     public class ApplicationUserIndexVM
     {

@@ -1,9 +1,8 @@
-﻿using Cinema.Domain.Entities;
+﻿using Cinema.BLL;
 using Cinema.DAL.Data;
+using Cinema.Domain.Entities;
 using OfficeOpenXml;
 using System;
-using Cinema.Services;
-using Cinema.BLL;
 using System.Threading.Tasks;
 
 namespace Cinema.Seed.CollectMethods
@@ -22,10 +21,10 @@ namespace Cinema.Seed.CollectMethods
 
                 seat.CreateSeatLabel();
 
-                await unit.Seats.InsertAsync(seat);                
+                await unit.Seats.InsertAsync(seat);
                 Console.WriteLine($"Inserted seat nr. ${row}");
                 await unit.SaveAsync();
-            }            
+            }
         }
     }
 }

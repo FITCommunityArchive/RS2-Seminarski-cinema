@@ -53,7 +53,7 @@ namespace Cinema.Services.Factory.ViewModels
                 Title = eventEntity.Title,
                 EventTypeId = eventEntity.TypeId,
                 EventTypes = eventTypes,
-                AuthorId = eventEntity.AuthorId                
+                AuthorId = eventEntity.AuthorId
             };
         }
     }

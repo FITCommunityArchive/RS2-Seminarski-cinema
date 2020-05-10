@@ -1,11 +1,9 @@
-﻿using Cinema.Domain.Entities;
-using Cinema.DAL.Data;
+﻿using Cinema.DAL.Data;
+using Cinema.Domain.Entities;
+using Cinema.Services.Helpers;
 using OfficeOpenXml;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
-using Cinema.Services.Helpers;
 
 namespace Cinema.Seed.CollectMethods
 {
@@ -26,7 +24,7 @@ namespace Cinema.Seed.CollectMethods
 
                 screening.DateAndTime = DateTimeHelper.GenerateFutureTime(0, 365, 12, 23);
 
-                await unit.Screenings.InsertAsync(screening);                
+                await unit.Screenings.InsertAsync(screening);
                 Console.WriteLine($"Inserted screening nr. ${row}");
                 await unit.SaveAsync();
             }

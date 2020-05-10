@@ -1,7 +1,4 @@
 ﻿using Cinema.Domain.Entities.Identity;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Cinema.Domain.Entities
 {

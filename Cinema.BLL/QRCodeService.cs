@@ -1,10 +1,8 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using QRCoder;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Text;
 
 namespace Cinema.BLL
 {

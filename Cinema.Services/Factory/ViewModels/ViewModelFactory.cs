@@ -4,9 +4,7 @@ using Cinema.DTO.ViewModels.Reviews;
 using Cinema.DTO.ViewModels.Screenings;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Cinema.Services.Factory.ViewModels
 {
@@ -88,12 +86,12 @@ namespace Cinema.Services.Factory.ViewModels
                 CurrentUserReview = movie.Reviews?.SingleOrDefault(x => x.UserId == currentUserId)?.ToIndexVM(),
                 ScreeningList = movie.Screenings?.Where(x => x.DateAndTime >= DateTime.UtcNow && x.DateAndTime <= DateTime.UtcNow.AddDays(30))
                                                 .OrderBy(x => x.DateAndTime).Select(x => new NowShowingDetailsVM.Row
-                {
-                    ScreeningId = x.Id,
-                    HallId = x.Hall.Id,
-                    HallName = x.Hall.Name,
-                    Playing = x.DateAndTime
-                }).ToList()
+                                                {
+                                                    ScreeningId = x.Id,
+                                                    HallId = x.Hall.Id,
+                                                    HallName = x.Hall.Name,
+                                                    Playing = x.DateAndTime
+                                                }).ToList()
             };
         }
 

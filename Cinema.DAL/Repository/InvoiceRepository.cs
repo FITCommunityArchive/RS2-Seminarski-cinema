@@ -8,7 +8,7 @@ namespace Cinema.DAL.Repository
     {
         private readonly IConfiguration _configuration;
 
-        public InvoiceRepository(ApplicationDbContext context, IConfiguration configuration) : base(context) 
+        public InvoiceRepository(ApplicationDbContext context, IConfiguration configuration) : base(context)
         {
             _configuration = configuration;
         }
