@@ -73,6 +73,8 @@ namespace Cinema.Web.Mvc.Areas.Identity.Pages.Account
         {
             returnUrl = returnUrl ?? Url.Content("~/");
 
+            ViewData["ErrorMessage"] = "";
+
             if (ModelState.IsValid)
             {
                 // This doesn't count login failures towards account lockout
@@ -95,6 +97,7 @@ namespace Cinema.Web.Mvc.Areas.Identity.Pages.Account
                 else
                 {
                     ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    ViewData["ErrorMessage"] = "Invalid login attempt.";
                     return Page();
                 }
             }
