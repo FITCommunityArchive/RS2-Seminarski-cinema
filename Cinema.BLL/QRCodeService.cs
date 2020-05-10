@@ -25,7 +25,7 @@ namespace Cinema.BLL
             }
         }
 
-        public string GenerateCode(string qrText)
+        public string GenerateCode(string qrText, bool includeImage = true)
         {
             String dataUri = "";
 
@@ -37,7 +37,9 @@ namespace Cinema.BLL
                 QRCode qrCode = new QRCode(qrCodeData);
                 Bitmap qrCodeImage = qrCode.GetGraphic(20);
                 dataUri = Convert.ToBase64String(BitmapToBytes(qrCodeImage));
-                CreateImage(dataUri, qrText);
+                if(includeImage == true) { 
+                    CreateImage(dataUri, qrText);
+                }
             }
 
             return dataUri;
