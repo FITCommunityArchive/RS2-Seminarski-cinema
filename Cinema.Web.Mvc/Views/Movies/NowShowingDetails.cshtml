@@ -51,7 +51,7 @@
                     <div class="tab-pane fade active show" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
                         <h2 class="font-weight-normal">@Html.DisplayFor(model => model.Title)</h2>
                         <div class="d-block d-md-flex">
-                            <h6 class="text-secondary font-weight-light"><i class="fas fa-check-circle mr-1 pr-1"></i>Verified</h6><span class="lh-120 ml-md-4"><i class="fas fa-star mr-1 pr-1"></i>@Model.AverageRating<a data-fancybox="" href="#" class="text-primary ml-md-3">Imdb</a></span>
+                            <h6 class="text-secondary font-weight-light"><i class="fas fa-check-circle mr-1 pr-1"></i>Verified</h6><span class="lh-120 ml-md-4"><i class="fas fa-star mr-1 pr-1"></i>@Model.AverageRating<a data-fancybox="" href="#" target="_blank" rel="noopener noreferrer" class="text-primary ml-md-3 imdb-link">Imdb</a></span>
                         </div>
                         <div class="my-5">
 
@@ -110,47 +110,45 @@
                                 </div>
                             </div>
                         </div>
-                        <p><span class="font-weight-bold">L'atelier</span> is the brainchild of 3 innovative guys that want to create a working hub for the local community. The plan is to offer a cool place to hang out with other creative souls and let the brainwaves go berserk.</p>
-                        <p>The guys were the group behind the Startup Weekend Vancouver, Startup Pirates Vancouver and Startup Coffee Vancouver, so they are no fools and have plenty of experience in startups and community growth. This project is another notch into creating Vancouver as a regional startup hub.</p>
-                        <p>Cowork Vancouver is aiming to attract the techies, the freelance developers or anyone wishing to get involved in the startup scene - really there are no exclusions of bodies who may want a desk - the founders just want a community of entrepreneurs and geeks to mingle with.</p>
-                        <div class="row shadow-sm mt-5">
+                        @*<p>We dont have a movie description???</p>*@
+                        @*<div class="row shadow-sm mt-5">
                             <div class="col-6 col-xl-3 card bg-soft">
                                 <div class="card-body text-center">
                                     <div class="icon"><i class="far fa-calendar-alt"></i></div>
-                                    <!-- Heading -->
+                                     Heading 
                                     <p class="font-weight-normal h4 mt-3 mb-0"><span class="counter text-dark mr-2">1</span>Year</p>
-                                    <!-- Text -->
+                                     Text 
                                     <p class="text-muted mb-0">Minimum term</p>
                                 </div>
                             </div>
                             <div class="col-6 col-xl-3 card bg-soft border-left">
                                 <div class="card-body text-center">
                                     <div class="icon"><i class="fas fa-ruler-combined"></i></div>
-                                    <!-- Heading -->
+                                     Heading 
                                     <p class="font-weight-normal mt-3 mb-0 h4"><span class="counter text-dark mr-2">180</span>SqFt</p>
-                                    <!-- Text -->
+                                     Text 
                                     <p class="text-muted mb-0">Space size</p>
                                 </div>
                             </div>
                             <div class="col-6 col-xl-3 card bg-soft border-left">
                                 <div class="card-body text-center">
                                     <div class="icon"><i class="fas fa-users"></i></div>
-                                    <!-- Heading -->
+                                     Heading 
                                     <p class="font-weight-normal mt-3 mb-0 h4"><span class="counter text-dark mr-2">15</span>+</p>
-                                    <!-- Text -->
+                                     Text 
                                     <p class="text-muted mb-0">People</p>
                                 </div>
                             </div>
                             <div class="col-6 col-xl-3 card bg-soft border-left">
                                 <div class="card-body text-center">
                                     <div class="icon"><i class="fas fa-couch"></i></div>
-                                    <!-- Heading -->
+                                     Heading 
                                     <p class="font-weight-normal mt-3 mb-0 h4"><span class="text-dark mr-2">Meeting</span></p>
-                                    <!-- Text -->
+                                     Text 
                                     <p class="text-muted mb-0">Space type</p>
                                 </div>
                             </div>
-                        </div>
+                        </div>*@
                     </div>
                     <!-- End of About Tab -->
                     <!-- Video Tab -->
@@ -323,6 +321,7 @@
         $.get("https://www.omdbapi.com/?apikey=f4ff906b&t=@Model.Title", function (data) {
             if (data.Poster != "N/A") {
                 jQuery("#movie-poster").attr("src", data.Poster)
+                jQuery(".imdb-link").attr("href", "https://imdb.com/title/" + data.imdbID + "/");
             } else {
                 console.log("No image found.");
             }

@@ -178,13 +178,14 @@ namespace Cinema.Web.Mvc.Controllers
 
             if (!string.IsNullOrEmpty(filterDate) && DateFilter != DateTime.MinValue)
             {
-                query = query.Where(x => x.DateAndTime == DateFilter).OrderBy(x => x.DateAndTime);
+                pageNumber = 1;
+                query = query.Where(x => x.DateAndTime.Date == DateFilter).OrderBy(x => x.DateAndTime);
+            } else
+            {
                 filterDate = currentFilter;
             }
 
             var queryMovies = query.Select(x => x.Movie).Distinct();
-
-            if (filterDate != null) pageNumber = 1;
 
             screenings.MoviesList = queryMovies.Select(x => new NowShowingIndexVM.Row
             {
