@@ -122,7 +122,6 @@
                         <ul class="pagination">
                             <li class="page-item">
                                 <a asp-action="NowShowing"
-                                   asp-route-sortOrder="@ViewData["CurrentSort"]"
                                    asp-route-pageNumber="@(Model.PageIndex - 1)"
                                    asp-route-currentFilter="@ViewData["CurrentFilter"]"
                                    class="page-link @prevDisabled">
@@ -131,7 +130,6 @@
                             </li>
                             <li class="page-item">
                                 <a asp-action="NowShowing"
-                                   asp-route-sortOrder="@ViewData["CurrentSort"]"
                                    asp-route-pageNumber="@(Model.PageIndex + 1)"
                                    asp-route-currentFilter="@ViewData["CurrentFilter"]"
                                    class="page-link @nextDisabled">
