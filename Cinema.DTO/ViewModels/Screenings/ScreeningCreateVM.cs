@@ -1,10 +1,10 @@
-﻿using Cinema.DTO.ModelValidation;
+﻿using Cinema.Dto.ModelValidation;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.ComponentModel.DataAnnotations;
 
 
-namespace Cinema.DTO.ViewModels.Screenings
+namespace Cinema.Dto.ViewModels.Screenings
 {
     public class ScreeningCreateVM
     {

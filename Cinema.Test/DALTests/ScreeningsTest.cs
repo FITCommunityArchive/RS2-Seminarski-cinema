@@ -1,5 +1,5 @@
 ﻿using Cinema.Domain.Entities;
-using Cinema.Services.Exceptions;
+using Cinema.Utilities.Exceptions;
 using NUnit.Framework;
 using System.Linq;
 using System.Threading.Tasks;

@@ -1,4 +1,4 @@
-﻿namespace Cinema.DTO.ViewModels.Reviews
+﻿namespace Cinema.Dto.ViewModels.Reviews
 {
     public class ReviewIndexVM
     {

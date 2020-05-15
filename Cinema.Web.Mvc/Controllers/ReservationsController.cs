@@ -1,9 +1,9 @@
-﻿using Cinema.BLL;
-using Cinema.DAL.Data;
+﻿using Cinema.Dal.Data;
 using Cinema.Domain.Entities;
-using Cinema.DTO.ViewModels.Reservations;
-using Cinema.Services.Constants;
-using EmailService;
+using Cinema.Dto.ViewModels.Reservations;
+using Cinema.EmailService;
+using Cinema.Services;
+using Cinema.Utilities.Constants;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

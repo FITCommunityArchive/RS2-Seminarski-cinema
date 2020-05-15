@@ -1,5 +1,5 @@
-﻿using Cinema.BLL;
-using Cinema.Domain.Entities.Identity;
+﻿using Cinema.Domain.Entities.Identity;
+using Cinema.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;

@@ -1,9 +1,9 @@
-﻿using Cinema.DAL.Data;
+﻿using Cinema.Dal.Data;
 using Cinema.Domain.Entities;
-using Cinema.Services.Helpers;
 using OfficeOpenXml;
 using System;
 using System.Threading.Tasks;
+using Cinema.Utilities.Helpers;
 
 namespace Cinema.Seed.CollectMethods
 {

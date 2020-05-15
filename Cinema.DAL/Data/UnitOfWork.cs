@@ -1,11 +1,11 @@
-﻿using Cinema.DAL.Repository;
+﻿using Cinema.Dal.Repository;
 using Cinema.Domain.Entities;
 using Cinema.Domain.Entities.Identity;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Threading.Tasks;
 
-namespace Cinema.DAL.Data
+namespace Cinema.Dal.Data
 {
     /*Legacy of Gigi School of Coding*/
     public class UnitOfWork : IDisposable

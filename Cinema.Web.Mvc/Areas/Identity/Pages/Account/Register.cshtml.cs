@@ -1,6 +1,6 @@
 ﻿using Cinema.Authorization.Constants;
 using Cinema.Domain.Entities.Identity;
-using EmailService;
+using Cinema.EmailService;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;

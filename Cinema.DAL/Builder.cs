@@ -1,9 +1,9 @@
-﻿using Cinema.DAL.Data;
+﻿using Cinema.Dal.Data;
 using Cinema.Domain.Entities;
 using Cinema.Domain.Entities.Identity;
 using System.Threading.Tasks;
 
-namespace Cinema.DAL
+namespace Cinema.Dal
 {
     public static class Builder
     {

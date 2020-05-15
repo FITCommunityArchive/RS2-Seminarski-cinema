@@ -1,10 +1,10 @@
-﻿using Cinema.DAL.Data;
+﻿using Cinema.Dal.Data;
 using Cinema.Domain.Entities.Identity;
-using Cinema.Services.Enums;
+using Cinema.Utilities.Enums;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Cinema.DAL.Repository
+namespace Cinema.Dal.Repository
 {
     public class ApplicationUsersRepository : Repository<ApplicationUser, string>
     {

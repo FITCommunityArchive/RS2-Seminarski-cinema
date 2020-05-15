@@ -1,9 +1,9 @@
 ﻿using Cinema.Domain.Entities;
-using Cinema.DTO.ViewModels.Reviews;
+using Cinema.Dto.ViewModels.Reviews;
 using System;
 using System.Collections.Generic;
 
-namespace Cinema.DTO.ViewModels.Movies
+namespace Cinema.Dto.ViewModels.Movies
 {
     public class NowShowingDetailsVM
     {

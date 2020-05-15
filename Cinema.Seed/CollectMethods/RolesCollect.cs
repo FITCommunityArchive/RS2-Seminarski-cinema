@@ -1,4 +1,4 @@
-﻿using Cinema.DAL.Data;
+﻿using Cinema.Dal.Data;
 using Cinema.Domain.Entities.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;

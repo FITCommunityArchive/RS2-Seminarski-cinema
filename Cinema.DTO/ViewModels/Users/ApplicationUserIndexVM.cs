@@ -1,4 +1,4 @@
-﻿namespace Cinema.DTO.ViewModels.Users
+﻿namespace Cinema.Dto.ViewModels.Users
 {
     public class ApplicationUserIndexVM
     {

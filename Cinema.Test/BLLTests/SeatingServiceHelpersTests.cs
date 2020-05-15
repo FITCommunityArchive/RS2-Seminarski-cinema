@@ -1,4 +1,4 @@
-﻿using Cinema.BLL;
+﻿using Cinema.Services;
 using Cinema.Domain.Entities;
 using NUnit.Framework;
 

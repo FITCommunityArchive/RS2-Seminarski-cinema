@@ -1,11 +1,11 @@
 ﻿using Cinema.Authorization.Constants;
-using Cinema.DAL.Data;
+using Cinema.Dal.Data;
 using Cinema.Domain.Entities;
-using Cinema.DTO;
-using Cinema.DTO.ViewModels.Movies;
-using Cinema.DTO.ViewModels.Reviews;
-using Cinema.Services.Factory;
-using Cinema.Services.Factory.ViewModels;
+using Cinema.Dto;
+using Cinema.Dto.ViewModels.Movies;
+using Cinema.Dto.ViewModels.Reviews;
+using Cinema.Utilities.Factory;
+using Cinema.Utilities.Factory.ViewModels;
 using Cinema.Web.Mvc.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

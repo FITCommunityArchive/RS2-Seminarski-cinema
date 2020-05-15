@@ -1,4 +1,4 @@
-﻿namespace Cinema.DTO
+﻿namespace Cinema.Dto
 {
     public class MasterModel
     {

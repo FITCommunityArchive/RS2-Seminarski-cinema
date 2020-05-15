@@ -1,6 +1,6 @@
-﻿using Cinema.DAL.Data;
-using Cinema.Services.Enums;
-using Cinema.Services.Exceptions;
+﻿using Cinema.Dal.Data;
+using Cinema.Utilities.Enums;
+using Cinema.Utilities.Exceptions;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace Cinema.DAL.Repository
+namespace Cinema.Dal.Repository
 {
     /*Legacy of Gigi School of Coding*/
     public class Repository<Entity, Key> : IRepository<Entity, Key> where Entity : class

@@ -1,6 +1,6 @@
-﻿using Cinema.BLL;
+﻿using Cinema.Services;
 using Cinema.Domain.Entities;
-using Cinema.DTO.SpecificModels;
+using Cinema.Dto.SpecificModels;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;

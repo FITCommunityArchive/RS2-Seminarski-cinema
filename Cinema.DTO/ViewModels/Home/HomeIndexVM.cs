@@ -1,7 +1,7 @@
 ﻿using Cinema.Domain.Entities;
 using System.Collections.Generic;
 
-namespace Cinema.DTO.ViewModels.Home
+namespace Cinema.Dto.ViewModels.Home
 {
     public class HomeIndexVM
     {

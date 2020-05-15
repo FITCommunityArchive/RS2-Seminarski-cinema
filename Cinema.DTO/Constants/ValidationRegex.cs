@@ -1,4 +1,4 @@
-﻿namespace Cinema.DTO.Constants
+﻿namespace Cinema.Dto.Constants
 {
     public static class ValidationRegex
     {

@@ -1,10 +1,10 @@
 using Cinema.Authorization.Constants;
 using Cinema.Authorization.Handlers;
 using Cinema.Authorization.Requirements;
-using Cinema.BLL;
-using Cinema.DAL.Data;
+using Cinema.Dal.Data;
 using Cinema.Domain.Entities.Identity;
-using EmailService;
+using Cinema.EmailService;
+using Cinema.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

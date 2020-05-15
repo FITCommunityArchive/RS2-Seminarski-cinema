@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Cinema.DTO.ViewModels.Home
+namespace Cinema.Dto.ViewModels.Home
 {
     public class HomeContactVM
     {

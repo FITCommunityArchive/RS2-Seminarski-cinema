@@ -1,4 +1,4 @@
-﻿namespace Cinema.DTO.DomainModels
+﻿namespace Cinema.Dto.DomainModels
 {
     public class GenreMovieModel
     {

@@ -1,8 +1,8 @@
-﻿using Cinema.DTO.Constants;
+﻿using Cinema.Dto.Constants;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 
-namespace Cinema.DTO.ViewModels.Users
+namespace Cinema.Dto.ViewModels.Users
 {
     public class ApplicationUserCreateVM
     {

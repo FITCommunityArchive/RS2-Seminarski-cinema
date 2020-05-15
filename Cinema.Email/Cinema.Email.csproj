@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EmailService\Cinema.EmailService.csproj" />
+    <ProjectReference Include="..\Cinema.EmailService\Cinema.EmailService.csproj" />
   </ItemGroup>
 
 
