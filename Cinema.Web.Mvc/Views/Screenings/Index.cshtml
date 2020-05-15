@@ -1,0 +1,104 @@
+﻿@model PaginatedList<Cinema.Dto.ViewModels.Screenings.ScreeningIndexVM>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="section section-header bg-primary bg-size-cover overlay-dark text-white" asp-authorize asp-roles="@Roles.Administrator" data-background="img/bg-movie-sign.jpg" style="background-image: url('img/bg-movie-sign.jpg');">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>
+                    Screenings
+                    <a class="btn btn-white btn-sm" asp-action="Create">Add New</a>
+                </h1>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section section-md">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <form asp-action="Index" method="get" class="row pb-5">
+                    <div class="col-12 col-lg-4">
+                        <div class="form-group mb-lg-0">
+                            <div class="input-group input-group-md mb-lg-0">
+                                <div class="input-group-prepend"><span class="input-group-text"><i class="fas fa-search"></i></span></div>
+                                <input id="search-movie" type="text" value="@ViewData["currentFilter"]" name="SearchString" class="form-control autocomplete" placeholder="Search screening">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-2">
+                        <button class="btn btn-primary btn-block mt-md-0 animate-up-2" type="submit">Search</button>
+                    </div>
+                    <div class="col-12 col-lg-2">
+                        <a class="btn btn-xs" asp-action="Index">Back to Full List</a>
+                    </div>
+                </form>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <a asp-action="Index" asp-route-sortOrder="@ViewData["TitleSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Screening</a>
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model[0].Hall)
+                                </th>
+                                <th>
+                                    <a asp-action="Index" asp-route-sortOrder="@ViewData["DateSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">@Html.DisplayNameFor(model => model[0].DateAndTime)</a>
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Movie)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Hall)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DateAndTime)
+                                    </td>
+                                    <td style="min-width:200px;">
+                                        <a asp-action="Details" asp-route-id="@item.Id" class="text-dark" data-toggle="tooltip" title="" data-original-title="Details screening"><i class="far fa-eye mr-2"></i></a>
+                                        <a asp-authorize asp-roles="@Roles.Administrator" asp-action="Edit" asp-route-id="@item.Id" class="text-dark" data-toggle="tooltip" title="" data-original-title="Edit screening"><i class="far fa-edit mr-2"></i></a>
+                                        <a asp-authorize asp-roles="@Roles.Administrator" asp-action="Delete" asp-route-id="@item.Id" class="text-danger"><i class="far fa-trash-alt" title=""></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @{
+                    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+                    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+                }
+
+                <a asp-action="Index"
+                   asp-route-sortOrder="@ViewData["CurrentSort"]"
+                   asp-route-pageNumber="@(Model.PageIndex - 1)"
+                   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+                   class="btn btn-default @prevDisabled">
+                    Previous
+                </a>
+                <a asp-action="Index"
+                   asp-route-sortOrder="@ViewData["CurrentSort"]"
+                   asp-route-pageNumber="@(Model.PageIndex + 1)"
+                   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+                   class="btn btn-default @nextDisabled">
+                    Next
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

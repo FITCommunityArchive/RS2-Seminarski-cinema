@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Cinema.DTO.DomainModels
+﻿namespace Cinema.Dto.DomainModels
 {
     public class GenreMovieModel
     {

@@ -1,0 +1,191 @@
+﻿@model PaginatedList<Cinema.Dto.ViewModels.Movies.NowShowingIndexVM.Row>
+@{
+    ViewData["Title"] = "NowShowing";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="section section-header bg-primary overlay-dark text-white" data-background="/img/hero.jpg" style="background-image: url('/img/hero.jpg');">
+    <div class="container">
+        <div class="row justify-content-center pt-5">
+            <div class="col-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb breadcrumb-transparent">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item active">Now Showing</li>
+                    </ol>
+                </nav>
+                <!-- Heading -->
+                <h1 class="display-2">Now showing in <span class="font-weight-light">Cinema</span></h1>
+                <!-- Text -->
+                <p class="lead text-muted mt-4">
+                    12,000+ movies showing live since 1998 in 165+ countries.
+                    <br>Reserve your movie tickets today.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section pt-5 pt-lg-6">
+    <div id="spaces-container" class="container">
+        <div class="row mb-5">
+            <div class="col-12">
+                <form method="post" class="row" id="MovieDatePicker">
+                    <div class="col-12 col-lg-3">
+                        <div class="input-group input-group-md mb-3 mb-lg-0">
+                            <div class="input-group-prepend"><span class="input-group-text"><i class="far fa-calendar-alt"></i></span></div>
+                            <input class="form-control " id="ScreeningDate" name="filterDate" placeholder="Select date" type="text" required="">
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-2">
+                        <button class="btn btn-primary btn-block mt-md-0 animate-up-2 btn-dateFilter" type="submit">Find a date</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <aside class="col-12 col-lg-3 mt-3 mt-lg-0 z-2 order-lg-2">
+                <div id="filters-sidebar" class="d-none d-lg-block" style="">
+                    <form action="#" method="get" class="sidebar-inner" style="position: relative; transform: translate3d(0px, 0px, 0px);">
+                        <div class="card shadow-sm border-soft mt-4 p-3">
+                            <a href="#" data-target="#reviews" class="accordion-panel-header w-100 d-flex align-items-center justify-content-between" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="reviews"><span class="icon-title h6 mb-0 font-weight-bold">Rating</span> <span class="icon"><i class="fas fa-plus"></i></span></a>
+                            <ul id="reviews" class="collapse list-group list-group list-group-flush">
+                                <li class="list-group-item border-0 py-1 pt-2 px-0 d-flex align-items-center justify-content-between">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox"> <span class="form-check-sign"></span> <span class="d-flex"><i class="star fas fa-star text-warning"></i> <i class="star fas fa-star text-warning"></i> <i class="star fas fa-star text-warning"></i> <i class="star fas fa-star text-warning"></i> <i class="star fas fa-star text-warning"></i> <span>(12)</span></span>
+                                        </label>
+                                    </div>
+                                </li>
+                                <li class="list-group-item border-0 py-1 px-0 d-flex align-items-center justify-content-between">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox"> <span class="form-check-sign"></span> <span class="d-flex"><i class="star fas fa-star text-warning"></i> <i class="star fas fa-star text-warning"></i> <i class="star fas fa-star text-warning"></i> <i class="star fas fa-star text-warning"></i> <i class="star far fa-star text-gray"></i> <span class="font-small ml-1">(23)</span></span>
+                                        </label>
+                                    </div>
+                                </li>
+                                <li class="list-group-item border-0 py-1 px-0 d-flex align-items-center justify-content-between">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox"> <span class="form-check-sign"></span> <span class="d-flex"><i class="star fas fa-star text-warning"></i> <i class="star fas fa-star text-warning"></i> <i class="star fas fa-star text-warning"></i> <i class="star far fa-star text-gray"></i> <i class="star far fa-star text-gray"></i> <span class="font-small ml-1">(32)</span></span>
+                                        </label>
+                                    </div>
+                                </li>
+                                <li class="list-group-item border-0 py-1 px-0 d-flex align-items-center justify-content-between">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox"> <span class="form-check-sign"></span> <span class="d-flex"><i class="star fas fa-star text-warning"></i> <i class="star fas fa-star text-warning"></i> <i class="star far fa-star text-gray"></i> <i class="star far fa-star text-gray"></i> <i class="star far fa-star text-gray"></i> <span class="font-small ml-1">(9)</span></span>
+                                        </label>
+                                    </div>
+                                </li>
+                                <li class="list-group-item border-0 py-1 px-0 d-flex align-items-center justify-content-between">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox"> <span class="form-check-sign"></span> <span class="d-flex"><i class="star fas fa-star text-warning"></i> <i class="star far fa-star text-gray"></i> <i class="star far fa-star text-gray"></i> <i class="star far fa-star text-gray"></i> <i class="star far fa-star text-gray"></i> <span class="font-small ml-1">(4)</span></span>
+                                        </label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <button class="btn btn-sm btn-block btn-primary animate-up-2 mt-4" type="submit">Apply filters</button>
+                    </form>
+                </div>
+            </aside>
+            <div class="col-md-12 col-lg-9 order-lg-1">
+                @foreach (var item in Model)
+                {
+                    <div class="card card-article-wide shadow-sm flex-md-row no-gutters border-soft mb-4 animate-up-5">
+                        <a asp-action="NowShowingDetails" asp-route-id="@item.MovieId" class="col-md-3 col-lg-3"><img src="~/img/placehold.png" data-title="@item.MovieTitle" alt="@item.MovieTitle" class="card-img-top space-image-lg screening-image"></a>
+                        <div class="card-body d-flex flex-column justify-content-between col-auto p-4">
+                            <a asp-action="NowShowingDetails" asp-route-id="@item.MovieId"><h4 class="font-weight-normal mb-0">@item.MovieTitle</h4></a>
+                            <div class="post-meta"><span class="small lh-120"><i class="fas fa-user mr-2"></i>@item.MovieActors</span></div>
+                            <div class="d-flex my-4">
+
+                                @for (int i = 0; i < item.MovieRating; i++)
+                                {
+                                    <i class="star fas fa-star text-warning"></i>
+                                }
+                                <span class="badge badge-pill badge-secondary ml-2">@item.MovieRatingDescription</span>
+                            </div>                                <div class="d-flex justify-content-between">
+                                <div class="col pl-0"><span class="text-muted font-small d-block mb-2">Duration</span> <span class="h5 text-dark font-weight-bold">@item.Duration min</span></div>
+                                <div class="col"><span class="text-muted font-small d-block mb-2">Year</span> <span class="h5 text-dark font-weight-bold">@item.Year</span></div>
+                                <div class="col pr-0"><span class="text-muted font-small d-block mb-2">Country</span> <span class="h5 text-dark font-weight-bold">@item.Country</span></div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div class="col mt-3 d-flex justify-content-center">
+                    @{
+                        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+                        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+                    }
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a asp-action="NowShowing"
+                                   asp-route-pageNumber="@(Model.PageIndex - 1)"
+                                   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+                                   class="page-link @prevDisabled">
+                                    Previous
+                                </a>
+                            </li>
+                            <li class="page-item">
+                                <a asp-action="NowShowing"
+                                   asp-route-pageNumber="@(Model.PageIndex + 1)"
+                                   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+                                   class="page-link @nextDisabled">
+                                    Next
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        jQuery(document).ready(function () {
+            jQuery('.screening-image').each(function () {
+                var getTitle = jQuery(this).data("title");
+                var $this = jQuery(this);
+                $.get("https://www.omdbapi.com/?apikey=f4ff906b&t=" + getTitle, function (data) {
+                    if (data.Poster != "N/A") {
+                        $this.attr("src", data.Poster)
+                    } else {
+                        console.log("No image found.");
+                    }
+                })
+            });
+
+            //setup format for the date picker
+            var options = {
+                format: 'dd.mm.yyyy',
+                todayHighlight: true,
+                autoclose: true,
+                startDate: new Date(),
+                minDate: new Date()
+            };
+            jQuery("#ScreeningDate").datepicker(options);
+
+            //function for setting up date properly and returning it
+            var date = function (dateObject) {
+                var d = new Date(dateObject);
+                var day = d.getDate();
+                var month = d.getMonth() + 1;
+                var year = d.getFullYear();
+                if (day < 10) {
+                    day = "0" + day;
+                }
+                if (month < 10) {
+                    month = "0" + month;
+                }
+                var date = day + "." + month + "." + year;
+
+                return date;
+            };
+        });
+
+    </script>
+}

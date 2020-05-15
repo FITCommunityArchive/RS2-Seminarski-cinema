@@ -1,0 +1,9 @@
+﻿@model Cinema.Dto.ViewModels.ValidationMessageVM
+@{
+    ViewData["Title"] = "Default";
+}
+
+@if (!string.IsNullOrEmpty(Model.Message))
+{
+    @:<div class="alert alert-danger">@Model.Message</div>
+}

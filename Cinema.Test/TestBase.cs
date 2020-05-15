@@ -1,20 +1,19 @@
-using Cinema.Services.DatabaseSeed;
-using Cinema.Domain.Entities;
-using Cinema.DAL.Data;
+using Cinema.Dal.Data;
 using NUnit.Framework;
 using System;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace Cinema.Test
 {
     [TestFixture]
     public class TestBase
     {
-        private ApplicationDbContext context;
+        protected ApplicationDbContext context;
         protected UnitOfWork unit;
 
         [OneTimeSetUp]
-        public void SetUp()
+        public virtual async Task SetUp()
         {
             string path = "\\TestDatabase\\TestCinemaDatabase.xlsx";
             string workingDirectory = Environment.CurrentDirectory;
@@ -24,9 +23,10 @@ namespace Cinema.Test
             FileInfo file = new FileInfo(fullPath);
             string connectionString = "Server=(localdb)\\mssqllocaldb;Database=TestCinemaReservations;Trusted_Connection=True;MultipleActiveResultSets=true";
 
+
             context = new ApplicationDbContext(connectionString);
             unit = new UnitOfWork(context);
-            unit.SeedDatabase(file);
+            await unit.SeedTestDatabase(file);
         }
     }
 }

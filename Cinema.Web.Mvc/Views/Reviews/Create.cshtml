@@ -1,0 +1,32 @@
+﻿@model Cinema.Dto.ViewModels.Reviews.ReviewCreateVM
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <h5>Rate @Model.Movie.Name</h5>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <form class="rating-form" asp-controller="Reviews" asp-action="Create">
+                            <input asp-for="Movie.Id" hidden />
+                            <input asp-for="UserId" hidden />
+                            <div class="rating">
+                                @for (int i = 10; i > 0; i--)
+                                {
+                                    <input asp-for="Rating" type="radio" value="@i" id="@($"rating-star-{i}")" onclick="this.form.submit();"><label for="@($"rating-star-{i}")"></label>
+                                }
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

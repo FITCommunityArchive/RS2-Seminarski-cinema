@@ -1,10 +1,8 @@
 ﻿using Cinema.Domain.Entities;
-using Microsoft.EntityFrameworkCore;
+using Cinema.Utilities.Exceptions;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Threading.Tasks;
 
 namespace Cinema.Test.DALTests
 {
@@ -25,73 +23,86 @@ namespace Cinema.Test.DALTests
         }
 
         [Test, Order(2)]
-        [TestCase(3)]
-        public void GetMovieById(int id)
-        {
-            //Try to get Movie with id
-            Movie movie = unit.Movies.Get(id);
-
-            Assert.AreEqual("Black Widow", movie.Title);
-        }
-
-
-        [Test, Order(3)]
-        [TestCase(100)]
-        public void GetNonExistingMovie(int id)
-        {
-            //Try to get non-existing Movie
-            var ex = Assert.Throws<ArgumentException>(() => unit.Movies.Get(id));
-
-            Assert.AreEqual(ex.Message, $"There is no object with id: {id} in the database");
-        }
-
-        [Test, Order(4)]
-        public void InsertMovie()
+        public async Task InsertMovie()
         {
             Movie movie = new Movie
             {
                 Title = "New Movie"
             };
 
-            unit.Movies.Insert(movie);
-            unit.Save();
+            await unit.Movies.InsertAsync(movie);
+            await unit.SaveAsync();
 
             //Id of the new movie will be 13
-            Movie newMovie = unit.Movies.Get(13);
+            Movie newMovie = await unit.Movies.GetAsync(13);
 
             Assert.AreEqual("New Movie", newMovie.Title);
         }
 
+        [Test, Order(3)]
+        [TestCase(13)]
+        public async Task GetMovieById(int id)
+        {
+            //Try to get Movie with id
+            Movie movie = await unit.Movies.GetAsync(id);
+
+            Assert.AreEqual("New Movie", movie.Title);
+        }
+
+        [Test, Order(4)]
+        [TestCase(100)]
+        public async Task GetNonExistingMovie(int id)
+        {
+            //Try to get non-existing Movie
+            Movie movie = await unit.Movies.GetAsync(id);
+
+            Assert.IsNull(movie);
+        }
+
         [Test, Order(5)]
-        public void ChangeMovieName()
+        public async Task ChangeMovieName()
         {
             //Try to change the movie 
             int id = 2;
 
-            Movie movie = unit.Movies.Get(id);
+            Movie movie = await unit.Movies.GetAsync(id);
             movie.Title = "New Movie";
 
-            unit.Movies.Update(movie, id);
+            await unit.Movies.UpdateAsync(movie, id);
             unit.Save();
 
-            Movie newMovie = unit.Movies.Get(id);
+            Movie newMovie = await unit.Movies.GetAsync(id);
 
             Assert.AreEqual("New Movie", newMovie.Title); ;
         }
 
         [Test, Order(6)]
-        public void DeleteMovie()
+        public void DeleteMovieWithChildObjects()
         {
-            //Try to change the movie 
+            //Try to delete the movie 
             int id = 2;
 
-            Movie movie = unit.Movies.Get(id);
+            var ex = Assert.ThrowsAsync<DependentObjectsPresentException>(async () => await unit.Movies.DeleteAsync(id));
+        }
 
-            unit.Movies.Delete(movie);
+        [Test, Order(7)]
+        public async Task DeleteMovieWithoutChildObjects()
+        {
+            Movie movie = new Movie
+            {
+                Title = "New Hall"
+            };
 
-            Movie movieAftedDelete = unit.Movies.Get(id);
+            await unit.Movies.InsertAsync(movie);
+            await unit.SaveAsync();
+            int movieId = movie.Id;
 
-            Assert.AreEqual(true, movieAftedDelete.Deleted);
+            await unit.Movies.DeleteAsync(movieId);
+            await unit.SaveAsync();
+
+            Movie deletedMovie = await unit.Movies.GetAsync(movieId);
+
+            Assert.True(deletedMovie.Deleted);
         }
     }
 }

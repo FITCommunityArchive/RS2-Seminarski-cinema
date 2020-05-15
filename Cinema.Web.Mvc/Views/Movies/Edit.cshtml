@@ -1,0 +1,88 @@
+﻿@model Cinema.Dto.ViewModels.Movies.MovieCreateVM
+@{
+    ViewData["Title"] = "Edit";
+}
+
+    <div class="section section-md" asp-authorize asp-roles="@Roles.Administrator">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Edit Movie</h1>
+
+                    <div class="row">
+                        <div class="col-12 col-lg-12">
+                            <form method="post" class="card shadow-soft border p-4 mb-4">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <input type="hidden" asp-for="Id" />
+                                <div class="row">
+                                    <div class="col-12 col-lg-6">
+                                        <div class="form-group">
+                                            <label asp-for="Title"></label>
+                                            <input asp-for="Title" class="form-control shadow-soft" id="Title" placeholder="Title">
+                                            <span asp-validation-for="Title" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-6">
+                                        <div class="form-group">
+                                            <label asp-for="Duration"></label>
+                                            <input asp-for="Duration" class="form-control shadow-soft" id="Duration" placeholder="Duration">
+                                        </div>
+                                        <span asp-validation-for="Duration" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-12 col-lg-6">
+                                        <div class="form-group">
+                                            <label asp-for="Actors"></label>
+                                            <input asp-for="Actors" class="form-control shadow-soft" id="Actors" placeholder="Actors">
+                                            <span asp-validation-for="Actors" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-6">
+                                        <div class="form-group">
+                                            <label asp-for="Year"></label>
+                                            <input asp-for="Year" class="form-control shadow-soft" id="Year" placeholder="Year">
+                                        </div>
+                                        <span asp-validation-for="Year" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-12 col-lg-6">
+                                        <div class="form-group">
+                                            <label asp-for="Country"></label>
+                                            <input asp-for="Country" class="form-control shadow-soft" id="Country" placeholder="Country">
+                                        </div>
+                                        <span asp-validation-for="Country" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-12 col-lg-6">
+                                        <div class="form-group">
+                                            <label asp-for="Image"></label>
+
+                                            <input type="file" asp-for="ImageFile" class="form-control shadow-soft" id="Image" placeholder="Image">
+                                        </div>
+                                        <span asp-validation-for="Image" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-12 col-lg-6">
+                                        <div class="form-group">
+                                            <label asp-for="VideoLink"></label>
+
+                                            <input asp-for="VideoLink" class="form-control shadow-soft" id="VideoLink" placeholder="VideoLink">
+                                        </div>
+                                        <span asp-validation-for="VideoLink" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <button class="btn btn-primary btn-dark mt-2 animate-up-2" type="submit">Update</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div>
+                        <a asp-action="Index">Back to List</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

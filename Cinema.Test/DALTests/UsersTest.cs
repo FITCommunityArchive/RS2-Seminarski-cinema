@@ -1,11 +1,5 @@
-﻿using Cinema.Domain.Entities;
-using Cinema.Domain.Entities.Identity;
-using Microsoft.EntityFrameworkCore;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
+﻿using NUnit.Framework;
 using System.Linq;
-using System.Text;
 
 namespace Cinema.Test.DALTests
 {

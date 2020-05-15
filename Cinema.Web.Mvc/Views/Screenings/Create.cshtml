@@ -1,0 +1,78 @@
+﻿@model Cinema.Dto.ViewModels.Screenings.ScreeningCreateVM
+@using Cinema.Dto.ViewModels
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+    <div class="section section-md" asp-authorize asp-roles="@Roles.Administrator">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Create screening</h1>
+
+                    <div class="row">
+                        <div class="col-12 col-lg-12">
+                            @await Component.InvokeAsync("ValidationMessage", new ValidationMessageVM { Message = ViewBag.ErrorMessage })
+
+                            <form method="post" class="card shadow-soft border p-4 mb-4">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="row">
+                                    <div class="col-12 col-lg-6">
+                                        <div class="form-group">
+                                            <label asp-for="DateAndTime"></label>
+                                            <input asp-for="DateAndTime" class="form-control shadow-soft" id="DateAndTime" placeholder="DateAndTime">
+                                            <span asp-validation-for="DateAndTime" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-6">
+                                        <div class="form-group">
+                                            <label asp-for="Movie"></label>
+                                            <select asp-for="MovieId" class="form-control shadow-soft" id="MovieId"
+                                                    asp-items="@Model.Movies">
+                                                <option value="">-- Select Movie --</option>
+                                            </select>
+                                        </div>
+                                        <span asp-validation-for="MovieId" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-12 col-lg-6">
+                                        <div class="form-group">
+                                            <label asp-for="Hall" class="control-label"></label>
+                                            <select asp-for="HallId" class="form-control shadow-soft" id="HallId"
+                                                    asp-items="@Model.Halls">
+                                                <option value="">-- Select Hall --</option>
+                                            </select>
+                                            <span asp-validation-for="HallId" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-6">
+                                        <div class="form-group">
+                                            <label asp-for="PricingId" class="control-label"></label>
+                                            <select asp-for="PricingId" class="form-control shadow-soft" id="PricingId"
+                                                    asp-items="@Model.Pricings">
+                                                <option value="">-- Select Pricing --</option>
+                                            </select>
+                                            <span asp-validation-for="PricingId" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <button class="btn btn-primary btn-dark mt-2 animate-up-2" type="submit">Save</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div>
+                        <a asp-action="Index">Back to List</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

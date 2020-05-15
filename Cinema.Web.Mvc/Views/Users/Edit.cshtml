@@ -1,0 +1,76 @@
+﻿@model Cinema.Dto.ViewModels.Users.ApplicationUserCreateVM
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<div class="section section-md" asp-authorize asp-roles="@Roles.Administrator">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Edit Staff Member</h1>
+
+                <div class="row">
+                    <div class="col-12 col-lg-12">
+                        <form enctype="multipart/form-data" method="post" class="card shadow-soft border p-4 mb-4">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input asp-for="Id" hidden/>
+                            <div class="row">
+                                <div class="col-12 col-lg-6">
+                                    <div class="form-group">
+                                        <label asp-for="FirstName" class="control-label">@Html.DisplayNameFor(model => model.FirstName)</label>
+                                        <input asp-for="FirstName" class="form-control shadow-soft" id="@nameof(Model.FirstName)" placeholder="First name" />
+                                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <div class="form-group">
+                                        <label asp-for="LastName" class="control-label">@Html.DisplayNameFor(model => model.LastName)</label>
+                                        <input asp-for="LastName" class="form-control shadow-soft" id="@nameof(Model.LastName)" placeholder="Last name" />
+                                        <span asp-validation-for="LastName" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <div class="form-group">
+                                        <label asp-for="Email" class="control-label">@Html.DisplayNameFor(model => model.Email)</label>
+                                        <input asp-for="Email" class="form-control shadow-soft" readonly id="@nameof(Model.Email)" placeholder="Email address" />
+                                        <span asp-validation-for="Email" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <div class="form-group">
+                                        <label asp-for="PhoneNumber" class="control-label">@Html.DisplayNameFor(model => model.PhoneNumber)</label>
+                                        <input asp-for="PhoneNumber" class="form-control shadow-soft" id="@nameof(Model.PhoneNumber)" placeholder="Phone number" />
+                                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <div class="form-group">
+                                        <label asp-for="RoleId" class="control-label">@Html.DisplayNameFor(model => model.RoleId)</label>
+                                        <select asp-for="RoleId" class="form-control shadow-soft" id="@nameof(Model.RoleId)" placeholder="Role"
+                                                asp-items="@Model.Roles">
+                                            <option value="">-- Select Role --</option>
+                                        </select>
+                                        <span asp-validation-for="RoleId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <button asp-authorize asp-roles="@Roles.Administrator" asp-action="Index" class="btn btn-primary btn-dark mt-2 animate-up-2">Back to list</button>
+                                    <button type="submit" class="btn btn-primary btn-gray mt-2 animate-up-2">Save</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div>
+                    <a asp-action="Index">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

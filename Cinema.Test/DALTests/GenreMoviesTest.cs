@@ -1,10 +1,7 @@
 ﻿using Cinema.Domain.Entities;
-using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Threading.Tasks;
 
 namespace Cinema.Test.DALTests
 {
@@ -26,10 +23,10 @@ namespace Cinema.Test.DALTests
 
         [Test, Order(2)]
         [TestCase(3)]
-        public void GetGenreMovieById(int id)
+        public async Task GetGenreMovieById(int id)
         {
             //Try to get GenreMovie with id
-            GenreMovie genreMovie = unit.GenreMovies.Get(id);
+            GenreMovie genreMovie = await unit.GenreMovies.GetAsync(id);
 
             Assert.AreEqual("Police Academy 4: Citizens on Patrol", genreMovie.Movie.Title);
         }
@@ -37,60 +34,59 @@ namespace Cinema.Test.DALTests
 
         [Test, Order(3)]
         [TestCase(100)]
-        public void GetNonExistingGenreMovie(int id)
+        public async Task GetNonExistingGenreMovie(int id)
         {
             //Try to get non-existing GenreMovie
-            var ex = Assert.Throws<ArgumentException>(() => unit.GenreMovies.Get(id));
+            var result = await unit.GenreMovies.GetAsync(id);
 
-            Assert.AreEqual(ex.Message, $"There is no object with id: {id} in the database");
+            Assert.IsNull(result);
         }
 
         [Test, Order(4)]
-        public void InsertGenreMovie()
+        public async Task InsertGenreMovie()
         {
             GenreMovie genreMovie = new GenreMovie
             {
-                Movie = unit.Movies.Get(1),
-                Genre = unit.Genres.Get(1)
+                Movie = await unit.Movies.GetAsync(1),
+                Genre = await unit.Genres.GetAsync(1)
             };
 
-            unit.GenreMovies.Insert(genreMovie);
+            await unit.GenreMovies.InsertAsync(genreMovie);
             unit.Save();
 
             //Id of the new genreMovie will be 6
-            GenreMovie newGenreMovie = unit.GenreMovies.Get(6);
+            GenreMovie newGenreMovie = await unit.GenreMovies.GetAsync(6);
 
-            Assert.AreEqual("Bomb the System", newGenreMovie.Movie.Title);
+            Assert.NotNull(newGenreMovie);
+            Assert.NotNull(newGenreMovie.Movie.Title);
+            Assert.NotNull(newGenreMovie.Genre.Name);
         }
 
         [Test, Order(5)]
-        public void ChangeGenreMoviesMovie()
+        public async Task ChangeGenreMoviesMovie()
         {
             //Try to change the genreMovie 
             int id = 2;
 
-            GenreMovie genreMovie = unit.GenreMovies.Get(id);
+            GenreMovie genreMovie = await unit.GenreMovies.GetAsync(id);
 
-            Movie newMovie = unit.Movies.Get(3);
+            Movie newMovie = await unit.Movies.GetAsync(3);
             genreMovie.Movie = newMovie;
 
-            unit.GenreMovies.Update(genreMovie, id);
+            await unit.GenreMovies.UpdateAsync(genreMovie, id);
             unit.Save();
 
-            GenreMovie newGenreMovie = unit.GenreMovies.Get(id);
+            GenreMovie newGenreMovie = await unit.GenreMovies.GetAsync(id);
 
             Assert.AreEqual("Black Widow", newGenreMovie.Movie.Title); ;
         }
 
         [Test, Order(6)]
-        public void DeleteGenreMovie()
+        public async Task DeleteGenreMovie()
         {
-            //Try to change the genreMovie 
             int id = 2;
 
-            GenreMovie genreMovie = unit.GenreMovies.Get(id);
-
-            unit.GenreMovies.Delete(id);
+            await unit.GenreMovies.DeleteAsync(id);
 
             int numberOfChanges = unit.Save();
             Assert.AreEqual(1, numberOfChanges);

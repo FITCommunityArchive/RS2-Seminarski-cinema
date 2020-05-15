@@ -1,0 +1,17 @@
+﻿@model List<Cinema.Domain.Entities.News>
+@using Cinema.Web.Mvc.Helpers
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+    <div class="card shadow-soft border-soft p-3 mt-4">
+        <h5 class="mb-4">Recent News</h5>
+        <ul class="list-unstyled news-list">
+            @foreach (var newsItem in Model) {
+            <li class="mx-0 mb-4">
+                <a href="#"><img src="@newsItem.Image" alt="Image" class="rounded fmxh-150 mb-3"></a>
+                <div class="post-meta font-small mb-2"><span><i class="far fa-clock mr-2"></i>@newsItem.Created.ToShortDateString()</span></div><a href="#"><h6 class="mb-1">@newsItem.Description.Truncate(40)</h6></a>
+            </li>
+            }
+        </ul>
+    </div>

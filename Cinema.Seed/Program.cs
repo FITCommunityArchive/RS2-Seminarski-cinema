@@ -1,18 +1,13 @@
-﻿using Cinema.BLL;
-using Cinema.Services.DatabaseSeed;
-using Cinema.DAL.Data;
-
-using Microsoft.AspNetCore.Identity;
+﻿using Cinema.Dal.Data;
 using System;
 using System.IO;
-using System.Linq;
+using System.Threading.Tasks;
 
 namespace Cinema.Seed
 {
     class Program
     {
-
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             string connectionString = "Server=(localdb)\\mssqllocaldb;Database=CinemaReservations;Trusted_Connection=True;MultipleActiveResultSets=true";
 
@@ -25,8 +20,8 @@ namespace Cinema.Seed
             ApplicationDbContext context = new ApplicationDbContext(connectionString);
             UnitOfWork unit = new UnitOfWork(context);
 
-            //Uncomment to run database seed            
-            unit.SeedDatabase(file);
+            // Uncomment to run database seed.          
+            //await unit.SeedDatabase(file);
         }
     }
 }
