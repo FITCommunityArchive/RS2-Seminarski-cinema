@@ -1,6 +1,6 @@
-﻿using Cinema.Services;
-using Cinema.Domain.Entities;
+﻿using Cinema.Domain.Entities;
 using Cinema.Dto.SpecificModels;
+using Cinema.Services;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;

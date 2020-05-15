@@ -1,5 +1,5 @@
-﻿using Cinema.Services;
-using Cinema.Domain.Entities;
+﻿using Cinema.Domain.Entities;
+using Cinema.Services;
 using NUnit.Framework;
 
 namespace Cinema.Test.BLLTests

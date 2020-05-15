@@ -2,8 +2,9 @@
 using Cinema.Dal.Data;
 using Cinema.Domain.Entities;
 using Cinema.Dto.ViewModels.Home;
-using Cinema.Web.Mvc.Models;
 using Cinema.EmailService;
+using Cinema.Services;
+using Cinema.Web.Mvc.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -12,7 +13,6 @@ using RestSharp;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
-using Cinema.Services;
 
 namespace Cinema.Web.Mvc.Controllers
 {

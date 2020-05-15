@@ -2,7 +2,11 @@
 using Cinema.Dal.Data;
 using Cinema.Domain.Entities.Identity;
 using Cinema.Dto.ViewModels.Users;
+using Cinema.EmailService;
 using Cinema.Utilities.Enums;
+using Cinema.Utilities.Factory;
+using Cinema.Utilities.Factory.ViewModels;
+using Cinema.Utilities.Helpers;
 using Cinema.Web.Mvc.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -17,10 +21,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Cinema.EmailService;
-using Cinema.Utilities.Factory.ViewModels;
-using Cinema.Utilities.Helpers;
-using Cinema.Utilities.Factory;
 
 namespace Cinema.Web.Mvc.Controllers
 {
