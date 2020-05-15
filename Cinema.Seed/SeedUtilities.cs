@@ -16,8 +16,8 @@ namespace Cinema.Seed
         {
             /*This methods drops the database, creates a new one, 
              * and performs the defined collect methods upon all tables*/
-            //unit.Context.Database.EnsureDeleted();
-            //unit.Context.Database.EnsureCreated();
+            unit.Context.Database.EnsureDeleted();
+            unit.Context.Database.EnsureCreated();
             unit.Context.ChangeTracker.AutoDetectChangesEnabled = false;
 
             await CollectEntities(unit, fileData);

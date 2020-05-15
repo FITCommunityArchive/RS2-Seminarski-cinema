@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Cinema.DAL.Data
 {
+    /*Legacy of Gigi School of Coding*/
     public class UnitOfWork : IDisposable
     {
         protected ApplicationDbContext _context;

@@ -33,11 +33,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Cinema.Authorization\Cinema.Authorization.csproj" />
-    <ProjectReference Include="..\Cinema.BLL\Cinema.BLL.csproj" />
-    <ProjectReference Include="..\Cinema.DAL\Cinema.DAL.csproj" />
-    <ProjectReference Include="..\Cinema.DTO\Cinema.DTO.csproj" />
-    <ProjectReference Include="..\Cinema.Services\Cinema.Services.csproj" />
-    <ProjectReference Include="..\EmailService\EmailService.csproj" />
+    <ProjectReference Include="..\Cinema.BLL\Cinema.Services.csproj" />
+    <ProjectReference Include="..\Cinema.DAL\Cinema.Dal.csproj" />
+    <ProjectReference Include="..\Cinema.DTO\Cinema.Dto.csproj" />
+    <ProjectReference Include="..\Cinema.Services\Cinema.Utilities.csproj" />
+    <ProjectReference Include="..\EmailService\Cinema.EmailService.csproj" />
   </ItemGroup>
 
 </Project>

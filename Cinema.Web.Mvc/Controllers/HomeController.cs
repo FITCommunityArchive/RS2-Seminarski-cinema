@@ -77,7 +77,7 @@ namespace Cinema.Web.Mvc.Controllers
         public IActionResult Contact(HomeContactVM contactModel)
         {
 
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 return RedirectToAction("ContactSendForm", new { content = contactModel.Content, name = contactModel.Name, email = contactModel.Email });
             }

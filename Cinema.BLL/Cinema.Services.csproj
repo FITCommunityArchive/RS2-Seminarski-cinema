@@ -20,10 +20,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Cinema.DAL\Cinema.DAL.csproj" />
+    <ProjectReference Include="..\Cinema.DAL\Cinema.Dal.csproj" />
     <ProjectReference Include="..\Cinema.Domain\Cinema.Domain.csproj" />
-    <ProjectReference Include="..\Cinema.DTO\Cinema.DTO.csproj" />
-    <ProjectReference Include="..\Cinema.Services\Cinema.Services.csproj" />
+    <ProjectReference Include="..\Cinema.DTO\Cinema.Dto.csproj" />
+    <ProjectReference Include="..\Cinema.Services\Cinema.Utilities.csproj" />
   </ItemGroup>
 
 </Project>

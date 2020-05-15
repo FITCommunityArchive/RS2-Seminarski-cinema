@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200515182245_InvoiceSoftDelete.cs" />
+    <Compile Remove="Migrations\20200515182245_InvoiceSoftDelete.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.0.0">
       <PrivateAssets>all</PrivateAssets>
@@ -15,7 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Cinema.Domain\Cinema.Domain.csproj" />
-    <ProjectReference Include="..\Cinema.Services\Cinema.Services.csproj" />
+    <ProjectReference Include="..\Cinema.Services\Cinema.Utilities.csproj" />
   </ItemGroup>
 
 </Project>

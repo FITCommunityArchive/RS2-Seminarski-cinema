@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace Cinema.DAL.Repository
 {
+    /*Legacy of Gigi School of Coding*/
     public class Repository<Entity, Key> : IRepository<Entity, Key> where Entity : class
     {
         protected ApplicationDbContext _context;

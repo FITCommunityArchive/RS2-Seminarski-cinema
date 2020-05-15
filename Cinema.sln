@@ -12,13 +12,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.Seed", "Cinema.Seed\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.Test", "Cinema.Test\Cinema.Test.csproj", "{5B8C3A5A-6E8C-483D-A0F3-CB371D819EC2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.Services", "Cinema.Services\Cinema.Services.csproj", "{B436E379-B478-4B5A-A359-48EE86282653}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.Utilities", "Cinema.Services\Cinema.Utilities.csproj", "{B436E379-B478-4B5A-A359-48EE86282653}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.BLL", "Cinema.BLL\Cinema.BLL.csproj", "{ABC21100-AC7A-45D0-8D0E-D2D2721CA1B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.Services", "Cinema.BLL\Cinema.Services.csproj", "{ABC21100-AC7A-45D0-8D0E-D2D2721CA1B6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.DTO", "Cinema.DTO\Cinema.DTO.csproj", "{1825F002-332F-440F-B005-586249A00CC1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.Dto", "Cinema.DTO\Cinema.Dto.csproj", "{1825F002-332F-440F-B005-586249A00CC1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.DAL", "Cinema.DAL\Cinema.DAL.csproj", "{B28027EC-C5A5-492A-B2A2-8F40A38551C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.Dal", "Cinema.DAL\Cinema.Dal.csproj", "{B28027EC-C5A5-492A-B2A2-8F40A38551C2}"
 	ProjectSection(ProjectDependencies) = postProject
 		{76786E0F-B1F7-449B-8B29-2BBB32753F1A} = {76786E0F-B1F7-449B-8B29-2BBB32753F1A}
 	EndProjectSection
@@ -27,9 +27,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.Authorization", "Cin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.Web.Mvc", "Cinema.Web.Mvc\Cinema.Web.Mvc.csproj", "{09A89119-5483-44EA-AAD2-FEF50F01A340}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinema.Email", "Cinema.Email\Cinema.Email.csproj", "{C6811FC2-A0BE-415B-B3D2-011B940A48C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.Email", "Cinema.Email\Cinema.Email.csproj", "{C6811FC2-A0BE-415B-B3D2-011B940A48C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailService", "EmailService\EmailService.csproj", "{DA1303B8-B8DA-4365-8053-01F0E31DE451}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.EmailService", "EmailService\Cinema.EmailService.csproj", "{DA1303B8-B8DA-4365-8053-01F0E31DE451}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

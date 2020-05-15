@@ -20,14 +20,6 @@ namespace Cinema.Test.DALTests
             //Assert
             //There are 2 halls in the test database
             Assert.AreEqual(2, hallsCount);
-
-            /*
-            IndexModel indexModel = new IndexModel(context);
-
-            await indexModel.OnGetAsync();
-            var result = indexModel.Hall;
-
-            Assert.AreEqual(2, result.Count);*/
         }
 
         [Test, Order(2)]

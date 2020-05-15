@@ -37,7 +37,8 @@ namespace Cinema.BLL
                 QRCode qrCode = new QRCode(qrCodeData);
                 Bitmap qrCodeImage = qrCode.GetGraphic(20);
                 dataUri = Convert.ToBase64String(BitmapToBytes(qrCodeImage));
-                if(includeImage == true) { 
+                if (includeImage == true)
+                {
                     CreateImage(dataUri, qrText);
                 }
             }

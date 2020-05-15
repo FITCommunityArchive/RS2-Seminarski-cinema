@@ -6,7 +6,7 @@ namespace Cinema.Services.Factory
 {
     /*These methods create generic models out of domain classes,
      where the only difference between a model and the corresponding domain class is 
-     that MasterModels are used as parent/child object properties instead of domain classes*/
+     that MasterModels are used as parent/child object properties instead of domain classes.*/
     public static class DomainModelFactory
     {
         public static MovieModel Create(this Movie movie)

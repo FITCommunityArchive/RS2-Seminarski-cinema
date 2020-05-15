@@ -129,7 +129,7 @@ namespace Cinema.Web.Mvc.Areas.Identity.Pages.Account.Manage
 
             var email = await _userManager.GetEmailAsync(user);
             AuthenticatorUri = GenerateQrCodeUri(email, unformattedKey);
-            var QRCodeAuthenticatorUri = _qRCodeService.GenerateCode(AuthenticatorUri,false);
+            var QRCodeAuthenticatorUri = _qRCodeService.GenerateCode(AuthenticatorUri, false);
             QRCodeAuthenticatorUrl = String.Format("data:image/png;base64,{0}", QRCodeAuthenticatorUri);
         }
 

@@ -153,11 +153,11 @@ namespace Cinema.Web.Mvc.Controllers
             //var path = _webHostEnvironment.WebRootFileProvider.GetFileInfo("qrr/f9899d012392550227.jpg");
             //var message2 = new Message(new string[] { "boris@cloudronin.com" }, "Your Ticket for the movie " + currentScreening.Movie.Title, "<img src='"+ path+"' />");
             //await _emailSender.SendEmailAsync(message2);
-            
-            return RedirectToAction("Thankyou",new { reservationID = reservation.Id });
+
+            return RedirectToAction("Thankyou", new { reservationID = reservation.Id });
         }
 
-        [HttpGet,Route("/Reservations/Thankyou")]
+        [HttpGet, Route("/Reservations/Thankyou")]
         public IActionResult Thankyou(int reservationID)
         {
             var viewModel = _unit.Reservations.Get().Where(x => x.Id == reservationID).FirstOrDefault();
