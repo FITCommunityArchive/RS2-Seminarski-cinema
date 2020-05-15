@@ -1,4 +1,4 @@
-﻿using EmailService;
+﻿using Cinema.EmailService;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;

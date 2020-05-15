@@ -1,4 +1,4 @@
-﻿using Cinema.DAL.Data;
+﻿using Cinema.Dal.Data;
 using Cinema.Domain.Entities;
 using OfficeOpenXml;
 using System.Threading.Tasks;

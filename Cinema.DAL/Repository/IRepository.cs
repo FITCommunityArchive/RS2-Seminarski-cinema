@@ -1,11 +1,11 @@
-﻿using Cinema.Services.Enums;
+﻿using Cinema.Utilities.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace Cinema.DAL.Repository
+namespace Cinema.Dal.Repository
 {
     public interface IRepository<Entity, Key>
     {

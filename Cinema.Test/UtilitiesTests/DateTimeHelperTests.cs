@@ -1,4 +1,4 @@
-﻿using Cinema.Services.Helpers;
+﻿using Cinema.Utilities.Helpers;
 using NUnit.Framework;
 using System;
 

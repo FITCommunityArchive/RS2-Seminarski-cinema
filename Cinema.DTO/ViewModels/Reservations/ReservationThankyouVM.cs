@@ -1,6 +1,6 @@
 ﻿using Cinema.Domain.Entities;
 
-namespace Cinema.DTO.ViewModels.Reservations
+namespace Cinema.Dto.ViewModels.Reservations
 {
     class ReservationThankyouVM
     {

@@ -9,9 +9,6 @@ namespace Cinema.Domain.Entities
             SeatReservations = new List<SeatReservation>();
         }
 
-        //Seat row and column number can be calculated via the Hall properties when neccessary
-        /*        public string Row { get; set; }
-                public string Column { get; set; }*/
         public int SeatNumber { get; set; }
         public string Label { get; set; }
 

@@ -1,11 +1,11 @@
 ﻿using Cinema.Authorization.Constants;
-using Cinema.DAL.Data;
+using Cinema.Dal.Data;
 using Cinema.Domain.Entities;
-using Cinema.DTO;
-using Cinema.DTO.ViewModels.Movies;
-using Cinema.DTO.ViewModels.Reviews;
-using Cinema.Services.Factory;
-using Cinema.Services.Factory.ViewModels;
+using Cinema.Dto;
+using Cinema.Dto.ViewModels.Movies;
+using Cinema.Dto.ViewModels.Reviews;
+using Cinema.Utilities.Factory;
+using Cinema.Utilities.Factory.ViewModels;
 using Cinema.Web.Mvc.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -72,7 +72,6 @@ namespace Cinema.Web.Mvc.Controllers
                     break;
             }
 
-            //List<MovieIndexVM> movies = await _unit.Movies.Get().Select(x => x.ToIndexVM()).ToListAsync();
             int pageSize = 10;
             return View(PaginatedList<MovieIndexVM>.Create(movies.AsQueryable(), pageNumber ?? 1, pageSize));
         }
@@ -111,16 +110,6 @@ namespace Cinema.Web.Mvc.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(MovieCreateVM model)
         {
-
-            /*            if (model.ImageFile != null)
-                        {
-                            var fileName = FileHelper.GetUniqueName(model.ImageFile.FileName);
-                            var uploads = Path.Combine(hostingEnvironment.WebRootPath, "uploads");
-                            var filePath = Path.Combine(uploads, fileName);
-                            model.ImageFile.CopyTo(new FileStream(filePath, FileMode.Create));
-                            model.Image = fileName; // Set the file name
-                        }*/
-
             Movie movie = model.Create();
 
             await _unit.Movies.InsertAsync(movie);
@@ -180,7 +169,8 @@ namespace Cinema.Web.Mvc.Controllers
             {
                 pageNumber = 1;
                 query = query.Where(x => x.DateAndTime.Date == DateFilter).OrderBy(x => x.DateAndTime);
-            } else
+            }
+            else
             {
                 filterDate = currentFilter;
             }
@@ -192,7 +182,7 @@ namespace Cinema.Web.Mvc.Controllers
                 MovieId = x.Id,
                 MovieTitle = x.Title,
                 MovieActors = x.Actors,
-                MovieRating = !x.Reviews.Any() ?  0 : (int)x.Reviews.Average(x => x.Rating),
+                MovieRating = !x.Reviews.Any() ? 0 : (int)x.Reviews.Average(x => x.Rating),
                 MovieRatingDescription = x.Reviews.Average(x => x.Rating).ToString("#.00") ?? "N/A",
                 Duration = x.Duration,
                 Year = x.Year,

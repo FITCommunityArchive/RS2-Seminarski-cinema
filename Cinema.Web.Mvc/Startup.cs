@@ -1,10 +1,10 @@
 using Cinema.Authorization.Constants;
 using Cinema.Authorization.Handlers;
 using Cinema.Authorization.Requirements;
-using Cinema.BLL;
-using Cinema.DAL.Data;
+using Cinema.Dal.Data;
 using Cinema.Domain.Entities.Identity;
-using EmailService;
+using Cinema.EmailService;
+using Cinema.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -39,16 +39,12 @@ namespace Cinema.Web.Mvc
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
-            /*services.AddIdentity<ApplicationUser, ApplicationRole>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders()*/
             services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
                     .AddRoles<ApplicationRole>()
                     .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddControllersWithViews(config =>
             {
-                // To require users to be authenticated
                 var policy = new AuthorizationPolicyBuilder()
                                  .RequireAuthenticatedUser()
                                  .Build();
@@ -71,7 +67,6 @@ namespace Cinema.Web.Mvc
             services.AddScoped<IAuthorizationHandler, IsContentEditorHandler>();
             services.AddScoped<IAuthorizationHandler, ReviewAuthorizationHandler>();
 
-            // Here we add the EmailService and setup the FormOptions for attachments to be properly sent
             var emailConfig = Configuration
                 .GetSection("EmailConfiguration")
                 .Get<EmailConfiguration>();

@@ -1,9 +1,9 @@
 ﻿using Cinema.Domain.Entities;
-using Cinema.DTO.SpecificModels;
+using Cinema.Dto.SpecificModels;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Cinema.DTO.ViewModels.Reservations
+namespace Cinema.Dto.ViewModels.Reservations
 {
     public class ReservationIndexVM
     {

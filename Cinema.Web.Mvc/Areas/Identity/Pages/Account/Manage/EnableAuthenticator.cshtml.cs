@@ -1,5 +1,5 @@
-﻿using Cinema.BLL;
-using Cinema.Domain.Entities.Identity;
+﻿using Cinema.Domain.Entities.Identity;
+using Cinema.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -129,7 +129,7 @@ namespace Cinema.Web.Mvc.Areas.Identity.Pages.Account.Manage
 
             var email = await _userManager.GetEmailAsync(user);
             AuthenticatorUri = GenerateQrCodeUri(email, unformattedKey);
-            var QRCodeAuthenticatorUri = _qRCodeService.GenerateCode(AuthenticatorUri,false);
+            var QRCodeAuthenticatorUri = _qRCodeService.GenerateCode(AuthenticatorUri, false);
             QRCodeAuthenticatorUrl = String.Format("data:image/png;base64,{0}", QRCodeAuthenticatorUri);
         }
 

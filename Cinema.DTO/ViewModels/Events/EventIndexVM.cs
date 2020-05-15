@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Cinema.DTO.ViewModels.Events
+namespace Cinema.Dto.ViewModels.Events
 {
     public class EventIndexVM
     {

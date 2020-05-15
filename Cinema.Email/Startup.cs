@@ -1,4 +1,4 @@
-using EmailService;
+using Cinema.EmailService;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http.Features;

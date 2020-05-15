@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Cinema.DTO.ViewModels.Users
+namespace Cinema.Dto.ViewModels.Users
 {
     public class ApplicationUserDetailsVM
     {

@@ -1,4 +1,4 @@
-﻿namespace Cinema.DTO.ViewModels
+﻿namespace Cinema.Dto.ViewModels
 {
     public class ValidationMessageVM
     {

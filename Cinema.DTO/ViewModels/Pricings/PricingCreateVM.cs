@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Cinema.DTO.ViewModels.Pricings
+namespace Cinema.Dto.ViewModels.Pricings
 {
     public class PricingCreateVM
     {

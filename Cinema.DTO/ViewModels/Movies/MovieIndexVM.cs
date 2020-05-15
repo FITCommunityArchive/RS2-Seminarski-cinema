@@ -1,4 +1,4 @@
-﻿namespace Cinema.DTO.ViewModels.Movies
+﻿namespace Cinema.Dto.ViewModels.Movies
 {
     public class MovieIndexVM
     {

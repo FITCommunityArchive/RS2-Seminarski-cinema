@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Cinema.DTO.ViewModels.News
+namespace Cinema.Dto.ViewModels.News
 {
     public class NewsDetailsVM
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Cinema.DTO.DomainModels
+namespace Cinema.Dto.DomainModels
 {
     public class MovieModel
     {

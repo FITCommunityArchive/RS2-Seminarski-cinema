@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Cinema.DTO.ViewModels.Screenings
+namespace Cinema.Dto.ViewModels.Screenings
 {
     public class ScreeningIndexVM
     {

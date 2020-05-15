@@ -1,4 +1,4 @@
-using Cinema.DAL.Data;
+using Cinema.Dal.Data;
 using NUnit.Framework;
 using System;
 using System.IO;

@@ -1,4 +1,4 @@
-﻿using Cinema.DAL.Data;
+﻿using Cinema.Dal.Data;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;

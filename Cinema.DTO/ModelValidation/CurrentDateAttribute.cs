@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Cinema.DTO.ModelValidation
+namespace Cinema.Dto.ModelValidation
 {
     public class CurrentDateAttribute : ValidationAttribute
     {

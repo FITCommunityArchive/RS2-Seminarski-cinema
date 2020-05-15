@@ -1,4 +1,4 @@
-﻿using Cinema.DTO.ViewModels.Reviews;
+﻿using Cinema.Dto.ViewModels.Reviews;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 

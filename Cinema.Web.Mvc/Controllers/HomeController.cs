@@ -1,9 +1,10 @@
-﻿using Cinema.BLL;
-using Cinema.DAL.Data;
+﻿
+using Cinema.Dal.Data;
 using Cinema.Domain.Entities;
-using Cinema.DTO.ViewModels.Home;
+using Cinema.Dto.ViewModels.Home;
+using Cinema.EmailService;
+using Cinema.Services;
 using Cinema.Web.Mvc.Models;
-using EmailService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -77,7 +78,7 @@ namespace Cinema.Web.Mvc.Controllers
         public IActionResult Contact(HomeContactVM contactModel)
         {
 
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 return RedirectToAction("ContactSendForm", new { content = contactModel.Content, name = contactModel.Name, email = contactModel.Email });
             }

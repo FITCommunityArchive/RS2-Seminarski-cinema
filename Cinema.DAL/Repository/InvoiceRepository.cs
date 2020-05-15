@@ -1,8 +1,8 @@
-﻿using Cinema.DAL.Data;
+﻿using Cinema.Dal.Data;
 using Cinema.Domain.Entities;
 using Microsoft.Extensions.Configuration;
 
-namespace Cinema.DAL.Repository
+namespace Cinema.Dal.Repository
 {
     public class InvoiceRepository : Repository<Invoice, int>
     {
