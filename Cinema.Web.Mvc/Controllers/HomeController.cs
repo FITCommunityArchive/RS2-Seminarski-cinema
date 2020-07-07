@@ -1,8 +1,8 @@
 ﻿
 using Cinema.Dal.Data;
 using Cinema.Domain.Entities;
-using Cinema.Models.ViewModels.Home;
 using Cinema.EmailService;
+using Cinema.Models.ViewModels.Home;
 using Cinema.Services;
 using Cinema.Web.Mvc.Models;
 using Microsoft.AspNetCore.Authorization;

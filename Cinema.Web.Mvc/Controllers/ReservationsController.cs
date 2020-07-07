@@ -1,7 +1,7 @@
 ﻿using Cinema.Dal.Data;
 using Cinema.Domain.Entities;
-using Cinema.Models.ViewModels.Reservations;
 using Cinema.EmailService;
+using Cinema.Models.ViewModels.Reservations;
 using Cinema.Services;
 using Cinema.Utilities.Constants;
 using Microsoft.AspNetCore.Hosting;

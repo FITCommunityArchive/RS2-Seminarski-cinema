@@ -1,9 +1,7 @@
 ﻿using Cinema.Domain.Entities;
-using Cinema.Domain.Entities.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage;
-using OfficeOpenXml.FormulaParsing.Excel.Functions.DateTime;
 using System;
 using System.Collections.Generic;
 
@@ -34,7 +32,7 @@ namespace Cinema.Dal.Data
                     IsDeleted = false,
                     Name = "Movie Hall 1",
                     NumberOfColumns = 16,
-                    NumberOfRows = 15                
+                    NumberOfRows = 15
                 },
                 new Hall
                 {
@@ -49,7 +47,7 @@ namespace Cinema.Dal.Data
 
             List<Seat> seats = new List<Seat>();
             int seatId = -1;
-            
+
             for (int i = 1; i <= numberOfHallColumns; i++)
             {
                 for (int j = 1; j <= numberOfHallRows; j++)
@@ -93,7 +91,7 @@ namespace Cinema.Dal.Data
                     Id = -2,
                     CreatedAt = new DateTime(2020, 7, 7),
                     IsDeleted = false,
-                    Name = "Weekend",                    
+                    Name = "Weekend",
                     Price = 8
                 },
                 new Pricing
@@ -211,9 +209,9 @@ namespace Cinema.Dal.Data
                     Year = 2002,
                     Country = "USA",
                     Directors = "Adam Bhala Lough",
-                    Actors =  "Mark Webber, Jade Yorker, Jaclyn DeSantis",
+                    Actors = "Mark Webber, Jade Yorker, Jaclyn DeSantis",
                     VideoLink = "https://www.imdb.com/video/vi1706754329?playlistId=tt0337585&ref_=tt_ov_vi"
-                }, 
+                },
                 new Movie
                 {
                     Id = -2,
@@ -254,7 +252,7 @@ namespace Cinema.Dal.Data
                     VideoLink = "https://www.imdb.com/video/vi1761450777?playlistId=tt0850253&ref_=tt_ov_vi"
                 }
             );
-            
+
             modelBuilder.Entity<GenreMovie>().HasData(
                 new GenreMovie
                 {
@@ -262,7 +260,7 @@ namespace Cinema.Dal.Data
                     CreatedAt = new DateTime(2020, 7, 7),
                     IsDeleted = false,
                     MovieId = -1,
-                    GenreId = -1                    
+                    GenreId = -1
                 },
                 new GenreMovie
                 {

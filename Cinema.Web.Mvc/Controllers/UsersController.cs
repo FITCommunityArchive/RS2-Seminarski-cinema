@@ -1,8 +1,8 @@
 ﻿using Cinema.Authorization.Constants;
 using Cinema.Dal.Data;
 using Cinema.Domain.Entities.Identity;
-using Cinema.Models.ViewModels.Users;
 using Cinema.EmailService;
+using Cinema.Models.ViewModels.Users;
 using Cinema.Utilities.Enums;
 using Cinema.Utilities.Factory;
 using Cinema.Utilities.Factory.ViewModels;
