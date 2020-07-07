@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Filters;
 using System.Net;
 
-namespace eProdaja.WebAPI.Filters
+namespace Cinema.Web.Api.Filters
 {
     public class ErrorFilter : ExceptionFilterAttribute
     {

@@ -8,7 +8,7 @@ namespace Cinema.Dal.Repository
 {
     public class ScreeningRepository : Repository<Screening, int>
     {
-        public ScreeningRepository(ApplicationDbContext context) : base(context) { }
+        public ScreeningRepository(CinemaDbContext context) : base(context) { }
 
         public bool ValidateScreeningDate(Screening screening)
         {

@@ -7,7 +7,7 @@ namespace Cinema.Dal.Repository
 {
     public class NewsRepository : Repository<News, int>
     {
-        public NewsRepository(ApplicationDbContext context) : base(context) { }
+        public NewsRepository(CinemaDbContext context) : base(context) { }
 
         public override IQueryable<News> Sort(IQueryable<News> query, SortOrder? sortOrder, string sortProperty)
         {

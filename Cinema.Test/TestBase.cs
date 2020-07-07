@@ -9,7 +9,7 @@ namespace Cinema.Test
     [TestFixture]
     public class TestBase
     {
-        protected ApplicationDbContext context;
+        protected CinemaDbContext context;
         protected UnitOfWork unit;
 
         [OneTimeSetUp]
@@ -24,7 +24,7 @@ namespace Cinema.Test
             string connectionString = "Server=(localdb)\\mssqllocaldb;Database=TestCinemaReservations;Trusted_Connection=True;MultipleActiveResultSets=true";
 
 
-            context = new ApplicationDbContext(connectionString);
+            context = new CinemaDbContext(connectionString);
             unit = new UnitOfWork(context);
             await unit.SeedTestDatabase(file);
         }

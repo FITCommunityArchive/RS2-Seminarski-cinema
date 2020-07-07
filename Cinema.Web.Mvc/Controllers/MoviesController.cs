@@ -22,7 +22,7 @@ namespace Cinema.Web.Mvc.Controllers
     [Authorize(Roles = Roles.Administrator)]
     public class MoviesController : BaseController
     {
-        public MoviesController(ApplicationDbContext context, IConfiguration configuration) : base(context, configuration) { }
+        public MoviesController(CinemaDbContext context, IConfiguration configuration) : base(context, configuration) { }
 
         public async Task<IActionResult> Index(string sortOrder, string searchString, string currentFilter, int? pageNumber)
         {

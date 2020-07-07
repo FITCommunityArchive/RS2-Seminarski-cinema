@@ -21,7 +21,7 @@ namespace Cinema.Web.Mvc.Controllers
     [Authorize(Roles = Roles.Administrator)]
     public class ScreeningsController : BaseController
     {
-        public ScreeningsController(ApplicationDbContext context, IConfiguration configuration) : base(context, configuration) { }
+        public ScreeningsController(CinemaDbContext context, IConfiguration configuration) : base(context, configuration) { }
 
         public async Task<IActionResult> Index(string sortOrder, string searchString, string currentFilter, int? pageNumber)
         {

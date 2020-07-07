@@ -8,7 +8,7 @@ namespace Cinema.Dal.Repository
 {
     public class PricingRepository : Repository<Pricing, int>
     {
-        public PricingRepository(ApplicationDbContext context) : base(context) { }
+        public PricingRepository(CinemaDbContext context) : base(context) { }
 
         public bool ValidatePrice(Pricing pricing)
         {

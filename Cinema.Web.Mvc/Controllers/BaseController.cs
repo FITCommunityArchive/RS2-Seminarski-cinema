@@ -9,7 +9,7 @@ namespace Cinema.Web.Mvc.Controllers
         protected UnitOfWork _unit;
         protected readonly IConfiguration _configuration;
 
-        public BaseController(ApplicationDbContext context, IConfiguration configuration)
+        public BaseController(CinemaDbContext context, IConfiguration configuration)
         {
             _unit = new UnitOfWork(context, configuration);
             _configuration = configuration;

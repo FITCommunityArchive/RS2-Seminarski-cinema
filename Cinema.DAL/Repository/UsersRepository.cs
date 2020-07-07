@@ -8,7 +8,7 @@ namespace Cinema.Dal.Repository
 {
     public class ApplicationUsersRepository : Repository<ApplicationUser, string>
     {
-        public ApplicationUsersRepository(ApplicationDbContext context) : base(context) { }
+        public ApplicationUsersRepository(CinemaDbContext context) : base(context) { }
 
         public override async Task UpdateAsync(ApplicationUser newEnt, string id)
         {

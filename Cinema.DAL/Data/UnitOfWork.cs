@@ -10,7 +10,7 @@ namespace Cinema.Dal.Data
     /*Legacy of Gigi School of Coding*/
     public class UnitOfWork : IDisposable
     {
-        protected ApplicationDbContext _context;
+        protected CinemaDbContext _context;
         private readonly IConfiguration _configuration;
         private IRepository<Event, int> _events;
         private IRepository<EventType, int> _eventTypes;
@@ -31,18 +31,18 @@ namespace Cinema.Dal.Data
         private IRepository<ApplicationRole, string> _roles;
         private IRepository<ApplicationUserRole, string> _userRoles;
 
-        public UnitOfWork(ApplicationDbContext context, IConfiguration configuration)
+        public UnitOfWork(CinemaDbContext context, IConfiguration configuration)
         {
             _context = context;
             _configuration = configuration;
         }
 
-        public UnitOfWork(ApplicationDbContext context)
+        public UnitOfWork(CinemaDbContext context)
         {
             _context = context;
         }
 
-        public ApplicationDbContext Context => _context;
+        public CinemaDbContext Context => _context;
 
         public IRepository<Event, int> Events => _events ?? (_events = new EventsRepository(_context));
         public IRepository<EventType, int> EventTypes => _eventTypes ?? (_eventTypes = new Repository<EventType, int>(_context));

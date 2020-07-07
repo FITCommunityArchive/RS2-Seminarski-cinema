@@ -8,20 +8,20 @@ using System.Threading.Tasks;
 
 namespace Cinema.Dal.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string,
+    public class CinemaDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string,
                                         ApplicationUserClaim, ApplicationUserRole, ApplicationUserLogin,
                                         ApplicationRoleClaim, ApplicationUserToken>
     {
         private string _connectionString;
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        public CinemaDbContext(DbContextOptions<CinemaDbContext> options)
             : base(options) { }
 
-        public ApplicationDbContext(string connectionString)
+        public CinemaDbContext(string connectionString)
         {
             _connectionString = connectionString;
         }
 
-        public ApplicationDbContext()
+        public CinemaDbContext()
         {
             _connectionString = "Server=(localdb)\\mssqllocaldb;Database=CinemaReservations;Trusted_Connection=True;MultipleActiveResultSets=true";
         }

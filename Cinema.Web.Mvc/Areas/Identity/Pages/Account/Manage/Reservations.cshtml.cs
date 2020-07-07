@@ -21,7 +21,7 @@ namespace Cinema.Web.Mvc.Areas.Identity.Pages.Account.Manage
         public ReservationsModel(
             UserManager<ApplicationUser> userManager,
             ILogger<PersonalDataModel> logger,
-            ApplicationDbContext context,
+            CinemaDbContext context,
             IConfiguration configuration)
         {
             _userManager = userManager;

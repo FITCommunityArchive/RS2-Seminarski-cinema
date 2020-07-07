@@ -31,7 +31,7 @@ namespace Cinema.Web.Mvc.Controllers
         private readonly ILogger<UsersController> _logger;
         private readonly IEmailSender _emailSender;
 
-        public UsersController(ApplicationDbContext context, UserManager<ApplicationUser> userManager,
+        public UsersController(CinemaDbContext context, UserManager<ApplicationUser> userManager,
            ILogger<UsersController> logger, IEmailSender emailSender, IConfiguration configuration) : base(context, configuration)
         {
             _userManager = userManager;

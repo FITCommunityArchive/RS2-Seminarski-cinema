@@ -20,7 +20,7 @@ namespace Cinema.Web.Mvc.Controllers
     public class ReviewsController : BaseController
     {
         private readonly IAuthorizationService _authorizationService;
-        public ReviewsController(ApplicationDbContext context, IAuthorizationService authorizationService, IConfiguration configuration) : base(context, configuration)
+        public ReviewsController(CinemaDbContext context, IAuthorizationService authorizationService, IConfiguration configuration) : base(context, configuration)
         {
             _authorizationService = authorizationService;
         }
