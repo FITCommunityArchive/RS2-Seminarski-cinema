@@ -48,12 +48,6 @@ namespace Cinema.Dal.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (_connectionString != null)
-            {
-                optionsBuilder.UseSqlServer(_connectionString);
-            }
-
-            optionsBuilder.UseLazyLoadingProxies(true);
             base.OnConfiguring(optionsBuilder);
         }
         protected override void OnModelCreating(ModelBuilder builder)
