@@ -1,5 +1,5 @@
 ﻿using Cinema.Domain.Entities;
-using Cinema.Dto.ViewModels.News;
+using Cinema.Models.ViewModels.News;
 using Cinema.Utilities.Helpers;
 using Microsoft.AspNetCore.Mvc.Rendering;
 

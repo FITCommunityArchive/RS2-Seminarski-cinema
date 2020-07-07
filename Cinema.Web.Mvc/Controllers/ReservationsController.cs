@@ -1,6 +1,6 @@
 ﻿using Cinema.Dal.Data;
 using Cinema.Domain.Entities;
-using Cinema.Dto.ViewModels.Reservations;
+using Cinema.Models.ViewModels.Reservations;
 using Cinema.EmailService;
 using Cinema.Services;
 using Cinema.Utilities.Constants;

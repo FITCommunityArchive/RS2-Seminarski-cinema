@@ -1,7 +1,7 @@
 ﻿using Cinema.Authorization.Constants;
 using Cinema.Dal.Data;
 using Cinema.Domain.Entities;
-using Cinema.Dto.ViewModels.Pricings;
+using Cinema.Models.ViewModels.Pricings;
 using Cinema.Utilities.Constants;
 using Cinema.Utilities.Enums;
 using Cinema.Utilities.Factory;

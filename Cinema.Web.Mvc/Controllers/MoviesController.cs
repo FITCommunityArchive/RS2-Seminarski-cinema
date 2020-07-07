@@ -1,9 +1,9 @@
 ﻿using Cinema.Authorization.Constants;
 using Cinema.Dal.Data;
 using Cinema.Domain.Entities;
-using Cinema.Dto;
-using Cinema.Dto.ViewModels.Movies;
-using Cinema.Dto.ViewModels.Reviews;
+using Cinema.Models;
+using Cinema.Models.ViewModels.Movies;
+using Cinema.Models.ViewModels.Reviews;
 using Cinema.Utilities.Factory;
 using Cinema.Utilities.Factory.ViewModels;
 using Cinema.Web.Mvc.Models;

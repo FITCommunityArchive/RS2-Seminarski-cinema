@@ -1,5 +1,5 @@
 ﻿using Cinema.Domain.Entities.Identity;
-using Cinema.Dto.ViewModels.Users;
+using Cinema.Models.ViewModels.Users;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Linq;
 

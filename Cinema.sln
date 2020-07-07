@@ -16,7 +16,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.Utilities", "Cinema.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.Services", "Cinema.Services\Cinema.Services.csproj", "{ABC21100-AC7A-45D0-8D0E-D2D2721CA1B6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.Dto", "Cinema.Dto\Cinema.Dto.csproj", "{1825F002-332F-440F-B005-586249A00CC1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.Models", "Cinema.Models\Cinema.Models.csproj", "{1825F002-332F-440F-B005-586249A00CC1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.Dal", "Cinema.Dal\Cinema.Dal.csproj", "{B28027EC-C5A5-492A-B2A2-8F40A38551C2}"
 	ProjectSection(ProjectDependencies) = postProject

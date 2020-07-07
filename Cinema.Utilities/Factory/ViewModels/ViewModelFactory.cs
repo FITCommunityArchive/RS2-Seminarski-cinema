@@ -1,7 +1,7 @@
 ﻿using Cinema.Domain.Entities;
-using Cinema.Dto.ViewModels.Movies;
-using Cinema.Dto.ViewModels.Reviews;
-using Cinema.Dto.ViewModels.Screenings;
+using Cinema.Models.ViewModels.Movies;
+using Cinema.Models.ViewModels.Reviews;
+using Cinema.Models.ViewModels.Screenings;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Linq;

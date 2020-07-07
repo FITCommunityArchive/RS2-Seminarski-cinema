@@ -1,7 +1,7 @@
 ﻿using Cinema.Authorization.Constants;
 using Cinema.Dal.Data;
 using Cinema.Domain.Entities;
-using Cinema.Dto.ViewModels.Events;
+using Cinema.Models.ViewModels.Events;
 using Cinema.Utilities.Enums;
 using Cinema.Utilities.Factory;
 using Cinema.Utilities.Factory.ViewModels;

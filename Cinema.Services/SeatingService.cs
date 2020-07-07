@@ -1,6 +1,6 @@
 ﻿using Cinema.Dal.Data;
 using Cinema.Domain.Entities;
-using Cinema.Dto.SpecificModels;
+using Cinema.Models.SpecificModels;
 using Cinema.Utilities.Factory;
 using System.Collections.Generic;
 using System.Linq;

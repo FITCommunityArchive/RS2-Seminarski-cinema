@@ -2,8 +2,8 @@
 using Cinema.Authorization.Requirements;
 using Cinema.Dal.Data;
 using Cinema.Domain.Entities;
-using Cinema.Dto;
-using Cinema.Dto.ViewModels.Reviews;
+using Cinema.Models;
+using Cinema.Models.ViewModels.Reviews;
 using Cinema.Utilities.Factory;
 using Cinema.Utilities.Factory.ViewModels;
 using Microsoft.AspNetCore.Authorization;

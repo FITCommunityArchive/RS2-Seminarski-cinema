@@ -1,7 +1,7 @@
 ﻿using Cinema.Authorization.Constants;
 using Cinema.Dal.Data;
 using Cinema.Domain.Entities;
-using Cinema.Dto.ViewModels.Screenings;
+using Cinema.Models.ViewModels.Screenings;
 using Cinema.Utilities.Constants;
 using Cinema.Utilities.Factory;
 using Cinema.Utilities.Factory.ViewModels;

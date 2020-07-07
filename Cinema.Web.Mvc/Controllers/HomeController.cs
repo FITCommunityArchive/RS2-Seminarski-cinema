@@ -1,7 +1,7 @@
 ﻿
 using Cinema.Dal.Data;
 using Cinema.Domain.Entities;
-using Cinema.Dto.ViewModels.Home;
+using Cinema.Models.ViewModels.Home;
 using Cinema.EmailService;
 using Cinema.Services;
 using Cinema.Web.Mvc.Models;

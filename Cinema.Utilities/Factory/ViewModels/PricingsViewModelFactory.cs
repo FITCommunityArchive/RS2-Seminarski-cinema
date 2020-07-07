@@ -1,5 +1,5 @@
 ﻿using Cinema.Domain.Entities;
-using Cinema.Dto.ViewModels.Pricings;
+using Cinema.Models.ViewModels.Pricings;
 using Cinema.Utilities.Helpers;
 
 namespace Cinema.Utilities.Factory.ViewModels
