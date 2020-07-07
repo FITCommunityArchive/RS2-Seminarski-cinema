@@ -156,6 +156,50 @@ namespace Cinema.Dal.Data
                 }
             );
 
+            modelBuilder.Entity<Genre>().HasData(
+                new Genre
+                {
+                    Id = -1,
+                    CreatedAt = new DateTime(2020, 7, 7),
+                    IsDeleted = false,
+                    Name = "Action"
+                },
+                new Genre
+                {
+                    Id = -2,
+                    CreatedAt = new DateTime(2020, 7, 7),
+                    IsDeleted = false,
+                    Name = "Drama"
+                },
+                new Genre
+                {
+                    Id = -3,
+                    CreatedAt = new DateTime(2020, 7, 7),
+                    IsDeleted = false,
+                    Name = "Adventure"
+                },
+                new Genre
+                {
+                    Id = -4,
+                    CreatedAt = new DateTime(2020, 7, 7),
+                    IsDeleted = false,
+                    Name = "Fantasy"
+                },
+                new Genre
+                {
+                    Id = -5,
+                    CreatedAt = new DateTime(2020, 7, 7),
+                    IsDeleted = false,
+                    Name = "Animation"
+                },
+                new Genre
+                {
+                    Id = -6,
+                    CreatedAt = new DateTime(2020, 7, 7),
+                    IsDeleted = false,
+                    Name = "Comedy"
+                });
+
             modelBuilder.Entity<Movie>().HasData(
                 new Movie
                 {
@@ -210,6 +254,88 @@ namespace Cinema.Dal.Data
                     VideoLink = "https://www.imdb.com/video/vi1761450777?playlistId=tt0850253&ref_=tt_ov_vi"
                 }
             );
+            
+            modelBuilder.Entity<GenreMovie>().HasData(
+                new GenreMovie
+                {
+                    Id = -1,
+                    CreatedAt = new DateTime(2020, 7, 7),
+                    IsDeleted = false,
+                    MovieId = -1,
+                    GenreId = -1                    
+                },
+                new GenreMovie
+                {
+                    Id = -2,
+                    CreatedAt = new DateTime(2020, 7, 7),
+                    IsDeleted = false,
+                    MovieId = -1,
+                    GenreId = -2
+                },
+                new GenreMovie
+                {
+                    Id = -3,
+                    CreatedAt = new DateTime(2020, 7, 7),
+                    IsDeleted = false,
+                    MovieId = -4,
+                    GenreId = -1
+                },
+                new GenreMovie
+                {
+                    Id = -4,
+                    CreatedAt = new DateTime(2020, 7, 7),
+                    IsDeleted = false,
+                    MovieId = -4,
+                    GenreId = -2
+                },
+                new GenreMovie
+                {
+                    Id = -5,
+                    CreatedAt = new DateTime(2020, 7, 7),
+                    IsDeleted = false,
+                    MovieId = -2,
+                    GenreId = -1
+                },
+                new GenreMovie
+                {
+                    Id = -6,
+                    CreatedAt = new DateTime(2020, 7, 7),
+                    IsDeleted = false,
+                    MovieId = -2,
+                    GenreId = -3
+                },
+                new GenreMovie
+                {
+                    Id = -7,
+                    CreatedAt = new DateTime(2020, 7, 7),
+                    IsDeleted = false,
+                    MovieId = -2,
+                    GenreId = -4
+                },
+                new GenreMovie
+                {
+                    Id = -8,
+                    CreatedAt = new DateTime(2020, 7, 7),
+                    IsDeleted = false,
+                    MovieId = -3,
+                    GenreId = -4
+                },
+                new GenreMovie
+                {
+                    Id = -9,
+                    CreatedAt = new DateTime(2020, 7, 7),
+                    IsDeleted = false,
+                    MovieId = -3,
+                    GenreId = -5
+                },
+                new GenreMovie
+                {
+                    Id = -10,
+                    CreatedAt = new DateTime(2020, 7, 7),
+                    IsDeleted = false,
+                    MovieId = -3,
+                    GenreId = -6
+                });
         }
     }
 }
