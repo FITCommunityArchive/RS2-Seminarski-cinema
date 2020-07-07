@@ -10,7 +10,7 @@
             @foreach (var newsItem in Model) {
             <li class="mx-0 mb-4">
                 <a href="#"><img src="@newsItem.Image" alt="Image" class="rounded fmxh-150 mb-3"></a>
-                <div class="post-meta font-small mb-2"><span><i class="far fa-clock mr-2"></i>@newsItem.Created.ToShortDateString()</span></div><a href="#"><h6 class="mb-1">@newsItem.Description.Truncate(40)</h6></a>
+                <div class="post-meta font-small mb-2"><span><i class="far fa-clock mr-2"></i>@newsItem.CreatedAt.ToShortDateString()</span></div><a href="#"><h6 class="mb-1">@newsItem.Description.Truncate(40)</h6></a>
             </li>
             }
         </ul>
