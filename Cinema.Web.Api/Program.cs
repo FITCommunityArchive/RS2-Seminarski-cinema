@@ -1,4 +1,6 @@
+using Cinema.Dal.Data;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 namespace Cinema.Web.API
@@ -7,7 +9,15 @@ namespace Cinema.Web.API
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            var host = CreateHostBuilder(args).Build();
+
+            using (var scope = host.Services.CreateScope())
+            {
+                var service = scope.ServiceProvider.GetRequiredService<CinemaDbContext>();
+                Data.Migrate(service);
+            }
+
+            host.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

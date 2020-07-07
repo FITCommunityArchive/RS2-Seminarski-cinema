@@ -16,8 +16,8 @@ namespace Cinema.Utilities.Factory.ViewModels
                 Description = news.Description.Truncate(),
                 Image = news.Image,
                 Title = news.Title,
-                DateCreated = news.Created.ToFormattedDate(),
-                TimeCreated = news.Created.ToFormattedTime(),
+                DateCreated = news.CreatedAt.ToFormattedDate(),
+                TimeCreated = news.CreatedAt.ToFormattedTime(),
                 Type = news.Type.CreateMaster()
             };
         }
@@ -31,8 +31,8 @@ namespace Cinema.Utilities.Factory.ViewModels
                 Description = news.Description,
                 Image = news.Image,
                 Title = news.Title,
-                DateCreated = news.Created.ToFormattedDate(),
-                TimeCreated = news.Created.ToFormattedTime(),
+                DateCreated = news.CreatedAt.ToFormattedDate(),
+                TimeCreated = news.CreatedAt.ToFormattedTime(),
                 Type = news.Type.CreateMaster()
             };
         }

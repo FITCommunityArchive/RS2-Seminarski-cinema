@@ -102,7 +102,7 @@ namespace Cinema.Test.DALTests
 
             Movie deletedMovie = await unit.Movies.GetAsync(movieId);
 
-            Assert.True(deletedMovie.Deleted);
+            Assert.True(deletedMovie.IsDeleted);
         }
     }
 }

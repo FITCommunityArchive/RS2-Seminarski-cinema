@@ -7,12 +7,13 @@ namespace Cinema.Domain.Entities
     {
         public BaseClass()
         {
-            Created = DateTime.Now;
-            Deleted = false;
+            CreatedAt = DateTime.UtcNow;
+            IsDeleted = false;
         }
+
         [Key]
         public int Id { get; set; }
-        public DateTime Created { get; set; }
-        public bool Deleted { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

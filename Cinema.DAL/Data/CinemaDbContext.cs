@@ -66,21 +66,21 @@ namespace Cinema.Dal.Data
                 relationship.DeleteBehavior = DeleteBehavior.Restrict;
             }
 
-            builder.Entity<Event>().HasQueryFilter(x => !x.Deleted);
-            builder.Entity<EventType>().HasQueryFilter(x => !x.Deleted);
-            builder.Entity<Genre>().HasQueryFilter(x => !x.Deleted);
-            builder.Entity<GenreMovie>().HasQueryFilter(x => !x.Deleted);
-            builder.Entity<Hall>().HasQueryFilter(x => !x.Deleted);
-            builder.Entity<Invoice>().HasQueryFilter(x => !x.Deleted);
-            builder.Entity<Movie>().HasQueryFilter(x => !x.Deleted);
-            builder.Entity<News>().HasQueryFilter(x => !x.Deleted);
-            builder.Entity<NewsType>().HasQueryFilter(x => !x.Deleted);
-            builder.Entity<Pricing>().HasQueryFilter(x => !x.Deleted);
-            builder.Entity<Reservation>().HasQueryFilter(x => !x.Deleted);
-            builder.Entity<Review>().HasQueryFilter(x => !x.Deleted);
-            builder.Entity<Screening>().HasQueryFilter(x => !x.Deleted);
-            builder.Entity<Seat>().HasQueryFilter(x => !x.Deleted);
-            builder.Entity<SeatReservation>().HasQueryFilter(x => !x.Deleted);
+            builder.Entity<Event>().HasQueryFilter(x => !x.IsDeleted);
+            builder.Entity<EventType>().HasQueryFilter(x => !x.IsDeleted);
+            builder.Entity<Genre>().HasQueryFilter(x => !x.IsDeleted);
+            builder.Entity<GenreMovie>().HasQueryFilter(x => !x.IsDeleted);
+            builder.Entity<Hall>().HasQueryFilter(x => !x.IsDeleted);
+            builder.Entity<Invoice>().HasQueryFilter(x => !x.IsDeleted);
+            builder.Entity<Movie>().HasQueryFilter(x => !x.IsDeleted);
+            builder.Entity<News>().HasQueryFilter(x => !x.IsDeleted);
+            builder.Entity<NewsType>().HasQueryFilter(x => !x.IsDeleted);
+            builder.Entity<Pricing>().HasQueryFilter(x => !x.IsDeleted);
+            builder.Entity<Reservation>().HasQueryFilter(x => !x.IsDeleted);
+            builder.Entity<Review>().HasQueryFilter(x => !x.IsDeleted);
+            builder.Entity<Screening>().HasQueryFilter(x => !x.IsDeleted);
+            builder.Entity<Seat>().HasQueryFilter(x => !x.IsDeleted);
+            builder.Entity<SeatReservation>().HasQueryFilter(x => !x.IsDeleted);
             builder.Entity<ApplicationUser>().HasQueryFilter(x => !x.Deleted);
             builder.Entity<ApplicationRole>().HasQueryFilter(x => !x.Deleted);
             builder.Entity<ApplicationUserRole>().HasQueryFilter(x => !x.Deleted);
@@ -145,6 +145,8 @@ namespace Cinema.Dal.Data
             {
                 b.ToTable("UserRoles");
             });
+
+            Data.Seed(builder);
         }
 
         public override int SaveChanges()

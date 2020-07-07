@@ -13,8 +13,8 @@ namespace Cinema.Utilities.Factory.ViewModels
                 Id = pricing.Id,
                 Name = pricing.Name,
                 Price = pricing.Price,
-                DateCreated = pricing.Created.ToFormattedDate(),
-                TimeCreated = pricing.Created.ToFormattedTime(),
+                DateCreated = pricing.CreatedAt.ToFormattedDate(),
+                TimeCreated = pricing.CreatedAt.ToFormattedTime(),
             };
         }
 
