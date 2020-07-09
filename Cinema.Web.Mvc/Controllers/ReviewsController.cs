@@ -2,8 +2,8 @@
 using Cinema.Authorization.Requirements;
 using Cinema.Dal.Data;
 using Cinema.Domain.Entities;
-using Cinema.Dto;
-using Cinema.Dto.ViewModels.Reviews;
+using Cinema.Models;
+using Cinema.Models.ViewModels.Reviews;
 using Cinema.Utilities.Factory;
 using Cinema.Utilities.Factory.ViewModels;
 using Microsoft.AspNetCore.Authorization;
@@ -20,7 +20,7 @@ namespace Cinema.Web.Mvc.Controllers
     public class ReviewsController : BaseController
     {
         private readonly IAuthorizationService _authorizationService;
-        public ReviewsController(ApplicationDbContext context, IAuthorizationService authorizationService, IConfiguration configuration) : base(context, configuration)
+        public ReviewsController(CinemaDbContext context, IAuthorizationService authorizationService, IConfiguration configuration) : base(context, configuration)
         {
             _authorizationService = authorizationService;
         }

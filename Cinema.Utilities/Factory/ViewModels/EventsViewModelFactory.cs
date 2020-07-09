@@ -1,5 +1,5 @@
 ﻿using Cinema.Domain.Entities;
-using Cinema.Dto.ViewModels.Events;
+using Cinema.Models.ViewModels.Events;
 using Cinema.Utilities.Helpers;
 using Microsoft.AspNetCore.Mvc.Rendering;
 

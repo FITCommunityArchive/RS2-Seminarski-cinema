@@ -1,8 +1,8 @@
 ﻿
 using Cinema.Dal.Data;
 using Cinema.Domain.Entities;
-using Cinema.Dto.ViewModels.Home;
 using Cinema.EmailService;
+using Cinema.Models.ViewModels.Home;
 using Cinema.Services;
 using Cinema.Web.Mvc.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -25,7 +25,7 @@ namespace Cinema.Web.Mvc.Controllers
         private readonly IEmailSender _emailSender;
         private readonly IConfiguration _configuration;
 
-        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context, IEmailSender emailSender, IConfiguration configuration)
+        public HomeController(ILogger<HomeController> logger, CinemaDbContext context, IEmailSender emailSender, IConfiguration configuration)
         {
             _logger = logger;
             _unit = new UnitOfWork(context, configuration);

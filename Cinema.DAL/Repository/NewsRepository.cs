@@ -7,7 +7,7 @@ namespace Cinema.Dal.Repository
 {
     public class NewsRepository : Repository<News, int>
     {
-        public NewsRepository(ApplicationDbContext context) : base(context) { }
+        public NewsRepository(CinemaDbContext context) : base(context) { }
 
         public override IQueryable<News> Sort(IQueryable<News> query, SortOrder? sortOrder, string sortProperty)
         {
@@ -22,10 +22,10 @@ namespace Cinema.Dal.Repository
                         query = query.OrderBy(s => s.Description);
                         break;
                     case "DateCreated":
-                        query = query.OrderBy(s => s.Created);
+                        query = query.OrderBy(s => s.CreatedAt);
                         break;
                     case "TimeCreated":
-                        query = query.OrderBy(s => s.Created.TimeOfDay);
+                        query = query.OrderBy(s => s.CreatedAt.TimeOfDay);
                         break;
                     case "Type":
                         query = query.OrderBy(s => s.Type.Name);
@@ -43,10 +43,10 @@ namespace Cinema.Dal.Repository
                         query = query.OrderByDescending(s => s.Description);
                         break;
                     case "DateCreated":
-                        query = query.OrderByDescending(s => s.Created);
+                        query = query.OrderByDescending(s => s.CreatedAt);
                         break;
                     case "TimeCreated":
-                        query = query.OrderByDescending(s => s.Created.TimeOfDay);
+                        query = query.OrderByDescending(s => s.CreatedAt.TimeOfDay);
                         break;
                     case "Type":
                         query = query.OrderByDescending(s => s.Type.Name);

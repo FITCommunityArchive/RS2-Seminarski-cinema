@@ -1,5 +1,5 @@
 ﻿using Cinema.Domain.Entities;
-using Cinema.Dto.DomainModels;
+using Cinema.Models.DomainModels;
 using System.Linq;
 
 namespace Cinema.Utilities.Factory

@@ -1,5 +1,5 @@
 ﻿using Cinema.Domain.Entities;
-using Cinema.Dto.ViewModels.Pricings;
+using Cinema.Models.ViewModels.Pricings;
 using Cinema.Utilities.Helpers;
 
 namespace Cinema.Utilities.Factory.ViewModels
@@ -13,8 +13,8 @@ namespace Cinema.Utilities.Factory.ViewModels
                 Id = pricing.Id,
                 Name = pricing.Name,
                 Price = pricing.Price,
-                DateCreated = pricing.Created.ToFormattedDate(),
-                TimeCreated = pricing.Created.ToFormattedTime(),
+                DateCreated = pricing.CreatedAt.ToFormattedDate(),
+                TimeCreated = pricing.CreatedAt.ToFormattedTime(),
             };
         }
 

@@ -7,7 +7,7 @@ namespace Cinema.Dal.Repository
 {
     public class EventsRepository : Repository<Event, int>
     {
-        public EventsRepository(ApplicationDbContext context) : base(context) { }
+        public EventsRepository(CinemaDbContext context) : base(context) { }
 
         public override IQueryable<Event> Sort(IQueryable<Event> query, SortOrder? sortOrder, string sortProperty)
         {

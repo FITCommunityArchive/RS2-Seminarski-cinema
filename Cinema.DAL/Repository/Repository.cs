@@ -13,10 +13,10 @@ namespace Cinema.Dal.Repository
     /*Legacy of Gigi School of Coding*/
     public class Repository<Entity, Key> : IRepository<Entity, Key> where Entity : class
     {
-        protected ApplicationDbContext _context;
+        protected CinemaDbContext _context;
         protected DbSet<Entity> _dbSet;
 
-        public Repository(ApplicationDbContext context)
+        public Repository(CinemaDbContext context)
         {
             _context = context;
             _dbSet = _context.Set<Entity>();

@@ -1,7 +1,7 @@
 ﻿using Cinema.Authorization.Constants;
 using Cinema.Dal.Data;
 using Cinema.Domain.Entities;
-using Cinema.Dto.ViewModels.Pricings;
+using Cinema.Models.ViewModels.Pricings;
 using Cinema.Utilities.Constants;
 using Cinema.Utilities.Enums;
 using Cinema.Utilities.Factory;
@@ -21,7 +21,7 @@ namespace Cinema.Web.Mvc.Controllers
     [Authorize(Roles = Roles.Administrator)]
     public class PricingsController : BaseController
     {
-        public PricingsController(ApplicationDbContext context, IConfiguration configuration) : base(context, configuration) { }
+        public PricingsController(CinemaDbContext context, IConfiguration configuration) : base(context, configuration) { }
 
         [AllowAnonymous]
         public async Task<IActionResult> Index(SortOrder? sortOrder, string sortProperty, string searchString, string currentFilter, int? pageNumber)

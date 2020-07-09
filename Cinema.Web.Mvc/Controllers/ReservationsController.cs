@@ -1,7 +1,7 @@
 ﻿using Cinema.Dal.Data;
 using Cinema.Domain.Entities;
-using Cinema.Dto.ViewModels.Reservations;
 using Cinema.EmailService;
+using Cinema.Models.ViewModels.Reservations;
 using Cinema.Services;
 using Cinema.Utilities.Constants;
 using Microsoft.AspNetCore.Hosting;
@@ -24,7 +24,7 @@ namespace Cinema.Web.Mvc.Controllers
         private readonly IEmailSender _emailSender;
         private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public ReservationsController(ApplicationDbContext context, IEmailSender emailSender, IWebHostEnvironment webHostEnvironment, IConfiguration configuration) : base(context, configuration)
+        public ReservationsController(CinemaDbContext context, IEmailSender emailSender, IWebHostEnvironment webHostEnvironment, IConfiguration configuration) : base(context, configuration)
         {
             _seatingService = new SeatingService(_unit);
             _pricingService = new PricingService(_unit);

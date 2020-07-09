@@ -13,7 +13,7 @@ namespace Cinema.Web.Mvc.Areas.Identity
         {
             builder.ConfigureServices((context, services) =>
             {
-                services.AddDbContext<ApplicationDbContext>(options =>
+                services.AddDbContext<CinemaDbContext>(options =>
                     options.UseSqlServer(
                         context.Configuration.GetConnectionString("DefaultConnection")));
 

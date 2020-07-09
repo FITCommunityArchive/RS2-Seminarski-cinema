@@ -1,4 +1,4 @@
-﻿using Cinema.Dto.ViewModels;
+﻿using Cinema.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 

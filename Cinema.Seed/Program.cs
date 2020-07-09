@@ -17,7 +17,7 @@ namespace Cinema.Seed
             string fullPath = projectDirectory + path;
             FileInfo file = new FileInfo(fullPath);
 
-            ApplicationDbContext context = new ApplicationDbContext(connectionString);
+            CinemaDbContext context = new CinemaDbContext(connectionString);
             UnitOfWork unit = new UnitOfWork(context);
 
             // Uncomment to run database seed.          
