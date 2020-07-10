@@ -1,5 +1,6 @@
 ﻿using Cinema.Dal.Data;
 using Cinema.Domain.Entities.Identity;
+using Cinema.Utilities.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using OfficeOpenXml;
@@ -9,9 +10,9 @@ namespace Cinema.Seed.CollectMethods
 {
     public class RolesCollect
     {
-        public static async Task Collect(ExcelWorksheet rawData, UnitOfWork unit)
+        public static async Task Collect(ExcelWorksheet rawData, IUnitOfWork unit)
         {
-            var store = new RoleStore<ApplicationRole>(unit.Context);
+            var store = new RoleStore<ApplicationRole>(unit.Context as CinemaDbContext);
             var normalizer = new UpperInvariantLookupNormalizer();
             var roleManager = new RoleManager<ApplicationRole>(store, null, normalizer, null, null);
 

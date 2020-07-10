@@ -1,5 +1,6 @@
 using AutoMapper;
 using Cinema.Dal.Data;
+using Cinema.Utilities.Interfaces;
 using Cinema.Web.Api.Filters;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -36,6 +37,9 @@ namespace Cinema.Web.API
 
             string connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<CinemaDbContext>(options => options.UseSqlServer(connection));
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<ICinemaDbContext, CinemaDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

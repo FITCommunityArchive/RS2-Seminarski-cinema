@@ -1,5 +1,6 @@
 ﻿using Cinema.Domain.Entities;
 using Cinema.Domain.Entities.Identity;
+using Cinema.Utilities.Interfaces;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace Cinema.Dal.Data
 {
     public class CinemaDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string,
                                         ApplicationUserClaim, ApplicationUserRole, ApplicationUserLogin,
-                                        ApplicationRoleClaim, ApplicationUserToken>
+                                        ApplicationRoleClaim, ApplicationUserToken>, ICinemaDbContext
     {
         private string _connectionString;
         public CinemaDbContext(DbContextOptions<CinemaDbContext> options)

@@ -12,7 +12,7 @@ namespace Cinema.Seed.CollectMethods
     {
         public static async Task Collect(ExcelWorksheet rawData, UnitOfWork unit)
         {
-            var store = new UserStore<ApplicationUser>(unit.Context);
+            var store = new UserStore<ApplicationUser>(unit.Context as CinemaDbContext);
             var passwordHasher = new PasswordHasher<ApplicationUser>();
             var normalizer = new UpperInvariantLookupNormalizer();
             var userManager = new UserManager<ApplicationUser>(store, null, passwordHasher, null, null, normalizer, null, null, null);

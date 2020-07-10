@@ -1,5 +1,6 @@
 ﻿using Cinema.Dal.Data;
 using Cinema.Domain.Entities;
+using Cinema.Utilities.Interfaces;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,7 +9,7 @@ namespace Cinema.Dal.Repository
 {
     public class ScreeningRepository : Repository<Screening, int>
     {
-        public ScreeningRepository(CinemaDbContext context) : base(context) { }
+        public ScreeningRepository(ICinemaDbContext context) : base(context) { }
 
         public bool ValidateScreeningDate(Screening screening)
         {
