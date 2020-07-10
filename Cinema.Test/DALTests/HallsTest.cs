@@ -101,7 +101,7 @@ namespace Cinema.Test.DALTests
             await unit.SaveAsync();
 
             Hall deletedHall = await unit.Halls.GetAsync(hallId);
-            Assert.True(deletedHall.Deleted);
+            Assert.True(deletedHall.IsDeleted);
         }
     }
 }

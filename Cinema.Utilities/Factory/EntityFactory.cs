@@ -1,12 +1,12 @@
 ﻿using Cinema.Domain.Entities;
 using Cinema.Domain.Entities.Identity;
-using Cinema.Dto.ViewModels.Events;
-using Cinema.Dto.ViewModels.Movies;
-using Cinema.Dto.ViewModels.News;
-using Cinema.Dto.ViewModels.Pricings;
-using Cinema.Dto.ViewModels.Reviews;
-using Cinema.Dto.ViewModels.Screenings;
-using Cinema.Dto.ViewModels.Users;
+using Cinema.Models.ViewModels.Events;
+using Cinema.Models.ViewModels.Movies;
+using Cinema.Models.ViewModels.News;
+using Cinema.Models.ViewModels.Pricings;
+using Cinema.Models.ViewModels.Reviews;
+using Cinema.Models.ViewModels.Screenings;
+using Cinema.Models.ViewModels.Users;
 
 namespace Cinema.Utilities.Factory
 {

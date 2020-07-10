@@ -1,6 +1,6 @@
 ﻿using Cinema.Domain.Entities;
 using Cinema.Domain.Entities.Identity;
-using Cinema.Dto;
+using Cinema.Models;
 
 namespace Cinema.Utilities.Factory
 {

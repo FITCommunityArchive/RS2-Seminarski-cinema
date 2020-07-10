@@ -21,7 +21,7 @@
                                     </a><a class="btn btn-sm btn-secondary mt-2 mb-4 animate-up-1" href="#"><span class="fas fa-user-plus mr-1 d-none d-xl-inline"></span> Follow</a>
                                     <p class="font-small font-weight-light text-center mb-2">
                                         Published:
-                                        <time datetime="2009-10-09">@Model.Created.ToShortDateString()</time>
+                                        <time datetime="2009-10-09">@Model.CreatedAt.ToShortDateString()</time>
                                     </p>
                                 </div>
                                 <div class="d-flex align-items-center d-lg-none mb-4">
@@ -32,7 +32,7 @@
                                 <h1 class="mb-2 mb-lg-4">@Model.Title</h1>
                                 <p class="d-lg-none font-small font-weight-light mb-4">
                                     Published:
-                                    <time datetime="2009-10-09">@Model.Created.ToShortDateString()</time>
+                                    <time datetime="2009-10-09">@Model.CreatedAt.ToShortDateString()</time>
                                 </p>
                                 <h2 class="text-gray font-medium font-weight-light">@Model.Type.Name</h2>
                             </div>

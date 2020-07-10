@@ -29,10 +29,10 @@ namespace Cinema.Dal.Repository
                         query = query.OrderBy(s => s.Price);
                         break;
                     case "DateCreated":
-                        query = query.OrderBy(s => s.Created);
+                        query = query.OrderBy(s => s.CreatedAt);
                         break;
                     case "TimeCreated":
-                        query = query.OrderBy(s => s.Created.TimeOfDay);
+                        query = query.OrderBy(s => s.CreatedAt.TimeOfDay);
                         break;
                     default:
                         query = query.OrderBy(s => s.Name);
@@ -50,10 +50,10 @@ namespace Cinema.Dal.Repository
                         query = query.OrderByDescending(s => s.Price);
                         break;
                     case "DateCreated":
-                        query = query.OrderByDescending(s => s.Created);
+                        query = query.OrderByDescending(s => s.CreatedAt);
                         break;
                     case "TimeCreated":
-                        query = query.OrderByDescending(s => s.Created.TimeOfDay);
+                        query = query.OrderByDescending(s => s.CreatedAt.TimeOfDay);
                         break;
                     default:
                         query = query.OrderByDescending(s => s.Name);

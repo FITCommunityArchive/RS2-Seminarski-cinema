@@ -1,8 +1,8 @@
 ﻿using Cinema.Authorization.Constants;
 using Cinema.Dal.Data;
 using Cinema.Domain.Entities.Identity;
-using Cinema.Dto.ViewModels.Users;
 using Cinema.EmailService;
+using Cinema.Models.ViewModels.Users;
 using Cinema.Utilities.Enums;
 using Cinema.Utilities.Factory;
 using Cinema.Utilities.Factory.ViewModels;
@@ -31,7 +31,7 @@ namespace Cinema.Web.Mvc.Controllers
         private readonly ILogger<UsersController> _logger;
         private readonly IEmailSender _emailSender;
 
-        public UsersController(ApplicationDbContext context, UserManager<ApplicationUser> userManager,
+        public UsersController(CinemaDbContext context, UserManager<ApplicationUser> userManager,
            ILogger<UsersController> logger, IEmailSender emailSender, IConfiguration configuration) : base(context, configuration)
         {
             _userManager = userManager;

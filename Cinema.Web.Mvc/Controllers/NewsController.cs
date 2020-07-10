@@ -1,7 +1,7 @@
 ﻿using Cinema.Authorization.Constants;
 using Cinema.Dal.Data;
 using Cinema.Domain.Entities;
-using Cinema.Dto.ViewModels.News;
+using Cinema.Models.ViewModels.News;
 using Cinema.Utilities.Enums;
 using Cinema.Utilities.Factory;
 using Cinema.Utilities.Factory.ViewModels;
@@ -22,7 +22,7 @@ namespace Cinema.Web.Mvc.Controllers
     [Authorize(Roles = Roles.ContentEditor + "," + Roles.Administrator)]
     public class NewsController : BaseController
     {
-        public NewsController(ApplicationDbContext context, IConfiguration configuration) : base(context, configuration) { }
+        public NewsController(CinemaDbContext context, IConfiguration configuration) : base(context, configuration) { }
 
         [AllowAnonymous]
         public async Task<IActionResult> Index(SortOrder? sortOrder, string sortProperty, string searchString, string currentFilter, int? pageNumber)

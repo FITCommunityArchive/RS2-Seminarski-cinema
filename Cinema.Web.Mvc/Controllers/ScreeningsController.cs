@@ -1,7 +1,7 @@
 ﻿using Cinema.Authorization.Constants;
 using Cinema.Dal.Data;
 using Cinema.Domain.Entities;
-using Cinema.Dto.ViewModels.Screenings;
+using Cinema.Models.ViewModels.Screenings;
 using Cinema.Utilities.Constants;
 using Cinema.Utilities.Factory;
 using Cinema.Utilities.Factory.ViewModels;
@@ -21,7 +21,7 @@ namespace Cinema.Web.Mvc.Controllers
     [Authorize(Roles = Roles.Administrator)]
     public class ScreeningsController : BaseController
     {
-        public ScreeningsController(ApplicationDbContext context, IConfiguration configuration) : base(context, configuration) { }
+        public ScreeningsController(CinemaDbContext context, IConfiguration configuration) : base(context, configuration) { }
 
         public async Task<IActionResult> Index(string sortOrder, string searchString, string currentFilter, int? pageNumber)
         {

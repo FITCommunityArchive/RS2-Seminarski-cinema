@@ -119,7 +119,7 @@ namespace Cinema.Test.DALTests
 
             Screening deletedScreening = await unit.Screenings.GetAsync(screeningId);
 
-            Assert.True(deletedScreening.Deleted);
+            Assert.True(deletedScreening.IsDeleted);
         }
     }
 }
