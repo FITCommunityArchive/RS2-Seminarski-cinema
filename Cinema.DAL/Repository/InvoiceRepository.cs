@@ -1,5 +1,6 @@
 ﻿using Cinema.Dal.Data;
 using Cinema.Domain.Entities;
+using Cinema.Utilities.Interfaces;
 using Microsoft.Extensions.Configuration;
 
 namespace Cinema.Dal.Repository
@@ -8,7 +9,7 @@ namespace Cinema.Dal.Repository
     {
         private readonly IConfiguration _configuration;
 
-        public InvoiceRepository(CinemaDbContext context, IConfiguration configuration) : base(context)
+        public InvoiceRepository(ICinemaDbContext context, IConfiguration configuration) : base(context)
         {
             _configuration = configuration;
         }
