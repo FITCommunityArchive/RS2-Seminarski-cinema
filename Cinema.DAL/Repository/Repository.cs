@@ -1,6 +1,7 @@
 ﻿using Cinema.Dal.Data;
 using Cinema.Utilities.Enums;
 using Cinema.Utilities.Exceptions;
+using Cinema.Utilities.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -13,10 +14,10 @@ namespace Cinema.Dal.Repository
     /*Legacy of Gigi School of Coding*/
     public class Repository<Entity, Key> : IRepository<Entity, Key> where Entity : class
     {
-        protected ApplicationDbContext _context;
+        protected ICinemaDbContext _context;
         protected DbSet<Entity> _dbSet;
 
-        public Repository(ApplicationDbContext context)
+        public Repository(ICinemaDbContext context)
         {
             _context = context;
             _dbSet = _context.Set<Entity>();
@@ -47,7 +48,9 @@ namespace Cinema.Dal.Repository
             if (oldEnt != null)
             {
                 await newEnt.BuildAsync(_context);
-                _context.Entry(oldEnt).CurrentValues.SetValues(newEnt);
+
+                // Update operations should be handled outside of repositories
+                //_context.Entry(oldEnt).CurrentValues.SetValues(newEnt);
                 oldEnt.Update(newEnt);
             }
         }

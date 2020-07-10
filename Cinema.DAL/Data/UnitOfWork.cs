@@ -1,6 +1,7 @@
 ﻿using Cinema.Dal.Repository;
 using Cinema.Domain.Entities;
 using Cinema.Domain.Entities.Identity;
+using Cinema.Utilities.Interfaces;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Threading.Tasks;
@@ -8,9 +9,10 @@ using System.Threading.Tasks;
 namespace Cinema.Dal.Data
 {
     /*Legacy of Gigi School of Coding*/
-    public class UnitOfWork : IDisposable
+    public class UnitOfWork : IUnitOfWork
     {
-        protected ApplicationDbContext _context;
+        protected ICinemaDbContext _context;
+
         private readonly IConfiguration _configuration;
         private IRepository<Event, int> _events;
         private IRepository<EventType, int> _eventTypes;
@@ -31,18 +33,18 @@ namespace Cinema.Dal.Data
         private IRepository<ApplicationRole, string> _roles;
         private IRepository<ApplicationUserRole, string> _userRoles;
 
-        public UnitOfWork(ApplicationDbContext context, IConfiguration configuration)
+        public UnitOfWork(ICinemaDbContext context, IConfiguration configuration)
         {
             _context = context;
             _configuration = configuration;
         }
 
-        public UnitOfWork(ApplicationDbContext context)
+        public UnitOfWork(ICinemaDbContext context)
         {
             _context = context;
         }
 
-        public ApplicationDbContext Context => _context;
+        public ICinemaDbContext Context => _context;
 
         public IRepository<Event, int> Events => _events ?? (_events = new EventsRepository(_context));
         public IRepository<EventType, int> EventTypes => _eventTypes ?? (_eventTypes = new Repository<EventType, int>(_context));
@@ -65,7 +67,7 @@ namespace Cinema.Dal.Data
 
         public int Save() => _context.SaveChanges();
 
-        public async Task<int> SaveAsync() { return await _context.SaveChangesAsync(); }
+        public async Task<int> SaveAsync() { return await _context.SaveChangesAsync(true); }
 
         public void Dispose()
         {

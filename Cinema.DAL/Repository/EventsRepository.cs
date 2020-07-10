@@ -1,13 +1,14 @@
 ﻿using Cinema.Dal.Data;
 using Cinema.Domain.Entities;
 using Cinema.Utilities.Enums;
+using Cinema.Utilities.Interfaces;
 using System.Linq;
 
 namespace Cinema.Dal.Repository
 {
     public class EventsRepository : Repository<Event, int>
     {
-        public EventsRepository(ApplicationDbContext context) : base(context) { }
+        public EventsRepository(ICinemaDbContext context) : base(context) { }
 
         public override IQueryable<Event> Sort(IQueryable<Event> query, SortOrder? sortOrder, string sortProperty)
         {

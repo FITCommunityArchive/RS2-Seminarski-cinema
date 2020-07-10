@@ -2,13 +2,14 @@
 using Cinema.Domain.Entities;
 using Cinema.Utilities.Constants;
 using Cinema.Utilities.Enums;
+using Cinema.Utilities.Interfaces;
 using System.Linq;
 
 namespace Cinema.Dal.Repository
 {
     public class PricingRepository : Repository<Pricing, int>
     {
-        public PricingRepository(ApplicationDbContext context) : base(context) { }
+        public PricingRepository(ICinemaDbContext context) : base(context) { }
 
         public bool ValidatePrice(Pricing pricing)
         {

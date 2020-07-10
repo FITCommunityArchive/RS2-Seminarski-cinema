@@ -5,7 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace Cinema.Dal.Repository
+namespace Cinema.Utilities.Interfaces
 {
     public interface IRepository<Entity, Key>
     {

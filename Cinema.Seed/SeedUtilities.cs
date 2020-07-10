@@ -1,5 +1,6 @@
 ﻿using Cinema.Dal.Data;
 using Cinema.Seed.CollectMethods;
+using Cinema.Utilities.Interfaces;
 using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace Cinema.Seed
         {
             /*This methods drops the database, creates a new one, 
              * and performs the defined collect methods upon all tables*/
+            
             unit.Context.Database.EnsureDeleted();
             unit.Context.Database.EnsureCreated();
             unit.Context.ChangeTracker.AutoDetectChangesEnabled = false;

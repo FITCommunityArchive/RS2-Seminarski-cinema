@@ -1,6 +1,7 @@
 ﻿using Cinema.Dal.Data;
 using Cinema.Domain.Entities.Identity;
 using Cinema.Utilities.Enums;
+using Cinema.Utilities.Interfaces;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,8 +9,9 @@ namespace Cinema.Dal.Repository
 {
     public class ApplicationUsersRepository : Repository<ApplicationUser, string>
     {
-        public ApplicationUsersRepository(ApplicationDbContext context) : base(context) { }
+        public ApplicationUsersRepository(ICinemaDbContext context) : base(context) { }
 
+        
         public override async Task UpdateAsync(ApplicationUser newEnt, string id)
         {
             ApplicationUser oldEnt = await GetAsync(id);
@@ -23,7 +25,8 @@ namespace Cinema.Dal.Repository
                     userRole.RoleId = newEnt.UserRoles.First().RoleId;
                 }
 
-                _context.Entry(oldEnt).CurrentValues.SetValues(newEnt);
+                // Update operations should be handled outside of repositories (in services)
+                //_context.Entry(oldEnt).CurrentValues.SetValues(newEnt);
                 oldEnt.Update(newEnt);
             }
         }

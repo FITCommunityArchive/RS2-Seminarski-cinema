@@ -1,13 +1,14 @@
 ﻿using Cinema.Dal.Data;
 using Cinema.Domain.Entities;
 using Cinema.Utilities.Enums;
+using Cinema.Utilities.Interfaces;
 using System.Linq;
 
 namespace Cinema.Dal.Repository
 {
     public class NewsRepository : Repository<News, int>
     {
-        public NewsRepository(ApplicationDbContext context) : base(context) { }
+        public NewsRepository(ICinemaDbContext context) : base(context) { }
 
         public override IQueryable<News> Sort(IQueryable<News> query, SortOrder? sortOrder, string sortProperty)
         {
