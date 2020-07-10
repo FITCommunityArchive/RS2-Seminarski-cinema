@@ -8,7 +8,7 @@ namespace Cinema.Dal
 {
     public static class Builder
     {
-        public static async Task BuildAsync<T>(this T entity, CinemaDbContext context)
+        public static async Task BuildAsync<T>(this T entity, ICinemaDbContext context)
         {
             if (typeof(T) == typeof(Reservation)) await BuildRelations(entity as Reservation, context);
             if (typeof(T) == typeof(Screening)) await BuildRelations(entity as Screening, context);
@@ -19,42 +19,42 @@ namespace Cinema.Dal
             if (typeof(T) == typeof(News)) await BuildRelations(entity as News, context);
         }
 
-        private static async Task BuildRelations(Reservation entity, CinemaDbContext context)
+        private static async Task BuildRelations(Reservation entity, ICinemaDbContext context)
         {
             entity.User = await context.Users.FindAsync(entity.UserId);
             entity.Screening = await context.Screenings.FindAsync(entity.ScreeningId);
         }
 
-        private static async Task BuildRelations(Screening entity, CinemaDbContext context)
+        private static async Task BuildRelations(Screening entity, ICinemaDbContext context)
         {
             entity.Hall = await context.Halls.FindAsync(entity.HallId);
             entity.Movie = await context.Movies.FindAsync(entity.MovieId);
             entity.Pricing = await context.Pricing.FindAsync(entity.PricingId);
         }
 
-        private static async Task BuildRelations(Review entity, CinemaDbContext context)
+        private static async Task BuildRelations(Review entity, ICinemaDbContext context)
         {
             entity.User = await context.Users.FindAsync(entity.UserId);
             entity.Movie = await context.Movies.FindAsync(entity.MovieId);
         }
 
-        private static async Task BuildRelations(Seat entity, CinemaDbContext context)
+        private static async Task BuildRelations(Seat entity, ICinemaDbContext context)
         {
             entity.Hall = await context.Halls.FindAsync(entity.HallId);
         }
 
-        private static async Task BuildRelations(SeatReservation entity, CinemaDbContext context)
+        private static async Task BuildRelations(SeatReservation entity, ICinemaDbContext context)
         {
             entity.Reservation = await context.Reservations.FindAsync(entity.ReservationId);
             entity.Seat = await context.Seats.FindAsync(entity.SeatId);
         }
 
-        private static async Task BuildRelations(Event entity, CinemaDbContext context)
+        private static async Task BuildRelations(Event entity, ICinemaDbContext context)
         {
             entity.Author = await context.Users.FindAsync(entity.AuthorId);
             entity.Type = await context.EventTypes.FindAsync(entity.TypeId);
         }
-        private static async Task BuildRelations(News entity, CinemaDbContext context)
+        private static async Task BuildRelations(News entity, ICinemaDbContext context)
         {
             entity.Author = await context.Users.FindAsync(entity.AuthorId);
             entity.Type = await context.NewsTypes.FindAsync(entity.TypeId);

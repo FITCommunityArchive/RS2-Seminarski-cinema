@@ -11,7 +11,6 @@ namespace Cinema.Dal.Repository
     {
         public ApplicationUsersRepository(ICinemaDbContext context) : base(context) { }
 
-        
         public override async Task UpdateAsync(ApplicationUser newEnt, string id)
         {
             ApplicationUser oldEnt = await GetAsync(id);
