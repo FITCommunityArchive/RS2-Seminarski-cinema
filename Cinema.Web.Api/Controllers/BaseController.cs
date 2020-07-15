@@ -25,7 +25,7 @@ namespace Cinema.Web.Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public T GetById(int id)
+        public Task<T> GetById(int id)
         {
             return _service.GetById(id);
         }

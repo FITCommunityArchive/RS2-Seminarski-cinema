@@ -4,6 +4,7 @@ using Cinema.Utilities.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Cinema.Services
 {
@@ -13,28 +14,27 @@ namespace Cinema.Services
         {
         }
 
-        //public virtual TModel Insert(TInsert req)
-        //{
-        //    var entity = _mapper.Map<TDatabase>(req);
+        public virtual TModel Insert(TInsert req)
+        {
+            var entity = _mapper.Map<TDatabase>(req);
 
-        //    _unit.Set<TDatabase>().Add(entity);
-        //    _unit.SaveChanges();
+            _repo.InsertAsync(entity);
+            _unit.Save();
 
-        //    return _mapper.Map<TModel>(entity);
-        //}
+            return _mapper.Map<TModel>(entity);
+        }
 
-        //public virtual TModel Update(int id, TUpdate req)
-        //{
-        //    var entity = _unit.Set<TDatabase>().Find(id);
+        public async virtual Task<TModel> Update(int id, TUpdate req)
+        {
+            var entity = await _repo.GetAsync(id);
 
-        //    _unit.Set<TDatabase>().Attach(entity);
-        //    _unit.Set<TDatabase>().Update(entity);
+            await _repo.UpdateAsync(entity,id);
 
-        //    _mapper.Map(req, entity);
+            _mapper.Map(req, entity);
 
-        //    _unit.SaveChanges();
+            _unit.Save();
 
-        //    return _mapper.Map<TModel>(entity);
-        //}
+            return _mapper.Map<TModel>(entity);
+        }
     }
 }

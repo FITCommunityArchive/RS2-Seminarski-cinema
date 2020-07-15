@@ -27,9 +27,9 @@ namespace Cinema.Services
                 return _mapper.Map<List<TModel>>(list);
         }
 
-        public virtual TModel GetById(int id)
+        public async virtual Task<TModel> GetById(int id)
         {
-            var entity = _repo.GetAsync(id);
+            var entity = await _repo.GetAsync(id);
             return _mapper.Map<TModel>(entity);
         }
     }

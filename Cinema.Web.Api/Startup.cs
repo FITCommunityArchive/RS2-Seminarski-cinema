@@ -14,6 +14,7 @@ using Cinema.Models;
 using Cinema.Domain.Entities;
 using Cinema.Dal.Repository;
 using System.IO.Compression;
+using Cinema.Models.Requests;
 
 namespace Cinema.Web.API
 {
@@ -44,6 +45,8 @@ namespace Cinema.Web.API
             services.AddScoped<ICinemaDbContext, CinemaDbContext>();
 
             services.AddScoped<IService<DtoMovie, object>, BaseService<DtoMovie, object, Movie>>();
+            services.AddScoped<ICRUDService<DtoMovie, object, MovieUpsertRequest, MovieUpsertRequest>,MovieService>();
+
             string connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<CinemaDbContext>(options => options.UseSqlServer(connection));
 
