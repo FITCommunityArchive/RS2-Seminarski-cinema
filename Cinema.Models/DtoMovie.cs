@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Cinema.Models
 {
-    public class DtoMovie
+    public class DtoMovie : DtoBase
     {
 
         public string Title { get; set; }

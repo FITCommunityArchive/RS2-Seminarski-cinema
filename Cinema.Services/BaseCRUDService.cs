@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Cinema.Dal.Data;
+using Cinema.Utilities.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,7 +9,7 @@ namespace Cinema.Services
 {
     public class BaseCRUDService<TModel, TSearch, TDatabase, TInsert, TUpdate> : BaseService<TModel, TSearch, TDatabase>, ICRUDService<TModel, TSearch, TInsert, TUpdate> where TDatabase : class
     {
-        public BaseCRUDService(UnitOfWork unit, IMapper mapper) : base(unit, mapper)
+        public BaseCRUDService(IUnitOfWork unit,IMapper mapper) : base(unit,mapper)
         {
         }
 

@@ -9,6 +9,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Cinema.Services;
+using Cinema.Models;
+using Cinema.Domain.Entities;
+using Cinema.Dal.Repository;
+using System.IO.Compression;
 
 namespace Cinema.Web.API
 {
@@ -35,11 +40,16 @@ namespace Cinema.Web.API
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Cinema API", Version = "v1" });
             });
 
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<ICinemaDbContext, CinemaDbContext>();
+
+            services.AddScoped<IService<DtoMovie, object>, BaseService<DtoMovie, object, Movie>>();
             string connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<CinemaDbContext>(options => options.UseSqlServer(connection));
 
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddScoped<ICinemaDbContext, CinemaDbContext>();
+            
+            //services.AddScoped<IMovieService, MovieService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

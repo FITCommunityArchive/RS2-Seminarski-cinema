@@ -2,6 +2,7 @@
 using Cinema.Dal.Data;
 using Cinema.Domain.Entities;
 using Cinema.Models;
+using Cinema.Utilities.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,19 +11,26 @@ namespace Cinema.Services
 {
     public class MovieService : IMovieService
     {
-        private readonly UnitOfWork _unit;
+        private readonly IUnitOfWork _unit;
+        private readonly IRepository<Movie, int> movieRepo;
         private readonly IMapper _mapper;
-        public MovieService(UnitOfWork unit, IMapper mapper)
+        public MovieService(IMapper mapper)
         {
-            _unit = unit;
+            movieRepo = _unit.Repository<Movie,int>();
             _mapper = mapper;
         }
 
         public DtoMovie GetById()
         {
 
-            var entity = _unit.Movies.Get();
+            var entity = movieRepo.Get();
             return _mapper.Map<DtoMovie>(entity);
+        }
+
+        public List<DtoMovie> Get()
+        {
+            var movies = movieRepo.Get().ToList();
+            return _mapper.Map<List<DtoMovie>>(movies);
         }
 
         //public async Task<IEnumerable<DtoMovie>> GetComingSoonMovies(int quantity)

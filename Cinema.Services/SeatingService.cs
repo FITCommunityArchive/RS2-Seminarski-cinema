@@ -2,6 +2,7 @@
 using Cinema.Domain.Entities;
 using Cinema.Models.SpecificModels;
 using Cinema.Utilities.Factory;
+using Cinema.Utilities.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,9 +12,12 @@ namespace Cinema.Services
     public class SeatingService
     {
         protected UnitOfWork _unit;
-        public SeatingService(UnitOfWork unit)
+        private readonly IRepository<Screening, int> screeningsRepo;
+        private readonly IRepository<SeatReservation, int> seatReserveRepo;
+        public SeatingService()
         {
-            _unit = unit;
+            screeningsRepo = _unit.Repository<Screening, int>();
+            seatReserveRepo = _unit.Repository<SeatReservation, int>();
         }
 
         public List<string> ReservedSeats { get; set; }
@@ -61,7 +65,7 @@ namespace Cinema.Services
 
         public async Task<bool> AreSeatsReservedAsync(List<int> list, int screeningId)
         {
-            var currentScreening = await _unit.Screenings.GetAsync(screeningId);
+            var currentScreening = await screeningsRepo.GetAsync(screeningId);
 
             var currentHall = currentScreening.Hall;
 
@@ -84,8 +88,8 @@ namespace Cinema.Services
 
         public async Task<bool> IsSeatReservedAsync(int seatId, int screeningId)
         {
-            var currentScreening = await _unit.Screenings.GetAsync(screeningId);
-            var screeningReservations = await _unit.SeatReservations.GetAsync(x => x.Reservation.ScreeningId == screeningId);
+            var currentScreening = await screeningsRepo.GetAsync(screeningId);
+            var screeningReservations = await seatReserveRepo.GetAsync(x => x.Reservation.ScreeningId == screeningId);
 
             return screeningReservations.Any(x => x.SeatId == seatId);
         }
