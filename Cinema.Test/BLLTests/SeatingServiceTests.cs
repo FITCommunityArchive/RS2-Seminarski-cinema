@@ -15,7 +15,7 @@ namespace Cinema.Test.BLLTests
 
         public SeatingServiceTests()
         {
-            seatingService = new SeatingService(unit);
+            seatingService = new SeatingService();
         }
 
         private static object[] sourceLists =

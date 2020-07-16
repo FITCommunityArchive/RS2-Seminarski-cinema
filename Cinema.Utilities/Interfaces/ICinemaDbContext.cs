@@ -12,9 +12,8 @@ namespace Cinema.Utilities.Interfaces
     public interface ICinemaDbContext
     {
         DbSet<TEntity> Set<TEntity>() where TEntity : class;
-        ChangeTracker ChangeTracker { get; }
+        /*ChangeTracker ChangeTracker { get; }*/
 
-        DatabaseFacade Database { get; }
         DbSet<Event> Events { get; set; }
         DbSet<EventType> EventTypes { get; set; }
         DbSet<Genre> Genres { get; set; }

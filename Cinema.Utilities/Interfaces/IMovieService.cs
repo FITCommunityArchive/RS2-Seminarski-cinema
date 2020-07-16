@@ -7,8 +7,8 @@ namespace Cinema.Services
 {
     public interface IMovieService
     {
-        List<DtoMovie> Get();
-        DtoMovie GetById();
+        List<MovieDto> Get();
+        MovieDto GetById();
         //IEnumerable<DtoMovie> GetComingSoonMovies(int quantity);
 
         //DtoMovie Update(int id, MovieInsertRequest req);

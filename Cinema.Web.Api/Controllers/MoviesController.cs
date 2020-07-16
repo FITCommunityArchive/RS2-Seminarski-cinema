@@ -9,9 +9,9 @@ using Cinema.Models.Requests;
 
 namespace Cinema.Web.Api.Controllers
 {
-    public class MovieController : BaseCRUDController<DtoMovie,object,MovieUpsertRequest,MovieUpsertRequest>
+    public class MoviesController : BaseCRUDController<MovieDto, object, MovieUpsertRequest, MovieUpsertRequest>
     {
-        public MovieController(ICRUDService<DtoMovie,object,MovieUpsertRequest,MovieUpsertRequest> service) : base(service)
+        public MoviesController(ICRUDService<MovieDto, object, MovieUpsertRequest, MovieUpsertRequest> service) : base(service)
         {
         }
     }
