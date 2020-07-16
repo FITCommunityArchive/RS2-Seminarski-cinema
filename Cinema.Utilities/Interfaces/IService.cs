@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Cinema.Services
+namespace Cinema.Utilities.Interfaces
 {
     public interface IService<T, TSearch>
     {

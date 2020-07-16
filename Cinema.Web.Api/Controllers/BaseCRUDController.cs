@@ -1,4 +1,4 @@
-﻿using Cinema.Services;
+﻿using Cinema.Utilities.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
