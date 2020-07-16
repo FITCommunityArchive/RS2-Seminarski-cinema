@@ -23,7 +23,7 @@ namespace Cinema.Dal.Repository
             _dbSet = _context.Set<Entity>();
         }
 
-        public virtual IQueryable<Entity> Get() => _dbSet;
+        public virtual IEnumerable<Entity> Get() => _dbSet;
 
         public virtual async Task<Entity> GetAsync(Key id)
         {
@@ -47,7 +47,7 @@ namespace Cinema.Dal.Repository
 
             if (oldEnt != null)
             {
-                await newEnt.BuildAsync(_context);
+                //await newEnt.BuildAsync(_context);
 
                 // Update operations should be handled outside of repositories
                 //_context.Entry(oldEnt).CurrentValues.SetValues(newEnt);
@@ -77,6 +77,25 @@ namespace Cinema.Dal.Repository
         public virtual IQueryable<Entity> Sort(IQueryable<Entity> query, SortOrder? sortOrder, string sortProperty)
         {
             throw new NotImplementedException();
+        }
+
+        private bool disposed = false;
+        protected virtual void Dispose(bool disposing)
+        {
+            if(!this.disposed)
+            {
+                if(disposing)
+                {
+                    _context.Dispose();
+                }
+            }
+            this.disposed = true;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
     }
 }

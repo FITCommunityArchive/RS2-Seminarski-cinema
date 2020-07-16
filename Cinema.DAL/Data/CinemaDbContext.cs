@@ -3,7 +3,9 @@ using Cinema.Domain.Entities.Identity;
 using Cinema.Utilities.Interfaces;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -24,7 +26,7 @@ namespace Cinema.Dal.Data
 
         public CinemaDbContext()
         {
-            _connectionString = "Server=(localdb)\\mssqllocaldb;Database=CinemaReservations;Trusted_Connection=True;MultipleActiveResultSets=true";
+            _connectionString = "Server=(localdb)\\mssqllocaldb;Database=Cinema;Trusted_Connection=True;MultipleActiveResultSets=true";
         }
 
         public DbSet<Event> Events { get; set; }
@@ -53,6 +55,17 @@ namespace Cinema.Dal.Data
         }
         protected override void OnModelCreating(ModelBuilder builder)
         {
+
+            //var typesToRegister = Assembly.Load("Cinema.Domain").GetTypes()
+            //    .Where(type => !String.IsNullOrEmpty(type.Namespace))
+            //    .Where(type => type.BaseType != null && type.BaseType.IsGenericType && type.BaseType.GetGenericTypeDefinition() == typeof(IEntityTypeConfiguration<>));
+
+            //foreach(var type in typesToRegister)
+            //{
+            //    dynamic configurationInstance = Activator.CreateInstance(type);
+            //    builder.ApplyConfiguration(configurationInstance);
+            //}
+
             base.OnModelCreating(builder);
 
             //This line is in order to prevent Cascade Delete

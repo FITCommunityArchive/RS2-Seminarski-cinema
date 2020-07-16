@@ -1,6 +1,8 @@
 ﻿using Cinema.Dal.Data;
 using Cinema.Domain.Entities;
+using Cinema.Utilities.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Cinema.Services
@@ -8,9 +10,10 @@ namespace Cinema.Services
     public class PricingService
     {
         protected UnitOfWork _unit;
-        public PricingService(UnitOfWork unit)
+        private readonly IRepository<Pricing, int> pricingRepo;
+        public PricingService()
         {
-            _unit = unit;
+            pricingRepo = _unit.Repository<Pricing, int>();
         }
 
         public Pricing PricingTier { get; set; }
@@ -18,7 +21,7 @@ namespace Cinema.Services
         public async Task<Pricing> GetPricingTierAsync(string tier)
         {
             //gets reserved seats first
-            PricingTier = await _unit.Pricings.Get().FirstOrDefaultAsync(x => x.Name == tier);
+            PricingTier = await pricingRepo.Get().AsQueryable().FirstOrDefaultAsync(x => x.Name == tier);
 
             return PricingTier;
         }

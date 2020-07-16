@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Cinema.Utilities.Interfaces
 {
-    public interface IRepository<Entity, Key>
+    public interface IRepository<Entity, Key> : IDisposable
     {
-        IQueryable<Entity> Get();
+        IEnumerable<Entity> Get();
         Task<Entity> GetAsync(Key id);
         Task<List<Entity>> GetAsync(Expression<Func<Entity, bool>> where);
         Task InsertAsync(Entity entity);

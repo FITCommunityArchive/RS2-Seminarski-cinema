@@ -2,76 +2,66 @@
 using Cinema.Domain.Entities;
 using Cinema.Domain.Entities.Identity;
 using Cinema.Utilities.Interfaces;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Configuration;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Cinema.Dal.Data
 {
     /*Legacy of Gigi School of Coding*/
-    public class UnitOfWork : IUnitOfWork
+    public class UnitOfWork : IDisposable, IUnitOfWork
     {
+        
+
+        private bool disposed;
+        private Dictionary<string, object> repositories;
         protected ICinemaDbContext _context;
-
-        private readonly IConfiguration _configuration;
-        private IRepository<Event, int> _events;
-        private IRepository<EventType, int> _eventTypes;
-        private IRepository<Genre, int> _genres;
-        private IRepository<GenreMovie, int> _genreMovies;
-        private IRepository<Hall, int> _halls;
-        private InvoiceRepository _invoices;
-        private IRepository<Movie, int> _movies;
-        private IRepository<News, int> _news;
-        private IRepository<NewsType, int> _newsTypes;
-        private PricingRepository _pricings;
-        private IRepository<Reservation, int> _reservations;
-        private IRepository<Review, int> _reviews;
-        private ScreeningRepository _screenings;
-        private IRepository<Seat, int> _seats;
-        private IRepository<SeatReservation, int> _seatReservations;
-        private IRepository<ApplicationUser, string> _users;
-        private IRepository<ApplicationRole, string> _roles;
-        private IRepository<ApplicationUserRole, string> _userRoles;
-
-        public UnitOfWork(ICinemaDbContext context, IConfiguration configuration)
-        {
-            _context = context;
-            _configuration = configuration;
-        }
 
         public UnitOfWork(ICinemaDbContext context)
         {
             _context = context;
         }
 
-        public ICinemaDbContext Context => _context;
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
 
-        public IRepository<Event, int> Events => _events ?? (_events = new EventsRepository(_context));
-        public IRepository<EventType, int> EventTypes => _eventTypes ?? (_eventTypes = new Repository<EventType, int>(_context));
-        public IRepository<Genre, int> Genres => _genres ?? (_genres = new Repository<Genre, int>(_context));
-        public IRepository<GenreMovie, int> GenreMovies => _genreMovies ?? (_genreMovies = new Repository<GenreMovie, int>(_context));
-        public IRepository<Hall, int> Halls => _halls ?? (_halls = new Repository<Hall, int>(_context));
-        public InvoiceRepository Invoices => _invoices ?? (_invoices = new InvoiceRepository(_context, _configuration));
-        public IRepository<Movie, int> Movies => _movies ?? (_movies = new Repository<Movie, int>(_context));
-        public IRepository<News, int> News => _news ?? (_news = new NewsRepository(_context));
-        public IRepository<NewsType, int> NewsTypes => _newsTypes ?? (_newsTypes = new Repository<NewsType, int>(_context));
-        public PricingRepository Pricings => _pricings ?? (_pricings = new PricingRepository(_context));
-        public IRepository<Reservation, int> Reservations => _reservations ?? (_reservations = new Repository<Reservation, int>(_context));
-        public IRepository<Review, int> Reviews => _reviews ?? (_reviews = new Repository<Review, int>(_context));
-        public ScreeningRepository Screenings => _screenings ?? (_screenings = new ScreeningRepository(_context));
-        public IRepository<Seat, int> Seats => _seats ?? (_seats = new Repository<Seat, int>(_context));
-        public IRepository<SeatReservation, int> SeatReservations => _seatReservations ?? (_seatReservations = new Repository<SeatReservation, int>(_context));
-        public IRepository<ApplicationUser, string> Users => _users ?? (_users = new ApplicationUsersRepository(_context));
-        public IRepository<ApplicationRole, string> Roles => _roles ?? (_roles = new Repository<ApplicationRole, string>(_context));
-        public IRepository<ApplicationUserRole, string> UserRoles => _userRoles ?? (_userRoles = new Repository<ApplicationUserRole, string>(_context));
+        public virtual void Dispose( bool disposing)
+        {
+            if(!disposed)
+            {
+                if(disposing)
+                {
+                    _context.Dispose();
+                }
+            }
+            disposed = true;
+        }
+
+        public IRepository<Entity, Key> Repository<Entity,Key>() where Entity : class
+        {
+            if(repositories == null)
+            {
+                repositories = new Dictionary<string, object>();
+            }
+
+            var type = typeof(Entity).Name;
+            if(!repositories.ContainsKey(type))
+            {
+                var repositoryType = typeof(Repository<,>);
+                var repositoryInstance = Activator.CreateInstance(repositoryType.MakeGenericType(typeof(Entity),typeof(Key)), _context);
+                repositories.Add(type, repositoryInstance);
+            }
+            return (Repository<Entity, Key>)repositories[type];
+        }
 
         public int Save() => _context.SaveChanges();
 
         public async Task<int> SaveAsync() { return await _context.SaveChangesAsync(true); }
 
-        public void Dispose()
-        {
-            _context.Dispose();
-        }
     }
 }
