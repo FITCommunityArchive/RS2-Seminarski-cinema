@@ -1,18 +1,14 @@
 ﻿using AutoMapper;
-using Cinema.Dal.Data;
 using Cinema.Domain.Entities;
 using Cinema.Models;
 using Cinema.Models.Requests;
 using Cinema.Utilities.Interfaces;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Cinema.Services
 {
-    public class MovieService : BaseCRUDService<MovieDto,object,Movie,MovieUpsertRequest,MovieUpsertRequest>
+    public class MovieService : BaseCRUDService<MovieDto, object, Movie, MovieUpsertRequest, MovieUpsertRequest>
     {
-        public MovieService(IUnitOfWork unit, IMapper mapper) : base (unit,mapper)
+        public MovieService(IUnitOfWork unit, IMapper mapper) : base(unit, mapper)
         {
 
         }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Cinema.Dal.Data
 {
     public class UnitOfWork : IDisposable, IUnitOfWork
-    {       
+    {
         private bool _disposed;
         private Dictionary<string, object> _repositories;
         protected ICinemaDbContext _context;
@@ -45,11 +45,11 @@ namespace Cinema.Dal.Data
             GC.SuppressFinalize(this);
         }
 
-        public virtual void Dispose( bool disposing)
+        public virtual void Dispose(bool disposing)
         {
-            if(!_disposed)
+            if (!_disposed)
             {
-                if(disposing)
+                if (disposing)
                 {
                     _context.Dispose();
                 }
@@ -57,15 +57,15 @@ namespace Cinema.Dal.Data
             _disposed = true;
         }
 
-        public IRepository<Entity, Key> Repository<Entity,Key>() where Entity : class
+        public IRepository<Entity, Key> Repository<Entity, Key>() where Entity : class
         {
-            if(_repositories == null)
+            if (_repositories == null)
             {
                 _repositories = new Dictionary<string, object>();
             }
 
             var type = typeof(Entity).Name;
-            if(!_repositories.ContainsKey(type))
+            if (!_repositories.ContainsKey(type))
             {
                 var repositoryType = typeof(Repository<,>);
                 var repositoryInstance = Activator.CreateInstance(repositoryType.MakeGenericType(typeof(Entity), typeof(Key)), _context);

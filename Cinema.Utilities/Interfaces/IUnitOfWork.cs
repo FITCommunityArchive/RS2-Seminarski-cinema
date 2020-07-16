@@ -1,6 +1,5 @@
 ﻿using Cinema.Domain.Entities;
 using Cinema.Domain.Entities.Identity;
-using System;
 using System.Threading.Tasks;
 
 namespace Cinema.Utilities.Interfaces

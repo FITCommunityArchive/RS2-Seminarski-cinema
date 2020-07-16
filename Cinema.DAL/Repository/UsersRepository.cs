@@ -1,5 +1,4 @@
-﻿using Cinema.Dal.Data;
-using Cinema.Domain.Entities.Identity;
+﻿using Cinema.Domain.Entities.Identity;
 using Cinema.Utilities.Enums;
 using Cinema.Utilities.Interfaces;
 using System.Linq;
