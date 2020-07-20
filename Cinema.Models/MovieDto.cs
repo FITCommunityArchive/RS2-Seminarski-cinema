@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Cinema.Models
+﻿namespace Cinema.Models
 {
-    public class DtoMovie : DtoBase
+    public class MovieDto : BaseDto
     {
 
         public string Title { get; set; }

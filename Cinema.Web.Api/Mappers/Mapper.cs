@@ -1,9 +1,4 @@
 ﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Cinema.Domain;
 using Cinema.Domain.Entities;
 using Cinema.Models;
 using Cinema.Models.Requests;
@@ -14,8 +9,8 @@ namespace Cinema.Web.Api.Mappers
     {
         public Mapper()
         {
-            CreateMap<BaseClass, DtoBase>().Include<Movie,DtoMovie>();
-            CreateMap<Movie, DtoMovie>();
+            CreateMap<BaseClass, BaseDto>().Include<Movie, MovieDto>();
+            CreateMap<Movie, MovieDto>();
             CreateMap<Movie, MovieUpsertRequest>().ReverseMap();
 
             //CreateMap<Database.Korisnici, Model.Korisnici>();

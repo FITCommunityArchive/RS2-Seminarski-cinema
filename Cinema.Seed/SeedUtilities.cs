@@ -13,21 +13,21 @@ namespace Cinema.Seed
     {
         public static Dictionary<int, string> RolesDictionary;
         public static Dictionary<int, string> UsersDictionary;
-        public static async Task SeedDatabase(this UnitOfWork unit, FileInfo fileData)
+        public static async Task SeedDatabase(this UnitOfWork unit, CinemaDbContext context, FileInfo fileData)
         {
             /*This methods drops the database, creates a new one, 
              * and performs the defined collect methods upon all tables*/
-            
-            unit.Context.Database.EnsureDeleted();
-            unit.Context.Database.EnsureCreated();
-            unit.Context.ChangeTracker.AutoDetectChangesEnabled = false;
 
-            await CollectEntities(unit, fileData);
+            context.Database.EnsureDeleted();
+            context.Database.EnsureCreated();
+            context.ChangeTracker.AutoDetectChangesEnabled = false;
+
+            await CollectEntities(unit, context, fileData);
 
             Console.WriteLine("Seed complete!");
         }
 
-        public static async Task CollectEntities(this UnitOfWork unit, FileInfo fileData)
+        public static async Task CollectEntities(this UnitOfWork unit, ICinemaDbContext context, FileInfo fileData)
         {
             RolesDictionary = new Dictionary<int, string>();
             UsersDictionary = new Dictionary<int, string>();
@@ -36,13 +36,13 @@ namespace Cinema.Seed
             {
                 //Type entities seed
                 await GenresCollect.Collect(package.Workbook.Worksheets["Genres"], unit);
-                await RolesCollect.Collect(package.Workbook.Worksheets["AppRoles"], unit);
+                await RolesCollect.Collect(package.Workbook.Worksheets["AppRoles"], unit, context);
                 await NewsTypesCollect.Collect(package.Workbook.Worksheets["NewsTypes"], unit);
                 await EventTypesCollect.Collect(package.Workbook.Worksheets["EventTypes"], unit);
                 await PricingsCollect.Collect(package.Workbook.Worksheets["Pricings"], unit);
 
                 //Other entities seed
-                await UsersCollect.Collect(package.Workbook.Worksheets["Users"], unit);
+                await UsersCollect.Collect(package.Workbook.Worksheets["Users"], unit, context);
                 await HallsCollect.Collect(package.Workbook.Worksheets["Halls"], unit);
                 await MoviesCollect.Collect(package.Workbook.Worksheets["Movies"], unit);
                 await ReviewsCollect.Collect(package.Workbook.Worksheets["Reviews"], unit);

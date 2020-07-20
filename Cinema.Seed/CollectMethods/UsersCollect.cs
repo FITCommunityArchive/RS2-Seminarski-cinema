@@ -1,5 +1,6 @@
 ﻿using Cinema.Dal.Data;
 using Cinema.Domain.Entities.Identity;
+using Cinema.Utilities.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using OfficeOpenXml;
@@ -10,9 +11,9 @@ namespace Cinema.Seed.CollectMethods
 {
     public static class UsersCollect
     {
-        public static async Task Collect(ExcelWorksheet rawData, UnitOfWork unit)
+        public static async Task Collect(ExcelWorksheet rawData, IUnitOfWork unit, ICinemaDbContext context)
         {
-            var store = new UserStore<ApplicationUser>(unit.Context as CinemaDbContext);
+            var store = new UserStore<ApplicationUser>(context as CinemaDbContext);
             var passwordHasher = new PasswordHasher<ApplicationUser>();
             var normalizer = new UpperInvariantLookupNormalizer();
             var userManager = new UserManager<ApplicationUser>(store, null, passwordHasher, null, null, normalizer, null, null, null);

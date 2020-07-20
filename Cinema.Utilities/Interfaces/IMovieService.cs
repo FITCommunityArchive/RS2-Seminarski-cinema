@@ -1,14 +1,12 @@
 ﻿using Cinema.Models;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace Cinema.Services
+namespace Cinema.Utilities.Interfaces
 {
     public interface IMovieService
     {
-        List<DtoMovie> Get();
-        DtoMovie GetById();
+        List<MovieDto> Get();
+        MovieDto GetById();
         //IEnumerable<DtoMovie> GetComingSoonMovies(int quantity);
 
         //DtoMovie Update(int id, MovieInsertRequest req);

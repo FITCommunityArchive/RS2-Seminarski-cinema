@@ -10,9 +10,9 @@ namespace Cinema.Seed.CollectMethods
 {
     public class RolesCollect
     {
-        public static async Task Collect(ExcelWorksheet rawData, IUnitOfWork unit)
+        public static async Task Collect(ExcelWorksheet rawData, IUnitOfWork unit, ICinemaDbContext context)
         {
-            var store = new RoleStore<ApplicationRole>(unit.Context as CinemaDbContext);
+            var store = new RoleStore<ApplicationRole>(context as CinemaDbContext);
             var normalizer = new UpperInvariantLookupNormalizer();
             var roleManager = new RoleManager<ApplicationRole>(store, null, normalizer, null, null);
 

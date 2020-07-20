@@ -1,5 +1,4 @@
-﻿using Cinema.Dal.Data;
-using Cinema.Domain.Entities;
+﻿using Cinema.Domain.Entities;
 using Cinema.Utilities.Constants;
 using Cinema.Utilities.Enums;
 using Cinema.Utilities.Interfaces;

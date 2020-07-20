@@ -1,9 +1,6 @@
 ﻿using Cinema.Domain.Entities;
 using Cinema.Domain.Entities.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Storage;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -12,9 +9,7 @@ namespace Cinema.Utilities.Interfaces
     public interface ICinemaDbContext
     {
         DbSet<TEntity> Set<TEntity>() where TEntity : class;
-        ChangeTracker ChangeTracker { get; }
 
-        DatabaseFacade Database { get; }
         DbSet<Event> Events { get; set; }
         DbSet<EventType> EventTypes { get; set; }
         DbSet<Genre> Genres { get; set; }

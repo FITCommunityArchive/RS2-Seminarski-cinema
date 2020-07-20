@@ -12,12 +12,12 @@ namespace Cinema.Services
     public class SeatingService
     {
         protected UnitOfWork _unit;
-        private readonly IRepository<Screening, int> screeningsRepo;
-        private readonly IRepository<SeatReservation, int> seatReserveRepo;
+        private readonly IRepository<Screening, int> _screeningRepo;
+        private readonly IRepository<SeatReservation, int> _seatReservationRepo;
         public SeatingService()
         {
-            screeningsRepo = _unit.Repository<Screening, int>();
-            seatReserveRepo = _unit.Repository<SeatReservation, int>();
+            _screeningRepo = _unit.Repository<Screening, int>();
+            _seatReservationRepo = _unit.Repository<SeatReservation, int>();
         }
 
         public List<string> ReservedSeats { get; set; }
@@ -65,7 +65,7 @@ namespace Cinema.Services
 
         public async Task<bool> AreSeatsReservedAsync(List<int> list, int screeningId)
         {
-            var currentScreening = await screeningsRepo.GetAsync(screeningId);
+            var currentScreening = await _screeningRepo.GetAsync(screeningId);
 
             var currentHall = currentScreening.Hall;
 
@@ -88,8 +88,8 @@ namespace Cinema.Services
 
         public async Task<bool> IsSeatReservedAsync(int seatId, int screeningId)
         {
-            var currentScreening = await screeningsRepo.GetAsync(screeningId);
-            var screeningReservations = await seatReserveRepo.GetAsync(x => x.Reservation.ScreeningId == screeningId);
+            var currentScreening = await _screeningRepo.GetAsync(screeningId);
+            var screeningReservations = await _seatReservationRepo.GetAsync(x => x.Reservation.ScreeningId == screeningId);
 
             return screeningReservations.Any(x => x.SeatId == seatId);
         }

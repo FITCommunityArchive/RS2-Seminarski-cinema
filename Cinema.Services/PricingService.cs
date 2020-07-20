@@ -10,10 +10,10 @@ namespace Cinema.Services
     public class PricingService
     {
         protected UnitOfWork _unit;
-        private readonly IRepository<Pricing, int> pricingRepo;
+        private readonly IRepository<Pricing, int> _pricingRepo;
         public PricingService()
         {
-            pricingRepo = _unit.Repository<Pricing, int>();
+            _pricingRepo = _unit.Repository<Pricing, int>();
         }
 
         public Pricing PricingTier { get; set; }
@@ -21,7 +21,7 @@ namespace Cinema.Services
         public async Task<Pricing> GetPricingTierAsync(string tier)
         {
             //gets reserved seats first
-            PricingTier = await pricingRepo.Get().AsQueryable().FirstOrDefaultAsync(x => x.Name == tier);
+            PricingTier = await _pricingRepo.Get().AsQueryable().FirstOrDefaultAsync(x => x.Name == tier);
 
             return PricingTier;
         }

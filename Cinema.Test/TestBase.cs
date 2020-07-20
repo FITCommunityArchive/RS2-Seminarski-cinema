@@ -26,7 +26,7 @@ namespace Cinema.Test
 
             context = new CinemaDbContext(connectionString);
             unit = new UnitOfWork(context);
-            await unit.SeedTestDatabase(file);
+            await unit.SeedTestDatabase(context, file);
         }
     }
 }

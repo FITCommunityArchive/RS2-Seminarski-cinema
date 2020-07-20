@@ -1,5 +1,4 @@
-﻿using Cinema.Dal.Data;
-using Cinema.Utilities.Enums;
+﻿using Cinema.Utilities.Enums;
 using Cinema.Utilities.Exceptions;
 using Cinema.Utilities.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -82,9 +81,9 @@ namespace Cinema.Dal.Repository
         private bool disposed = false;
         protected virtual void Dispose(bool disposing)
         {
-            if(!this.disposed)
+            if (!this.disposed)
             {
-                if(disposing)
+                if (disposing)
                 {
                     _context.Dispose();
                 }
