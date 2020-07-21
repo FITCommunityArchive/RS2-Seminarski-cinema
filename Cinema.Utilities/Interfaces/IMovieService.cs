@@ -1,5 +1,4 @@
 ﻿using Cinema.Models;
-using System.Collections.Generic;
 
 namespace Cinema.Utilities.Interfaces
 {

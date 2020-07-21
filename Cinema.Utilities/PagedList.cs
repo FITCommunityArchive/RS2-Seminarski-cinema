@@ -79,6 +79,6 @@ namespace Cinema.Utilities
             var items = source.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
             return new PagedList<T>(items, count, pageIndex, pageSize,
                 currentSortOrder, currentSort, currentFilter);
-        }        
+        }
     }
 }

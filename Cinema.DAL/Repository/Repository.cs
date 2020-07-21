@@ -60,7 +60,7 @@ namespace Cinema.Dal.Repository
                 //_context.Entry(oldEnt).CurrentValues.SetValues(newEnt);
                 oldEnt.Update(newEnt);
             }
-        }               
+        }
 
         public virtual async Task DeleteAsync(Key id)
         {
@@ -82,8 +82,8 @@ namespace Cinema.Dal.Repository
         public virtual IQueryable<Entity> Sort(IQueryable<Entity> query, SortOrder? sortOrder, string sortProperty)
         {
             throw new NotImplementedException();
-        }       
-        
+        }
+
         public void Dispose()
         {
             Dispose(true);
@@ -102,17 +102,9 @@ namespace Cinema.Dal.Repository
             this._disposed = true;
         }
 
-        protected virtual IQueryable<Entity> AddPagination(IQueryable<Entity> query, int pageIndex, int pageSize)
-        {
-            var count = query.Count();
-            query = query.Skip((pageIndex - 1) * pageSize).Take(pageSize);
-
-            return query;
-        }
-
         #region Private methods
 
-        private void Delete(Entity entity) => _dbSet.Remove(entity);       
+        private void Delete(Entity entity) => _dbSet.Remove(entity);
 
         #endregion
     }

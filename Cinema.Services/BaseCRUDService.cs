@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Cinema.Services
 {
-    public class BaseCRUDService<TModel, TSearch, TDatabase, TInsert, TUpdate> : BaseService<TModel, TSearch, TDatabase>, ICRUDService<TModel, TSearch, TInsert, TUpdate> 
+    public class BaseCRUDService<TModel, TSearch, TDatabase, TInsert, TUpdate> : BaseService<TModel, TSearch, TDatabase>, ICRUDService<TModel, TSearch, TInsert, TUpdate>
         where TDatabase : class
         where TSearch : BaseSearchRequest
     {

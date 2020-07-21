@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Cinema.WinUI
@@ -26,7 +19,7 @@ namespace Cinema.WinUI
 
         private void hideSubmenu()
         {
-            if(panelDashboardSubmenu.Visible == true)
+            if (panelDashboardSubmenu.Visible == true)
             {
                 panelDashboardSubmenu.Visible = false;
             }
@@ -34,11 +27,12 @@ namespace Cinema.WinUI
 
         private void ShowSubmenu(Panel submenu)
         {
-            if(submenu.Visible == false)
+            if (submenu.Visible == false)
             {
                 hideSubmenu();
                 submenu.Visible = true;
-            } else
+            }
+            else
             {
                 submenu.Visible = false;
             }
@@ -63,7 +57,7 @@ namespace Cinema.WinUI
         private Form activeForm = null;
         private void openChildForm(Form childForm)
         {
-            if(activeForm != null)
+            if (activeForm != null)
             {
                 activeForm.Close();
             }

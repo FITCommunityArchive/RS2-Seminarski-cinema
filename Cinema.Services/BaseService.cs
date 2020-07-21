@@ -2,13 +2,12 @@
 using Cinema.Models.Requests;
 using Cinema.Utilities;
 using Cinema.Utilities.Interfaces;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Cinema.Services
 {
-    public class BaseService<TModel, TSearch, TDatabase> : IService<TModel, TSearch> 
-        where TDatabase : class 
+    public class BaseService<TModel, TSearch, TDatabase> : IService<TModel, TSearch>
+        where TDatabase : class
         where TSearch : BaseSearchRequest
     {
         protected readonly IRepository<TDatabase, int> _repo;
