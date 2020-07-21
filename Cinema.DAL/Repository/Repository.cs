@@ -1,4 +1,5 @@
-﻿using Cinema.Utilities.Enums;
+﻿using Cinema.Utilities;
+using Cinema.Utilities.Enums;
 using Cinema.Utilities.Exceptions;
 using Cinema.Utilities.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -15,6 +16,7 @@ namespace Cinema.Dal.Repository
     {
         protected ICinemaDbContext _context;
         protected DbSet<Entity> _dbSet;
+        private bool _disposed = false;
 
         public Repository(ICinemaDbContext context)
         {
@@ -24,13 +26,19 @@ namespace Cinema.Dal.Repository
 
         public virtual IEnumerable<Entity> Get() => _dbSet;
 
+        public virtual PagedList<Entity> GetPaged(int pageIndex, int pageSize)
+        {
+            var list = PagedList<Entity>.Create(_dbSet, pageIndex, pageSize);
+            return list;
+        }
+
         public virtual async Task<Entity> GetAsync(Key id)
         {
             Entity entity = await _dbSet.FindAsync(id);
             return entity;
         }
 
-        public virtual async Task<List<Entity>> GetAsync(Expression<Func<Entity, bool>> where)
+        public virtual async Task<IEnumerable<Entity>> GetAsync(Expression<Func<Entity, bool>> where)
         {
             return await _dbSet.Where(where).ToListAsync();
         }
@@ -52,9 +60,7 @@ namespace Cinema.Dal.Repository
                 //_context.Entry(oldEnt).CurrentValues.SetValues(newEnt);
                 oldEnt.Update(newEnt);
             }
-        }
-
-        private void Delete(Entity entity) => _dbSet.Remove(entity);
+        }               
 
         public virtual async Task DeleteAsync(Key id)
         {
@@ -76,25 +82,38 @@ namespace Cinema.Dal.Repository
         public virtual IQueryable<Entity> Sort(IQueryable<Entity> query, SortOrder? sortOrder, string sortProperty)
         {
             throw new NotImplementedException();
+        }       
+        
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
 
-        private bool disposed = false;
         protected virtual void Dispose(bool disposing)
         {
-            if (!this.disposed)
+            if (!this._disposed)
             {
                 if (disposing)
                 {
                     _context.Dispose();
                 }
             }
-            this.disposed = true;
+            this._disposed = true;
         }
 
-        public void Dispose()
+        protected virtual IQueryable<Entity> AddPagination(IQueryable<Entity> query, int pageIndex, int pageSize)
         {
-            Dispose(true);
-            GC.SuppressFinalize(this);
+            var count = query.Count();
+            query = query.Skip((pageIndex - 1) * pageSize).Take(pageSize);
+
+            return query;
         }
+
+        #region Private methods
+
+        private void Delete(Entity entity) => _dbSet.Remove(entity);       
+
+        #endregion
     }
 }

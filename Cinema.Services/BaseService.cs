@@ -1,13 +1,16 @@
 ﻿using AutoMapper;
+using Cinema.Models.Requests;
+using Cinema.Utilities;
 using Cinema.Utilities.Interfaces;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Cinema.Services
 {
-    public class BaseService<TModel, TSearch, TDatabase> : IService<TModel, TSearch> where TDatabase : class
+    public class BaseService<TModel, TSearch, TDatabase> : IService<TModel, TSearch> 
+        where TDatabase : class 
+        where TSearch : BaseSearchRequest
     {
-
         protected readonly IRepository<TDatabase, int> _repo;
         protected readonly IUnitOfWork _unit;
         protected readonly IMapper _mapper;
@@ -18,10 +21,12 @@ namespace Cinema.Services
             _repo = _unit.Repository<TDatabase, int>();
             _mapper = mapper;
         }
-        public virtual List<TModel> Get(TSearch search)
+        public virtual PagedList<TModel> GetPaged(TSearch search)
         {
-            var list = _repo.Get();
-            return _mapper.Map<List<TModel>>(list);
+            var list = _repo.GetPaged(search.PageIndex, search.PageSize);
+            var dtoList = _mapper.Map<PagedList<TModel>>(list);
+
+            return dtoList;
         }
 
         public async virtual Task<TModel> GetById(int id)

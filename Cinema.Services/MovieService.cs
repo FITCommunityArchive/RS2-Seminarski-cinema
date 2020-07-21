@@ -6,7 +6,7 @@ using Cinema.Utilities.Interfaces;
 
 namespace Cinema.Services
 {
-    public class MovieService : BaseCRUDService<MovieDto, object, Movie, MovieUpsertRequest, MovieUpsertRequest>
+    public class MovieService : BaseCRUDService<MovieDto, MovieSearchRequest, Movie, MovieUpsertRequest, MovieUpsertRequest>
     {
         public MovieService(IUnitOfWork unit, IMapper mapper) : base(unit, mapper)
         {

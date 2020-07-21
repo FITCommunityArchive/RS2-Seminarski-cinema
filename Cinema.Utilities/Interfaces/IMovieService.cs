@@ -5,7 +5,7 @@ namespace Cinema.Utilities.Interfaces
 {
     public interface IMovieService
     {
-        List<MovieDto> Get();
+        PagedList<MovieDto> GetPaged();
         MovieDto GetById();
         //IEnumerable<DtoMovie> GetComingSoonMovies(int quantity);
 

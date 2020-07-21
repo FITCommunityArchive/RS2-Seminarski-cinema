@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using Cinema.Models.Requests;
 using System.Threading.Tasks;
 
 namespace Cinema.Utilities.Interfaces
 {
-    public interface IService<T, TSearch>
+    public interface IService<T, TSearch> where TSearch : BaseSearchRequest
     {
-        List<T> Get(TSearch search);
+        PagedList<T> GetPaged(TSearch search);
         Task<T> GetById(int id);
     }
 }

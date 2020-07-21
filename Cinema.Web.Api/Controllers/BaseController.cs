@@ -1,4 +1,6 @@
-﻿using Cinema.Utilities.Interfaces;
+﻿using Cinema.Models.Requests;
+using Cinema.Utilities;
+using Cinema.Utilities.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -8,7 +10,7 @@ namespace Cinema.Web.Api.Controllers
     //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    public class BaseController<T, TSearch> : ControllerBase
+    public class BaseController<T, TSearch> : ControllerBase where TSearch : BaseSearchRequest
     {
         private readonly IService<T, TSearch> _service;
         public BaseController(IService<T, TSearch> service)
@@ -16,15 +18,19 @@ namespace Cinema.Web.Api.Controllers
             _service = service;
         }
         [HttpGet]
-        public List<T> Get([FromQuery] TSearch search)
+        public ActionResult<PagedList<T>> Get([FromQuery] TSearch search)
         {
-            return _service.Get(search);
+            var result = _service.GetPaged(search);
+
+            return Ok(result);
         }
 
         [HttpGet("{id}")]
-        public Task<T> GetById(int id)
+        public ActionResult<Task<T>> GetById(int id)
         {
-            return _service.GetById(id);
+            var result = _service.GetById(id);
+
+            return Ok(result);
         }
     }
 }
