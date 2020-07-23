@@ -1,4 +1,4 @@
-﻿namespace Cinema.Utilities.Enums
+﻿namespace Cinema.Shared.Enums
 {
     public enum SortOrder
     {

@@ -1,4 +1,4 @@
-﻿namespace Cinema.Utilities.Constants
+﻿namespace Cinema.Shared.Constants
 {
     public static class ValidationMessages
     {

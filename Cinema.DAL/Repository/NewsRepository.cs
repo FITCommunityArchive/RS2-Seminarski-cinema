@@ -1,5 +1,5 @@
 ﻿using Cinema.Domain.Entities;
-using Cinema.Utilities.Enums;
+using Cinema.Shared.Enums;
 using Cinema.Utilities.Interfaces;
 using System.Linq;
 

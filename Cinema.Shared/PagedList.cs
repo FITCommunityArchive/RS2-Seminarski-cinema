@@ -1,10 +1,10 @@
-﻿using Cinema.Utilities.Constants;
-using Cinema.Utilities.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Cinema.Shared.Constants;
+using Cinema.Shared.Enums;
 
-namespace Cinema.Utilities
+namespace Cinema.Shared
 {
     public class PagedList<T> : List<T>
     {

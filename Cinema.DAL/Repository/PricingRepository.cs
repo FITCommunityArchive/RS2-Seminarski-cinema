@@ -1,6 +1,6 @@
 ﻿using Cinema.Domain.Entities;
-using Cinema.Utilities.Constants;
-using Cinema.Utilities.Enums;
+using Cinema.Shared.Constants;
+using Cinema.Shared.Enums;
 using Cinema.Utilities.Interfaces;
 using System.Linq;
 

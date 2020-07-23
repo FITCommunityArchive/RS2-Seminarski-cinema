@@ -1,5 +1,6 @@
 ﻿using Cinema.Models.Requests;
 using System.Threading.Tasks;
+using Cinema.Shared;
 
 namespace Cinema.Utilities.Interfaces
 {

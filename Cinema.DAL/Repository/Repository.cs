@@ -1,5 +1,5 @@
-﻿using Cinema.Utilities;
-using Cinema.Utilities.Enums;
+﻿using Cinema.Shared;
+using Cinema.Shared.Enums;
 using Cinema.Utilities.Exceptions;
 using Cinema.Utilities.Interfaces;
 using Microsoft.EntityFrameworkCore;

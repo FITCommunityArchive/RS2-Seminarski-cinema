@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Cinema.Models.Requests;
-using Cinema.Utilities;
+using Cinema.Shared;
 using Cinema.Utilities.Interfaces;
 using System.Threading.Tasks;
 
