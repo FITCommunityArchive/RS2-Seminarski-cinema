@@ -37,15 +37,15 @@
             this.buttonDashaboardSubmenu1 = new System.Windows.Forms.Button();
             this.buttonDashboard = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
-            this.panelTopBar = new System.Windows.Forms.Panel();
-            this.panelBottomBar = new System.Windows.Forms.Panel();
-            this.panelChildForm = new System.Windows.Forms.Panel();
-            this.buttonLogOut = new System.Windows.Forms.Button();
-            this.buttonLogIn = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.panelTopBar = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.buttonLogIn = new System.Windows.Forms.Button();
+            this.buttonLogOut = new System.Windows.Forms.Button();
+            this.panelBottomBar = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panelChildForm = new System.Windows.Forms.Panel();
             this.panelSideMenu.SuspendLayout();
             this.panelDashboardSubmenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
@@ -64,8 +64,9 @@
             this.panelSideMenu.Controls.Add(this.panelLogo);
             this.panelSideMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelSideMenu.Location = new System.Drawing.Point(0, 0);
+            this.panelSideMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelSideMenu.Name = "panelSideMenu";
-            this.panelSideMenu.Size = new System.Drawing.Size(250, 591);
+            this.panelSideMenu.Size = new System.Drawing.Size(333, 727);
             this.panelSideMenu.TabIndex = 0;
             // 
             // button5
@@ -76,10 +77,11 @@
             this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(42)))), ((int)(((byte)(97)))));
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button5.Location = new System.Drawing.Point(0, 316);
+            this.button5.Location = new System.Drawing.Point(0, 388);
+            this.button5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button5.Name = "button5";
-            this.button5.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.button5.Size = new System.Drawing.Size(250, 45);
+            this.button5.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
+            this.button5.Size = new System.Drawing.Size(333, 55);
             this.button5.TabIndex = 4;
             this.button5.Text = "Screenings";
             this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -93,14 +95,16 @@
             this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(42)))), ((int)(((byte)(97)))));
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button4.Location = new System.Drawing.Point(0, 271);
+            this.button4.Location = new System.Drawing.Point(0, 333);
+            this.button4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button4.Name = "button4";
-            this.button4.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.button4.Size = new System.Drawing.Size(250, 45);
+            this.button4.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
+            this.button4.Size = new System.Drawing.Size(333, 55);
             this.button4.TabIndex = 3;
             this.button4.Text = "Movies";
             this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // panelDashboardSubmenu
             // 
@@ -108,9 +112,10 @@
             this.panelDashboardSubmenu.Controls.Add(this.buttonDashaboardSubmenu2);
             this.panelDashboardSubmenu.Controls.Add(this.buttonDashaboardSubmenu1);
             this.panelDashboardSubmenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelDashboardSubmenu.Location = new System.Drawing.Point(0, 190);
+            this.panelDashboardSubmenu.Location = new System.Drawing.Point(0, 233);
+            this.panelDashboardSubmenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelDashboardSubmenu.Name = "panelDashboardSubmenu";
-            this.panelDashboardSubmenu.Size = new System.Drawing.Size(250, 81);
+            this.panelDashboardSubmenu.Size = new System.Drawing.Size(333, 100);
             this.panelDashboardSubmenu.TabIndex = 2;
             // 
             // buttonDashaboardSubmenu2
@@ -121,10 +126,11 @@
             this.buttonDashaboardSubmenu2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(42)))), ((int)(((byte)(97)))));
             this.buttonDashaboardSubmenu2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDashaboardSubmenu2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonDashaboardSubmenu2.Location = new System.Drawing.Point(0, 40);
+            this.buttonDashaboardSubmenu2.Location = new System.Drawing.Point(0, 49);
+            this.buttonDashaboardSubmenu2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonDashaboardSubmenu2.Name = "buttonDashaboardSubmenu2";
-            this.buttonDashaboardSubmenu2.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.buttonDashaboardSubmenu2.Size = new System.Drawing.Size(250, 40);
+            this.buttonDashaboardSubmenu2.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
+            this.buttonDashaboardSubmenu2.Size = new System.Drawing.Size(333, 49);
             this.buttonDashaboardSubmenu2.TabIndex = 1;
             this.buttonDashaboardSubmenu2.Text = "Submenu 2";
             this.buttonDashaboardSubmenu2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -140,9 +146,10 @@
             this.buttonDashaboardSubmenu1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDashaboardSubmenu1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonDashaboardSubmenu1.Location = new System.Drawing.Point(0, 0);
+            this.buttonDashaboardSubmenu1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonDashaboardSubmenu1.Name = "buttonDashaboardSubmenu1";
-            this.buttonDashaboardSubmenu1.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.buttonDashaboardSubmenu1.Size = new System.Drawing.Size(250, 40);
+            this.buttonDashaboardSubmenu1.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
+            this.buttonDashaboardSubmenu1.Size = new System.Drawing.Size(333, 49);
             this.buttonDashaboardSubmenu1.TabIndex = 0;
             this.buttonDashaboardSubmenu1.Text = "Submenu 1";
             this.buttonDashaboardSubmenu1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -157,10 +164,11 @@
             this.buttonDashboard.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(42)))), ((int)(((byte)(97)))));
             this.buttonDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDashboard.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonDashboard.Location = new System.Drawing.Point(0, 145);
+            this.buttonDashboard.Location = new System.Drawing.Point(0, 178);
+            this.buttonDashboard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonDashboard.Name = "buttonDashboard";
-            this.buttonDashboard.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.buttonDashboard.Size = new System.Drawing.Size(250, 45);
+            this.buttonDashboard.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
+            this.buttonDashboard.Size = new System.Drawing.Size(333, 55);
             this.buttonDashboard.TabIndex = 1;
             this.buttonDashboard.Text = "Dashboard";
             this.buttonDashboard.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -173,9 +181,34 @@
             this.panelLogo.Controls.Add(this.label3);
             this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelLogo.Location = new System.Drawing.Point(0, 0);
+            this.panelLogo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelLogo.Name = "panelLogo";
-            this.panelLogo.Size = new System.Drawing.Size(250, 145);
+            this.panelLogo.Size = new System.Drawing.Size(333, 178);
             this.panelLogo.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(16, 21);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(100, 92);
+            this.button1.TabIndex = 1;
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(12, 132);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(132, 17);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Boris Huseincehajic";
             // 
             // panelTopBar
             // 
@@ -184,97 +217,83 @@
             this.panelTopBar.Controls.Add(this.buttonLogIn);
             this.panelTopBar.Controls.Add(this.buttonLogOut);
             this.panelTopBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTopBar.Location = new System.Drawing.Point(250, 0);
+            this.panelTopBar.Location = new System.Drawing.Point(333, 0);
+            this.panelTopBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelTopBar.Name = "panelTopBar";
-            this.panelTopBar.Size = new System.Drawing.Size(684, 50);
+            this.panelTopBar.Size = new System.Drawing.Size(912, 62);
             this.panelTopBar.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(580, 21);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(98, 17);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Welcome user";
+            // 
+            // buttonLogIn
+            // 
+            this.buttonLogIn.Location = new System.Drawing.Point(688, 15);
+            this.buttonLogIn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonLogIn.Name = "buttonLogIn";
+            this.buttonLogIn.Size = new System.Drawing.Size(100, 28);
+            this.buttonLogIn.TabIndex = 1;
+            this.buttonLogIn.Text = "Log In";
+            this.buttonLogIn.UseVisualStyleBackColor = true;
+            // 
+            // buttonLogOut
+            // 
+            this.buttonLogOut.Location = new System.Drawing.Point(796, 15);
+            this.buttonLogOut.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonLogOut.Name = "buttonLogOut";
+            this.buttonLogOut.Size = new System.Drawing.Size(100, 28);
+            this.buttonLogOut.TabIndex = 0;
+            this.buttonLogOut.Text = "Log Out";
+            this.buttonLogOut.UseVisualStyleBackColor = true;
             // 
             // panelBottomBar
             // 
             this.panelBottomBar.BackColor = System.Drawing.Color.White;
             this.panelBottomBar.Controls.Add(this.label2);
             this.panelBottomBar.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelBottomBar.Location = new System.Drawing.Point(250, 559);
+            this.panelBottomBar.Location = new System.Drawing.Point(333, 688);
+            this.panelBottomBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelBottomBar.Name = "panelBottomBar";
-            this.panelBottomBar.Size = new System.Drawing.Size(684, 32);
+            this.panelBottomBar.Size = new System.Drawing.Size(912, 39);
             this.panelBottomBar.TabIndex = 2;
-            // 
-            // panelChildForm
-            // 
-            this.panelChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelChildForm.Location = new System.Drawing.Point(250, 50);
-            this.panelChildForm.Name = "panelChildForm";
-            this.panelChildForm.Size = new System.Drawing.Size(684, 509);
-            this.panelChildForm.TabIndex = 3;
-            // 
-            // buttonLogOut
-            // 
-            this.buttonLogOut.Location = new System.Drawing.Point(597, 12);
-            this.buttonLogOut.Name = "buttonLogOut";
-            this.buttonLogOut.Size = new System.Drawing.Size(75, 23);
-            this.buttonLogOut.TabIndex = 0;
-            this.buttonLogOut.Text = "Log Out";
-            this.buttonLogOut.UseVisualStyleBackColor = true;
-            // 
-            // buttonLogIn
-            // 
-            this.buttonLogIn.Location = new System.Drawing.Point(516, 12);
-            this.buttonLogIn.Name = "buttonLogIn";
-            this.buttonLogIn.Size = new System.Drawing.Size(75, 23);
-            this.buttonLogIn.TabIndex = 1;
-            this.buttonLogIn.Text = "Log In";
-            this.buttonLogIn.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(435, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Welcome user";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 10);
+            this.label2.Location = new System.Drawing.Point(8, 12);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(161, 13);
+            this.label2.Size = new System.Drawing.Size(214, 17);
             this.label2.TabIndex = 0;
             this.label2.Text = "Copyright eCinema © 2014-2020";
             // 
-            // label3
+            // panelChildForm
             // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(9, 107);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Boris Huseincehajic";
-            // 
-            // button1
-            // 
-            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(12, 17);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 75);
-            this.button1.TabIndex = 1;
-            this.button1.UseVisualStyleBackColor = true;
+            this.panelChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelChildForm.Location = new System.Drawing.Point(333, 62);
+            this.panelChildForm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelChildForm.Name = "panelChildForm";
+            this.panelChildForm.Size = new System.Drawing.Size(912, 626);
+            this.panelChildForm.TabIndex = 3;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(934, 591);
+            this.ClientSize = new System.Drawing.Size(1245, 727);
             this.Controls.Add(this.panelChildForm);
             this.Controls.Add(this.panelBottomBar);
             this.Controls.Add(this.panelTopBar);
             this.Controls.Add(this.panelSideMenu);
-            this.MinimumSize = new System.Drawing.Size(950, 600);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MinimumSize = new System.Drawing.Size(1261, 728);
             this.Name = "Form1";
             this.Text = "Form1";
             this.panelSideMenu.ResumeLayout(false);

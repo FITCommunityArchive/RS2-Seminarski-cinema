@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cinema.Shared;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Cinema.Models;
+using Cinema.Models.Requests;
 
 namespace Cinema.WinUI.Movies
 {
@@ -19,14 +22,10 @@ namespace Cinema.WinUI.Movies
             InitializeComponent();
         }
 
-        private void frmMoviesList_Load(object sender, EventArgs e)
+        private async void frmMoviesList_Load(object sender, EventArgs e)
         {
-            /*var result = await _moviesApi.Get<List<Model.Proizvod>>(new Movies()
-            {
-                VrstaId = vrstaId
-            });
-
-            grdProizvodi.DataSource = result;*/
+            var result = await _moviesApi.Get<PagedList<MovieDto>>(new MovieSearchRequest());       
+            grdMoviesList.DataSource = result;
         }
 
         private Task LoadMovies()

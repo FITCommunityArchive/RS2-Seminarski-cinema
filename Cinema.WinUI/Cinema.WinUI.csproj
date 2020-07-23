@@ -76,6 +76,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\MoviesList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\MoviesList.Designer.cs">
+      <DependentUpon>MoviesList.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -94,6 +100,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControls\MoviesList.resx">
+      <DependentUpon>MoviesList.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -109,6 +118,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Cinema.Model\Cinema.Model.csproj">
+      <Project>{a756214a-dd55-44cc-a1c6-2e2bdb9542d9}</Project>
+      <Name>Cinema.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Cinema.Shared\Cinema.Shared.csproj">
       <Project>{968a0e7d-94bc-4462-b508-87769220014a}</Project>
       <Name>Cinema.Shared</Name>

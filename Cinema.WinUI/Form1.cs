@@ -1,10 +1,13 @@
-﻿using System;
+﻿using Cinema.WinUI.Movies;
+using System;
 using System.Windows.Forms;
 
 namespace Cinema.WinUI
 {
     public partial class Form1 : Form
     {
+        private Form activeForm = null;
+
         public Form1()
         {
             InitializeComponent();
@@ -53,8 +56,7 @@ namespace Cinema.WinUI
         {
 
         }
-
-        private Form activeForm = null;
+        
         private void openChildForm(Form childForm)
         {
             if (activeForm != null)
@@ -69,6 +71,12 @@ namespace Cinema.WinUI
             panelChildForm.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            frmMoviesList frmMoviesList = new frmMoviesList();
+            openChildForm(frmMoviesList);
         }
     }
 }
