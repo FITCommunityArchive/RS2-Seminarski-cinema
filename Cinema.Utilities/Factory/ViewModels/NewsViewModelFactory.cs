@@ -1,6 +1,6 @@
 ﻿using Cinema.Domain.Entities;
 using Cinema.Models.ViewModels.News;
-using Cinema.Utilities.Helpers;
+using Cinema.Shared.Helpers;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Cinema.Utilities.Factory.ViewModels

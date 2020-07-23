@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Cinema.Utilities.Helpers
+namespace Cinema.Shared.Helpers
 {
     public class PasswordGenerator
     {

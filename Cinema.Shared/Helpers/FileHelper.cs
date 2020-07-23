@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace Cinema.Utilities.Helpers
+namespace Cinema.Shared.Helpers
 {
     public static class FileHelper
     {

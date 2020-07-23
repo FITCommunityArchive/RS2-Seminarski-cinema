@@ -1,6 +1,6 @@
 ﻿using Cinema.Domain.Entities;
 using Cinema.Models.ViewModels.Pricings;
-using Cinema.Utilities.Helpers;
+using Cinema.Shared.Helpers;
 
 namespace Cinema.Utilities.Factory.ViewModels
 {

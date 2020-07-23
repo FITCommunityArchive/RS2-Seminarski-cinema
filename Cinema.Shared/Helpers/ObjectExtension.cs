@@ -6,7 +6,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace eProdaja.WinUI
+namespace Cinema.Shared.Helpers
 {
     public static class ObjectExtension
     {
