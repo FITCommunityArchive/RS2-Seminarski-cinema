@@ -6,7 +6,7 @@ namespace Cinema.Utilities.Interfaces
 {
     public interface IService<T, TSearch> where TSearch : BaseSearchRequest
     {
-        Task<PagedList<T>> GetPagedAsync(TSearch search);
+        Task<IPagedList<T>> GetPagedAsync(TSearch search);
         Task<T> GetByIdAsync(int id);
     }
 }

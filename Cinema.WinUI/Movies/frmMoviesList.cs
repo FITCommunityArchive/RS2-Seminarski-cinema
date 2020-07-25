@@ -12,10 +12,8 @@ namespace Cinema.WinUI.Movies
     public partial class frmMoviesList : Form
     {
         private readonly ApiService _moviesApi = new ApiService("Movies");
-
-        private string _searchTerm = "";
-        private int _searchYear = 0;
-        private int _searchDuration = 0;
+        private int _pageIndex;
+        private int _totalPages;
 
         public frmMoviesList()
         {
@@ -24,7 +22,12 @@ namespace Cinema.WinUI.Movies
 
         private async void frmMoviesList_Load(object sender, EventArgs e)
         {
-            MovieSearchRequest searchRequest = new MovieSearchRequest();
+            MovieSearchRequest searchRequest = new MovieSearchRequest
+            {
+                PageIndex = 1,
+                PageSize = 1
+            };
+
             await LoadMovies(searchRequest);
         }
 
@@ -72,10 +75,17 @@ namespace Cinema.WinUI.Movies
 
         private async Task LoadMovies(MovieSearchRequest searchRequest)
         {
-            var result = await _moviesApi.Get<PagedList<MovieDto>>(searchRequest);
+            var result = await _moviesApi.Get<PaginatedList<MovieDto>>(searchRequest);
 
             grdMoviesList.AutoGenerateColumns = false;
-            grdMoviesList.DataSource = result;
+            grdMoviesList.DataSource = result.Data;
+            rtxCurrentPage.Text = result.PageIndex.ToString();
+            rtxLastPage.Text = result.TotalPages.ToString();
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

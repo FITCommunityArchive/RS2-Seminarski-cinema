@@ -27,7 +27,7 @@ namespace Cinema.Dal.Repository
 
         public virtual IEnumerable<Entity> Get() => _dbSet;
 
-        public virtual async Task<PagedList<Entity>> GetPagedAsync(Expression<Func<Entity, bool>> where, int pageIndex, int pageSize)
+        public virtual async Task<IPagedList<Entity>> GetPagedAsync(Expression<Func<Entity, bool>> where, int pageIndex, int pageSize)
         {
             var query = where != null ? _dbSet.Where(where) : _dbSet;
 
@@ -82,7 +82,7 @@ namespace Cinema.Dal.Repository
             }
         }
 
-        protected virtual async Task<PagedList<Entity>> ApplyPaginationAsync(IQueryable<Entity> query, int pageIndex, int pageSize)
+        protected virtual async Task<IPagedList<Entity>> ApplyPaginationAsync(IQueryable<Entity> query, int pageIndex, int pageSize)
         {
             if (pageIndex == 0)
             {
@@ -96,7 +96,7 @@ namespace Cinema.Dal.Repository
 
             var count = query.Count();
             var items = await query.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToListAsync();
-            return new PagedList<Entity>(items, count, pageIndex, pageSize);
+            return new PaginatedList<Entity>(items, count, pageIndex, pageSize);
         }
 
         public virtual IQueryable<Entity> Sort(IQueryable<Entity> query, SortOrder? sortOrder, string sortProperty)

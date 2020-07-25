@@ -26,7 +26,9 @@ namespace Cinema.WinUI
                 url += await search.ToQueryString();
             }
 
-            return await url.GetJsonAsync<T>();
+            var result = await url.GetJsonAsync<T>();
+
+            return result;
         }
 
         public async Task<T> GetById<T>(object id)

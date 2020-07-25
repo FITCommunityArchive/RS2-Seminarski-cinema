@@ -29,18 +29,24 @@
         private void InitializeComponent()
         {
             this.grdMoviesList = new System.Windows.Forms.DataGridView();
+            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Duration = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Year = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Country = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Directors = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Actors = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtSearchBar = new System.Windows.Forms.TextBox();
             this.lblSearch = new System.Windows.Forms.Label();
             this.lblSearchYear = new System.Windows.Forms.Label();
             this.txtSearchYear = new System.Windows.Forms.TextBox();
             this.lblSearchDuration = new System.Windows.Forms.Label();
             this.txtSearchDuration = new System.Windows.Forms.TextBox();
-            this.Actors = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Directors = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Country = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Year = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Duration = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnFirstPage = new System.Windows.Forms.Button();
+            this.btnLastPage = new System.Windows.Forms.Button();
+            this.btnPreviousPage = new System.Windows.Forms.Button();
+            this.btnNextPage = new System.Windows.Forms.Button();
+            this.rtxCurrentPage = new System.Windows.Forms.RichTextBox();
+            this.rtxLastPage = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.grdMoviesList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,13 +61,54 @@
             this.Country,
             this.Directors,
             this.Actors});
-            this.grdMoviesList.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.grdMoviesList.Location = new System.Drawing.Point(0, 174);
+            this.grdMoviesList.Location = new System.Drawing.Point(0, 90);
             this.grdMoviesList.Name = "grdMoviesList";
             this.grdMoviesList.RowHeadersWidth = 51;
             this.grdMoviesList.RowTemplate.Height = 24;
             this.grdMoviesList.Size = new System.Drawing.Size(800, 276);
             this.grdMoviesList.TabIndex = 0;
+            // 
+            // Title
+            // 
+            this.Title.DataPropertyName = "Title";
+            this.Title.HeaderText = "Title";
+            this.Title.MinimumWidth = 6;
+            this.Title.Name = "Title";
+            // 
+            // Duration
+            // 
+            this.Duration.DataPropertyName = "Duration";
+            this.Duration.HeaderText = "Duration";
+            this.Duration.MinimumWidth = 6;
+            this.Duration.Name = "Duration";
+            // 
+            // Year
+            // 
+            this.Year.DataPropertyName = "Year";
+            this.Year.HeaderText = "Year";
+            this.Year.MinimumWidth = 6;
+            this.Year.Name = "Year";
+            // 
+            // Country
+            // 
+            this.Country.DataPropertyName = "Country";
+            this.Country.HeaderText = "Country";
+            this.Country.MinimumWidth = 6;
+            this.Country.Name = "Country";
+            // 
+            // Directors
+            // 
+            this.Directors.DataPropertyName = "Directors";
+            this.Directors.HeaderText = "Directors";
+            this.Directors.MinimumWidth = 6;
+            this.Directors.Name = "Directors";
+            // 
+            // Actors
+            // 
+            this.Actors.DataPropertyName = "Actors";
+            this.Actors.HeaderText = "Actors";
+            this.Actors.MinimumWidth = 6;
+            this.Actors.Name = "Actors";
             // 
             // txtSearchBar
             // 
@@ -93,7 +140,7 @@
             // 
             this.txtSearchYear.Location = new System.Drawing.Point(558, 41);
             this.txtSearchYear.Name = "txtSearchYear";
-            this.txtSearchYear.Size = new System.Drawing.Size(137, 22);
+            this.txtSearchYear.Size = new System.Drawing.Size(117, 22);
             this.txtSearchYear.TabIndex = 3;
             this.txtSearchYear.TextChanged += new System.EventHandler(this.txtSearchYear_TextChanged);
             // 
@@ -114,53 +161,72 @@
             this.txtSearchDuration.TabIndex = 5;
             this.txtSearchDuration.TextChanged += new System.EventHandler(this.txtSearchDuration_TextChanged);
             // 
-            // Actors
+            // btnFirstPage
             // 
-            this.Actors.DataPropertyName = "Actors";
-            this.Actors.HeaderText = "Actors";
-            this.Actors.MinimumWidth = 6;
-            this.Actors.Name = "Actors";
+            this.btnFirstPage.Location = new System.Drawing.Point(427, 388);
+            this.btnFirstPage.Name = "btnFirstPage";
+            this.btnFirstPage.Size = new System.Drawing.Size(40, 40);
+            this.btnFirstPage.TabIndex = 7;
+            this.btnFirstPage.Text = "<<";
+            this.btnFirstPage.UseVisualStyleBackColor = true;
             // 
-            // Directors
+            // btnLastPage
             // 
-            this.Directors.DataPropertyName = "Directors";
-            this.Directors.HeaderText = "Directors";
-            this.Directors.MinimumWidth = 6;
-            this.Directors.Name = "Directors";
+            this.btnLastPage.Location = new System.Drawing.Point(627, 387);
+            this.btnLastPage.Name = "btnLastPage";
+            this.btnLastPage.Size = new System.Drawing.Size(40, 40);
+            this.btnLastPage.TabIndex = 8;
+            this.btnLastPage.Text = ">>";
+            this.btnLastPage.UseVisualStyleBackColor = true;
             // 
-            // Country
+            // btnPreviousPage
             // 
-            this.Country.DataPropertyName = "Country";
-            this.Country.HeaderText = "Country";
-            this.Country.MinimumWidth = 6;
-            this.Country.Name = "Country";
+            this.btnPreviousPage.Location = new System.Drawing.Point(467, 388);
+            this.btnPreviousPage.Name = "btnPreviousPage";
+            this.btnPreviousPage.Size = new System.Drawing.Size(40, 40);
+            this.btnPreviousPage.TabIndex = 10;
+            this.btnPreviousPage.Text = "<";
+            this.btnPreviousPage.UseVisualStyleBackColor = true;
             // 
-            // Year
+            // btnNextPage
             // 
-            this.Year.DataPropertyName = "Year";
-            this.Year.HeaderText = "Year";
-            this.Year.MinimumWidth = 6;
-            this.Year.Name = "Year";
+            this.btnNextPage.Location = new System.Drawing.Point(587, 387);
+            this.btnNextPage.Name = "btnNextPage";
+            this.btnNextPage.Size = new System.Drawing.Size(40, 40);
+            this.btnNextPage.TabIndex = 11;
+            this.btnNextPage.Text = ">";
+            this.btnNextPage.UseVisualStyleBackColor = true;
             // 
-            // Duration
+            // rtxCurrentPage
             // 
-            this.Duration.DataPropertyName = "Duration";
-            this.Duration.HeaderText = "Duration";
-            this.Duration.MinimumWidth = 6;
-            this.Duration.Name = "Duration";
+            this.rtxCurrentPage.Location = new System.Drawing.Point(507, 388);
+            this.rtxCurrentPage.Name = "rtxCurrentPage";
+            this.rtxCurrentPage.ReadOnly = true;
+            this.rtxCurrentPage.Size = new System.Drawing.Size(34, 34);
+            this.rtxCurrentPage.TabIndex = 12;
+            this.rtxCurrentPage.Text = "1";
+            this.rtxCurrentPage.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
-            // Title
+            // rtxLastPage
             // 
-            this.Title.DataPropertyName = "Title";
-            this.Title.HeaderText = "Title";
-            this.Title.MinimumWidth = 6;
-            this.Title.Name = "Title";
+            this.rtxLastPage.Location = new System.Drawing.Point(547, 387);
+            this.rtxLastPage.Name = "rtxLastPage";
+            this.rtxLastPage.ReadOnly = true;
+            this.rtxLastPage.Size = new System.Drawing.Size(34, 34);
+            this.rtxLastPage.TabIndex = 13;
+            this.rtxLastPage.Text = "1";
             // 
             // frmMoviesList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.rtxLastPage);
+            this.Controls.Add(this.rtxCurrentPage);
+            this.Controls.Add(this.btnNextPage);
+            this.Controls.Add(this.btnPreviousPage);
+            this.Controls.Add(this.btnLastPage);
+            this.Controls.Add(this.btnFirstPage);
             this.Controls.Add(this.lblSearchDuration);
             this.Controls.Add(this.txtSearchDuration);
             this.Controls.Add(this.lblSearchYear);
@@ -193,5 +259,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Country;
         private System.Windows.Forms.DataGridViewTextBoxColumn Directors;
         private System.Windows.Forms.DataGridViewTextBoxColumn Actors;
+        private System.Windows.Forms.Button btnFirstPage;
+        private System.Windows.Forms.Button btnLastPage;
+        private System.Windows.Forms.Button btnPreviousPage;
+        private System.Windows.Forms.Button btnNextPage;
+        private System.Windows.Forms.RichTextBox rtxCurrentPage;
+        private System.Windows.Forms.RichTextBox rtxLastPage;
     }
 }

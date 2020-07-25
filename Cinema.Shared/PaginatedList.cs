@@ -7,14 +7,14 @@ using System.Linq;
 
 namespace Cinema.Shared
 {
-    public class PagedList<T> : IPagedList<T>
+    public class PaginatedList<T> : List<T>, IPagedList<T>
     {
-        public List<T> Data { get; private set; }
         public int PageIndex { get; private set; }
         public int TotalPages { get; private set; }
         public string CurrentSort { get; private set; }
         public SortOrder? CurrentSortOrder { get; private set; }
         public string CurrentFilter { get; private set; }
+        public List<T> Data { get { return this; } }
 
         public bool HasPreviousPage
         {
@@ -32,20 +32,29 @@ namespace Cinema.Shared
             }
         }
 
-        public PagedList()
+        public PaginatedList()
         {
 
         }
 
-        public PagedList(List<T> items, int count, int pageIndex, int pageSize)
+        // This is in order to be able to use PagedList in automapper - the list properties aren't mapped successfully
+        public PaginatedList(List<T> items, int pageIndex, int totalPages)
+        {
+            PageIndex = pageIndex;
+            TotalPages = totalPages;
+
+            this.AddRange(items);
+        }
+
+        public PaginatedList(List<T> items, int count, int pageIndex, int pageSize)
         {
             PageIndex = pageIndex;
             TotalPages = (int)Math.Ceiling(count / (double)pageSize);
 
-            Data = items;
+            this.AddRange(items);
         }
 
-        public PagedList(List<T> items, int count, int pageIndex, int pageSize,
+        public PaginatedList(List<T> items, int count, int pageIndex, int pageSize,
             SortOrder? currentSortOrder, string currentSort, string currentFilter)
         {
             PageIndex = pageIndex;
@@ -54,10 +63,10 @@ namespace Cinema.Shared
             CurrentSort = currentSort;
             CurrentFilter = currentFilter;
 
-            Data = items;
+            this.AddRange(items);
         }
 
-        public static PagedList<T> Create(ICollection<T> source, int pageIndex, int pageSize)
+        public static PaginatedList<T> Create(ICollection<T> source, int pageIndex, int pageSize)
         {
             if (pageIndex == 0)
             {
@@ -71,15 +80,15 @@ namespace Cinema.Shared
 
             var count = source.Count();
             var items = source.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
-            return new PagedList<T>(items, count, pageIndex, pageSize);
+            return new PaginatedList<T>(items, count, pageIndex, pageSize);
         }
 
-        public static PagedList<T> Create(ICollection<T> source, int pageIndex, int pageSize,
+        public static PaginatedList<T> Create(ICollection<T> source, int pageIndex, int pageSize,
             SortOrder? currentSortOrder, string currentSort, string currentFilter)
         {
             var count = source.Count();
             var items = source.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
-            return new PagedList<T>(items, count, pageIndex, pageSize,
+            return new PaginatedList<T>(items, count, pageIndex, pageSize,
                 currentSortOrder, currentSort, currentFilter);
         }
     }

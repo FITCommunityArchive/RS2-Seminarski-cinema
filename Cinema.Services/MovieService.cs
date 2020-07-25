@@ -19,12 +19,12 @@ namespace Cinema.Services
 
         }
 
-        public override async Task<PagedList<MovieDto>> GetPagedAsync(MovieSearchRequest search)
+        public override async Task<IPagedList<MovieDto>> GetPagedAsync(MovieSearchRequest search)
         {
             var expression = ApplyFilter(search);
 
             var list = await _repo.GetPagedAsync(expression, search.PageIndex, search.PageSize);
-            var dtoList = _mapper.Map<PagedList<MovieDto>>(list);
+            var dtoList = _mapper.Map<PaginatedList<MovieDto>>(list);
 
             return dtoList;
         }

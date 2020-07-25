@@ -3,6 +3,7 @@ using Cinema.Dal.Data;
 using Cinema.Models;
 using Cinema.Models.Requests.Movies;
 using Cinema.Services;
+using Cinema.Shared;
 using Cinema.Utilities.Interfaces;
 using Cinema.Web.Api.Filters;
 using Microsoft.AspNetCore.Builder;
@@ -12,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.Text;
 
 namespace Cinema.Web.API
 {
