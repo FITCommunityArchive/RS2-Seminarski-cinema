@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             this.grdMoviesList = new System.Windows.Forms.DataGridView();
-            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Duration = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Year = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Country = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Directors = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Actors = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtSearchBar = new System.Windows.Forms.TextBox();
             this.lblSearch = new System.Windows.Forms.Label();
             this.lblSearchYear = new System.Windows.Forms.Label();
             this.txtSearchYear = new System.Windows.Forms.TextBox();
             this.lblSearchDuration = new System.Windows.Forms.Label();
             this.txtSearchDuration = new System.Windows.Forms.TextBox();
+            this.Actors = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Directors = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Country = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Year = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Duration = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grdMoviesList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,53 +63,11 @@
             this.grdMoviesList.Size = new System.Drawing.Size(800, 276);
             this.grdMoviesList.TabIndex = 0;
             // 
-            // Title
-            // 
-            this.Title.DataPropertyName = "Title";
-            this.Title.HeaderText = "Title";
-            this.Title.MinimumWidth = 6;
-            this.Title.Name = "Title";
-            // 
-            // Duration
-            // 
-            this.Duration.DataPropertyName = "Duration";
-            this.Duration.HeaderText = "Duration";
-            this.Duration.MinimumWidth = 6;
-            this.Duration.Name = "Duration";
-            // 
-            // Year
-            // 
-            this.Year.DataPropertyName = "Year";
-            this.Year.HeaderText = "Year";
-            this.Year.MinimumWidth = 6;
-            this.Year.Name = "Year";
-            // 
-            // Country
-            // 
-            this.Country.DataPropertyName = "Country";
-            this.Country.HeaderText = "Country";
-            this.Country.MinimumWidth = 6;
-            this.Country.Name = "Country";
-            // 
-            // Directors
-            // 
-            this.Directors.DataPropertyName = "Directors";
-            this.Directors.HeaderText = "Directors";
-            this.Directors.MinimumWidth = 6;
-            this.Directors.Name = "Directors";
-            // 
-            // Actors
-            // 
-            this.Actors.DataPropertyName = "Actors";
-            this.Actors.HeaderText = "Actors";
-            this.Actors.MinimumWidth = 6;
-            this.Actors.Name = "Actors";
-            // 
             // txtSearchBar
             // 
             this.txtSearchBar.Location = new System.Drawing.Point(12, 41);
             this.txtSearchBar.Name = "txtSearchBar";
-            this.txtSearchBar.Size = new System.Drawing.Size(224, 22);
+            this.txtSearchBar.Size = new System.Drawing.Size(290, 22);
             this.txtSearchBar.TabIndex = 1;
             this.txtSearchBar.TextChanged += new System.EventHandler(this.txtSearchBar_TextChanged);
             // 
@@ -125,7 +83,7 @@
             // lblSearchYear
             // 
             this.lblSearchYear.AutoSize = true;
-            this.lblSearchYear.Location = new System.Drawing.Point(266, 18);
+            this.lblSearchYear.Location = new System.Drawing.Point(555, 18);
             this.lblSearchYear.Name = "lblSearchYear";
             this.lblSearchYear.Size = new System.Drawing.Size(38, 17);
             this.lblSearchYear.TabIndex = 4;
@@ -133,7 +91,7 @@
             // 
             // txtSearchYear
             // 
-            this.txtSearchYear.Location = new System.Drawing.Point(265, 41);
+            this.txtSearchYear.Location = new System.Drawing.Point(558, 41);
             this.txtSearchYear.Name = "txtSearchYear";
             this.txtSearchYear.Size = new System.Drawing.Size(137, 22);
             this.txtSearchYear.TabIndex = 3;
@@ -142,7 +100,7 @@
             // lblSearchDuration
             // 
             this.lblSearchDuration.AutoSize = true;
-            this.lblSearchDuration.Location = new System.Drawing.Point(438, 18);
+            this.lblSearchDuration.Location = new System.Drawing.Point(424, 18);
             this.lblSearchDuration.Name = "lblSearchDuration";
             this.lblSearchDuration.Size = new System.Drawing.Size(62, 17);
             this.lblSearchDuration.TabIndex = 6;
@@ -150,11 +108,53 @@
             // 
             // txtSearchDuration
             // 
-            this.txtSearchDuration.Location = new System.Drawing.Point(437, 41);
+            this.txtSearchDuration.Location = new System.Drawing.Point(427, 41);
             this.txtSearchDuration.Name = "txtSearchDuration";
-            this.txtSearchDuration.Size = new System.Drawing.Size(137, 22);
+            this.txtSearchDuration.Size = new System.Drawing.Size(125, 22);
             this.txtSearchDuration.TabIndex = 5;
             this.txtSearchDuration.TextChanged += new System.EventHandler(this.txtSearchDuration_TextChanged);
+            // 
+            // Actors
+            // 
+            this.Actors.DataPropertyName = "Actors";
+            this.Actors.HeaderText = "Actors";
+            this.Actors.MinimumWidth = 6;
+            this.Actors.Name = "Actors";
+            // 
+            // Directors
+            // 
+            this.Directors.DataPropertyName = "Directors";
+            this.Directors.HeaderText = "Directors";
+            this.Directors.MinimumWidth = 6;
+            this.Directors.Name = "Directors";
+            // 
+            // Country
+            // 
+            this.Country.DataPropertyName = "Country";
+            this.Country.HeaderText = "Country";
+            this.Country.MinimumWidth = 6;
+            this.Country.Name = "Country";
+            // 
+            // Year
+            // 
+            this.Year.DataPropertyName = "Year";
+            this.Year.HeaderText = "Year";
+            this.Year.MinimumWidth = 6;
+            this.Year.Name = "Year";
+            // 
+            // Duration
+            // 
+            this.Duration.DataPropertyName = "Duration";
+            this.Duration.HeaderText = "Duration";
+            this.Duration.MinimumWidth = 6;
+            this.Duration.Name = "Duration";
+            // 
+            // Title
+            // 
+            this.Title.DataPropertyName = "Title";
+            this.Title.HeaderText = "Title";
+            this.Title.MinimumWidth = 6;
+            this.Title.Name = "Title";
             // 
             // frmMoviesList
             // 
@@ -181,17 +181,17 @@
         #endregion
 
         private System.Windows.Forms.DataGridView grdMoviesList;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Title;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Duration;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Year;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Country;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Directors;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Actors;
         private System.Windows.Forms.TextBox txtSearchBar;
         private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.Label lblSearchYear;
         private System.Windows.Forms.TextBox txtSearchYear;
         private System.Windows.Forms.Label lblSearchDuration;
         private System.Windows.Forms.TextBox txtSearchDuration;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Title;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Duration;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Year;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Country;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Directors;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Actors;
     }
 }
