@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
 using Cinema.Models.Requests;
 using Cinema.Shared;
 using Cinema.Utilities.Interfaces;

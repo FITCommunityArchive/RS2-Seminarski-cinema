@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Cinema.Shared.Constants;
+using Cinema.Shared.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Cinema.Shared.Constants;
-using Cinema.Shared.Enums;
 
 namespace Cinema.Shared
 {

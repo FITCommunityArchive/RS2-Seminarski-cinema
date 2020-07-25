@@ -1,5 +1,5 @@
-﻿using Cinema.Shared.Enums;
-using Cinema.Shared;
+﻿using Cinema.Shared;
+using Cinema.Shared.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -3,7 +3,6 @@ using Cinema.Shared.Constants;
 using Cinema.Shared.Enums;
 using Cinema.Utilities.Exceptions;
 using Cinema.Utilities.Interfaces;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -29,7 +28,7 @@ namespace Cinema.Dal.Repository
         public virtual IEnumerable<Entity> Get() => _dbSet;
 
         public virtual async Task<PagedList<Entity>> GetPagedAsync(Expression<Func<Entity, bool>> where, int pageIndex, int pageSize)
-        {            
+        {
             var query = where != null ? _dbSet.Where(where) : _dbSet;
 
             var pagedList = await ApplyPaginationAsync(query, pageIndex, pageSize);

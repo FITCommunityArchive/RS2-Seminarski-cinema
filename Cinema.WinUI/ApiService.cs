@@ -1,7 +1,6 @@
-﻿using Flurl.Http;
-using Flurl;
+﻿using Cinema.Shared.Helpers;
+using Flurl.Http;
 using System.Threading.Tasks;
-using Cinema.Shared.Helpers;
 
 namespace Cinema.WinUI
 {
@@ -24,7 +23,7 @@ namespace Cinema.WinUI
             if (search != null)
             {
                 url += "?";
-                url += await  search.ToQueryString();
+                url += await search.ToQueryString();
             }
 
             return await url.GetJsonAsync<T>();

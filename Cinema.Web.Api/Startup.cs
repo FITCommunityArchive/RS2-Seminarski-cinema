@@ -1,7 +1,6 @@
 using AutoMapper;
 using Cinema.Dal.Data;
 using Cinema.Models;
-using Cinema.Models.Requests;
 using Cinema.Models.Requests.Movies;
 using Cinema.Services;
 using Cinema.Utilities.Interfaces;

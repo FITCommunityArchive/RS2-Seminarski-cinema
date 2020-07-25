@@ -1,12 +1,11 @@
 ﻿using AutoMapper;
-using Cinema.Shared;
 
 namespace Cinema.Shared.Helpers
 {
     public class MapperFactory<TInput, TOutput> where TInput : class where TOutput : class
     {
         private readonly IMapper _mapper;
-                public MapperFactory(IMapper mapper)
+        public MapperFactory(IMapper mapper)
         {
             _mapper = mapper;
         }

@@ -56,7 +56,7 @@ namespace Cinema.WinUI
         {
 
         }
-        
+
         private void openChildForm(Form childForm)
         {
             if (activeForm != null)
