@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Cinema.Shared;
 
-namespace Cinema.Utilities.Factory
+namespace Cinema.Shared.Helpers
 {
     public class MapperFactory<TInput, TOutput> where TInput : class where TOutput : class
     {

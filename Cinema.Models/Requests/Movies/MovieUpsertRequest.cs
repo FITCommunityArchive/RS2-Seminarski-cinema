@@ -1,6 +1,6 @@
-﻿namespace Cinema.Models
+﻿namespace Cinema.Models.Requests.Movies
 {
-    public class MovieDto : BaseDto
+    public class MovieUpsertRequest
     {
         public string Title { get; set; }
         public int Duration { get; set; }

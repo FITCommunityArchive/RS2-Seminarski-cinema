@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using Cinema.Domain.Entities;
 using Cinema.Models;
-using Cinema.Models.Requests;
+using Cinema.Models.Requests.Movies;
 
-namespace Cinema.Utilities.Mappers
+namespace Cinema.Web.Api.Mappers
 {
     public class Mapper : Profile
     {

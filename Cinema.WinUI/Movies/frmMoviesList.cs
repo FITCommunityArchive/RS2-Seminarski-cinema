@@ -1,15 +1,11 @@
-﻿using Cinema.Shared;
+﻿using Cinema.Models;
+using Cinema.Models.Requests.Movies;
+using Cinema.Shared;
+using Cinema.WinUI.Constants;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Cinema.Models;
-using Cinema.Models.Requests;
 
 namespace Cinema.WinUI.Movies
 {
@@ -24,13 +20,43 @@ namespace Cinema.WinUI.Movies
 
         private async void frmMoviesList_Load(object sender, EventArgs e)
         {
-            var result = await _moviesApi.Get<PagedList<MovieDto>>(new MovieSearchRequest());       
+            MovieSearchRequest searchRequest = new MovieSearchRequest();
+            await LoadMovies(searchRequest);
+        }
+
+        private async Task LoadMovies(MovieSearchRequest searchRequest)
+        {
+            var result = await _moviesApi.Get<PagedList<MovieDto>>(new MovieSearchRequest());
+
+            grdMoviesList.AutoGenerateColumns = false;
             grdMoviesList.DataSource = result;
         }
 
-        private Task LoadMovies()
+        private async void txtSearchBar_KeyPress(object sender, KeyPressEventArgs e)
         {
-            throw new NotImplementedException();
+            /*MovieSearchRequest searchRequest = new MovieSearchRequest
+            {
+                SearchTerm = txtSearchBar.Text
+            };
+
+            await LoadMovies(searchRequest);*/
+        }
+
+        private void txtSearchBar_VisibleChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private async void txtSearchBar_TextChanged(object sender, EventArgs e)
+        {
+            if (txtSearchBar.Text.Count() < Search.MINIMUM_SEARCH_CHARACTERS) return;
+
+            MovieSearchRequest searchRequest = new MovieSearchRequest
+            {
+                SearchTerm = txtSearchBar.Text
+            };
+
+            await LoadMovies(searchRequest);
         }
     }
 }

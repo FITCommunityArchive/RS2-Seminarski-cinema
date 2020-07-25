@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Cinema.Domain.Entities;
 using Cinema.Models;
-using Cinema.Models.Requests;
+using Cinema.Models.Requests.Movies;
 using Cinema.Utilities.Interfaces;
 
 namespace Cinema.Services
