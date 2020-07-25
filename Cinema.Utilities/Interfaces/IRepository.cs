@@ -11,7 +11,7 @@ namespace Cinema.Utilities.Interfaces
     public interface IRepository<Entity, Key> : IDisposable
     {
         IEnumerable<Entity> Get();
-        PagedList<Entity> GetPaged(int pageIndex, int pageSize);
+        Task<PagedList<Entity>> GetPagedAsync(Expression<Func<Entity, bool>> where, int pageIndex, int pageSize);
         Task<Entity> GetAsync(Key id);
         Task<IEnumerable<Entity>> GetAsync(Expression<Func<Entity, bool>> where);
         Task InsertAsync(Entity entity);

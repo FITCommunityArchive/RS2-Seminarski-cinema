@@ -55,7 +55,7 @@ namespace Cinema.Shared
             }
         }
 
-        public static PagedList<T> Create(IQueryable<T> source, int pageIndex, int pageSize)
+        public static PagedList<T> Create(ICollection<T> source, int pageIndex, int pageSize)
         {
             if (pageIndex == 0)
             {
@@ -72,7 +72,7 @@ namespace Cinema.Shared
             return new PagedList<T>(items, count, pageIndex, pageSize);
         }
 
-        public static PagedList<T> Create(IQueryable<T> source, int pageIndex, int pageSize,
+        public static PagedList<T> Create(ICollection<T> source, int pageIndex, int pageSize,
             SortOrder? currentSortOrder, string currentSort, string currentFilter)
         {
             var count = source.Count();

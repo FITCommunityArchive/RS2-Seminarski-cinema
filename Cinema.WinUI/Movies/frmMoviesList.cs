@@ -32,28 +32,15 @@ namespace Cinema.WinUI.Movies
             grdMoviesList.DataSource = result;
         }
 
-        private async void txtSearchBar_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            /*MovieSearchRequest searchRequest = new MovieSearchRequest
-            {
-                SearchTerm = txtSearchBar.Text
-            };
-
-            await LoadMovies(searchRequest);*/
-        }
-
-        private void txtSearchBar_VisibleChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private async void txtSearchBar_TextChanged(object sender, EventArgs e)
         {
-            if (txtSearchBar.Text.Count() < Search.MINIMUM_SEARCH_CHARACTERS) return;
+            string searchTerm = txtSearchBar.Text;
+
+            if (searchTerm.Count() < Search.MINIMUM_SEARCH_CHARACTERS) return;
 
             MovieSearchRequest searchRequest = new MovieSearchRequest
             {
-                SearchTerm = txtSearchBar.Text
+                SearchTerm = searchTerm
             };
 
             await LoadMovies(searchRequest);

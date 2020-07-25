@@ -108,8 +108,6 @@
             this.txtSearchBar.TabIndex = 1;
             this.txtSearchBar.Text = "Search movies";
             this.txtSearchBar.TextChanged += new System.EventHandler(this.txtSearchBar_TextChanged);
-            this.txtSearchBar.VisibleChanged += new System.EventHandler(this.txtSearchBar_VisibleChanged);
-            this.txtSearchBar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearchBar_KeyPress);
             // 
             // frmMoviesList
             // 

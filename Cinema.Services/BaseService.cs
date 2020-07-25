@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
 using Cinema.Models.Requests;
 using Cinema.Shared;
 using Cinema.Utilities.Interfaces;
@@ -20,15 +21,15 @@ namespace Cinema.Services
             _repo = _unit.Repository<TDatabase, int>();
             _mapper = mapper;
         }
-        public virtual PagedList<TModel> GetPaged(TSearch search)
+        public virtual async Task<PagedList<TModel>> GetPagedAsync(TSearch search)
         {
-            var list = _repo.GetPaged(search.PageIndex, search.PageSize);
+            var list = await _repo.GetPagedAsync(null, search.PageIndex, search.PageSize);
             var dtoList = _mapper.Map<PagedList<TModel>>(list);
 
             return dtoList;
         }
 
-        public async virtual Task<TModel> GetById(int id)
+        public async virtual Task<TModel> GetByIdAsync(int id)
         {
             var entity = await _repo.GetAsync(id);
             return _mapper.Map<TModel>(entity);
