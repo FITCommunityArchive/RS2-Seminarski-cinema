@@ -1,5 +1,8 @@
-﻿using Cinema.Shared.Helpers;
+﻿using Cinema.Models;
+using Cinema.Shared;
+using Cinema.Shared.Helpers;
 using Flurl.Http;
+using Newtonsoft.Json;
 using System.Threading.Tasks;
 
 namespace Cinema.WinUI

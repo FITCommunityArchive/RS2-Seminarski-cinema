@@ -17,7 +17,7 @@ namespace Cinema.Web.Api.Controllers
             _service = service;
         }
         [HttpGet]
-        public async Task<ActionResult<PaginatedList<T>>> Get([FromQuery] TSearch search)
+        public async Task<ActionResult<PagedList<T>>> Get([FromQuery] TSearch search)
         {
             var result = await _service.GetPagedAsync(search);
 

@@ -1,5 +1,7 @@
-﻿using Cinema.Shared.Constants;
+﻿using AutoMapper;
+using Cinema.Shared.Constants;
 using Cinema.Shared.Enums;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -9,13 +11,20 @@ namespace Cinema.Shared
 {
     public class PagedList<T> : IPagedList<T>
     {
+        [JsonProperty]
         public List<T> Data { get; private set; }
+        [JsonProperty]
         public int PageIndex { get; private set; }
+        [JsonProperty]
         public int TotalPages { get; private set; }
+        [JsonProperty]
         public string CurrentSort { get; private set; }
+        [JsonProperty]
         public SortOrder? CurrentSortOrder { get; private set; }
+        [JsonProperty]
         public string CurrentFilter { get; private set; }
 
+        [JsonProperty]
         public bool HasPreviousPage
         {
             get
@@ -23,6 +32,7 @@ namespace Cinema.Shared
                 return (PageIndex > 1);
             }
         }
+        [JsonProperty]
 
         public bool HasNextPage
         {
@@ -55,6 +65,18 @@ namespace Cinema.Shared
             CurrentFilter = currentFilter;
 
             Data = items;
+        }
+
+        public static PagedList<T> Map<TSource>(IMapper mapper, PagedList<TSource> sourceList) where TSource : class
+        {
+            var data = mapper.Map<List<T>>(sourceList.Data);
+
+            return new PagedList<T>
+            {
+                Data = data,
+                PageIndex = sourceList.PageIndex,
+                TotalPages = sourceList.TotalPages
+            };
         }
 
         public static PagedList<T> Create(ICollection<T> source, int pageIndex, int pageSize)

@@ -75,7 +75,7 @@ namespace Cinema.WinUI.Movies
 
         private async Task LoadMovies(MovieSearchRequest searchRequest)
         {
-            var result = await _moviesApi.Get<PaginatedList<MovieDto>>(searchRequest);
+            var result = await _moviesApi.Get<PagedList<MovieDto>>(searchRequest);
 
             grdMoviesList.AutoGenerateColumns = false;
             grdMoviesList.DataSource = result.Data;

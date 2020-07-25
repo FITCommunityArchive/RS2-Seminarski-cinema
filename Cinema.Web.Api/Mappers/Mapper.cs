@@ -13,7 +13,6 @@ namespace Cinema.Web.Api.Mappers
         {
             CreateMap<BaseClass, BaseDto>().Include<Movie, MovieDto>();
             CreateMap<Movie, MovieDto>();
-            CreateMap<PagedList<Movie>, PagedList<MovieDto>>();
             CreateMap<Movie, MovieUpsertRequest>().ReverseMap();
         }
     }

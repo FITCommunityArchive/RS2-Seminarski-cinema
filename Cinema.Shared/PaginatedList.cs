@@ -2,11 +2,13 @@
 using Cinema.Shared.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 
 namespace Cinema.Shared
 {
+    [Obsolete("Use PagedList instead")]
     public class PaginatedList<T> : List<T>, IPagedList<T>
     {
         public int PageIndex { get; private set; }

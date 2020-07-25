@@ -96,7 +96,7 @@ namespace Cinema.Dal.Repository
 
             var count = query.Count();
             var items = await query.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToListAsync();
-            return new PaginatedList<Entity>(items, count, pageIndex, pageSize);
+            return new PagedList<Entity>(items, count, pageIndex, pageSize);
         }
 
         public virtual IQueryable<Entity> Sort(IQueryable<Entity> query, SortOrder? sortOrder, string sortProperty)
