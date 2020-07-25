@@ -67,7 +67,7 @@ namespace Cinema.Shared
             Data = items;
         }
 
-        public static PagedList<T> Map<TSource>(IMapper mapper, PagedList<TSource> sourceList) where TSource : class
+        public static PagedList<T> Map<TSource>(IMapper mapper, IPagedList<TSource> sourceList) where TSource : class
         {
             var data = mapper.Map<List<T>>(sourceList.Data);
 

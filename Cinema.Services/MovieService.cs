@@ -24,8 +24,7 @@ namespace Cinema.Services
             var expression = ApplyFilter(search);
 
             var list = await _repo.GetPagedAsync(expression, search.PageIndex, search.PageSize);
-
-            var dtoList = PagedList<MovieDto>.Map<Movie>(_mapper, list as PagedList<Movie>);
+            var dtoList = PagedList<MovieDto>.Map<Movie>(_mapper, list);
 
             return dtoList;
         }
