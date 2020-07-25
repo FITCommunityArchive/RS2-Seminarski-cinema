@@ -36,6 +36,11 @@
             this.Directors = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Actors = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtSearchBar = new System.Windows.Forms.TextBox();
+            this.lblSearch = new System.Windows.Forms.Label();
+            this.lblSearchYear = new System.Windows.Forms.Label();
+            this.txtSearchYear = new System.Windows.Forms.TextBox();
+            this.lblSearchDuration = new System.Windows.Forms.Label();
+            this.txtSearchDuration = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.grdMoviesList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -102,18 +107,65 @@
             // 
             // txtSearchBar
             // 
-            this.txtSearchBar.Location = new System.Drawing.Point(12, 23);
+            this.txtSearchBar.Location = new System.Drawing.Point(12, 41);
             this.txtSearchBar.Name = "txtSearchBar";
-            this.txtSearchBar.Size = new System.Drawing.Size(409, 22);
+            this.txtSearchBar.Size = new System.Drawing.Size(224, 22);
             this.txtSearchBar.TabIndex = 1;
-            this.txtSearchBar.Text = "Search movies";
             this.txtSearchBar.TextChanged += new System.EventHandler(this.txtSearchBar_TextChanged);
+            // 
+            // lblSearch
+            // 
+            this.lblSearch.AutoSize = true;
+            this.lblSearch.Location = new System.Drawing.Point(13, 18);
+            this.lblSearch.Name = "lblSearch";
+            this.lblSearch.Size = new System.Drawing.Size(53, 17);
+            this.lblSearch.TabIndex = 2;
+            this.lblSearch.Text = "Search";
+            // 
+            // lblSearchYear
+            // 
+            this.lblSearchYear.AutoSize = true;
+            this.lblSearchYear.Location = new System.Drawing.Point(266, 18);
+            this.lblSearchYear.Name = "lblSearchYear";
+            this.lblSearchYear.Size = new System.Drawing.Size(38, 17);
+            this.lblSearchYear.TabIndex = 4;
+            this.lblSearchYear.Text = "Year";
+            // 
+            // txtSearchYear
+            // 
+            this.txtSearchYear.Location = new System.Drawing.Point(265, 41);
+            this.txtSearchYear.Name = "txtSearchYear";
+            this.txtSearchYear.Size = new System.Drawing.Size(137, 22);
+            this.txtSearchYear.TabIndex = 3;
+            this.txtSearchYear.TextChanged += new System.EventHandler(this.txtSearchYear_TextChanged);
+            // 
+            // lblSearchDuration
+            // 
+            this.lblSearchDuration.AutoSize = true;
+            this.lblSearchDuration.Location = new System.Drawing.Point(438, 18);
+            this.lblSearchDuration.Name = "lblSearchDuration";
+            this.lblSearchDuration.Size = new System.Drawing.Size(62, 17);
+            this.lblSearchDuration.TabIndex = 6;
+            this.lblSearchDuration.Text = "Duration";
+            // 
+            // txtSearchDuration
+            // 
+            this.txtSearchDuration.Location = new System.Drawing.Point(437, 41);
+            this.txtSearchDuration.Name = "txtSearchDuration";
+            this.txtSearchDuration.Size = new System.Drawing.Size(137, 22);
+            this.txtSearchDuration.TabIndex = 5;
+            this.txtSearchDuration.TextChanged += new System.EventHandler(this.txtSearchDuration_TextChanged);
             // 
             // frmMoviesList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblSearchDuration);
+            this.Controls.Add(this.txtSearchDuration);
+            this.Controls.Add(this.lblSearchYear);
+            this.Controls.Add(this.txtSearchYear);
+            this.Controls.Add(this.lblSearch);
             this.Controls.Add(this.txtSearchBar);
             this.Controls.Add(this.grdMoviesList);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -136,5 +188,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Directors;
         private System.Windows.Forms.DataGridViewTextBoxColumn Actors;
         private System.Windows.Forms.TextBox txtSearchBar;
+        private System.Windows.Forms.Label lblSearch;
+        private System.Windows.Forms.Label lblSearchYear;
+        private System.Windows.Forms.TextBox txtSearchYear;
+        private System.Windows.Forms.Label lblSearchDuration;
+        private System.Windows.Forms.TextBox txtSearchDuration;
     }
 }

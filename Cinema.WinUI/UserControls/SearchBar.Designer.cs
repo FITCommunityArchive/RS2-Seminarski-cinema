@@ -28,27 +28,59 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ctrTxtSearchBar = new System.Windows.Forms.TextBox();
+            this.metroTextBox1 = new MetroFramework.Controls.MetroTextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // ctrTxtSearchBar
+            // metroTextBox1
             // 
-            this.ctrTxtSearchBar.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ctrTxtSearchBar.Location = new System.Drawing.Point(23, 22);
-            this.ctrTxtSearchBar.Name = "ctrTxtSearchBar";
-            this.ctrTxtSearchBar.Size = new System.Drawing.Size(354, 23);
-            this.ctrTxtSearchBar.TabIndex = 0;
-            this.ctrTxtSearchBar.Text = "Search";
-            this.ctrTxtSearchBar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ctrTxtSearchBar_KeyDown);
+            // 
+            // 
+            // 
+            this.metroTextBox1.CustomButton.Image = null;
+            this.metroTextBox1.CustomButton.Location = new System.Drawing.Point(484, 1);
+            this.metroTextBox1.CustomButton.Name = "";
+            this.metroTextBox1.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.metroTextBox1.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroTextBox1.CustomButton.TabIndex = 1;
+            this.metroTextBox1.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.metroTextBox1.CustomButton.UseSelectable = true;
+            this.metroTextBox1.CustomButton.Visible = false;
+            this.metroTextBox1.Lines = new string[] {
+        "metroTextBox1"};
+            this.metroTextBox1.Location = new System.Drawing.Point(23, 37);
+            this.metroTextBox1.MaxLength = 32767;
+            this.metroTextBox1.Name = "metroTextBox1";
+            this.metroTextBox1.PasswordChar = '\0';
+            this.metroTextBox1.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.metroTextBox1.SelectedText = "";
+            this.metroTextBox1.SelectionLength = 0;
+            this.metroTextBox1.SelectionStart = 0;
+            this.metroTextBox1.ShortcutsEnabled = true;
+            this.metroTextBox1.Size = new System.Drawing.Size(506, 23);
+            this.metroTextBox1.TabIndex = 0;
+            this.metroTextBox1.Text = "metroTextBox1";
+            this.metroTextBox1.UseSelectable = true;
+            this.metroTextBox1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.metroTextBox1.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(23, 76);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 22);
+            this.textBox1.TabIndex = 1;
             // 
             // SearchBar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Transparent;
-            this.Controls.Add(this.ctrTxtSearchBar);
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BackColor = System.Drawing.Color.LightGray;
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.metroTextBox1);
             this.Name = "SearchBar";
-            this.Size = new System.Drawing.Size(421, 80);
+            this.Size = new System.Drawing.Size(569, 131);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -56,6 +88,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox ctrTxtSearchBar;
+        private MetroFramework.Controls.MetroTextBox metroTextBox1;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
