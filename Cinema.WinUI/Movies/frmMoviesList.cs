@@ -23,7 +23,7 @@ namespace Cinema.WinUI.Movies
             MovieSearchRequest searchRequest = new MovieSearchRequest
             {
                 PageIndex = 1,
-                PageSize = 1
+                PageSize = Paging.DEFAULT_PAGE_SIZE
             };
 
             await LoadMovies(searchRequest);
