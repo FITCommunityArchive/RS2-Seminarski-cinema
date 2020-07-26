@@ -12,8 +12,6 @@ namespace Cinema.WinUI.Movies
     public partial class frmMoviesList : Form
     {
         private readonly ApiService _moviesApi = new ApiService("Movies");
-        private int _pageIndex;
-        private int _totalPages;
 
         public frmMoviesList()
         {
@@ -33,24 +31,31 @@ namespace Cinema.WinUI.Movies
 
         private async void txtSearchBar_TextChanged(object sender, EventArgs e)
         {
-            await LoadFilteredMovies();
+            MovieSearchRequest searchRequest = GetSearchRequest();
+            await LoadMovies(searchRequest);
         }
 
         private async void txtSearchYear_TextChanged(object sender, EventArgs e)
         {
-           await LoadFilteredMovies();
+            MovieSearchRequest searchRequest = GetSearchRequest();
+            await LoadMovies(searchRequest);
         }
 
         private async void txtSearchDuration_TextChanged(object sender, EventArgs e)
         {
-            await LoadFilteredMovies();
+            MovieSearchRequest searchRequest = GetSearchRequest();
+            await LoadMovies(searchRequest);
         }
 
-        private async Task LoadFilteredMovies()
+        private MovieSearchRequest GetSearchRequest()
         {            
             string searchTerm = txtSearchBar.Text;
 
-            MovieSearchRequest searchRequest = new MovieSearchRequest();
+            MovieSearchRequest searchRequest = new MovieSearchRequest
+            {
+                PageIndex = pagination1.PageIndex,
+                PageSize = 1            
+            };
 
             if (searchTerm.Count() >= Search.MINIMUM_SEARCH_CHARACTERS || searchTerm.Count() == 0)
             {
@@ -67,10 +72,7 @@ namespace Cinema.WinUI.Movies
                 searchRequest.Year = searchYear;
             }
 
-            if (searchRequest.Duration.HasValue || searchRequest.Year.HasValue || searchRequest.SearchTerm != null)
-            {
-                await LoadMovies(searchRequest);
-            }                     
+            return searchRequest;                   
         }
 
         private async Task LoadMovies(MovieSearchRequest searchRequest)
@@ -79,13 +81,19 @@ namespace Cinema.WinUI.Movies
 
             grdMoviesList.AutoGenerateColumns = false;
             grdMoviesList.DataSource = result.Data;
-            rtxCurrentPage.Text = result.PageIndex.ToString();
-            rtxLastPage.Text = result.TotalPages.ToString();
+            pagination1.PageIndex = result.PageIndex;
+            pagination1.TotalPages = result.TotalPages;
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private async void pagination1_PageChanged(object sender, EventArgs e)
+        {
+            MovieSearchRequest searchRequest = GetSearchRequest();
+            await LoadMovies(searchRequest);
         }
     }
 }
