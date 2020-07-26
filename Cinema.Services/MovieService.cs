@@ -7,6 +7,8 @@ using Cinema.Shared.Helpers;
 using Cinema.Utilities.Interfaces;
 using OfficeOpenXml.FormulaParsing.Excel.Functions.Math;
 using System;
+using System.Collections.Specialized;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
@@ -21,12 +23,26 @@ namespace Cinema.Services
 
         public override async Task<IPagedList<MovieDto>> GetPagedAsync(MovieSearchRequest search)
         {
-            var expression = ApplyFilter(search);
+            var filterExpression = ApplyFilter(search);
+            var sortExpression = ApplySorting(filterExpression, search);
 
-            var list = await _repo.GetPagedAsync(expression, search.PageIndex, search.PageSize);
+            var list = await _repo.GetPagedAsync(filterExpression, sortExpression, search.SortOrder, search.PageIndex, search.PageSize);
             var dtoList = PagedList<MovieDto>.Map<Movie>(_mapper, list);
 
             return dtoList;
+        }
+
+        private Expression<Func<Movie, object>> ApplySorting(Expression<Func<Movie, bool>> expression, MovieSearchRequest search)
+        {
+            switch (search.SortColumn)
+            {
+                case nameof(Movie.Title):              
+                    return x => x.Title;
+                case nameof(Movie.Year):
+                    return x => x.Year;
+                default:
+                    return x => x.Id;
+            }
         }
 
         private Expression<Func<Movie, bool>> ApplyFilter(MovieSearchRequest search)

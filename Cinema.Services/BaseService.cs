@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Cinema.Models.Requests;
 using Cinema.Shared;
+using Cinema.Shared.Enums;
 using Cinema.Utilities.Interfaces;
 using System.Threading.Tasks;
 
@@ -22,7 +23,7 @@ namespace Cinema.Services
         }
         public virtual async Task<IPagedList<TModel>> GetPagedAsync(TSearch search)
         {
-            var list = await _repo.GetPagedAsync(null, search.PageIndex, search.PageSize);
+            var list = await _repo.GetPagedAsync(null, null, SortOrder.ASC, search.PageIndex, search.PageSize);
             var dtoList = _mapper.Map<PagedList<TModel>>(list);
 
             return dtoList;

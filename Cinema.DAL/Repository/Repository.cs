@@ -27,9 +27,21 @@ namespace Cinema.Dal.Repository
 
         public virtual IEnumerable<Entity> Get() => _dbSet;
 
-        public virtual async Task<IPagedList<Entity>> GetPagedAsync(Expression<Func<Entity, bool>> where, int pageIndex, int pageSize)
+        public virtual async Task<IPagedList<Entity>> GetPagedAsync(Expression<Func<Entity, bool>> where, Expression<Func<Entity, object>> order, SortOrder? sortOrder, int pageIndex, int pageSize)
         {
             var query = where != null ? _dbSet.Where(where) : _dbSet;
+
+            if (sortOrder != null && order != null)
+            {
+                if (sortOrder == SortOrder.ASC)
+                {
+                    query = query.OrderBy(order);
+                }
+                else
+                {
+                    query = query.OrderByDescending(order);
+                }
+            }
 
             var pagedList = await ApplyPaginationAsync(query, pageIndex, pageSize);
             return pagedList;

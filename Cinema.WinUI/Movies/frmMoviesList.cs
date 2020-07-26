@@ -12,6 +12,8 @@ namespace Cinema.WinUI.Movies
     public partial class frmMoviesList : Form
     {
         private readonly ApiService _moviesApi = new ApiService("Movies");
+        private string _currentSortPropertyName { get; set; }
+        private Cinema.Shared.Enums.SortOrder? _currentSortOrder { get; set; }
 
         public frmMoviesList()
         {
@@ -20,12 +22,7 @@ namespace Cinema.WinUI.Movies
 
         private async void frmMoviesList_Load(object sender, EventArgs e)
         {
-            MovieSearchRequest searchRequest = new MovieSearchRequest
-            {
-                PageIndex = 1,
-                PageSize = Paging.DEFAULT_PAGE_SIZE
-            };
-
+            MovieSearchRequest searchRequest = GetDefaultSearchRequest();
             await LoadMovies(searchRequest);
         }
 
@@ -47,15 +44,20 @@ namespace Cinema.WinUI.Movies
             await LoadMovies(searchRequest);
         }
 
+        private MovieSearchRequest GetDefaultSearchRequest()
+        {
+            return new MovieSearchRequest
+            {
+                PageIndex = pagination1.PageIndex,
+                PageSize = Paging.DEFAULT_PAGE_SIZE
+            };
+        }
+
         private MovieSearchRequest GetSearchRequest()
         {            
             string searchTerm = txtSearchBar.Text;
 
-            MovieSearchRequest searchRequest = new MovieSearchRequest
-            {
-                PageIndex = pagination1.PageIndex,
-                PageSize = 1            
-            };
+            MovieSearchRequest searchRequest = GetDefaultSearchRequest();
 
             if (searchTerm.Count() >= Search.MINIMUM_SEARCH_CHARACTERS || searchTerm.Count() == 0)
             {
@@ -93,6 +95,25 @@ namespace Cinema.WinUI.Movies
         private async void pagination1_PageChanged(object sender, EventArgs e)
         {
             MovieSearchRequest searchRequest = GetSearchRequest();
+            await LoadMovies(searchRequest);
+        }
+
+        private void grdMoviesList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private async void grdMoviesList_ColumnHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            DataGridViewColumn clickedColumn = grdMoviesList.Columns[e.ColumnIndex];
+
+            _currentSortPropertyName = clickedColumn.Name;
+            _currentSortOrder = Shared.Enums.SortOrder.ASC;
+
+            MovieSearchRequest searchRequest = GetSearchRequest();
+            searchRequest.SortColumn = _currentSortPropertyName;
+            searchRequest.SortOrder = _currentSortOrder;
+
             await LoadMovies(searchRequest);
         }
     }
