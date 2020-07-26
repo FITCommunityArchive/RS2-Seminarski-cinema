@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Cinema.Shared;
+using System.Windows.Forms.VisualStyles;
 
 namespace Cinema.WinUI.UserControls
 {
@@ -21,7 +22,7 @@ namespace Cinema.WinUI.UserControls
             get => _pageIndex; 
             set { 
                 _pageIndex = value;
-                rtxCurrentPage.Text = value.ToString();
+                txtCurrentPage.Text = value.ToString();
             }
         }
 
@@ -31,7 +32,7 @@ namespace Cinema.WinUI.UserControls
             set
             {
                 _totalPages = value;
-                rtxLastPage.Text = value.ToString();
+                txtTotalPages.Text = value.ToString();
             }
         }
 
@@ -62,19 +63,12 @@ namespace Cinema.WinUI.UserControls
             PageChanged?.Invoke(this, e);
         }
 
-        private void btn_Click(object sender, EventArgs e)
-        {
-            int.TryParse(rtxCurrentPage.Text, out _pageIndex);
-            rtxCurrentPage.Text = _pageIndex.ToString();
-
-            OnPageChanged(EventArgs.Empty);
-        }
-
         private void btnFirstPage_Click(object sender, EventArgs e)
         {
             if (!HasPreviousPage) return;
 
             _pageIndex = 1;
+            
 
             OnPageChanged(EventArgs.Empty);
         }
@@ -106,9 +100,8 @@ namespace Cinema.WinUI.UserControls
             OnPageChanged(EventArgs.Empty);
         }
 
-        private void UpdateProperties()
+        private void Pagination_Load(object sender, EventArgs e)
         {
-            rtxCurrentPage.Text = _pageIndex.ToString();
         }
     }
 }

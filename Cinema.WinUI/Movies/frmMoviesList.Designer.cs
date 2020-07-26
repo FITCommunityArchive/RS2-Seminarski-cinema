@@ -165,10 +165,10 @@
             // 
             // pagination1
             // 
-            this.pagination1.Location = new System.Drawing.Point(391, 317);
+            this.pagination1.Location = new System.Drawing.Point(369, 317);
             this.pagination1.Name = "pagination1";
             this.pagination1.PageIndex = 0;
-            this.pagination1.Size = new System.Drawing.Size(185, 37);
+            this.pagination1.Size = new System.Drawing.Size(219, 37);
             this.pagination1.TabIndex = 7;
             this.pagination1.TotalPages = 0;
             this.pagination1.PageChanged += new System.EventHandler(this.pagination1_PageChanged);
