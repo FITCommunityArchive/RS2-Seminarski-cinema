@@ -1,4 +1,6 @@
-﻿using Cinema.Utilities.Enums;
+﻿using Cinema.Shared;
+using Cinema.Shared.Constants;
+using Cinema.Shared.Enums;
 using Cinema.Utilities.Exceptions;
 using Cinema.Utilities.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -15,6 +17,7 @@ namespace Cinema.Dal.Repository
     {
         protected ICinemaDbContext _context;
         protected DbSet<Entity> _dbSet;
+        private bool _disposed = false;
 
         public Repository(ICinemaDbContext context)
         {
@@ -24,13 +27,21 @@ namespace Cinema.Dal.Repository
 
         public virtual IEnumerable<Entity> Get() => _dbSet;
 
+        public virtual async Task<IPagedList<Entity>> GetPagedAsync(Expression<Func<Entity, bool>> where, int pageIndex, int pageSize)
+        {
+            var query = where != null ? _dbSet.Where(where) : _dbSet;
+
+            var pagedList = await ApplyPaginationAsync(query, pageIndex, pageSize);
+            return pagedList;
+        }
+
         public virtual async Task<Entity> GetAsync(Key id)
         {
             Entity entity = await _dbSet.FindAsync(id);
             return entity;
         }
 
-        public virtual async Task<List<Entity>> GetAsync(Expression<Func<Entity, bool>> where)
+        public virtual async Task<IEnumerable<Entity>> GetAsync(Expression<Func<Entity, bool>> where)
         {
             return await _dbSet.Where(where).ToListAsync();
         }
@@ -54,8 +65,6 @@ namespace Cinema.Dal.Repository
             }
         }
 
-        private void Delete(Entity entity) => _dbSet.Remove(entity);
-
         public virtual async Task DeleteAsync(Key id)
         {
             Entity entity = await GetAsync(id);
@@ -73,22 +82,26 @@ namespace Cinema.Dal.Repository
             }
         }
 
+        protected virtual async Task<IPagedList<Entity>> ApplyPaginationAsync(IQueryable<Entity> query, int pageIndex, int pageSize)
+        {
+            if (pageIndex == 0)
+            {
+                pageIndex = Paging.DEFAULT_PAGE_INDEX;
+            }
+
+            if (pageSize == 0)
+            {
+                pageSize = Paging.DEFAULT_PAGE_SIZE;
+            }
+
+            var count = query.Count();
+            var items = await query.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToListAsync();
+            return new PagedList<Entity>(items, count, pageIndex, pageSize);
+        }
+
         public virtual IQueryable<Entity> Sort(IQueryable<Entity> query, SortOrder? sortOrder, string sortProperty)
         {
             throw new NotImplementedException();
-        }
-
-        private bool disposed = false;
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!this.disposed)
-            {
-                if (disposing)
-                {
-                    _context.Dispose();
-                }
-            }
-            this.disposed = true;
         }
 
         public void Dispose()
@@ -96,5 +109,23 @@ namespace Cinema.Dal.Repository
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!this._disposed)
+            {
+                if (disposing)
+                {
+                    _context.Dispose();
+                }
+            }
+            this._disposed = true;
+        }
+
+        #region Private methods
+
+        private void Delete(Entity entity) => _dbSet.Remove(entity);
+
+        #endregion
     }
 }

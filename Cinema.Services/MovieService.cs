@@ -1,28 +1,88 @@
 ﻿using AutoMapper;
 using Cinema.Domain.Entities;
 using Cinema.Models;
-using Cinema.Models.Requests;
+using Cinema.Models.Requests.Movies;
+using Cinema.Shared;
+using Cinema.Shared.Helpers;
 using Cinema.Utilities.Interfaces;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.Math;
+using System;
+using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace Cinema.Services
 {
-    public class MovieService : BaseCRUDService<MovieDto, object, Movie, MovieUpsertRequest, MovieUpsertRequest>
+    public class MovieService : BaseCRUDService<MovieDto, MovieSearchRequest, Movie, MovieUpsertRequest, MovieUpsertRequest>, IMovieService
     {
         public MovieService(IUnitOfWork unit, IMapper mapper) : base(unit, mapper)
         {
 
         }
 
-        //public async Task<IEnumerable<DtoMovie>> GetComingSoonMovies(int quantity)
-        //{
-        //    IEnumerable<DtoMovie> movies = (await _unit.Movies.GetAsync(x => x.Year >= 2015)).Take(quantity);
-        //    return movies;
-        //}
+        public override async Task<IPagedList<MovieDto>> GetPagedAsync(MovieSearchRequest search)
+        {
+            var expression = ApplyFilter(search);
 
-        //public async Task<IEnumerable<Screening>> GetNowShowingScreenings(int quantity)
-        //{
-        //    IEnumerable<Screening> screenings = (await _unit.Screenings.GetAsync(x => x.Movie.Year >= 2005)).GroupBy(y => y.MovieId).Select(z => z.First()).Take(quantity);
-        //    return screenings;
-        //}
+            var list = await _repo.GetPagedAsync(expression, search.PageIndex, search.PageSize);
+            var dtoList = PagedList<MovieDto>.Map<Movie>(_mapper, list);
+
+            return dtoList;
+        }
+
+        private Expression<Func<Movie, bool>> ApplyFilter(MovieSearchRequest search)
+        {
+            Expression<Func<Movie, bool>> expression = null;
+
+            if (search == null) return null;
+
+            if (!string.IsNullOrEmpty(search.SearchTerm))
+            {
+                string searchTerm = search.SearchTerm.ToLower();
+
+                Expression<Func<Movie, bool>> tempExpression = x => x.Title.ToLower().Contains(searchTerm)
+                               || x.Directors.ToLower().Contains(searchTerm)
+                               || x.Actors.ToLower().Contains(searchTerm)
+                               || x.Country.ToLower().Contains(searchTerm);
+
+                if (expression == null)
+                {
+                    expression = tempExpression;
+                }
+                else
+                {
+                    expression = ExpressionCombiner.And(expression, tempExpression);
+                }                
+            }
+
+            if (search.Year.HasValue)
+            {
+                Expression<Func<Movie, bool>> tempExpression = x => x.Year.ToString().StartsWith(search.Year.ToString());
+
+                if (expression == null)
+                {
+                    expression = tempExpression;
+                }
+                else
+                {
+                    expression = ExpressionCombiner.And(expression, tempExpression);
+                }
+            }
+
+            if (search.Duration.HasValue)
+            {
+                Expression<Func<Movie, bool>> tempExpression = x => x.Duration.ToString().StartsWith(search.Duration.ToString());
+
+                if (expression == null)
+                {
+                    expression = tempExpression;
+                }
+                else
+                {
+                    expression = ExpressionCombiner.And(expression, tempExpression);
+                }
+            }
+
+            return expression;
+        }
     }
 }

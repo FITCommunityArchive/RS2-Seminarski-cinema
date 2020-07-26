@@ -1,9 +1,9 @@
 using AutoMapper;
 using Cinema.Dal.Data;
-using Cinema.Domain.Entities;
 using Cinema.Models;
-using Cinema.Models.Requests;
+using Cinema.Models.Requests.Movies;
 using Cinema.Services;
+using Cinema.Shared;
 using Cinema.Utilities.Interfaces;
 using Cinema.Web.Api.Filters;
 using Microsoft.AspNetCore.Builder;
@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.Text;
 
 namespace Cinema.Web.API
 {
@@ -42,15 +43,11 @@ namespace Cinema.Web.API
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ICinemaDbContext, CinemaDbContext>();
 
-            services.AddScoped<IService<MovieDto, object>, BaseService<MovieDto, object, Movie>>();
-            services.AddScoped<ICRUDService<MovieDto, object, MovieUpsertRequest, MovieUpsertRequest>, MovieService>();
+            services.AddScoped<ICRUDService<MovieDto, MovieSearchRequest, MovieUpsertRequest, MovieUpsertRequest>, MovieService>();
+            services.AddScoped<IMovieService, MovieService>();
 
             string connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<CinemaDbContext>(options => options.UseSqlServer(connection));
-
-
-            //services.AddScoped<IMovieService, MovieService>();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

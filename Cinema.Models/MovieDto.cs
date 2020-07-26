@@ -2,7 +2,6 @@
 {
     public class MovieDto : BaseDto
     {
-
         public string Title { get; set; }
         public int Duration { get; set; }
         public int Year { get; set; }

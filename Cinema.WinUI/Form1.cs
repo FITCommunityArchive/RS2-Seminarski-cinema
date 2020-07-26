@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Cinema.WinUI.Movies;
+using System;
 using System.Windows.Forms;
 
 namespace Cinema.WinUI
 {
     public partial class Form1 : Form
     {
+        private Form activeForm = null;
+
         public Form1()
         {
             InitializeComponent();
@@ -26,7 +22,7 @@ namespace Cinema.WinUI
 
         private void hideSubmenu()
         {
-            if(panelDashboardSubmenu.Visible == true)
+            if (panelDashboardSubmenu.Visible == true)
             {
                 panelDashboardSubmenu.Visible = false;
             }
@@ -34,11 +30,12 @@ namespace Cinema.WinUI
 
         private void ShowSubmenu(Panel submenu)
         {
-            if(submenu.Visible == false)
+            if (submenu.Visible == false)
             {
                 hideSubmenu();
                 submenu.Visible = true;
-            } else
+            }
+            else
             {
                 submenu.Visible = false;
             }
@@ -60,10 +57,9 @@ namespace Cinema.WinUI
 
         }
 
-        private Form activeForm = null;
         private void openChildForm(Form childForm)
         {
-            if(activeForm != null)
+            if (activeForm != null)
             {
                 activeForm.Close();
             }
@@ -75,6 +71,12 @@ namespace Cinema.WinUI
             panelChildForm.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            frmMoviesList frmMoviesList = new frmMoviesList();
+            openChildForm(frmMoviesList);
         }
     }
 }

@@ -1,10 +1,13 @@
 ﻿using AutoMapper;
+using Cinema.Models.Requests;
 using Cinema.Utilities.Interfaces;
 using System.Threading.Tasks;
 
 namespace Cinema.Services
 {
-    public class BaseCRUDService<TModel, TSearch, TDatabase, TInsert, TUpdate> : BaseService<TModel, TSearch, TDatabase>, ICRUDService<TModel, TSearch, TInsert, TUpdate> where TDatabase : class
+    public class BaseCRUDService<TModel, TSearch, TDatabase, TInsert, TUpdate> : BaseService<TModel, TSearch, TDatabase>, ICRUDService<TModel, TSearch, TInsert, TUpdate>
+        where TDatabase : class
+        where TSearch : BaseSearchRequest
     {
         public BaseCRUDService(IUnitOfWork unit, IMapper mapper) : base(unit, mapper)
         {

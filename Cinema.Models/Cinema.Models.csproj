@@ -1,17 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="ViewComponentModels\**" />
-    <EmbeddedResource Remove="ViewComponentModels\**" />
-    <None Remove="ViewComponentModels\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Cinema.Domain\Cinema.Domain.csproj" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
   </ItemGroup>
 
 </Project>

@@ -1,10 +1,11 @@
-﻿using Cinema.Utilities.Interfaces;
+﻿using Cinema.Models.Requests;
+using Cinema.Utilities.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace Cinema.Web.Api.Controllers
 {
-    public class BaseCRUDController<T, TSearch, TInsert, TUpdate> : BaseController<T, TSearch>
+    public class BaseCRUDController<T, TSearch, TInsert, TUpdate> : BaseController<T, TSearch> where TSearch : BaseSearchRequest
     {
         private readonly ICRUDService<T, TSearch, TInsert, TUpdate> _service = null;
         public BaseCRUDController(ICRUDService<T, TSearch, TInsert, TUpdate> service) : base(service)
