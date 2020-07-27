@@ -1,8 +1,11 @@
 ﻿using AutoMapper;
 using Cinema.Models.Requests;
 using Cinema.Shared;
-using Cinema.Utilities.Interfaces;
+using Cinema.Shared.Enums;
+using Cinema.Utilities.Interfaces.Services;
+using Cinema.Utilities.Interfaces.Dal;
 using System.Threading.Tasks;
+using Cinema.Shared.Pagination;
 
 namespace Cinema.Services
 {

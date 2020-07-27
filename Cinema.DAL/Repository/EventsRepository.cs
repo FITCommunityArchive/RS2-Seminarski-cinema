@@ -1,6 +1,6 @@
 ﻿using Cinema.Domain.Entities;
 using Cinema.Shared.Enums;
-using Cinema.Utilities.Interfaces;
+using Cinema.Utilities.Interfaces.Dal;
 using System.Linq;
 
 namespace Cinema.Dal.Repository
@@ -9,7 +9,7 @@ namespace Cinema.Dal.Repository
     {
         public EventsRepository(ICinemaDbContext context) : base(context) { }
 
-        public override IQueryable<Event> Sort(IQueryable<Event> query, SortOrder? sortOrder, string sortProperty)
+        public IQueryable<Event> Sort(IQueryable<Event> query, SortOrder? sortOrder, string sortProperty)
         {
             if (sortOrder == SortOrder.ASC)
             {

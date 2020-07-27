@@ -4,14 +4,16 @@ using Cinema.Dal.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Cinema.Dal.Migrations
 {
     [DbContext(typeof(CinemaDbContext))]
-    partial class CinemaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200726133253_AddedTestMovies")]
+    partial class AddedTestMovies
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -349,32 +351,6 @@ namespace Cinema.Dal.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("Roles");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "3eadf352-1e91-48d2-b652-f0c6d06683e5",
-                            ConcurrencyStamp = "f6a85d1d-6d9b-4c35-9347-71916994b7f9",
-                            Deleted = false,
-                            Name = "Administrator",
-                            NormalizedName = "ADMINISTRATOR"
-                        },
-                        new
-                        {
-                            Id = "4f113b67-63e3-40d4-8b55-4cbe877c787a",
-                            ConcurrencyStamp = "954c97c4-4604-4af2-a247-c12af6c809dc",
-                            Deleted = false,
-                            Name = "Content Editor",
-                            NormalizedName = "CONTENT EDITOR"
-                        },
-                        new
-                        {
-                            Id = "0da60945-6d69-4e12-8c70-ecbf72039a39",
-                            ConcurrencyStamp = "ba1a12ad-1e26-46aa-8995-700c2aa2577e",
-                            Deleted = false,
-                            Name = "Customer",
-                            NormalizedName = "CUSTOMER"
-                        });
                 });
 
             modelBuilder.Entity("Cinema.Domain.Entities.Identity.ApplicationRoleClaim", b =>

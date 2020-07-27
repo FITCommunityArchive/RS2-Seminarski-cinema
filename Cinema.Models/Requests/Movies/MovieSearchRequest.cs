@@ -1,4 +1,6 @@
-﻿namespace Cinema.Models.Requests.Movies
+﻿using Cinema.Shared.Search;
+
+namespace Cinema.Models.Requests.Movies
 {
     public class MovieSearchRequest : BaseSearchRequest
     {

@@ -1,6 +1,6 @@
 ﻿using Cinema.Domain.Entities.Identity;
 using Cinema.Shared.Enums;
-using Cinema.Utilities.Interfaces;
+using Cinema.Utilities.Interfaces.Dal;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -35,8 +35,7 @@ namespace Cinema.Dal.Repository
 
             return result;
         }
-
-        public override IQueryable<ApplicationUser> Sort(IQueryable<ApplicationUser> query, SortOrder? sortOrder, string sortProperty)
+        public IQueryable<ApplicationUser> Sort(IQueryable<ApplicationUser> query, SortOrder? sortOrder, string sortProperty)
         {
             if (sortOrder == SortOrder.ASC)
             {

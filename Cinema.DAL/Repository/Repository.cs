@@ -1,8 +1,8 @@
-﻿using Cinema.Shared;
-using Cinema.Shared.Constants;
-using Cinema.Shared.Enums;
+﻿using Cinema.Shared.Constants;
+using Cinema.Shared.Pagination;
+using Cinema.Shared.Search;
 using Cinema.Utilities.Exceptions;
-using Cinema.Utilities.Interfaces;
+using Cinema.Utilities.Interfaces.Dal;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -27,14 +27,6 @@ namespace Cinema.Dal.Repository
 
         public virtual IEnumerable<Entity> Get() => _dbSet;
 
-        public virtual async Task<IPagedList<Entity>> GetPagedAsync(Expression<Func<Entity, bool>> where, int pageIndex, int pageSize)
-        {
-            var query = where != null ? _dbSet.Where(where) : _dbSet;
-
-            var pagedList = await ApplyPaginationAsync(query, pageIndex, pageSize);
-            return pagedList;
-        }
-
         public virtual async Task<Entity> GetAsync(Key id)
         {
             Entity entity = await _dbSet.FindAsync(id);
@@ -44,6 +36,19 @@ namespace Cinema.Dal.Repository
         public virtual async Task<IEnumerable<Entity>> GetAsync(Expression<Func<Entity, bool>> where)
         {
             return await _dbSet.Where(where).ToListAsync();
+        }
+
+        public virtual async Task<IPagedList<Entity>> GetPagedAsync(Expression<Func<Entity, bool>> where, int pageIndex, int pageSize)
+        {
+            var query = _dbSet.AsQueryable();
+
+            if (where != null)
+            {
+                query = query.Where(where);
+            }  
+
+            var pagedList = await ApplyPaginationAsync(query, pageIndex, pageSize);
+            return pagedList;
         }
 
         public virtual async Task InsertAsync(Entity newEnt)
@@ -64,7 +69,7 @@ namespace Cinema.Dal.Repository
                 oldEnt.Update(newEnt);
             }
         }
-
+        
         public virtual async Task DeleteAsync(Key id)
         {
             Entity entity = await GetAsync(id);
@@ -99,7 +104,7 @@ namespace Cinema.Dal.Repository
             return new PagedList<Entity>(items, count, pageIndex, pageSize);
         }
 
-        public virtual IQueryable<Entity> Sort(IQueryable<Entity> query, SortOrder? sortOrder, string sortProperty)
+        protected virtual IQueryable<Entity> Sort(IQueryable<Entity> query, ISearchRequest searchRequest)
         {
             throw new NotImplementedException();
         }

@@ -1,6 +1,6 @@
 ﻿using Cinema.Models;
 using Cinema.Models.Requests.Movies;
-using Cinema.Utilities.Interfaces;
+using Cinema.Utilities.Interfaces.Services;
 
 namespace Cinema.Web.Api.Controllers
 {
