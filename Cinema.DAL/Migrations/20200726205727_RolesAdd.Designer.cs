@@ -4,14 +4,16 @@ using Cinema.Dal.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Cinema.Dal.Migrations
 {
     [DbContext(typeof(CinemaDbContext))]
-    partial class CinemaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200726205727_RolesAdd")]
+    partial class RolesAdd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -353,27 +355,24 @@ namespace Cinema.Dal.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "3eadf352-1e91-48d2-b652-f0c6d06683e5",
-                            ConcurrencyStamp = "f6a85d1d-6d9b-4c35-9347-71916994b7f9",
+                            Id = "41d25f29-26ea-4355-b285-8b050bd9a050",
+                            ConcurrencyStamp = "cb86f8af-3efc-4436-8b40-2832a87ad30d",
                             Deleted = false,
-                            Name = "Administrator",
-                            NormalizedName = "ADMINISTRATOR"
+                            Name = "Administrator"
                         },
                         new
                         {
-                            Id = "4f113b67-63e3-40d4-8b55-4cbe877c787a",
-                            ConcurrencyStamp = "954c97c4-4604-4af2-a247-c12af6c809dc",
+                            Id = "8f86d991-726c-4b85-bd32-03e7741df43c",
+                            ConcurrencyStamp = "8ec69a76-b825-4f34-b597-8190c462e1ef",
                             Deleted = false,
-                            Name = "Content Editor",
-                            NormalizedName = "CONTENT EDITOR"
+                            Name = "Content Editor"
                         },
                         new
                         {
-                            Id = "0da60945-6d69-4e12-8c70-ecbf72039a39",
-                            ConcurrencyStamp = "ba1a12ad-1e26-46aa-8995-700c2aa2577e",
+                            Id = "2a00ecb1-0c2d-4a60-a6b2-cf33c2622e7a",
+                            ConcurrencyStamp = "2fd930ab-07e6-415a-aa22-ffa04fb87969",
                             Deleted = false,
-                            Name = "Customer",
-                            NormalizedName = "CUSTOMER"
+                            Name = "Customer"
                         });
                 });
 
@@ -688,279 +687,6 @@ namespace Cinema.Dal.Migrations
                             Title = "Battle in Seattle",
                             VideoLink = "https://www.imdb.com/video/vi1761450777?playlistId=tt0850253&ref_=tt_ov_vi",
                             Year = 2007
-                        },
-                        new
-                        {
-                            Id = -5,
-                            Actors = "Tadanobu Asano, Minami, Eiko Koike",
-                            Country = "Japan",
-                            CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Directors = "Masanori Tominaga",
-                            Duration = 97,
-                            IsDeleted = false,
-                            Title = "Vengeance Can Wait",
-                            VideoLink = "",
-                            Year = 2010
-                        },
-                        new
-                        {
-                            Id = -6,
-                            Actors = "Test Actor 1, Test Actor 2",
-                            Country = "Test Country",
-                            CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Directors = "Test Director",
-                            Duration = 97,
-                            IsDeleted = false,
-                            Title = "Test Movie 6",
-                            VideoLink = "",
-                            Year = 2010
-                        },
-                        new
-                        {
-                            Id = -7,
-                            Actors = "Test Actor 1, Test Actor 2",
-                            Country = "Test Country",
-                            CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Directors = "Test Director",
-                            Duration = 97,
-                            IsDeleted = false,
-                            Title = "Test Movie 7",
-                            VideoLink = "",
-                            Year = 2010
-                        },
-                        new
-                        {
-                            Id = -8,
-                            Actors = "Test Actor 1, Test Actor 2",
-                            Country = "Test Country",
-                            CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Directors = "Test Director",
-                            Duration = 97,
-                            IsDeleted = false,
-                            Title = "Test Movie 8",
-                            VideoLink = "",
-                            Year = 2010
-                        },
-                        new
-                        {
-                            Id = -9,
-                            Actors = "Test Actor 1, Test Actor 2",
-                            Country = "Test Country",
-                            CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Directors = "Test Director",
-                            Duration = 97,
-                            IsDeleted = false,
-                            Title = "Test Movie 9",
-                            VideoLink = "",
-                            Year = 2010
-                        },
-                        new
-                        {
-                            Id = -10,
-                            Actors = "Test Actor 1, Test Actor 2",
-                            Country = "Test Country",
-                            CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Directors = "Test Director",
-                            Duration = 97,
-                            IsDeleted = false,
-                            Title = "Test Movie 10",
-                            VideoLink = "",
-                            Year = 2010
-                        },
-                        new
-                        {
-                            Id = -11,
-                            Actors = "Test Actor 1, Test Actor 2",
-                            Country = "Test Country",
-                            CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Directors = "Test Director",
-                            Duration = 97,
-                            IsDeleted = false,
-                            Title = "Test Movie 11",
-                            VideoLink = "",
-                            Year = 2010
-                        },
-                        new
-                        {
-                            Id = -12,
-                            Actors = "Test Actor 1, Test Actor 2",
-                            Country = "Test Country",
-                            CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Directors = "Test Director",
-                            Duration = 97,
-                            IsDeleted = false,
-                            Title = "Test Movie 12",
-                            VideoLink = "",
-                            Year = 2010
-                        },
-                        new
-                        {
-                            Id = -13,
-                            Actors = "Test Actor 1, Test Actor 2",
-                            Country = "Test Country",
-                            CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Directors = "Test Director",
-                            Duration = 97,
-                            IsDeleted = false,
-                            Title = "Test Movie 13",
-                            VideoLink = "",
-                            Year = 2010
-                        },
-                        new
-                        {
-                            Id = -14,
-                            Actors = "Test Actor 1, Test Actor 2",
-                            Country = "Test Country",
-                            CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Directors = "Test Director",
-                            Duration = 97,
-                            IsDeleted = false,
-                            Title = "Test Movie 14",
-                            VideoLink = "",
-                            Year = 2010
-                        },
-                        new
-                        {
-                            Id = -15,
-                            Actors = "Test Actor 1, Test Actor 2",
-                            Country = "Test Country",
-                            CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Directors = "Test Director",
-                            Duration = 97,
-                            IsDeleted = false,
-                            Title = "Test Movie 15",
-                            VideoLink = "",
-                            Year = 2010
-                        },
-                        new
-                        {
-                            Id = -16,
-                            Actors = "Test Actor 1, Test Actor 2",
-                            Country = "Test Country",
-                            CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Directors = "Test Director",
-                            Duration = 97,
-                            IsDeleted = false,
-                            Title = "Test Movie 16",
-                            VideoLink = "",
-                            Year = 2010
-                        },
-                        new
-                        {
-                            Id = -17,
-                            Actors = "Test Actor 1, Test Actor 2",
-                            Country = "Test Country",
-                            CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Directors = "Test Director",
-                            Duration = 97,
-                            IsDeleted = false,
-                            Title = "Test Movie 17",
-                            VideoLink = "",
-                            Year = 2010
-                        },
-                        new
-                        {
-                            Id = -18,
-                            Actors = "Test Actor 1, Test Actor 2",
-                            Country = "Test Country",
-                            CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Directors = "Test Director",
-                            Duration = 97,
-                            IsDeleted = false,
-                            Title = "Test Movie 18",
-                            VideoLink = "",
-                            Year = 2010
-                        },
-                        new
-                        {
-                            Id = -19,
-                            Actors = "Test Actor 1, Test Actor 2",
-                            Country = "Test Country",
-                            CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Directors = "Test Director",
-                            Duration = 97,
-                            IsDeleted = false,
-                            Title = "Test Movie 19",
-                            VideoLink = "",
-                            Year = 2010
-                        },
-                        new
-                        {
-                            Id = -20,
-                            Actors = "Test Actor 1, Test Actor 2",
-                            Country = "Test Country",
-                            CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Directors = "Test Director",
-                            Duration = 97,
-                            IsDeleted = false,
-                            Title = "Test Movie 20",
-                            VideoLink = "",
-                            Year = 2010
-                        },
-                        new
-                        {
-                            Id = -21,
-                            Actors = "Test Actor 1, Test Actor 2",
-                            Country = "Test Country",
-                            CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Directors = "Test Director",
-                            Duration = 97,
-                            IsDeleted = false,
-                            Title = "Test Movie 21",
-                            VideoLink = "",
-                            Year = 2010
-                        },
-                        new
-                        {
-                            Id = -22,
-                            Actors = "Test Actor 1, Test Actor 2",
-                            Country = "Test Country",
-                            CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Directors = "Test Director",
-                            Duration = 97,
-                            IsDeleted = false,
-                            Title = "Test Movie 22",
-                            VideoLink = "",
-                            Year = 2010
-                        },
-                        new
-                        {
-                            Id = -23,
-                            Actors = "Test Actor 1, Test Actor 2",
-                            Country = "Test Country",
-                            CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Directors = "Test Director",
-                            Duration = 97,
-                            IsDeleted = false,
-                            Title = "Test Movie 23",
-                            VideoLink = "",
-                            Year = 2010
-                        },
-                        new
-                        {
-                            Id = -24,
-                            Actors = "Test Actor 1, Test Actor 2",
-                            Country = "Test Country",
-                            CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Directors = "Test Director",
-                            Duration = 97,
-                            IsDeleted = false,
-                            Title = "Test Movie 24",
-                            VideoLink = "",
-                            Year = 2010
-                        },
-                        new
-                        {
-                            Id = -25,
-                            Actors = "Test Actor 1, Test Actor 2",
-                            Country = "Test Country",
-                            CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Directors = "Test Director",
-                            Duration = 97,
-                            IsDeleted = false,
-                            Title = "Test Movie 25",
-                            VideoLink = "",
-                            Year = 2010
                         });
                 });
 

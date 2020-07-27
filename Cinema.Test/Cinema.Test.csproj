@@ -19,7 +19,6 @@
     <ProjectReference Include="..\Cinema.Dal\Cinema.Dal.csproj" />
     <ProjectReference Include="..\Cinema.Domain\Cinema.Domain.csproj" />
     <ProjectReference Include="..\Cinema.Seed\Cinema.Seed.csproj" />
-    <ProjectReference Include="..\Cinema.Web.Mvc\Cinema.Web.Mvc.csproj" />
   </ItemGroup>
 
 </Project>

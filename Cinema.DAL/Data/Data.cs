@@ -1,4 +1,5 @@
 ﻿using Cinema.Domain.Entities;
+using Cinema.Domain.Entities.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage;
@@ -29,6 +30,7 @@ namespace Cinema.Dal.Data
             SeedGenres(modelBuilder);
             SeedMovies(modelBuilder);
             SeedGenreMovies(modelBuilder);
+            SeedRoles(modelBuilder);
         }
 
         private static void SeedGenreMovies(ModelBuilder modelBuilder)
@@ -399,6 +401,27 @@ namespace Cinema.Dal.Data
                     IsDeleted = false,
                     Name = "Premiere",
                     Price = 12
+                }
+            );
+        }
+
+        private static void SeedRoles(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ApplicationRole>().HasData(
+                new ApplicationRole
+                {
+                    Name = "Administrator",
+                    NormalizedName = "ADMINISTRATOR"
+                },
+                new ApplicationRole
+                {
+                    Name = "Content Editor",
+                    NormalizedName = "CONTENT EDITOR"
+                },
+                new ApplicationRole
+                {
+                    Name = "Customer",
+                    NormalizedName = "CUSTOMER"
                 }
             );
         }

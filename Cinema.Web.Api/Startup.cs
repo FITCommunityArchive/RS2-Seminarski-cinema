@@ -1,11 +1,12 @@
 using AutoMapper;
 using Cinema.Dal.Data;
+using Cinema.Domain.Entities.Identity;
 using Cinema.Dal.Repository;
 using Cinema.Domain.Entities;
 using Cinema.Models;
 using Cinema.Models.Requests.Movies;
+using Cinema.Models.Requests.Users;
 using Cinema.Services;
-using Cinema.Shared;
 using Cinema.Utilities.Interfaces;
 using Cinema.Utilities.Interfaces.Dal;
 using Cinema.Utilities.Interfaces.Services;
@@ -17,7 +18,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using OfficeOpenXml.FormulaParsing.Excel.Functions.Text;
 
 namespace Cinema.Web.API
 {
@@ -47,14 +47,19 @@ namespace Cinema.Web.API
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ICinemaDbContext, CinemaDbContext>();
 
+            services.AddScoped<ICRUDService<ApplicationUserDto, UserSearchRequest, UserUpsertRequest, UserUpsertRequest>, UserService>();
+            services.AddScoped<IUserService, UserService>();
+
             services.AddScoped<IMovieRepository, MovieRepository>();
             services.AddScoped<IRepository<Movie, int>, MovieRepository>();
 
-            services.AddScoped<IMovieService, MovieService>();
-            services.AddScoped<ICRUDService<MovieDto, MovieSearchRequest, MovieUpsertRequest, MovieUpsertRequest>, MovieService>();
-
               string connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<CinemaDbContext>(options => options.UseSqlServer(connection));
+
+            services.AddIdentity<ApplicationUser, ApplicationRole>(options => {
+                options.SignIn.RequireConfirmedAccount = true;
+                //options.User.RequireUniqueEmail = true;
+            }).AddEntityFrameworkStores<CinemaDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

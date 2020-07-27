@@ -29,6 +29,12 @@ namespace Cinema.Dal.Repository
             }
         }
 
+        public ApplicationUser GetUserByEmail(string email)
+        {
+            var result = _context.Users.SingleOrDefault(e => e.Email == email.ToString());
+
+            return result;
+        }
         public IQueryable<ApplicationUser> Sort(IQueryable<ApplicationUser> query, SortOrder? sortOrder, string sortProperty)
         {
             if (sortOrder == SortOrder.ASC)
