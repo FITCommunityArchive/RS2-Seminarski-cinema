@@ -61,8 +61,10 @@
             this.grdMoviesList.Name = "grdMoviesList";
             this.grdMoviesList.RowHeadersWidth = 51;
             this.grdMoviesList.RowTemplate.Height = 24;
-            this.grdMoviesList.Size = new System.Drawing.Size(600, 224);
+            this.grdMoviesList.Size = new System.Drawing.Size(600, 400);
             this.grdMoviesList.TabIndex = 0;
+            this.grdMoviesList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdMoviesList_CellContentClick);
+            this.grdMoviesList.ColumnHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.grdMoviesList_ColumnHeaderMouseDoubleClick);
             // 
             // Title
             // 
@@ -165,7 +167,7 @@
             // 
             // pagination1
             // 
-            this.pagination1.Location = new System.Drawing.Point(369, 317);
+            this.pagination1.Location = new System.Drawing.Point(369, 490);
             this.pagination1.Name = "pagination1";
             this.pagination1.PageIndex = 0;
             this.pagination1.Size = new System.Drawing.Size(219, 37);
@@ -177,7 +179,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 366);
+            this.ClientSize = new System.Drawing.Size(600, 539);
             this.Controls.Add(this.pagination1);
             this.Controls.Add(this.lblSearchDuration);
             this.Controls.Add(this.txtSearchDuration);

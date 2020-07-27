@@ -1,7 +1,10 @@
-﻿using Cinema.Dal.Repository;
+﻿using Castle.DynamicProxy.Generators;
+using Cinema.Dal.Repository;
 using Cinema.Domain.Entities;
 using Cinema.Domain.Entities.Identity;
-using Cinema.Utilities.Interfaces;
+using Cinema.Utilities.Interfaces.Dal;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -32,7 +35,6 @@ namespace Cinema.Dal.Data
         public IRepository<Screening, int> Screenings => Repository<Screening, int>();
         public IRepository<Seat, int> Seats => Repository<Seat, int>();
         public IRepository<SeatReservation, int> SeatReservations => Repository<SeatReservation, int>();
-
 
         public UnitOfWork(ICinemaDbContext context)
         {
@@ -65,13 +67,27 @@ namespace Cinema.Dal.Data
             }
 
             var type = typeof(Entity).Name;
+
             if (!_repositories.ContainsKey(type))
             {
-                var repositoryType = typeof(Repository<,>);
-                var repositoryInstance = Activator.CreateInstance(repositoryType.MakeGenericType(typeof(Entity), typeof(Key)), _context);
+                var repositoryInstance = CreateRepositoryInstance<Entity, Key>(type);
                 _repositories.Add(type, repositoryInstance);
             }
-            return (Repository<Entity, Key>)_repositories[type];
+            return (IRepository<Entity, Key>)_repositories[type];
+        }
+
+        private IRepository<Entity, Key> CreateRepositoryInstance<Entity, Key>(string assemblyTypeName) where Entity : class
+        {
+            switch (assemblyTypeName)
+            {
+                case nameof(Movie):
+                        return (IRepository<Entity, Key>)new MovieRepository(_context);
+                default:
+                    {
+                        var repositoryType = typeof(Repository<,>);
+                        return (IRepository<Entity, Key>)Activator.CreateInstance(repositoryType.MakeGenericType(typeof(Entity), typeof(Key)), _context);
+                    }
+            }
         }
 
         public int Save() => _context.SaveChanges();
