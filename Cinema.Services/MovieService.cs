@@ -14,7 +14,7 @@ using Cinema.Dal.Repository;
 
 namespace Cinema.Services
 {
-    public class MovieService : IMovieService
+    public class MovieService
     {
         protected readonly IMovieRepository _repo;
         protected readonly IUnitOfWork _unit;
@@ -108,11 +108,6 @@ namespace Cinema.Services
             }
 
             return expression;
-        }
-
-        Task<MovieDto> IService<MovieDto, MovieSearchRequest>.GetByIdAsync(int id)
-        {
-            throw new NotImplementedException();
         }
     }
 }

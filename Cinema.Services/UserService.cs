@@ -3,6 +3,7 @@ using Cinema.Domain.Entities.Identity;
 using Cinema.Models;
 using Cinema.Models.Requests.Users;
 using Cinema.Utilities.Interfaces;
+using Cinema.Utilities.Interfaces.Dal;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;

@@ -53,9 +53,6 @@ namespace Cinema.Web.API
             services.AddScoped<IMovieRepository, MovieRepository>();
             services.AddScoped<IRepository<Movie, int>, MovieRepository>();
 
-            services.AddScoped<IMovieService, MovieService>();
-            services.AddScoped<ICRUDService<MovieDto, MovieSearchRequest, MovieUpsertRequest, MovieUpsertRequest>, MovieService>();
-
               string connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<CinemaDbContext>(options => options.UseSqlServer(connection));
 
