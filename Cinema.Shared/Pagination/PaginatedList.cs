@@ -6,7 +6,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 
-namespace Cinema.Shared
+namespace Cinema.Shared.Pagination
 {
     [Obsolete("Use PagedList instead")]
     public class PaginatedList<T> : List<T>, IPagedList<T>

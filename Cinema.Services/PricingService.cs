@@ -1,6 +1,6 @@
 ﻿using Cinema.Dal.Data;
 using Cinema.Domain.Entities;
-using Cinema.Utilities.Interfaces;
+using Cinema.Utilities.Interfaces.Dal;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;

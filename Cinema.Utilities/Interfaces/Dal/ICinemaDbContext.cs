@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Cinema.Utilities.Interfaces
+namespace Cinema.Utilities.Interfaces.Dal
 {
     public interface ICinemaDbContext
     {

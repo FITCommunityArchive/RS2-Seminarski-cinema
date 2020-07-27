@@ -2,7 +2,7 @@
 using Cinema.Domain.Entities.Identity;
 using System.Threading.Tasks;
 
-namespace Cinema.Utilities.Interfaces
+namespace Cinema.Utilities.Interfaces.Dal
 {
     public interface IUnitOfWork
     {

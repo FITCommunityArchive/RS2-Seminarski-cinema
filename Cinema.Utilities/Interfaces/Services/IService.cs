@@ -1,8 +1,9 @@
 ﻿using Cinema.Models.Requests;
 using Cinema.Shared;
+using Cinema.Shared.Pagination;
 using System.Threading.Tasks;
 
-namespace Cinema.Utilities.Interfaces
+namespace Cinema.Utilities.Interfaces.Services
 {
     public interface IService<T, TSearch> where TSearch : BaseSearchRequest
     {

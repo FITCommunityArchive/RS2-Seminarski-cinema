@@ -1,6 +1,6 @@
 ﻿using Cinema.Domain.Entities;
 using Cinema.Domain.Entities.Identity;
-using Cinema.Utilities.Interfaces;
+using Cinema.Utilities.Interfaces.Dal;
 using System.Threading.Tasks;
 
 namespace Cinema.Dal

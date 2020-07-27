@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Cinema.Models.Requests;
-using Cinema.Utilities.Interfaces;
+using Cinema.Utilities.Interfaces.Dal;
+using Cinema.Utilities.Interfaces.Services;
 using System.Threading.Tasks;
 
 namespace Cinema.Services

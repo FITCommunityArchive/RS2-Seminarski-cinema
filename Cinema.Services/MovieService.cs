@@ -4,45 +4,54 @@ using Cinema.Models;
 using Cinema.Models.Requests.Movies;
 using Cinema.Shared;
 using Cinema.Shared.Helpers;
-using Cinema.Utilities.Interfaces;
-using OfficeOpenXml.FormulaParsing.Excel.Functions.Math;
+using Cinema.Utilities.Interfaces.Services;
+using Cinema.Utilities.Interfaces.Dal;
 using System;
-using System.Collections.Specialized;
-using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using Cinema.Shared.Pagination;
+using Cinema.Dal.Repository;
 
 namespace Cinema.Services
 {
-    public class MovieService : BaseCRUDService<MovieDto, MovieSearchRequest, Movie, MovieUpsertRequest, MovieUpsertRequest>, IMovieService
+    public class MovieService : IMovieService
     {
-        public MovieService(IUnitOfWork unit, IMapper mapper) : base(unit, mapper)
-        {
+        protected readonly IMovieRepository _repo;
+        protected readonly IUnitOfWork _unit;
+        protected readonly IMapper _mapper;
 
+        public MovieService(IUnitOfWork unit, IMapper mapper)
+        {
+            _unit = unit;
+            _mapper = mapper;
+            _repo = unit.Repository<Movie, int>() as IMovieRepository;
         }
 
-        public override async Task<IPagedList<MovieDto>> GetPagedAsync(MovieSearchRequest search)
+        public Task<Movie> GetByIdAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<IPagedList<MovieDto>> GetPagedAsync(MovieSearchRequest search)
         {
             var filterExpression = ApplyFilter(search);
-            var sortExpression = ApplySorting(filterExpression, search);
 
-            var list = await _repo.GetPagedAsync(filterExpression, sortExpression, search.SortOrder, search.PageIndex, search.PageSize);
+            var repo = _repo;
+
+            var list = await repo.GetPagedAsync(search, search.SearchTerm, search.Year, search.Duration);
             var dtoList = PagedList<MovieDto>.Map<Movie>(_mapper, list);
 
             return dtoList;
         }
 
-        private Expression<Func<Movie, object>> ApplySorting(Expression<Func<Movie, bool>> expression, MovieSearchRequest search)
+        public MovieDto Insert(MovieUpsertRequest req)
         {
-            switch (search.SortColumn)
-            {
-                case nameof(Movie.Title):              
-                    return x => x.Title;
-                case nameof(Movie.Year):
-                    return x => x.Year;
-                default:
-                    return x => x.Id;
-            }
+            throw new NotImplementedException();
+        }
+
+        public Task<MovieDto> Update(int id, MovieUpsertRequest req)
+        {
+            throw new NotImplementedException();
         }
 
         private Expression<Func<Movie, bool>> ApplyFilter(MovieSearchRequest search)
@@ -99,6 +108,11 @@ namespace Cinema.Services
             }
 
             return expression;
+        }
+
+        Task<MovieDto> IService<MovieDto, MovieSearchRequest>.GetByIdAsync(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

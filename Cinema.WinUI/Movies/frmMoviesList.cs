@@ -1,6 +1,7 @@
 ﻿using Cinema.Models;
 using Cinema.Models.Requests.Movies;
 using Cinema.Shared;
+using Cinema.Shared.Pagination;
 using Cinema.WinUI.Constants;
 using System;
 using System.Linq;

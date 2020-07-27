@@ -1,10 +1,14 @@
 using AutoMapper;
 using Cinema.Dal.Data;
+using Cinema.Dal.Repository;
+using Cinema.Domain.Entities;
 using Cinema.Models;
 using Cinema.Models.Requests.Movies;
 using Cinema.Services;
 using Cinema.Shared;
 using Cinema.Utilities.Interfaces;
+using Cinema.Utilities.Interfaces.Dal;
+using Cinema.Utilities.Interfaces.Services;
 using Cinema.Web.Api.Filters;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -43,10 +47,13 @@ namespace Cinema.Web.API
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ICinemaDbContext, CinemaDbContext>();
 
-            services.AddScoped<ICRUDService<MovieDto, MovieSearchRequest, MovieUpsertRequest, MovieUpsertRequest>, MovieService>();
-            services.AddScoped<IMovieService, MovieService>();
+            services.AddScoped<IMovieRepository, MovieRepository>();
+            services.AddScoped<IRepository<Movie, int>, MovieRepository>();
 
-            string connection = Configuration.GetConnectionString("DefaultConnection");
+            services.AddScoped<IMovieService, MovieService>();
+            services.AddScoped<ICRUDService<MovieDto, MovieSearchRequest, MovieUpsertRequest, MovieUpsertRequest>, MovieService>();
+
+              string connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<CinemaDbContext>(options => options.UseSqlServer(connection));
         }
 

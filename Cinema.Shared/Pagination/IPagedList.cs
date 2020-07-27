@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
-namespace Cinema.Shared
+namespace Cinema.Shared.Pagination
 {
     public interface IPagedList<T>
     {

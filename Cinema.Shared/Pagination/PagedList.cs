@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
-namespace Cinema.Shared
+namespace Cinema.Shared.Pagination
 {
     public class PagedList<T> : IPagedList<T>
     {

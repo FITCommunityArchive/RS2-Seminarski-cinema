@@ -2,7 +2,7 @@
 using Cinema.Domain.Entities;
 using Cinema.Models.SpecificModels;
 using Cinema.Utilities.Factory;
-using Cinema.Utilities.Interfaces;
+using Cinema.Utilities.Interfaces.Dal;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
