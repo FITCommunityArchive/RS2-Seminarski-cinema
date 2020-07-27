@@ -1,4 +1,5 @@
 ﻿using Cinema.Domain.Entities;
+using Cinema.Domain.Entities.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage;
@@ -333,6 +334,24 @@ namespace Cinema.Dal.Data
                     IsDeleted = false,
                     MovieId = -3,
                     GenreId = -6
+                });
+
+            
+            modelBuilder.Entity<ApplicationRole>().HasData(
+                new ApplicationRole
+                {
+                    Name = "Administrator",
+                    NormalizedName = "ADMINISTRATOR"
+                },
+                new ApplicationRole
+                {
+                    Name = "Content Editor",
+                    NormalizedName = "CONTENT EDITOR"
+                },
+                new ApplicationRole
+                {
+                    Name = "Customer",
+                    NormalizedName = "CUSTOMER"
                 });
         }
     }

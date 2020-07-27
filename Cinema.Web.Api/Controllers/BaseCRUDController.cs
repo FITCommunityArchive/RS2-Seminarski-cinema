@@ -14,9 +14,9 @@ namespace Cinema.Web.Api.Controllers
         }
 
         [HttpPost]
-        public ActionResult<T> Insert(TInsert req)
+        public async Task<ActionResult<T>> Insert(TInsert req)
         {
-            return _service.Insert(req);
+            return await _service.Insert(req);
         }
 
         [HttpPut("{id}")]

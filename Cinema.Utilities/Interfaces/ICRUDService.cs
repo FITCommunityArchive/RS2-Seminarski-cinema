@@ -7,6 +7,6 @@ namespace Cinema.Utilities.Interfaces
     {
 
         Task<T> Update(int id, TUpdate req);
-        T Insert(TInsert req);
+        Task<T> Insert(TInsert req);
     }
 }

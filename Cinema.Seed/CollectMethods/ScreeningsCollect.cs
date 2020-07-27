@@ -1,6 +1,6 @@
 ﻿using Cinema.Dal.Data;
 using Cinema.Domain.Entities;
-using Cinema.Utilities.Helpers;
+using Cinema.Shared.Helpers;
 using OfficeOpenXml;
 using System;
 using System.Threading.Tasks;

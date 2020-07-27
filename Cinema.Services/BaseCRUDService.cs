@@ -13,11 +13,11 @@ namespace Cinema.Services
         {
         }
 
-        public virtual TModel Insert(TInsert req)
+        public virtual async Task<TModel> Insert(TInsert req)
         {
             var entity = _mapper.Map<TDatabase>(req);
 
-            _repo.InsertAsync(entity);
+            await _repo.InsertAsync(entity);
             _unit.Save();
 
             return _mapper.Map<TModel>(entity);
