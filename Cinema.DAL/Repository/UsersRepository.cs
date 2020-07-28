@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Cinema.Dal.Repository
 {
-    public class ApplicationUsersRepository : Repository<ApplicationUser, string>
+    public class UsersRepository : Repository<ApplicationUser, string>, IUsersRepository
     {
-        public ApplicationUsersRepository(ICinemaDbContext context) : base(context) { }
+        public UsersRepository(ICinemaDbContext context) : base(context) { }
 
         public override async Task UpdateAsync(ApplicationUser newEnt, string id)
         {
@@ -77,5 +77,19 @@ namespace Cinema.Dal.Repository
             return query;
         }
 
+        public Task<ApplicationUser> GetAsync(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task UpdateAsync(ApplicationUser entity, int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task DeleteAsync(int id)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

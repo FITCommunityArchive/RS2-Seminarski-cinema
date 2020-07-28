@@ -16,6 +16,7 @@ namespace Cinema.Services
         public UserService(IUnitOfWork unit, IMapper mapper, UserManager<ApplicationUser> userManager) : base(unit, mapper)
         {
             _userManager = userManager;
+            _repo = unit.Repository<ApplicationUser,int>() as IUsersRepository;
         }
 
 
@@ -24,6 +25,7 @@ namespace Cinema.Services
         {
             var userIdentity = _mapper.Map<ApplicationUser>(model);
 
+            
             var result = await _userManager.CreateAsync(userIdentity, model.Password);
 
             if(result.Succeeded)

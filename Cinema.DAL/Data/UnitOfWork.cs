@@ -82,6 +82,8 @@ namespace Cinema.Dal.Data
             {
                 case nameof(Movie):
                         return (IRepository<Entity, Key>)new MovieRepository(_context);
+                case nameof(ApplicationUser):
+                    return (IRepository<Entity, Key>)new UsersRepository(_context);
                 default:
                     {
                         var repositoryType = typeof(Repository<,>);
