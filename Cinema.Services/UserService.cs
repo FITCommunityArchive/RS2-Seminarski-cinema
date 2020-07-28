@@ -16,7 +16,7 @@ namespace Cinema.Services
         public UserService(IUnitOfWork unit, IMapper mapper, UserManager<ApplicationUser> userManager) : base(unit, mapper)
         {
             _userManager = userManager;
-            _repo = unit.Repository<ApplicationUser,int>() as IUsersRepository;
+            _repo = unit.Users;
         }
 
 
