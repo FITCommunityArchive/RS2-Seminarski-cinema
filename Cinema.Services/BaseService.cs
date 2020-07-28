@@ -13,7 +13,7 @@ namespace Cinema.Services
         where TDatabase : class
         where TSearch : BaseSearchRequest
     {
-        protected readonly IRepository<TDatabase, int> _repo;
+        protected IRepository<TDatabase, int> _repo;
         protected readonly IUnitOfWork _unit;
         protected readonly IMapper _mapper;
 
