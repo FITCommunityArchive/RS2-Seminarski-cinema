@@ -16,7 +16,7 @@ namespace Cinema.Services
 {
     public class MovieService : ICRUDService<MovieDto, MovieSearchRequest, MovieUpsertRequest, MovieUpsertRequest>, IMovieService
     {
-        protected readonly IMovieRepository _repo;
+        protected readonly IMovieRepository _movieRepo;
         protected readonly IUnitOfWork _unit;
         protected readonly IMapper _mapper;
 
@@ -24,7 +24,7 @@ namespace Cinema.Services
         {
             _unit = unit;
             _mapper = mapper;
-            _repo = unit.Repository<Movie, int>() as IMovieRepository;
+            _movieRepo = unit.Movies;
         }
 
         public Task<MovieDto> GetByIdAsync(int id)
@@ -34,7 +34,7 @@ namespace Cinema.Services
 
         public async Task<IPagedList<MovieDto>> GetPagedAsync(MovieSearchRequest search)
         {
-            var list = await _repo.GetPagedAsync(search, search.SearchTerm, search.Year, search.Duration);
+            var list = await _movieRepo.GetPagedAsync(search, search.SearchTerm, search.Year, search.Duration);
             var dtoList = PagedList<MovieDto>.Map<Movie>(_mapper, list);
 
             return dtoList;
