@@ -14,7 +14,7 @@ using Cinema.Dal.Repository;
 
 namespace Cinema.Services
 {
-    public class MovieService
+    public class MovieService : ICRUDService<MovieDto, MovieSearchRequest, MovieUpsertRequest, MovieUpsertRequest>, IMovieService
     {
         protected readonly IMovieRepository _repo;
         protected readonly IUnitOfWork _unit;
@@ -27,24 +27,20 @@ namespace Cinema.Services
             _repo = unit.Repository<Movie, int>() as IMovieRepository;
         }
 
-        public Task<Movie> GetByIdAsync(int id)
+        public Task<MovieDto> GetByIdAsync(int id)
         {
             throw new NotImplementedException();
         }
 
         public async Task<IPagedList<MovieDto>> GetPagedAsync(MovieSearchRequest search)
         {
-            var filterExpression = ApplyFilter(search);
-
-            var repo = _repo;
-
-            var list = await repo.GetPagedAsync(search, search.SearchTerm, search.Year, search.Duration);
+            var list = await _repo.GetPagedAsync(search, search.SearchTerm, search.Year, search.Duration);
             var dtoList = PagedList<MovieDto>.Map<Movie>(_mapper, list);
 
             return dtoList;
         }
 
-        public MovieDto Insert(MovieUpsertRequest req)
+        public Task<MovieDto> Insert(MovieUpsertRequest req)
         {
             throw new NotImplementedException();
         }

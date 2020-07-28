@@ -26,7 +26,7 @@ namespace Cinema.Services
         public virtual async Task<IPagedList<TModel>> GetPagedAsync(TSearch search)
         {
             var list = await _repo.GetPagedAsync(null, search.PageIndex, search.PageSize);
-            var dtoList = _mapper.Map<PagedList<TModel>>(list);
+            var dtoList = PagedList<TModel>.Map<TDatabase>(_mapper, list);
 
             return dtoList;
         }
