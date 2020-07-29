@@ -19,7 +19,8 @@ namespace Cinema.WinUI.Movies
 
         private async void frmMoviesList_Load(object sender, EventArgs e)
         {
-            MovieSearchRequest searchRequest = GetDefaultSearchRequest();
+            MovieSearchRequest searchRequest = new MovieSearchRequest();
+            searchRequest = ApplyDefaultSearchValues(searchRequest) as MovieSearchRequest;
             await LoadMovies(searchRequest);
         }
 
@@ -29,18 +30,12 @@ namespace Cinema.WinUI.Movies
             await LoadMovies(searchRequest);
         }
 
-        private MovieSearchRequest GetDefaultSearchRequest()
-        {
-            return new MovieSearchRequest
-            {
-                PageIndex = pagination1.PageIndex,
-                PageSize = Paging.DEFAULT_PAGE_SIZE
-            };
-        }
-
         private MovieSearchRequest GetSearchRequest()
         {
-            MovieSearchRequest searchRequest = GetDefaultSearchRequest();
+            MovieSearchRequest searchRequest = new MovieSearchRequest();
+
+            searchRequest = ApplyDefaultSearchValues(searchRequest) as MovieSearchRequest;
+            searchRequest.PageIndex = pagination1.PageIndex;
             searchRequest.SearchTerm = txtSearchBar.Text;
 
             if (int.TryParse(txtSearchDuration.Text, out int searchDuration))
@@ -52,9 +47,6 @@ namespace Cinema.WinUI.Movies
             {
                 searchRequest.Year = searchYear;
             }
-
-            searchRequest.SortOrder = CurrentSortOrder;
-            searchRequest.SortColumn = CurrentSortPropertyName;
 
             return searchRequest;
         }
