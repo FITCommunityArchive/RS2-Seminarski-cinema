@@ -2,8 +2,6 @@
 using Cinema.Shared.Enums;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
 
 namespace Cinema.Shared.Pagination

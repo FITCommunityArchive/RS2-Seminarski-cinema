@@ -25,10 +25,10 @@ namespace Cinema.Services
         {
             var userIdentity = _mapper.Map<ApplicationUser>(model);
 
-            
+
             var result = await _userManager.CreateAsync(userIdentity, model.Password);
 
-            if(result.Succeeded)
+            if (result.Succeeded)
             {
                 ApplicationRole role = await _unit.Roles.GetAsync(model.RoleId);
                 await _userManager.AddToRoleAsync(userIdentity, role.Name);

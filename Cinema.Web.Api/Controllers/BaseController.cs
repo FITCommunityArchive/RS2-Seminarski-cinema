@@ -1,5 +1,4 @@
 ﻿using Cinema.Models.Requests;
-using Cinema.Shared;
 using Cinema.Shared.Pagination;
 using Cinema.Utilities.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;

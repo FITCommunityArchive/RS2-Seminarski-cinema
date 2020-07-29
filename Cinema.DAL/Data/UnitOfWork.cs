@@ -1,10 +1,7 @@
-﻿using Castle.DynamicProxy.Generators;
-using Cinema.Dal.Repository;
+﻿using Cinema.Dal.Repository;
 using Cinema.Domain.Entities;
 using Cinema.Domain.Entities.Identity;
 using Cinema.Utilities.Interfaces.Dal;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;

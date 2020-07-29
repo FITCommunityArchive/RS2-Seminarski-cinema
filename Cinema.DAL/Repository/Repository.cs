@@ -45,7 +45,7 @@ namespace Cinema.Dal.Repository
             if (where != null)
             {
                 query = query.Where(where);
-            }  
+            }
 
             var pagedList = await ApplyPaginationAsync(query, pageIndex, pageSize);
             return pagedList;
@@ -69,7 +69,7 @@ namespace Cinema.Dal.Repository
                 oldEnt.Update(newEnt);
             }
         }
-        
+
         public virtual async Task DeleteAsync(Key id)
         {
             Entity entity = await GetAsync(id);

@@ -1,10 +1,8 @@
 ﻿using Cinema.Models;
 using Cinema.Models.Requests.Movies;
-using Cinema.Shared.Enums;
 using Cinema.Shared.Pagination;
 using Cinema.WinUI.Constants;
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -36,14 +34,14 @@ namespace Cinema.WinUI.Movies
             return new MovieSearchRequest
             {
                 PageIndex = pagination1.PageIndex,
-                PageSize = Paging.DEFAULT_PAGE_SIZE             
+                PageSize = Paging.DEFAULT_PAGE_SIZE
             };
         }
 
         private MovieSearchRequest GetSearchRequest()
-        {           
+        {
             MovieSearchRequest searchRequest = GetDefaultSearchRequest();
-            searchRequest.SearchTerm = txtSearchBar.Text;             
+            searchRequest.SearchTerm = txtSearchBar.Text;
 
             if (int.TryParse(txtSearchDuration.Text, out int searchDuration))
             {
@@ -58,7 +56,7 @@ namespace Cinema.WinUI.Movies
             searchRequest.SortOrder = CurrentSortOrder;
             searchRequest.SortColumn = CurrentSortPropertyName;
 
-            return searchRequest;                   
+            return searchRequest;
         }
 
         private async Task LoadMovies(MovieSearchRequest searchRequest)

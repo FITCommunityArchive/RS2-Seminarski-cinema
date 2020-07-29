@@ -1,5 +1,4 @@
 ﻿using Cinema.Domain.Entities;
-using Cinema.Shared;
 using Cinema.Shared.Enums;
 using Cinema.Shared.Pagination;
 using Cinema.Shared.Search;

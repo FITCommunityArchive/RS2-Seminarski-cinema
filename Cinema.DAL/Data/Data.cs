@@ -185,7 +185,7 @@ namespace Cinema.Dal.Data
                     Directors = "Masanori Tominaga",
                     Actors = "Tadanobu Asano, Minami, Eiko Koike",
                     VideoLink = ""
-                }                  
+                }
             );
 
             var testMovies = new List<Movie>();

@@ -1,5 +1,4 @@
-﻿using Cinema.Shared.Pagination;
-using Cinema.Shared.Enums;
+﻿using Cinema.Shared.Enums;
 using Cinema.Shared.Search;
 
 namespace Cinema.Models.Requests

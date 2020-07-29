@@ -1,9 +1,6 @@
-﻿using Cinema.Shared;
-using Cinema.Shared.Enums;
-using Cinema.Shared.Pagination;
+﻿using Cinema.Shared.Pagination;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 

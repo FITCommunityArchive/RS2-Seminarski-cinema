@@ -1,5 +1,4 @@
-﻿using Cinema.Shared.Enums;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Cinema.Shared.Pagination
 {

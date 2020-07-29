@@ -4,7 +4,6 @@ using Cinema.Shared.Enums;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 
 namespace Cinema.Shared.Pagination

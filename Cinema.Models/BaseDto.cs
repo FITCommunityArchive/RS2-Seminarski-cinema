@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Cinema.Models
+﻿namespace Cinema.Models
 {
     public class BaseDto
     {

@@ -1,14 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Cinema.Shared;
-using System.Windows.Forms.VisualStyles;
 
 namespace Cinema.WinUI.UserControls
 {
@@ -17,10 +8,11 @@ namespace Cinema.WinUI.UserControls
         private int _totalPages;
         private int _pageIndex;
 
-        public int PageIndex 
-        { 
-            get => _pageIndex; 
-            set { 
+        public int PageIndex
+        {
+            get => _pageIndex;
+            set
+            {
                 _pageIndex = value;
                 txtCurrentPage.Text = value.ToString();
             }
@@ -68,7 +60,7 @@ namespace Cinema.WinUI.UserControls
             if (!HasPreviousPage) return;
 
             _pageIndex = 1;
-            
+
 
             OnPageChanged(EventArgs.Empty);
         }

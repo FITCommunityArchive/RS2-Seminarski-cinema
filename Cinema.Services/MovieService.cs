@@ -2,15 +2,11 @@
 using Cinema.Domain.Entities;
 using Cinema.Models;
 using Cinema.Models.Requests.Movies;
-using Cinema.Shared;
-using Cinema.Shared.Helpers;
-using Cinema.Utilities.Interfaces.Services;
-using Cinema.Utilities.Interfaces.Dal;
-using System;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
 using Cinema.Shared.Pagination;
-using Cinema.Dal.Repository;
+using Cinema.Utilities.Interfaces.Dal;
+using Cinema.Utilities.Interfaces.Services;
+using System;
+using System.Threading.Tasks;
 
 namespace Cinema.Services
 {
@@ -48,6 +44,6 @@ namespace Cinema.Services
         public Task<MovieDto> Update(int id, MovieUpsertRequest req)
         {
             throw new NotImplementedException();
-        }        
+        }
     }
 }

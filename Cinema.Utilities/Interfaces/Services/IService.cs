@@ -1,5 +1,4 @@
 ﻿using Cinema.Models.Requests;
-using Cinema.Shared;
 using Cinema.Shared.Pagination;
 using System.Threading.Tasks;
 
