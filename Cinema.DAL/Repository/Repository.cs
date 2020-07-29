@@ -87,6 +87,12 @@ namespace Cinema.Dal.Repository
             }
         }
 
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
         protected virtual async Task<IPagedList<Entity>> ApplyPaginationAsync(IQueryable<Entity> query, int pageIndex, int pageSize)
         {
             if (pageIndex == 0)
@@ -104,15 +110,14 @@ namespace Cinema.Dal.Repository
             return new PagedList<Entity>(items, count, pageIndex, pageSize);
         }
 
-        protected virtual IQueryable<Entity> Sort(IQueryable<Entity> query, ISearchRequest searchRequest)
+        protected virtual IQueryable<Entity> ApplySorting(IQueryable<Entity> query, ISearchRequest searchRequest)
         {
             throw new NotImplementedException();
         }
 
-        public void Dispose()
+        protected virtual Expression<Func<Entity, object>> GetSortExpression(ISearchRequest searchRequest)
         {
-            Dispose(true);
-            GC.SuppressFinalize(this);
+            throw new NotImplementedException();
         }
 
         protected virtual void Dispose(bool disposing)

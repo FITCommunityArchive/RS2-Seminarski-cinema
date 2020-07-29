@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Cinema.Shared.Enums;
+using System.Collections.Generic;
 
 namespace Cinema.Shared.Pagination
 {
@@ -7,7 +8,7 @@ namespace Cinema.Shared.Pagination
         List<T> Data { get; }
         int PageIndex { get; }
         int TotalPages { get; }
-        string CurrentSort { get; }
+        string SortColumn { get; }
         string CurrentFilter { get; }
     }
 }

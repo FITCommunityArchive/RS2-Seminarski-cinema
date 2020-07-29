@@ -13,7 +13,7 @@ namespace Cinema.Shared.Pagination
     {
         public int PageIndex { get; private set; }
         public int TotalPages { get; private set; }
-        public string CurrentSort { get; private set; }
+        public string SortColumn { get; private set; }
         public SortOrder? CurrentSortOrder { get; private set; }
         public string CurrentFilter { get; private set; }
         public List<T> Data { get { return this; } }
@@ -62,7 +62,7 @@ namespace Cinema.Shared.Pagination
             PageIndex = pageIndex;
             TotalPages = (int)Math.Ceiling(count / (double)pageSize);
             CurrentSortOrder = currentSortOrder;
-            CurrentSort = currentSort;
+            SortColumn = currentSort;
             CurrentFilter = currentFilter;
 
             this.AddRange(items);

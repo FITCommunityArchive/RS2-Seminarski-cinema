@@ -56,15 +56,14 @@
             this.Country,
             this.Directors,
             this.Actors});
-            this.grdMoviesList.Location = new System.Drawing.Point(0, 73);
-            this.grdMoviesList.Margin = new System.Windows.Forms.Padding(2);
+            this.grdMoviesList.Location = new System.Drawing.Point(0, 90);
+            this.grdMoviesList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.grdMoviesList.Name = "grdMoviesList";
             this.grdMoviesList.RowHeadersWidth = 51;
             this.grdMoviesList.RowTemplate.Height = 24;
-            this.grdMoviesList.Size = new System.Drawing.Size(600, 400);
+            this.grdMoviesList.Size = new System.Drawing.Size(800, 492);
             this.grdMoviesList.TabIndex = 0;
-            this.grdMoviesList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdMoviesList_CellContentClick);
-            this.grdMoviesList.ColumnHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.grdMoviesList_ColumnHeaderMouseDoubleClick);
+            this.grdMoviesList.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.grdMoviesList_ColumnHeaderMouseClick);
             // 
             // Title
             // 
@@ -110,76 +109,74 @@
             // 
             // txtSearchBar
             // 
-            this.txtSearchBar.Location = new System.Drawing.Point(9, 33);
-            this.txtSearchBar.Margin = new System.Windows.Forms.Padding(2);
+            this.txtSearchBar.Location = new System.Drawing.Point(12, 41);
+            this.txtSearchBar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSearchBar.Name = "txtSearchBar";
-            this.txtSearchBar.Size = new System.Drawing.Size(218, 20);
+            this.txtSearchBar.Size = new System.Drawing.Size(289, 22);
             this.txtSearchBar.TabIndex = 1;
-            this.txtSearchBar.TextChanged += new System.EventHandler(this.txtSearchBar_TextChanged);
+            this.txtSearchBar.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // lblSearch
             // 
             this.lblSearch.AutoSize = true;
-            this.lblSearch.Location = new System.Drawing.Point(10, 15);
-            this.lblSearch.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSearch.Location = new System.Drawing.Point(13, 18);
             this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(46, 15);
+            this.lblSearch.Size = new System.Drawing.Size(53, 17);
             this.lblSearch.TabIndex = 2;
             this.lblSearch.Text = "Search";
             // 
             // lblSearchYear
             // 
             this.lblSearchYear.AutoSize = true;
-            this.lblSearchYear.Location = new System.Drawing.Point(416, 15);
-            this.lblSearchYear.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSearchYear.Location = new System.Drawing.Point(555, 18);
             this.lblSearchYear.Name = "lblSearchYear";
-            this.lblSearchYear.Size = new System.Drawing.Size(32, 15);
+            this.lblSearchYear.Size = new System.Drawing.Size(38, 17);
             this.lblSearchYear.TabIndex = 4;
             this.lblSearchYear.Text = "Year";
             // 
             // txtSearchYear
             // 
-            this.txtSearchYear.Location = new System.Drawing.Point(418, 33);
-            this.txtSearchYear.Margin = new System.Windows.Forms.Padding(2);
+            this.txtSearchYear.Location = new System.Drawing.Point(557, 41);
+            this.txtSearchYear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSearchYear.Name = "txtSearchYear";
-            this.txtSearchYear.Size = new System.Drawing.Size(89, 20);
+            this.txtSearchYear.Size = new System.Drawing.Size(117, 22);
             this.txtSearchYear.TabIndex = 3;
-            this.txtSearchYear.TextChanged += new System.EventHandler(this.txtSearchYear_TextChanged);
+            this.txtSearchYear.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // lblSearchDuration
             // 
             this.lblSearchDuration.AutoSize = true;
-            this.lblSearchDuration.Location = new System.Drawing.Point(318, 15);
-            this.lblSearchDuration.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSearchDuration.Location = new System.Drawing.Point(424, 18);
             this.lblSearchDuration.Name = "lblSearchDuration";
-            this.lblSearchDuration.Size = new System.Drawing.Size(54, 15);
+            this.lblSearchDuration.Size = new System.Drawing.Size(62, 17);
             this.lblSearchDuration.TabIndex = 6;
             this.lblSearchDuration.Text = "Duration";
             // 
             // txtSearchDuration
             // 
-            this.txtSearchDuration.Location = new System.Drawing.Point(320, 33);
-            this.txtSearchDuration.Margin = new System.Windows.Forms.Padding(2);
+            this.txtSearchDuration.Location = new System.Drawing.Point(427, 41);
+            this.txtSearchDuration.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSearchDuration.Name = "txtSearchDuration";
-            this.txtSearchDuration.Size = new System.Drawing.Size(95, 20);
+            this.txtSearchDuration.Size = new System.Drawing.Size(125, 22);
             this.txtSearchDuration.TabIndex = 5;
-            this.txtSearchDuration.TextChanged += new System.EventHandler(this.txtSearchDuration_TextChanged);
+            this.txtSearchDuration.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // pagination1
             // 
-            this.pagination1.Location = new System.Drawing.Point(369, 490);
+            this.pagination1.Location = new System.Drawing.Point(492, 603);
+            this.pagination1.Margin = new System.Windows.Forms.Padding(5);
             this.pagination1.Name = "pagination1";
             this.pagination1.PageIndex = 0;
-            this.pagination1.Size = new System.Drawing.Size(219, 37);
+            this.pagination1.Size = new System.Drawing.Size(292, 46);
             this.pagination1.TabIndex = 7;
             this.pagination1.TotalPages = 0;
             this.pagination1.PageChanged += new System.EventHandler(this.pagination1_PageChanged);
             // 
             // frmMoviesList
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 539);
+            this.ClientSize = new System.Drawing.Size(800, 663);
             this.Controls.Add(this.pagination1);
             this.Controls.Add(this.lblSearchDuration);
             this.Controls.Add(this.txtSearchDuration);
@@ -189,7 +186,7 @@
             this.Controls.Add(this.txtSearchBar);
             this.Controls.Add(this.grdMoviesList);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmMoviesList";
             this.Text = "frmMoviesList";
             this.Load += new System.EventHandler(this.frmMoviesList_Load);
