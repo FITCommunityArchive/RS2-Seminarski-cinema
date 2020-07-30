@@ -1,20 +1,16 @@
 ﻿using Cinema.Models;
 using Cinema.Models.Requests.Movies;
-using Cinema.Shared;
 using Cinema.Shared.Pagination;
 using Cinema.WinUI.Constants;
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Cinema.WinUI.Movies
 {
-    public partial class frmMoviesList : Form
+    public partial class frmMoviesList : BaseDataGridForm
     {
         private readonly ApiService _moviesApi = new ApiService("Movies");
-        private string _currentSortPropertyName { get; set; }
-        private Cinema.Shared.Enums.SortOrder? _currentSortOrder { get; set; }
 
         public frmMoviesList()
         {
@@ -23,47 +19,24 @@ namespace Cinema.WinUI.Movies
 
         private async void frmMoviesList_Load(object sender, EventArgs e)
         {
-            MovieSearchRequest searchRequest = GetDefaultSearchRequest();
+            MovieSearchRequest searchRequest = new MovieSearchRequest();
+            searchRequest = ApplyDefaultSearchValues(searchRequest) as MovieSearchRequest;
             await LoadMovies(searchRequest);
         }
 
-        private async void txtSearchBar_TextChanged(object sender, EventArgs e)
+        private async void txtSearch_TextChanged(object sender, EventArgs e)
         {
             MovieSearchRequest searchRequest = GetSearchRequest();
             await LoadMovies(searchRequest);
-        }
-
-        private async void txtSearchYear_TextChanged(object sender, EventArgs e)
-        {
-            MovieSearchRequest searchRequest = GetSearchRequest();
-            await LoadMovies(searchRequest);
-        }
-
-        private async void txtSearchDuration_TextChanged(object sender, EventArgs e)
-        {
-            MovieSearchRequest searchRequest = GetSearchRequest();
-            await LoadMovies(searchRequest);
-        }
-
-        private MovieSearchRequest GetDefaultSearchRequest()
-        {
-            return new MovieSearchRequest
-            {
-                PageIndex = pagination1.PageIndex,
-                PageSize = Paging.DEFAULT_PAGE_SIZE
-            };
         }
 
         private MovieSearchRequest GetSearchRequest()
-        {            
-            string searchTerm = txtSearchBar.Text;
+        {
+            MovieSearchRequest searchRequest = new MovieSearchRequest();
 
-            MovieSearchRequest searchRequest = GetDefaultSearchRequest();
-
-            if (searchTerm.Count() >= Search.MINIMUM_SEARCH_CHARACTERS || searchTerm.Count() == 0)
-            {
-                searchRequest.SearchTerm = searchTerm;                
-            }
+            searchRequest = ApplyDefaultSearchValues(searchRequest) as MovieSearchRequest;
+            searchRequest.PageIndex = pagination1.PageIndex;
+            searchRequest.SearchTerm = txtSearchBar.Text;
 
             if (int.TryParse(txtSearchDuration.Text, out int searchDuration))
             {
@@ -75,7 +48,7 @@ namespace Cinema.WinUI.Movies
                 searchRequest.Year = searchYear;
             }
 
-            return searchRequest;                   
+            return searchRequest;
         }
 
         private async Task LoadMovies(MovieSearchRequest searchRequest)
@@ -88,32 +61,21 @@ namespace Cinema.WinUI.Movies
             pagination1.TotalPages = result.TotalPages;
         }
 
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private async void pagination1_PageChanged(object sender, EventArgs e)
         {
             MovieSearchRequest searchRequest = GetSearchRequest();
             await LoadMovies(searchRequest);
         }
 
-        private void grdMoviesList_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private async void grdMoviesList_ColumnHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        private async void grdMoviesList_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             DataGridViewColumn clickedColumn = grdMoviesList.Columns[e.ColumnIndex];
 
-            _currentSortPropertyName = clickedColumn.Name;
-            _currentSortOrder = Shared.Enums.SortOrder.ASC;
+            ChangeSorting(clickedColumn.Name);
 
             MovieSearchRequest searchRequest = GetSearchRequest();
-            searchRequest.SortColumn = _currentSortPropertyName;
-            searchRequest.SortOrder = _currentSortOrder;
+            searchRequest.SortColumn = CurrentSortPropertyName;
+            searchRequest.SortOrder = CurrentSortOrder;
 
             await LoadMovies(searchRequest);
         }

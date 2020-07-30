@@ -1,5 +1,4 @@
 ﻿using Cinema.Domain.Entities;
-using Cinema.Shared;
 using Cinema.Shared.Enums;
 using Cinema.Shared.Pagination;
 using Cinema.Shared.Search;
@@ -19,25 +18,76 @@ namespace Cinema.Dal.Repository
         {
             var query = _dbSet.AsQueryable();
 
+            query = ApplyFilter(query, searchTerm, searchYear, searchDuration);
+
             if (searchRequest.SortOrder != null && searchRequest.SortColumn != null)
             {
-                query = Sort(query, searchRequest);
+                query = ApplySorting(query, searchRequest);
             }
 
             var pagedList = await ApplyPaginationAsync(query, searchRequest.PageIndex, searchRequest.PageSize);
             return pagedList;
         }
 
-        protected override IQueryable<Movie> Sort(IQueryable<Movie> query, ISearchRequest searchRequest)
-        {            
+        private IQueryable<Movie> ApplyFilter(IQueryable<Movie> query, string searchTerm, int? searchYear, int? searchDuration)
+        {
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                searchTerm = searchTerm.ToLower();
+
+                query = query.Where(x => x.Title.ToLower().StartsWith(searchTerm)
+                               || x.Directors.ToLower().StartsWith(searchTerm)
+                               || x.Actors.ToLower().StartsWith(searchTerm)
+                               || x.Country.ToLower().StartsWith(searchTerm));
+            }
+
+            if (searchYear.HasValue)
+            {
+                query = query.Where(x => x.Year.ToString().StartsWith(searchYear.ToString()));
+            }
+
+            if (searchDuration.HasValue)
+            {
+                query = query.Where(x => x.Duration.ToString().StartsWith(searchDuration.ToString()));
+            }
+
+            return query;
+        }
+
+        protected override IQueryable<Movie> ApplySorting(IQueryable<Movie> query, ISearchRequest searchRequest)
+        {
+            Expression<Func<Movie, object>> expression = GetSortExpression(searchRequest);
+
+            if (searchRequest.SortOrder == SortOrder.ASC)
+            {
+                query = query.OrderBy(expression);
+            }
+            else
+            {
+                query = query.OrderByDescending(expression);
+            }
+
+            return query;
+        }
+
+        protected override Expression<Func<Movie, object>> GetSortExpression(ISearchRequest searchRequest)
+        {
             switch (searchRequest.SortColumn)
             {
                 case nameof(Movie.Title):
-                    return query.OrderBy(x => x.Title);
+                    return x => x.Title;
                 case nameof(Movie.Year):
-                    return query.OrderBy(x => x.Year);
+                    return x => x.Year;
+                case nameof(Movie.Duration):
+                    return x => x.Duration;
+                case nameof(Movie.Country):
+                    return x => x.Country;
+                case nameof(Movie.Directors):
+                    return x => x.Directors;
+                case nameof(Movie.Actors):
+                    return x => x.Actors;
                 default:
-                    return query.OrderBy(x => x.Id);
+                    return x => x.Id;
             }
         }
     }

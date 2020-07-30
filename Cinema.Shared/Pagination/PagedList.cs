@@ -4,7 +4,6 @@ using Cinema.Shared.Enums;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 
 namespace Cinema.Shared.Pagination
@@ -18,9 +17,9 @@ namespace Cinema.Shared.Pagination
         [JsonProperty]
         public int TotalPages { get; private set; }
         [JsonProperty]
-        public string CurrentSort { get; private set; }
+        public string SortColumn { get; private set; }
         [JsonProperty]
-        public SortOrder? CurrentSortOrder { get; private set; }
+        public SortOrder? SortOrder { get; private set; }
         [JsonProperty]
         public string CurrentFilter { get; private set; }
 
@@ -60,8 +59,8 @@ namespace Cinema.Shared.Pagination
         {
             PageIndex = pageIndex;
             TotalPages = (int)Math.Ceiling(count / (double)pageSize);
-            CurrentSortOrder = currentSortOrder;
-            CurrentSort = currentSort;
+            SortOrder = currentSortOrder;
+            SortColumn = currentSort;
             CurrentFilter = currentFilter;
 
             Data = items;

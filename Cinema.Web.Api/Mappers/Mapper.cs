@@ -4,8 +4,6 @@ using Cinema.Domain.Entities.Identity;
 using Cinema.Models;
 using Cinema.Models.Requests.Movies;
 using Cinema.Models.Requests.Users;
-using Cinema.Shared;
-using System.Collections.Generic;
 
 namespace Cinema.Web.Api.Mappers
 {

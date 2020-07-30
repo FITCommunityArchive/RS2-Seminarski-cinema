@@ -1,11 +1,4 @@
-﻿using Cinema.Domain.Entities.Identity;
-using Cinema.Models.Requests.Users;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Cinema.Utilities.Interfaces
+﻿namespace Cinema.Utilities.Interfaces
 {
     public interface IUserService
     {

@@ -170,6 +170,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiService.cs" />
+    <Compile Include="BaseDataGridForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Constants\Search.cs" />
     <Compile Include="Constants\Paging.cs" />
     <Compile Include="Form1.cs">

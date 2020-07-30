@@ -45,7 +45,7 @@ namespace Cinema.Dal.Repository
             if (where != null)
             {
                 query = query.Where(where);
-            }  
+            }
 
             var pagedList = await ApplyPaginationAsync(query, pageIndex, pageSize);
             return pagedList;
@@ -69,7 +69,7 @@ namespace Cinema.Dal.Repository
                 oldEnt.Update(newEnt);
             }
         }
-        
+
         public virtual async Task DeleteAsync(Key id)
         {
             Entity entity = await GetAsync(id);
@@ -85,6 +85,12 @@ namespace Cinema.Dal.Repository
                     throw new DependentObjectsPresentException();
                 }
             }
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
 
         protected virtual async Task<IPagedList<Entity>> ApplyPaginationAsync(IQueryable<Entity> query, int pageIndex, int pageSize)
@@ -104,15 +110,14 @@ namespace Cinema.Dal.Repository
             return new PagedList<Entity>(items, count, pageIndex, pageSize);
         }
 
-        protected virtual IQueryable<Entity> Sort(IQueryable<Entity> query, ISearchRequest searchRequest)
+        protected virtual IQueryable<Entity> ApplySorting(IQueryable<Entity> query, ISearchRequest searchRequest)
         {
             throw new NotImplementedException();
         }
 
-        public void Dispose()
+        protected virtual Expression<Func<Entity, object>> GetSortExpression(ISearchRequest searchRequest)
         {
-            Dispose(true);
-            GC.SuppressFinalize(this);
+            throw new NotImplementedException();
         }
 
         protected virtual void Dispose(bool disposing)
