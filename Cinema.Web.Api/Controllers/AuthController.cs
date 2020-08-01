@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Cinema.Models.Requests;
 using Cinema.Models.Requests.Users;
+using Cinema.Utilities.Interfaces;
 using Cinema.Utilities.Interfaces.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
@@ -15,9 +16,41 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace Cinema.Web.Api.Controllers
 {
-    public class AuthController
+    public class AuthController : ControllerBase
     {
+        private IConfiguration _config;
+        private readonly IUserService _userService;
+        public AuthController(IConfiguration config, IUserService userService)
+        {
+            _config = config;
+            _userService = userService;
+        }
 
+        #region Login Validation  
+        /// <summary>  
+        /// Login Authenticaton using JWT Token Authentication  
+        /// </summary>  
+        /// <param name="data"></param>  
+        /// <returns></returns>  
+        [AllowAnonymous]
+        [HttpPost(nameof(Login))]
+        public async Task<IActionResult> Login([FromBody] LoginRequest data)
+        {
+
+            IActionResult response = Unauthorized();
+            var user = await _userService.Authenticate(data.UserName, data.Password);
+            if (user != null)
+            {
+                var tokenString = _userService.GenerateJSONWebToken(user);
+                response = Ok(new { Token = tokenString, Message = "Success" });
+            }
+            else
+            {
+                response = NotFound(new { Message = "Invalid credentials provided." });
+            }
+            return response;
+        }
+        #endregion
 
     }
 }

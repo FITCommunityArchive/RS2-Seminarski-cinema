@@ -7,16 +7,23 @@ using Cinema.Utilities.Interfaces.Dal;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using System;
+using System.Text;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.Extensions.Configuration;
 
 namespace Cinema.Services
 {
     public class UserService : BaseCRUDService<ApplicationUserDto, UserSearchRequest, ApplicationUser, UserUpsertRequest, UserUpsertRequest>, IUserService
     {
         private readonly UserManager<ApplicationUser> _userManager;
-        public UserService(IUnitOfWork unit, IMapper mapper, UserManager<ApplicationUser> userManager) : base(unit, mapper)
+        private IConfiguration _config;
+        public UserService(IUnitOfWork unit, IMapper mapper, UserManager<ApplicationUser> userManager, IConfiguration config) : base(unit, mapper)
         {
             _userManager = userManager;
             _repo = unit.Users;
+            _config = config;
         }
 
 
@@ -36,5 +43,42 @@ namespace Cinema.Services
 
             return _mapper.Map<ApplicationUserDto>(userIdentity);
         }
+
+        public async Task<ApplicationUserDto> Authenticate(string userName, string password)
+        {
+            var user = await _userManager.FindByNameAsync(userName);
+
+            if (user != null)
+            {
+
+                var result = _userManager.PasswordHasher.VerifyHashedPassword(user, user.PasswordHash, password);
+                if (PasswordVerificationResult.Success == result)
+                {
+                    return _mapper.Map<ApplicationUserDto>(user);
+                }
+            }
+            return null;
+        }
+
+        #region GenerateJWT  
+        /// <summary>  
+        /// Generate Json Web Token Method  
+        /// </summary>  
+        /// <param name="userInfo"></param>  
+        /// <returns></returns>  
+        public string GenerateJSONWebToken(ApplicationUserDto userInfo)
+        {
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
+            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+            var token = new JwtSecurityToken(_config["Jwt:Issuer"],
+              _config["Jwt:Issuer"],
+              null,
+              expires: DateTime.Now.AddMinutes(120),
+              signingCredentials: credentials);
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+        #endregion
     }
 }

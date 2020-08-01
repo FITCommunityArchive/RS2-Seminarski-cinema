@@ -35,6 +35,14 @@ namespace Cinema.Dal.Repository
 
             return result;
         }
+
+        public ApplicationUser GetUserByUserName(string userName)
+        {
+            var result = _context.Users.SingleOrDefault(e => e.UserName == userName.ToString());
+
+            return result;
+        }
+
         public IQueryable<ApplicationUser> Sort(IQueryable<ApplicationUser> query, SortOrder? sortOrder, string sortProperty)
         {
             if (sortOrder == SortOrder.ASC)
