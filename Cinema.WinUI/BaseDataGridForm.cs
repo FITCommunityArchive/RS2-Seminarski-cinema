@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace Cinema.WinUI
 {
-    public abstract class BaseDataGridForm : Form
+    public class BaseDataGridForm : Form
     {
         protected string CurrentSortPropertyName;
         protected Cinema.Shared.Enums.SortOrder? CurrentSortOrder;
