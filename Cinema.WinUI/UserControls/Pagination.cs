@@ -14,7 +14,7 @@ namespace Cinema.WinUI.UserControls
             set
             {
                 _pageIndex = value;
-                txtCurrentPage.Text = value.ToString();
+                btnCurrentPage.Text = value.ToString();
             }
         }
 
@@ -24,7 +24,7 @@ namespace Cinema.WinUI.UserControls
             set
             {
                 _totalPages = value;
-                txtTotalPages.Text = value.ToString();
+                btnTotalPages.Text = value.ToString();
             }
         }
 
@@ -90,10 +90,6 @@ namespace Cinema.WinUI.UserControls
             _pageIndex = _totalPages;
 
             OnPageChanged(EventArgs.Empty);
-        }
-
-        private void Pagination_Load(object sender, EventArgs e)
-        {
         }
     }
 }

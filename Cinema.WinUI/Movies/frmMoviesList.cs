@@ -35,7 +35,7 @@ namespace Cinema.WinUI.Movies
             MovieSearchRequest searchRequest = new MovieSearchRequest();
 
             searchRequest = ApplyDefaultSearchValues(searchRequest) as MovieSearchRequest;
-            searchRequest.PageIndex = pagination1.PageIndex;
+            searchRequest.PageIndex = pgnMoviesList.PageIndex;
             searchRequest.SearchTerm = txtSearchBar.Text;
 
             if (int.TryParse(txtSearchDuration.Text, out int searchDuration))
@@ -57,11 +57,11 @@ namespace Cinema.WinUI.Movies
 
             grdMoviesList.AutoGenerateColumns = false;
             grdMoviesList.DataSource = result.Data;
-            pagination1.PageIndex = result.PageIndex;
-            pagination1.TotalPages = result.TotalPages;
+            pgnMoviesList.PageIndex = result.PageIndex;
+            pgnMoviesList.TotalPages = result.TotalPages;
         }
 
-        private async void pagination1_PageChanged(object sender, EventArgs e)
+        private async void pgnMoviesList_PageChanged(object sender, EventArgs e)
         {
             MovieSearchRequest searchRequest = GetSearchRequest();
             await LoadMovies(searchRequest);

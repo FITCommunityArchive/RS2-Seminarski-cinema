@@ -28,26 +28,50 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grdMoviesList = new System.Windows.Forms.DataGridView();
-            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Duration = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Year = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Country = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Directors = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Actors = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtSearchBar = new System.Windows.Forms.TextBox();
             this.lblSearch = new System.Windows.Forms.Label();
             this.lblSearchYear = new System.Windows.Forms.Label();
             this.txtSearchYear = new System.Windows.Forms.TextBox();
             this.lblSearchDuration = new System.Windows.Forms.Label();
             this.txtSearchDuration = new System.Windows.Forms.TextBox();
-            this.pagination1 = new Cinema.WinUI.UserControls.Pagination();
+            this.pnlFormTitle = new System.Windows.Forms.Panel();
+            this.txtFormTitle = new System.Windows.Forms.TextBox();
+            this.pnlSearchBars = new System.Windows.Forms.Panel();
+            this.pnlDataGrid = new System.Windows.Forms.Panel();
+            this.pnlContent = new System.Windows.Forms.Panel();
+            this.pgnMoviesList = new Cinema.WinUI.UserControls.Pagination();
+            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Duration = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Year = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Country = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Directors = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Actors = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DetailsAction = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grdMoviesList)).BeginInit();
+            this.pnlFormTitle.SuspendLayout();
+            this.pnlSearchBars.SuspendLayout();
+            this.pnlDataGrid.SuspendLayout();
+            this.pnlContent.SuspendLayout();
             this.SuspendLayout();
             // 
             // grdMoviesList
             // 
             this.grdMoviesList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.grdMoviesList.BackgroundColor = System.Drawing.Color.White;
+            this.grdMoviesList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.grdMoviesList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
+            this.grdMoviesList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdMoviesList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.grdMoviesList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdMoviesList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Title,
@@ -55,144 +79,258 @@
             this.Year,
             this.Country,
             this.Directors,
-            this.Actors});
-            this.grdMoviesList.Location = new System.Drawing.Point(0, 90);
-            this.grdMoviesList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Actors,
+            this.DetailsAction});
+            this.grdMoviesList.GridColor = System.Drawing.Color.White;
+            this.grdMoviesList.Location = new System.Drawing.Point(20, 30);
+            this.grdMoviesList.Margin = new System.Windows.Forms.Padding(5, 15, 5, 5);
             this.grdMoviesList.Name = "grdMoviesList";
+            this.grdMoviesList.ReadOnly = true;
+            this.grdMoviesList.RowHeadersVisible = false;
             this.grdMoviesList.RowHeadersWidth = 51;
             this.grdMoviesList.RowTemplate.Height = 24;
-            this.grdMoviesList.Size = new System.Drawing.Size(800, 492);
+            this.grdMoviesList.Size = new System.Drawing.Size(1155, 470);
             this.grdMoviesList.TabIndex = 0;
             this.grdMoviesList.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.grdMoviesList_ColumnHeaderMouseClick);
             // 
-            // Title
-            // 
-            this.Title.DataPropertyName = "Title";
-            this.Title.HeaderText = "Title";
-            this.Title.MinimumWidth = 6;
-            this.Title.Name = "Title";
-            // 
-            // Duration
-            // 
-            this.Duration.DataPropertyName = "Duration";
-            this.Duration.HeaderText = "Duration";
-            this.Duration.MinimumWidth = 6;
-            this.Duration.Name = "Duration";
-            // 
-            // Year
-            // 
-            this.Year.DataPropertyName = "Year";
-            this.Year.HeaderText = "Year";
-            this.Year.MinimumWidth = 6;
-            this.Year.Name = "Year";
-            // 
-            // Country
-            // 
-            this.Country.DataPropertyName = "Country";
-            this.Country.HeaderText = "Country";
-            this.Country.MinimumWidth = 6;
-            this.Country.Name = "Country";
-            // 
-            // Directors
-            // 
-            this.Directors.DataPropertyName = "Directors";
-            this.Directors.HeaderText = "Directors";
-            this.Directors.MinimumWidth = 6;
-            this.Directors.Name = "Directors";
-            // 
-            // Actors
-            // 
-            this.Actors.DataPropertyName = "Actors";
-            this.Actors.HeaderText = "Actors";
-            this.Actors.MinimumWidth = 6;
-            this.Actors.Name = "Actors";
-            // 
             // txtSearchBar
             // 
-            this.txtSearchBar.Location = new System.Drawing.Point(12, 41);
+            this.txtSearchBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSearchBar.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtSearchBar.Location = new System.Drawing.Point(20, 39);
             this.txtSearchBar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSearchBar.Name = "txtSearchBar";
-            this.txtSearchBar.Size = new System.Drawing.Size(289, 22);
+            this.txtSearchBar.Size = new System.Drawing.Size(926, 22);
             this.txtSearchBar.TabIndex = 1;
             this.txtSearchBar.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // lblSearch
             // 
             this.lblSearch.AutoSize = true;
-            this.lblSearch.Location = new System.Drawing.Point(13, 18);
+            this.lblSearch.BackColor = System.Drawing.Color.White;
+            this.lblSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSearch.ForeColor = System.Drawing.Color.Gray;
+            this.lblSearch.Location = new System.Drawing.Point(17, 15);
+            this.lblSearch.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
             this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(53, 17);
+            this.lblSearch.Size = new System.Drawing.Size(55, 18);
             this.lblSearch.TabIndex = 2;
             this.lblSearch.Text = "Search";
             // 
             // lblSearchYear
             // 
             this.lblSearchYear.AutoSize = true;
-            this.lblSearchYear.Location = new System.Drawing.Point(555, 18);
+            this.lblSearchYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSearchYear.ForeColor = System.Drawing.Color.Gray;
+            this.lblSearchYear.Location = new System.Drawing.Point(1087, 15);
             this.lblSearchYear.Name = "lblSearchYear";
-            this.lblSearchYear.Size = new System.Drawing.Size(38, 17);
+            this.lblSearchYear.Size = new System.Drawing.Size(38, 18);
             this.lblSearchYear.TabIndex = 4;
             this.lblSearchYear.Text = "Year";
             // 
             // txtSearchYear
             // 
-            this.txtSearchYear.Location = new System.Drawing.Point(557, 41);
+            this.txtSearchYear.Location = new System.Drawing.Point(1091, 39);
             this.txtSearchYear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSearchYear.Name = "txtSearchYear";
-            this.txtSearchYear.Size = new System.Drawing.Size(117, 22);
+            this.txtSearchYear.Size = new System.Drawing.Size(83, 22);
             this.txtSearchYear.TabIndex = 3;
             this.txtSearchYear.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // lblSearchDuration
             // 
             this.lblSearchDuration.AutoSize = true;
-            this.lblSearchDuration.Location = new System.Drawing.Point(424, 18);
+            this.lblSearchDuration.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSearchDuration.ForeColor = System.Drawing.Color.Gray;
+            this.lblSearchDuration.Location = new System.Drawing.Point(949, 15);
             this.lblSearchDuration.Name = "lblSearchDuration";
-            this.lblSearchDuration.Size = new System.Drawing.Size(62, 17);
+            this.lblSearchDuration.Size = new System.Drawing.Size(64, 18);
             this.lblSearchDuration.TabIndex = 6;
             this.lblSearchDuration.Text = "Duration";
             // 
             // txtSearchDuration
             // 
-            this.txtSearchDuration.Location = new System.Drawing.Point(427, 41);
+            this.txtSearchDuration.Location = new System.Drawing.Point(952, 39);
             this.txtSearchDuration.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSearchDuration.Name = "txtSearchDuration";
-            this.txtSearchDuration.Size = new System.Drawing.Size(125, 22);
+            this.txtSearchDuration.Size = new System.Drawing.Size(132, 22);
             this.txtSearchDuration.TabIndex = 5;
             this.txtSearchDuration.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
-            // pagination1
+            // pnlFormTitle
             // 
-            this.pagination1.Location = new System.Drawing.Point(492, 603);
-            this.pagination1.Margin = new System.Windows.Forms.Padding(5);
-            this.pagination1.Name = "pagination1";
-            this.pagination1.PageIndex = 0;
-            this.pagination1.Size = new System.Drawing.Size(292, 46);
-            this.pagination1.TabIndex = 7;
-            this.pagination1.TotalPages = 0;
-            this.pagination1.PageChanged += new System.EventHandler(this.pagination1_PageChanged);
+            this.pnlFormTitle.BackColor = System.Drawing.Color.White;
+            this.pnlFormTitle.Controls.Add(this.txtFormTitle);
+            this.pnlFormTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlFormTitle.Location = new System.Drawing.Point(0, 0);
+            this.pnlFormTitle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pnlFormTitle.Name = "pnlFormTitle";
+            this.pnlFormTitle.Size = new System.Drawing.Size(1249, 90);
+            this.pnlFormTitle.TabIndex = 8;
+            // 
+            // txtFormTitle
+            // 
+            this.txtFormTitle.BackColor = System.Drawing.Color.White;
+            this.txtFormTitle.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtFormTitle.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFormTitle.ForeColor = System.Drawing.Color.Gray;
+            this.txtFormTitle.Location = new System.Drawing.Point(37, 18);
+            this.txtFormTitle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtFormTitle.Name = "txtFormTitle";
+            this.txtFormTitle.Size = new System.Drawing.Size(100, 33);
+            this.txtFormTitle.TabIndex = 0;
+            this.txtFormTitle.Text = "Movies";
+            // 
+            // pnlSearchBars
+            // 
+            this.pnlSearchBars.BackColor = System.Drawing.Color.White;
+            this.pnlSearchBars.Controls.Add(this.txtSearchDuration);
+            this.pnlSearchBars.Controls.Add(this.txtSearchYear);
+            this.pnlSearchBars.Controls.Add(this.lblSearch);
+            this.pnlSearchBars.Controls.Add(this.lblSearchYear);
+            this.pnlSearchBars.Controls.Add(this.txtSearchBar);
+            this.pnlSearchBars.Controls.Add(this.lblSearchDuration);
+            this.pnlSearchBars.Location = new System.Drawing.Point(29, 113);
+            this.pnlSearchBars.Margin = new System.Windows.Forms.Padding(20);
+            this.pnlSearchBars.Name = "pnlSearchBars";
+            this.pnlSearchBars.Padding = new System.Windows.Forms.Padding(15);
+            this.pnlSearchBars.Size = new System.Drawing.Size(1191, 89);
+            this.pnlSearchBars.TabIndex = 9;
+            // 
+            // pnlDataGrid
+            // 
+            this.pnlDataGrid.BackColor = System.Drawing.Color.White;
+            this.pnlDataGrid.Controls.Add(this.grdMoviesList);
+            this.pnlDataGrid.Location = new System.Drawing.Point(29, 217);
+            this.pnlDataGrid.Margin = new System.Windows.Forms.Padding(20);
+            this.pnlDataGrid.Name = "pnlDataGrid";
+            this.pnlDataGrid.Padding = new System.Windows.Forms.Padding(15);
+            this.pnlDataGrid.Size = new System.Drawing.Size(1191, 502);
+            this.pnlDataGrid.TabIndex = 10;
+            // 
+            // pnlContent
+            // 
+            this.pnlContent.Controls.Add(this.pgnMoviesList);
+            this.pnlContent.Controls.Add(this.pnlSearchBars);
+            this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlContent.Location = new System.Drawing.Point(0, 0);
+            this.pnlContent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pnlContent.Name = "pnlContent";
+            this.pnlContent.Padding = new System.Windows.Forms.Padding(15);
+            this.pnlContent.Size = new System.Drawing.Size(1249, 799);
+            this.pnlContent.TabIndex = 11;
+            // 
+            // pgnMoviesList
+            // 
+            this.pgnMoviesList.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pgnMoviesList.Location = new System.Drawing.Point(940, 726);
+            this.pgnMoviesList.Margin = new System.Windows.Forms.Padding(5);
+            this.pgnMoviesList.Name = "pgnMoviesList";
+            this.pgnMoviesList.PageIndex = 0;
+            this.pgnMoviesList.Size = new System.Drawing.Size(280, 43);
+            this.pgnMoviesList.TabIndex = 10;
+            this.pgnMoviesList.TotalPages = 0;
+            this.pgnMoviesList.PageChanged += new System.EventHandler(this.pgnMoviesList_PageChanged);
+            // 
+            // Title
+            // 
+            this.Title.DataPropertyName = "Title";
+            this.Title.FillWeight = 250F;
+            this.Title.HeaderText = "Title";
+            this.Title.MinimumWidth = 50;
+            this.Title.Name = "Title";
+            this.Title.ReadOnly = true;
+            this.Title.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Duration
+            // 
+            this.Duration.DataPropertyName = "Duration";
+            this.Duration.FillWeight = 70F;
+            this.Duration.HeaderText = "Duration";
+            this.Duration.MinimumWidth = 6;
+            this.Duration.Name = "Duration";
+            this.Duration.ReadOnly = true;
+            this.Duration.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Year
+            // 
+            this.Year.DataPropertyName = "Year";
+            this.Year.FillWeight = 70F;
+            this.Year.HeaderText = "Year";
+            this.Year.MinimumWidth = 6;
+            this.Year.Name = "Year";
+            this.Year.ReadOnly = true;
+            this.Year.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Country
+            // 
+            this.Country.DataPropertyName = "Country";
+            this.Country.FillWeight = 85.47237F;
+            this.Country.HeaderText = "Country";
+            this.Country.MinimumWidth = 6;
+            this.Country.Name = "Country";
+            this.Country.ReadOnly = true;
+            this.Country.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Directors
+            // 
+            this.Directors.DataPropertyName = "Directors";
+            this.Directors.FillWeight = 85.47237F;
+            this.Directors.HeaderText = "Directors";
+            this.Directors.MinimumWidth = 6;
+            this.Directors.Name = "Directors";
+            this.Directors.ReadOnly = true;
+            this.Directors.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Actors
+            // 
+            this.Actors.DataPropertyName = "Actors";
+            this.Actors.FillWeight = 85.47237F;
+            this.Actors.HeaderText = "Actors";
+            this.Actors.MinimumWidth = 6;
+            this.Actors.Name = "Actors";
+            this.Actors.ReadOnly = true;
+            this.Actors.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // DetailsAction
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            this.DetailsAction.DefaultCellStyle = dataGridViewCellStyle2;
+            this.DetailsAction.FillWeight = 50F;
+            this.DetailsAction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DetailsAction.HeaderText = "Action";
+            this.DetailsAction.MinimumWidth = 4;
+            this.DetailsAction.Name = "DetailsAction";
+            this.DetailsAction.ReadOnly = true;
+            this.DetailsAction.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.DetailsAction.Text = "Details";
+            this.DetailsAction.UseColumnTextForButtonValue = true;
             // 
             // frmMoviesList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 663);
-            this.Controls.Add(this.pagination1);
-            this.Controls.Add(this.lblSearchDuration);
-            this.Controls.Add(this.txtSearchDuration);
-            this.Controls.Add(this.lblSearchYear);
-            this.Controls.Add(this.txtSearchYear);
-            this.Controls.Add(this.lblSearch);
-            this.Controls.Add(this.txtSearchBar);
-            this.Controls.Add(this.grdMoviesList);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(1249, 799);
+            this.Controls.Add(this.pnlFormTitle);
+            this.Controls.Add(this.pnlDataGrid);
+            this.Controls.Add(this.pnlContent);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmMoviesList";
             this.Text = "frmMoviesList";
             this.Load += new System.EventHandler(this.frmMoviesList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdMoviesList)).EndInit();
+            this.pnlFormTitle.ResumeLayout(false);
+            this.pnlFormTitle.PerformLayout();
+            this.pnlSearchBars.ResumeLayout(false);
+            this.pnlSearchBars.PerformLayout();
+            this.pnlDataGrid.ResumeLayout(false);
+            this.pnlContent.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -205,12 +343,18 @@
         private System.Windows.Forms.TextBox txtSearchYear;
         private System.Windows.Forms.Label lblSearchDuration;
         private System.Windows.Forms.TextBox txtSearchDuration;
+        private System.Windows.Forms.Panel pnlFormTitle;
+        private System.Windows.Forms.TextBox txtFormTitle;
+        private System.Windows.Forms.Panel pnlSearchBars;
+        private System.Windows.Forms.Panel pnlDataGrid;
+        private System.Windows.Forms.Panel pnlContent;
+        private UserControls.Pagination pgnMoviesList;
         private System.Windows.Forms.DataGridViewTextBoxColumn Title;
         private System.Windows.Forms.DataGridViewTextBoxColumn Duration;
         private System.Windows.Forms.DataGridViewTextBoxColumn Year;
         private System.Windows.Forms.DataGridViewTextBoxColumn Country;
         private System.Windows.Forms.DataGridViewTextBoxColumn Directors;
         private System.Windows.Forms.DataGridViewTextBoxColumn Actors;
-        private UserControls.Pagination pagination1;
+        private System.Windows.Forms.DataGridViewButtonColumn DetailsAction;
     }
 }
