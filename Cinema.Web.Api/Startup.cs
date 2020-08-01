@@ -48,13 +48,14 @@ namespace Cinema.Web.API
             services.AddScoped<ICinemaDbContext, CinemaDbContext>();
 
             services.AddScoped<ICRUDService<MovieDto, MovieSearchRequest, MovieUpsertRequest, MovieUpsertRequest>, MovieService>();
-            services.AddScoped<IMovieService, MovieService>();
-
             services.AddScoped<ICRUDService<ApplicationUserDto, UserSearchRequest, UserUpsertRequest, UserUpsertRequest>, UserService>();
+
+            services.AddScoped<IMovieService, MovieService>();
             services.AddScoped<IUserService, UserService>();
 
             services.AddScoped<IMovieRepository, MovieRepository>();
             services.AddScoped<IUsersRepository, UsersRepository>();
+
             services.AddScoped<IRepository<ApplicationUser, int>, UsersRepository>();
             services.AddScoped<IRepository<Movie, int>, MovieRepository>();
 

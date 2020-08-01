@@ -1,9 +1,13 @@
 ﻿using Cinema.Domain.Entities.Identity;
+using Cinema.Shared.Pagination;
+using Cinema.Shared.Search;
+using System.Threading.Tasks;
 
 namespace Cinema.Utilities.Interfaces.Dal
 {
     public interface IUsersRepository : IRepository<ApplicationUser, int>
     {
         ApplicationUser GetUserByEmail(string email);
+        Task<IPagedList<ApplicationUser>> GetPagedAsync(ISearchRequest searchRequest, string firstName, string lastName);
     }
 }

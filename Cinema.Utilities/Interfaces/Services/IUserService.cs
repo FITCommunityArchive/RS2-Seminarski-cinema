@@ -1,6 +1,10 @@
-﻿namespace Cinema.Utilities.Interfaces
+﻿using Cinema.Models;
+using Cinema.Models.Requests.Users;
+using Cinema.Utilities.Interfaces.Services;
+
+namespace Cinema.Utilities.Interfaces
 {
-    public interface IUserService
+    public interface IUserService : ICRUDService<ApplicationUserDto,UserSearchRequest,UserUpsertRequest,UserUpsertRequest>
     {
         //ApplicationUser InsertCustom([FromBody] UserUpsertRequest model);
         //ApplicationUser Authenticate(string username, string password);
