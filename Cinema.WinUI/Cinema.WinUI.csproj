@@ -187,11 +187,17 @@
     <Compile Include="FormDashboard.Designer.cs">
       <DependentUpon>FormDashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Movies\frmMoviesList.cs">
+    <Compile Include="Movies\frmMovieDetails.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Movies\frmMoviesList.Designer.cs">
-      <DependentUpon>frmMoviesList.cs</DependentUpon>
+    <Compile Include="Movies\frmMovieDetails.Designer.cs">
+      <DependentUpon>frmMovieDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Movies\frmMovieList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Movies\frmMovieList.Designer.cs">
+      <DependentUpon>frmMovieList.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -207,8 +213,8 @@
     <EmbeddedResource Include="FormDashboard.resx">
       <DependentUpon>FormDashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Movies\frmMoviesList.resx">
-      <DependentUpon>frmMoviesList.cs</DependentUpon>
+    <EmbeddedResource Include="Movies\frmMovieList.resx">
+      <DependentUpon>frmMovieList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

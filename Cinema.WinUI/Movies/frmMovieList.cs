@@ -8,11 +8,11 @@ using System.Windows.Forms;
 
 namespace Cinema.WinUI.Movies
 {
-    public partial class frmMoviesList : BaseDataGridForm
+    public partial class frmMovieList : BaseDataGridForm
     {
         private readonly ApiService _moviesApi = new ApiService("Movies");
 
-        public frmMoviesList()
+        public frmMovieList()
         {
             InitializeComponent();
         }
@@ -78,6 +78,20 @@ namespace Cinema.WinUI.Movies
             searchRequest.SortOrder = CurrentSortOrder;
 
             await LoadMovies(searchRequest);
+        }
+
+        private void grdMoviesList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var senderGrid = (DataGridView)sender;
+
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
+                e.RowIndex >= 0)
+            {
+                var clickedRow = senderGrid.Rows[e.RowIndex];
+                int.TryParse(clickedRow.Cells["id"].Value.ToString(), out int filmId);
+
+                int i = 1;
+            }
         }
     }
 }

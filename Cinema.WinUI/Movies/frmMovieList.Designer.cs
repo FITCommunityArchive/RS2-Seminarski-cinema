@@ -1,6 +1,6 @@
 ﻿namespace Cinema.WinUI.Movies
 {
-    partial class frmMoviesList
+    partial class frmMovieList
     {
         /// <summary>
         /// Required designer variable.
@@ -43,6 +43,7 @@
             this.pnlDataGrid = new System.Windows.Forms.Panel();
             this.pnlContent = new System.Windows.Forms.Panel();
             this.pgnMoviesList = new Cinema.WinUI.UserControls.Pagination();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Duration = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Year = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,6 +75,7 @@
             this.grdMoviesList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.grdMoviesList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdMoviesList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
             this.Title,
             this.Duration,
             this.Year,
@@ -91,6 +93,7 @@
             this.grdMoviesList.RowTemplate.Height = 24;
             this.grdMoviesList.Size = new System.Drawing.Size(1155, 470);
             this.grdMoviesList.TabIndex = 0;
+            this.grdMoviesList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdMoviesList_CellContentClick);
             this.grdMoviesList.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.grdMoviesList_ColumnHeaderMouseClick);
             // 
             // txtSearchBar
@@ -232,6 +235,15 @@
             this.pgnMoviesList.TotalPages = 0;
             this.pgnMoviesList.PageChanged += new System.EventHandler(this.pgnMoviesList_PageChanged);
             // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.MinimumWidth = 6;
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
             // Title
             // 
             this.Title.DataPropertyName = "Title";
@@ -349,6 +361,7 @@
         private System.Windows.Forms.Panel pnlDataGrid;
         private System.Windows.Forms.Panel pnlContent;
         private UserControls.Pagination pgnMoviesList;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Title;
         private System.Windows.Forms.DataGridViewTextBoxColumn Duration;
         private System.Windows.Forms.DataGridViewTextBoxColumn Year;
