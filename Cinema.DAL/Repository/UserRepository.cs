@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Cinema.Dal.Repository
 {
-    public class UsersRepository : Repository<ApplicationUser, string>, IUsersRepository
+    public class UserRepository : Repository<ApplicationUser, string>, IUserRepository
     {
-        public UsersRepository(ICinemaDbContext context) : base(context) { }
+        public UserRepository(ICinemaDbContext context) : base(context) { }
 
         public override async Task UpdateAsync(ApplicationUser newEnt, string id)
         {

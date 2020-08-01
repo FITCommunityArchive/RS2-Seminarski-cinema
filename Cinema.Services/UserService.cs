@@ -22,7 +22,7 @@ namespace Cinema.Services
         private readonly UserManager<ApplicationUser> _userManager;
         private IConfiguration _config;
 
-        protected readonly IUsersRepository _userRepo;
+        protected readonly IUserRepository _userRepo;
         protected readonly IUnitOfWork _unit;
         protected readonly IMapper _mapper;
         public UserService(IUnitOfWork unit, IMapper mapper, UserManager<ApplicationUser> userManager, IConfiguration config)

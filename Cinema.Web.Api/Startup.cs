@@ -101,9 +101,9 @@ namespace Cinema.Web.API
             services.AddScoped<IUserService, UserService>();
 
             services.AddScoped<IMovieRepository, MovieRepository>();
-            services.AddScoped<IUsersRepository, UsersRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
-            services.AddScoped<IRepository<ApplicationUser, int>, UsersRepository>();
+            services.AddScoped<IRepository<ApplicationUser, int>, UserRepository>();
             services.AddScoped<IRepository<Movie, int>, MovieRepository>();
 
             string connection = Configuration.GetConnectionString("DefaultConnection");

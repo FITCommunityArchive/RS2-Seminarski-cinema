@@ -46,7 +46,7 @@ namespace Cinema.Web.Api.Controllers
             }
             else
             {
-                response = NotFound(new { Message = "Invalid credentials provided." });
+                response = Unauthorized(new { Message = "Invalid credentials provided." });
             }
             return response;
         }
