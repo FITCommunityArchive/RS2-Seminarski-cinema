@@ -110,7 +110,6 @@
             this.btnCurrentPage.TabIndex = 18;
             this.btnCurrentPage.Text = "1";
             this.btnCurrentPage.UseVisualStyleBackColor = false;
-            this.btnCurrentPage.Click += new System.EventHandler(this.btnCurrentPage_Click);
             // 
             // btnTotalPages
             // 
@@ -125,7 +124,6 @@
             this.btnTotalPages.TabIndex = 19;
             this.btnTotalPages.Text = "1";
             this.btnTotalPages.UseVisualStyleBackColor = false;
-            this.btnTotalPages.Click += new System.EventHandler(this.btnTotalPages_Click);
             // 
             // Pagination
             // 
@@ -141,7 +139,6 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Pagination";
             this.Size = new System.Drawing.Size(210, 35);
-            this.Load += new System.EventHandler(this.Pagination_Load);
             this.ResumeLayout(false);
 
         }

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grdMoviesList = new System.Windows.Forms.DataGridView();
             this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Duration = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,14 +63,14 @@
             this.grdMoviesList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.grdMoviesList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.grdMoviesList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grdMoviesList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdMoviesList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.grdMoviesList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdMoviesList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Title,
@@ -162,7 +162,7 @@
             this.txtSearchBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSearchBar.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtSearchBar.Location = new System.Drawing.Point(15, 32);
-            this.txtSearchBar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtSearchBar.Margin = new System.Windows.Forms.Padding(2);
             this.txtSearchBar.Name = "txtSearchBar";
             this.txtSearchBar.Size = new System.Drawing.Size(695, 20);
             this.txtSearchBar.TabIndex = 1;
@@ -196,7 +196,7 @@
             // txtSearchYear
             // 
             this.txtSearchYear.Location = new System.Drawing.Point(818, 32);
-            this.txtSearchYear.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtSearchYear.Margin = new System.Windows.Forms.Padding(2);
             this.txtSearchYear.Name = "txtSearchYear";
             this.txtSearchYear.Size = new System.Drawing.Size(63, 20);
             this.txtSearchYear.TabIndex = 3;
@@ -217,7 +217,7 @@
             // txtSearchDuration
             // 
             this.txtSearchDuration.Location = new System.Drawing.Point(714, 32);
-            this.txtSearchDuration.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtSearchDuration.Margin = new System.Windows.Forms.Padding(2);
             this.txtSearchDuration.Name = "txtSearchDuration";
             this.txtSearchDuration.Size = new System.Drawing.Size(100, 20);
             this.txtSearchDuration.TabIndex = 5;
@@ -229,7 +229,7 @@
             this.pnlFormTitle.Controls.Add(this.txtFormTitle);
             this.pnlFormTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlFormTitle.Location = new System.Drawing.Point(0, 0);
-            this.pnlFormTitle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlFormTitle.Margin = new System.Windows.Forms.Padding(2);
             this.pnlFormTitle.Name = "pnlFormTitle";
             this.pnlFormTitle.Size = new System.Drawing.Size(937, 73);
             this.pnlFormTitle.TabIndex = 8;
@@ -241,7 +241,7 @@
             this.txtFormTitle.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFormTitle.ForeColor = System.Drawing.Color.Gray;
             this.txtFormTitle.Location = new System.Drawing.Point(28, 15);
-            this.txtFormTitle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtFormTitle.Margin = new System.Windows.Forms.Padding(2);
             this.txtFormTitle.Name = "txtFormTitle";
             this.txtFormTitle.Size = new System.Drawing.Size(75, 27);
             this.txtFormTitle.TabIndex = 0;
@@ -280,7 +280,7 @@
             this.pnlContent.Controls.Add(this.pnlSearchBars);
             this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlContent.Location = new System.Drawing.Point(0, 0);
-            this.pnlContent.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlContent.Margin = new System.Windows.Forms.Padding(2);
             this.pnlContent.Name = "pnlContent";
             this.pnlContent.Padding = new System.Windows.Forms.Padding(11, 12, 11, 12);
             this.pnlContent.Size = new System.Drawing.Size(937, 649);
@@ -289,13 +289,14 @@
             // pgnMoviesList
             // 
             this.pgnMoviesList.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pgnMoviesList.Location = new System.Drawing.Point(665, 589);
+            this.pgnMoviesList.Location = new System.Drawing.Point(705, 590);
+            this.pgnMoviesList.Margin = new System.Windows.Forms.Padding(4);
             this.pgnMoviesList.Name = "pgnMoviesList";
             this.pgnMoviesList.PageIndex = 0;
-            this.pgnMoviesList.Size = new System.Drawing.Size(250, 45);
+            this.pgnMoviesList.Size = new System.Drawing.Size(210, 35);
             this.pgnMoviesList.TabIndex = 10;
             this.pgnMoviesList.TotalPages = 0;
-            this.pgnMoviesList.ParentChanged += new System.EventHandler(this.pgnMoviesList_PageChanged);
+            this.pgnMoviesList.PageChanged += new System.EventHandler(this.pgnMoviesList_PageChanged);
             // 
             // frmMoviesList
             // 
@@ -307,7 +308,7 @@
             this.Controls.Add(this.pnlDataGrid);
             this.Controls.Add(this.pnlContent);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmMoviesList";
             this.Text = "frmMoviesList";
             this.Load += new System.EventHandler(this.frmMoviesList_Load);
