@@ -21,11 +21,17 @@ namespace Cinema.Services
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private IConfiguration _config;
-        public UserService(IUnitOfWork unit, IMapper mapper, UserManager<ApplicationUser> userManager, IConfiguration config) : base(unit, mapper)
+
+        protected readonly IUsersRepository _userRepo;
+        protected readonly IUnitOfWork _unit;
+        protected readonly IMapper _mapper;
+        public UserService(IUnitOfWork unit, IMapper mapper, UserManager<ApplicationUser> userManager, IConfiguration config)
         {
+            _unit = unit;
             _userManager = userManager;
-            _repo = unit.Users;
+            _userRepo = unit.Users;
             _config = config;
+            _mapper = mapper;
         }
 
 
@@ -46,7 +52,7 @@ namespace Cinema.Services
             return _mapper.Map<ApplicationUserDto>(userIdentity);
         }
         
-        public Task<ApplicationUserDto> Update(int id, UserUpsertRequest req)
+        public async Task<ApplicationUserDto> Update(int id, UserUpsertRequest req)
         {
             throw new System.NotImplementedException();
         }
