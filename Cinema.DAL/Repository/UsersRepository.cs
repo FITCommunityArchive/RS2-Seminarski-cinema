@@ -1,5 +1,7 @@
 ﻿using Cinema.Domain.Entities.Identity;
 using Cinema.Shared.Enums;
+using Cinema.Shared.Pagination;
+using Cinema.Shared.Search;
 using Cinema.Utilities.Interfaces.Dal;
 using System.Linq;
 using System.Threading.Tasks;
@@ -27,6 +29,40 @@ namespace Cinema.Dal.Repository
                 //_context.Entry(oldEnt).CurrentValues.SetValues(newEnt);
                 oldEnt.Update(newEnt);
             }
+        }
+
+        public async Task<IPagedList<ApplicationUser>> GetPagedAsync(ISearchRequest searchRequest, string firstName, string lastName)
+        {
+            var query = _dbSet.AsQueryable();
+
+            query = ApplyUserFilter(query, firstName, lastName);
+
+            if (searchRequest.SortOrder != null && searchRequest.SortColumn != null)
+            {
+                query = ApplySorting(query, searchRequest);
+            }
+
+            var pagedList = await ApplyPaginationAsync(query, searchRequest.PageIndex, searchRequest.PageSize);
+            return pagedList;
+        }
+
+        private IQueryable<ApplicationUser> ApplyUserFilter(IQueryable<ApplicationUser> query, string firstName, string lastName)
+        {
+            if (!string.IsNullOrEmpty(firstName))
+            {
+                firstName = firstName.ToLower();
+
+                query = query.Where(x => x.FirstName.ToLower().StartsWith(firstName));
+            }
+
+            if (!string.IsNullOrEmpty(lastName))
+            {
+                lastName = lastName.ToLower();
+
+                query = query.Where(x => x.LastName.ToLower().StartsWith(lastName));
+            }
+
+            return query;
         }
 
         public ApplicationUser GetUserByEmail(string email)

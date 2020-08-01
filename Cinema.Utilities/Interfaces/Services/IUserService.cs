@@ -1,4 +1,4 @@
-﻿using Cinema.Domain.Entities.Identity;
+using Cinema.Domain.Entities.Identity;
 using Cinema.Models;
 using Cinema.Models.Requests.Users;
 using Cinema.Utilities.Interfaces.Services;

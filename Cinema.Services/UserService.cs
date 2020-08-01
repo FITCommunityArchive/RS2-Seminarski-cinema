@@ -2,8 +2,10 @@
 using Cinema.Domain.Entities.Identity;
 using Cinema.Models;
 using Cinema.Models.Requests.Users;
+using Cinema.Shared.Pagination;
 using Cinema.Utilities.Interfaces;
 using Cinema.Utilities.Interfaces.Dal;
+using Cinema.Utilities.Interfaces.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -15,7 +17,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace Cinema.Services
 {
-    public class UserService : BaseCRUDService<ApplicationUserDto, UserSearchRequest, ApplicationUser, UserUpsertRequest, UserUpsertRequest>, IUserService
+    public class UserService : ICRUDService<ApplicationUserDto, UserSearchRequest, UserUpsertRequest, UserUpsertRequest>, IUserService
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private IConfiguration _config;
@@ -28,10 +30,10 @@ namespace Cinema.Services
 
 
         [HttpPost]
-        public override async Task<ApplicationUserDto> Insert([FromBody] UserUpsertRequest model)
+        public async Task<ApplicationUserDto> Insert([FromBody] UserUpsertRequest model)
         {
             var userIdentity = _mapper.Map<ApplicationUser>(model);
-
+            
 
             var result = await _userManager.CreateAsync(userIdentity, model.Password);
 
@@ -43,6 +45,26 @@ namespace Cinema.Services
 
             return _mapper.Map<ApplicationUserDto>(userIdentity);
         }
+        
+        public Task<ApplicationUserDto> Update(int id, UserUpsertRequest req)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public async Task<IPagedList<ApplicationUserDto>> GetPagedAsync(UserSearchRequest search)
+        {
+            var list = await _userRepo.GetPagedAsync(search,search.FirstName,search.LastName);
+            var dtoList = PagedList<ApplicationUserDto>.Map<ApplicationUser>(_mapper, list);
+
+            return dtoList;
+        }
+
+
+        public Task<ApplicationUserDto> GetByIdAsync(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
 
         public async Task<ApplicationUserDto> Authenticate(string userName, string password)
         {
