@@ -12,9 +12,16 @@ namespace Cinema.WinUI.Movies
     {
         private readonly ApiService _moviesApi = new ApiService("Movies");
 
+        public event EventHandler DetailsClicked;
+
         public frmMovieList()
         {
             InitializeComponent();
+        }
+
+        protected virtual void OnDetailsClicked(EventArgs e)
+        {   
+            DetailsClicked?.Invoke(this, e);
         }
 
         private async void frmMoviesList_Load(object sender, EventArgs e)
@@ -90,7 +97,7 @@ namespace Cinema.WinUI.Movies
                 var clickedRow = senderGrid.Rows[e.RowIndex];
                 int.TryParse(clickedRow.Cells["id"].Value.ToString(), out int filmId);
 
-                int i = 1;
+                OnDetailsClicked(EventArgs.Empty);
             }
         }
     }
