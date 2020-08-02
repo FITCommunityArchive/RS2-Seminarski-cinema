@@ -14,6 +14,10 @@ using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using System.Security.Claims;
+using System.Collections.Generic;
 
 namespace Cinema.Services
 {
@@ -74,14 +78,15 @@ namespace Cinema.Services
 
         public async Task<ApplicationUserDto> Authenticate(string userName, string password)
         {
-            var user = await _userManager.FindByNameAsync(userName);
+            var user = _userManager.Users.Include(r => r.UserRoles).ThenInclude(u => u.Role).FirstOrDefault(x => x.UserName == userName);
 
             if (user != null)
             {
-
+                
                 var result = _userManager.PasswordHasher.VerifyHashedPassword(user, user.PasswordHash, password);
                 if (PasswordVerificationResult.Success == result)
                 {
+
                     return _mapper.Map<ApplicationUserDto>(user);
                 }
             }
@@ -94,10 +99,22 @@ namespace Cinema.Services
         /// </summary>  
         /// <param name="userInfo"></param>  
         /// <returns></returns>  
-        public string GenerateJSONWebToken(ApplicationUserDto userInfo)
+        public string GenerateJSONWebToken(ApplicationUserDto user)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+            List<Claim> claims = new List<Claim>()
+            {
+                new Claim(ClaimTypes.NameIdentifier,user.UserName)
+            };
+
+            foreach (var role in user.UserRoles)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, role.Role.Name));
+            };
+
+            ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims);
 
             var token = new JwtSecurityToken(_config["Jwt:Issuer"],
               _config["Jwt:Issuer"],
