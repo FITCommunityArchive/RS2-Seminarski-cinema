@@ -23,9 +23,10 @@ namespace Cinema.Services
             _movieRepo = unit.Movies;
         }
 
-        public Task<MovieDto> GetByIdAsync(int id)
+        public async Task<MovieDto> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var entity = await _movieRepo.GetAsync(id);
+            return _mapper.Map<MovieDto>(entity);
         }
 
         public async Task<IPagedList<MovieDto>> GetPagedAsync(MovieSearchRequest search)

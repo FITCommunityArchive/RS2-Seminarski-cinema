@@ -1,20 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Cinema.Models;
+using System;
 using System.Windows.Forms;
 
 namespace Cinema.WinUI.Movies
 {
     public partial class frmMovieDetails : Form
     {
-        public frmMovieDetails()
+        private readonly ApiService _moviesApi = new ApiService("Movies");
+        private readonly int _id;
+
+        public frmMovieDetails(int id)
         {
             InitializeComponent();
+            _id = id;
+        }
+
+        private async void frmMovieDetails_Load(object sender, EventArgs e)
+        {
+            var result = await _moviesApi.GetById<MovieDto>(_id);
+
+            txtMovieTitle.Text = result.Title;
+            txtReleaseYear.Text = result.Year.ToString();
+            txtCountry.Text = result.Country;
+            txtDirectors.Text = result.Directors;
+            txtActors.Text = result.Actors;
+            txtDuration.Text = result.Duration.ToString();           
         }
     }
 }
