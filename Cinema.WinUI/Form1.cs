@@ -78,5 +78,11 @@ namespace Cinema.WinUI
             frmMoviesList frmMoviesList = new frmMoviesList();
             openChildForm(frmMoviesList);
         }
+
+        private void buttonLogIn_Click(object sender, EventArgs e)
+        {
+            LoginForm loginForm = new LoginForm();
+            openChildForm(loginForm);
+        }
     }
 }

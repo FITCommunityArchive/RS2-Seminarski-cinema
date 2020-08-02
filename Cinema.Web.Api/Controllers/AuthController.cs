@@ -16,6 +16,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace Cinema.Web.Api.Controllers
 {
+    [Route("api")]
     public class AuthController : ControllerBase
     {
         private IConfiguration _config;
@@ -42,7 +43,7 @@ namespace Cinema.Web.Api.Controllers
             if (user != null)
             {
                 var tokenString = _userService.GenerateJSONWebToken(user);
-                response = Ok(new { Token = tokenString, Message = "Success" });
+                response = Ok(new { Message = "Success", Token = tokenString });
             }
             else
             {

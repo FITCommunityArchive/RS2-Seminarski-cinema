@@ -25,7 +25,7 @@ namespace Cinema.WinUI.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://localhost:5001/api")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://localhost:44312/api")]
         public string APIUrl {
             get {
                 return ((string)(this["APIUrl"]));
