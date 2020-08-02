@@ -1,4 +1,4 @@
-﻿using Cinema.Models;
+﻿using Cinema.Models.Dtos;
 using Cinema.Models.Requests.Users;
 using Cinema.Utilities.Interfaces.Services;
 

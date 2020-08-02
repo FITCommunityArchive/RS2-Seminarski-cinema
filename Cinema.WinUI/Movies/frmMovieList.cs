@@ -1,4 +1,4 @@
-﻿using Cinema.Models;
+﻿using Cinema.Models.Dtos;
 using Cinema.Models.Requests.Movies;
 using Cinema.Shared.Pagination;
 using Cinema.WinUI.Constants;

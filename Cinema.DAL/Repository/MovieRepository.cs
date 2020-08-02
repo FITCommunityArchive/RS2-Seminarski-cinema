@@ -3,6 +3,7 @@ using Cinema.Shared.Enums;
 using Cinema.Shared.Pagination;
 using Cinema.Shared.Search;
 using Cinema.Utilities.Interfaces.Dal;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
@@ -16,7 +17,7 @@ namespace Cinema.Dal.Repository
 
         public async Task<IPagedList<Movie>> GetPagedAsync(ISearchRequest searchRequest, string searchTerm, int? searchYear, int? searchDuration)
         {
-            var query = _dbSet.AsQueryable();
+            var query = _dbSet.AsNoTracking();
 
             query = ApplyFilter(query, searchTerm, searchYear, searchDuration);
 
@@ -27,6 +28,15 @@ namespace Cinema.Dal.Repository
 
             var pagedList = await ApplyPaginationAsync(query, searchRequest.PageIndex, searchRequest.PageSize);
             return pagedList;
+        }
+
+        public async Task<Movie> GetByIdWithGenresAsync(int id)
+        {
+            var entity = await _dbSet.AsNoTracking()
+                                     .Include(x => x.GenreMovies)
+                                     .FirstOrDefaultAsync(x => x.Id == id);
+
+            return entity;
         }
 
         private IQueryable<Movie> ApplyFilter(IQueryable<Movie> query, string searchTerm, int? searchYear, int? searchDuration)

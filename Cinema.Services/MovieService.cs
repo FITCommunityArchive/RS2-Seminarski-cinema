@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Cinema.Domain.Entities;
-using Cinema.Models;
+using Cinema.Models.Dtos;
 using Cinema.Models.Requests.Movies;
 using Cinema.Shared.Pagination;
 using Cinema.Utilities.Interfaces.Dal;
@@ -25,7 +25,7 @@ namespace Cinema.Services
 
         public async Task<MovieDto> GetByIdAsync(int id)
         {
-            var entity = await _movieRepo.GetAsync(id);
+            var entity = await _movieRepo.GetByIdWithGenresAsync(id);
             return _mapper.Map<MovieDto>(entity);
         }
 

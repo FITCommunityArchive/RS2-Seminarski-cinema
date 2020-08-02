@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Cinema.Models.Dtos;
+using System.Collections.Generic;
 
 namespace Cinema.Models.DomainModels
 {
@@ -6,9 +7,9 @@ namespace Cinema.Models.DomainModels
     {
         public MovieModel()
         {
-            Screenings = new List<MasterModel>();
-            GenreMovies = new List<MasterModel>();
-            Reviews = new List<MasterModel>();
+            Screenings = new List<MasterDto>();
+            GenreMovies = new List<MasterDto>();
+            Reviews = new List<MasterDto>();
         }
         public int Id { get; set; }
         public string Title { get; set; }
@@ -19,8 +20,8 @@ namespace Cinema.Models.DomainModels
         public string VideoLink { get; set; }
         public string Directors { get; set; }
         public string Actors { get; set; }
-        public IList<MasterModel> Screenings { get; set; }
-        public IList<MasterModel> GenreMovies { get; set; }
-        public IList<MasterModel> Reviews { get; set; }
+        public IList<MasterDto> Screenings { get; set; }
+        public IList<MasterDto> GenreMovies { get; set; }
+        public IList<MasterDto> Reviews { get; set; }
     }
 }

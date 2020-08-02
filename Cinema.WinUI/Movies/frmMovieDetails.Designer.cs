@@ -43,6 +43,8 @@
             this.txtCountry = new System.Windows.Forms.TextBox();
             this.txtDirectors = new System.Windows.Forms.TextBox();
             this.txtActors = new System.Windows.Forms.TextBox();
+            this.lblGenre = new System.Windows.Forms.Label();
+            this.chlGenres = new System.Windows.Forms.CheckedListBox();
             this.pnlFormTitle.SuspendLayout();
             this.pnlDetails.SuspendLayout();
             this.SuspendLayout();
@@ -74,6 +76,8 @@
             // pnlDetails
             // 
             this.pnlDetails.BackColor = System.Drawing.Color.White;
+            this.pnlDetails.Controls.Add(this.chlGenres);
+            this.pnlDetails.Controls.Add(this.lblGenre);
             this.pnlDetails.Controls.Add(this.txtActors);
             this.pnlDetails.Controls.Add(this.txtDirectors);
             this.pnlDetails.Controls.Add(this.txtCountry);
@@ -97,12 +101,12 @@
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.BackColor = System.Drawing.Color.White;
-            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.Gray;
-            this.lblTitle.Location = new System.Drawing.Point(367, 60);
+            this.lblTitle.Location = new System.Drawing.Point(413, 58);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 4);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(74, 18);
+            this.lblTitle.Size = new System.Drawing.Size(84, 18);
             this.lblTitle.TabIndex = 3;
             this.lblTitle.Text = "Movie title";
             // 
@@ -110,12 +114,12 @@
             // 
             this.lblYear.AutoSize = true;
             this.lblYear.BackColor = System.Drawing.Color.White;
-            this.lblYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblYear.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblYear.ForeColor = System.Drawing.Color.Gray;
-            this.lblYear.Location = new System.Drawing.Point(367, 132);
+            this.lblYear.Location = new System.Drawing.Point(413, 135);
             this.lblYear.Margin = new System.Windows.Forms.Padding(2, 0, 2, 4);
             this.lblYear.Name = "lblYear";
-            this.lblYear.Size = new System.Drawing.Size(94, 18);
+            this.lblYear.Size = new System.Drawing.Size(103, 18);
             this.lblYear.TabIndex = 4;
             this.lblYear.Text = "Release year";
             // 
@@ -123,12 +127,12 @@
             // 
             this.lblDuration.AutoSize = true;
             this.lblDuration.BackColor = System.Drawing.Color.White;
-            this.lblDuration.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDuration.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDuration.ForeColor = System.Drawing.Color.Gray;
-            this.lblDuration.Location = new System.Drawing.Point(367, 204);
+            this.lblDuration.Location = new System.Drawing.Point(413, 207);
             this.lblDuration.Margin = new System.Windows.Forms.Padding(2, 0, 2, 4);
             this.lblDuration.Name = "lblDuration";
-            this.lblDuration.Size = new System.Drawing.Size(130, 18);
+            this.lblDuration.Size = new System.Drawing.Size(149, 18);
             this.lblDuration.TabIndex = 5;
             this.lblDuration.Text = "Duration (minutes)";
             // 
@@ -136,12 +140,12 @@
             // 
             this.lblCountry.AutoSize = true;
             this.lblCountry.BackColor = System.Drawing.Color.White;
-            this.lblCountry.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCountry.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCountry.ForeColor = System.Drawing.Color.Gray;
-            this.lblCountry.Location = new System.Drawing.Point(367, 276);
+            this.lblCountry.Location = new System.Drawing.Point(413, 279);
             this.lblCountry.Margin = new System.Windows.Forms.Padding(2, 0, 2, 4);
             this.lblCountry.Name = "lblCountry";
-            this.lblCountry.Size = new System.Drawing.Size(60, 18);
+            this.lblCountry.Size = new System.Drawing.Size(68, 18);
             this.lblCountry.TabIndex = 6;
             this.lblCountry.Text = "Country";
             // 
@@ -149,12 +153,12 @@
             // 
             this.lblDirectors.AutoSize = true;
             this.lblDirectors.BackColor = System.Drawing.Color.White;
-            this.lblDirectors.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDirectors.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDirectors.ForeColor = System.Drawing.Color.Gray;
-            this.lblDirectors.Location = new System.Drawing.Point(367, 348);
+            this.lblDirectors.Location = new System.Drawing.Point(413, 351);
             this.lblDirectors.Margin = new System.Windows.Forms.Padding(2, 0, 2, 4);
             this.lblDirectors.Name = "lblDirectors";
-            this.lblDirectors.Size = new System.Drawing.Size(79, 18);
+            this.lblDirectors.Size = new System.Drawing.Size(89, 18);
             this.lblDirectors.TabIndex = 7;
             this.lblDirectors.Text = "Director(s)";
             // 
@@ -162,74 +166,103 @@
             // 
             this.lblActors.AutoSize = true;
             this.lblActors.BackColor = System.Drawing.Color.White;
-            this.lblActors.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblActors.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblActors.ForeColor = System.Drawing.Color.Gray;
-            this.lblActors.Location = new System.Drawing.Point(367, 420);
+            this.lblActors.Location = new System.Drawing.Point(413, 423);
             this.lblActors.Margin = new System.Windows.Forms.Padding(2, 0, 2, 4);
             this.lblActors.Name = "lblActors";
-            this.lblActors.Size = new System.Drawing.Size(61, 18);
+            this.lblActors.Size = new System.Drawing.Size(70, 18);
             this.lblActors.TabIndex = 8;
             this.lblActors.Text = "Actor(s)";
             // 
             // txtMovieTitle
             // 
             this.txtMovieTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtMovieTitle.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMovieTitle.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtMovieTitle.Location = new System.Drawing.Point(513, 58);
+            this.txtMovieTitle.Location = new System.Drawing.Point(584, 58);
             this.txtMovieTitle.Margin = new System.Windows.Forms.Padding(2);
             this.txtMovieTitle.Name = "txtMovieTitle";
-            this.txtMovieTitle.Size = new System.Drawing.Size(514, 20);
+            this.txtMovieTitle.Size = new System.Drawing.Size(443, 26);
             this.txtMovieTitle.TabIndex = 9;
             // 
             // txtReleaseYear
             // 
             this.txtReleaseYear.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtReleaseYear.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtReleaseYear.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtReleaseYear.Location = new System.Drawing.Point(513, 132);
+            this.txtReleaseYear.Location = new System.Drawing.Point(584, 132);
             this.txtReleaseYear.Margin = new System.Windows.Forms.Padding(2);
             this.txtReleaseYear.Name = "txtReleaseYear";
-            this.txtReleaseYear.Size = new System.Drawing.Size(514, 20);
+            this.txtReleaseYear.Size = new System.Drawing.Size(443, 26);
             this.txtReleaseYear.TabIndex = 10;
             // 
             // txtDuration
             // 
             this.txtDuration.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDuration.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDuration.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtDuration.Location = new System.Drawing.Point(513, 206);
+            this.txtDuration.Location = new System.Drawing.Point(584, 206);
             this.txtDuration.Margin = new System.Windows.Forms.Padding(2);
             this.txtDuration.Name = "txtDuration";
-            this.txtDuration.Size = new System.Drawing.Size(514, 20);
+            this.txtDuration.Size = new System.Drawing.Size(443, 26);
             this.txtDuration.TabIndex = 11;
             // 
             // txtCountry
             // 
             this.txtCountry.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCountry.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCountry.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtCountry.Location = new System.Drawing.Point(513, 278);
+            this.txtCountry.Location = new System.Drawing.Point(584, 278);
             this.txtCountry.Margin = new System.Windows.Forms.Padding(2);
             this.txtCountry.Name = "txtCountry";
-            this.txtCountry.Size = new System.Drawing.Size(514, 20);
+            this.txtCountry.Size = new System.Drawing.Size(443, 26);
             this.txtCountry.TabIndex = 12;
             // 
             // txtDirectors
             // 
             this.txtDirectors.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDirectors.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDirectors.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtDirectors.Location = new System.Drawing.Point(513, 350);
+            this.txtDirectors.Location = new System.Drawing.Point(584, 350);
             this.txtDirectors.Margin = new System.Windows.Forms.Padding(2);
             this.txtDirectors.Name = "txtDirectors";
-            this.txtDirectors.Size = new System.Drawing.Size(514, 20);
+            this.txtDirectors.Size = new System.Drawing.Size(443, 26);
             this.txtDirectors.TabIndex = 13;
             // 
             // txtActors
             // 
             this.txtActors.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtActors.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtActors.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtActors.Location = new System.Drawing.Point(513, 422);
+            this.txtActors.Location = new System.Drawing.Point(584, 422);
             this.txtActors.Margin = new System.Windows.Forms.Padding(2);
             this.txtActors.Name = "txtActors";
-            this.txtActors.Size = new System.Drawing.Size(514, 20);
+            this.txtActors.Size = new System.Drawing.Size(443, 26);
             this.txtActors.TabIndex = 14;
+            // 
+            // lblGenre
+            // 
+            this.lblGenre.AutoSize = true;
+            this.lblGenre.BackColor = System.Drawing.Color.White;
+            this.lblGenre.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGenre.ForeColor = System.Drawing.Color.Gray;
+            this.lblGenre.Location = new System.Drawing.Point(413, 484);
+            this.lblGenre.Margin = new System.Windows.Forms.Padding(2, 0, 2, 4);
+            this.lblGenre.Name = "lblGenre";
+            this.lblGenre.Size = new System.Drawing.Size(61, 18);
+            this.lblGenre.TabIndex = 16;
+            this.lblGenre.Text = "Genres";
+            // 
+            // chlGenres
+            // 
+            this.chlGenres.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chlGenres.FormattingEnabled = true;
+            this.chlGenres.Location = new System.Drawing.Point(584, 484);
+            this.chlGenres.MultiColumn = true;
+            this.chlGenres.Name = "chlGenres";
+            this.chlGenres.Size = new System.Drawing.Size(443, 90);
+            this.chlGenres.TabIndex = 18;
             // 
             // frmMovieDetails
             // 
@@ -266,5 +299,7 @@
         private System.Windows.Forms.TextBox txtDirectors;
         private System.Windows.Forms.TextBox txtCountry;
         private System.Windows.Forms.TextBox txtActors;
+        private System.Windows.Forms.Label lblGenre;
+        private System.Windows.Forms.CheckedListBox chlGenres;
     }
 }

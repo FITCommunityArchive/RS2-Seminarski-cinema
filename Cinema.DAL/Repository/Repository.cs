@@ -12,7 +12,6 @@ using System.Threading.Tasks;
 
 namespace Cinema.Dal.Repository
 {
-    /*Legacy of Gigi School of Coding*/
     public class Repository<Entity, Key> : IRepository<Entity, Key> where Entity : class
     {
         protected ICinemaDbContext _context;
@@ -35,12 +34,12 @@ namespace Cinema.Dal.Repository
 
         public virtual async Task<IEnumerable<Entity>> GetAsync(Expression<Func<Entity, bool>> where)
         {
-            return await _dbSet.Where(where).ToListAsync();
+            return await _dbSet.AsNoTracking().Where(where).ToListAsync();
         }
 
         public virtual async Task<IPagedList<Entity>> GetPagedAsync(Expression<Func<Entity, bool>> where, int pageIndex, int pageSize)
         {
-            var query = _dbSet.AsQueryable();
+            var query = _dbSet.AsNoTracking();
 
             if (where != null)
             {
