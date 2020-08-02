@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Cinema.Dal.Repository
 {
-    public class UsersRepository : Repository<ApplicationUser, string>, IUsersRepository
+    public class UserRepository : Repository<ApplicationUser, string>, IUserRepository
     {
-        public UsersRepository(ICinemaDbContext context) : base(context) { }
+        public UserRepository(ICinemaDbContext context) : base(context) { }
 
         public override async Task UpdateAsync(ApplicationUser newEnt, string id)
         {
@@ -71,6 +71,14 @@ namespace Cinema.Dal.Repository
 
             return result;
         }
+
+        public ApplicationUser GetUserByUserName(string userName)
+        {
+            var result = _context.Users.SingleOrDefault(e => e.UserName == userName.ToString());
+
+            return result;
+        }
+
         public IQueryable<ApplicationUser> Sort(IQueryable<ApplicationUser> query, SortOrder? sortOrder, string sortProperty)
         {
             if (sortOrder == SortOrder.ASC)

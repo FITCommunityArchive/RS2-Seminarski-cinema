@@ -14,7 +14,7 @@ namespace Cinema.Dal.Data
         private Dictionary<string, object> _repositories;
         protected ICinemaDbContext _context;
 
-        public IUsersRepository Users => Repository<ApplicationUser, string>() as IUsersRepository;
+        public IUserRepository Users => Repository<ApplicationUser, string>() as IUserRepository;
         public IRepository<ApplicationRole, string> Roles => Repository<ApplicationRole, string>();
         public IMovieRepository Movies => Repository<Movie, int>() as IMovieRepository;
 
@@ -65,7 +65,7 @@ namespace Cinema.Dal.Data
                 case nameof(Movie):
                     return (IRepository<Entity, Key>)new MovieRepository(_context);
                 case nameof(ApplicationUser):
-                    return (IRepository<Entity, Key>)new UsersRepository(_context);
+                    return (IRepository<Entity, Key>)new UserRepository(_context);
                 default:
                     {
                         var repositoryType = typeof(Repository<,>);
