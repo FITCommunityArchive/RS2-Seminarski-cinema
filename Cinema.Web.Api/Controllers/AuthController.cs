@@ -53,5 +53,11 @@ namespace Cinema.Web.Api.Controllers
         }
         #endregion
 
+        [AllowAnonymous,HttpPost(nameof(Decode))]
+        public string Decode(string token)
+        {
+           return _userService.DecodeJSONWebToken(token);
+        }
+
     }
 }

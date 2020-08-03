@@ -118,12 +118,20 @@ namespace Cinema.Services
 
             var token = new JwtSecurityToken(_config["Jwt:Issuer"],
               _config["Jwt:Issuer"],
-              null,
+              claims,
               expires: DateTime.Now.AddMinutes(120),
               signingCredentials: credentials);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
         #endregion
+
+        public string DecodeJSONWebToken(string token)
+        {
+            var handler = new JwtSecurityTokenHandler();
+            var readToken = handler.ReadJwtToken(token);
+
+            return "Test";
+        }
     }
 }
