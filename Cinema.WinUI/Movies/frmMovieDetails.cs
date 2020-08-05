@@ -5,6 +5,8 @@ using System.Linq;
 using System.Windows.Forms;
 using System;
 using Utilities.BunifuButton.Transitions;
+using System.Collections.Generic;
+using System.Drawing;
 
 namespace Cinema.WinUI.Movies
 {
@@ -35,16 +37,31 @@ namespace Cinema.WinUI.Movies
             txtActors.Text = result.Actors;
             txtDuration.Text = result.Duration.ToString();
 
-            chlGenres.DataSource = resultGenres.Data;
-            chlGenres.DisplayMember = nameof(GenreDto.Name);
-
-            for (int i = 0; i < chlGenres.Items.Count; i++)
+            if (string.IsNullOrWhiteSpace(result.Image))
             {
-                GenreDto genre = chlGenres.Items[i] as GenreDto;
 
-                if (result.GenreMovies.Select(x => x.GenreId).Contains(genre.Id))
+            }
+
+            List<GenreDto> movieGenres = resultGenres.Data.Where(x => result.GenreMovies.Select(y => y.GenreId).Contains(x.Id)).ToList();
+
+            if (_isReadonly)
+            {
+                lbxGenres.DataSource = movieGenres;
+                lbxGenres.DisplayMember = nameof(GenreDto.Name);
+            }
+            else
+            {
+                chlGenres.DataSource = resultGenres.Data;
+                chlGenres.DisplayMember = nameof(GenreDto.Name);
+
+                for (int i = 0; i < chlGenres.Items.Count; i++)
                 {
-                    chlGenres.SetItemChecked(i, true);
+                    GenreDto genre = chlGenres.Items[i] as GenreDto;
+
+                    if (result.GenreMovies.Select(x => x.GenreId).Contains(genre.Id))
+                    {
+                        chlGenres.SetItemChecked(i, true);
+                    }
                 }
             }
         }
