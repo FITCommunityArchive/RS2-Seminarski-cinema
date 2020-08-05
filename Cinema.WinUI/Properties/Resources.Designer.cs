@@ -61,11 +61,20 @@ namespace Cinema.WinUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Input value must be an integer!.
         /// </summary>
-        internal static string String1 {
+        internal static string Validation_IntegerRequired {
             get {
-                return ResourceManager.GetString("String1", resourceCulture);
+                return ResourceManager.GetString("Validation_IntegerRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The field is required!.
+        /// </summary>
+        internal static string Validation_RequiredField {
+            get {
+                return ResourceManager.GetString("Validation_RequiredField", resourceCulture);
             }
         }
     }

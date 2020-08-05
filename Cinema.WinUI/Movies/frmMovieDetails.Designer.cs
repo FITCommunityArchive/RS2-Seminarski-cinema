@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMovieDetails));
             this.pnlFormTitle = new System.Windows.Forms.Panel();
             this.txtFormTitle = new System.Windows.Forms.TextBox();
             this.pnlDetails = new System.Windows.Forms.Panel();
+            this.btnSaveChanges = new Cinema.WinUI.UserControls.Buttons.SaveChangesButton();
             this.picPoster = new System.Windows.Forms.PictureBox();
             this.lbxGenres = new System.Windows.Forms.ListBox();
             this.chlGenres = new System.Windows.Forms.CheckedListBox();
@@ -48,9 +50,11 @@
             this.lblDuration = new System.Windows.Forms.Label();
             this.lblYear = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.pnlFormTitle.SuspendLayout();
             this.pnlDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPoster)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlFormTitle
@@ -80,6 +84,7 @@
             // pnlDetails
             // 
             this.pnlDetails.BackColor = System.Drawing.Color.White;
+            this.pnlDetails.Controls.Add(this.btnSaveChanges);
             this.pnlDetails.Controls.Add(this.picPoster);
             this.pnlDetails.Controls.Add(this.lbxGenres);
             this.pnlDetails.Controls.Add(this.chlGenres);
@@ -103,6 +108,14 @@
             this.pnlDetails.Padding = new System.Windows.Forms.Padding(15);
             this.pnlDetails.Size = new System.Drawing.Size(1265, 724);
             this.pnlDetails.TabIndex = 11;
+            // 
+            // btnSaveChanges
+            // 
+            this.btnSaveChanges.Location = new System.Drawing.Point(625, 486);
+            this.btnSaveChanges.Name = "btnSaveChanges";
+            this.btnSaveChanges.Size = new System.Drawing.Size(160, 38);
+            this.btnSaveChanges.TabIndex = 21;
+            this.btnSaveChanges.ButtonClicked += new System.EventHandler(this.btnSaveChanges_ButtonClicked);
             // 
             // picPoster
             // 
@@ -157,7 +170,7 @@
             this.txtActors.BackColor = System.Drawing.Color.White;
             this.txtActors.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtActors.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtActors.ForeColor = System.Drawing.Color.White;
+            this.txtActors.ForeColor = System.Drawing.Color.DimGray;
             this.txtActors.Location = new System.Drawing.Point(626, 318);
             this.txtActors.Margin = new System.Windows.Forms.Padding(3, 2, 3, 30);
             this.txtActors.Name = "txtActors";
@@ -169,7 +182,7 @@
             this.txtDirectors.BackColor = System.Drawing.Color.White;
             this.txtDirectors.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDirectors.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDirectors.ForeColor = System.Drawing.Color.White;
+            this.txtDirectors.ForeColor = System.Drawing.Color.DimGray;
             this.txtDirectors.Location = new System.Drawing.Point(626, 260);
             this.txtDirectors.Margin = new System.Windows.Forms.Padding(3, 2, 3, 30);
             this.txtDirectors.Name = "txtDirectors";
@@ -181,7 +194,7 @@
             this.txtCountry.BackColor = System.Drawing.Color.White;
             this.txtCountry.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCountry.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCountry.ForeColor = System.Drawing.Color.White;
+            this.txtCountry.ForeColor = System.Drawing.Color.DimGray;
             this.txtCountry.Location = new System.Drawing.Point(626, 202);
             this.txtCountry.Margin = new System.Windows.Forms.Padding(3, 2, 3, 30);
             this.txtCountry.Name = "txtCountry";
@@ -193,7 +206,7 @@
             this.txtDuration.BackColor = System.Drawing.Color.White;
             this.txtDuration.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDuration.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDuration.ForeColor = System.Drawing.Color.White;
+            this.txtDuration.ForeColor = System.Drawing.Color.DimGray;
             this.txtDuration.Location = new System.Drawing.Point(626, 144);
             this.txtDuration.Margin = new System.Windows.Forms.Padding(3, 2, 3, 30);
             this.txtDuration.Name = "txtDuration";
@@ -205,19 +218,20 @@
             this.txtReleaseYear.BackColor = System.Drawing.Color.White;
             this.txtReleaseYear.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtReleaseYear.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtReleaseYear.ForeColor = System.Drawing.Color.White;
+            this.txtReleaseYear.ForeColor = System.Drawing.Color.DimGray;
             this.txtReleaseYear.Location = new System.Drawing.Point(626, 86);
             this.txtReleaseYear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 30);
             this.txtReleaseYear.Name = "txtReleaseYear";
             this.txtReleaseYear.Size = new System.Drawing.Size(590, 26);
             this.txtReleaseYear.TabIndex = 10;
+            this.txtReleaseYear.Validating += new System.ComponentModel.CancelEventHandler(this.txtReleaseYear_Validating);
             // 
             // txtMovieTitle
             // 
             this.txtMovieTitle.BackColor = System.Drawing.Color.White;
             this.txtMovieTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMovieTitle.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMovieTitle.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtMovieTitle.ForeColor = System.Drawing.Color.DimGray;
             this.txtMovieTitle.Location = new System.Drawing.Point(625, 28);
             this.txtMovieTitle.Margin = new System.Windows.Forms.Padding(3, 3, 3, 30);
             this.txtMovieTitle.Name = "txtMovieTitle";
@@ -302,6 +316,10 @@
             this.lblTitle.TabIndex = 3;
             this.lblTitle.Text = "Movie title";
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // frmMovieDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -318,6 +336,7 @@
             this.pnlDetails.ResumeLayout(false);
             this.pnlDetails.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPoster)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -343,5 +362,7 @@
         private System.Windows.Forms.CheckedListBox chlGenres;
         private System.Windows.Forms.ListBox lbxGenres;
         private System.Windows.Forms.PictureBox picPoster;
+        private UserControls.Buttons.SaveChangesButton btnSaveChanges;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

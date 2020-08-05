@@ -201,6 +201,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\Buttons\SaveChangesButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Buttons\SaveChangesButton.Designer.cs">
+      <DependentUpon>SaveChangesButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Buttons\AddNewButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Buttons\AddNewButton.Designer.cs">
+      <DependentUpon>AddNewButton.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Pagination.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -229,6 +241,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UserControls\Buttons\SaveChangesButton.resx">
+      <DependentUpon>SaveChangesButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Buttons\AddNewButton.resx">
+      <DependentUpon>AddNewButton.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Pagination.resx">
       <DependentUpon>Pagination.cs</DependentUpon>
     </EmbeddedResource>

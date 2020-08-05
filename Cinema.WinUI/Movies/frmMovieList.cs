@@ -94,5 +94,11 @@ namespace Cinema.WinUI.Movies
                 frmMovieDetails.ShowDialog();
             }
         }
+
+        private void btnAddNew_ButtonClicked(object sender, EventArgs e)
+        {
+            frmMovieDetails frmMovieDetails = new frmMovieDetails();
+            frmMovieDetails.ShowDialog();
+        }
     }
 }

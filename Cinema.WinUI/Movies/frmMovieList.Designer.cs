@@ -31,6 +31,14 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grdMoviesList = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Duration = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Year = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Country = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Directors = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Actors = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DetailsAction = new System.Windows.Forms.DataGridViewButtonColumn();
             this.txtSearchBar = new System.Windows.Forms.TextBox();
             this.lblSearch = new System.Windows.Forms.Label();
             this.lblSearchYear = new System.Windows.Forms.Label();
@@ -42,15 +50,8 @@
             this.pnlSearchBars = new System.Windows.Forms.Panel();
             this.pnlDataGrid = new System.Windows.Forms.Panel();
             this.pnlContent = new System.Windows.Forms.Panel();
+            this.btnAddNew = new Cinema.WinUI.UserControls.Buttons.AddNewButton();
             this.pgnMoviesList = new Cinema.WinUI.UserControls.Pagination();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Duration = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Year = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Country = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Directors = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Actors = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DetailsAction = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grdMoviesList)).BeginInit();
             this.pnlFormTitle.SuspendLayout();
             this.pnlSearchBars.SuspendLayout();
@@ -95,6 +96,92 @@
             this.grdMoviesList.TabIndex = 0;
             this.grdMoviesList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdMoviesList_CellContentClick);
             this.grdMoviesList.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.grdMoviesList_ColumnHeaderMouseClick);
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.MinimumWidth = 6;
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
+            // Title
+            // 
+            this.Title.DataPropertyName = "Title";
+            this.Title.FillWeight = 250F;
+            this.Title.HeaderText = "Title";
+            this.Title.MinimumWidth = 50;
+            this.Title.Name = "Title";
+            this.Title.ReadOnly = true;
+            this.Title.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Duration
+            // 
+            this.Duration.DataPropertyName = "Duration";
+            this.Duration.FillWeight = 70F;
+            this.Duration.HeaderText = "Duration";
+            this.Duration.MinimumWidth = 6;
+            this.Duration.Name = "Duration";
+            this.Duration.ReadOnly = true;
+            this.Duration.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Year
+            // 
+            this.Year.DataPropertyName = "Year";
+            this.Year.FillWeight = 70F;
+            this.Year.HeaderText = "Year";
+            this.Year.MinimumWidth = 6;
+            this.Year.Name = "Year";
+            this.Year.ReadOnly = true;
+            this.Year.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Country
+            // 
+            this.Country.DataPropertyName = "Country";
+            this.Country.FillWeight = 85.47237F;
+            this.Country.HeaderText = "Country";
+            this.Country.MinimumWidth = 6;
+            this.Country.Name = "Country";
+            this.Country.ReadOnly = true;
+            this.Country.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Directors
+            // 
+            this.Directors.DataPropertyName = "Directors";
+            this.Directors.FillWeight = 85.47237F;
+            this.Directors.HeaderText = "Directors";
+            this.Directors.MinimumWidth = 6;
+            this.Directors.Name = "Directors";
+            this.Directors.ReadOnly = true;
+            this.Directors.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Actors
+            // 
+            this.Actors.DataPropertyName = "Actors";
+            this.Actors.FillWeight = 85.47237F;
+            this.Actors.HeaderText = "Actors";
+            this.Actors.MinimumWidth = 6;
+            this.Actors.Name = "Actors";
+            this.Actors.ReadOnly = true;
+            this.Actors.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // DetailsAction
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            this.DetailsAction.DefaultCellStyle = dataGridViewCellStyle2;
+            this.DetailsAction.FillWeight = 50F;
+            this.DetailsAction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DetailsAction.HeaderText = "Action";
+            this.DetailsAction.MinimumWidth = 4;
+            this.DetailsAction.Name = "DetailsAction";
+            this.DetailsAction.ReadOnly = true;
+            this.DetailsAction.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.DetailsAction.Text = "Details";
+            this.DetailsAction.UseColumnTextForButtonValue = true;
             // 
             // txtSearchBar
             // 
@@ -213,6 +300,7 @@
             // 
             // pnlContent
             // 
+            this.pnlContent.Controls.Add(this.btnAddNew);
             this.pnlContent.Controls.Add(this.pgnMoviesList);
             this.pnlContent.Controls.Add(this.pnlSearchBars);
             this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -222,6 +310,14 @@
             this.pnlContent.Padding = new System.Windows.Forms.Padding(15);
             this.pnlContent.Size = new System.Drawing.Size(1249, 799);
             this.pnlContent.TabIndex = 11;
+            // 
+            // btnAddNew
+            // 
+            this.btnAddNew.Location = new System.Drawing.Point(798, 725);
+            this.btnAddNew.Name = "btnAddNew";
+            this.btnAddNew.Size = new System.Drawing.Size(134, 44);
+            this.btnAddNew.TabIndex = 11;
+            this.btnAddNew.ButtonClicked += new System.EventHandler(this.btnAddNew_ButtonClicked);
             // 
             // pgnMoviesList
             // 
@@ -235,93 +331,7 @@
             this.pgnMoviesList.TotalPages = 0;
             this.pgnMoviesList.PageChanged += new System.EventHandler(this.pgnMoviesList_PageChanged);
             // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.MinimumWidth = 6;
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            // 
-            // Title
-            // 
-            this.Title.DataPropertyName = "Title";
-            this.Title.FillWeight = 250F;
-            this.Title.HeaderText = "Title";
-            this.Title.MinimumWidth = 50;
-            this.Title.Name = "Title";
-            this.Title.ReadOnly = true;
-            this.Title.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Duration
-            // 
-            this.Duration.DataPropertyName = "Duration";
-            this.Duration.FillWeight = 70F;
-            this.Duration.HeaderText = "Duration";
-            this.Duration.MinimumWidth = 6;
-            this.Duration.Name = "Duration";
-            this.Duration.ReadOnly = true;
-            this.Duration.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Year
-            // 
-            this.Year.DataPropertyName = "Year";
-            this.Year.FillWeight = 70F;
-            this.Year.HeaderText = "Year";
-            this.Year.MinimumWidth = 6;
-            this.Year.Name = "Year";
-            this.Year.ReadOnly = true;
-            this.Year.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Country
-            // 
-            this.Country.DataPropertyName = "Country";
-            this.Country.FillWeight = 85.47237F;
-            this.Country.HeaderText = "Country";
-            this.Country.MinimumWidth = 6;
-            this.Country.Name = "Country";
-            this.Country.ReadOnly = true;
-            this.Country.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Directors
-            // 
-            this.Directors.DataPropertyName = "Directors";
-            this.Directors.FillWeight = 85.47237F;
-            this.Directors.HeaderText = "Directors";
-            this.Directors.MinimumWidth = 6;
-            this.Directors.Name = "Directors";
-            this.Directors.ReadOnly = true;
-            this.Directors.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Actors
-            // 
-            this.Actors.DataPropertyName = "Actors";
-            this.Actors.FillWeight = 85.47237F;
-            this.Actors.HeaderText = "Actors";
-            this.Actors.MinimumWidth = 6;
-            this.Actors.Name = "Actors";
-            this.Actors.ReadOnly = true;
-            this.Actors.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // DetailsAction
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            this.DetailsAction.DefaultCellStyle = dataGridViewCellStyle2;
-            this.DetailsAction.FillWeight = 50F;
-            this.DetailsAction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DetailsAction.HeaderText = "Action";
-            this.DetailsAction.MinimumWidth = 4;
-            this.DetailsAction.Name = "DetailsAction";
-            this.DetailsAction.ReadOnly = true;
-            this.DetailsAction.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.DetailsAction.Text = "Details";
-            this.DetailsAction.UseColumnTextForButtonValue = true;
-            // 
-            // frmMoviesList
+            // frmMovieList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -332,7 +342,7 @@
             this.Controls.Add(this.pnlContent);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "frmMoviesList";
+            this.Name = "frmMovieList";
             this.Text = "frmMoviesList";
             this.Load += new System.EventHandler(this.frmMoviesList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdMoviesList)).EndInit();
@@ -369,5 +379,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Directors;
         private System.Windows.Forms.DataGridViewTextBoxColumn Actors;
         private System.Windows.Forms.DataGridViewButtonColumn DetailsAction;
+        private UserControls.Buttons.AddNewButton btnAddNew;
     }
 }

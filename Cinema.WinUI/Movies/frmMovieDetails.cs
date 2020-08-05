@@ -3,10 +3,11 @@ using Cinema.Shared.Pagination;
 using System;
 using System.Linq;
 using System.Windows.Forms;
-using System;
-using Utilities.BunifuButton.Transitions;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Threading.Tasks;
+using Cinema.Models.Requests.Movies;
+using System.ComponentModel;
 
 namespace Cinema.WinUI.Movies
 {
@@ -25,8 +26,31 @@ namespace Cinema.WinUI.Movies
 
         private async void frmMovieDetails_Load(object sender, EventArgs e)
         {
-            var result = await _moviesApi.GetById<MovieDto>(_id);
             var resultGenres = await _genresApi.Get<PagedList<GenreDto>>(null);
+
+            if (_id.HasValue)
+            {
+                await LoadReadOnly(resultGenres);
+            }
+            else
+            {
+                InsertNew(resultGenres);
+            }
+
+        }
+
+        private void InsertNew(PagedList<GenreDto> resultGenres)
+        {
+            chlGenres.DataSource = resultGenres.Data;
+            chlGenres.DisplayMember = nameof(GenreDto.Name);
+
+            SetGenresListReadonly(false);
+        }
+
+
+        private async Task LoadReadOnly(PagedList<GenreDto> genres)
+        {
+            var result = await _moviesApi.GetById<MovieDto>(_id);            
 
             SetReadonly();
 
@@ -37,12 +61,7 @@ namespace Cinema.WinUI.Movies
             txtActors.Text = result.Actors;
             txtDuration.Text = result.Duration.ToString();
 
-            if (string.IsNullOrWhiteSpace(result.Image))
-            {
-
-            }
-
-            List<GenreDto> movieGenres = resultGenres.Data.Where(x => result.GenreMovies.Select(y => y.GenreId).Contains(x.Id)).ToList();
+            List<GenreDto> movieGenres = genres.Data.Where(x => result.GenreMovies.Select(y => y.GenreId).Contains(x.Id)).ToList();
 
             if (_isReadonly)
             {
@@ -51,7 +70,7 @@ namespace Cinema.WinUI.Movies
             }
             else
             {
-                chlGenres.DataSource = resultGenres.Data;
+                chlGenres.DataSource = genres.Data;
                 chlGenres.DisplayMember = nameof(GenreDto.Name);
 
                 for (int i = 0; i < chlGenres.Items.Count; i++)
@@ -73,6 +92,12 @@ namespace Cinema.WinUI.Movies
             SetReadonly();
         }
 
+        private void SetGenresListReadonly(bool isReadonly)
+        {
+            lbxGenres.Visible = isReadonly;
+            chlGenres.Visible = !isReadonly;
+        }
+
         private void SetReadonly()
         {
             txtMovieTitle.ReadOnly = _isReadonly;
@@ -81,7 +106,54 @@ namespace Cinema.WinUI.Movies
             txtDirectors.ReadOnly = _isReadonly;
             txtActors.ReadOnly = _isReadonly;
             txtDuration.ReadOnly = _isReadonly;
-            //chlGenres
+            SetGenresListReadonly(true);
+        }
+
+        private async void btnSaveChanges_ButtonClicked(object sender, EventArgs e)
+        {
+            MovieUpsertRequest request = new MovieUpsertRequest
+            {
+                Actors = txtActors.Text,
+                Country = txtCountry.Text,
+                Directors = txtDirectors.Text,
+                Duration = int.Parse(txtDuration.Text),
+                Title = txtMovieTitle.Text,
+                Year = int.Parse(txtReleaseYear.Text)
+            };
+
+            //await _moviesApi.Insert<MovieUpsertRequest>(request);
+        }
+
+        private void txtReleaseYear_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!_isReadonly) return;
+            ValidateInteger(txtReleaseYear, e);
+        }
+
+        private void ValidateEmptyField(Control control, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(control.Text))
+            {
+                errorProvider1.SetError(control, Properties.Resources.Validation_RequiredField);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider1.SetError(control, null);
+            }
+        }
+
+        private void ValidateInteger(Control control, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!int.TryParse(control.Text, out int result))
+            {
+                errorProvider1.SetError(control, Properties.Resources.Validation_IntegerRequired);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider1.SetError(control, null);
+            }
         }
     }
 }
