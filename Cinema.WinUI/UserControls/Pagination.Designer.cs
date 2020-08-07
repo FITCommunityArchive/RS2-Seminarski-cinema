@@ -127,8 +127,7 @@
             // 
             // Pagination
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.Controls.Add(this.btnTotalPages);
             this.Controls.Add(this.btnCurrentPage);
             this.Controls.Add(this.btnNextPage);

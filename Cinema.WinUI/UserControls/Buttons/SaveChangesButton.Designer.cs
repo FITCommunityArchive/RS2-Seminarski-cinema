@@ -40,7 +40,7 @@
             this.btnSaveChanges.Location = new System.Drawing.Point(0, 0);
             this.btnSaveChanges.Margin = new System.Windows.Forms.Padding(0);
             this.btnSaveChanges.Name = "btnSaveChanges";
-            this.btnSaveChanges.Size = new System.Drawing.Size(160, 38);
+            this.btnSaveChanges.Size = new System.Drawing.Size(160, 35);
             this.btnSaveChanges.TabIndex = 0;
             this.btnSaveChanges.Text = "Save Changes";
             this.btnSaveChanges.UseVisualStyleBackColor = false;
@@ -48,11 +48,10 @@
             // 
             // SaveChangesButton
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.Controls.Add(this.btnSaveChanges);
             this.Name = "SaveChangesButton";
-            this.Size = new System.Drawing.Size(160, 38);
+            this.Size = new System.Drawing.Size(160, 35);
             this.ResumeLayout(false);
 
         }

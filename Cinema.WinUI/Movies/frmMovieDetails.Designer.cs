@@ -33,6 +33,7 @@
             this.pnlFormTitle = new System.Windows.Forms.Panel();
             this.txtFormTitle = new System.Windows.Forms.TextBox();
             this.pnlDetails = new System.Windows.Forms.Panel();
+            this.uploadButton1 = new Cinema.WinUI.UserControls.Buttons.UploadButton();
             this.btnSaveChanges = new Cinema.WinUI.UserControls.Buttons.SaveChangesButton();
             this.picPoster = new System.Windows.Forms.PictureBox();
             this.lbxGenres = new System.Windows.Forms.ListBox();
@@ -51,6 +52,7 @@
             this.lblYear = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.pnlFormTitle.SuspendLayout();
             this.pnlDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPoster)).BeginInit();
@@ -84,6 +86,7 @@
             // pnlDetails
             // 
             this.pnlDetails.BackColor = System.Drawing.Color.White;
+            this.pnlDetails.Controls.Add(this.uploadButton1);
             this.pnlDetails.Controls.Add(this.btnSaveChanges);
             this.pnlDetails.Controls.Add(this.picPoster);
             this.pnlDetails.Controls.Add(this.lbxGenres);
@@ -109,9 +112,17 @@
             this.pnlDetails.Size = new System.Drawing.Size(1265, 724);
             this.pnlDetails.TabIndex = 11;
             // 
+            // uploadButton1
+            // 
+            this.uploadButton1.Location = new System.Drawing.Point(625, 486);
+            this.uploadButton1.Name = "uploadButton1";
+            this.uploadButton1.Size = new System.Drawing.Size(120, 35);
+            this.uploadButton1.TabIndex = 22;
+            this.uploadButton1.ButtonClicked += new System.EventHandler(this.uploadButton1_ButtonClicked);
+            // 
             // btnSaveChanges
             // 
-            this.btnSaveChanges.Location = new System.Drawing.Point(625, 486);
+            this.btnSaveChanges.Location = new System.Drawing.Point(764, 486);
             this.btnSaveChanges.Name = "btnSaveChanges";
             this.btnSaveChanges.Size = new System.Drawing.Size(160, 38);
             this.btnSaveChanges.TabIndex = 21;
@@ -176,6 +187,7 @@
             this.txtActors.Name = "txtActors";
             this.txtActors.Size = new System.Drawing.Size(590, 26);
             this.txtActors.TabIndex = 14;
+            this.txtActors.Validating += new System.ComponentModel.CancelEventHandler(this.txtActors_Validating);
             // 
             // txtDirectors
             // 
@@ -188,6 +200,7 @@
             this.txtDirectors.Name = "txtDirectors";
             this.txtDirectors.Size = new System.Drawing.Size(590, 26);
             this.txtDirectors.TabIndex = 13;
+            this.txtDirectors.Validating += new System.ComponentModel.CancelEventHandler(this.txtDirectors_Validating);
             // 
             // txtCountry
             // 
@@ -200,6 +213,7 @@
             this.txtCountry.Name = "txtCountry";
             this.txtCountry.Size = new System.Drawing.Size(590, 26);
             this.txtCountry.TabIndex = 12;
+            this.txtCountry.Validating += new System.ComponentModel.CancelEventHandler(this.txtCountry_Validating);
             // 
             // txtDuration
             // 
@@ -212,6 +226,7 @@
             this.txtDuration.Name = "txtDuration";
             this.txtDuration.Size = new System.Drawing.Size(590, 26);
             this.txtDuration.TabIndex = 11;
+            this.txtDuration.Validating += new System.ComponentModel.CancelEventHandler(this.txtDuration_Validating);
             // 
             // txtReleaseYear
             // 
@@ -237,6 +252,7 @@
             this.txtMovieTitle.Name = "txtMovieTitle";
             this.txtMovieTitle.Size = new System.Drawing.Size(590, 26);
             this.txtMovieTitle.TabIndex = 9;
+            this.txtMovieTitle.Validating += new System.ComponentModel.CancelEventHandler(this.txtMovieTitle_Validating);
             // 
             // lblActors
             // 
@@ -320,6 +336,10 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // frmMovieDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -364,5 +384,7 @@
         private System.Windows.Forms.PictureBox picPoster;
         private UserControls.Buttons.SaveChangesButton btnSaveChanges;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private UserControls.Buttons.UploadButton uploadButton1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

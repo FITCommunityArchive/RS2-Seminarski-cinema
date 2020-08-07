@@ -13,6 +13,7 @@ namespace Cinema.Services
     public class MovieService : ICRUDService<MovieDto, MovieSearchRequest, MovieUpsertRequest, MovieUpsertRequest>, IMovieService
     {
         protected readonly IMovieRepository _movieRepo;
+        protected readonly IRepository<GenreMovie, int> _movieGenreRepo;
         protected readonly IUnitOfWork _unit;
         protected readonly IMapper _mapper;
 
@@ -21,6 +22,7 @@ namespace Cinema.Services
             _unit = unit;
             _mapper = mapper;
             _movieRepo = unit.Movies;
+            _movieGenreRepo = unit.Repository<GenreMovie, int>();
         }
 
         public async Task<MovieDto> GetByIdAsync(int id)
@@ -37,9 +39,25 @@ namespace Cinema.Services
             return dtoList;
         }
 
-        public Task<MovieDto> Insert(MovieUpsertRequest req)
+        public async Task<MovieDto> Insert(MovieUpsertRequest req)
         {
-            throw new NotImplementedException();
+            var movie = _mapper.Map<Movie>(req);
+
+            await _movieRepo.InsertAsync(movie);
+            
+            foreach (var genreId in req.Genres)
+            {
+                await _movieGenreRepo.InsertAsync(new GenreMovie
+                {
+                    GenreId = genreId,
+                    Movie = movie
+                });
+            }
+
+            await _unit.SaveAsync();
+
+            var dto = _mapper.Map<MovieDto>(movie);
+            return dto;
         }
 
         public Task<MovieDto> Update(int id, MovieUpsertRequest req)

@@ -1,6 +1,6 @@
 ﻿namespace Cinema.WinUI.UserControls.Buttons
 {
-    partial class AddNewButton
+    partial class UploadButton
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,29 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnAddNew = new System.Windows.Forms.Button();
+            this.btnUpload = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // btnAddNew
+            // btnUpload
             // 
-            this.btnAddNew.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(91)))), ((int)(((byte)(212)))));
-            this.btnAddNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddNew.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddNew.ForeColor = System.Drawing.Color.White;
-            this.btnAddNew.Location = new System.Drawing.Point(0, 0);
-            this.btnAddNew.Margin = new System.Windows.Forms.Padding(0);
-            this.btnAddNew.Name = "btnAddNew";
-            this.btnAddNew.Size = new System.Drawing.Size(120, 35);
-            this.btnAddNew.TabIndex = 0;
-            this.btnAddNew.Text = "Add New";
-            this.btnAddNew.UseVisualStyleBackColor = false;
-            this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
+            this.btnUpload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(91)))), ((int)(((byte)(212)))));
+            this.btnUpload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpload.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpload.ForeColor = System.Drawing.Color.White;
+            this.btnUpload.Location = new System.Drawing.Point(0, 0);
+            this.btnUpload.Margin = new System.Windows.Forms.Padding(0);
+            this.btnUpload.Name = "btnUpload";
+            this.btnUpload.Size = new System.Drawing.Size(120, 35);
+            this.btnUpload.TabIndex = 0;
+            this.btnUpload.Text = "Upload";
+            this.btnUpload.UseVisualStyleBackColor = false;
+            this.btnUpload.Click += new System.EventHandler(this.btnAddNew_Click);
             // 
-            // AddNewButton
+            // UploadButton
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
-            this.Controls.Add(this.btnAddNew);
-            this.Name = "AddNewButton";
+            this.Controls.Add(this.btnUpload);
+            this.Name = "UploadButton";
             this.Size = new System.Drawing.Size(120, 35);
             this.ResumeLayout(false);
 
@@ -58,6 +58,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnAddNew;
+        private System.Windows.Forms.Button btnUpload;
     }
 }

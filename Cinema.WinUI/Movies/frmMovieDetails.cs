@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Threading.Tasks;
 using Cinema.Models.Requests.Movies;
 using System.ComponentModel;
+using System.IO;
 
 namespace Cinema.WinUI.Movies
 {
@@ -17,6 +18,7 @@ namespace Cinema.WinUI.Movies
         private readonly ApiService _genresApi = new ApiService("Genres");
         private readonly int? _id = null;
         private bool _isReadonly = true;
+        private MovieUpsertRequest _request = new MovieUpsertRequest();
 
         public frmMovieDetails(int? id = null)
         {
@@ -44,7 +46,7 @@ namespace Cinema.WinUI.Movies
             chlGenres.DataSource = resultGenres.Data;
             chlGenres.DisplayMember = nameof(GenreDto.Name);
 
-            SetGenresListReadonly(false);
+            SetReadonly(false);        
         }
 
 
@@ -52,7 +54,7 @@ namespace Cinema.WinUI.Movies
         {
             var result = await _moviesApi.GetById<MovieDto>(_id);            
 
-            SetReadonly();
+            SetReadonly(true);
 
             txtMovieTitle.Text = result.Title;
             txtReleaseYear.Text = result.Year.ToString();
@@ -85,53 +87,59 @@ namespace Cinema.WinUI.Movies
             }
         }
 
-        private void ToggleReadonly()
-        {
-            _isReadonly = !_isReadonly;
-
-            SetReadonly();
-        }
-
         private void SetGenresListReadonly(bool isReadonly)
         {
             lbxGenres.Visible = isReadonly;
             chlGenres.Visible = !isReadonly;
         }
 
-        private void SetReadonly()
+        private void SetReadonly(bool isReadonly)
         {
+            _isReadonly = isReadonly;
+
             txtMovieTitle.ReadOnly = _isReadonly;
             txtReleaseYear.ReadOnly = _isReadonly;
             txtCountry.ReadOnly = _isReadonly;
             txtDirectors.ReadOnly = _isReadonly;
             txtActors.ReadOnly = _isReadonly;
             txtDuration.ReadOnly = _isReadonly;
-            SetGenresListReadonly(true);
+
+            SetGenresListReadonly(isReadonly);
         }
 
         private async void btnSaveChanges_ButtonClicked(object sender, EventArgs e)
         {
-            MovieUpsertRequest request = new MovieUpsertRequest
+            if (!this.ValidateChildren()) return;
+
+            List<int> movieGenreIds = chlGenres.SelectedItems.Cast<GenreDto>().Select(x => x.Id).ToList();
+
+            _request = new MovieUpsertRequest
             {
                 Actors = txtActors.Text,
                 Country = txtCountry.Text,
                 Directors = txtDirectors.Text,
                 Duration = int.Parse(txtDuration.Text),
                 Title = txtMovieTitle.Text,
-                Year = int.Parse(txtReleaseYear.Text)
+                Year = int.Parse(txtReleaseYear.Text),
+                Genres = movieGenreIds
             };
 
-            //await _moviesApi.Insert<MovieUpsertRequest>(request);
-        }
+            var result = await _moviesApi.Insert<MovieUpsertRequest>(_request);
 
-        private void txtReleaseYear_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (!_isReadonly) return;
-            ValidateInteger(txtReleaseYear, e);
+            if (result != null)
+            {
+                MessageBox.Show(Properties.Resources.Operation_Successful);
+            }
+            else
+            {
+                MessageBox.Show(Properties.Resources.Operation_BadRequest);
+            }            
         }
 
         private void ValidateEmptyField(Control control, CancelEventArgs e)
         {
+            if (_isReadonly) return;
+
             if (string.IsNullOrWhiteSpace(control.Text))
             {
                 errorProvider1.SetError(control, Properties.Resources.Validation_RequiredField);
@@ -145,6 +153,8 @@ namespace Cinema.WinUI.Movies
 
         private void ValidateInteger(Control control, System.ComponentModel.CancelEventArgs e)
         {
+            if (_isReadonly) return;
+
             if (!int.TryParse(control.Text, out int result))
             {
                 errorProvider1.SetError(control, Properties.Resources.Validation_IntegerRequired);
@@ -153,6 +163,53 @@ namespace Cinema.WinUI.Movies
             else
             {
                 errorProvider1.SetError(control, null);
+            }
+        }
+
+        private void txtReleaseYear_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            ValidateInteger(txtReleaseYear, e);
+        }
+
+        private void txtMovieTitle_Validating(object sender, CancelEventArgs e)
+        {
+            ValidateEmptyField(txtMovieTitle, e);
+        }
+
+        private void txtDuration_Validating(object sender, CancelEventArgs e)
+        {
+            ValidateInteger(txtDuration, e);
+        }
+
+        private void txtCountry_Validating(object sender, CancelEventArgs e)
+        {
+            ValidateEmptyField(txtCountry, e);
+        }
+
+        private void txtDirectors_Validating(object sender, CancelEventArgs e)
+        {
+            ValidateEmptyField(txtDirectors, e);
+        }
+
+        private void txtActors_Validating(object sender, CancelEventArgs e)
+        {
+            ValidateEmptyField(txtActors, e);
+        }
+
+
+        private void uploadButton1_ButtonClicked(object sender, EventArgs e)
+        {
+            var result = openFileDialog1.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                var fileName = openFileDialog1.FileName;
+
+                var file = File.ReadAllBytes(fileName);
+                _request.Image = file;
+
+                Image image = Image.FromFile(fileName);
+                picPoster.Image = image;
             }
         }
     }
