@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Cinema.Models.Requests.Movies;
 using System.ComponentModel;
 using System.IO;
+using Cinema.WinUI.Helpers;
 
 namespace Cinema.WinUI.Movies
 {
@@ -63,6 +64,11 @@ namespace Cinema.WinUI.Movies
             txtActors.Text = result.Actors;
             txtDuration.Text = result.Duration.ToString();
 
+            if (result.Poster != null && result.Poster.Length > 0)
+            {
+                picPoster.Image = result.Poster.ToImage();
+            }
+
             List<GenreDto> movieGenres = genres.Data.Where(x => result.GenreMovies.Select(y => y.GenreId).Contains(x.Id)).ToList();
 
             if (_isReadonly)
@@ -113,16 +119,13 @@ namespace Cinema.WinUI.Movies
 
             List<int> movieGenreIds = chlGenres.SelectedItems.Cast<GenreDto>().Select(x => x.Id).ToList();
 
-            _request = new MovieUpsertRequest
-            {
-                Actors = txtActors.Text,
-                Country = txtCountry.Text,
-                Directors = txtDirectors.Text,
-                Duration = int.Parse(txtDuration.Text),
-                Title = txtMovieTitle.Text,
-                Year = int.Parse(txtReleaseYear.Text),
-                Genres = movieGenreIds
-            };
+            _request.Actors = txtActors.Text;
+            _request.Country = txtCountry.Text;
+            _request.Directors = txtDirectors.Text;
+            _request.Duration = int.Parse(txtDuration.Text);
+            _request.Title = txtMovieTitle.Text;
+            _request.Year = int.Parse(txtReleaseYear.Text);
+            _request.Genres = movieGenreIds;
 
             var result = await _moviesApi.Insert<MovieUpsertRequest>(_request);
 
@@ -203,10 +206,10 @@ namespace Cinema.WinUI.Movies
 
             if (result == DialogResult.OK)
             {
-                var fileName = openFileDialog1.FileName;
+                string fileName = openFileDialog1.FileName;
 
                 var file = File.ReadAllBytes(fileName);
-                _request.Image = file;
+                _request.Poster = file;
 
                 Image image = Image.FromFile(fileName);
                 picPoster.Image = image;

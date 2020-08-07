@@ -172,42 +172,8 @@ namespace Cinema.Dal.Data
                     Directors = "Stuart Townsend",
                     Actors = "André Benjamin, Jennifer Carpenter, Isaach De Bankolé",
                     VideoLink = "https://www.imdb.com/video/vi1761450777?playlistId=tt0850253&ref_=tt_ov_vi"
-                },
-                new Movie
-                {
-                    Id = -5,
-                    CreatedAt = new DateTime(2020, 7, 7),
-                    IsDeleted = false,
-                    Title = "Vengeance Can Wait",
-                    Duration = 97,
-                    Year = 2010,
-                    Country = "Japan",
-                    Directors = "Masanori Tominaga",
-                    Actors = "Tadanobu Asano, Minami, Eiko Koike",
-                    VideoLink = ""
                 }
             );
-
-            var testMovies = new List<Movie>();
-
-            for (int i = 6; i < 26; i++)
-            {
-                testMovies.Add(new Movie
-                {
-                    Id = -i,
-                    CreatedAt = new DateTime(2020, 7, 7),
-                    IsDeleted = false,
-                    Title = $"Test Movie {i}",
-                    Duration = 97,
-                    Year = 2010,
-                    Country = "Test Country",
-                    Directors = "Test Director",
-                    Actors = "Test Actor 1, Test Actor 2",
-                    VideoLink = ""
-                });
-            }
-
-            modelBuilder.Entity<Movie>().HasData(testMovies);
         }
 
         private static void SeedGenres(ModelBuilder modelBuilder)

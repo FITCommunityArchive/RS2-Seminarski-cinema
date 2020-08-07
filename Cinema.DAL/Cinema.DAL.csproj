@@ -7,6 +7,12 @@
   <ItemGroup>
     <Compile Remove="Migrations\20200515182245_InvoiceSoftDelete.cs" />
     <Compile Remove="Migrations\20200515182245_InvoiceSoftDelete.Designer.cs" />
+    <Compile Remove="Migrations\20200807193113_ChangedImageToByteType.cs" />
+    <Compile Remove="Migrations\20200807193113_ChangedImageToByteType.Designer.cs" />
+    <Compile Remove="Migrations\20200807193929_AddedPosterRemovedImageProperty.cs" />
+    <Compile Remove="Migrations\20200807193929_AddedPosterRemovedImageProperty.Designer.cs" />
+    <Compile Remove="Migrations\20200807194535_AddedPosterToMovie.cs" />
+    <Compile Remove="Migrations\20200807194535_AddedPosterToMovie.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
