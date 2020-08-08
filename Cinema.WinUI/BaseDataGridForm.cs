@@ -1,11 +1,12 @@
 ﻿using Cinema.Shared.Search;
+using Cinema.WinUI.Authorization;
 using Cinema.WinUI.Constants;
 using Cinema.WinUI.UserControls;
 using System.Windows.Forms;
 
 namespace Cinema.WinUI
 {
-    public class BaseDataGridForm : Form
+    public class BaseDataGridForm : SecureBaseForm
     {
         protected string CurrentSortPropertyName;
         protected Cinema.Shared.Enums.SortOrder? CurrentSortOrder;

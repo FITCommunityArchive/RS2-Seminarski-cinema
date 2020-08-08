@@ -1,6 +1,7 @@
 ﻿using Cinema.Dal.Data;
 using Cinema.Seed.CollectMethods;
 using Cinema.Utilities.Interfaces;
+using Cinema.Utilities.Interfaces.Dal;
 using OfficeOpenXml;
 using System;
 using System.Collections.Generic;

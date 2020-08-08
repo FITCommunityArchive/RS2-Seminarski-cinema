@@ -4,6 +4,7 @@ using Flurl.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Net.Http;
 
 namespace Cinema.WinUI
 {
@@ -11,6 +12,8 @@ namespace Cinema.WinUI
     {
         public static string Username { get; set; }
         public static string Password { get; set; }
+
+        public static string Role { get; set; }
         public static string Token { get; set; }
 
         private string _route = null;
@@ -23,6 +26,9 @@ namespace Cinema.WinUI
         public async Task<bool> AuthUser()
         {
             var loginUrl = $"{Properties.Settings.Default.APIUrl}/login";
+
+
+
             var result = await loginUrl.PostJsonAsync(new
             {
                 userName = Username,
@@ -33,6 +39,14 @@ namespace Cinema.WinUI
                 var json = await result.Content.ReadAsStringAsync();
                 var dynamicJson = JsonConvert.DeserializeObject<dynamic>(json);
                 Token = dynamicJson.token;
+
+                var decodeUrl = $"{Properties.Settings.Default.APIUrl}/decode";
+                var decodeResult = await decodeUrl.SetQueryParams(new { token = Token }).GetStringAsync();
+
+                if(decodeResult != null)
+                {
+                    Role = decodeResult;
+                }
 
                 return true;
             } else

@@ -53,10 +53,10 @@ namespace Cinema.Web.Api.Controllers
         }
         #endregion
 
-        [AllowAnonymous,HttpPost(nameof(Decode))]
-        public string Decode(string token)
+        [AllowAnonymous,HttpGet(nameof(Decode))]
+        public async Task<string> Decode([FromQuery]string token)
         {
-           return _userService.DecodeJSONWebToken(token);
+           return await _userService.DecodeJSONWebToken(token);
         }
 
     }

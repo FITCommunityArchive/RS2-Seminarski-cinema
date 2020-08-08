@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Security.Principal;
 using System.Windows.Forms;
 
 namespace Cinema.WinUI
@@ -11,9 +13,23 @@ namespace Cinema.WinUI
         [STAThread]
         static void Main()
         {
+
+            IList<string> userPrincipal = new List<string>() { "Guest" };
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+
+            LoginForm mainForm = new LoginForm(userPrincipal);
+
+            // Set form to be main window in order to Exit the application.
+            mainForm.IsMainWindow = true;
+            mainForm.Show();
+
+            if (mainForm.Created)
+                Application.Run();
+
+            //Application.Run(new Form1(userPrincipal));
         }
     }
 }

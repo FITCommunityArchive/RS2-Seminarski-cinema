@@ -126,12 +126,16 @@ namespace Cinema.Services
         }
         #endregion
 
-        public string DecodeJSONWebToken(string token)
+        public async Task<string> DecodeJSONWebToken(string token)
         {
+            
             var handler = new JwtSecurityTokenHandler();
             var readToken = handler.ReadJwtToken(token);
 
-            return "Test";
+            var roleName = readToken.Claims.ToList()[1].Value;
+            var user = await _userManager.GetUsersInRoleAsync(roleName);
+
+            return roleName;
         }
     }
 }
