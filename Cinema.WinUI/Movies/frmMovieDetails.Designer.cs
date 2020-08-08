@@ -53,8 +53,10 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.btnBack = new Cinema.WinUI.UserControls.Buttons.BackButton();
             this.btnUploadPoster = new Cinema.WinUI.UserControls.Buttons.UploadButton();
             this.btnSaveChanges = new Cinema.WinUI.UserControls.Buttons.SaveChangesButton();
+            this.btnEdit = new Cinema.WinUI.UserControls.Buttons.EditButton();
             this.pnlFormTitle.SuspendLayout();
             this.pnlDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPoster)).BeginInit();
@@ -88,6 +90,8 @@
             // pnlDetails
             // 
             this.pnlDetails.BackColor = System.Drawing.Color.White;
+            this.pnlDetails.Controls.Add(this.btnEdit);
+            this.pnlDetails.Controls.Add(this.btnBack);
             this.pnlDetails.Controls.Add(this.txtWriters);
             this.pnlDetails.Controls.Add(this.lblWriters);
             this.pnlDetails.Controls.Add(this.btnUploadPoster);
@@ -355,23 +359,47 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // btnBack
+            // 
+            this.btnBack.AutoSize = true;
+            this.btnBack.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnBack.Location = new System.Drawing.Point(942, 526);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(120, 40);
+            this.btnBack.TabIndex = 25;
+            this.btnBack.ButtonClicked += new System.EventHandler(this.btnBack_ButtonClicked);
+            // 
             // btnUploadPoster
             // 
-            this.btnUploadPoster.Location = new System.Drawing.Point(547, 511);
+            this.btnUploadPoster.AutoSize = true;
+            this.btnUploadPoster.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnUploadPoster.Location = new System.Drawing.Point(22, 526);
             this.btnUploadPoster.Margin = new System.Windows.Forms.Padding(2);
             this.btnUploadPoster.Name = "btnUploadPoster";
-            this.btnUploadPoster.Size = new System.Drawing.Size(90, 28);
+            this.btnUploadPoster.Size = new System.Drawing.Size(120, 40);
             this.btnUploadPoster.TabIndex = 22;
             this.btnUploadPoster.ButtonClicked += new System.EventHandler(this.btnUploadPoster_ButtonClicked);
             // 
             // btnSaveChanges
             // 
-            this.btnSaveChanges.Location = new System.Drawing.Point(641, 511);
+            this.btnSaveChanges.AutoSize = true;
+            this.btnSaveChanges.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnSaveChanges.Location = new System.Drawing.Point(672, 526);
             this.btnSaveChanges.Margin = new System.Windows.Forms.Padding(2);
             this.btnSaveChanges.Name = "btnSaveChanges";
-            this.btnSaveChanges.Size = new System.Drawing.Size(120, 31);
+            this.btnSaveChanges.Size = new System.Drawing.Size(160, 40);
             this.btnSaveChanges.TabIndex = 21;
             this.btnSaveChanges.ButtonClicked += new System.EventHandler(this.btnSaveChanges_ButtonClicked);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.AutoSize = true;
+            this.btnEdit.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnEdit.Location = new System.Drawing.Point(547, 526);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(120, 40);
+            this.btnEdit.TabIndex = 26;
+            this.btnEdit.ButtonClicked += new System.EventHandler(this.btnEdit_ButtonClicked);
             // 
             // frmMovieDetails
             // 
@@ -420,5 +448,7 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.TextBox txtWriters;
         private System.Windows.Forms.Label lblWriters;
+        private UserControls.Buttons.BackButton btnBack;
+        private UserControls.Buttons.EditButton btnEdit;
     }
 }

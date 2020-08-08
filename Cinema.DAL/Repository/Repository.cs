@@ -34,12 +34,12 @@ namespace Cinema.Dal.Repository
 
         public virtual async Task<IEnumerable<Entity>> GetAsync(Expression<Func<Entity, bool>> where)
         {
-            return await _dbSet.AsNoTracking().Where(where).ToListAsync();
+            return await _dbSet.Where(where).ToListAsync();
         }
 
         public virtual async Task<IPagedList<Entity>> GetPagedAsync(Expression<Func<Entity, bool>> where, int pageIndex, int pageSize)
         {
-            var query = _dbSet.AsNoTracking();
+            var query = _dbSet.AsQueryable();
 
             if (where != null)
             {
@@ -61,10 +61,9 @@ namespace Cinema.Dal.Repository
 
             if (oldEnt != null)
             {
-                //await newEnt.BuildAsync(_context);
+                await newEnt.BuildAsync(_context);
 
-                // Update operations should be handled outside of repositories
-                //_context.Entry(oldEnt).CurrentValues.SetValues(newEnt);
+                _context.Entry(oldEnt).CurrentValues.SetValues(newEnt);
                 oldEnt.Update(newEnt);
             }
         }

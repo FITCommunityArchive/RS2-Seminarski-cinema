@@ -17,7 +17,7 @@ namespace Cinema.Dal.Repository
 
         public async Task<IPagedList<Movie>> GetPagedAsync(ISearchRequest searchRequest, string searchTerm, int? searchYear, int? searchDuration)
         {
-            var query = _dbSet.AsNoTracking();
+            var query = _dbSet.AsQueryable();
 
             query = ApplyFilter(query, searchTerm, searchYear, searchDuration);
 
@@ -32,8 +32,7 @@ namespace Cinema.Dal.Repository
 
         public async Task<Movie> GetByIdWithGenresAsync(int id)
         {
-            var entity = await _dbSet.AsNoTracking()
-                                     .Include(x => x.GenreMovies)
+            var entity = await _dbSet.Include(x => x.GenreMovies)
                                      .FirstOrDefaultAsync(x => x.Id == id);
 
             return entity;

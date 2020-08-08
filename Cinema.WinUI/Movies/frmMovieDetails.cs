@@ -57,6 +57,41 @@ namespace Cinema.WinUI.Movies
 
             SetReadonly(true);
 
+            LoadPropertyValues(result);
+
+            List<GenreDto> movieGenres = genres.Data.Where(x => result.GenreMovies.Select(y => y.GenreId).Contains(x.Id)).ToList();
+
+            lbxGenres.DataSource = movieGenres;
+            lbxGenres.DisplayMember = nameof(GenreDto.Name);
+        }
+
+        private async Task LoadEdit()
+        {
+            var resultGenres = await _genresApi.Get<PagedList<GenreDto>>(null);
+            var result = await _moviesApi.GetById<MovieDto>(_id);
+
+            SetReadonly(false);
+
+            LoadPropertyValues(result);
+
+            List<GenreDto> movieGenres = resultGenres.Data.Where(x => result.GenreMovies.Select(y => y.GenreId).Contains(x.Id)).ToList();
+
+            chlGenres.DataSource = resultGenres.Data;
+            chlGenres.DisplayMember = nameof(GenreDto.Name);
+
+            for (int i = 0; i < chlGenres.Items.Count; i++)
+            {
+                GenreDto genre = chlGenres.Items[i] as GenreDto;
+
+                if (result.GenreMovies.Select(x => x.GenreId).Contains(genre.Id))
+                {
+                    chlGenres.SetItemChecked(i, true);
+                }
+            }
+        }
+
+        private void LoadPropertyValues(MovieDto result)
+        {
             txtMovieTitle.Text = result.Title;
             txtReleaseYear.Text = result.Year.ToString();
             txtCountry.Text = result.Country;
@@ -68,29 +103,6 @@ namespace Cinema.WinUI.Movies
             if (result.Poster != null && result.Poster.Length > 0)
             {
                 picPoster.Image = result.Poster.ToImage();
-            }
-
-            List<GenreDto> movieGenres = genres.Data.Where(x => result.GenreMovies.Select(y => y.GenreId).Contains(x.Id)).ToList();
-
-            if (_isReadonly)
-            {
-                lbxGenres.DataSource = movieGenres;
-                lbxGenres.DisplayMember = nameof(GenreDto.Name);
-            }
-            else
-            {
-                chlGenres.DataSource = genres.Data;
-                chlGenres.DisplayMember = nameof(GenreDto.Name);
-
-                for (int i = 0; i < chlGenres.Items.Count; i++)
-                {
-                    GenreDto genre = chlGenres.Items[i] as GenreDto;
-
-                    if (result.GenreMovies.Select(x => x.GenreId).Contains(genre.Id))
-                    {
-                        chlGenres.SetItemChecked(i, true);
-                    }
-                }
             }
         }
 
@@ -124,12 +136,22 @@ namespace Cinema.WinUI.Movies
             _request.Actors = txtActors.Text;
             _request.Country = txtCountry.Text;
             _request.Directors = txtDirectors.Text;
+            _request.Writers = txtWriters.Text;
             _request.Duration = int.Parse(txtDuration.Text);
             _request.Title = txtMovieTitle.Text;
             _request.Year = int.Parse(txtReleaseYear.Text);
             _request.Genres = movieGenreIds;
 
-            var result = await _moviesApi.Insert<MovieUpsertRequest>(_request);
+            MovieDto result;
+
+            if (_id.HasValue)
+            {
+                result = await _moviesApi.Update<MovieDto>(_id, _request);
+            }
+            else
+            {
+                result = await _moviesApi.Insert<MovieDto>(_request);
+            }           
 
             if (result != null)
             {
@@ -222,9 +244,14 @@ namespace Cinema.WinUI.Movies
             }
         }
 
-        private void uploadButton1_ButtonClicked(object sender, EventArgs e)
+        private void btnBack_ButtonClicked(object sender, EventArgs e)
         {
+            this.Close();
+        }
 
+        private async void btnEdit_ButtonClicked(object sender, EventArgs e)
+        {
+            await LoadEdit();
         }
     }
 }

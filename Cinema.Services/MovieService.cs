@@ -6,6 +6,8 @@ using Cinema.Shared.Pagination;
 using Cinema.Utilities.Interfaces.Dal;
 using Cinema.Utilities.Interfaces.Services;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Cinema.Services
@@ -13,7 +15,7 @@ namespace Cinema.Services
     public class MovieService : ICRUDService<MovieDto, MovieSearchRequest, MovieUpsertRequest, MovieUpsertRequest>, IMovieService
     {
         protected readonly IMovieRepository _movieRepo;
-        protected readonly IRepository<GenreMovie, int> _movieGenreRepo;
+        protected readonly IRepository<GenreMovie, int> _genreMovieRepo;
         protected readonly IUnitOfWork _unit;
         protected readonly IMapper _mapper;
 
@@ -22,7 +24,7 @@ namespace Cinema.Services
             _unit = unit;
             _mapper = mapper;
             _movieRepo = unit.Movies;
-            _movieGenreRepo = unit.Repository<GenreMovie, int>();
+            _genreMovieRepo = unit.Repository<GenreMovie, int>();
         }
 
         public async Task<MovieDto> GetByIdAsync(int id)
@@ -44,15 +46,7 @@ namespace Cinema.Services
             var movie = _mapper.Map<Movie>(req);
 
             await _movieRepo.InsertAsync(movie);
-            
-            foreach (var genreId in req.Genres)
-            {
-                await _movieGenreRepo.InsertAsync(new GenreMovie
-                {
-                    GenreId = genreId,
-                    Movie = movie
-                });
-            }
+            await InsertGenreMovies(req, movie);
 
             await _unit.SaveAsync();
 
@@ -60,9 +54,64 @@ namespace Cinema.Services
             return dto;
         }
 
-        public Task<MovieDto> Update(int id, MovieUpsertRequest req)
+        private async Task InsertGenreMovies(MovieUpsertRequest req, Movie movie)
         {
-            throw new NotImplementedException();
+            foreach (var genreId in req.Genres)
+            {
+                await _genreMovieRepo.InsertAsync(new GenreMovie
+                {
+                    GenreId = genreId,
+                    Movie = movie
+                });
+            }
+        }
+
+        public async Task<MovieDto> Update(int id, MovieUpsertRequest req)
+        {
+            Movie movie = _mapper.Map<Movie>(req);
+            movie.Id = id;
+
+            await _unit.Movies.UpdateAsync(movie, id);
+            await UpdateGenreMovies(id, req, movie);
+
+            await ClearGenreMovies(req, movie);
+            await _unit.SaveAsync();
+
+            var dto = _mapper.Map<MovieDto>(movie);
+            return dto;
+        }
+
+        private async Task<bool> UpdateGenreMovies(int id, MovieUpsertRequest req, Movie movie)
+        {
+            movie = await _unit.Movies.GetByIdWithGenresAsync(id);
+
+            foreach (var genreId in req.Genres)
+            {
+                GenreMovie genreMovie = movie.GenreMovies.FirstOrDefault(x => x.GenreId == genreId);
+
+                if (genreMovie == null)
+                {
+                    await _genreMovieRepo.InsertAsync(new GenreMovie
+                    {
+                        MovieId = id,
+                        GenreId = genreId
+                    });
+                }
+            }
+
+            return true;
+        }
+
+        private async Task<bool> ClearGenreMovies(MovieUpsertRequest req, Movie movie)
+        {
+            List<GenreMovie> deletableGenreMovies = movie.GenreMovies.Where(x => !req.Genres.Contains(x.GenreId)).ToList();
+
+            foreach (var deletableGenreMovie in deletableGenreMovies)
+            {
+                await _genreMovieRepo.DeleteAsync(deletableGenreMovie.Id);
+            }
+
+            return true;
         }
     }
 }

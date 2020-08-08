@@ -127,7 +127,9 @@
             // 
             // Pagination
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.btnTotalPages);
             this.Controls.Add(this.btnCurrentPage);
             this.Controls.Add(this.btnNextPage);

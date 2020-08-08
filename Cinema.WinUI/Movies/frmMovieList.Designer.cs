@@ -325,21 +325,25 @@
             // 
             // btnAddNew
             // 
-            this.btnAddNew.Location = new System.Drawing.Point(805, 590);
+            this.btnAddNew.AutoSize = true;
+            this.btnAddNew.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnAddNew.Location = new System.Drawing.Point(723, 590);
             this.btnAddNew.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddNew.Name = "btnAddNew";
-            this.btnAddNew.Size = new System.Drawing.Size(90, 28);
+            this.btnAddNew.Size = new System.Drawing.Size(120, 35);
             this.btnAddNew.TabIndex = 11;
             this.btnAddNew.ButtonClicked += new System.EventHandler(this.btnAddNew_ButtonClicked);
             // 
             // pgnMoviesList
             // 
+            this.pgnMoviesList.AutoSize = true;
+            this.pgnMoviesList.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.pgnMoviesList.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pgnMoviesList.Location = new System.Drawing.Point(901, 590);
+            this.pgnMoviesList.Location = new System.Drawing.Point(849, 590);
             this.pgnMoviesList.Margin = new System.Windows.Forms.Padding(4);
             this.pgnMoviesList.Name = "pgnMoviesList";
             this.pgnMoviesList.PageIndex = 0;
-            this.pgnMoviesList.Size = new System.Drawing.Size(158, 28);
+            this.pgnMoviesList.Size = new System.Drawing.Size(210, 35);
             this.pgnMoviesList.TabIndex = 10;
             this.pgnMoviesList.TotalPages = 0;
             this.pgnMoviesList.PageChanged += new System.EventHandler(this.pgnMoviesList_PageChanged);
@@ -365,6 +369,7 @@
             this.pnlSearchBars.PerformLayout();
             this.pnlDataGrid.ResumeLayout(false);
             this.pnlContent.ResumeLayout(false);
+            this.pnlContent.PerformLayout();
             this.ResumeLayout(false);
 
         }
