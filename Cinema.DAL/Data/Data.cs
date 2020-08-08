@@ -131,6 +131,7 @@ namespace Cinema.Dal.Data
                     Year = 2002,
                     Country = "USA",
                     Directors = "Adam Bhala Lough",
+                    Writers = "Adam Bhala Lough",
                     Actors = "Mark Webber, Jade Yorker, Jaclyn DeSantis",
                     VideoLink = "https://www.imdb.com/video/vi1706754329?playlistId=tt0337585&ref_=tt_ov_vi"
                 },
@@ -144,6 +145,7 @@ namespace Cinema.Dal.Data
                     Year = 1983,
                     Country = "Hong Kong",
                     Directors = "Hark Tsui",
+                    Writers = "Cheuk-Hon Szeto",
                     Actors = "Biao Yuen, Hoi Mang, Adam Cheng",
                     VideoLink = "https://www.imdb.com/video/vi645768729?playlistId=tt0086308&ref_=tt_ov_vi"
                 },
@@ -157,6 +159,7 @@ namespace Cinema.Dal.Data
                     Year = 2005,
                     Country = "USA",
                     Directors = "Davis Doi",
+                    Writers = "Sean Roche, James Gurney",
                     Actors = "Alyssa Milano, Jamie Kennedy, Kathy Griffin",
                     VideoLink = "https://www.imdb.com/video/vi1889665305?playlistId=tt0372238&ref_=tt_ov_vi"
                 },
@@ -170,6 +173,7 @@ namespace Cinema.Dal.Data
                     Year = 2007,
                     Country = "Canada, USA, Germany",
                     Directors = "Stuart Townsend",
+                    Writers = "Stuart Townsend",
                     Actors = "André Benjamin, Jennifer Carpenter, Isaach De Bankolé",
                     VideoLink = "https://www.imdb.com/video/vi1761450777?playlistId=tt0850253&ref_=tt_ov_vi"
                 }

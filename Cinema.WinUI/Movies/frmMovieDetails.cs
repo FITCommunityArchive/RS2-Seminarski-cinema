@@ -61,6 +61,7 @@ namespace Cinema.WinUI.Movies
             txtReleaseYear.Text = result.Year.ToString();
             txtCountry.Text = result.Country;
             txtDirectors.Text = result.Directors;
+            txtWriters.Text = result.Writers;
             txtActors.Text = result.Actors;
             txtDuration.Text = result.Duration.ToString();
 
@@ -109,6 +110,7 @@ namespace Cinema.WinUI.Movies
             txtDirectors.ReadOnly = _isReadonly;
             txtActors.ReadOnly = _isReadonly;
             txtDuration.ReadOnly = _isReadonly;
+            txtWriters.ReadOnly = _isReadonly;
 
             SetGenresListReadonly(isReadonly);
         }
@@ -199,8 +201,12 @@ namespace Cinema.WinUI.Movies
             ValidateEmptyField(txtActors, e);
         }
 
+        private void txtWriters_Validating(object sender, CancelEventArgs e)
+        {
+            ValidateEmptyField(txtWriters, e);
+        }
 
-        private void uploadButton1_ButtonClicked(object sender, EventArgs e)
+        private void btnUploadPoster_ButtonClicked(object sender, EventArgs e)
         {
             var result = openFileDialog1.ShowDialog();
 
@@ -214,6 +220,11 @@ namespace Cinema.WinUI.Movies
                 Image image = Image.FromFile(fileName);
                 picPoster.Image = image;
             }
+        }
+
+        private void uploadButton1_ButtonClicked(object sender, EventArgs e)
+        {
+
         }
     }
 }

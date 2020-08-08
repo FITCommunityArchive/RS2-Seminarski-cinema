@@ -16,6 +16,7 @@ namespace Cinema.Models.Dtos
         public byte[] Poster { get; set; }
         public string VideoLink { get; set; }
         public string Directors { get; set; }
+        public string Writers { get; set; }
         public string Actors { get; set; }
         public ICollection<GenreMovieDto> GenreMovies { get; set; }
     }

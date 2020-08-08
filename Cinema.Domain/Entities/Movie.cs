@@ -17,6 +17,7 @@ namespace Cinema.Domain.Entities
         public byte[] Poster { get; set; }
         public string VideoLink { get; set; }
         public string Directors { get; set; }
+        public string Writers { get; set; }
         public string Actors { get; set; }
         public virtual IList<Screening> Screenings { get; set; }
         public virtual IList<GenreMovie> GenreMovies { get; set; }

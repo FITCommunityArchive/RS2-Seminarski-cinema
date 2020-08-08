@@ -33,8 +33,8 @@
             this.pnlFormTitle = new System.Windows.Forms.Panel();
             this.txtFormTitle = new System.Windows.Forms.TextBox();
             this.pnlDetails = new System.Windows.Forms.Panel();
-            this.uploadButton1 = new Cinema.WinUI.UserControls.Buttons.UploadButton();
-            this.btnSaveChanges = new Cinema.WinUI.UserControls.Buttons.SaveChangesButton();
+            this.txtWriters = new System.Windows.Forms.TextBox();
+            this.lblWriters = new System.Windows.Forms.Label();
             this.picPoster = new System.Windows.Forms.PictureBox();
             this.lbxGenres = new System.Windows.Forms.ListBox();
             this.chlGenres = new System.Windows.Forms.CheckedListBox();
@@ -53,6 +53,8 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.btnUploadPoster = new Cinema.WinUI.UserControls.Buttons.UploadButton();
+            this.btnSaveChanges = new Cinema.WinUI.UserControls.Buttons.SaveChangesButton();
             this.pnlFormTitle.SuspendLayout();
             this.pnlDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPoster)).BeginInit();
@@ -65,9 +67,9 @@
             this.pnlFormTitle.Controls.Add(this.txtFormTitle);
             this.pnlFormTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlFormTitle.Location = new System.Drawing.Point(0, 0);
-            this.pnlFormTitle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pnlFormTitle.Margin = new System.Windows.Forms.Padding(2);
             this.pnlFormTitle.Name = "pnlFormTitle";
-            this.pnlFormTitle.Size = new System.Drawing.Size(1537, 90);
+            this.pnlFormTitle.Size = new System.Drawing.Size(1153, 73);
             this.pnlFormTitle.TabIndex = 9;
             // 
             // txtFormTitle
@@ -76,17 +78,19 @@
             this.txtFormTitle.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtFormTitle.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFormTitle.ForeColor = System.Drawing.Color.Gray;
-            this.txtFormTitle.Location = new System.Drawing.Point(37, 18);
-            this.txtFormTitle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtFormTitle.Location = new System.Drawing.Point(28, 15);
+            this.txtFormTitle.Margin = new System.Windows.Forms.Padding(2);
             this.txtFormTitle.Name = "txtFormTitle";
-            this.txtFormTitle.Size = new System.Drawing.Size(247, 33);
+            this.txtFormTitle.Size = new System.Drawing.Size(185, 33);
             this.txtFormTitle.TabIndex = 0;
             this.txtFormTitle.Text = "Movie details";
             // 
             // pnlDetails
             // 
             this.pnlDetails.BackColor = System.Drawing.Color.White;
-            this.pnlDetails.Controls.Add(this.uploadButton1);
+            this.pnlDetails.Controls.Add(this.txtWriters);
+            this.pnlDetails.Controls.Add(this.lblWriters);
+            this.pnlDetails.Controls.Add(this.btnUploadPoster);
             this.pnlDetails.Controls.Add(this.btnSaveChanges);
             this.pnlDetails.Controls.Add(this.picPoster);
             this.pnlDetails.Controls.Add(this.lbxGenres);
@@ -105,36 +109,46 @@
             this.pnlDetails.Controls.Add(this.lblYear);
             this.pnlDetails.Controls.Add(this.lblTitle);
             this.pnlDetails.ForeColor = System.Drawing.Color.White;
-            this.pnlDetails.Location = new System.Drawing.Point(32, 187);
-            this.pnlDetails.Margin = new System.Windows.Forms.Padding(20);
+            this.pnlDetails.Location = new System.Drawing.Point(24, 152);
+            this.pnlDetails.Margin = new System.Windows.Forms.Padding(15, 16, 15, 16);
             this.pnlDetails.Name = "pnlDetails";
-            this.pnlDetails.Padding = new System.Windows.Forms.Padding(15);
-            this.pnlDetails.Size = new System.Drawing.Size(1265, 724);
+            this.pnlDetails.Padding = new System.Windows.Forms.Padding(11, 12, 11, 12);
+            this.pnlDetails.Size = new System.Drawing.Size(1105, 588);
             this.pnlDetails.TabIndex = 11;
             // 
-            // uploadButton1
+            // txtWriters
             // 
-            this.uploadButton1.Location = new System.Drawing.Point(625, 486);
-            this.uploadButton1.Name = "uploadButton1";
-            this.uploadButton1.Size = new System.Drawing.Size(120, 35);
-            this.uploadButton1.TabIndex = 22;
-            this.uploadButton1.ButtonClicked += new System.EventHandler(this.uploadButton1_ButtonClicked);
+            this.txtWriters.BackColor = System.Drawing.Color.White;
+            this.txtWriters.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtWriters.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtWriters.ForeColor = System.Drawing.Color.DimGray;
+            this.txtWriters.Location = new System.Drawing.Point(546, 293);
+            this.txtWriters.Margin = new System.Windows.Forms.Padding(2, 2, 2, 24);
+            this.txtWriters.Name = "txtWriters";
+            this.txtWriters.Size = new System.Drawing.Size(515, 26);
+            this.txtWriters.TabIndex = 24;
+            this.txtWriters.Validating += new System.ComponentModel.CancelEventHandler(this.txtWriters_Validating);
             // 
-            // btnSaveChanges
+            // lblWriters
             // 
-            this.btnSaveChanges.Location = new System.Drawing.Point(764, 486);
-            this.btnSaveChanges.Name = "btnSaveChanges";
-            this.btnSaveChanges.Size = new System.Drawing.Size(160, 38);
-            this.btnSaveChanges.TabIndex = 21;
-            this.btnSaveChanges.ButtonClicked += new System.EventHandler(this.btnSaveChanges_ButtonClicked);
+            this.lblWriters.AutoSize = true;
+            this.lblWriters.BackColor = System.Drawing.Color.White;
+            this.lblWriters.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWriters.ForeColor = System.Drawing.Color.Gray;
+            this.lblWriters.Location = new System.Drawing.Point(344, 295);
+            this.lblWriters.Margin = new System.Windows.Forms.Padding(11, 12, 11, 12);
+            this.lblWriters.Name = "lblWriters";
+            this.lblWriters.Size = new System.Drawing.Size(61, 18);
+            this.lblWriters.TabIndex = 23;
+            this.lblWriters.Text = "Writers";
             // 
             // picPoster
             // 
             this.picPoster.Image = ((System.Drawing.Image)(resources.GetObject("picPoster.Image")));
-            this.picPoster.Location = new System.Drawing.Point(30, 30);
-            this.picPoster.Margin = new System.Windows.Forms.Padding(15);
+            this.picPoster.Location = new System.Drawing.Point(22, 24);
+            this.picPoster.Margin = new System.Windows.Forms.Padding(11, 12, 11, 12);
             this.picPoster.Name = "picPoster";
-            this.picPoster.Size = new System.Drawing.Size(400, 600);
+            this.picPoster.Size = new System.Drawing.Size(300, 488);
             this.picPoster.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picPoster.TabIndex = 20;
             this.picPoster.TabStop = false;
@@ -146,20 +160,21 @@
             this.lbxGenres.ForeColor = System.Drawing.Color.Gray;
             this.lbxGenres.FormattingEnabled = true;
             this.lbxGenres.ItemHeight = 18;
-            this.lbxGenres.Location = new System.Drawing.Point(625, 377);
+            this.lbxGenres.Location = new System.Drawing.Point(547, 399);
+            this.lbxGenres.Margin = new System.Windows.Forms.Padding(2, 24, 2, 2);
             this.lbxGenres.Name = "lbxGenres";
-            this.lbxGenres.Size = new System.Drawing.Size(590, 90);
+            this.lbxGenres.Size = new System.Drawing.Size(514, 108);
             this.lbxGenres.TabIndex = 19;
             // 
             // chlGenres
             // 
             this.chlGenres.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chlGenres.FormattingEnabled = true;
-            this.chlGenres.Location = new System.Drawing.Point(625, 377);
-            this.chlGenres.Margin = new System.Windows.Forms.Padding(4);
+            this.chlGenres.Location = new System.Drawing.Point(547, 399);
+            this.chlGenres.Margin = new System.Windows.Forms.Padding(3, 24, 3, 3);
             this.chlGenres.MultiColumn = true;
             this.chlGenres.Name = "chlGenres";
-            this.chlGenres.Size = new System.Drawing.Size(591, 102);
+            this.chlGenres.Size = new System.Drawing.Size(515, 105);
             this.chlGenres.TabIndex = 18;
             this.chlGenres.Visible = false;
             // 
@@ -169,8 +184,8 @@
             this.lblGenre.BackColor = System.Drawing.Color.White;
             this.lblGenre.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGenre.ForeColor = System.Drawing.Color.Gray;
-            this.lblGenre.Location = new System.Drawing.Point(460, 379);
-            this.lblGenre.Margin = new System.Windows.Forms.Padding(15);
+            this.lblGenre.Location = new System.Drawing.Point(344, 393);
+            this.lblGenre.Margin = new System.Windows.Forms.Padding(11, 12, 11, 12);
             this.lblGenre.Name = "lblGenre";
             this.lblGenre.Size = new System.Drawing.Size(61, 18);
             this.lblGenre.TabIndex = 16;
@@ -182,10 +197,10 @@
             this.txtActors.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtActors.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtActors.ForeColor = System.Drawing.Color.DimGray;
-            this.txtActors.Location = new System.Drawing.Point(626, 318);
-            this.txtActors.Margin = new System.Windows.Forms.Padding(3, 2, 3, 30);
+            this.txtActors.Location = new System.Drawing.Point(546, 345);
+            this.txtActors.Margin = new System.Windows.Forms.Padding(2, 2, 2, 24);
             this.txtActors.Name = "txtActors";
-            this.txtActors.Size = new System.Drawing.Size(590, 26);
+            this.txtActors.Size = new System.Drawing.Size(515, 26);
             this.txtActors.TabIndex = 14;
             this.txtActors.Validating += new System.ComponentModel.CancelEventHandler(this.txtActors_Validating);
             // 
@@ -195,10 +210,10 @@
             this.txtDirectors.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDirectors.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDirectors.ForeColor = System.Drawing.Color.DimGray;
-            this.txtDirectors.Location = new System.Drawing.Point(626, 260);
-            this.txtDirectors.Margin = new System.Windows.Forms.Padding(3, 2, 3, 30);
+            this.txtDirectors.Location = new System.Drawing.Point(546, 241);
+            this.txtDirectors.Margin = new System.Windows.Forms.Padding(2, 2, 2, 24);
             this.txtDirectors.Name = "txtDirectors";
-            this.txtDirectors.Size = new System.Drawing.Size(590, 26);
+            this.txtDirectors.Size = new System.Drawing.Size(515, 26);
             this.txtDirectors.TabIndex = 13;
             this.txtDirectors.Validating += new System.ComponentModel.CancelEventHandler(this.txtDirectors_Validating);
             // 
@@ -208,10 +223,10 @@
             this.txtCountry.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCountry.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCountry.ForeColor = System.Drawing.Color.DimGray;
-            this.txtCountry.Location = new System.Drawing.Point(626, 202);
-            this.txtCountry.Margin = new System.Windows.Forms.Padding(3, 2, 3, 30);
+            this.txtCountry.Location = new System.Drawing.Point(546, 189);
+            this.txtCountry.Margin = new System.Windows.Forms.Padding(2, 2, 2, 24);
             this.txtCountry.Name = "txtCountry";
-            this.txtCountry.Size = new System.Drawing.Size(590, 26);
+            this.txtCountry.Size = new System.Drawing.Size(515, 26);
             this.txtCountry.TabIndex = 12;
             this.txtCountry.Validating += new System.ComponentModel.CancelEventHandler(this.txtCountry_Validating);
             // 
@@ -221,10 +236,10 @@
             this.txtDuration.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDuration.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDuration.ForeColor = System.Drawing.Color.DimGray;
-            this.txtDuration.Location = new System.Drawing.Point(626, 144);
-            this.txtDuration.Margin = new System.Windows.Forms.Padding(3, 2, 3, 30);
+            this.txtDuration.Location = new System.Drawing.Point(546, 137);
+            this.txtDuration.Margin = new System.Windows.Forms.Padding(2, 2, 2, 24);
             this.txtDuration.Name = "txtDuration";
-            this.txtDuration.Size = new System.Drawing.Size(590, 26);
+            this.txtDuration.Size = new System.Drawing.Size(515, 26);
             this.txtDuration.TabIndex = 11;
             this.txtDuration.Validating += new System.ComponentModel.CancelEventHandler(this.txtDuration_Validating);
             // 
@@ -234,10 +249,10 @@
             this.txtReleaseYear.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtReleaseYear.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtReleaseYear.ForeColor = System.Drawing.Color.DimGray;
-            this.txtReleaseYear.Location = new System.Drawing.Point(626, 86);
-            this.txtReleaseYear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 30);
+            this.txtReleaseYear.Location = new System.Drawing.Point(546, 85);
+            this.txtReleaseYear.Margin = new System.Windows.Forms.Padding(2, 2, 2, 24);
             this.txtReleaseYear.Name = "txtReleaseYear";
-            this.txtReleaseYear.Size = new System.Drawing.Size(590, 26);
+            this.txtReleaseYear.Size = new System.Drawing.Size(515, 26);
             this.txtReleaseYear.TabIndex = 10;
             this.txtReleaseYear.Validating += new System.ComponentModel.CancelEventHandler(this.txtReleaseYear_Validating);
             // 
@@ -247,10 +262,10 @@
             this.txtMovieTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMovieTitle.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMovieTitle.ForeColor = System.Drawing.Color.DimGray;
-            this.txtMovieTitle.Location = new System.Drawing.Point(625, 28);
-            this.txtMovieTitle.Margin = new System.Windows.Forms.Padding(3, 3, 3, 30);
+            this.txtMovieTitle.Location = new System.Drawing.Point(546, 33);
+            this.txtMovieTitle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 24);
             this.txtMovieTitle.Name = "txtMovieTitle";
-            this.txtMovieTitle.Size = new System.Drawing.Size(590, 26);
+            this.txtMovieTitle.Size = new System.Drawing.Size(515, 26);
             this.txtMovieTitle.TabIndex = 9;
             this.txtMovieTitle.Validating += new System.ComponentModel.CancelEventHandler(this.txtMovieTitle_Validating);
             // 
@@ -260,8 +275,8 @@
             this.lblActors.BackColor = System.Drawing.Color.White;
             this.lblActors.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblActors.ForeColor = System.Drawing.Color.Gray;
-            this.lblActors.Location = new System.Drawing.Point(461, 322);
-            this.lblActors.Margin = new System.Windows.Forms.Padding(15);
+            this.lblActors.Location = new System.Drawing.Point(344, 347);
+            this.lblActors.Margin = new System.Windows.Forms.Padding(11, 12, 11, 12);
             this.lblActors.Name = "lblActors";
             this.lblActors.Size = new System.Drawing.Size(70, 18);
             this.lblActors.TabIndex = 8;
@@ -273,8 +288,8 @@
             this.lblDirectors.BackColor = System.Drawing.Color.White;
             this.lblDirectors.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDirectors.ForeColor = System.Drawing.Color.Gray;
-            this.lblDirectors.Location = new System.Drawing.Point(461, 263);
-            this.lblDirectors.Margin = new System.Windows.Forms.Padding(15);
+            this.lblDirectors.Location = new System.Drawing.Point(344, 243);
+            this.lblDirectors.Margin = new System.Windows.Forms.Padding(11, 12, 11, 12);
             this.lblDirectors.Name = "lblDirectors";
             this.lblDirectors.Size = new System.Drawing.Size(89, 18);
             this.lblDirectors.TabIndex = 7;
@@ -286,8 +301,8 @@
             this.lblCountry.BackColor = System.Drawing.Color.White;
             this.lblCountry.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCountry.ForeColor = System.Drawing.Color.Gray;
-            this.lblCountry.Location = new System.Drawing.Point(461, 205);
-            this.lblCountry.Margin = new System.Windows.Forms.Padding(15);
+            this.lblCountry.Location = new System.Drawing.Point(344, 191);
+            this.lblCountry.Margin = new System.Windows.Forms.Padding(11, 12, 11, 12);
             this.lblCountry.Name = "lblCountry";
             this.lblCountry.Size = new System.Drawing.Size(68, 18);
             this.lblCountry.TabIndex = 6;
@@ -299,8 +314,8 @@
             this.lblDuration.BackColor = System.Drawing.Color.White;
             this.lblDuration.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDuration.ForeColor = System.Drawing.Color.Gray;
-            this.lblDuration.Location = new System.Drawing.Point(461, 147);
-            this.lblDuration.Margin = new System.Windows.Forms.Padding(15);
+            this.lblDuration.Location = new System.Drawing.Point(344, 139);
+            this.lblDuration.Margin = new System.Windows.Forms.Padding(11, 12, 11, 12);
             this.lblDuration.Name = "lblDuration";
             this.lblDuration.Size = new System.Drawing.Size(149, 18);
             this.lblDuration.TabIndex = 5;
@@ -312,8 +327,8 @@
             this.lblYear.BackColor = System.Drawing.Color.White;
             this.lblYear.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblYear.ForeColor = System.Drawing.Color.Gray;
-            this.lblYear.Location = new System.Drawing.Point(461, 94);
-            this.lblYear.Margin = new System.Windows.Forms.Padding(15);
+            this.lblYear.Location = new System.Drawing.Point(344, 87);
+            this.lblYear.Margin = new System.Windows.Forms.Padding(11, 12, 11, 12);
             this.lblYear.Name = "lblYear";
             this.lblYear.Size = new System.Drawing.Size(103, 18);
             this.lblYear.TabIndex = 4;
@@ -325,8 +340,8 @@
             this.lblTitle.BackColor = System.Drawing.Color.White;
             this.lblTitle.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.Gray;
-            this.lblTitle.Location = new System.Drawing.Point(460, 30);
-            this.lblTitle.Margin = new System.Windows.Forms.Padding(15);
+            this.lblTitle.Location = new System.Drawing.Point(344, 35);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(11, 12, 11, 12);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(84, 18);
             this.lblTitle.TabIndex = 3;
@@ -340,14 +355,31 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // btnUploadPoster
+            // 
+            this.btnUploadPoster.Location = new System.Drawing.Point(547, 511);
+            this.btnUploadPoster.Margin = new System.Windows.Forms.Padding(2);
+            this.btnUploadPoster.Name = "btnUploadPoster";
+            this.btnUploadPoster.Size = new System.Drawing.Size(90, 28);
+            this.btnUploadPoster.TabIndex = 22;
+            this.btnUploadPoster.ButtonClicked += new System.EventHandler(this.btnUploadPoster_ButtonClicked);
+            // 
+            // btnSaveChanges
+            // 
+            this.btnSaveChanges.Location = new System.Drawing.Point(641, 511);
+            this.btnSaveChanges.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSaveChanges.Name = "btnSaveChanges";
+            this.btnSaveChanges.Size = new System.Drawing.Size(120, 31);
+            this.btnSaveChanges.TabIndex = 21;
+            this.btnSaveChanges.ButtonClicked += new System.EventHandler(this.btnSaveChanges_ButtonClicked);
+            // 
             // frmMovieDetails
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1537, 940);
+            this.ClientSize = new System.Drawing.Size(1153, 764);
             this.Controls.Add(this.pnlDetails);
             this.Controls.Add(this.pnlFormTitle);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmMovieDetails";
             this.Text = "frmMovieDetails";
             this.Load += new System.EventHandler(this.frmMovieDetails_Load);
@@ -384,7 +416,9 @@
         private System.Windows.Forms.PictureBox picPoster;
         private UserControls.Buttons.SaveChangesButton btnSaveChanges;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private UserControls.Buttons.UploadButton uploadButton1;
+        private UserControls.Buttons.UploadButton btnUploadPoster;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.TextBox txtWriters;
+        private System.Windows.Forms.Label lblWriters;
     }
 }

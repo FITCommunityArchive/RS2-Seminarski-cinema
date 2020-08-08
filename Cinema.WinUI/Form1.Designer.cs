@@ -64,9 +64,8 @@
             this.panelSideMenu.Controls.Add(this.panelLogo);
             this.panelSideMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelSideMenu.Location = new System.Drawing.Point(0, 0);
-            this.panelSideMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelSideMenu.Name = "panelSideMenu";
-            this.panelSideMenu.Size = new System.Drawing.Size(333, 903);
+            this.panelSideMenu.Size = new System.Drawing.Size(250, 734);
             this.panelSideMenu.TabIndex = 0;
             // 
             // button5
@@ -77,11 +76,10 @@
             this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(42)))), ((int)(((byte)(97)))));
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button5.Location = new System.Drawing.Point(0, 388);
-            this.button5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button5.Location = new System.Drawing.Point(0, 316);
             this.button5.Name = "button5";
-            this.button5.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
-            this.button5.Size = new System.Drawing.Size(333, 55);
+            this.button5.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.button5.Size = new System.Drawing.Size(250, 45);
             this.button5.TabIndex = 4;
             this.button5.Text = "Screenings";
             this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -95,11 +93,10 @@
             this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(42)))), ((int)(((byte)(97)))));
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button4.Location = new System.Drawing.Point(0, 333);
-            this.button4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button4.Location = new System.Drawing.Point(0, 271);
             this.button4.Name = "button4";
-            this.button4.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
-            this.button4.Size = new System.Drawing.Size(333, 55);
+            this.button4.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.button4.Size = new System.Drawing.Size(250, 45);
             this.button4.TabIndex = 3;
             this.button4.Text = "Movies";
             this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -112,10 +109,9 @@
             this.panelDashboardSubmenu.Controls.Add(this.buttonDashaboardSubmenu2);
             this.panelDashboardSubmenu.Controls.Add(this.buttonDashaboardSubmenu1);
             this.panelDashboardSubmenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelDashboardSubmenu.Location = new System.Drawing.Point(0, 233);
-            this.panelDashboardSubmenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelDashboardSubmenu.Location = new System.Drawing.Point(0, 190);
             this.panelDashboardSubmenu.Name = "panelDashboardSubmenu";
-            this.panelDashboardSubmenu.Size = new System.Drawing.Size(333, 100);
+            this.panelDashboardSubmenu.Size = new System.Drawing.Size(250, 81);
             this.panelDashboardSubmenu.TabIndex = 2;
             // 
             // buttonDashaboardSubmenu2
@@ -126,11 +122,10 @@
             this.buttonDashaboardSubmenu2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(42)))), ((int)(((byte)(97)))));
             this.buttonDashaboardSubmenu2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDashaboardSubmenu2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonDashaboardSubmenu2.Location = new System.Drawing.Point(0, 49);
-            this.buttonDashaboardSubmenu2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonDashaboardSubmenu2.Location = new System.Drawing.Point(0, 40);
             this.buttonDashaboardSubmenu2.Name = "buttonDashaboardSubmenu2";
-            this.buttonDashaboardSubmenu2.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
-            this.buttonDashaboardSubmenu2.Size = new System.Drawing.Size(333, 49);
+            this.buttonDashaboardSubmenu2.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.buttonDashaboardSubmenu2.Size = new System.Drawing.Size(250, 40);
             this.buttonDashaboardSubmenu2.TabIndex = 1;
             this.buttonDashaboardSubmenu2.Text = "Submenu 2";
             this.buttonDashaboardSubmenu2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -146,10 +141,9 @@
             this.buttonDashaboardSubmenu1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDashaboardSubmenu1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonDashaboardSubmenu1.Location = new System.Drawing.Point(0, 0);
-            this.buttonDashaboardSubmenu1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonDashaboardSubmenu1.Name = "buttonDashaboardSubmenu1";
-            this.buttonDashaboardSubmenu1.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
-            this.buttonDashaboardSubmenu1.Size = new System.Drawing.Size(333, 49);
+            this.buttonDashaboardSubmenu1.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.buttonDashaboardSubmenu1.Size = new System.Drawing.Size(250, 40);
             this.buttonDashaboardSubmenu1.TabIndex = 0;
             this.buttonDashaboardSubmenu1.Text = "Submenu 1";
             this.buttonDashaboardSubmenu1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -164,11 +158,10 @@
             this.buttonDashboard.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(42)))), ((int)(((byte)(97)))));
             this.buttonDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDashboard.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonDashboard.Location = new System.Drawing.Point(0, 178);
-            this.buttonDashboard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonDashboard.Location = new System.Drawing.Point(0, 145);
             this.buttonDashboard.Name = "buttonDashboard";
-            this.buttonDashboard.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
-            this.buttonDashboard.Size = new System.Drawing.Size(333, 55);
+            this.buttonDashboard.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.buttonDashboard.Size = new System.Drawing.Size(250, 45);
             this.buttonDashboard.TabIndex = 1;
             this.buttonDashboard.Text = "Dashboard";
             this.buttonDashboard.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -181,9 +174,8 @@
             this.panelLogo.Controls.Add(this.label3);
             this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelLogo.Location = new System.Drawing.Point(0, 0);
-            this.panelLogo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelLogo.Name = "panelLogo";
-            this.panelLogo.Size = new System.Drawing.Size(333, 178);
+            this.panelLogo.Size = new System.Drawing.Size(250, 145);
             this.panelLogo.TabIndex = 0;
             // 
             // button1
@@ -192,10 +184,9 @@
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(16, 21);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Location = new System.Drawing.Point(12, 17);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 92);
+            this.button1.Size = new System.Drawing.Size(75, 75);
             this.button1.TabIndex = 1;
             this.button1.UseVisualStyleBackColor = true;
             // 
@@ -203,10 +194,9 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(12, 132);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(9, 107);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(132, 17);
+            this.label3.Size = new System.Drawing.Size(116, 15);
             this.label3.TabIndex = 0;
             this.label3.Text = "Boris Huseincehajic";
             // 
@@ -217,38 +207,34 @@
             this.panelTopBar.Controls.Add(this.buttonLogIn);
             this.panelTopBar.Controls.Add(this.buttonLogOut);
             this.panelTopBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTopBar.Location = new System.Drawing.Point(333, 0);
-            this.panelTopBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelTopBar.Location = new System.Drawing.Point(250, 0);
             this.panelTopBar.Name = "panelTopBar";
-            this.panelTopBar.Size = new System.Drawing.Size(1249, 62);
+            this.panelTopBar.Size = new System.Drawing.Size(1085, 50);
             this.panelTopBar.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(580, 21);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(435, 17);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 17);
+            this.label1.Size = new System.Drawing.Size(86, 15);
             this.label1.TabIndex = 2;
             this.label1.Text = "Welcome user";
             // 
             // buttonLogIn
             // 
-            this.buttonLogIn.Location = new System.Drawing.Point(688, 15);
-            this.buttonLogIn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonLogIn.Location = new System.Drawing.Point(516, 12);
             this.buttonLogIn.Name = "buttonLogIn";
-            this.buttonLogIn.Size = new System.Drawing.Size(100, 28);
+            this.buttonLogIn.Size = new System.Drawing.Size(75, 23);
             this.buttonLogIn.TabIndex = 1;
             this.buttonLogIn.Text = "Log In";
             this.buttonLogIn.UseVisualStyleBackColor = true;
             // 
             // buttonLogOut
             // 
-            this.buttonLogOut.Location = new System.Drawing.Point(796, 15);
-            this.buttonLogOut.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonLogOut.Location = new System.Drawing.Point(597, 12);
             this.buttonLogOut.Name = "buttonLogOut";
-            this.buttonLogOut.Size = new System.Drawing.Size(100, 28);
+            this.buttonLogOut.Size = new System.Drawing.Size(75, 23);
             this.buttonLogOut.TabIndex = 0;
             this.buttonLogOut.Text = "Log Out";
             this.buttonLogOut.UseVisualStyleBackColor = true;
@@ -258,19 +244,17 @@
             this.panelBottomBar.BackColor = System.Drawing.Color.White;
             this.panelBottomBar.Controls.Add(this.label2);
             this.panelBottomBar.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelBottomBar.Location = new System.Drawing.Point(333, 864);
-            this.panelBottomBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelBottomBar.Location = new System.Drawing.Point(250, 702);
             this.panelBottomBar.Name = "panelBottomBar";
-            this.panelBottomBar.Size = new System.Drawing.Size(1249, 39);
+            this.panelBottomBar.Size = new System.Drawing.Size(1085, 32);
             this.panelBottomBar.TabIndex = 2;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 12);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(6, 10);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(214, 17);
+            this.label2.Size = new System.Drawing.Size(186, 15);
             this.label2.TabIndex = 0;
             this.label2.Text = "Copyright eCinema © 2014-2020";
             // 
@@ -278,24 +262,22 @@
             // 
             this.panelChildForm.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panelChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelChildForm.Location = new System.Drawing.Point(333, 62);
-            this.panelChildForm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelChildForm.Location = new System.Drawing.Point(250, 50);
             this.panelChildForm.Name = "panelChildForm";
-            this.panelChildForm.Size = new System.Drawing.Size(1249, 802);
+            this.panelChildForm.Size = new System.Drawing.Size(1085, 652);
             this.panelChildForm.TabIndex = 3;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1582, 903);
+            this.ClientSize = new System.Drawing.Size(1335, 734);
             this.Controls.Add(this.panelChildForm);
             this.Controls.Add(this.panelBottomBar);
             this.Controls.Add(this.panelTopBar);
             this.Controls.Add(this.panelSideMenu);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.MinimumSize = new System.Drawing.Size(1261, 728);
+            this.MinimumSize = new System.Drawing.Size(950, 600);
             this.Name = "Form1";
             this.Text = "Form1";
             this.panelSideMenu.ResumeLayout(false);
