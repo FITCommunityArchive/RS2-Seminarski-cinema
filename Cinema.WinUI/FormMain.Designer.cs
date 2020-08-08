@@ -196,7 +196,7 @@
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(9, 107);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 13);
+            this.label3.Size = new System.Drawing.Size(116, 15);
             this.label3.TabIndex = 0;
             this.label3.Text = "Boris Huseincehajic";
             // 
@@ -209,7 +209,7 @@
             this.panelTopBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTopBar.Location = new System.Drawing.Point(250, 0);
             this.panelTopBar.Name = "panelTopBar";
-            this.panelTopBar.Size = new System.Drawing.Size(936, 50);
+            this.panelTopBar.Size = new System.Drawing.Size(1085, 50);
             this.panelTopBar.TabIndex = 1;
             // 
             // label1
@@ -217,7 +217,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(435, 17);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 13);
+            this.label1.Size = new System.Drawing.Size(86, 15);
             this.label1.TabIndex = 2;
             this.label1.Text = "Welcome user";
             // 
@@ -247,7 +247,7 @@
             this.panelBottomBar.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelBottomBar.Location = new System.Drawing.Point(250, 702);
             this.panelBottomBar.Name = "panelBottomBar";
-            this.panelBottomBar.Size = new System.Drawing.Size(936, 32);
+            this.panelBottomBar.Size = new System.Drawing.Size(1085, 32);
             this.panelBottomBar.TabIndex = 2;
             // 
             // label2
@@ -255,7 +255,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(6, 10);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(161, 13);
+            this.label2.Size = new System.Drawing.Size(186, 15);
             this.label2.TabIndex = 0;
             this.label2.Text = "Copyright eCinema © 2014-2020";
             // 
@@ -265,21 +265,21 @@
             this.panelChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelChildForm.Location = new System.Drawing.Point(250, 50);
             this.panelChildForm.Name = "panelChildForm";
-            this.panelChildForm.Size = new System.Drawing.Size(936, 652);
+            this.panelChildForm.Size = new System.Drawing.Size(1085, 652);
             this.panelChildForm.TabIndex = 3;
             // 
-            // Form1
+            // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1186, 734);
+            this.ClientSize = new System.Drawing.Size(1335, 734);
             this.Controls.Add(this.panelChildForm);
             this.Controls.Add(this.panelBottomBar);
             this.Controls.Add(this.panelTopBar);
             this.Controls.Add(this.panelSideMenu);
             this.MinimumSize = new System.Drawing.Size(950, 599);
-            this.Name = "Form1";
+            this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.UserIsAllowed += new System.EventHandler(this.Form1_UserIsAllowed);

@@ -13,6 +13,12 @@ namespace Cinema.WinUI
         protected Shared.Enums.SortOrder? CurrentSortOrder;
 
         private IList<string> _nextFormPrincipal;
+
+        public BaseDataGridForm()
+        {
+
+        }
+
         public BaseDataGridForm(string[] roles, IList<string> userPrincipal) : base(roles, userPrincipal)
         {
             _nextFormPrincipal = userPrincipal;
