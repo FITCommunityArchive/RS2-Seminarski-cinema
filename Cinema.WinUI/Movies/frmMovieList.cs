@@ -14,7 +14,7 @@ namespace Cinema.WinUI.Movies
         private readonly ApiService _moviesApi = new ApiService("Movies");
 
         private IList<string> _nextFormPrincipal;
-        public frmMoviesList(IList<string> userPrincipal) : base(new string[] { "Administrator", "Content Editor" }, userPrincipal)
+        public frmMovieList(IList<string> userPrincipal) : base(new string[] { "Administrator", "Content Editor" }, userPrincipal)
         {
             _nextFormPrincipal = userPrincipal;
             InitializeComponent();
