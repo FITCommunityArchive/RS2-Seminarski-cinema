@@ -353,24 +353,24 @@ namespace Cinema.Dal.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2690a941-1eaa-47ae-8048-b1a0e2d1bef6",
-                            ConcurrencyStamp = "4d37d86c-5ab3-4e5d-9509-aff3edde8380",
+                            Id = "3eadf352-1e91-48d2-b652-f0c6d06683e5",
+                            ConcurrencyStamp = "f6a85d1d-6d9b-4c35-9347-71916994b7f9",
                             Deleted = false,
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
-                            Id = "08eef917-5ab7-4cc9-a98f-de01fb1f850a",
-                            ConcurrencyStamp = "261adc50-6871-4818-ba76-e587441e30cf",
+                            Id = "4f113b67-63e3-40d4-8b55-4cbe877c787a",
+                            ConcurrencyStamp = "954c97c4-4604-4af2-a247-c12af6c809dc",
                             Deleted = false,
                             Name = "Content Editor",
                             NormalizedName = "CONTENT EDITOR"
                         },
                         new
                         {
-                            Id = "01cd822a-3aba-4f7a-9e5c-eb8284e44378",
-                            ConcurrencyStamp = "050d704e-9317-40b4-98a9-da49bded3105",
+                            Id = "0da60945-6d69-4e12-8c70-ecbf72039a39",
+                            ConcurrencyStamp = "ba1a12ad-1e26-46aa-8995-700c2aa2577e",
                             Deleted = false,
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
@@ -617,19 +617,16 @@ namespace Cinema.Dal.Migrations
                     b.Property<int>("Duration")
                         .HasColumnType("int");
 
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
-
-                    b.Property<byte[]>("Poster")
-                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("VideoLink")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Writers")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Year")
@@ -651,7 +648,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             Title = "Bomb the System",
                             VideoLink = "https://www.imdb.com/video/vi1706754329?playlistId=tt0337585&ref_=tt_ov_vi",
-                            Writers = "Adam Bhala Lough",
                             Year = 2002
                         },
                         new
@@ -665,7 +661,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             Title = "Zu: Warriors from the Magic Mountain",
                             VideoLink = "https://www.imdb.com/video/vi645768729?playlistId=tt0086308&ref_=tt_ov_vi",
-                            Writers = "Cheuk-Hon Szeto",
                             Year = 1983
                         },
                         new
@@ -679,7 +674,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             Title = "Dinotopia: Quest for the Ruby Sunstone",
                             VideoLink = "https://www.imdb.com/video/vi1889665305?playlistId=tt0372238&ref_=tt_ov_vi",
-                            Writers = "Sean Roche, James Gurney",
                             Year = 2005
                         },
                         new
@@ -693,7 +687,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             Title = "Battle in Seattle",
                             VideoLink = "https://www.imdb.com/video/vi1761450777?playlistId=tt0850253&ref_=tt_ov_vi",
-                            Writers = "Stuart Townsend",
                             Year = 2007
                         });
                 });

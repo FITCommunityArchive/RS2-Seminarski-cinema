@@ -13,6 +13,10 @@
     <Compile Remove="Migrations\20200807193929_AddedPosterRemovedImageProperty.Designer.cs" />
     <Compile Remove="Migrations\20200807194535_AddedPosterToMovie.cs" />
     <Compile Remove="Migrations\20200807194535_AddedPosterToMovie.Designer.cs" />
+    <Compile Remove="Migrations\20200807194849_AddedPoster.cs" />
+    <Compile Remove="Migrations\20200807194849_AddedPoster.Designer.cs" />
+    <Compile Remove="Migrations\20200808102933_AddedWritersToMovie.cs" />
+    <Compile Remove="Migrations\20200808102933_AddedWritersToMovie.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
