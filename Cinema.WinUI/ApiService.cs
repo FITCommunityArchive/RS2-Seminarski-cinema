@@ -1,6 +1,10 @@
 ﻿using Cinema.Shared.Helpers;
+using Flurl;
 using Flurl.Http;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Net.Http;
 
 namespace Cinema.WinUI
 {
@@ -9,6 +13,9 @@ namespace Cinema.WinUI
         public static string Username { get; set; }
         public static string Password { get; set; }
 
+        public static string Role { get; set; }
+        public static string Token { get; set; }
+
         private string _route = null;
 
         public ApiService(string route)
@@ -16,8 +23,43 @@ namespace Cinema.WinUI
             _route = route;
         }
 
+        public async Task<bool> AuthUser()
+        {
+            var loginUrl = $"{Properties.Settings.Default.APIUrl}/login";
+
+
+
+            var result = await loginUrl.PostJsonAsync(new
+            {
+                userName = Username,
+                password = Password
+            });
+            if(result.IsSuccessStatusCode)
+            {
+                var json = await result.Content.ReadAsStringAsync();
+                var dynamicJson = JsonConvert.DeserializeObject<dynamic>(json);
+                Token = dynamicJson.token;
+
+                var decodeUrl = $"{Properties.Settings.Default.APIUrl}/decode";
+                var decodeResult = await decodeUrl.SetQueryParams(new { token = Token }).GetStringAsync();
+
+                if(decodeResult != null)
+                {
+                    Role = decodeResult;
+                }
+
+                return true;
+            } else
+            {
+                Token = "";
+            }
+
+            return false;
+        }
+
         public async Task<T> Get<T>(object search)
         {
+           
             var url = $"{Properties.Settings.Default.APIUrl}/{_route}";
 
             if (search != null)
@@ -26,7 +68,7 @@ namespace Cinema.WinUI
                 url += await search.ToQueryString();
             }
 
-            var result = await url.GetJsonAsync<T>();
+            var result = await url.WithOAuthBearerToken(Token).GetJsonAsync<T>();
 
             return result;
         }
@@ -35,21 +77,21 @@ namespace Cinema.WinUI
         {
             var url = $"{Properties.Settings.Default.APIUrl}/{_route}/{id}";
 
-            return await url.GetJsonAsync<T>();
+            return await url.WithOAuthBearerToken(Token).GetJsonAsync<T>();
         }
 
         public async Task<T> Insert<T>(object request)
         {
             var url = $"{Properties.Settings.Default.APIUrl}/{_route}";
 
-            return await url.PostJsonAsync(request).ReceiveJson<T>();
+            return await url.WithOAuthBearerToken(Token).PostJsonAsync(request).ReceiveJson<T>();
         }
 
         public async Task<T> Update<T>(object id, object request)
         {
             var url = $"{Properties.Settings.Default.APIUrl}/{_route}/{id}";
 
-            return await url.PutJsonAsync(request).ReceiveJson<T>();
+            return await url.WithOAuthBearerToken(Token).PutJsonAsync(request).ReceiveJson<T>();
         }
     }
 }

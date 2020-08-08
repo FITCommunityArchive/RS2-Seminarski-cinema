@@ -9,6 +9,7 @@ namespace Cinema.Utilities.Interfaces
     public interface IUserService : ICRUDService<ApplicationUserDto,UserSearchRequest,UserUpsertRequest,UserUpsertRequest>
     {
         Task<ApplicationUserDto> Authenticate(string userName, string password);
-        string GenerateJSONWebToken(ApplicationUserDto userInfo);
+        string GenerateJSONWebToken(ApplicationUserDto user);
+        Task<string> DecodeJSONWebToken(string token);
     }
 }
