@@ -1,7 +1,9 @@
 ﻿using Cinema.Models.Requests;
 using Cinema.Shared.Pagination;
 using Cinema.Utilities.Interfaces.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;
 
 namespace Cinema.Web.Api.Controllers
@@ -9,12 +11,14 @@ namespace Cinema.Web.Api.Controllers
     //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme)]
     public class BaseController<T, TSearch> : ControllerBase where TSearch : BaseSearchRequest
     {
         private readonly IService<T, TSearch> _service;
         public BaseController(IService<T, TSearch> service)
         {
             _service = service;
+
         }
         [HttpGet]
         public async Task<ActionResult<PagedList<T>>> Get([FromQuery] TSearch search)

@@ -9,21 +9,33 @@ using Cinema.Utilities.Interfaces.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using System;
+using System.Text;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using System.Security.Claims;
+using System.Collections.Generic;
 
 namespace Cinema.Services
 {
     public class UserService : ICRUDService<ApplicationUserDto, UserSearchRequest, UserUpsertRequest, UserUpsertRequest>, IUserService
     {
         private readonly UserManager<ApplicationUser> _userManager;
-        protected readonly IUsersRepository _userRepo;
+        private IConfiguration _config;
+
+        protected readonly IUserRepository _userRepo;
         protected readonly IUnitOfWork _unit;
         protected readonly IMapper _mapper;
-        public UserService(IUnitOfWork unit, IMapper mapper, UserManager<ApplicationUser> userManager)
+        public UserService(IUnitOfWork unit, IMapper mapper, UserManager<ApplicationUser> userManager, IConfiguration config)
         {
-            _userManager = userManager;
             _unit = unit;
-            _mapper = mapper;
+            _userManager = userManager;
             _userRepo = unit.Users;
+            _config = config;
+            _mapper = mapper;
         }
 
 
@@ -43,8 +55,8 @@ namespace Cinema.Services
 
             return _mapper.Map<ApplicationUserDto>(userIdentity);
         }
-
-        public Task<ApplicationUserDto> Update(int id, UserUpsertRequest req)
+        
+        public async Task<ApplicationUserDto> Update(int id, UserUpsertRequest req)
         {
             throw new System.NotImplementedException();
         }
@@ -61,6 +73,69 @@ namespace Cinema.Services
         public Task<ApplicationUserDto> GetByIdAsync(int id)
         {
             throw new System.NotImplementedException();
+        }
+
+
+        public async Task<ApplicationUserDto> Authenticate(string userName, string password)
+        {
+            var user = _userManager.Users.Include(r => r.UserRoles).ThenInclude(u => u.Role).FirstOrDefault(x => x.UserName == userName);
+
+            if (user != null)
+            {
+                
+                var result = _userManager.PasswordHasher.VerifyHashedPassword(user, user.PasswordHash, password);
+                if (PasswordVerificationResult.Success == result)
+                {
+
+                    return _mapper.Map<ApplicationUserDto>(user);
+                }
+            }
+            return null;
+        }
+
+        #region GenerateJWT  
+        /// <summary>  
+        /// Generate Json Web Token Method  
+        /// </summary>  
+        /// <param name="userInfo"></param>  
+        /// <returns></returns>  
+        public string GenerateJSONWebToken(ApplicationUserDto user)
+        {
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
+            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+            List<Claim> claims = new List<Claim>()
+            {
+                new Claim(ClaimTypes.NameIdentifier,user.UserName)
+            };
+
+            foreach (var role in user.UserRoles)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, role.Role.Name));
+            };
+
+            ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims);
+
+            var token = new JwtSecurityToken(_config["Jwt:Issuer"],
+              _config["Jwt:Issuer"],
+              claims,
+              expires: DateTime.Now.AddMinutes(120),
+              signingCredentials: credentials);
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+        #endregion
+
+        public async Task<string> DecodeJSONWebToken(string token)
+        {
+            
+            var handler = new JwtSecurityTokenHandler();
+            var readToken = handler.ReadJwtToken(token);
+
+            var roleName = readToken.Claims.ToList()[1].Value;
+            var user = await _userManager.GetUsersInRoleAsync(roleName);
+
+            return roleName;
         }
     }
 }

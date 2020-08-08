@@ -1,5 +1,6 @@
 ﻿using Cinema.Domain.Entities;
 using Cinema.Domain.Entities.Identity;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage;
@@ -31,6 +32,7 @@ namespace Cinema.Dal.Data
             SeedMovies(modelBuilder);
             SeedGenreMovies(modelBuilder);
             SeedRoles(modelBuilder);
+            SeedUsers(modelBuilder);
         }
 
         private static void SeedGenreMovies(ModelBuilder modelBuilder)
@@ -380,20 +382,54 @@ namespace Cinema.Dal.Data
             modelBuilder.Entity<ApplicationRole>().HasData(
                 new ApplicationRole
                 {
+                    Id = "-1",
                     Name = "Administrator",
                     NormalizedName = "ADMINISTRATOR"
                 },
                 new ApplicationRole
                 {
+                    Id = "-2",
                     Name = "Content Editor",
                     NormalizedName = "CONTENT EDITOR"
                 },
                 new ApplicationRole
                 {
+                    Id = "-3",
                     Name = "Customer",
                     NormalizedName = "CUSTOMER"
                 }
             );
+        }
+
+        private static void SeedUsers(ModelBuilder modelBuilder)
+        {
+
+            const string ADMIN_ID = "a18be9c0-aa65-4af8-bd17-00bd9344e575";
+            ApplicationUser appUser = new ApplicationUser
+            {
+                Id = ADMIN_ID,
+                UserName = "admin",
+                Email = "admin@admin.com",
+                NormalizedEmail = "admin@admin.com".ToUpper(),
+                NormalizedUserName = "admin".ToUpper(),
+                TwoFactorEnabled = false,
+                EmailConfirmed = true,
+                PhoneNumber = "123456789",
+                PhoneNumberConfirmed = false
+            };
+
+            PasswordHasher<ApplicationUser> ph = new PasswordHasher<ApplicationUser>();
+            appUser.PasswordHash = ph.HashPassword(appUser, "test1234");
+
+            modelBuilder.Entity<ApplicationUser>().HasData(
+                appUser
+            );
+
+            modelBuilder.Entity<ApplicationUserRole>().HasData(new ApplicationUserRole
+            {
+                UserId = ADMIN_ID,
+                RoleId = "-1"
+            });
         }
     }
 }

@@ -3,6 +3,7 @@ using Cinema.Models.Requests.Movies;
 using Cinema.Shared.Pagination;
 using Cinema.WinUI.Constants;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -12,8 +13,10 @@ namespace Cinema.WinUI.Movies
     {
         private readonly ApiService _moviesApi = new ApiService("Movies");
 
-        public frmMovieList()
+        private IList<string> _nextFormPrincipal;
+        public frmMoviesList(IList<string> userPrincipal) : base(new string[] { "Administrator", "Content Editor" }, userPrincipal)
         {
+            _nextFormPrincipal = userPrincipal;
             InitializeComponent();
         }
 

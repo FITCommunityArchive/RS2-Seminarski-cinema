@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Cinema.Utilities.Interfaces.Dal
 {
-    public interface IUsersRepository : IRepository<ApplicationUser, int>
+    public interface IUserRepository : IRepository<ApplicationUser, int>
     {
         ApplicationUser GetUserByEmail(string email);
         Task<IPagedList<ApplicationUser>> GetPagedAsync(ISearchRequest searchRequest, string firstName, string lastName);

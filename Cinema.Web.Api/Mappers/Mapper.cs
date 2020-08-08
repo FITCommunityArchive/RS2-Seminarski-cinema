@@ -14,7 +14,9 @@ namespace Cinema.Web.Api.Mappers
             CreateMap<BaseClass, BaseDto>().Include<Movie, MovieDto>();
             CreateMap<Movie, MovieDto>();
             CreateMap<Movie, MovieUpsertRequest>().ReverseMap();
-            CreateMap<ApplicationUser, ApplicationUserDto>();
+            CreateMap<ApplicationUser, ApplicationUserDto>(); 
+            CreateMap<ApplicationRole, ApplicationRoleDto>();
+            CreateMap<ApplicationUserRole, ApplicationUserRoleDto>();
             CreateMap<ApplicationUser, UserUpsertRequest>().ReverseMap();
             CreateMap<ApplicationUser, UserSearchRequest>().ReverseMap();
             CreateMap<Genre, GenreDto>();

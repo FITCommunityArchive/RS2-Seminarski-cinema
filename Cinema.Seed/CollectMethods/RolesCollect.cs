@@ -1,6 +1,7 @@
 ﻿using Cinema.Dal.Data;
 using Cinema.Domain.Entities.Identity;
 using Cinema.Utilities.Interfaces;
+using Cinema.Utilities.Interfaces.Dal;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using OfficeOpenXml;
