@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Cinema.Models
+namespace Cinema.Models.Dtos
 {
     public class ApplicationUserDto
     {
