@@ -2,6 +2,7 @@
 using Cinema.WinUI.Authorization;
 using Cinema.WinUI.Constants;
 using Cinema.WinUI.UserControls;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Cinema.WinUI
@@ -9,7 +10,13 @@ namespace Cinema.WinUI
     public class BaseDataGridForm : SecureBaseForm
     {
         protected string CurrentSortPropertyName;
-        protected Cinema.Shared.Enums.SortOrder? CurrentSortOrder;
+        protected Shared.Enums.SortOrder? CurrentSortOrder;
+
+        private IList<string> _nextFormPrincipal;
+        public BaseDataGridForm(string[] roles, IList<string> userPrincipal) : base(roles, userPrincipal)
+        {
+            _nextFormPrincipal = userPrincipal;
+        }
 
         protected virtual void ChangeSorting(string clickedColumnName)
         {
