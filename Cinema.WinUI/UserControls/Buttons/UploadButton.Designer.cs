@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnUpload = new System.Windows.Forms.Button();
+            this.btnUpload = new ExtendedButton();
             this.SuspendLayout();
             // 
             // btnUpload
@@ -54,12 +54,13 @@
             this.Controls.Add(this.btnUpload);
             this.Name = "UploadButton";
             this.Size = new System.Drawing.Size(120, 40);
+            this.EnabledChanged += new System.EventHandler(this.UploadButton_EnabledChanged);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnUpload;
+        private ExtendedButton btnUpload;
     }
 }

@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnEdit = new System.Windows.Forms.Button();
+            this.components = new System.ComponentModel.Container();
+            this.btnEdit = new Cinema.WinUI.UserControls.ExtendedButton(this.components);
             this.SuspendLayout();
             // 
             // btnEdit
@@ -56,12 +57,13 @@
             this.Controls.Add(this.btnEdit);
             this.Name = "EditButton";
             this.Size = new System.Drawing.Size(120, 40);
+            this.EnabledChanged += new System.EventHandler(this.EditButton_EnabledChanged);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnEdit;
+        private ExtendedButton btnEdit;
     }
 }
