@@ -1,4 +1,4 @@
-﻿using Cinema.Models;
+﻿using Cinema.Models.Dtos;
 using Cinema.Models.Requests.Movies;
 using Cinema.Shared.Pagination;
 using Cinema.WinUI.Constants;
@@ -9,12 +9,12 @@ using System.Windows.Forms;
 
 namespace Cinema.WinUI.Movies
 {
-    public partial class frmMoviesList : BaseDataGridForm
+    public partial class frmMovieList : BaseDataGridForm
     {
         private readonly ApiService _moviesApi = new ApiService("Movies");
 
         private IList<string> _nextFormPrincipal;
-        public frmMoviesList(IList<string> userPrincipal) : base(new string[] { "Administrator", "Content Editor" }, userPrincipal)
+        public frmMovieList(IList<string> userPrincipal) : base(new string[] { "Administrator", "Content Editor" }, userPrincipal)
         {
             _nextFormPrincipal = userPrincipal;
             InitializeComponent();
@@ -81,6 +81,27 @@ namespace Cinema.WinUI.Movies
             searchRequest.SortOrder = CurrentSortOrder;
 
             await LoadMovies(searchRequest);
+        }
+
+        private void grdMoviesList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var senderGrid = (DataGridView)sender;
+
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
+                e.RowIndex >= 0)
+            {
+                var clickedRow = senderGrid.Rows[e.RowIndex];
+                int.TryParse(clickedRow.Cells["id"].Value.ToString(), out int filmId);
+
+                frmMovieDetails frmMovieDetails = new frmMovieDetails(filmId);
+                frmMovieDetails.ShowDialog();
+            }
+        }
+
+        private void btnAddNew_ButtonClicked(object sender, EventArgs e)
+        {
+            frmMovieDetails frmMovieDetails = new frmMovieDetails();
+            frmMovieDetails.ShowDialog();
         }
     }
 }

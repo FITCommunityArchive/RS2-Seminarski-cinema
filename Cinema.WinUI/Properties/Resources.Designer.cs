@@ -69,5 +69,41 @@ namespace Cinema.WinUI.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Something went wrong!.
+        /// </summary>
+        internal static string Operation_BadRequest {
+            get {
+                return ResourceManager.GetString("Operation_BadRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Operation successful!.
+        /// </summary>
+        internal static string Operation_Successful {
+            get {
+                return ResourceManager.GetString("Operation_Successful", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Input value must be an integer!.
+        /// </summary>
+        internal static string Validation_IntegerRequired {
+            get {
+                return ResourceManager.GetString("Validation_IntegerRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The field is required!.
+        /// </summary>
+        internal static string Validation_RequiredField {
+            get {
+                return ResourceManager.GetString("Validation_RequiredField", resourceCulture);
+            }
+        }
     }
 }

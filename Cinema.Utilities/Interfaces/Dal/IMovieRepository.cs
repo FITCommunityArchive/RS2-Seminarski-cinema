@@ -8,5 +8,6 @@ namespace Cinema.Utilities.Interfaces.Dal
     public interface IMovieRepository : IRepository<Movie, int>
     {
         Task<IPagedList<Movie>> GetPagedAsync(ISearchRequest searchRequest, string searchTerm, int? searchYear, int? searchDuration);
+        Task<Movie> GetByIdWithGenresAsync(int id);
     }
 }

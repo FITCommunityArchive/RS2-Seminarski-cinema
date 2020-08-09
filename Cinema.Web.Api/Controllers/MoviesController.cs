@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
-using Cinema.Models;
+﻿using Cinema.Models.Dtos;
 using Cinema.Models.Requests.Movies;
 using Cinema.Utilities.Interfaces.Services;
 

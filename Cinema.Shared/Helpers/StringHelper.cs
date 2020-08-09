@@ -1,4 +1,6 @@
-﻿namespace Cinema.Shared.Helpers
+﻿using Slugify;
+
+namespace Cinema.Shared.Helpers
 {
     public static class StringHelper
     {
@@ -8,6 +10,16 @@
                 return text;
             else
                 return text.Substring(0, characterLimit - postfix.Length) + postfix;
+        }
+
+        public static string CreateSlug(this string source)
+        {
+            if (string.IsNullOrEmpty(source)) return null;
+
+            SlugHelper helper = new SlugHelper();
+
+            string slug = helper.GenerateSlug(source);
+            return slug;
         }
     }
 }

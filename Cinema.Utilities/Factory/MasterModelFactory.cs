@@ -1,72 +1,72 @@
 ﻿using Cinema.Domain.Entities;
 using Cinema.Domain.Entities.Identity;
-using Cinema.Models;
+using Cinema.Models.Dtos;
 
 namespace Cinema.Utilities.Factory
 {
     public static class MasterModelFactory
     {
-        public static MasterModel CreateMaster(this Seat seat)
+        public static MasterDto CreateMaster(this Seat seat)
         {
-            return new MasterModel
+            return new MasterDto
             {
                 Id = seat.Id,
                 Name = seat.Label
             };
         }
-        public static MasterModel CreateMaster(this Movie movie)
+        public static MasterDto CreateMaster(this Movie movie)
         {
-            return new MasterModel
+            return new MasterDto
             {
                 Id = movie.Id,
                 Name = movie.Title
             };
         }
-        public static MasterModel CreateMaster(this Screening screening)
+        public static MasterDto CreateMaster(this Screening screening)
         {
-            return new MasterModel
+            return new MasterDto
             {
                 Id = screening.Id,
                 Name = screening.Movie.Title + " " + screening.Hall.Name
             };
         }
-        public static MasterModel CreateMaster(this Review review)
+        public static MasterDto CreateMaster(this Review review)
         {
-            return new MasterModel
+            return new MasterDto
             {
                 Id = review.Id,
                 Name = review.User.FullName + ", " + review.Movie.Title
             };
         }
-        public static MasterModel CreateMaster(this GenreMovie genreMovie)
+        public static MasterDto CreateMaster(this GenreMovie genreMovie)
         {
-            return new MasterModel
+            return new MasterDto
             {
                 Id = genreMovie.Id,
                 Name = genreMovie.Movie.Title + ", " + genreMovie.Genre.Name
             };
         }
-        public static MasterModel CreateMaster(this Genre genre)
+        public static MasterDto CreateMaster(this Genre genre)
         {
-            return new MasterModel
+            return new MasterDto
             {
                 Id = genre.Id,
                 Name = genre.Name
             };
         }
 
-        public static MasterModel CreateMaster(this EventType eventType)
+        public static MasterDto CreateMaster(this EventType eventType)
         {
-            return new MasterModel
+            return new MasterDto
             {
                 Id = eventType.Id,
                 Name = eventType.Name
             };
         }
 
-        public static MasterModel CreateMaster(this NewsType newsType)
+        public static MasterDto CreateMaster(this NewsType newsType)
         {
-            return new MasterModel
+            return new MasterDto
             {
                 Id = newsType.Id,
                 Name = newsType.Name
@@ -91,18 +91,18 @@ namespace Cinema.Utilities.Factory
             };
         }
 
-        public static MasterModel CreateMaster(this Pricing pricing)
+        public static MasterDto CreateMaster(this Pricing pricing)
         {
-            return new MasterModel
+            return new MasterDto
             {
                 Id = pricing.Id,
                 Name = $"{pricing.Name} | {pricing.Price}"
             };
         }
 
-        public static MasterModel CreateMaster(this Hall hall)
+        public static MasterDto CreateMaster(this Hall hall)
         {
-            return new MasterModel
+            return new MasterDto
             {
                 Id = hall.Id,
                 Name = hall.Name

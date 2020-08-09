@@ -1,15 +1,14 @@
 ﻿using Cinema.Domain.Entities;
 using Cinema.Domain.Entities.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Cinema.Utilities.Interfaces.Dal
 {
     public interface ICinemaDbContext
-    {
-        DbSet<TEntity> Set<TEntity>() where TEntity : class;
-
+    {       
         DbSet<Event> Events { get; set; }
         DbSet<EventType> EventTypes { get; set; }
         DbSet<Genre> Genres { get; set; }
@@ -29,6 +28,8 @@ namespace Cinema.Utilities.Interfaces.Dal
         DbSet<ApplicationRole> Roles { get; set; }
         DbSet<ApplicationUserRole> UserRoles { get; set; }
 
+        DbSet<TEntity> Set<TEntity>() where TEntity : class;
+        EntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;
         int SaveChanges();
         Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default);
         void Dispose();

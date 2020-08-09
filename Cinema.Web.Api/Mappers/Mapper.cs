@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Cinema.Domain.Entities;
 using Cinema.Domain.Entities.Identity;
-using Cinema.Models;
+using Cinema.Models.Dtos;
 using Cinema.Models.Requests.Movies;
 using Cinema.Models.Requests.Users;
 
@@ -19,6 +19,8 @@ namespace Cinema.Web.Api.Mappers
             CreateMap<ApplicationUserRole, ApplicationUserRoleDto>();
             CreateMap<ApplicationUser, UserUpsertRequest>().ReverseMap();
             CreateMap<ApplicationUser, UserSearchRequest>().ReverseMap();
+            CreateMap<Genre, GenreDto>();
+            CreateMap<GenreMovie, GenreMovieDto>();
         }
     }
 }

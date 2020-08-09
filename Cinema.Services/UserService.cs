@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Cinema.Domain.Entities.Identity;
-using Cinema.Models;
+using Cinema.Models.Dtos;
 using Cinema.Models.Requests.Users;
 using Cinema.Shared.Pagination;
 using Cinema.Utilities.Interfaces;

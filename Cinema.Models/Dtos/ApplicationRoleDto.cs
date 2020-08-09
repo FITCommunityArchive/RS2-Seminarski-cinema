@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Cinema.Models
+namespace Cinema.Models.Dtos
 {
     public class ApplicationRoleDto
     {

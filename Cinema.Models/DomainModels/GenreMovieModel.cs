@@ -1,9 +1,11 @@
-﻿namespace Cinema.Models.DomainModels
+﻿using Cinema.Models.Dtos;
+
+namespace Cinema.Models.DomainModels
 {
     public class GenreMovieModel
     {
         public int Id { get; set; }
-        public MasterModel Movie { get; set; }
-        public MasterModel Genre { get; set; }
+        public MasterDto Movie { get; set; }
+        public MasterDto Genre { get; set; }
     }
 }
