@@ -91,7 +91,6 @@
             // pnlDetails
             // 
             this.pnlDetails.BackColor = System.Drawing.Color.White;
-            this.pnlDetails.Controls.Add(this.customButton1);
             this.pnlDetails.Controls.Add(this.deleteButton1);
             this.pnlDetails.Controls.Add(this.btnEdit);
             this.pnlDetails.Controls.Add(this.btnBack);
@@ -417,15 +416,6 @@
             this.btnSaveChanges.TabIndex = 21;
             this.btnSaveChanges.ButtonClicked += new System.EventHandler(this.btnSaveChanges_ButtonClicked);
             // 
-            // customButton1
-            // 
-            this.customButton1.Location = new System.Drawing.Point(597, 460);
-            this.customButton1.Name = "customButton1";
-            this.customButton1.Size = new System.Drawing.Size(75, 23);
-            this.customButton1.TabIndex = 28;
-            this.customButton1.Text = "customButton1";
-            this.customButton1.UseVisualStyleBackColor = true;
-            // 
             // frmMovieDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -476,6 +466,5 @@
         private UserControls.Buttons.BackButton btnBack;
         private UserControls.Buttons.EditButton btnEdit;
         private UserControls.Buttons.DeleteButton deleteButton1;
-        private UserControls.Buttons.CustomButton customButton1;
     }
 }
