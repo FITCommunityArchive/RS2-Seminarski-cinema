@@ -116,6 +116,8 @@ namespace Cinema.WinUI.Movies
         {
             _isReadonly = isReadonly;
 
+            btnSaveChanges.Enabled = !isReadonly;
+
             txtMovieTitle.ReadOnly = _isReadonly;
             txtReleaseYear.ReadOnly = _isReadonly;
             txtCountry.ReadOnly = _isReadonly;
