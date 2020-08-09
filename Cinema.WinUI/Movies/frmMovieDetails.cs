@@ -21,10 +21,17 @@ namespace Cinema.WinUI.Movies
         private bool _isReadonly = true;
         private MovieUpsertRequest _request = new MovieUpsertRequest();
 
+        public event EventHandler ItemDeleted;
+
         public frmMovieDetails(int? id = null)
         {
             InitializeComponent();
             _id = id;
+        }
+
+        protected virtual void OnItemDeleted(EventArgs e)
+        {
+            ItemDeleted?.Invoke(this, e);
         }
 
         private async void frmMovieDetails_Load(object sender, EventArgs e)
@@ -256,6 +263,14 @@ namespace Cinema.WinUI.Movies
         private async void btnEdit_ButtonClicked(object sender, EventArgs e)
         {
             await LoadEdit();
+        }
+
+        private async void btnDelete_ButtonClicked(object sender, EventArgs e)
+        {
+            var result = await _moviesApi.Delete<MovieDto>(_id);
+
+            OnItemDeleted(EventArgs.Empty);
+            this.Close();
         }
     }
 }

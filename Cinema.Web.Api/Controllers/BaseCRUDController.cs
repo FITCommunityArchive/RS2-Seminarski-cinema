@@ -18,7 +18,7 @@ namespace Cinema.Web.Api.Controllers
         [HttpPost]
         public async Task<ActionResult<T>> Insert(TInsert req)
         {
-            var result = await _service.Insert(req);
+            var result = await _service.InsertAsync(req);
 
             if (req == null)
             {
@@ -31,7 +31,22 @@ namespace Cinema.Web.Api.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult<T>> Update(int id, [FromBody] TUpdate req)
         {
-            return await _service.Update(id, req);
+            return await _service.UpdateAsync(id, req);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<T>> Delete(int id)
+        {
+            var result = await _service.DeleteAsync(id);
+
+            if (result)
+            {
+                return NoContent();
+            }
+            else
+            {
+                return BadRequest(result);
+            }
         }
     }
 }

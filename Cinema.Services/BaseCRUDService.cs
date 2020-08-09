@@ -14,7 +14,7 @@ namespace Cinema.Services
         {
         }
 
-        public virtual async Task<TModel> Insert(TInsert req)
+        public virtual async Task<TModel> InsertAsync(TInsert req)
         {
             var entity = _mapper.Map<TDatabase>(req);
 
@@ -24,7 +24,7 @@ namespace Cinema.Services
             return _mapper.Map<TModel>(entity);
         }
 
-        public async virtual Task<TModel> Update(int id, TUpdate req)
+        public async virtual Task<TModel> UpdateAsync(int id, TUpdate req)
         {
             var entity = await _repo.GetAsync(id);
 
@@ -35,6 +35,14 @@ namespace Cinema.Services
             _unit.Save();
 
             return _mapper.Map<TModel>(entity);
+        }
+
+
+        public virtual async Task<bool> DeleteAsync(int id)
+        {
+            await _repo.DeleteAsync(id);
+
+            return true;
         }
     }
 }

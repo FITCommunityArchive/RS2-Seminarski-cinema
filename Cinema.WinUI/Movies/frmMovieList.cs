@@ -12,8 +12,9 @@ namespace Cinema.WinUI.Movies
     public partial class frmMovieList : BaseDataGridForm
     {
         private readonly ApiService _moviesApi = new ApiService("Movies");
-
         private IList<string> _nextFormPrincipal;
+        private frmMovieDetails _frmMovieDetails = null;
+
         public frmMovieList(IList<string> userPrincipal) : base(new string[] { "Administrator", "Content Editor" }, userPrincipal)
         {
             _nextFormPrincipal = userPrincipal;
@@ -93,14 +94,24 @@ namespace Cinema.WinUI.Movies
                 var clickedRow = senderGrid.Rows[e.RowIndex];
                 int.TryParse(clickedRow.Cells["id"].Value.ToString(), out int filmId);
 
-                frmMovieDetails frmMovieDetails = new frmMovieDetails(filmId);
-                frmMovieDetails.ShowDialog();
+                InitializeDetailsForm();
             }
+        }
+
+        private void Form_Closed(object sender, EventArgs e)
+        {
+            frmMoviesList_Load(sender, e);
         }
 
         private void btnAddNew_ButtonClicked(object sender, EventArgs e)
         {
+            InitializeDetailsForm();
+        }
+
+        private void InitializeDetailsForm()
+        {
             frmMovieDetails frmMovieDetails = new frmMovieDetails();
+            frmMovieDetails.FormClosed += new System.Windows.Forms.FormClosedEventHandler(Form_Closed);
             frmMovieDetails.ShowDialog();
         }
     }

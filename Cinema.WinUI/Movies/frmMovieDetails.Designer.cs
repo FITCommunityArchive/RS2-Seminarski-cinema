@@ -33,13 +33,8 @@
             this.pnlFormTitle = new System.Windows.Forms.Panel();
             this.txtFormTitle = new System.Windows.Forms.TextBox();
             this.pnlDetails = new System.Windows.Forms.Panel();
-            this.btnDelete = new Cinema.WinUI.UserControls.Buttons.DeleteButton();
-            this.btnEdit = new Cinema.WinUI.UserControls.Buttons.EditButton();
-            this.btnBack = new Cinema.WinUI.UserControls.Buttons.BackButton();
             this.txtWriters = new System.Windows.Forms.TextBox();
             this.lblWriters = new System.Windows.Forms.Label();
-            this.btnUploadPoster = new Cinema.WinUI.UserControls.Buttons.UploadButton();
-            this.btnSaveChanges = new Cinema.WinUI.UserControls.Buttons.SaveChangesButton();
             this.picPoster = new System.Windows.Forms.PictureBox();
             this.lbxGenres = new System.Windows.Forms.ListBox();
             this.chlGenres = new System.Windows.Forms.CheckedListBox();
@@ -58,6 +53,11 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.btnDelete = new Cinema.WinUI.UserControls.Buttons.DeleteButton();
+            this.btnEdit = new Cinema.WinUI.UserControls.Buttons.EditButton();
+            this.btnBack = new Cinema.WinUI.UserControls.Buttons.BackButton();
+            this.btnUploadPoster = new Cinema.WinUI.UserControls.Buttons.UploadButton();
+            this.btnSaveChanges = new Cinema.WinUI.UserControls.Buttons.SaveChangesButton();
             this.pnlFormTitle.SuspendLayout();
             this.pnlDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPoster)).BeginInit();
@@ -122,37 +122,6 @@
             this.pnlDetails.Size = new System.Drawing.Size(1105, 588);
             this.pnlDetails.TabIndex = 11;
             // 
-            // btnDelete
-            // 
-            this.btnDelete.AutoSize = true;
-            this.btnDelete.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnDelete.Location = new System.Drawing.Point(809, 526);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(2);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(120, 40);
-            this.btnDelete.TabIndex = 27;
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.AutoSize = true;
-            this.btnEdit.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnEdit.Location = new System.Drawing.Point(547, 526);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(4);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(120, 40);
-            this.btnEdit.TabIndex = 26;
-            this.btnEdit.ButtonClicked += new System.EventHandler(this.btnEdit_ButtonClicked);
-            // 
-            // btnBack
-            // 
-            this.btnBack.AutoSize = true;
-            this.btnBack.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnBack.Location = new System.Drawing.Point(940, 526);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(120, 40);
-            this.btnBack.TabIndex = 25;
-            this.btnBack.ButtonClicked += new System.EventHandler(this.btnBack_ButtonClicked);
-            // 
             // txtWriters
             // 
             this.txtWriters.BackColor = System.Drawing.Color.White;
@@ -178,28 +147,6 @@
             this.lblWriters.Size = new System.Drawing.Size(53, 14);
             this.lblWriters.TabIndex = 23;
             this.lblWriters.Text = "Writers";
-            // 
-            // btnUploadPoster
-            // 
-            this.btnUploadPoster.AutoSize = true;
-            this.btnUploadPoster.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnUploadPoster.Location = new System.Drawing.Point(31, 526);
-            this.btnUploadPoster.Margin = new System.Windows.Forms.Padding(2);
-            this.btnUploadPoster.Name = "btnUploadPoster";
-            this.btnUploadPoster.Size = new System.Drawing.Size(120, 40);
-            this.btnUploadPoster.TabIndex = 22;
-            this.btnUploadPoster.ButtonClicked += new System.EventHandler(this.btnUploadPoster_ButtonClicked);
-            // 
-            // btnSaveChanges
-            // 
-            this.btnSaveChanges.AutoSize = true;
-            this.btnSaveChanges.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnSaveChanges.Location = new System.Drawing.Point(678, 526);
-            this.btnSaveChanges.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSaveChanges.Name = "btnSaveChanges";
-            this.btnSaveChanges.Size = new System.Drawing.Size(120, 40);
-            this.btnSaveChanges.TabIndex = 21;
-            this.btnSaveChanges.ButtonClicked += new System.EventHandler(this.btnSaveChanges_ButtonClicked);
             // 
             // picPoster
             // 
@@ -415,6 +362,60 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.AutoSize = true;
+            this.btnDelete.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnDelete.Location = new System.Drawing.Point(809, 526);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(120, 40);
+            this.btnDelete.TabIndex = 27;
+            this.btnDelete.ButtonClicked += new System.EventHandler(this.btnDelete_ButtonClicked);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.AutoSize = true;
+            this.btnEdit.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnEdit.Location = new System.Drawing.Point(547, 526);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(4);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(120, 40);
+            this.btnEdit.TabIndex = 26;
+            this.btnEdit.ButtonClicked += new System.EventHandler(this.btnEdit_ButtonClicked);
+            // 
+            // btnBack
+            // 
+            this.btnBack.AutoSize = true;
+            this.btnBack.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnBack.Location = new System.Drawing.Point(940, 526);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(120, 40);
+            this.btnBack.TabIndex = 25;
+            this.btnBack.ButtonClicked += new System.EventHandler(this.btnBack_ButtonClicked);
+            // 
+            // btnUploadPoster
+            // 
+            this.btnUploadPoster.AutoSize = true;
+            this.btnUploadPoster.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnUploadPoster.Location = new System.Drawing.Point(31, 526);
+            this.btnUploadPoster.Margin = new System.Windows.Forms.Padding(2);
+            this.btnUploadPoster.Name = "btnUploadPoster";
+            this.btnUploadPoster.Size = new System.Drawing.Size(120, 40);
+            this.btnUploadPoster.TabIndex = 22;
+            this.btnUploadPoster.ButtonClicked += new System.EventHandler(this.btnUploadPoster_ButtonClicked);
+            // 
+            // btnSaveChanges
+            // 
+            this.btnSaveChanges.AutoSize = true;
+            this.btnSaveChanges.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnSaveChanges.Location = new System.Drawing.Point(678, 526);
+            this.btnSaveChanges.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSaveChanges.Name = "btnSaveChanges";
+            this.btnSaveChanges.Size = new System.Drawing.Size(120, 40);
+            this.btnSaveChanges.TabIndex = 21;
+            this.btnSaveChanges.ButtonClicked += new System.EventHandler(this.btnSaveChanges_ButtonClicked);
             // 
             // frmMovieDetails
             // 
