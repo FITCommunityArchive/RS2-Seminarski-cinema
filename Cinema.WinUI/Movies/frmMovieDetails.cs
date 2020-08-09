@@ -131,7 +131,7 @@ namespace Cinema.WinUI.Movies
         {
             if (!this.ValidateChildren()) return;
 
-            List<int> movieGenreIds = chlGenres.SelectedItems.Cast<GenreDto>().Select(x => x.Id).ToList();
+            List<int> movieGenreIds = chlGenres.CheckedItems.Cast<GenreDto>().Select(x => x.Id).ToList();
 
             _request.Actors = txtActors.Text;
             _request.Country = txtCountry.Text;

@@ -74,6 +74,8 @@ namespace Cinema.Services
             await _unit.Movies.UpdateAsync(movie, id);
             await UpdateGenreMovies(id, req, movie);
 
+            movie = await _movieRepo.GetByIdWithGenresAsync(id);
+
             await ClearGenreMovies(req, movie);
             await _unit.SaveAsync();
 

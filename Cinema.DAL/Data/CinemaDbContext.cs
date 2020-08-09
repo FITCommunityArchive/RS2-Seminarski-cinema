@@ -157,22 +157,23 @@ namespace Cinema.Dal.Data
 
         public override int SaveChanges()
         {
-            foreach (var entry in ChangeTracker.Entries().Where(x => x.State == EntityState.Deleted && x.Entity is BaseClass))
-            {
-                entry.State = EntityState.Modified;
-                entry.CurrentValues["Deleted"] = true;
-            }
+            AuditChanges();
             return base.SaveChanges();
         }
 
         public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default)
         {
+            AuditChanges();
+            return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
+        }
+
+        private void AuditChanges()
+        {
             foreach (var entry in ChangeTracker.Entries().Where(x => x.State == EntityState.Deleted && x.Entity is BaseClass))
             {
                 entry.State = EntityState.Modified;
-                entry.CurrentValues["Deleted"] = true;
+                entry.CurrentValues[nameof(BaseClass.IsDeleted)] = true;
             }
-            return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
         }
     }
 }
