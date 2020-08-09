@@ -94,7 +94,7 @@ namespace Cinema.WinUI.Movies
                 var clickedRow = senderGrid.Rows[e.RowIndex];
                 int.TryParse(clickedRow.Cells["id"].Value.ToString(), out int filmId);
 
-                InitializeDetailsForm();
+                InitializeDetailsForm(filmId);
             }
         }
 
@@ -105,12 +105,12 @@ namespace Cinema.WinUI.Movies
 
         private void btnAddNew_ButtonClicked(object sender, EventArgs e)
         {
-            InitializeDetailsForm();
+            InitializeDetailsForm(null);
         }
 
-        private void InitializeDetailsForm()
+        private void InitializeDetailsForm(int? id)
         {
-            frmMovieDetails frmMovieDetails = new frmMovieDetails();
+            frmMovieDetails frmMovieDetails = new frmMovieDetails(id);
             frmMovieDetails.FormClosed += new System.Windows.Forms.FormClosedEventHandler(Form_Closed);
             frmMovieDetails.ShowDialog();
         }
