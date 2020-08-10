@@ -1,6 +1,6 @@
 ﻿namespace Cinema.WinUI.Movies
 {
-    partial class frmMovieList
+    partial class FormMovieList
     {
         /// <summary>
         /// Required designer variable.
@@ -47,6 +47,8 @@
             this.lblSearchDuration = new System.Windows.Forms.Label();
             this.txtSearchDuration = new System.Windows.Forms.TextBox();
             this.pnlFormTitle = new System.Windows.Forms.Panel();
+            this.lblBreadCrumbsCurrent = new System.Windows.Forms.Label();
+            this.lblBreadcrumbs = new System.Windows.Forms.Label();
             this.txtFormTitle = new System.Windows.Forms.TextBox();
             this.pnlSearchBars = new System.Windows.Forms.Panel();
             this.pnlDataGrid = new System.Windows.Forms.Panel();
@@ -62,6 +64,10 @@
             // 
             // grdMoviesList
             // 
+            this.grdMoviesList.AllowUserToAddRows = false;
+            this.grdMoviesList.AllowUserToDeleteRows = false;
+            this.grdMoviesList.AllowUserToResizeColumns = false;
+            this.grdMoviesList.AllowUserToResizeRows = false;
             this.grdMoviesList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.grdMoviesList.BackgroundColor = System.Drawing.Color.White;
             this.grdMoviesList.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -262,6 +268,8 @@
             // pnlFormTitle
             // 
             this.pnlFormTitle.BackColor = System.Drawing.Color.White;
+            this.pnlFormTitle.Controls.Add(this.lblBreadCrumbsCurrent);
+            this.pnlFormTitle.Controls.Add(this.lblBreadcrumbs);
             this.pnlFormTitle.Controls.Add(this.txtFormTitle);
             this.pnlFormTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlFormTitle.Location = new System.Drawing.Point(0, 0);
@@ -269,6 +277,29 @@
             this.pnlFormTitle.Name = "pnlFormTitle";
             this.pnlFormTitle.Size = new System.Drawing.Size(1085, 73);
             this.pnlFormTitle.TabIndex = 8;
+            // 
+            // lblBreadCrumbsCurrent
+            // 
+            this.lblBreadCrumbsCurrent.AutoSize = true;
+            this.lblBreadCrumbsCurrent.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBreadCrumbsCurrent.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblBreadCrumbsCurrent.Location = new System.Drawing.Point(74, 48);
+            this.lblBreadCrumbsCurrent.Margin = new System.Windows.Forms.Padding(0);
+            this.lblBreadCrumbsCurrent.Name = "lblBreadCrumbsCurrent";
+            this.lblBreadCrumbsCurrent.Size = new System.Drawing.Size(52, 13);
+            this.lblBreadCrumbsCurrent.TabIndex = 5;
+            this.lblBreadCrumbsCurrent.Text = "Movies";
+            // 
+            // lblBreadcrumbs
+            // 
+            this.lblBreadcrumbs.AutoSize = true;
+            this.lblBreadcrumbs.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBreadcrumbs.Location = new System.Drawing.Point(25, 48);
+            this.lblBreadcrumbs.Margin = new System.Windows.Forms.Padding(0);
+            this.lblBreadcrumbs.Name = "lblBreadcrumbs";
+            this.lblBreadcrumbs.Size = new System.Drawing.Size(49, 13);
+            this.lblBreadcrumbs.TabIndex = 4;
+            this.lblBreadcrumbs.Text = "Home /";
             // 
             // txtFormTitle
             // 
@@ -348,7 +379,7 @@
             this.pgnMoviesList.TotalPages = 0;
             this.pgnMoviesList.PageChanged += new System.EventHandler(this.pgnMoviesList_PageChanged);
             // 
-            // frmMovieList
+            // FormMovieList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -359,7 +390,7 @@
             this.Controls.Add(this.pnlContent);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "frmMovieList";
+            this.Name = "FormMovieList";
             this.Text = "frmMoviesList";
             this.Load += new System.EventHandler(this.frmMoviesList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdMoviesList)).EndInit();
@@ -399,5 +430,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Writers;
         private System.Windows.Forms.DataGridViewTextBoxColumn Actors;
         private System.Windows.Forms.DataGridViewButtonColumn DetailsAction;
+        private System.Windows.Forms.Label lblBreadCrumbsCurrent;
+        private System.Windows.Forms.Label lblBreadcrumbs;
     }
 }

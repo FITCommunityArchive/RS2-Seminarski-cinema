@@ -29,6 +29,7 @@ namespace Cinema.WinUI.UserControls
             {
                 this.BackColor = Color.LightGray;
                 this.ForeColor = Color.Gray;
+                this.FlatStyle = FlatStyle.Flat;
             }
         }
     }
