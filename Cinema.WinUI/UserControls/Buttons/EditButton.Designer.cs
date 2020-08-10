@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnEdit = new System.Windows.Forms.Button();
+            this.components = new System.ComponentModel.Container();
+            this.btnEdit = new Cinema.WinUI.UserControls.ExtendedButton(this.components);
             this.SuspendLayout();
             // 
             // btnEdit
             // 
             this.btnEdit.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(91)))), ((int)(((byte)(212)))));
+            this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(195)))), ((int)(((byte)(75)))));
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEdit.ForeColor = System.Drawing.Color.White;
@@ -56,12 +57,13 @@
             this.Controls.Add(this.btnEdit);
             this.Name = "EditButton";
             this.Size = new System.Drawing.Size(120, 40);
+            this.EnabledChanged += new System.EventHandler(this.EditButton_EnabledChanged);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnEdit;
+        private ExtendedButton btnEdit;
     }
 }

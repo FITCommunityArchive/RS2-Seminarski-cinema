@@ -21,10 +21,17 @@ namespace Cinema.WinUI.Movies
         private bool _isReadonly = true;
         private MovieUpsertRequest _request = new MovieUpsertRequest();
 
+        public event EventHandler ItemDeleted;
+
         public frmMovieDetails(int? id = null)
         {
             InitializeComponent();
             _id = id;
+        }
+
+        protected virtual void OnItemDeleted(EventArgs e)
+        {
+            ItemDeleted?.Invoke(this, e);
         }
 
         private async void frmMovieDetails_Load(object sender, EventArgs e)
@@ -116,6 +123,10 @@ namespace Cinema.WinUI.Movies
         {
             _isReadonly = isReadonly;
 
+            btnSaveChanges.Enabled = !isReadonly;
+            btnUploadPoster.Enabled = !isReadonly;
+            btnEdit.Enabled = isReadonly;
+
             txtMovieTitle.ReadOnly = _isReadonly;
             txtReleaseYear.ReadOnly = _isReadonly;
             txtCountry.ReadOnly = _isReadonly;
@@ -131,7 +142,7 @@ namespace Cinema.WinUI.Movies
         {
             if (!this.ValidateChildren()) return;
 
-            List<int> movieGenreIds = chlGenres.SelectedItems.Cast<GenreDto>().Select(x => x.Id).ToList();
+            List<int> movieGenreIds = chlGenres.CheckedItems.Cast<GenreDto>().Select(x => x.Id).ToList();
 
             _request.Actors = txtActors.Text;
             _request.Country = txtCountry.Text;
@@ -252,6 +263,14 @@ namespace Cinema.WinUI.Movies
         private async void btnEdit_ButtonClicked(object sender, EventArgs e)
         {
             await LoadEdit();
+        }
+
+        private async void btnDelete_ButtonClicked(object sender, EventArgs e)
+        {
+            var result = await _moviesApi.Delete<MovieDto>(_id);
+
+            OnItemDeleted(EventArgs.Empty);
+            this.Close();
         }
     }
 }

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnSaveChanges = new System.Windows.Forms.Button();
+            this.btnSaveChanges = new ExtendedButton();
             this.SuspendLayout();
             // 
             // btnSaveChanges
@@ -40,7 +40,7 @@
             this.btnSaveChanges.Location = new System.Drawing.Point(0, 0);
             this.btnSaveChanges.Margin = new System.Windows.Forms.Padding(0);
             this.btnSaveChanges.Name = "btnSaveChanges";
-            this.btnSaveChanges.Size = new System.Drawing.Size(160, 40);
+            this.btnSaveChanges.Size = new System.Drawing.Size(120, 40);
             this.btnSaveChanges.TabIndex = 0;
             this.btnSaveChanges.Text = "Save Changes";
             this.btnSaveChanges.UseVisualStyleBackColor = false;
@@ -53,13 +53,14 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.btnSaveChanges);
             this.Name = "SaveChangesButton";
-            this.Size = new System.Drawing.Size(160, 40);
+            this.Size = new System.Drawing.Size(120, 40);
+            this.EnabledChanged += new System.EventHandler(this.SaveChangesButton_EnabledChanged);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnSaveChanges;
+        private ExtendedButton btnSaveChanges;
     }
 }

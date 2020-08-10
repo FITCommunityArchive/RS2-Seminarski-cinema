@@ -41,7 +41,7 @@ namespace Cinema.Services
             return dtoList;
         }
 
-        public async Task<MovieDto> Insert(MovieUpsertRequest req)
+        public async Task<MovieDto> InsertAsync(MovieUpsertRequest req)
         {
             var movie = _mapper.Map<Movie>(req);
 
@@ -66,22 +66,24 @@ namespace Cinema.Services
             }
         }
 
-        public async Task<MovieDto> Update(int id, MovieUpsertRequest req)
+        public async Task<MovieDto> UpdateAsync(int id, MovieUpsertRequest req)
         {
             Movie movie = _mapper.Map<Movie>(req);
             movie.Id = id;
 
             await _unit.Movies.UpdateAsync(movie, id);
-            await UpdateGenreMovies(id, req, movie);
+            await UpdateGenreMovieAsync(id, req, movie);
 
-            await ClearGenreMovies(req, movie);
+            movie = await _movieRepo.GetByIdWithGenresAsync(id);
+
+            await ClearGenreMoviesAsync(req, movie);
             await _unit.SaveAsync();
 
             var dto = _mapper.Map<MovieDto>(movie);
             return dto;
         }
 
-        private async Task<bool> UpdateGenreMovies(int id, MovieUpsertRequest req, Movie movie)
+        private async Task<bool> UpdateGenreMovieAsync(int id, MovieUpsertRequest req, Movie movie)
         {
             movie = await _unit.Movies.GetByIdWithGenresAsync(id);
 
@@ -102,7 +104,7 @@ namespace Cinema.Services
             return true;
         }
 
-        private async Task<bool> ClearGenreMovies(MovieUpsertRequest req, Movie movie)
+        private async Task<bool> ClearGenreMoviesAsync(MovieUpsertRequest req, Movie movie)
         {
             List<GenreMovie> deletableGenreMovies = movie.GenreMovies.Where(x => !req.Genres.Contains(x.GenreId)).ToList();
 
@@ -110,6 +112,14 @@ namespace Cinema.Services
             {
                 await _genreMovieRepo.DeleteAsync(deletableGenreMovie.Id);
             }
+
+            return true;
+        }
+
+        public async Task<bool> DeleteAsync(int id)
+        {
+            await _movieRepo.DeleteAsync(id);
+            await _unit.SaveAsync();
 
             return true;
         }

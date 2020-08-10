@@ -223,11 +223,23 @@
     <Compile Include="UserControls\Buttons\BackButton.Designer.cs">
       <DependentUpon>BackButton.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Buttons\DeleteButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Buttons\DeleteButton.Designer.cs">
+      <DependentUpon>DeleteButton.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Buttons\EditButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\Buttons\EditButton.Designer.cs">
       <DependentUpon>EditButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ExtendedButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\ExtendedButton.Designer.cs">
+      <DependentUpon>ExtendedButton.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ExtendedTextBox.cs">
       <SubType>Component</SubType>
@@ -283,6 +295,9 @@
     </Compile>
     <EmbeddedResource Include="UserControls\Buttons\BackButton.resx">
       <DependentUpon>BackButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Buttons\DeleteButton.resx">
+      <DependentUpon>DeleteButton.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Buttons\EditButton.resx">
       <DependentUpon>EditButton.cs</DependentUpon>

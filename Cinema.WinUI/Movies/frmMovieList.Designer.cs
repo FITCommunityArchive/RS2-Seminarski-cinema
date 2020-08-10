@@ -213,7 +213,7 @@
             this.lblSearch.Location = new System.Drawing.Point(13, 12);
             this.lblSearch.Margin = new System.Windows.Forms.Padding(2, 0, 2, 4);
             this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(55, 18);
+            this.lblSearch.Size = new System.Drawing.Size(46, 15);
             this.lblSearch.TabIndex = 2;
             this.lblSearch.Text = "Search";
             // 
@@ -225,7 +225,7 @@
             this.lblSearchYear.Location = new System.Drawing.Point(951, 12);
             this.lblSearchYear.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSearchYear.Name = "lblSearchYear";
-            this.lblSearchYear.Size = new System.Drawing.Size(38, 18);
+            this.lblSearchYear.Size = new System.Drawing.Size(32, 15);
             this.lblSearchYear.TabIndex = 4;
             this.lblSearchYear.Text = "Year";
             // 
@@ -246,7 +246,7 @@
             this.lblSearchDuration.Location = new System.Drawing.Point(837, 11);
             this.lblSearchDuration.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSearchDuration.Name = "lblSearchDuration";
-            this.lblSearchDuration.Size = new System.Drawing.Size(64, 18);
+            this.lblSearchDuration.Size = new System.Drawing.Size(54, 15);
             this.lblSearchDuration.TabIndex = 6;
             this.lblSearchDuration.Text = "Duration";
             // 
@@ -279,7 +279,7 @@
             this.txtFormTitle.Location = new System.Drawing.Point(28, 15);
             this.txtFormTitle.Margin = new System.Windows.Forms.Padding(2);
             this.txtFormTitle.Name = "txtFormTitle";
-            this.txtFormTitle.Size = new System.Drawing.Size(75, 33);
+            this.txtFormTitle.Size = new System.Drawing.Size(75, 27);
             this.txtFormTitle.TabIndex = 0;
             this.txtFormTitle.Text = "Movies";
             // 
@@ -330,7 +330,7 @@
             this.btnAddNew.Location = new System.Drawing.Point(723, 590);
             this.btnAddNew.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddNew.Name = "btnAddNew";
-            this.btnAddNew.Size = new System.Drawing.Size(120, 35);
+            this.btnAddNew.Size = new System.Drawing.Size(120, 40);
             this.btnAddNew.TabIndex = 11;
             this.btnAddNew.ButtonClicked += new System.EventHandler(this.btnAddNew_ButtonClicked);
             // 

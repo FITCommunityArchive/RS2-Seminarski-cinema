@@ -40,7 +40,7 @@ namespace Cinema.Services
 
 
         [HttpPost]
-        public async Task<ApplicationUserDto> Insert([FromBody] UserUpsertRequest model)
+        public async Task<ApplicationUserDto> InsertAsync([FromBody] UserUpsertRequest model)
         {
             var userIdentity = _mapper.Map<ApplicationUser>(model);
             
@@ -56,7 +56,7 @@ namespace Cinema.Services
             return _mapper.Map<ApplicationUserDto>(userIdentity);
         }
         
-        public async Task<ApplicationUserDto> Update(int id, UserUpsertRequest req)
+        public async Task<ApplicationUserDto> UpdateAsync(int id, UserUpsertRequest req)
         {
             throw new System.NotImplementedException();
         }
@@ -136,6 +136,11 @@ namespace Cinema.Services
             var user = await _userManager.GetUsersInRoleAsync(roleName);
 
             return roleName;
+        }
+
+        public Task<bool> DeleteAsync(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

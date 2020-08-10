@@ -93,5 +93,12 @@ namespace Cinema.WinUI
 
             return await url.WithOAuthBearerToken(Token).PutJsonAsync(request).ReceiveJson<T>();
         }
+
+        public async Task<T> Delete<T>(object id)
+        {
+            var url = $"{Properties.Settings.Default.APIUrl}/{_route}/{id}";
+
+            return await url.WithOAuthBearerToken(Token).DeleteAsync().ReceiveJson<T>();
+        }
     }
 }
