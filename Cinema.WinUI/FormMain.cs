@@ -95,7 +95,7 @@ namespace Cinema.WinUI
 
         private void button4_Click(object sender, EventArgs e)
         {
-            frmMovieList frmMoviesList = new frmMovieList(_nextFormPrincipal);
+            FormMovieList frmMoviesList = new FormMovieList(_nextFormPrincipal);
             openChildForm(frmMoviesList);
         }
 

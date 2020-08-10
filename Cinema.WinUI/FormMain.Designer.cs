@@ -46,6 +46,7 @@
             this.panelBottomBar = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.panelChildForm = new System.Windows.Forms.Panel();
+            this.logoLargeWhite1 = new Cinema.WinUI.UserControls.Logos.LogoLargeWhite();
             this.btnUsers = new System.Windows.Forms.Button();
             this.panelSideMenu.SuspendLayout();
             this.panelDashboardSubmenu.SuspendLayout();
@@ -58,6 +59,7 @@
             // 
             this.panelSideMenu.AutoScroll = true;
             this.panelSideMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(88)))), ((int)(((byte)(209)))));
+            this.panelSideMenu.Controls.Add(this.logoLargeWhite1);
             this.panelSideMenu.Controls.Add(this.btnUsers);
             this.panelSideMenu.Controls.Add(this.btnScreenings);
             this.panelSideMenu.Controls.Add(this.btnMovies);
@@ -288,6 +290,14 @@
             this.btnUsers.UseVisualStyleBackColor = true;
             this.btnUsers.Click += new System.EventHandler(this.btnUsers_Click);
             // 
+            // logoLargeWhite1
+            // 
+            this.logoLargeWhite1.Location = new System.Drawing.Point(14, 617);
+            this.logoLargeWhite1.Margin = new System.Windows.Forms.Padding(5);
+            this.logoLargeWhite1.Name = "logoLargeWhite1";
+            this.logoLargeWhite1.Size = new System.Drawing.Size(220, 85);
+            this.logoLargeWhite1.TabIndex = 5;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -335,6 +345,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnUsers;
+        private UserControls.Logos.LogoLargeWhite logoLargeWhite1;
     }
 }
 

@@ -9,13 +9,13 @@ using System.Windows.Forms;
 
 namespace Cinema.WinUI.Movies
 {
-    public partial class frmMovieList : BaseDataGridForm
+    public partial class FormMovieList : BaseDataGridForm
     {
         private readonly ApiService _moviesApi = new ApiService("Movies");
         private IList<string> _nextFormPrincipal;
-        private frmMovieDetails _frmMovieDetails = null;
+        private FormMovieDetails _frmMovieDetails = null;
 
-        public frmMovieList(IList<string> userPrincipal) : base(new string[] { "Administrator", "Content Editor" }, userPrincipal)
+        public FormMovieList(IList<string> userPrincipal) : base(new string[] { "Administrator", "Content Editor" }, userPrincipal)
         {
             _nextFormPrincipal = userPrincipal;
             InitializeComponent();
@@ -98,7 +98,7 @@ namespace Cinema.WinUI.Movies
             }
         }
 
-        private void Form_Closed(object sender, EventArgs e)
+        private void FormDetails_Closed(object sender, EventArgs e)
         {
             frmMoviesList_Load(sender, e);
         }
@@ -110,8 +110,8 @@ namespace Cinema.WinUI.Movies
 
         private void InitializeDetailsForm(int? id)
         {
-            frmMovieDetails frmMovieDetails = new frmMovieDetails(id);
-            frmMovieDetails.FormClosed += new System.Windows.Forms.FormClosedEventHandler(Form_Closed);
+            FormMovieDetails frmMovieDetails = new FormMovieDetails(id);
+            frmMovieDetails.FormClosed += new System.Windows.Forms.FormClosedEventHandler(FormDetails_Closed);
             frmMovieDetails.ShowDialog();
         }
     }

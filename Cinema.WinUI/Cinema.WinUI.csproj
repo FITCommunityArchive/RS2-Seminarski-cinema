@@ -194,7 +194,7 @@
       <DependentUpon>FormDashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ImageHelper.cs" />
-    <Compile Include="Movies\frmMovieDetails.cs">
+    <Compile Include="Movies\FormMovieDetails.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormLogin.cs">
@@ -203,14 +203,14 @@
     <Compile Include="FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Movies\frmMovieDetails.Designer.cs">
-      <DependentUpon>frmMovieDetails.cs</DependentUpon>
+    <Compile Include="Movies\FormMovieDetails.Designer.cs">
+      <DependentUpon>FormMovieDetails.cs</DependentUpon>
     </Compile>
-    <Compile Include="Movies\frmMovieList.cs">
+    <Compile Include="Movies\FormMovieList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Movies\frmMovieList.Designer.cs">
-      <DependentUpon>frmMovieList.cs</DependentUpon>
+    <Compile Include="Movies\FormMovieList.Designer.cs">
+      <DependentUpon>FormMovieList.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -262,6 +262,18 @@
     <Compile Include="UserControls\Buttons\AddNewButton.Designer.cs">
       <DependentUpon>AddNewButton.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Logos\LogoLargeWhite.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Logos\LogoLargeWhite.Designer.cs">
+      <DependentUpon>LogoLargeWhite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Logos\LogoSmall.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Logos\LogoSmall.Designer.cs">
+      <DependentUpon>LogoSmall.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Pagination.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -280,11 +292,11 @@
     <EmbeddedResource Include="FormDashboard.resx">
       <DependentUpon>FormDashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Movies\frmMovieDetails.resx">
-      <DependentUpon>frmMovieDetails.cs</DependentUpon>
+    <EmbeddedResource Include="Movies\FormMovieDetails.resx">
+      <DependentUpon>FormMovieDetails.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Movies\frmMovieList.resx">
-      <DependentUpon>frmMovieList.cs</DependentUpon>
+    <EmbeddedResource Include="Movies\FormMovieList.resx">
+      <DependentUpon>FormMovieList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
@@ -317,6 +329,12 @@
     <EmbeddedResource Include="UserControls\Buttons\AddNewButton.resx">
       <DependentUpon>AddNewButton.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Logos\LogoLargeWhite.resx">
+      <DependentUpon>LogoLargeWhite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Logos\LogoSmall.resx">
+      <DependentUpon>LogoSmall.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Pagination.resx">
       <DependentUpon>Pagination.cs</DependentUpon>
     </EmbeddedResource>
@@ -347,10 +365,10 @@
       <Name>Cinema.Shared</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Assets\" />
-  </ItemGroup>
-  <ItemGroup>
+    <Content Include="Assets\logo-large.png" />
+    <Content Include="Assets\logo-small.png" />
     <Content Include="Resources\Spinner.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

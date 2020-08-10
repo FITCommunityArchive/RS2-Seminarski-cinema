@@ -10,20 +10,23 @@ using Cinema.Models.Requests.Movies;
 using System.ComponentModel;
 using System.IO;
 using Cinema.WinUI.Helpers;
+using System.Diagnostics;
 
 namespace Cinema.WinUI.Movies
 {
-    public partial class frmMovieDetails : Form
+    public partial class FormMovieDetails : Form
     {
         private readonly ApiService _moviesApi = new ApiService("Movies");
         private readonly ApiService _genresApi = new ApiService("Genres");
         private readonly int? _id = null;
         private bool _isReadonly = true;
         private MovieUpsertRequest _request = new MovieUpsertRequest();
+        private IPagedList<GenreDto> _genres = null;
+        public Process videoLinkProcess;
 
         public event EventHandler ItemDeleted;
 
-        public frmMovieDetails(int? id = null)
+        public FormMovieDetails(int? id = null)
         {
             InitializeComponent();
             _id = id;
@@ -36,29 +39,29 @@ namespace Cinema.WinUI.Movies
 
         private async void frmMovieDetails_Load(object sender, EventArgs e)
         {
-            var resultGenres = await _genresApi.Get<PagedList<GenreDto>>(null);
+            _genres = await _genresApi.Get<PagedList<GenreDto>>(null);
 
             if (_id.HasValue)
             {
-                await LoadReadOnly(resultGenres);
+                await LoadReadOnly();
             }
             else
             {
-                InsertNew(resultGenres);
+                InsertNew();
             }
 
         }
 
-        private void InsertNew(PagedList<GenreDto> resultGenres)
+        private void InsertNew()
         {
-            chlGenres.DataSource = resultGenres.Data;
+            chlGenres.DataSource = _genres.Data;
             chlGenres.DisplayMember = nameof(GenreDto.Name);
 
             SetReadonly(false);        
         }
 
 
-        private async Task LoadReadOnly(PagedList<GenreDto> genres)
+        private async Task LoadReadOnly()
         {
             var result = await _moviesApi.GetById<MovieDto>(_id);            
 
@@ -66,7 +69,7 @@ namespace Cinema.WinUI.Movies
 
             LoadPropertyValues(result);
 
-            List<GenreDto> movieGenres = genres.Data.Where(x => result.GenreMovies.Select(y => y.GenreId).Contains(x.Id)).ToList();
+            List<GenreDto> movieGenres = _genres.Data.Where(x => result.GenreMovies.Select(y => y.GenreId).Contains(x.Id)).ToList();
 
             lbxGenres.DataSource = movieGenres;
             lbxGenres.DisplayMember = nameof(GenreDto.Name);
@@ -106,6 +109,7 @@ namespace Cinema.WinUI.Movies
             txtWriters.Text = result.Writers;
             txtActors.Text = result.Actors;
             txtDuration.Text = result.Duration.ToString();
+            rtxVideoLink.Text = result.VideoLink;
 
             if (result.Poster != null && result.Poster.Length > 0)
             {
@@ -134,6 +138,7 @@ namespace Cinema.WinUI.Movies
             txtActors.ReadOnly = _isReadonly;
             txtDuration.ReadOnly = _isReadonly;
             txtWriters.ReadOnly = _isReadonly;
+            rtxVideoLink.ReadOnly = _isReadonly;
 
             SetGenresListReadonly(isReadonly);
         }
@@ -151,18 +156,21 @@ namespace Cinema.WinUI.Movies
             _request.Duration = int.Parse(txtDuration.Text);
             _request.Title = txtMovieTitle.Text;
             _request.Year = int.Parse(txtReleaseYear.Text);
+            _request.VideoLink = rtxVideoLink.Text;
             _request.Genres = movieGenreIds;
 
             MovieDto result;
 
             if (_id.HasValue)
             {
-                result = await _moviesApi.Update<MovieDto>(_id, _request);
+                result = await _moviesApi.Update<MovieDto>(_id, _request);                
             }
             else
             {
                 result = await _moviesApi.Insert<MovieDto>(_request);
-            }           
+            }
+
+            await LoadReadOnly();
 
             if (result != null)
             {
@@ -271,6 +279,12 @@ namespace Cinema.WinUI.Movies
 
             OnItemDeleted(EventArgs.Empty);
             this.Close();
+        }
+
+        private void rtxVideoLink_LinkClicked(object sender, LinkClickedEventArgs e)
+        {
+            videoLinkProcess = new Process();
+            videoLinkProcess = Process.Start(e.LinkText);
         }
     }
 }
