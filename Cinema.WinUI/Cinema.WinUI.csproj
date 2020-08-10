@@ -197,11 +197,11 @@
     <Compile Include="Movies\frmMovieDetails.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginForm.cs">
+    <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginForm.Designer.cs">
-      <DependentUpon>LoginForm.cs</DependentUpon>
+    <Compile Include="FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Movies\frmMovieDetails.Designer.cs">
       <DependentUpon>frmMovieDetails.cs</DependentUpon>
@@ -268,6 +268,12 @@
     <Compile Include="UserControls\Pagination.Designer.cs">
       <DependentUpon>Pagination.cs</DependentUpon>
     </Compile>
+    <Compile Include="Users\FormUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\FormUsers.Designer.cs">
+      <DependentUpon>FormUsers.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -280,8 +286,8 @@
     <EmbeddedResource Include="Movies\frmMovieList.resx">
       <DependentUpon>frmMovieList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginForm.resx">
-      <DependentUpon>LoginForm.cs</DependentUpon>
+    <EmbeddedResource Include="FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -313,6 +319,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Pagination.resx">
       <DependentUpon>Pagination.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\FormUsers.resx">
+      <DependentUpon>FormUsers.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

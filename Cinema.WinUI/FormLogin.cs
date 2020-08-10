@@ -12,12 +12,12 @@ using System.Windows.Forms;
 
 namespace Cinema.WinUI
 {
-    public partial class LoginForm : SecureBaseForm
+    public partial class FormLogin : SecureBaseForm
     {
         ApiService _service = new ApiService("login");
 
         IList<string> _nextFormPrincipal;
-        public LoginForm(IList<string> userPrincipal) : base (new string[] { "Guest" },userPrincipal)
+        public FormLogin(IList<string> userPrincipal) : base (new string[] { "Guest" },userPrincipal)
         {
             _nextFormPrincipal = userPrincipal;
             InitializeComponent();
@@ -78,5 +78,7 @@ namespace Cinema.WinUI
                 //MessageBox.Show(ex.Message, "Authentication", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
     }
 }
