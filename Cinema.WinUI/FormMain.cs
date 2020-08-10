@@ -1,5 +1,6 @@
 ﻿using Cinema.WinUI.Authorization;
 using Cinema.WinUI.Movies;
+using Cinema.WinUI.Users;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -100,8 +101,14 @@ namespace Cinema.WinUI
 
         private void buttonLogIn_Click(object sender, EventArgs e)
         {
-            LoginForm loginForm = new LoginForm(_nextFormPrincipal);
+            FormLogin loginForm = new FormLogin(_nextFormPrincipal);
             openChildForm(loginForm);
+        }
+
+        private void btnUsers_Click(object sender, EventArgs e)
+        {
+            FormUsers formUsers = new FormUsers(_nextFormPrincipal);
+            openChildForm(formUsers);
         }
     }
 }
