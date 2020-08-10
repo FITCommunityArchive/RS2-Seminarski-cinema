@@ -46,6 +46,7 @@
             this.panelBottomBar = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.panelChildForm = new System.Windows.Forms.Panel();
+            this.btnUsers = new System.Windows.Forms.Button();
             this.panelSideMenu.SuspendLayout();
             this.panelDashboardSubmenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
@@ -57,6 +58,7 @@
             // 
             this.panelSideMenu.AutoScroll = true;
             this.panelSideMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(88)))), ((int)(((byte)(209)))));
+            this.panelSideMenu.Controls.Add(this.btnUsers);
             this.panelSideMenu.Controls.Add(this.btnScreenings);
             this.panelSideMenu.Controls.Add(this.btnMovies);
             this.panelSideMenu.Controls.Add(this.panelDashboardSubmenu);
@@ -196,7 +198,7 @@
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(9, 107);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(116, 15);
+            this.label3.Size = new System.Drawing.Size(100, 13);
             this.label3.TabIndex = 0;
             this.label3.Text = "Boris Huseincehajic";
             // 
@@ -217,7 +219,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(435, 17);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 15);
+            this.label1.Size = new System.Drawing.Size(75, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = "Welcome user";
             // 
@@ -255,7 +257,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(6, 10);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(186, 15);
+            this.label2.Size = new System.Drawing.Size(161, 13);
             this.label2.TabIndex = 0;
             this.label2.Text = "Copyright eCinema © 2014-2020";
             // 
@@ -267,6 +269,24 @@
             this.panelChildForm.Name = "panelChildForm";
             this.panelChildForm.Size = new System.Drawing.Size(1085, 652);
             this.panelChildForm.TabIndex = 3;
+            // 
+            // btnUsers
+            // 
+            this.btnUsers.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnUsers.FlatAppearance.BorderSize = 0;
+            this.btnUsers.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(42)))), ((int)(((byte)(97)))));
+            this.btnUsers.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(42)))), ((int)(((byte)(97)))));
+            this.btnUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUsers.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnUsers.Location = new System.Drawing.Point(0, 361);
+            this.btnUsers.Name = "btnUsers";
+            this.btnUsers.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnUsers.Size = new System.Drawing.Size(250, 45);
+            this.btnUsers.TabIndex = 5;
+            this.btnUsers.Text = "Users";
+            this.btnUsers.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUsers.UseVisualStyleBackColor = true;
+            this.btnUsers.Click += new System.EventHandler(this.btnUsers_Click);
             // 
             // FormMain
             // 
@@ -314,6 +334,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnUsers;
     }
 }
 

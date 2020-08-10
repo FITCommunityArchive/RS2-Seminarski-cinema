@@ -20,7 +20,7 @@ namespace Cinema.WinUI
             Application.SetCompatibleTextRenderingDefault(false);
 
 
-            LoginForm mainForm = new LoginForm(userPrincipal);
+            FormLogin mainForm = new FormLogin(userPrincipal);
 
             // Set form to be main window in order to Exit the application.
             mainForm.IsMainWindow = true;
