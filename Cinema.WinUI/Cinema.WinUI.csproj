@@ -193,6 +193,7 @@
     <Compile Include="FormDashboard.Designer.cs">
       <DependentUpon>FormDashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ExtensionMethods.cs" />
     <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Movies\FormMovieDetails.cs">
       <SubType>Form</SubType>

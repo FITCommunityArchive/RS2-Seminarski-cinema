@@ -2,6 +2,7 @@
 using Cinema.Models.Requests.Movies;
 using Cinema.Shared.Pagination;
 using Cinema.WinUI.Constants;
+using Cinema.WinUI.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -23,6 +24,7 @@ namespace Cinema.WinUI.Movies
 
         private async void frmMoviesList_Load(object sender, EventArgs e)
         {
+            this.grdMoviesList.DoubleBuffered(true);
             MovieSearchRequest searchRequest = new MovieSearchRequest();
             searchRequest = ApplyDefaultSearchValues(searchRequest) as MovieSearchRequest;
             await LoadMovies(searchRequest);

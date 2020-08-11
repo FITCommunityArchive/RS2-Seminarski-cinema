@@ -32,7 +32,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtFormTitle = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.lblSearch = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dgvUsers = new System.Windows.Forms.DataGridView();
@@ -40,6 +40,7 @@
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pgnUsers = new Cinema.WinUI.UserControls.Pagination();
             this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
             this.panel1.SuspendLayout();
@@ -73,21 +74,27 @@
             // 
             // panel2
             // 
-            this.panel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.AutoSize = true;
             this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Controls.Add(this.txtSearch);
             this.panel2.Controls.Add(this.lblSearch);
             this.panel2.Location = new System.Drawing.Point(22, 92);
+            this.panel2.MaximumSize = new System.Drawing.Size(0, 72);
+            this.panel2.MinimumSize = new System.Drawing.Size(1037, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1037, 72);
             this.panel2.TabIndex = 1;
             // 
-            // textBox1
+            // txtSearch
             // 
-            this.textBox1.Location = new System.Drawing.Point(15, 32);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(820, 20);
-            this.textBox1.TabIndex = 4;
+            this.txtSearch.Location = new System.Drawing.Point(15, 32);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(459, 20);
+            this.txtSearch.TabIndex = 4;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // lblSearch
             // 
@@ -104,6 +111,10 @@
             // 
             // panel3
             // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.AutoSize = true;
             this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.Controls.Add(this.dgvUsers);
             this.panel3.Location = new System.Drawing.Point(22, 176);
@@ -119,6 +130,7 @@
             this.dgvUsers.AllowUserToDeleteRows = false;
             this.dgvUsers.AllowUserToResizeColumns = false;
             this.dgvUsers.AllowUserToResizeRows = false;
+            this.dgvUsers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvUsers.BackgroundColor = System.Drawing.Color.White;
             this.dgvUsers.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvUsers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
@@ -136,7 +148,8 @@
             this.Username,
             this.Email,
             this.FirstName,
-            this.LastName});
+            this.LastName,
+            this.Phone});
             this.dgvUsers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvUsers.Location = new System.Drawing.Point(15, 15);
             this.dgvUsers.Margin = new System.Windows.Forms.Padding(15);
@@ -160,7 +173,6 @@
             this.Username.HeaderText = "Username";
             this.Username.Name = "Username";
             this.Username.ReadOnly = true;
-            this.Username.Width = 200;
             // 
             // Email
             // 
@@ -168,7 +180,6 @@
             this.Email.HeaderText = "Email";
             this.Email.Name = "Email";
             this.Email.ReadOnly = true;
-            this.Email.Width = 200;
             // 
             // FirstName
             // 
@@ -176,7 +187,6 @@
             this.FirstName.HeaderText = "First name";
             this.FirstName.Name = "FirstName";
             this.FirstName.ReadOnly = true;
-            this.FirstName.Width = 200;
             // 
             // LastName
             // 
@@ -184,7 +194,13 @@
             this.LastName.HeaderText = "Last name";
             this.LastName.Name = "LastName";
             this.LastName.ReadOnly = true;
-            this.LastName.Width = 200;
+            // 
+            // Phone
+            // 
+            this.Phone.DataPropertyName = "PhoneNumber";
+            this.Phone.HeaderText = "Phone";
+            this.Phone.Name = "Phone";
+            this.Phone.ReadOnly = true;
             // 
             // pgnUsers
             // 
@@ -232,12 +248,13 @@
         private System.Windows.Forms.TextBox txtFormTitle;
         private System.Windows.Forms.DataGridView dgvUsers;
         private System.Windows.Forms.Label lblSearch;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtSearch;
         private UserControls.Pagination pgnUsers;
         private System.Windows.Forms.PageSetupDialog pageSetupDialog1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Username;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.DataGridViewTextBoxColumn FirstName;
         private System.Windows.Forms.DataGridViewTextBoxColumn LastName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Phone;
     }
 }

@@ -2,7 +2,6 @@
 {
     public class UserSearchRequest : BaseSearchRequest
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string searchTerm { get; set; }
     }
 }

@@ -31,11 +31,11 @@ namespace Cinema.Dal.Repository
             }
         }
 
-        public async Task<IPagedList<ApplicationUser>> GetPagedAsync(ISearchRequest searchRequest, string firstName, string lastName)
+        public async Task<IPagedList<ApplicationUser>> GetPagedAsync(ISearchRequest searchRequest,string searchTerm)
         {
             var query = _dbSet.AsQueryable();
 
-            query = ApplyUserFilter(query, firstName, lastName);
+            query = ApplyUserFilter(query, searchTerm);
 
             if (searchRequest.SortOrder != null && searchRequest.SortColumn != null)
             {
@@ -46,20 +46,17 @@ namespace Cinema.Dal.Repository
             return pagedList;
         }
 
-        private IQueryable<ApplicationUser> ApplyUserFilter(IQueryable<ApplicationUser> query, string firstName, string lastName)
+        private IQueryable<ApplicationUser> ApplyUserFilter(IQueryable<ApplicationUser> query, string searchTerm)
         {
-            if (!string.IsNullOrEmpty(firstName))
+            if (!string.IsNullOrEmpty(searchTerm))
             {
-                firstName = firstName.ToLower();
+                searchTerm = searchTerm.ToLower();
 
-                query = query.Where(x => x.FirstName.ToLower().StartsWith(firstName));
-            }
-
-            if (!string.IsNullOrEmpty(lastName))
-            {
-                lastName = lastName.ToLower();
-
-                query = query.Where(x => x.LastName.ToLower().StartsWith(lastName));
+                query = query.Where(x => x.FirstName.ToLower().StartsWith(searchTerm)
+                                        || x.LastName.ToLower().StartsWith(searchTerm)
+                                        || x.UserName.ToLower().StartsWith(searchTerm)
+                                        || x.Email.ToLower().StartsWith(searchTerm)
+                                        || x.PhoneNumber.StartsWith(searchTerm));
             }
 
             return query;
