@@ -63,7 +63,7 @@ namespace Cinema.Services
 
         public async Task<IPagedList<ApplicationUserDto>> GetPagedAsync(UserSearchRequest search)
         {
-            var list = await _userRepo.GetPagedAsync(search,search.FirstName,search.LastName);
+            var list = await _userRepo.GetPagedAsync(search,search.searchTerm);
             var dtoList = PagedList<ApplicationUserDto>.Map<ApplicationUser>(_mapper, list);
 
             return dtoList;
