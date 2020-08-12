@@ -100,6 +100,7 @@ namespace Cinema.Web.API
             services.AddScoped<IService<GenreDto, BaseSearchRequest>, BaseService<GenreDto, BaseSearchRequest, Genre>>();
 
             services.AddScoped<IMovieService, MovieService>();
+            services.AddScoped<IScreeningService, ScreeningService>();
             services.AddScoped<IUserService, UserService>();
 
             services.AddScoped<IMovieRepository, MovieRepository>();
