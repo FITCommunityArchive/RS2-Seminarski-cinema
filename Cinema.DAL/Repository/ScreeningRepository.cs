@@ -1,42 +1,42 @@
 ﻿using Cinema.Domain.Entities;
+using Cinema.Shared.Pagination;
+using Cinema.Shared.Search;
 using Cinema.Utilities.Interfaces.Dal;
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace Cinema.Dal.Repository
 {
-    public class ScreeningRepository : Repository<Screening, int>
+    public class ScreeningRepository : Repository<Screening, int>, IScreeningRepository
     {
         public ScreeningRepository(ICinemaDbContext context) : base(context) { }
 
-        public bool ValidateScreeningDate(Screening screening)
+        public async Task<IPagedList<Screening>> GetPagedAsync(ISearchRequest searchRequest, string searchTerm, DateTime? screeningDate)
         {
-            return screening.DateAndTime >= DateTime.UtcNow;
-        }
+            var query = _dbSet.AsQueryable();
 
-        public async Task<bool> ValidateScreeningHallAvailabilityAsync(Screening validatedScreening)
-        {
-            Hall hall = await _context.Halls.FindAsync(validatedScreening.HallId);
-            Movie movie = await _context.Movies.FindAsync(validatedScreening.MovieId);
+            query = ApplyFilter(query, searchTerm, screeningDate);
 
-            if (hall == null || movie == null) return false;
-
-            DateTime validatedStartTime = validatedScreening.DateAndTime;
-            DateTime validatedEndTime = validatedScreening.DateAndTime.AddMinutes(movie.Duration);
-
-            var hallScreenings = hall.Screenings.Where(x => x.DateAndTime.Date == validatedStartTime.Date).ToList();
-
-            foreach (var screening in hallScreenings)
+            if (searchRequest.SortOrder != null && searchRequest.SortColumn != null)
             {
-                DateTime startTime = screening.DateAndTime;
-                DateTime endTime = screening.DateAndTime.AddMinutes(screening.Movie.Duration);
-
-                if (validatedStartTime >= startTime && validatedStartTime <= endTime) return false;
-                if (validatedEndTime >= startTime && validatedEndTime <= endTime) return false;
+                query = ApplySorting(query, searchRequest);
             }
 
-            return true;
+            var pagedList = await ApplyPaginationAsync(query, searchRequest.PageIndex, searchRequest.PageSize);
+            return pagedList;
+        }
+
+        private IQueryable<Screening> ApplyFilter(IQueryable<Screening> query, string searchTerm, DateTime? screeningDate)
+        {
+            if (screeningDate.HasValue)
+            {
+                query = query.Where(x => x.DateAndTime.Date == screeningDate.Value.Date);
+            }
+
+            return query;
         }
     }
 }
