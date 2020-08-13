@@ -9,5 +9,6 @@ namespace Cinema.Models.Requests
         public int PageSize { get; set; }
         public string SortColumn { get; set; }
         public SortOrder? SortOrder { get; set; }
+        public string Includes { get; set; }
     }
 }

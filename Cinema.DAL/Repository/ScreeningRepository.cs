@@ -33,6 +33,11 @@ namespace Cinema.Dal.Repository
 
             query = ApplySorting(query, searchRequest);
 
+            if (!string.IsNullOrWhiteSpace(searchRequest.Includes))
+            {
+                query = AddIncludes(query, searchRequest.Includes);
+            }            
+
             var pagedList = await ApplyPaginationAsync(query, searchRequest.PageIndex, searchRequest.PageSize);
             return pagedList;
         }

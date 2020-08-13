@@ -91,6 +91,18 @@ namespace Cinema.Dal.Repository
             GC.SuppressFinalize(this);
         }
 
+        protected virtual IQueryable<Entity> AddIncludes(IQueryable<Entity> query, string includes)
+        {
+            string[] includesSplit = includes.Split(";");
+
+            foreach (string include in includesSplit)
+            {
+                query = query.Include(include);
+            }
+
+            return query;
+        }
+
         protected virtual async Task<IPagedList<Entity>> ApplyPaginationAsync(IQueryable<Entity> query, int pageIndex, int pageSize)
         {
             if (pageIndex == 0)
