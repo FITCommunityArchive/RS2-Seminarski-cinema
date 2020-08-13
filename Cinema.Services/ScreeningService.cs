@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Cinema.Domain.Entities;
 using Cinema.Models.Dtos;
-using Cinema.Models.Requests.Movies;
 using Cinema.Models.Requests.Screenings;
 using Cinema.Shared.Pagination;
 using Cinema.Utilities.Interfaces.Dal;
@@ -33,7 +32,7 @@ namespace Cinema.Services
 
         public async Task<IPagedList<ScreeningDto>> GetPagedAsync(ScreeningSearchRequest search)
         {
-            var list = await _screeningRepo.GetPagedAsync(search, search.SearchTerm, search.Date);
+            var list = await _screeningRepo.GetPagedAsync(search, search.SearchTerm, search.Price, search.Status, search.Date);
             var dtoList = PagedList<ScreeningDto>.Map<Screening>(_mapper, list);
 
             return dtoList;
