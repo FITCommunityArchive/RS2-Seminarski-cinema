@@ -30,6 +30,8 @@ namespace Cinema.Web.Api.Mappers
             CreateMap<GenreMovie, GenreMovieDto>();
 
             CreateMap<Screening, ScreeningDto>();
+
+            CreateMap<Hall, HallDto>();
         }
     }
 }

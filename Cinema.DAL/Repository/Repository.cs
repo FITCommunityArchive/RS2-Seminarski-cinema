@@ -93,6 +93,7 @@ namespace Cinema.Dal.Repository
 
         protected virtual IQueryable<Entity> AddIncludes(IQueryable<Entity> query, string includes)
         {
+            //Includes format: "User;Screening.Pricing"
             string[] includesSplit = includes.Split(";");
 
             foreach (string include in includesSplit)
