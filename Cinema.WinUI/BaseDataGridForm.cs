@@ -1,9 +1,7 @@
 ﻿using Cinema.Shared.Search;
 using Cinema.WinUI.Authorization;
 using Cinema.WinUI.Constants;
-using Cinema.WinUI.UserControls;
 using System.Collections.Generic;
-using System.Windows.Forms;
 
 namespace Cinema.WinUI
 {

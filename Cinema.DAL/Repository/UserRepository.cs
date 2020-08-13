@@ -31,7 +31,7 @@ namespace Cinema.Dal.Repository
             }
         }
 
-        public async Task<IPagedList<ApplicationUser>> GetPagedAsync(ISearchRequest searchRequest,string searchTerm)
+        public async Task<IPagedList<ApplicationUser>> GetPagedAsync(ISearchRequest searchRequest, string searchTerm)
         {
             var query = _dbSet.AsQueryable();
 

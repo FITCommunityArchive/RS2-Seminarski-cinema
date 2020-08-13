@@ -1,6 +1,4 @@
-﻿using Cinema.Models.Dtos;
-using System;
-using System.Collections.Generic;
+﻿using System;
 
 namespace Cinema.Models.Dtos
 {

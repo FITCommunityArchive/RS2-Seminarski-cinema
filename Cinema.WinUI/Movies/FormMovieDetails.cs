@@ -1,16 +1,16 @@
 ﻿using Cinema.Models.Dtos;
-using Cinema.Shared.Pagination;
-using System;
-using System.Linq;
-using System.Windows.Forms;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Threading.Tasks;
 using Cinema.Models.Requests.Movies;
-using System.ComponentModel;
-using System.IO;
+using Cinema.Shared.Pagination;
 using Cinema.WinUI.Helpers;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Cinema.WinUI.Movies
 {
@@ -57,13 +57,13 @@ namespace Cinema.WinUI.Movies
             chlGenres.DataSource = _genres.Data;
             chlGenres.DisplayMember = nameof(GenreDto.Name);
 
-            SetReadonly(false);        
+            SetReadonly(false);
         }
 
 
         private async Task LoadReadOnly()
         {
-            var result = await _moviesApi.GetById<MovieDto>(_id);            
+            var result = await _moviesApi.GetById<MovieDto>(_id);
 
             SetReadonly(true);
 
@@ -163,7 +163,7 @@ namespace Cinema.WinUI.Movies
 
             if (_id.HasValue)
             {
-                result = await _moviesApi.Update<MovieDto>(_id, _request);                
+                result = await _moviesApi.Update<MovieDto>(_id, _request);
             }
             else
             {
@@ -179,7 +179,7 @@ namespace Cinema.WinUI.Movies
             else
             {
                 MessageBox.Show(Properties.Resources.Operation_BadRequest);
-            }            
+            }
         }
 
         private void ValidateEmptyField(Control control, CancelEventArgs e)

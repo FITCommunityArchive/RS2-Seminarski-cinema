@@ -1,17 +1,10 @@
 ﻿using Cinema.Models.Dtos;
 using Cinema.Models.Requests.Users;
 using Cinema.Shared.Pagination;
-using Cinema.WinUI.Authorization;
 using Cinema.WinUI.Helpers;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Cinema.WinUI.Users
 {
@@ -21,7 +14,8 @@ namespace Cinema.WinUI.Users
 
         private ApiService _usersApi = new ApiService("Users");
         IList<string> _nextFormPrincipal;
-        public FormUsers(IList<string> userPrincipal) : base(new string[] { "Administrator" }, userPrincipal) {
+        public FormUsers(IList<string> userPrincipal) : base(new string[] { "Administrator" }, userPrincipal)
+        {
             _nextFormPrincipal = userPrincipal;
             InitializeComponent();
         }

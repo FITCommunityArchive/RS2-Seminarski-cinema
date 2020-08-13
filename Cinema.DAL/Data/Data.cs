@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage;
-using OfficeOpenXml.FormulaParsing.Excel.Functions.DateTime;
 using System;
 using System.Collections.Generic;
 
@@ -40,7 +39,7 @@ namespace Cinema.Dal.Data
         private static void SeedScreenings(ModelBuilder modelBuilder)
         {
             DateTime today = DateTime.UtcNow.Date;
-            
+
             modelBuilder.Entity<Screening>().HasData(
                 new Screening
                 {
@@ -61,7 +60,7 @@ namespace Cinema.Dal.Data
                     CreatedAt = new DateTime(2020, 8, 12),
                     IsDeleted = false,
                     DateAndTime = new DateTime(2019, 8, 13, 19, 15, 0)
-                },                
+                },
                 new Screening
                 {
                     Id = -3,
@@ -91,7 +90,7 @@ namespace Cinema.Dal.Data
                     CreatedAt = new DateTime(2020, 8, 12),
                     IsDeleted = false,
                     DateAndTime = new DateTime(2020, 5, 20, 20, 15, 0)
-                },                
+                },
                 new Screening
                 {
                     Id = -6,

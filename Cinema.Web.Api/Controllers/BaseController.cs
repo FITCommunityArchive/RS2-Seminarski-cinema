@@ -3,7 +3,6 @@ using Cinema.Shared.Pagination;
 using Cinema.Utilities.Interfaces.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;
 
 namespace Cinema.Web.Api.Controllers

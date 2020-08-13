@@ -1,10 +1,8 @@
 ﻿using Cinema.Shared.Helpers;
 using Flurl;
 using Flurl.Http;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace Cinema.WinUI
 {
@@ -34,7 +32,7 @@ namespace Cinema.WinUI
                 userName = Username,
                 password = Password
             });
-            if(result.IsSuccessStatusCode)
+            if (result.IsSuccessStatusCode)
             {
                 var json = await result.Content.ReadAsStringAsync();
                 var dynamicJson = JsonConvert.DeserializeObject<dynamic>(json);
@@ -43,13 +41,14 @@ namespace Cinema.WinUI
                 var decodeUrl = $"{Properties.Settings.Default.APIUrl}/decode";
                 var decodeResult = await decodeUrl.SetQueryParams(new { token = Token }).GetStringAsync();
 
-                if(decodeResult != null)
+                if (decodeResult != null)
                 {
                     Role = decodeResult;
                 }
 
                 return true;
-            } else
+            }
+            else
             {
                 Token = "";
             }
@@ -59,7 +58,7 @@ namespace Cinema.WinUI
 
         public async Task<T> Get<T>(object search)
         {
-           
+
             var url = $"{Properties.Settings.Default.APIUrl}/{_route}";
 
             if (search != null)

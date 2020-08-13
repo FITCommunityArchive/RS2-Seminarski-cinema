@@ -2,9 +2,7 @@
 using Cinema.WinUI.Movies;
 using Cinema.WinUI.Users;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Security.Principal;
 using System.Windows.Forms;
 
 namespace Cinema.WinUI
@@ -14,7 +12,7 @@ namespace Cinema.WinUI
         private Form activeForm = null;
 
         private IList<string> _nextFormPrincipal;
-        public FormMain(IList<string> userPrincipal) : base(new string[] { "Administrator","Content Editor" }, userPrincipal)
+        public FormMain(IList<string> userPrincipal) : base(new string[] { "Administrator", "Content Editor" }, userPrincipal)
         {
             _nextFormPrincipal = userPrincipal;
             InitializeComponent();
