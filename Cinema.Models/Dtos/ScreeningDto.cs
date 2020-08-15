@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cinema.Shared.Enums;
+using System;
 
 namespace Cinema.Models.Dtos
 {
@@ -14,5 +15,7 @@ namespace Cinema.Models.Dtos
 
         public int PricingId { get; set; }
         public PricingDto Pricing { get; set; }
+
+        public TimingStatus TimingStatus { get; set; }
     }
 }

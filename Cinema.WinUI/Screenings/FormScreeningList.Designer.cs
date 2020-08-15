@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grdScreeningsList = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -75,14 +75,14 @@
             this.grdScreeningsList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.grdScreeningsList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.grdScreeningsList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grdScreeningsList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdScreeningsList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.grdScreeningsList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdScreeningsList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
@@ -156,7 +156,7 @@
             // 
             // Status
             // 
-            this.Status.DataPropertyName = "Status";
+            this.Status.DataPropertyName = "TimingStatus";
             this.Status.FillWeight = 70F;
             this.Status.HeaderText = "Status";
             this.Status.MinimumWidth = 6;
@@ -165,11 +165,11 @@
             // 
             // DetailsAction
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            this.DetailsAction.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            this.DetailsAction.DefaultCellStyle = dataGridViewCellStyle2;
             this.DetailsAction.FillWeight = 50F;
             this.DetailsAction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DetailsAction.HeaderText = "Action";
@@ -265,9 +265,10 @@
             // dtpScreeningDate
             // 
             this.dtpScreeningDate.CalendarForeColor = System.Drawing.Color.Gray;
+            this.dtpScreeningDate.CalendarTitleForeColor = System.Drawing.Color.Gray;
             this.dtpScreeningDate.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpScreeningDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpScreeningDate.Location = new System.Drawing.Point(686, 37);
+            this.dtpScreeningDate.Location = new System.Drawing.Point(698, 37);
             this.dtpScreeningDate.Name = "dtpScreeningDate";
             this.dtpScreeningDate.Size = new System.Drawing.Size(214, 26);
             this.dtpScreeningDate.TabIndex = 11;
@@ -280,7 +281,7 @@
             this.lblHall.BackColor = System.Drawing.Color.White;
             this.lblHall.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHall.ForeColor = System.Drawing.Color.Gray;
-            this.lblHall.Location = new System.Drawing.Point(473, 14);
+            this.lblHall.Location = new System.Drawing.Point(473, 15);
             this.lblHall.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
             this.lblHall.Name = "lblHall";
             this.lblHall.Size = new System.Drawing.Size(33, 18);
@@ -292,7 +293,7 @@
             this.txtHall.BorderColor = System.Drawing.Color.DarkGray;
             this.txtHall.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtHall.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtHall.Location = new System.Drawing.Point(476, 39);
+            this.txtHall.Location = new System.Drawing.Point(476, 37);
             this.txtHall.Margin = new System.Windows.Forms.Padding(25);
             this.txtHall.Name = "txtHall";
             this.txtHall.Size = new System.Drawing.Size(182, 26);
@@ -305,7 +306,7 @@
             this.lblStatus.BackColor = System.Drawing.Color.White;
             this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStatus.ForeColor = System.Drawing.Color.Gray;
-            this.lblStatus.Location = new System.Drawing.Point(1174, 15);
+            this.lblStatus.Location = new System.Drawing.Point(1171, 15);
             this.lblStatus.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(50, 18);
@@ -315,8 +316,9 @@
             // cmbStatus
             // 
             this.cmbStatus.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbStatus.ForeColor = System.Drawing.Color.Gray;
             this.cmbStatus.FormattingEnabled = true;
-            this.cmbStatus.Location = new System.Drawing.Point(1177, 37);
+            this.cmbStatus.Location = new System.Drawing.Point(1174, 37);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(188, 26);
             this.cmbStatus.TabIndex = 7;
@@ -328,7 +330,7 @@
             this.lblDate.BackColor = System.Drawing.Color.White;
             this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDate.ForeColor = System.Drawing.Color.Gray;
-            this.lblDate.Location = new System.Drawing.Point(683, 15);
+            this.lblDate.Location = new System.Drawing.Point(695, 15);
             this.lblDate.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(39, 18);
@@ -341,7 +343,7 @@
             this.lblPrice.BackColor = System.Drawing.Color.White;
             this.lblPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPrice.ForeColor = System.Drawing.Color.Gray;
-            this.lblPrice.Location = new System.Drawing.Point(948, 12);
+            this.lblPrice.Location = new System.Drawing.Point(948, 15);
             this.lblPrice.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
             this.lblPrice.Name = "lblPrice";
             this.lblPrice.Size = new System.Drawing.Size(42, 18);
@@ -353,7 +355,7 @@
             this.txtPrice.BorderColor = System.Drawing.Color.DarkGray;
             this.txtPrice.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPrice.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtPrice.Location = new System.Drawing.Point(951, 37);
+            this.txtPrice.Location = new System.Drawing.Point(952, 37);
             this.txtPrice.Margin = new System.Windows.Forms.Padding(25);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(182, 26);
@@ -365,7 +367,7 @@
             this.txtSearchBar.BorderColor = System.Drawing.Color.DarkGray;
             this.txtSearchBar.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearchBar.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtSearchBar.Location = new System.Drawing.Point(20, 39);
+            this.txtSearchBar.Location = new System.Drawing.Point(20, 37);
             this.txtSearchBar.Margin = new System.Windows.Forms.Padding(15);
             this.txtSearchBar.Name = "txtSearchBar";
             this.txtSearchBar.Size = new System.Drawing.Size(416, 26);
@@ -400,7 +402,7 @@
             // 
             this.btnAddNew.AutoSize = true;
             this.btnAddNew.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnAddNew.Location = new System.Drawing.Point(964, 726);
+            this.btnAddNew.Location = new System.Drawing.Point(964, 723);
             this.btnAddNew.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddNew.Name = "btnAddNew";
             this.btnAddNew.Size = new System.Drawing.Size(120, 40);

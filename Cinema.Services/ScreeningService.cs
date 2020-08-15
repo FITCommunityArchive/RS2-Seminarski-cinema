@@ -2,9 +2,11 @@
 using Cinema.Domain.Entities;
 using Cinema.Models.Dtos;
 using Cinema.Models.Requests.Screenings;
+using Cinema.Shared.Enums;
 using Cinema.Shared.Pagination;
 using Cinema.Utilities.Interfaces.Dal;
 using Cinema.Utilities.Interfaces.Services;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.DateTime;
 using System;
 using System.Threading.Tasks;
 
@@ -33,7 +35,24 @@ namespace Cinema.Services
             var list = await _screeningRepo.GetPagedAsync(search, search.SearchTerm, search.Hall, search.Price, search.Status, search.Date);
             var dtoList = PagedList<ScreeningDto>.Map<Screening>(_mapper, list);
 
+            foreach (var screening in dtoList.Data)
+            {
+                screening.TimingStatus = GetTimingStatus(screening);
+            }
+
             return dtoList;
+        }
+
+        private TimingStatus GetTimingStatus(ScreeningDto screening)
+        {
+            if (screening.DateAndTime > DateTime.UtcNow)
+            {
+                return TimingStatus.SCHEDULED;
+            }
+            else
+            {
+                return TimingStatus.STARTED;
+            }
         }
 
         public Task<ScreeningDto> InsertAsync(ScreeningUpsertRequest req)
