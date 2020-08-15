@@ -15,7 +15,7 @@ using Cinema.WinUI.Services;
 
 namespace Cinema.WinUI.Movies
 {
-    public partial class FormMovieDetails : Form
+    public partial class FormScreeningDetails : Form
     {
         private readonly ApiService _moviesApi = new ApiService("Movies");
         private readonly ApiService _genresApi = new ApiService("Genres");
@@ -27,7 +27,7 @@ namespace Cinema.WinUI.Movies
 
         public event EventHandler ItemDeleted;
 
-        public FormMovieDetails(int? id = null)
+        public FormScreeningDetails(int? id = null)
         {
             InitializeComponent();
             _id = id;

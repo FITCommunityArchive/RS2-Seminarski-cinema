@@ -169,6 +169,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Screenings\FormScreeningDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screenings\FormScreeningDetails.Designer.cs">
+      <DependentUpon>FormScreeningDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Services\ApiService.cs" />
     <Compile Include="Authorization\SecureBaseForm.cs">
       <SubType>Form</SubType>
@@ -318,6 +324,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Screenings\FormScreeningDetails.resx">
+      <DependentUpon>FormScreeningDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Screenings\FormScreeningList.resx">
       <DependentUpon>FormScreeningList.cs</DependentUpon>
     </EmbeddedResource>
