@@ -1,5 +1,6 @@
 ﻿using Cinema.Models.Dtos;
 using Cinema.Models.Requests.Movies;
+using Cinema.Shared.Constants;
 using Cinema.Shared.Pagination;
 using Cinema.WinUI.Constants;
 using Cinema.WinUI.Helpers;
@@ -16,24 +17,10 @@ namespace Cinema.WinUI.Movies
         private IList<string> _nextFormPrincipal;
         private FormMovieDetails _frmMovieDetails = null;
 
-        public FormMovieList(IList<string> userPrincipal) : base(new string[] { "Administrator", "Content Editor" }, userPrincipal)
+        public FormMovieList(IList<string> userPrincipal) : base(new string[] { Roles.Administrator, Roles.ContentEditor }, userPrincipal)
         {
             _nextFormPrincipal = userPrincipal;
             InitializeComponent();
-        }
-
-        private async void frmMoviesList_Load(object sender, EventArgs e)
-        {
-            this.grdMoviesList.DoubleBuffered(true);
-            MovieSearchRequest searchRequest = new MovieSearchRequest();
-            searchRequest = ApplyDefaultSearchValues(searchRequest) as MovieSearchRequest;
-            await LoadMovies(searchRequest);
-        }
-
-        private async void txtSearch_TextChanged(object sender, EventArgs e)
-        {
-            MovieSearchRequest searchRequest = GetSearchRequest();
-            await LoadMovies(searchRequest);
         }
 
         private MovieSearchRequest GetSearchRequest()
@@ -66,6 +53,15 @@ namespace Cinema.WinUI.Movies
             pgnMoviesList.PageIndex = result.PageIndex;
             pgnMoviesList.TotalPages = result.TotalPages;
         }
+
+        private void InitializeDetailsForm(int? id)
+        {
+            _frmMovieDetails = new FormMovieDetails(id);
+            _frmMovieDetails.FormClosed += new System.Windows.Forms.FormClosedEventHandler(FormDetails_Closed);
+            _frmMovieDetails.ShowDialog();
+        }
+
+        #region Event methods
 
         private async void pgnMoviesList_PageChanged(object sender, EventArgs e)
         {
@@ -110,11 +106,20 @@ namespace Cinema.WinUI.Movies
             InitializeDetailsForm(null);
         }
 
-        private void InitializeDetailsForm(int? id)
+        private async void frmMoviesList_Load(object sender, EventArgs e)
         {
-            FormMovieDetails frmMovieDetails = new FormMovieDetails(id);
-            frmMovieDetails.FormClosed += new System.Windows.Forms.FormClosedEventHandler(FormDetails_Closed);
-            frmMovieDetails.ShowDialog();
+            this.grdMoviesList.DoubleBuffered(true);
+            MovieSearchRequest searchRequest = new MovieSearchRequest();
+            searchRequest = ApplyDefaultSearchValues(searchRequest) as MovieSearchRequest;
+            await LoadMovies(searchRequest);
         }
+
+        private async void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            MovieSearchRequest searchRequest = GetSearchRequest();
+            await LoadMovies(searchRequest);
+        }
+
+        #endregion
     }
 }

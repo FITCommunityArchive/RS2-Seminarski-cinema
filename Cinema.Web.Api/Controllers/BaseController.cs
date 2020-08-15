@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace Cinema.Web.Api.Controllers
 {
-    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     [Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme)]
