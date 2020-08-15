@@ -2,6 +2,7 @@
 using Cinema.Models.Requests.Movies;
 using Cinema.Shared.Constants;
 using Cinema.Shared.Pagination;
+using Cinema.WinUI.Constants;
 using Cinema.WinUI.Helpers;
 using System;
 using System.Collections.Generic;
@@ -10,13 +11,12 @@ using System.Windows.Forms;
 
 namespace Cinema.WinUI.Movies
 {
-    public partial class FormMovieList : BaseDataGridForm
+    public partial class FormScreeningList : BaseDataGridForm
     {
-        private readonly ApiService _moviesApi = new ApiService("Movies");
+        private readonly ApiService _moviesApi = new ApiService("Screenings");
         private IList<string> _nextFormPrincipal;
-        private FormMovieDetails _frmMovieDetails = null;
 
-        public FormMovieList(IList<string> userPrincipal) : base(new string[] { Roles.Administrator, Roles.ContentEditor }, userPrincipal)
+        public FormScreeningList(IList<string> userPrincipal) : base(new string[] { Roles.Administrator, Roles.ContentEditor }, userPrincipal)
         {
             _nextFormPrincipal = userPrincipal;
             InitializeComponent();
@@ -30,7 +30,7 @@ namespace Cinema.WinUI.Movies
             searchRequest.PageIndex = pgnMoviesList.PageIndex;
             searchRequest.SearchTerm = txtSearchBar.Text;
 
-            if (int.TryParse(txtSearchDuration.Text, out int searchDuration))
+/*            if (int.TryParse(txtSearchDuration.Text, out int searchDuration))
             {
                 searchRequest.Duration = searchDuration;
             }
@@ -38,7 +38,7 @@ namespace Cinema.WinUI.Movies
             if (int.TryParse(txtSearchYear.Text, out int searchYear))
             {
                 searchRequest.Year = searchYear;
-            }
+            }*/
 
             return searchRequest;
         }
@@ -47,17 +47,18 @@ namespace Cinema.WinUI.Movies
         {
             var result = await _moviesApi.Get<PagedList<MovieDto>>(searchRequest);
 
-            grdMoviesList.AutoGenerateColumns = false;
-            grdMoviesList.DataSource = result.Data;
+            grdScreeningsList.AutoGenerateColumns = false;
+            grdScreeningsList.DataSource = result.Data;
             pgnMoviesList.PageIndex = result.PageIndex;
             pgnMoviesList.TotalPages = result.TotalPages;
         }
 
         private void InitializeDetailsForm(int? id)
         {
+            /*
             _frmMovieDetails = new FormMovieDetails(id);
             _frmMovieDetails.FormClosed += new System.Windows.Forms.FormClosedEventHandler(FormDetails_Closed);
-            _frmMovieDetails.ShowDialog();
+            _frmMovieDetails.ShowDialog();*/
         }
 
         #region Event methods
@@ -70,7 +71,7 @@ namespace Cinema.WinUI.Movies
 
         private async void grdMoviesList_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            DataGridViewColumn clickedColumn = grdMoviesList.Columns[e.ColumnIndex];
+            DataGridViewColumn clickedColumn = grdScreeningsList.Columns[e.ColumnIndex];
 
             ChangeSorting(clickedColumn.Name);
 
@@ -107,7 +108,7 @@ namespace Cinema.WinUI.Movies
 
         private async void frmMoviesList_Load(object sender, EventArgs e)
         {
-            this.grdMoviesList.DoubleBuffered(true);
+            this.grdScreeningsList.DoubleBuffered(true);
             MovieSearchRequest searchRequest = new MovieSearchRequest();
             searchRequest = ApplyDefaultSearchValues(searchRequest) as MovieSearchRequest;
             await LoadMovies(searchRequest);

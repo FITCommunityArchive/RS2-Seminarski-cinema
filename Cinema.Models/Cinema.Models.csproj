@@ -12,4 +12,8 @@
     <ProjectReference Include="..\Cinema.Shared\Cinema.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Requests\Screenings\" />
+  </ItemGroup>
+
 </Project>

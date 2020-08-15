@@ -215,6 +215,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Screenings\FormScreeningList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screenings\FormScreeningList.Designer.cs">
+      <DependentUpon>FormScreeningList.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\BorderedTextBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -312,6 +318,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Screenings\FormScreeningList.resx">
+      <DependentUpon>FormScreeningList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Buttons\BackButton.resx">
       <DependentUpon>BackButton.cs</DependentUpon>
     </EmbeddedResource>
