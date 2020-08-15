@@ -5,10 +5,10 @@ using Cinema.Shared.Pagination;
 using Cinema.WinUI.Helpers;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Cinema.WinUI.Services;
+using Cinema.Shared.Enums;
 
 namespace Cinema.WinUI.Movies
 {
@@ -16,7 +16,6 @@ namespace Cinema.WinUI.Movies
     {
         private readonly ApiService _screeningsApi = new ApiService("Screenings");
         private IList<string> _nextFormPrincipal;
-        private readonly DateTime _dateDefaultValue = new DateTime(1900, 1, 1);
         private bool _dateFilterCleared = true;
 
         public FormScreeningList(IList<string> userPrincipal) : base(new string[] { Roles.Administrator, Roles.ContentEditor }, userPrincipal)
@@ -41,7 +40,10 @@ namespace Cinema.WinUI.Movies
             else
             {
                 searchRequest.Date = null;
-            }            
+            }
+
+            Enum.TryParse(cmbStatus.SelectedValue.ToString(), out TimingStatus timingStatus);
+            searchRequest.Status = timingStatus;
 
             AddIncludes(ref searchRequest);
 
@@ -89,6 +91,10 @@ namespace Cinema.WinUI.Movies
             AddIncludes(ref searchRequest);
 
             searchRequest = ApplyDefaultSearchValues(searchRequest) as ScreeningSearchRequest;
+
+            cmbStatus.DataSource = Enum.GetValues(typeof(TimingStatus));
+            cmbStatus.SelectedItem = TimingStatus.SCHEDULED;
+
             await LoadScreenings(searchRequest);
         }
 
@@ -165,9 +171,9 @@ namespace Cinema.WinUI.Movies
             if (dtpScreeningDate.Format == DateTimePickerFormat.Custom)
             {
                 dtpScreeningDate.Format = DateTimePickerFormat.Short;
-                _dateFilterCleared = false;
             }
 
+            _dateFilterCleared = false;
             SearchChanged(sender, e);
         }
     }

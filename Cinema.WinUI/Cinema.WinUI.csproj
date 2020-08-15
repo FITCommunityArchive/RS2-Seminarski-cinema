@@ -169,7 +169,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApiService.cs" />
+    <Compile Include="Services\ApiService.cs" />
     <Compile Include="Authorization\SecureBaseForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -4,7 +4,7 @@ using Flurl.Http;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
 
-namespace Cinema.WinUI
+namespace Cinema.WinUI.Services
 {
     public class ApiService
     {
