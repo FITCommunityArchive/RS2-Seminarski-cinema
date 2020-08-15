@@ -56,6 +56,7 @@ namespace Cinema.WinUI
             return searchRequest;
         }
 
+        //https://www.codeproject.com/Questions/1171964/How-do-I-manually-bind-datagridview-columns-to-val
         protected virtual void BindNavigationColumns(DataGridView dataGridView, object sender, DataGridViewCellFormattingEventArgs e)
         {
             if ((dataGridView.Rows[e.RowIndex].DataBoundItem != null)
@@ -68,6 +69,7 @@ namespace Cinema.WinUI
             }
         }
 
+        //https://www.codeproject.com/Questions/1171964/How-do-I-manually-bind-datagridview-columns-to-val
         protected virtual string BindProperty(object property, string propertyName)
         {
             string retValue = "";

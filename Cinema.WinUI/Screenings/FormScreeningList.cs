@@ -5,6 +5,7 @@ using Cinema.Shared.Pagination;
 using Cinema.WinUI.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,6 +16,8 @@ namespace Cinema.WinUI.Movies
     {
         private readonly ApiService _screeningsApi = new ApiService("Screenings");
         private IList<string> _nextFormPrincipal;
+        private readonly DateTime _dateDefaultValue = new DateTime(1900, 1, 1);
+        private bool _dateFilterCleared = true;
 
         public FormScreeningList(IList<string> userPrincipal) : base(new string[] { Roles.Administrator, Roles.ContentEditor }, userPrincipal)
         {
@@ -30,6 +33,15 @@ namespace Cinema.WinUI.Movies
             searchRequest.PageIndex = pagination.PageIndex;
             searchRequest.SearchTerm = txtSearchBar.Text;
             searchRequest.Hall = txtHall.Text;
+
+            if (!_dateFilterCleared)
+            {
+                searchRequest.Date = dtpScreeningDate.Value;
+            }
+            else
+            {
+                searchRequest.Date = null;
+            }            
 
             AddIncludes(ref searchRequest);
 
@@ -69,6 +81,16 @@ namespace Cinema.WinUI.Movies
         }
 
         #region Event methods
+
+        private async void FormScreeningList_Load(object sender, EventArgs e)
+        {
+            this.grdScreeningsList.DoubleBuffered(true);
+            ScreeningSearchRequest searchRequest = new ScreeningSearchRequest();
+            AddIncludes(ref searchRequest);
+
+            searchRequest = ApplyDefaultSearchValues(searchRequest) as ScreeningSearchRequest;
+            await LoadScreenings(searchRequest);
+        }
 
         private async void pagination_PageChanged(object sender, EventArgs e)
         {
@@ -113,16 +135,6 @@ namespace Cinema.WinUI.Movies
             InitializeDetailsForm(null);
         }
 
-        private async void FormScreeningList_Load(object sender, EventArgs e)
-        {
-            this.grdScreeningsList.DoubleBuffered(true);
-            ScreeningSearchRequest searchRequest = new ScreeningSearchRequest();
-            AddIncludes(ref searchRequest);
-
-            searchRequest = ApplyDefaultSearchValues(searchRequest) as ScreeningSearchRequest;
-            await LoadScreenings(searchRequest);
-        }
-
         private async void SearchChanged(object sender, EventArgs e)
         {
             ScreeningSearchRequest searchRequest = GetSearchRequest();
@@ -136,5 +148,27 @@ namespace Cinema.WinUI.Movies
             BindNavigationColumns(grdScreeningsList, sender, e);
         }
 
+        private void dtpScreeningDate_KeyDown(object sender, KeyEventArgs e)
+        {
+            if ((e.KeyCode == Keys.Back) || (e.KeyCode == Keys.Delete))
+            {
+                dtpScreeningDate.CustomFormat = " ";
+                dtpScreeningDate.Format = DateTimePickerFormat.Custom;
+                _dateFilterCleared = true;
+            }
+
+            SearchChanged(sender, e);
+        }
+
+        private void dtpScreeningDate_ValueChanged(object sender, EventArgs e)
+        {
+            if (dtpScreeningDate.Format == DateTimePickerFormat.Custom)
+            {
+                dtpScreeningDate.Format = DateTimePickerFormat.Short;
+                _dateFilterCleared = false;
+            }
+
+            SearchChanged(sender, e);
+        }
     }
 }

@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grdScreeningsList = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Hall = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateAndTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DetailsAction = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -43,10 +44,12 @@
             this.lblBreadcrumbs = new System.Windows.Forms.Label();
             this.txtFormTitle = new System.Windows.Forms.TextBox();
             this.pnlSearchBars = new System.Windows.Forms.Panel();
+            this.dtpScreeningDate = new System.Windows.Forms.DateTimePicker();
+            this.lblHall = new System.Windows.Forms.Label();
+            this.txtHall = new Cinema.WinUI.UserControls.ExtendedTextBox();
             this.lblStatus = new System.Windows.Forms.Label();
             this.cmbStatus = new System.Windows.Forms.ComboBox();
             this.lblDate = new System.Windows.Forms.Label();
-            this.txtDate = new Cinema.WinUI.UserControls.ExtendedTextBox();
             this.lblPrice = new System.Windows.Forms.Label();
             this.txtPrice = new Cinema.WinUI.UserControls.ExtendedTextBox();
             this.txtSearchBar = new Cinema.WinUI.UserControls.ExtendedTextBox();
@@ -54,8 +57,6 @@
             this.pnlContent = new System.Windows.Forms.Panel();
             this.btnAddNew = new Cinema.WinUI.UserControls.Buttons.AddNewButton();
             this.pagination = new Cinema.WinUI.UserControls.Pagination();
-            this.lblHall = new System.Windows.Forms.Label();
-            this.txtHall = new Cinema.WinUI.UserControls.ExtendedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.grdScreeningsList)).BeginInit();
             this.pnlFormTitle.SuspendLayout();
             this.pnlSearchBars.SuspendLayout();
@@ -74,19 +75,20 @@
             this.grdScreeningsList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.grdScreeningsList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.grdScreeningsList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grdScreeningsList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdScreeningsList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.grdScreeningsList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdScreeningsList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
             this.Title,
             this.Hall,
+            this.DateAndTime,
             this.Price,
             this.Status,
             this.DetailsAction});
@@ -116,7 +118,7 @@
             // Title
             // 
             this.Title.DataPropertyName = "Movie.Title";
-            this.Title.FillWeight = 200F;
+            this.Title.FillWeight = 175F;
             this.Title.HeaderText = "Title";
             this.Title.MinimumWidth = 50;
             this.Title.Name = "Title";
@@ -132,6 +134,15 @@
             this.Hall.Name = "Hall";
             this.Hall.ReadOnly = true;
             this.Hall.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // DateAndTime
+            // 
+            this.DateAndTime.DataPropertyName = "DateAndTime";
+            this.DateAndTime.FillWeight = 70F;
+            this.DateAndTime.HeaderText = "Date and Time";
+            this.DateAndTime.MinimumWidth = 6;
+            this.DateAndTime.Name = "DateAndTime";
+            this.DateAndTime.ReadOnly = true;
             // 
             // Price
             // 
@@ -154,11 +165,11 @@
             // 
             // DetailsAction
             // 
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.White;
-            this.DetailsAction.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            this.DetailsAction.DefaultCellStyle = dataGridViewCellStyle2;
             this.DetailsAction.FillWeight = 50F;
             this.DetailsAction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DetailsAction.HeaderText = "Action";
@@ -234,12 +245,12 @@
             // pnlSearchBars
             // 
             this.pnlSearchBars.BackColor = System.Drawing.Color.White;
+            this.pnlSearchBars.Controls.Add(this.dtpScreeningDate);
             this.pnlSearchBars.Controls.Add(this.lblHall);
             this.pnlSearchBars.Controls.Add(this.txtHall);
             this.pnlSearchBars.Controls.Add(this.lblStatus);
             this.pnlSearchBars.Controls.Add(this.cmbStatus);
             this.pnlSearchBars.Controls.Add(this.lblDate);
-            this.pnlSearchBars.Controls.Add(this.txtDate);
             this.pnlSearchBars.Controls.Add(this.lblPrice);
             this.pnlSearchBars.Controls.Add(this.txtPrice);
             this.pnlSearchBars.Controls.Add(this.lblSearch);
@@ -250,6 +261,43 @@
             this.pnlSearchBars.Padding = new System.Windows.Forms.Padding(15);
             this.pnlSearchBars.Size = new System.Drawing.Size(1383, 89);
             this.pnlSearchBars.TabIndex = 9;
+            // 
+            // dtpScreeningDate
+            // 
+            this.dtpScreeningDate.CalendarForeColor = System.Drawing.Color.Gray;
+            this.dtpScreeningDate.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpScreeningDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpScreeningDate.Location = new System.Drawing.Point(686, 37);
+            this.dtpScreeningDate.Name = "dtpScreeningDate";
+            this.dtpScreeningDate.Size = new System.Drawing.Size(214, 26);
+            this.dtpScreeningDate.TabIndex = 11;
+            this.dtpScreeningDate.ValueChanged += new System.EventHandler(this.dtpScreeningDate_ValueChanged);
+            this.dtpScreeningDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtpScreeningDate_KeyDown);
+            // 
+            // lblHall
+            // 
+            this.lblHall.AutoSize = true;
+            this.lblHall.BackColor = System.Drawing.Color.White;
+            this.lblHall.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHall.ForeColor = System.Drawing.Color.Gray;
+            this.lblHall.Location = new System.Drawing.Point(473, 14);
+            this.lblHall.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
+            this.lblHall.Name = "lblHall";
+            this.lblHall.Size = new System.Drawing.Size(33, 18);
+            this.lblHall.TabIndex = 10;
+            this.lblHall.Text = "Hall";
+            // 
+            // txtHall
+            // 
+            this.txtHall.BorderColor = System.Drawing.Color.DarkGray;
+            this.txtHall.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHall.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtHall.Location = new System.Drawing.Point(476, 39);
+            this.txtHall.Margin = new System.Windows.Forms.Padding(25);
+            this.txtHall.Name = "txtHall";
+            this.txtHall.Size = new System.Drawing.Size(182, 26);
+            this.txtHall.TabIndex = 9;
+            this.txtHall.TextChanged += new System.EventHandler(this.SearchChanged);
             // 
             // lblStatus
             // 
@@ -266,10 +314,11 @@
             // 
             // cmbStatus
             // 
+            this.cmbStatus.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbStatus.FormattingEnabled = true;
             this.cmbStatus.Location = new System.Drawing.Point(1177, 37);
             this.cmbStatus.Name = "cmbStatus";
-            this.cmbStatus.Size = new System.Drawing.Size(188, 24);
+            this.cmbStatus.Size = new System.Drawing.Size(188, 26);
             this.cmbStatus.TabIndex = 7;
             this.cmbStatus.SelectedIndexChanged += new System.EventHandler(this.SearchChanged);
             // 
@@ -279,23 +328,12 @@
             this.lblDate.BackColor = System.Drawing.Color.White;
             this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDate.ForeColor = System.Drawing.Color.Gray;
-            this.lblDate.Location = new System.Drawing.Point(932, 15);
+            this.lblDate.Location = new System.Drawing.Point(683, 15);
             this.lblDate.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(39, 18);
             this.lblDate.TabIndex = 6;
             this.lblDate.Text = "Date";
-            // 
-            // txtDate
-            // 
-            this.txtDate.BorderColor = System.Drawing.Color.DarkGray;
-            this.txtDate.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtDate.Location = new System.Drawing.Point(935, 39);
-            this.txtDate.Margin = new System.Windows.Forms.Padding(25);
-            this.txtDate.Name = "txtDate";
-            this.txtDate.Size = new System.Drawing.Size(214, 22);
-            this.txtDate.TabIndex = 5;
-            this.txtDate.TextChanged += new System.EventHandler(this.SearchChanged);
             // 
             // lblPrice
             // 
@@ -303,7 +341,7 @@
             this.lblPrice.BackColor = System.Drawing.Color.White;
             this.lblPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPrice.ForeColor = System.Drawing.Color.Gray;
-            this.lblPrice.Location = new System.Drawing.Point(700, 14);
+            this.lblPrice.Location = new System.Drawing.Point(948, 12);
             this.lblPrice.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
             this.lblPrice.Name = "lblPrice";
             this.lblPrice.Size = new System.Drawing.Size(42, 18);
@@ -313,22 +351,24 @@
             // txtPrice
             // 
             this.txtPrice.BorderColor = System.Drawing.Color.DarkGray;
+            this.txtPrice.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPrice.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtPrice.Location = new System.Drawing.Point(703, 39);
+            this.txtPrice.Location = new System.Drawing.Point(951, 37);
             this.txtPrice.Margin = new System.Windows.Forms.Padding(25);
             this.txtPrice.Name = "txtPrice";
-            this.txtPrice.Size = new System.Drawing.Size(182, 22);
+            this.txtPrice.Size = new System.Drawing.Size(182, 26);
             this.txtPrice.TabIndex = 3;
             this.txtPrice.TextChanged += new System.EventHandler(this.SearchChanged);
             // 
             // txtSearchBar
             // 
             this.txtSearchBar.BorderColor = System.Drawing.Color.DarkGray;
+            this.txtSearchBar.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearchBar.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtSearchBar.Location = new System.Drawing.Point(20, 39);
             this.txtSearchBar.Margin = new System.Windows.Forms.Padding(15);
             this.txtSearchBar.Name = "txtSearchBar";
-            this.txtSearchBar.Size = new System.Drawing.Size(416, 22);
+            this.txtSearchBar.Size = new System.Drawing.Size(416, 26);
             this.txtSearchBar.TabIndex = 1;
             this.txtSearchBar.TextChanged += new System.EventHandler(this.SearchChanged);
             // 
@@ -381,30 +421,6 @@
             this.pagination.TotalPages = 0;
             this.pagination.PageChanged += new System.EventHandler(this.pagination_PageChanged);
             // 
-            // lblHall
-            // 
-            this.lblHall.AutoSize = true;
-            this.lblHall.BackColor = System.Drawing.Color.White;
-            this.lblHall.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHall.ForeColor = System.Drawing.Color.Gray;
-            this.lblHall.Location = new System.Drawing.Point(473, 14);
-            this.lblHall.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
-            this.lblHall.Name = "lblHall";
-            this.lblHall.Size = new System.Drawing.Size(33, 18);
-            this.lblHall.TabIndex = 10;
-            this.lblHall.Text = "Hall";
-            // 
-            // txtHall
-            // 
-            this.txtHall.BorderColor = System.Drawing.Color.DarkGray;
-            this.txtHall.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtHall.Location = new System.Drawing.Point(476, 39);
-            this.txtHall.Margin = new System.Windows.Forms.Padding(25);
-            this.txtHall.Name = "txtHall";
-            this.txtHall.Size = new System.Drawing.Size(182, 22);
-            this.txtHall.TabIndex = 9;
-            this.txtHall.TextChanged += new System.EventHandler(this.SearchChanged);
-            // 
             // FormScreeningList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -448,16 +464,17 @@
         private System.Windows.Forms.Label lblPrice;
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.ComboBox cmbStatus;
-        private UserControls.ExtendedTextBox txtDate;
         private UserControls.ExtendedTextBox txtPrice;
         private UserControls.ExtendedTextBox txtSearchBar;
+        private System.Windows.Forms.Label lblHall;
+        private UserControls.ExtendedTextBox txtHall;
+        private System.Windows.Forms.DateTimePicker dtpScreeningDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Title;
         private System.Windows.Forms.DataGridViewTextBoxColumn Hall;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DateAndTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
         private System.Windows.Forms.DataGridViewButtonColumn DetailsAction;
-        private System.Windows.Forms.Label lblHall;
-        private UserControls.ExtendedTextBox txtHall;
     }
 }

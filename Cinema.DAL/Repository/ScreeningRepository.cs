@@ -3,6 +3,7 @@ using Cinema.Shared.Enums;
 using Cinema.Shared.Pagination;
 using Cinema.Shared.Search;
 using Cinema.Utilities.Interfaces.Dal;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.DateTime;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
@@ -44,6 +45,7 @@ namespace Cinema.Dal.Repository
 
         private IQueryable<Screening> ApplyFilter(IQueryable<Screening> query, string searchTerm, string hall, decimal? price, TimingStatus? status, DateTime? screeningDate)
         {
+            
             if (screeningDate.HasValue)
             {
                 query = query.Where(x => x.DateAndTime.Date == screeningDate.Value.Date);
@@ -62,11 +64,6 @@ namespace Cinema.Dal.Repository
             if (price.HasValue)
             {
                 query = query.Where(x => x.Pricing.Price.ToString().StartsWith(price.Value.ToString()));
-            }
-
-            if (screeningDate.HasValue)
-            {
-                query = query.Where(x => x.DateAndTime.Date == screeningDate.Value);
             }
 
             if (status.HasValue)
