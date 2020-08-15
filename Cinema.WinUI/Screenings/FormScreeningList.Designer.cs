@@ -28,9 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grdScreeningsList = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Hall = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DetailsAction = new System.Windows.Forms.DataGridViewButtonColumn();
             this.lblSearch = new System.Windows.Forms.Label();
             this.pnlFormTitle = new System.Windows.Forms.Panel();
             this.lblBreadCrumbsCurrent = new System.Windows.Forms.Label();
@@ -48,12 +54,8 @@
             this.pnlContent = new System.Windows.Forms.Panel();
             this.btnAddNew = new Cinema.WinUI.UserControls.Buttons.AddNewButton();
             this.pagination = new Cinema.WinUI.UserControls.Pagination();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Hall = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DetailsAction = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.lblHall = new System.Windows.Forms.Label();
+            this.txtHall = new Cinema.WinUI.UserControls.ExtendedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.grdScreeningsList)).BeginInit();
             this.pnlFormTitle.SuspendLayout();
             this.pnlSearchBars.SuspendLayout();
@@ -72,14 +74,14 @@
             this.grdScreeningsList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.grdScreeningsList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.grdScreeningsList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grdScreeningsList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdScreeningsList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.grdScreeningsList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdScreeningsList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
@@ -101,6 +103,71 @@
             this.grdScreeningsList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdScreeningsList_CellContentClick);
             this.grdScreeningsList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grdScreeningsList_CellFormatting);
             this.grdScreeningsList.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.grdScreeningsList_ColumnHeaderMouseClick);
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.MinimumWidth = 6;
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
+            // Title
+            // 
+            this.Title.DataPropertyName = "Movie.Title";
+            this.Title.FillWeight = 200F;
+            this.Title.HeaderText = "Title";
+            this.Title.MinimumWidth = 50;
+            this.Title.Name = "Title";
+            this.Title.ReadOnly = true;
+            this.Title.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Hall
+            // 
+            this.Hall.DataPropertyName = "Hall.Name";
+            this.Hall.FillWeight = 70F;
+            this.Hall.HeaderText = "Hall";
+            this.Hall.MinimumWidth = 6;
+            this.Hall.Name = "Hall";
+            this.Hall.ReadOnly = true;
+            this.Hall.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Price
+            // 
+            this.Price.DataPropertyName = "Pricing.Price";
+            this.Price.FillWeight = 70F;
+            this.Price.HeaderText = "Price";
+            this.Price.MinimumWidth = 6;
+            this.Price.Name = "Price";
+            this.Price.ReadOnly = true;
+            this.Price.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Status
+            // 
+            this.Status.DataPropertyName = "Status";
+            this.Status.FillWeight = 70F;
+            this.Status.HeaderText = "Status";
+            this.Status.MinimumWidth = 6;
+            this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
+            // 
+            // DetailsAction
+            // 
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.White;
+            this.DetailsAction.DefaultCellStyle = dataGridViewCellStyle10;
+            this.DetailsAction.FillWeight = 50F;
+            this.DetailsAction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DetailsAction.HeaderText = "Action";
+            this.DetailsAction.MinimumWidth = 4;
+            this.DetailsAction.Name = "DetailsAction";
+            this.DetailsAction.ReadOnly = true;
+            this.DetailsAction.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.DetailsAction.Text = "Details";
+            this.DetailsAction.UseColumnTextForButtonValue = true;
             // 
             // lblSearch
             // 
@@ -167,6 +234,8 @@
             // pnlSearchBars
             // 
             this.pnlSearchBars.BackColor = System.Drawing.Color.White;
+            this.pnlSearchBars.Controls.Add(this.lblHall);
+            this.pnlSearchBars.Controls.Add(this.txtHall);
             this.pnlSearchBars.Controls.Add(this.lblStatus);
             this.pnlSearchBars.Controls.Add(this.cmbStatus);
             this.pnlSearchBars.Controls.Add(this.lblDate);
@@ -202,6 +271,7 @@
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(188, 24);
             this.cmbStatus.TabIndex = 7;
+            this.cmbStatus.SelectedIndexChanged += new System.EventHandler(this.SearchChanged);
             // 
             // lblDate
             // 
@@ -209,7 +279,7 @@
             this.lblDate.BackColor = System.Drawing.Color.White;
             this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDate.ForeColor = System.Drawing.Color.Gray;
-            this.lblDate.Location = new System.Drawing.Point(954, 15);
+            this.lblDate.Location = new System.Drawing.Point(932, 15);
             this.lblDate.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(39, 18);
@@ -225,6 +295,7 @@
             this.txtDate.Name = "txtDate";
             this.txtDate.Size = new System.Drawing.Size(214, 22);
             this.txtDate.TabIndex = 5;
+            this.txtDate.TextChanged += new System.EventHandler(this.SearchChanged);
             // 
             // lblPrice
             // 
@@ -248,6 +319,7 @@
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(182, 22);
             this.txtPrice.TabIndex = 3;
+            this.txtPrice.TextChanged += new System.EventHandler(this.SearchChanged);
             // 
             // txtSearchBar
             // 
@@ -256,9 +328,9 @@
             this.txtSearchBar.Location = new System.Drawing.Point(20, 39);
             this.txtSearchBar.Margin = new System.Windows.Forms.Padding(15);
             this.txtSearchBar.Name = "txtSearchBar";
-            this.txtSearchBar.Size = new System.Drawing.Size(643, 22);
+            this.txtSearchBar.Size = new System.Drawing.Size(416, 22);
             this.txtSearchBar.TabIndex = 1;
-            this.txtSearchBar.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            this.txtSearchBar.TextChanged += new System.EventHandler(this.SearchChanged);
             // 
             // pnlDataGrid
             // 
@@ -309,70 +381,29 @@
             this.pagination.TotalPages = 0;
             this.pagination.PageChanged += new System.EventHandler(this.pagination_PageChanged);
             // 
-            // Id
+            // lblHall
             // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.MinimumWidth = 6;
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
+            this.lblHall.AutoSize = true;
+            this.lblHall.BackColor = System.Drawing.Color.White;
+            this.lblHall.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHall.ForeColor = System.Drawing.Color.Gray;
+            this.lblHall.Location = new System.Drawing.Point(473, 14);
+            this.lblHall.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
+            this.lblHall.Name = "lblHall";
+            this.lblHall.Size = new System.Drawing.Size(33, 18);
+            this.lblHall.TabIndex = 10;
+            this.lblHall.Text = "Hall";
             // 
-            // Title
+            // txtHall
             // 
-            this.Title.DataPropertyName = "Movie.Title";
-            this.Title.FillWeight = 200F;
-            this.Title.HeaderText = "Title";
-            this.Title.MinimumWidth = 50;
-            this.Title.Name = "Title";
-            this.Title.ReadOnly = true;
-            this.Title.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Hall
-            // 
-            this.Hall.DataPropertyName = "Hall.Name";
-            this.Hall.FillWeight = 70F;
-            this.Hall.HeaderText = "Hall";
-            this.Hall.MinimumWidth = 6;
-            this.Hall.Name = "Hall";
-            this.Hall.ReadOnly = true;
-            this.Hall.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Price
-            // 
-            this.Price.DataPropertyName = "Pricing.Price";
-            this.Price.FillWeight = 70F;
-            this.Price.HeaderText = "Price";
-            this.Price.MinimumWidth = 6;
-            this.Price.Name = "Price";
-            this.Price.ReadOnly = true;
-            this.Price.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Status
-            // 
-            this.Status.DataPropertyName = "Status";
-            this.Status.FillWeight = 70F;
-            this.Status.HeaderText = "Status";
-            this.Status.MinimumWidth = 6;
-            this.Status.Name = "Status";
-            this.Status.ReadOnly = true;
-            // 
-            // DetailsAction
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            this.DetailsAction.DefaultCellStyle = dataGridViewCellStyle2;
-            this.DetailsAction.FillWeight = 50F;
-            this.DetailsAction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DetailsAction.HeaderText = "Action";
-            this.DetailsAction.MinimumWidth = 4;
-            this.DetailsAction.Name = "DetailsAction";
-            this.DetailsAction.ReadOnly = true;
-            this.DetailsAction.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.DetailsAction.Text = "Details";
-            this.DetailsAction.UseColumnTextForButtonValue = true;
+            this.txtHall.BorderColor = System.Drawing.Color.DarkGray;
+            this.txtHall.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtHall.Location = new System.Drawing.Point(476, 39);
+            this.txtHall.Margin = new System.Windows.Forms.Padding(25);
+            this.txtHall.Name = "txtHall";
+            this.txtHall.Size = new System.Drawing.Size(182, 22);
+            this.txtHall.TabIndex = 9;
+            this.txtHall.TextChanged += new System.EventHandler(this.SearchChanged);
             // 
             // FormScreeningList
             // 
@@ -426,5 +457,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
         private System.Windows.Forms.DataGridViewButtonColumn DetailsAction;
+        private System.Windows.Forms.Label lblHall;
+        private UserControls.ExtendedTextBox txtHall;
     }
 }

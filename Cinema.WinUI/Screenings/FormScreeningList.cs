@@ -29,6 +29,7 @@ namespace Cinema.WinUI.Movies
             searchRequest = ApplyDefaultSearchValues(searchRequest) as ScreeningSearchRequest;
             searchRequest.PageIndex = pagination.PageIndex;
             searchRequest.SearchTerm = txtSearchBar.Text;
+            searchRequest.Hall = txtHall.Text;
 
             AddIncludes(ref searchRequest);
 
@@ -57,11 +58,6 @@ namespace Cinema.WinUI.Movies
             grdScreeningsList.DataSource = result.Data;
             pagination.PageIndex = result.PageIndex;
             pagination.TotalPages = result.TotalPages;
-            
-/*            foreach (var item in result.Data)
-            {
-                grdScreeningsList.Columns["Title"].DataPropertyName = item.Movie.Title;
-            }*/
         }
 
         private void InitializeDetailsForm(int? id)
@@ -127,7 +123,7 @@ namespace Cinema.WinUI.Movies
             await LoadScreenings(searchRequest);
         }
 
-        private async void txtSearch_TextChanged(object sender, EventArgs e)
+        private async void SearchChanged(object sender, EventArgs e)
         {
             ScreeningSearchRequest searchRequest = GetSearchRequest();
             await LoadScreenings(searchRequest);
@@ -140,6 +136,5 @@ namespace Cinema.WinUI.Movies
             BindNavigationColumns(grdScreeningsList, sender, e);
         }
 
-        
     }
 }

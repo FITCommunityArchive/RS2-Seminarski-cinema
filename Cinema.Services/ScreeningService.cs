@@ -30,7 +30,7 @@ namespace Cinema.Services
 
         public async Task<IPagedList<ScreeningDto>> GetPagedAsync(ScreeningSearchRequest search)
         {
-            var list = await _screeningRepo.GetPagedAsync(search, search.SearchTerm, search.Price, search.Status, search.Date);
+            var list = await _screeningRepo.GetPagedAsync(search, search.SearchTerm, search.Hall, search.Price, search.Status, search.Date);
             var dtoList = PagedList<ScreeningDto>.Map<Screening>(_mapper, list);
 
             return dtoList;

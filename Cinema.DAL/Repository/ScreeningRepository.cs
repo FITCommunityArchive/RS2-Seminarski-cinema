@@ -14,7 +14,7 @@ namespace Cinema.Dal.Repository
     {
         public ScreeningRepository(ICinemaDbContext context) : base(context) { }
 
-        public async Task<IPagedList<Screening>> GetPagedAsync(ISearchRequest searchRequest, string searchTerm, decimal? price, TimingStatus? status, DateTime? screeningDate)
+        public async Task<IPagedList<Screening>> GetPagedAsync(ISearchRequest searchRequest, string searchTerm, string hall, decimal? price, TimingStatus? status, DateTime? screeningDate)
         {
             var query = _dbSet.AsQueryable();
 
@@ -23,7 +23,7 @@ namespace Cinema.Dal.Repository
                 status = TimingStatus.SCHEDULED;
             }
 
-            query = ApplyFilter(query, searchTerm, price, status, screeningDate);
+            query = ApplyFilter(query, searchTerm, hall, price, status, screeningDate);
 
             if (searchRequest.SortOrder == null || searchRequest.SortColumn == null)
             {
@@ -42,7 +42,7 @@ namespace Cinema.Dal.Repository
             return pagedList;
         }
 
-        private IQueryable<Screening> ApplyFilter(IQueryable<Screening> query, string searchTerm, decimal? price, TimingStatus? status, DateTime? screeningDate)
+        private IQueryable<Screening> ApplyFilter(IQueryable<Screening> query, string searchTerm, string hall, decimal? price, TimingStatus? status, DateTime? screeningDate)
         {
             if (screeningDate.HasValue)
             {
@@ -54,9 +54,14 @@ namespace Cinema.Dal.Repository
                 query = query.Where(x => x.Movie.Title.ToLower().StartsWith(searchTerm.ToLower()));
             }
 
+            if (!string.IsNullOrWhiteSpace(hall))
+            {
+                query = query.Where(x => x.Hall.Name.ToLower().StartsWith(hall.ToLower()));
+            }
+
             if (price.HasValue)
             {
-                query = query.Where(x => x.Pricing.Price == price.Value);
+                query = query.Where(x => x.Pricing.Price.ToString().StartsWith(price.Value.ToString()));
             }
 
             if (screeningDate.HasValue)
