@@ -47,7 +47,7 @@
             this.pnlDataGrid = new System.Windows.Forms.Panel();
             this.pnlContent = new System.Windows.Forms.Panel();
             this.btnAddNew = new Cinema.WinUI.UserControls.Buttons.AddNewButton();
-            this.pgnMoviesList = new Cinema.WinUI.UserControls.Pagination();
+            this.pagination = new Cinema.WinUI.UserControls.Pagination();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Hall = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -98,8 +98,9 @@
             this.grdScreeningsList.RowTemplate.Height = 24;
             this.grdScreeningsList.Size = new System.Drawing.Size(1345, 470);
             this.grdScreeningsList.TabIndex = 0;
-            this.grdScreeningsList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdMoviesList_CellContentClick);
-            this.grdScreeningsList.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.grdMoviesList_ColumnHeaderMouseClick);
+            this.grdScreeningsList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdScreeningsList_CellContentClick);
+            this.grdScreeningsList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grdScreeningsList_CellFormatting);
+            this.grdScreeningsList.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.grdScreeningsList_ColumnHeaderMouseClick);
             // 
             // lblSearch
             // 
@@ -273,7 +274,7 @@
             // pnlContent
             // 
             this.pnlContent.Controls.Add(this.btnAddNew);
-            this.pnlContent.Controls.Add(this.pgnMoviesList);
+            this.pnlContent.Controls.Add(this.pagination);
             this.pnlContent.Controls.Add(this.pnlSearchBars);
             this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlContent.Location = new System.Drawing.Point(0, 0);
@@ -294,19 +295,19 @@
             this.btnAddNew.TabIndex = 11;
             this.btnAddNew.ButtonClicked += new System.EventHandler(this.btnAddNew_ButtonClicked);
             // 
-            // pgnMoviesList
+            // pagination
             // 
-            this.pgnMoviesList.AutoSize = true;
-            this.pgnMoviesList.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.pgnMoviesList.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pgnMoviesList.Location = new System.Drawing.Point(1132, 726);
-            this.pgnMoviesList.Margin = new System.Windows.Forms.Padding(5);
-            this.pgnMoviesList.Name = "pgnMoviesList";
-            this.pgnMoviesList.PageIndex = 0;
-            this.pgnMoviesList.Size = new System.Drawing.Size(210, 35);
-            this.pgnMoviesList.TabIndex = 10;
-            this.pgnMoviesList.TotalPages = 0;
-            this.pgnMoviesList.PageChanged += new System.EventHandler(this.pgnMoviesList_PageChanged);
+            this.pagination.AutoSize = true;
+            this.pagination.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.pagination.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pagination.Location = new System.Drawing.Point(1132, 726);
+            this.pagination.Margin = new System.Windows.Forms.Padding(5);
+            this.pagination.Name = "pagination";
+            this.pagination.PageIndex = 0;
+            this.pagination.Size = new System.Drawing.Size(210, 35);
+            this.pagination.TabIndex = 10;
+            this.pagination.TotalPages = 0;
+            this.pagination.PageChanged += new System.EventHandler(this.pagination_PageChanged);
             // 
             // Id
             // 
@@ -386,7 +387,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormScreeningList";
             this.Text = "frmMoviesList";
-            this.Load += new System.EventHandler(this.frmMoviesList_Load);
+            this.Load += new System.EventHandler(this.FormScreeningList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdScreeningsList)).EndInit();
             this.pnlFormTitle.ResumeLayout(false);
             this.pnlFormTitle.PerformLayout();
@@ -408,7 +409,7 @@
         private System.Windows.Forms.Panel pnlSearchBars;
         private System.Windows.Forms.Panel pnlDataGrid;
         private System.Windows.Forms.Panel pnlContent;
-        private UserControls.Pagination pgnMoviesList;
+        private UserControls.Pagination pagination;
         private UserControls.Buttons.AddNewButton btnAddNew;
         private System.Windows.Forms.Label lblBreadCrumbsCurrent;
         private System.Windows.Forms.Label lblBreadcrumbs;

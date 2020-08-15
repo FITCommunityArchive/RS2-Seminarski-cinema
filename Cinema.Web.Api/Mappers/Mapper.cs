@@ -32,6 +32,8 @@ namespace Cinema.Web.Api.Mappers
             CreateMap<Screening, ScreeningDto>();
 
             CreateMap<Hall, HallDto>();
+
+            CreateMap<Pricing, PricingDto>();
         }
     }
 }

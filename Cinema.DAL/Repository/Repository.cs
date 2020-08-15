@@ -91,12 +91,11 @@ namespace Cinema.Dal.Repository
             GC.SuppressFinalize(this);
         }
 
-        protected virtual IQueryable<Entity> AddIncludes(IQueryable<Entity> query, string includes)
+        protected virtual IQueryable<Entity> AddIncludes(IQueryable<Entity> query, IEnumerable<string> includes)
         {
-            //Includes format: "User;Screening.Pricing"
-            string[] includesSplit = includes.Split(";");
+            //Includes format: "User" or "Screening.Pricing"
 
-            foreach (string include in includesSplit)
+            foreach (string include in includes)
             {
                 query = query.Include(include);
             }

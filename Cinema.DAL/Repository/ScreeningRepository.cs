@@ -33,7 +33,7 @@ namespace Cinema.Dal.Repository
 
             query = ApplySorting(query, searchRequest);
 
-            if (!string.IsNullOrWhiteSpace(searchRequest.Includes))
+            if (searchRequest.Includes.Count > 0)
             {
                 query = AddIncludes(query, searchRequest.Includes);
             }            

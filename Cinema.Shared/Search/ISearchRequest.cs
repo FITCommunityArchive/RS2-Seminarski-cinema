@@ -1,4 +1,5 @@
 ﻿using Cinema.Shared.Enums;
+using System.Collections.Generic;
 
 namespace Cinema.Shared.Search
 {
@@ -8,6 +9,6 @@ namespace Cinema.Shared.Search
         int PageSize { get; set; }
         string SortColumn { get; set; }
         SortOrder? SortOrder { get; set; }
-        string Includes { get; set; }
+        ICollection<string> Includes { get; set; }
     }
 }

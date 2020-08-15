@@ -108,5 +108,11 @@ namespace Cinema.WinUI
             FormUsers formUsers = new FormUsers(_nextFormPrincipal);
             openChildForm(formUsers);
         }
+
+        private void btnScreenings_Click(object sender, EventArgs e)
+        {
+            FormScreeningList formScreeningList = new FormScreeningList(_nextFormPrincipal);
+            openChildForm(formScreeningList);
+        }
     }
 }

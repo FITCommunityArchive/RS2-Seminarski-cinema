@@ -1,11 +1,11 @@
 ﻿using Cinema.Models.Dtos;
-using Cinema.Models.Requests.Movies;
+using Cinema.Models.Requests.Screenings;
 using Cinema.Shared.Constants;
 using Cinema.Shared.Pagination;
-using Cinema.WinUI.Constants;
 using Cinema.WinUI.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -13,7 +13,7 @@ namespace Cinema.WinUI.Movies
 {
     public partial class FormScreeningList : BaseDataGridForm
     {
-        private readonly ApiService _moviesApi = new ApiService("Screenings");
+        private readonly ApiService _screeningsApi = new ApiService("Screenings");
         private IList<string> _nextFormPrincipal;
 
         public FormScreeningList(IList<string> userPrincipal) : base(new string[] { Roles.Administrator, Roles.ContentEditor }, userPrincipal)
@@ -22,35 +22,46 @@ namespace Cinema.WinUI.Movies
             InitializeComponent();
         }
 
-        private MovieSearchRequest GetSearchRequest()
+        private ScreeningSearchRequest GetSearchRequest()
         {
-            MovieSearchRequest searchRequest = new MovieSearchRequest();
+            ScreeningSearchRequest searchRequest = new ScreeningSearchRequest();
 
-            searchRequest = ApplyDefaultSearchValues(searchRequest) as MovieSearchRequest;
-            searchRequest.PageIndex = pgnMoviesList.PageIndex;
+            searchRequest = ApplyDefaultSearchValues(searchRequest) as ScreeningSearchRequest;
+            searchRequest.PageIndex = pagination.PageIndex;
             searchRequest.SearchTerm = txtSearchBar.Text;
 
-/*            if (int.TryParse(txtSearchDuration.Text, out int searchDuration))
-            {
-                searchRequest.Duration = searchDuration;
-            }
+            AddIncludes(ref searchRequest);
 
-            if (int.TryParse(txtSearchYear.Text, out int searchYear))
+            if (int.TryParse(txtPrice.Text, out int searchPrice))
             {
-                searchRequest.Year = searchYear;
-            }*/
+                searchRequest.Price = searchPrice;
+            }
 
             return searchRequest;
         }
 
-        private async Task LoadMovies(MovieSearchRequest searchRequest)
+        private static ScreeningSearchRequest AddIncludes(ref ScreeningSearchRequest searchRequest)
         {
-            var result = await _moviesApi.Get<PagedList<MovieDto>>(searchRequest);
+            searchRequest.Includes.Add("Movie");
+            searchRequest.Includes.Add("Hall");
+            searchRequest.Includes.Add("Pricing");
+
+            return searchRequest;
+        }
+
+        private async Task LoadScreenings(ScreeningSearchRequest searchRequest)
+        {
+            var result = await _screeningsApi.Get<PagedList<ScreeningDto>>(searchRequest);
 
             grdScreeningsList.AutoGenerateColumns = false;
             grdScreeningsList.DataSource = result.Data;
-            pgnMoviesList.PageIndex = result.PageIndex;
-            pgnMoviesList.TotalPages = result.TotalPages;
+            pagination.PageIndex = result.PageIndex;
+            pagination.TotalPages = result.TotalPages;
+            
+/*            foreach (var item in result.Data)
+            {
+                grdScreeningsList.Columns["Title"].DataPropertyName = item.Movie.Title;
+            }*/
         }
 
         private void InitializeDetailsForm(int? id)
@@ -63,26 +74,26 @@ namespace Cinema.WinUI.Movies
 
         #region Event methods
 
-        private async void pgnMoviesList_PageChanged(object sender, EventArgs e)
+        private async void pagination_PageChanged(object sender, EventArgs e)
         {
-            MovieSearchRequest searchRequest = GetSearchRequest();
-            await LoadMovies(searchRequest);
+            ScreeningSearchRequest searchRequest = GetSearchRequest();
+            await LoadScreenings(searchRequest);
         }
 
-        private async void grdMoviesList_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        private async void grdScreeningsList_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             DataGridViewColumn clickedColumn = grdScreeningsList.Columns[e.ColumnIndex];
 
             ChangeSorting(clickedColumn.Name);
 
-            MovieSearchRequest searchRequest = GetSearchRequest();
+            ScreeningSearchRequest searchRequest = GetSearchRequest();
             searchRequest.SortColumn = CurrentSortPropertyName;
             searchRequest.SortOrder = CurrentSortOrder;
 
-            await LoadMovies(searchRequest);
+            await LoadScreenings(searchRequest);
         }
 
-        private void grdMoviesList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void grdScreeningsList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var senderGrid = (DataGridView)sender;
 
@@ -98,7 +109,7 @@ namespace Cinema.WinUI.Movies
 
         private void FormDetails_Closed(object sender, EventArgs e)
         {
-            frmMoviesList_Load(sender, e);
+            FormScreeningList_Load(sender, e);
         }
 
         private void btnAddNew_ButtonClicked(object sender, EventArgs e)
@@ -106,20 +117,29 @@ namespace Cinema.WinUI.Movies
             InitializeDetailsForm(null);
         }
 
-        private async void frmMoviesList_Load(object sender, EventArgs e)
+        private async void FormScreeningList_Load(object sender, EventArgs e)
         {
             this.grdScreeningsList.DoubleBuffered(true);
-            MovieSearchRequest searchRequest = new MovieSearchRequest();
-            searchRequest = ApplyDefaultSearchValues(searchRequest) as MovieSearchRequest;
-            await LoadMovies(searchRequest);
+            ScreeningSearchRequest searchRequest = new ScreeningSearchRequest();
+            AddIncludes(ref searchRequest);
+
+            searchRequest = ApplyDefaultSearchValues(searchRequest) as ScreeningSearchRequest;
+            await LoadScreenings(searchRequest);
         }
 
         private async void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            MovieSearchRequest searchRequest = GetSearchRequest();
-            await LoadMovies(searchRequest);
+            ScreeningSearchRequest searchRequest = GetSearchRequest();
+            await LoadScreenings(searchRequest);
         }
 
         #endregion
+
+        private void grdScreeningsList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            BindNavigationColumns(grdScreeningsList, sender, e);
+        }
+
+        
     }
 }
