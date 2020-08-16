@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Cinema.Domain.Entities.Identity
 {
-    public class ApplicationRole : IdentityRole
+    public class ApplicationRole : IdentityRole<int>
     {
         public ApplicationRole()
         {

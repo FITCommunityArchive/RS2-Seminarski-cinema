@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Cinema.Dal.Data
 {
-    public class CinemaDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string,
+    public class CinemaDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, int,
                                         ApplicationUserClaim, ApplicationUserRole, ApplicationUserLogin,
                                         ApplicationRoleClaim, ApplicationUserToken>, ICinemaDbContext
     {
