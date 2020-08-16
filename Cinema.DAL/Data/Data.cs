@@ -382,19 +382,19 @@ namespace Cinema.Dal.Data
             modelBuilder.Entity<ApplicationRole>().HasData(
                 new ApplicationRole
                 {
-                    Id = "-1",
+                    Id = -1,
                     Name = "Administrator",
                     NormalizedName = "ADMINISTRATOR"
                 },
                 new ApplicationRole
                 {
-                    Id = "-2",
+                    Id = -2,
                     Name = "Content Editor",
                     NormalizedName = "CONTENT EDITOR"
                 },
                 new ApplicationRole
                 {
-                    Id = "-3",
+                    Id = -3,
                     Name = "Customer",
                     NormalizedName = "CUSTOMER"
                 }
@@ -404,7 +404,7 @@ namespace Cinema.Dal.Data
         private static void SeedUsers(ModelBuilder modelBuilder)
         {
 
-            const string ADMIN_ID = "a18be9c0-aa65-4af8-bd17-00bd9344e575";
+            const int ADMIN_ID = 1;
             ApplicationUser appUser = new ApplicationUser
             {
                 Id = ADMIN_ID,
@@ -428,7 +428,7 @@ namespace Cinema.Dal.Data
             modelBuilder.Entity<ApplicationUserRole>().HasData(new ApplicationUserRole
             {
                 UserId = ADMIN_ID,
-                RoleId = "-1"
+                RoleId = -1
             });
         }
     }
