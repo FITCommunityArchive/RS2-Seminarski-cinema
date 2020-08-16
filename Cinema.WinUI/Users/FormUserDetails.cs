@@ -19,12 +19,11 @@ namespace Cinema.WinUI.Users
 
         private readonly ApiService _usersApi = new ApiService("Users");
         private readonly ApiService _rolesApi = new ApiService("Roles");
-        private readonly string _id = null;
-        private bool _isReadOnly = true;
+        private readonly int? _id = null;
         private UserUpsertRequest _request = new UserUpsertRequest();
         private IPagedList<ApplicationRoleDto> _roles = null;
 
-        public FormUserDetails(string id = null)
+        public FormUserDetails(int? id)
         {
             InitializeComponent();
             _id = id;
@@ -36,9 +35,9 @@ namespace Cinema.WinUI.Users
             _roles = await _rolesApi.Get<PagedList<ApplicationRoleDto>>(null);
 
 
-            if (!string.IsNullOrEmpty(_id))
+            if (_id.HasValue)
             {
-                await LoadReadOnly();
+                await LoadData();
             }
             else
             {
@@ -50,8 +49,6 @@ namespace Cinema.WinUI.Users
         {
             clbRoles.DataSource = _roles.Data;
             clbRoles.DisplayMember = nameof(ApplicationRoleDto.Name);
-
-            SetReadonly(false);
         }
 
         private void SetLoading(bool displayLoader)
@@ -76,24 +73,6 @@ namespace Cinema.WinUI.Users
             }
         }
 
-        private void SetReadonly(bool isReadonly)
-        {
-            _isReadOnly = isReadonly;
-
-            btnSaveChanges.Enabled = !isReadonly;
-            //btnEdit.Enabled = isReadonly;
-
-            txtFirstName.ReadOnly = _isReadOnly;
-            txtLastName.ReadOnly = _isReadOnly;
-            txtEmail.ReadOnly = _isReadOnly;
-            txtPassword.ReadOnly = _isReadOnly;
-            txtPassword2.ReadOnly = _isReadOnly;
-            txtPhone.ReadOnly = _isReadOnly;
-            txtUsername.ReadOnly = _isReadOnly;
-
-            clbRoles.Visible = _isReadOnly;
-        }
-
         private void LoadPropertyValues(ApplicationUserDto result)
         {
             txtFirstName.Text = result.FirstName;
@@ -103,11 +82,9 @@ namespace Cinema.WinUI.Users
             txtPhone.Text = result.PhoneNumber;
         }
 
-        private async Task LoadReadOnly()
+        private async Task LoadData()
         {
             var result = await _usersApi.GetById<ApplicationUserDto>(_id);
-
-            SetReadonly(true);
 
             LoadPropertyValues(result);
 
@@ -115,17 +92,27 @@ namespace Cinema.WinUI.Users
 
             clbRoles.DataSource = userRole;
             clbRoles.DisplayMember = nameof(ApplicationRoleDto.Name);
+
+            for (int i = 0; i < clbRoles.Items.Count; i++)
+            {
+                ApplicationRoleDto role = clbRoles.Items[i] as ApplicationRoleDto;
+
+                if (result.UserRoles.Select(x => x.RoleId).Contains(role.Id))
+                {
+                    clbRoles.SetItemChecked(i, true);
+                }
+            }
         }
 
         private async void btnSaveChanges_ButtonClicked(object sender, EventArgs e)
         {
 
-            if(!this.ValidateChildren())
+            if (!this.ValidateChildren())
             {
                 return;
             }
 
-            if(txtPassword.Text != txtPassword2.Text)
+            if (txtPassword.Text != txtPassword2.Text)
             {
                 MessageBox.Show("Passwords don't match. Please make sure you typed in same password in both fields.", "Validation error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -147,15 +134,22 @@ namespace Cinema.WinUI.Users
 
                 ApplicationUserDto result;
 
-                result = await _usersApi.Insert<ApplicationUserDto>(_request);
+                if(_id.HasValue)
+                {
+                    result = await _usersApi.Update<ApplicationUserDto>(_id, _request);
+                } else
+                {
+                    result = await _usersApi.Insert<ApplicationUserDto>(_request);
+                }
 
-                if(result != null)
+                if (result != null)
                 {
                     SetLoading(false);
                     MessageBox.Show("New user has been added.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 SetLoading(false);
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

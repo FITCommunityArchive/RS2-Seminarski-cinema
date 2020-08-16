@@ -59,7 +59,14 @@ namespace Cinema.Services
         
         public async Task<ApplicationUserDto> UpdateAsync(int id, UserUpsertRequest req)
         {
-            throw new System.NotImplementedException();
+            ApplicationUser user = _mapper.Map<ApplicationUser>(req);
+            user.Id = id;
+
+            await _unit.Users.UpdateAsync(user, id);
+            await _unit.SaveAsync();
+
+            return _mapper.Map<ApplicationUserDto>(user);
+           
         }
 
         public async Task<IPagedList<ApplicationUserDto>> GetPagedAsync(UserSearchRequest search)
@@ -73,7 +80,7 @@ namespace Cinema.Services
 
         public async Task<ApplicationUserDto> GetByIdAsync(int id)
         {
-            var user = await _userRepo.GetAsync(id);
+            var user = await _userRepo.GetByIdWithRolesAsync(id);
             return _mapper.Map<ApplicationUserDto>(user);
         }
 

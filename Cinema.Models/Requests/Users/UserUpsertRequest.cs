@@ -26,6 +26,6 @@ namespace Cinema.Models.Requests.Users
         [Required(AllowEmptyStrings = false)]
         public string LastName { get; set; }
         public string PhoneNumber { get; set; }
-        public string RoleId { get; set; }
+        public int RoleId { get; set; }
     }
 }

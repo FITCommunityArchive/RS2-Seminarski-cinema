@@ -15,7 +15,7 @@ namespace Cinema.Dal.Data
         protected ICinemaDbContext _context;
 
         public IUserRepository Users => Repository<ApplicationUser, int>() as IUserRepository;
-        public IRepository<ApplicationRole, string> Roles => Repository<ApplicationRole, string>();
+        public IRepository<ApplicationRole, int> Roles => Repository<ApplicationRole, int>();
         public IMovieRepository Movies => Repository<Movie, int>() as IMovieRepository;
 
         public UnitOfWork(ICinemaDbContext context)

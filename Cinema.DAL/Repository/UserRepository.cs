@@ -3,6 +3,7 @@ using Cinema.Shared.Enums;
 using Cinema.Shared.Pagination;
 using Cinema.Shared.Search;
 using Cinema.Utilities.Interfaces.Dal;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -29,6 +30,14 @@ namespace Cinema.Dal.Repository
                 //_context.Entry(oldEnt).CurrentValues.SetValues(newEnt);
                 oldEnt.Update(newEnt);
             }
+        }
+
+        public async Task<ApplicationUser> GetByIdWithRolesAsync(int id)
+        {
+            var entity = await _dbSet.Include(x => x.UserRoles)
+                                     .FirstOrDefaultAsync(x => x.Id == id);
+
+            return entity;
         }
 
         public async Task<IPagedList<ApplicationUser>> GetPagedAsync(ISearchRequest searchRequest,string searchTerm)

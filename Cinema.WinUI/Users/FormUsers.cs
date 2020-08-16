@@ -79,7 +79,7 @@ namespace Cinema.WinUI.Users
                 e.RowIndex >= 0)
             {
                 var clickedRow = senderGrid.Rows[e.RowIndex];
-                var userId = clickedRow.Cells["Id"].Value.ToString();
+                int.TryParse(clickedRow.Cells["Id"].Value.ToString(), out int userId);
 
                 InitializeDetailsForm(userId);
             }
@@ -90,7 +90,7 @@ namespace Cinema.WinUI.Users
             FormUsers_Load(sender, e);
         }
 
-        private void InitializeDetailsForm(string id)
+        private void InitializeDetailsForm(int? id)
         {
             FormUserDetails frmUserDetails = new FormUserDetails(id);
             frmUserDetails.FormClosed += new FormClosedEventHandler(FormDetails_Closed);

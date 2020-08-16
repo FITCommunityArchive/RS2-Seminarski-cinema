@@ -6,8 +6,8 @@ namespace Cinema.Utilities.Interfaces.Dal
 {
     public interface IUnitOfWork
     {
-        public IUserRepository Users => Repository<ApplicationUser, string>() as IUserRepository;
-        public IRepository<ApplicationRole, string> Roles => Repository<ApplicationRole, string>();
+        public IUserRepository Users => Repository<ApplicationUser, int>() as IUserRepository;
+        public IRepository<ApplicationRole, int> Roles => Repository<ApplicationRole, int>();
         public IMovieRepository Movies => Repository<Movie, int>() as IMovieRepository;
 
         IRepository<Entity, Key> Repository<Entity, Key>() where Entity : class;
