@@ -40,7 +40,7 @@ namespace Cinema.Services
 
 
         [HttpPost]
-        public async Task<ApplicationUserDto> InsertAsync([FromBody] UserUpsertRequest model)
+        public async Task<ApplicationUserDto> InsertAsync(UserUpsertRequest model)
         {
             var userIdentity = _mapper.Map<ApplicationUser>(model);
             
@@ -51,8 +51,9 @@ namespace Cinema.Services
             {
                 ApplicationRole role = await _unit.Roles.GetAsync(model.RoleId);
                 await _userManager.AddToRoleAsync(userIdentity, role.Name);
-            }
-
+            } 
+            //pokupiti zasto je failalo ako nije result.SUccedded i ispisati
+            //ima dodatni error cycle ???
             return _mapper.Map<ApplicationUserDto>(userIdentity);
         }
         
@@ -70,9 +71,10 @@ namespace Cinema.Services
         }
 
 
-        public Task<ApplicationUserDto> GetByIdAsync(int id)
+        public async Task<ApplicationUserDto> GetByIdAsync(int id)
         {
-            throw new System.NotImplementedException();
+            var user = await _userRepo.GetAsync(id);
+            return _mapper.Map<ApplicationUserDto>(user);
         }
 
 
@@ -142,5 +144,6 @@ namespace Cinema.Services
         {
             throw new NotImplementedException();
         }
+
     }
 }
