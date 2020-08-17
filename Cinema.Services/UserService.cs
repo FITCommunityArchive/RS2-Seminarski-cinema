@@ -70,7 +70,7 @@ namespace Cinema.Services
         }
 
 
-        public Task<ApplicationUserDto> GetByIdAsync(int id)
+        public Task<ApplicationUserDto> GetByIdAsync(int id, ICollection<string> includes = null)
         {
             throw new System.NotImplementedException();
         }

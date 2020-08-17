@@ -29,42 +29,30 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMovieDetails));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormScreeningDetails));
             this.pnlFormTitle = new System.Windows.Forms.Panel();
+            this.logoSmall1 = new Cinema.WinUI.UserControls.Logos.LogoSmall();
             this.lblBreadCrumbsCurrent = new System.Windows.Forms.Label();
             this.lblBreadcrumbs = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblViewTitle = new System.Windows.Forms.Label();
             this.pnlDetails = new System.Windows.Forms.Panel();
-            this.rtxVideoLink = new System.Windows.Forms.RichTextBox();
-            this.lblVideoLink = new System.Windows.Forms.Label();
-            this.txtWriters = new System.Windows.Forms.TextBox();
-            this.lblWriters = new System.Windows.Forms.Label();
+            this.btnDelete = new Cinema.WinUI.UserControls.Buttons.DeleteButton();
+            this.btnEdit = new Cinema.WinUI.UserControls.Buttons.EditButton();
+            this.btnBack = new Cinema.WinUI.UserControls.Buttons.BackButton();
+            this.btnSaveChanges = new Cinema.WinUI.UserControls.Buttons.SaveChangesButton();
             this.picPoster = new System.Windows.Forms.PictureBox();
-            this.lbxGenres = new System.Windows.Forms.ListBox();
-            this.chlGenres = new System.Windows.Forms.CheckedListBox();
-            this.lblGenre = new System.Windows.Forms.Label();
-            this.txtActors = new System.Windows.Forms.TextBox();
-            this.txtDirectors = new System.Windows.Forms.TextBox();
-            this.txtCountry = new System.Windows.Forms.TextBox();
-            this.txtDuration = new System.Windows.Forms.TextBox();
-            this.txtReleaseYear = new System.Windows.Forms.TextBox();
-            this.txtMovieTitle = new System.Windows.Forms.TextBox();
-            this.lblActors = new System.Windows.Forms.Label();
-            this.lblDirectors = new System.Windows.Forms.Label();
-            this.lblCountry = new System.Windows.Forms.Label();
-            this.lblDuration = new System.Windows.Forms.Label();
-            this.lblYear = new System.Windows.Forms.Label();
-            this.lblTitle = new System.Windows.Forms.Label();
+            this.lblPrice = new System.Windows.Forms.Label();
+            this.lblMovieTitle = new System.Windows.Forms.Label();
+            this.lblHall = new System.Windows.Forms.Label();
+            this.lblSchedule = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.lblFormCorner = new System.Windows.Forms.Label();
             this.pnlCornerLabel = new System.Windows.Forms.Panel();
-            this.btnDelete = new Cinema.WinUI.UserControls.Buttons.DeleteButton();
-            this.btnEdit = new Cinema.WinUI.UserControls.Buttons.EditButton();
-            this.btnBack = new Cinema.WinUI.UserControls.Buttons.BackButton();
-            this.btnUploadPoster = new Cinema.WinUI.UserControls.Buttons.UploadButton();
-            this.btnSaveChanges = new Cinema.WinUI.UserControls.Buttons.SaveChangesButton();
-            this.logoSmall1 = new Cinema.WinUI.UserControls.Logos.LogoSmall();
+            this.dtpScreeningDate = new System.Windows.Forms.DateTimePicker();
+            this.cmbHall = new System.Windows.Forms.ComboBox();
+            this.cmbMovie = new System.Windows.Forms.ComboBox();
+            this.cmbPrice = new System.Windows.Forms.ComboBox();
             this.pnlFormTitle.SuspendLayout();
             this.pnlDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPoster)).BeginInit();
@@ -78,345 +66,187 @@
             this.pnlFormTitle.Controls.Add(this.logoSmall1);
             this.pnlFormTitle.Controls.Add(this.lblBreadCrumbsCurrent);
             this.pnlFormTitle.Controls.Add(this.lblBreadcrumbs);
-            this.pnlFormTitle.Controls.Add(this.label1);
+            this.pnlFormTitle.Controls.Add(this.lblViewTitle);
             this.pnlFormTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlFormTitle.Location = new System.Drawing.Point(0, 0);
-            this.pnlFormTitle.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlFormTitle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlFormTitle.Name = "pnlFormTitle";
-            this.pnlFormTitle.Size = new System.Drawing.Size(1153, 73);
+            this.pnlFormTitle.Size = new System.Drawing.Size(1537, 90);
             this.pnlFormTitle.TabIndex = 9;
+            // 
+            // logoSmall1
+            // 
+            this.logoSmall1.Location = new System.Drawing.Point(1340, 18);
+            this.logoSmall1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.logoSmall1.Name = "logoSmall1";
+            this.logoSmall1.Size = new System.Drawing.Size(165, 60);
+            this.logoSmall1.TabIndex = 4;
             // 
             // lblBreadCrumbsCurrent
             // 
             this.lblBreadCrumbsCurrent.AutoSize = true;
             this.lblBreadCrumbsCurrent.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBreadCrumbsCurrent.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblBreadCrumbsCurrent.Location = new System.Drawing.Point(123, 51);
+            this.lblBreadCrumbsCurrent.Location = new System.Drawing.Point(181, 63);
             this.lblBreadCrumbsCurrent.Margin = new System.Windows.Forms.Padding(0);
             this.lblBreadCrumbsCurrent.Name = "lblBreadCrumbsCurrent";
-            this.lblBreadCrumbsCurrent.Size = new System.Drawing.Size(93, 13);
+            this.lblBreadCrumbsCurrent.Size = new System.Drawing.Size(140, 17);
             this.lblBreadCrumbsCurrent.TabIndex = 3;
-            this.lblBreadCrumbsCurrent.Text = "Movie details";
+            this.lblBreadCrumbsCurrent.Text = "Screening details";
             // 
             // lblBreadcrumbs
             // 
             this.lblBreadcrumbs.AutoSize = true;
             this.lblBreadcrumbs.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBreadcrumbs.Location = new System.Drawing.Point(22, 51);
+            this.lblBreadcrumbs.Location = new System.Drawing.Point(29, 63);
             this.lblBreadcrumbs.Margin = new System.Windows.Forms.Padding(0);
             this.lblBreadcrumbs.Name = "lblBreadcrumbs";
-            this.lblBreadcrumbs.Size = new System.Drawing.Size(101, 13);
+            this.lblBreadcrumbs.Size = new System.Drawing.Size(152, 17);
             this.lblBreadcrumbs.TabIndex = 2;
-            this.lblBreadcrumbs.Text = "Home / Movies /";
+            this.lblBreadcrumbs.Text = "Home / Screenings /";
             // 
-            // label1
+            // lblViewTitle
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Gray;
-            this.label1.Location = new System.Drawing.Point(19, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(151, 25);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Movie details";
+            this.lblViewTitle.AutoSize = true;
+            this.lblViewTitle.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblViewTitle.ForeColor = System.Drawing.Color.Gray;
+            this.lblViewTitle.Location = new System.Drawing.Point(25, 11);
+            this.lblViewTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblViewTitle.Name = "lblViewTitle";
+            this.lblViewTitle.Size = new System.Drawing.Size(247, 32);
+            this.lblViewTitle.TabIndex = 1;
+            this.lblViewTitle.Text = "Screening details";
             // 
             // pnlDetails
             // 
             this.pnlDetails.BackColor = System.Drawing.Color.White;
-            this.pnlDetails.Controls.Add(this.rtxVideoLink);
-            this.pnlDetails.Controls.Add(this.lblVideoLink);
+            this.pnlDetails.Controls.Add(this.cmbPrice);
+            this.pnlDetails.Controls.Add(this.cmbMovie);
+            this.pnlDetails.Controls.Add(this.cmbHall);
+            this.pnlDetails.Controls.Add(this.dtpScreeningDate);
             this.pnlDetails.Controls.Add(this.btnDelete);
             this.pnlDetails.Controls.Add(this.btnEdit);
             this.pnlDetails.Controls.Add(this.btnBack);
-            this.pnlDetails.Controls.Add(this.txtWriters);
-            this.pnlDetails.Controls.Add(this.lblWriters);
-            this.pnlDetails.Controls.Add(this.btnUploadPoster);
             this.pnlDetails.Controls.Add(this.btnSaveChanges);
             this.pnlDetails.Controls.Add(this.picPoster);
-            this.pnlDetails.Controls.Add(this.lbxGenres);
-            this.pnlDetails.Controls.Add(this.chlGenres);
-            this.pnlDetails.Controls.Add(this.lblGenre);
-            this.pnlDetails.Controls.Add(this.txtActors);
-            this.pnlDetails.Controls.Add(this.txtDirectors);
-            this.pnlDetails.Controls.Add(this.txtCountry);
-            this.pnlDetails.Controls.Add(this.txtDuration);
-            this.pnlDetails.Controls.Add(this.txtReleaseYear);
-            this.pnlDetails.Controls.Add(this.txtMovieTitle);
-            this.pnlDetails.Controls.Add(this.lblActors);
-            this.pnlDetails.Controls.Add(this.lblDirectors);
-            this.pnlDetails.Controls.Add(this.lblCountry);
-            this.pnlDetails.Controls.Add(this.lblDuration);
-            this.pnlDetails.Controls.Add(this.lblYear);
-            this.pnlDetails.Controls.Add(this.lblTitle);
+            this.pnlDetails.Controls.Add(this.lblPrice);
+            this.pnlDetails.Controls.Add(this.lblMovieTitle);
+            this.pnlDetails.Controls.Add(this.lblHall);
+            this.pnlDetails.Controls.Add(this.lblSchedule);
             this.pnlDetails.ForeColor = System.Drawing.Color.White;
-            this.pnlDetails.Location = new System.Drawing.Point(24, 152);
-            this.pnlDetails.Margin = new System.Windows.Forms.Padding(15, 16, 15, 16);
+            this.pnlDetails.Location = new System.Drawing.Point(32, 187);
+            this.pnlDetails.Margin = new System.Windows.Forms.Padding(20, 20, 20, 20);
             this.pnlDetails.Name = "pnlDetails";
-            this.pnlDetails.Padding = new System.Windows.Forms.Padding(11, 12, 11, 12);
-            this.pnlDetails.Size = new System.Drawing.Size(1105, 588);
+            this.pnlDetails.Padding = new System.Windows.Forms.Padding(15, 15, 15, 15);
+            this.pnlDetails.Size = new System.Drawing.Size(1473, 672);
             this.pnlDetails.TabIndex = 11;
             // 
-            // rtxVideoLink
+            // btnDelete
             // 
-            this.rtxVideoLink.BackColor = System.Drawing.Color.White;
-            this.rtxVideoLink.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.rtxVideoLink.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rtxVideoLink.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtxVideoLink.Location = new System.Drawing.Point(546, 352);
-            this.rtxVideoLink.Margin = new System.Windows.Forms.Padding(2, 2, 20, 24);
-            this.rtxVideoLink.Name = "rtxVideoLink";
-            this.rtxVideoLink.Size = new System.Drawing.Size(528, 22);
-            this.rtxVideoLink.TabIndex = 30;
-            this.rtxVideoLink.Text = "";
-            this.rtxVideoLink.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.rtxVideoLink_LinkClicked);
+            this.btnDelete.AutoSize = true;
+            this.btnDelete.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnDelete.Location = new System.Drawing.Point(1078, 297);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(120, 40);
+            this.btnDelete.TabIndex = 27;
+            this.btnDelete.ButtonClicked += new System.EventHandler(this.btnDelete_ButtonClicked);
             // 
-            // lblVideoLink
+            // btnEdit
             // 
-            this.lblVideoLink.AutoSize = true;
-            this.lblVideoLink.BackColor = System.Drawing.Color.White;
-            this.lblVideoLink.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVideoLink.ForeColor = System.Drawing.Color.Gray;
-            this.lblVideoLink.Location = new System.Drawing.Point(383, 357);
-            this.lblVideoLink.Margin = new System.Windows.Forms.Padding(11, 12, 11, 12);
-            this.lblVideoLink.Name = "lblVideoLink";
-            this.lblVideoLink.Size = new System.Drawing.Size(67, 14);
-            this.lblVideoLink.TabIndex = 28;
-            this.lblVideoLink.Text = "Video link";
+            this.btnEdit.AutoSize = true;
+            this.btnEdit.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnEdit.Location = new System.Drawing.Point(728, 297);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(160, 49);
+            this.btnEdit.TabIndex = 26;
+            this.btnEdit.ButtonClicked += new System.EventHandler(this.btnEdit_ButtonClicked);
             // 
-            // txtWriters
+            // btnBack
             // 
-            this.txtWriters.BackColor = System.Drawing.Color.White;
-            this.txtWriters.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtWriters.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtWriters.ForeColor = System.Drawing.Color.DimGray;
-            this.txtWriters.Location = new System.Drawing.Point(546, 263);
-            this.txtWriters.Margin = new System.Windows.Forms.Padding(2, 2, 20, 24);
-            this.txtWriters.Name = "txtWriters";
-            this.txtWriters.Size = new System.Drawing.Size(528, 22);
-            this.txtWriters.TabIndex = 24;
-            this.txtWriters.Validating += new System.ComponentModel.CancelEventHandler(this.txtWriters_Validating);
+            this.btnBack.AutoSize = true;
+            this.btnBack.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnBack.Location = new System.Drawing.Point(1252, 297);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(120, 40);
+            this.btnBack.TabIndex = 25;
+            this.btnBack.ButtonClicked += new System.EventHandler(this.btnBack_ButtonClicked);
             // 
-            // lblWriters
+            // btnSaveChanges
             // 
-            this.lblWriters.AutoSize = true;
-            this.lblWriters.BackColor = System.Drawing.Color.White;
-            this.lblWriters.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWriters.ForeColor = System.Drawing.Color.Gray;
-            this.lblWriters.Location = new System.Drawing.Point(383, 265);
-            this.lblWriters.Margin = new System.Windows.Forms.Padding(11, 12, 11, 12);
-            this.lblWriters.Name = "lblWriters";
-            this.lblWriters.Size = new System.Drawing.Size(53, 14);
-            this.lblWriters.TabIndex = 23;
-            this.lblWriters.Text = "Writers";
+            this.btnSaveChanges.AutoSize = true;
+            this.btnSaveChanges.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnSaveChanges.Location = new System.Drawing.Point(903, 297);
+            this.btnSaveChanges.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSaveChanges.Name = "btnSaveChanges";
+            this.btnSaveChanges.Size = new System.Drawing.Size(120, 40);
+            this.btnSaveChanges.TabIndex = 21;
+            this.btnSaveChanges.ButtonClicked += new System.EventHandler(this.btnSaveChanges_ButtonClicked);
             // 
             // picPoster
             // 
             this.picPoster.Image = ((System.Drawing.Image)(resources.GetObject("picPoster.Image")));
-            this.picPoster.Location = new System.Drawing.Point(31, 24);
-            this.picPoster.Margin = new System.Windows.Forms.Padding(20, 12, 11, 12);
+            this.picPoster.Location = new System.Drawing.Point(41, 30);
+            this.picPoster.Margin = new System.Windows.Forms.Padding(27, 15, 15, 15);
             this.picPoster.Name = "picPoster";
-            this.picPoster.Size = new System.Drawing.Size(300, 488);
+            this.picPoster.Size = new System.Drawing.Size(400, 601);
             this.picPoster.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picPoster.TabIndex = 20;
             this.picPoster.TabStop = false;
             // 
-            // lbxGenres
+            // lblPrice
             // 
-            this.lbxGenres.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lbxGenres.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbxGenres.ForeColor = System.Drawing.Color.Gray;
-            this.lbxGenres.FormattingEnabled = true;
-            this.lbxGenres.ItemHeight = 14;
-            this.lbxGenres.Location = new System.Drawing.Point(547, 399);
-            this.lbxGenres.Margin = new System.Windows.Forms.Padding(2, 24, 20, 2);
-            this.lbxGenres.Name = "lbxGenres";
-            this.lbxGenres.SelectionMode = System.Windows.Forms.SelectionMode.None;
-            this.lbxGenres.Size = new System.Drawing.Size(528, 84);
-            this.lbxGenres.TabIndex = 19;
+            this.lblPrice.AutoSize = true;
+            this.lblPrice.BackColor = System.Drawing.Color.White;
+            this.lblPrice.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrice.ForeColor = System.Drawing.Color.Gray;
+            this.lblPrice.Location = new System.Drawing.Point(511, 213);
+            this.lblPrice.Margin = new System.Windows.Forms.Padding(15, 15, 15, 15);
+            this.lblPrice.Name = "lblPrice";
+            this.lblPrice.Size = new System.Drawing.Size(43, 18);
+            this.lblPrice.TabIndex = 6;
+            this.lblPrice.Text = "Price";
             // 
-            // chlGenres
+            // lblMovieTitle
             // 
-            this.chlGenres.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.chlGenres.CheckOnClick = true;
-            this.chlGenres.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chlGenres.ForeColor = System.Drawing.Color.Gray;
-            this.chlGenres.FormattingEnabled = true;
-            this.chlGenres.Location = new System.Drawing.Point(547, 399);
-            this.chlGenres.Margin = new System.Windows.Forms.Padding(3, 24, 3, 3);
-            this.chlGenres.MultiColumn = true;
-            this.chlGenres.Name = "chlGenres";
-            this.chlGenres.Size = new System.Drawing.Size(528, 85);
-            this.chlGenres.TabIndex = 18;
-            this.chlGenres.Visible = false;
+            this.lblMovieTitle.AutoSize = true;
+            this.lblMovieTitle.BackColor = System.Drawing.Color.White;
+            this.lblMovieTitle.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMovieTitle.ForeColor = System.Drawing.Color.Gray;
+            this.lblMovieTitle.Location = new System.Drawing.Point(511, 156);
+            this.lblMovieTitle.Margin = new System.Windows.Forms.Padding(15, 15, 15, 15);
+            this.lblMovieTitle.Name = "lblMovieTitle";
+            this.lblMovieTitle.Size = new System.Drawing.Size(52, 18);
+            this.lblMovieTitle.TabIndex = 5;
+            this.lblMovieTitle.Text = "Movie";
             // 
-            // lblGenre
+            // lblHall
             // 
-            this.lblGenre.AutoSize = true;
-            this.lblGenre.BackColor = System.Drawing.Color.White;
-            this.lblGenre.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGenre.ForeColor = System.Drawing.Color.Gray;
-            this.lblGenre.Location = new System.Drawing.Point(383, 399);
-            this.lblGenre.Margin = new System.Windows.Forms.Padding(11, 12, 11, 12);
-            this.lblGenre.Name = "lblGenre";
-            this.lblGenre.Size = new System.Drawing.Size(52, 14);
-            this.lblGenre.TabIndex = 16;
-            this.lblGenre.Text = "Genres";
+            this.lblHall.AutoSize = true;
+            this.lblHall.BackColor = System.Drawing.Color.White;
+            this.lblHall.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHall.ForeColor = System.Drawing.Color.Gray;
+            this.lblHall.Location = new System.Drawing.Point(511, 100);
+            this.lblHall.Margin = new System.Windows.Forms.Padding(15, 15, 15, 15);
+            this.lblHall.Name = "lblHall";
+            this.lblHall.Size = new System.Drawing.Size(34, 18);
+            this.lblHall.TabIndex = 4;
+            this.lblHall.Text = "Hall";
             // 
-            // txtActors
+            // lblSchedule
             // 
-            this.txtActors.BackColor = System.Drawing.Color.White;
-            this.txtActors.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtActors.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtActors.ForeColor = System.Drawing.Color.DimGray;
-            this.txtActors.Location = new System.Drawing.Point(546, 309);
-            this.txtActors.Margin = new System.Windows.Forms.Padding(2, 2, 20, 24);
-            this.txtActors.Name = "txtActors";
-            this.txtActors.Size = new System.Drawing.Size(528, 22);
-            this.txtActors.TabIndex = 14;
-            this.txtActors.Validating += new System.ComponentModel.CancelEventHandler(this.txtActors_Validating);
-            // 
-            // txtDirectors
-            // 
-            this.txtDirectors.BackColor = System.Drawing.Color.White;
-            this.txtDirectors.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDirectors.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDirectors.ForeColor = System.Drawing.Color.DimGray;
-            this.txtDirectors.Location = new System.Drawing.Point(546, 217);
-            this.txtDirectors.Margin = new System.Windows.Forms.Padding(2, 2, 20, 24);
-            this.txtDirectors.Name = "txtDirectors";
-            this.txtDirectors.Size = new System.Drawing.Size(528, 22);
-            this.txtDirectors.TabIndex = 13;
-            this.txtDirectors.Validating += new System.ComponentModel.CancelEventHandler(this.txtDirectors_Validating);
-            // 
-            // txtCountry
-            // 
-            this.txtCountry.BackColor = System.Drawing.Color.White;
-            this.txtCountry.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCountry.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCountry.ForeColor = System.Drawing.Color.DimGray;
-            this.txtCountry.Location = new System.Drawing.Point(546, 171);
-            this.txtCountry.Margin = new System.Windows.Forms.Padding(2, 2, 20, 24);
-            this.txtCountry.Name = "txtCountry";
-            this.txtCountry.Size = new System.Drawing.Size(528, 22);
-            this.txtCountry.TabIndex = 12;
-            this.txtCountry.Validating += new System.ComponentModel.CancelEventHandler(this.txtCountry_Validating);
-            // 
-            // txtDuration
-            // 
-            this.txtDuration.BackColor = System.Drawing.Color.White;
-            this.txtDuration.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDuration.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDuration.ForeColor = System.Drawing.Color.DimGray;
-            this.txtDuration.Location = new System.Drawing.Point(546, 125);
-            this.txtDuration.Margin = new System.Windows.Forms.Padding(2, 2, 20, 24);
-            this.txtDuration.Name = "txtDuration";
-            this.txtDuration.Size = new System.Drawing.Size(528, 22);
-            this.txtDuration.TabIndex = 11;
-            this.txtDuration.Validating += new System.ComponentModel.CancelEventHandler(this.txtDuration_Validating);
-            // 
-            // txtReleaseYear
-            // 
-            this.txtReleaseYear.BackColor = System.Drawing.Color.White;
-            this.txtReleaseYear.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtReleaseYear.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtReleaseYear.ForeColor = System.Drawing.Color.DimGray;
-            this.txtReleaseYear.Location = new System.Drawing.Point(546, 79);
-            this.txtReleaseYear.Margin = new System.Windows.Forms.Padding(2, 2, 20, 24);
-            this.txtReleaseYear.Name = "txtReleaseYear";
-            this.txtReleaseYear.Size = new System.Drawing.Size(528, 22);
-            this.txtReleaseYear.TabIndex = 10;
-            this.txtReleaseYear.Validating += new System.ComponentModel.CancelEventHandler(this.txtReleaseYear_Validating);
-            // 
-            // txtMovieTitle
-            // 
-            this.txtMovieTitle.BackColor = System.Drawing.Color.White;
-            this.txtMovieTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtMovieTitle.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMovieTitle.ForeColor = System.Drawing.Color.DimGray;
-            this.txtMovieTitle.Location = new System.Drawing.Point(546, 33);
-            this.txtMovieTitle.Margin = new System.Windows.Forms.Padding(2, 2, 20, 24);
-            this.txtMovieTitle.Name = "txtMovieTitle";
-            this.txtMovieTitle.Size = new System.Drawing.Size(528, 22);
-            this.txtMovieTitle.TabIndex = 9;
-            this.txtMovieTitle.Validating += new System.ComponentModel.CancelEventHandler(this.txtMovieTitle_Validating);
-            // 
-            // lblActors
-            // 
-            this.lblActors.AutoSize = true;
-            this.lblActors.BackColor = System.Drawing.Color.White;
-            this.lblActors.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblActors.ForeColor = System.Drawing.Color.Gray;
-            this.lblActors.Location = new System.Drawing.Point(383, 311);
-            this.lblActors.Margin = new System.Windows.Forms.Padding(11, 12, 11, 12);
-            this.lblActors.Name = "lblActors";
-            this.lblActors.Size = new System.Drawing.Size(56, 14);
-            this.lblActors.TabIndex = 8;
-            this.lblActors.Text = "Actor(s)";
-            // 
-            // lblDirectors
-            // 
-            this.lblDirectors.AutoSize = true;
-            this.lblDirectors.BackColor = System.Drawing.Color.White;
-            this.lblDirectors.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDirectors.ForeColor = System.Drawing.Color.Gray;
-            this.lblDirectors.Location = new System.Drawing.Point(383, 219);
-            this.lblDirectors.Margin = new System.Windows.Forms.Padding(11, 12, 11, 12);
-            this.lblDirectors.Name = "lblDirectors";
-            this.lblDirectors.Size = new System.Drawing.Size(73, 14);
-            this.lblDirectors.TabIndex = 7;
-            this.lblDirectors.Text = "Director(s)";
-            // 
-            // lblCountry
-            // 
-            this.lblCountry.AutoSize = true;
-            this.lblCountry.BackColor = System.Drawing.Color.White;
-            this.lblCountry.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCountry.ForeColor = System.Drawing.Color.Gray;
-            this.lblCountry.Location = new System.Drawing.Point(383, 173);
-            this.lblCountry.Margin = new System.Windows.Forms.Padding(11, 12, 11, 12);
-            this.lblCountry.Name = "lblCountry";
-            this.lblCountry.Size = new System.Drawing.Size(57, 14);
-            this.lblCountry.TabIndex = 6;
-            this.lblCountry.Text = "Country";
-            // 
-            // lblDuration
-            // 
-            this.lblDuration.AutoSize = true;
-            this.lblDuration.BackColor = System.Drawing.Color.White;
-            this.lblDuration.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDuration.ForeColor = System.Drawing.Color.Gray;
-            this.lblDuration.Location = new System.Drawing.Point(383, 127);
-            this.lblDuration.Margin = new System.Windows.Forms.Padding(11, 12, 11, 12);
-            this.lblDuration.Name = "lblDuration";
-            this.lblDuration.Size = new System.Drawing.Size(125, 14);
-            this.lblDuration.TabIndex = 5;
-            this.lblDuration.Text = "Duration (minutes)";
-            // 
-            // lblYear
-            // 
-            this.lblYear.AutoSize = true;
-            this.lblYear.BackColor = System.Drawing.Color.White;
-            this.lblYear.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblYear.ForeColor = System.Drawing.Color.Gray;
-            this.lblYear.Location = new System.Drawing.Point(383, 81);
-            this.lblYear.Margin = new System.Windows.Forms.Padding(11, 12, 11, 12);
-            this.lblYear.Name = "lblYear";
-            this.lblYear.Size = new System.Drawing.Size(89, 14);
-            this.lblYear.TabIndex = 4;
-            this.lblYear.Text = "Release year";
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.BackColor = System.Drawing.Color.White;
-            this.lblTitle.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.ForeColor = System.Drawing.Color.Gray;
-            this.lblTitle.Location = new System.Drawing.Point(383, 35);
-            this.lblTitle.Margin = new System.Windows.Forms.Padding(11, 12, 11, 12);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(71, 14);
-            this.lblTitle.TabIndex = 3;
-            this.lblTitle.Text = "Movie title";
+            this.lblSchedule.AutoSize = true;
+            this.lblSchedule.BackColor = System.Drawing.Color.White;
+            this.lblSchedule.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSchedule.ForeColor = System.Drawing.Color.Gray;
+            this.lblSchedule.Location = new System.Drawing.Point(511, 43);
+            this.lblSchedule.Margin = new System.Windows.Forms.Padding(15, 15, 15, 15);
+            this.lblSchedule.Name = "lblSchedule";
+            this.lblSchedule.Size = new System.Drawing.Size(121, 18);
+            this.lblSchedule.TabIndex = 3;
+            this.lblSchedule.Text = "Movie schedule";
             // 
             // errorProvider1
             // 
@@ -432,95 +262,76 @@
             this.lblFormCorner.BackColor = System.Drawing.Color.White;
             this.lblFormCorner.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFormCorner.ForeColor = System.Drawing.Color.DimGray;
-            this.lblFormCorner.Location = new System.Drawing.Point(11, 6);
+            this.lblFormCorner.Location = new System.Drawing.Point(15, 7);
             this.lblFormCorner.Margin = new System.Windows.Forms.Padding(0);
             this.lblFormCorner.Name = "lblFormCorner";
-            this.lblFormCorner.Padding = new System.Windows.Forms.Padding(7, 7, 7, 10);
-            this.lblFormCorner.Size = new System.Drawing.Size(98, 35);
+            this.lblFormCorner.Padding = new System.Windows.Forms.Padding(9, 9, 9, 12);
+            this.lblFormCorner.Size = new System.Drawing.Size(167, 44);
             this.lblFormCorner.TabIndex = 0;
-            this.lblFormCorner.Text = "Movie info";
+            this.lblFormCorner.Text = "Screening info";
             this.lblFormCorner.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pnlCornerLabel
             // 
             this.pnlCornerLabel.BackColor = System.Drawing.Color.White;
             this.pnlCornerLabel.Controls.Add(this.lblFormCorner);
-            this.pnlCornerLabel.Location = new System.Drawing.Point(24, 113);
+            this.pnlCornerLabel.Location = new System.Drawing.Point(32, 139);
             this.pnlCornerLabel.Margin = new System.Windows.Forms.Padding(0);
             this.pnlCornerLabel.Name = "pnlCornerLabel";
-            this.pnlCornerLabel.Size = new System.Drawing.Size(119, 41);
+            this.pnlCornerLabel.Size = new System.Drawing.Size(188, 50);
             this.pnlCornerLabel.TabIndex = 12;
             // 
-            // btnDelete
+            // dtpScreeningDate
             // 
-            this.btnDelete.AutoSize = true;
-            this.btnDelete.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnDelete.Location = new System.Drawing.Point(809, 526);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(2);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(120, 40);
-            this.btnDelete.TabIndex = 27;
-            this.btnDelete.ButtonClicked += new System.EventHandler(this.btnDelete_ButtonClicked);
+            this.dtpScreeningDate.CalendarForeColor = System.Drawing.Color.Gray;
+            this.dtpScreeningDate.CalendarTitleForeColor = System.Drawing.Color.Gray;
+            this.dtpScreeningDate.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpScreeningDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpScreeningDate.Location = new System.Drawing.Point(728, 37);
+            this.dtpScreeningDate.Name = "dtpScreeningDate";
+            this.dtpScreeningDate.Size = new System.Drawing.Size(703, 26);
+            this.dtpScreeningDate.TabIndex = 28;
             // 
-            // btnEdit
+            // cmbHall
             // 
-            this.btnEdit.AutoSize = true;
-            this.btnEdit.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnEdit.Location = new System.Drawing.Point(547, 526);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(4);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(120, 40);
-            this.btnEdit.TabIndex = 26;
-            this.btnEdit.ButtonClicked += new System.EventHandler(this.btnEdit_ButtonClicked);
+            this.cmbHall.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbHall.ForeColor = System.Drawing.Color.Gray;
+            this.cmbHall.FormattingEnabled = true;
+            this.cmbHall.Location = new System.Drawing.Point(728, 97);
+            this.cmbHall.Name = "cmbHall";
+            this.cmbHall.Size = new System.Drawing.Size(703, 26);
+            this.cmbHall.TabIndex = 29;
             // 
-            // btnBack
+            // cmbMovie
             // 
-            this.btnBack.AutoSize = true;
-            this.btnBack.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnBack.Location = new System.Drawing.Point(940, 526);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(120, 40);
-            this.btnBack.TabIndex = 25;
-            this.btnBack.ButtonClicked += new System.EventHandler(this.btnBack_ButtonClicked);
+            this.cmbMovie.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbMovie.ForeColor = System.Drawing.Color.Gray;
+            this.cmbMovie.FormattingEnabled = true;
+            this.cmbMovie.Location = new System.Drawing.Point(728, 153);
+            this.cmbMovie.Name = "cmbMovie";
+            this.cmbMovie.Size = new System.Drawing.Size(703, 26);
+            this.cmbMovie.TabIndex = 30;
             // 
-            // btnUploadPoster
+            // cmbPrice
             // 
-            this.btnUploadPoster.AutoSize = true;
-            this.btnUploadPoster.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnUploadPoster.Location = new System.Drawing.Point(31, 526);
-            this.btnUploadPoster.Margin = new System.Windows.Forms.Padding(2);
-            this.btnUploadPoster.Name = "btnUploadPoster";
-            this.btnUploadPoster.Size = new System.Drawing.Size(120, 40);
-            this.btnUploadPoster.TabIndex = 22;
-            this.btnUploadPoster.ButtonClicked += new System.EventHandler(this.btnUploadPoster_ButtonClicked);
+            this.cmbPrice.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbPrice.ForeColor = System.Drawing.Color.Gray;
+            this.cmbPrice.FormattingEnabled = true;
+            this.cmbPrice.Location = new System.Drawing.Point(728, 210);
+            this.cmbPrice.Name = "cmbPrice";
+            this.cmbPrice.Size = new System.Drawing.Size(703, 26);
+            this.cmbPrice.TabIndex = 31;
             // 
-            // btnSaveChanges
+            // FormScreeningDetails
             // 
-            this.btnSaveChanges.AutoSize = true;
-            this.btnSaveChanges.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnSaveChanges.Location = new System.Drawing.Point(678, 526);
-            this.btnSaveChanges.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSaveChanges.Name = "btnSaveChanges";
-            this.btnSaveChanges.Size = new System.Drawing.Size(120, 40);
-            this.btnSaveChanges.TabIndex = 21;
-            this.btnSaveChanges.ButtonClicked += new System.EventHandler(this.btnSaveChanges_ButtonClicked);
-            // 
-            // logoSmall1
-            // 
-            this.logoSmall1.Location = new System.Drawing.Point(1005, 15);
-            this.logoSmall1.Name = "logoSmall1";
-            this.logoSmall1.Size = new System.Drawing.Size(124, 49);
-            this.logoSmall1.TabIndex = 4;
-            // 
-            // FormMovieDetails
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1153, 761);
+            this.ClientSize = new System.Drawing.Size(1537, 937);
             this.Controls.Add(this.pnlCornerLabel);
             this.Controls.Add(this.pnlDetails);
             this.Controls.Add(this.pnlFormTitle);
-            this.Name = "FormMovieDetails";
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Name = "FormScreeningDetails";
             this.Text = "frmMovieDetails";
             this.Load += new System.EventHandler(this.frmMovieDetails_Load);
             this.pnlFormTitle.ResumeLayout(false);
@@ -539,38 +350,26 @@
 
         private System.Windows.Forms.Panel pnlFormTitle;
         private System.Windows.Forms.Panel pnlDetails;
-        private System.Windows.Forms.Label lblActors;
-        private System.Windows.Forms.Label lblDirectors;
-        private System.Windows.Forms.Label lblCountry;
-        private System.Windows.Forms.Label lblDuration;
-        private System.Windows.Forms.Label lblYear;
-        private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.TextBox txtDuration;
-        private System.Windows.Forms.TextBox txtReleaseYear;
-        private System.Windows.Forms.TextBox txtMovieTitle;
-        private System.Windows.Forms.TextBox txtDirectors;
-        private System.Windows.Forms.TextBox txtCountry;
-        private System.Windows.Forms.TextBox txtActors;
-        private System.Windows.Forms.Label lblGenre;
-        private System.Windows.Forms.CheckedListBox chlGenres;
-        private System.Windows.Forms.ListBox lbxGenres;
+        private System.Windows.Forms.Label lblPrice;
+        private System.Windows.Forms.Label lblMovieTitle;
+        private System.Windows.Forms.Label lblHall;
+        private System.Windows.Forms.Label lblSchedule;
         private System.Windows.Forms.PictureBox picPoster;
         private UserControls.Buttons.SaveChangesButton btnSaveChanges;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private UserControls.Buttons.UploadButton btnUploadPoster;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.TextBox txtWriters;
-        private System.Windows.Forms.Label lblWriters;
         private UserControls.Buttons.BackButton btnBack;
         private UserControls.Buttons.EditButton btnEdit;
         private UserControls.Buttons.DeleteButton btnDelete;
         private System.Windows.Forms.Label lblFormCorner;
         private System.Windows.Forms.Panel pnlCornerLabel;
-        private System.Windows.Forms.Label lblVideoLink;
-        private System.Windows.Forms.RichTextBox rtxVideoLink;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblViewTitle;
         private System.Windows.Forms.Label lblBreadCrumbsCurrent;
         private System.Windows.Forms.Label lblBreadcrumbs;
         private UserControls.Logos.LogoSmall logoSmall1;
+        private System.Windows.Forms.DateTimePicker dtpScreeningDate;
+        private System.Windows.Forms.ComboBox cmbPrice;
+        private System.Windows.Forms.ComboBox cmbMovie;
+        private System.Windows.Forms.ComboBox cmbHall;
     }
 }

@@ -16,5 +16,6 @@ namespace Cinema.Models.Requests
         public string SortColumn { get; set; }
         public SortOrder? SortOrder { get; set; }
         public ICollection<string> Includes { get; set; }
+        public bool ReturnAll { get; set; } = false;
     }
 }

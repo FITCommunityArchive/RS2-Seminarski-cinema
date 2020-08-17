@@ -26,7 +26,7 @@ namespace Cinema.Services
             _genreMovieRepo = unit.Repository<GenreMovie, int>();
         }
 
-        public async Task<MovieDto> GetByIdAsync(int id)
+        public async Task<MovieDto> GetByIdAsync(int id, ICollection<string> includes = null)
         {
             var entity = await _movieRepo.GetByIdWithGenresAsync(id);
             return _mapper.Map<MovieDto>(entity);

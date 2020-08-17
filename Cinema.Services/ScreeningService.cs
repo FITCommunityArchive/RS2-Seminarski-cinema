@@ -8,6 +8,7 @@ using Cinema.Utilities.Interfaces.Dal;
 using Cinema.Utilities.Interfaces.Services;
 using OfficeOpenXml.FormulaParsing.Excel.Functions.DateTime;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Cinema.Services
@@ -25,9 +26,10 @@ namespace Cinema.Services
             _screeningRepo = unit.Screenings;
         }
 
-        public Task<ScreeningDto> GetByIdAsync(int id)
+        public async Task<ScreeningDto> GetByIdAsync(int id, ICollection<string> includes = null)
         {
-            throw new NotImplementedException();
+            var entity = await _screeningRepo.GetAsync(id, includes);
+            return _mapper.Map<ScreeningDto>(entity);
         }
 
         public async Task<IPagedList<ScreeningDto>> GetPagedAsync(ScreeningSearchRequest search)

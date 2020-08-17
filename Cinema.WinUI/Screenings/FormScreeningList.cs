@@ -17,6 +17,7 @@ namespace Cinema.WinUI.Movies
         private readonly ApiService _screeningsApi = new ApiService("Screenings");
         private IList<string> _nextFormPrincipal;
         private bool _dateFilterCleared = true;
+        private FormScreeningDetails _formScreeningDetails = null;
 
         public FormScreeningList(IList<string> userPrincipal) : base(new string[] { Roles.Administrator, Roles.ContentEditor }, userPrincipal)
         {
@@ -60,7 +61,6 @@ namespace Cinema.WinUI.Movies
             searchRequest.Includes.Add("Movie");
             searchRequest.Includes.Add("Hall");
             searchRequest.Includes.Add("Pricing");
-
             return searchRequest;
         }
 
@@ -75,11 +75,10 @@ namespace Cinema.WinUI.Movies
         }
 
         private void InitializeDetailsForm(int? id)
-        {
-            /*
-            _frmMovieDetails = new FormMovieDetails(id);
-            _frmMovieDetails.FormClosed += new System.Windows.Forms.FormClosedEventHandler(FormDetails_Closed);
-            _frmMovieDetails.ShowDialog();*/
+        {            
+            _formScreeningDetails = new FormScreeningDetails(id);
+            _formScreeningDetails.FormClosed += new System.Windows.Forms.FormClosedEventHandler(FormDetails_Closed);
+            _formScreeningDetails.ShowDialog();
         }
 
         #region Event methods
@@ -125,9 +124,9 @@ namespace Cinema.WinUI.Movies
                 e.RowIndex >= 0)
             {
                 var clickedRow = senderGrid.Rows[e.RowIndex];
-                int.TryParse(clickedRow.Cells["id"].Value.ToString(), out int filmId);
+                int.TryParse(clickedRow.Cells["id"].Value.ToString(), out int screeningId);
 
-                InitializeDetailsForm(filmId);
+                InitializeDetailsForm(screeningId);
             }
         }
 

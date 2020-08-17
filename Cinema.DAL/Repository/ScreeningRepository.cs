@@ -3,7 +3,6 @@ using Cinema.Shared.Enums;
 using Cinema.Shared.Pagination;
 using Cinema.Shared.Search;
 using Cinema.Utilities.Interfaces.Dal;
-using OfficeOpenXml.FormulaParsing.Excel.Functions.DateTime;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
@@ -34,13 +33,18 @@ namespace Cinema.Dal.Repository
 
             query = ApplySorting(query, searchRequest);
 
-            if (searchRequest.Includes.Count > 0)
+            if (searchRequest.Includes.Count() > 0)
             {
                 query = AddIncludes(query, searchRequest.Includes);
             }            
 
             var pagedList = await ApplyPaginationAsync(query, searchRequest.PageIndex, searchRequest.PageSize);
             return pagedList;
+        }
+
+        protected override Expression<Func<Screening, bool>> GetByIdExpression(int id)
+        {
+            return x => x.Id == id;
         }
 
         private IQueryable<Screening> ApplyFilter(IQueryable<Screening> query, string searchTerm, string hall, decimal? price, TimingStatus? status, DateTime? screeningDate)

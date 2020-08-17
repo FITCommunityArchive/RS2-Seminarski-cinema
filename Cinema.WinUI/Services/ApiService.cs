@@ -72,9 +72,15 @@ namespace Cinema.WinUI.Services
             return result;
         }
 
-        public async Task<T> GetById<T>(object id)
+        public async Task<T> GetById<T>(object id, object includes = null)
         {
             var url = $"{Properties.Settings.Default.APIUrl}/{_route}/{id}";
+
+            if (includes != null)
+            {
+                url += "?";
+                url += await includes.ToQueryString();
+            }
 
             return await url.WithOAuthBearerToken(Token).GetJsonAsync<T>();
         }
