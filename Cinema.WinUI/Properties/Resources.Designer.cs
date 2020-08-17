@@ -61,16 +61,6 @@ namespace Cinema.WinUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Spinner {
-            get {
-                object obj = ResourceManager.GetObject("Spinner", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Something went wrong!.
         /// </summary>
         internal static string Operation_BadRequest {
@@ -85,6 +75,25 @@ namespace Cinema.WinUI.Properties {
         internal static string Operation_Successful {
             get {
                 return ResourceManager.GetString("Operation_Successful", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Spinner {
+            get {
+                object obj = ResourceManager.GetObject("Spinner", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date and time must be in the future!.
+        /// </summary>
+        internal static string Validation_FutureDateRequired {
+            get {
+                return ResourceManager.GetString("Validation_FutureDateRequired", resourceCulture);
             }
         }
         

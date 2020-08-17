@@ -23,7 +23,7 @@ namespace Cinema.WinUI.Movies
         private readonly ApiService _moviesApi = new ApiService("Movies");
         private readonly ApiService _hallsApi = new ApiService("Halls");
         private readonly ApiService _pricingsApi = new ApiService("Pricings");
-        private readonly int? _id = null;
+        private int? _id = null;
         private ScreeningUpsertRequest _request = new ScreeningUpsertRequest();
         private IPagedList<MovieDto> _movies = null;
         private IPagedList<HallDto> _halls = null;
@@ -43,74 +43,54 @@ namespace Cinema.WinUI.Movies
         }
 
         private void InsertNew()
-        {/*
-            chlGenres.DataSource = _genres.Data;
-            chlGenres.DisplayMember = nameof(GenreDto.Name);*/
+        {
+            LoadComboboxLists();
         }
 
 
-        private async Task LoadReadOnly()
+        private async Task LoadScreeningDetails()
         {
-            IncludesSearchRequest searchRequest = new IncludesSearchRequest
-            {
-                Includes = new List<string>
-                {
-                    "Movie", "Hall", "Pricing"
-                }
-            };
+            IncludesSearchRequest searchRequest = GetIncludes();
 
             var result = await _screeningsApi.GetById<ScreeningDto>(_id, searchRequest);
 
             LoadPropertyValues(result);
         }
 
-        private async Task LoadEdit()
+        private static IncludesSearchRequest GetIncludes()
         {
-            /*var resultGenres = await _genresApi.Get<PagedList<GenreDto>>(null);
-            var result = await _screeningsApi.GetById<MovieDto>(_id);
-
-            SetReadonly(false);
-
-            LoadPropertyValues(result);
-
-            List<GenreDto> movieGenres = resultGenres.Data.Where(x => result.GenreMovies.Select(y => y.GenreId).Contains(x.Id)).ToList();*/
-
-            /*
-            chlGenres.DataSource = resultGenres.Data;
-            chlGenres.DisplayMember = nameof(GenreDto.Name);
-
-            for (int i = 0; i < chlGenres.Items.Count; i++)
+            return new IncludesSearchRequest
             {
-                GenreDto genre = chlGenres.Items[i] as GenreDto;
-
-                if (result.GenreMovies.Select(x => x.GenreId).Contains(genre.Id))
+                Includes = new List<string>
                 {
-                    chlGenres.SetItemChecked(i, true);
+                    "Movie", "Hall", "Pricing"
                 }
-            }*/
+            };
         }
 
         private void LoadPropertyValues(ScreeningDto result)
         {
-            dtpScreeningDate.Value = result.DateAndTime;
+            LoadComboboxLists();
 
+            dtpScreeningDate.Value = result.DateAndTime;
+            cmbMovie.SelectedValue = result.Movie.Id;
+            cmbHall.SelectedValue = result.Hall.Id;
+            cmbPrice.SelectedValue = result.Pricing.Id;
+        }
+
+        private void LoadComboboxLists()
+        {
             cmbMovie.DataSource = _movies.Data;
             cmbMovie.DisplayMember = nameof(MovieDto.Title);
             cmbMovie.ValueMember = nameof(MovieDto.Id);
-            cmbMovie.SelectedItem = result.Movie;
-        }
- 
-        private void ValidateEmptyField(Control control, CancelEventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(control.Text))
-            {
-                errorProvider1.SetError(control, Properties.Resources.Validation_RequiredField);
-                e.Cancel = true;
-            }
-            else
-            {
-                errorProvider1.SetError(control, null);
-            }
+
+            cmbHall.DataSource = _halls.Data;
+            cmbHall.DisplayMember = nameof(HallDto.Name);
+            cmbHall.ValueMember = nameof(HallDto.Id);
+
+            cmbPrice.DataSource = _pricings.Data;
+            cmbPrice.DisplayMember = nameof(PricingDto.Name);
+            cmbPrice.ValueMember = nameof(PricingDto.Id);
         }
 
         private void ValidateInteger(Control control, System.ComponentModel.CancelEventArgs e)
@@ -128,24 +108,24 @@ namespace Cinema.WinUI.Movies
 
         #region Event methods
 
-        private async void frmMovieDetails_Load(object sender, EventArgs e)
+        private async void frmScreeningDetails_Load(object sender, EventArgs e)
         {
             _movies = await _moviesApi.Get<PagedList<MovieDto>>(new MovieSearchRequest
             {
                 ReturnAll = true
             });
-/*            PagedList<HallDto> _halls = await _hallsApi.Get<PagedList<HallDto>>(new BaseSearchRequest
+            _halls = await _hallsApi.Get<PagedList<HallDto>>(new BaseSearchRequest
             {
                 ReturnAll = true
             });
-            PagedList<PricingDto> _pricings = await _pricingsApi.Get<PagedList<PricingDto>>(new BaseSearchRequest
+            _pricings = await _pricingsApi.Get<PagedList<PricingDto>>(new BaseSearchRequest
             {
                 ReturnAll = true
-            });*/
+            });
 
             if (_id.HasValue)
             {
-                await LoadReadOnly();
+                await LoadScreeningDetails();
             }
             else
             {
@@ -158,31 +138,28 @@ namespace Cinema.WinUI.Movies
         {
             if (!this.ValidateChildren()) return;
 
-            /*
-            List<int> movieGenreIds = chlGenres.CheckedItems.Cast<GenreDto>().Select(x => x.Id).ToList();
+            int movieId = (int)cmbMovie.SelectedValue;
+            int hallId = (int)cmbHall.SelectedValue;
+            int pricingId = (int)cmbPrice.SelectedValue;
 
-            _request.Actors = txtActors.Text;
-            _request.Country = txtCountry.Text;
-            _request.Directors = txtDirectors.Text;
-            _request.Writers = txtWriters.Text;
-            _request.Duration = int.Parse(txtDuration.Text);
-            _request.Title = txtMovieTitle.Text;
-            _request.Year = int.Parse(txtReleaseYear.Text);
-            _request.VideoLink = rtxVideoLink.Text;
-            _request.Genres = movieGenreIds;*/
+            _request.DateAndTime = dtpScreeningDate.Value.ToUniversalTime();
+            _request.MovieId = movieId;
+            _request.HallId = hallId;
+            _request.PricingId = pricingId;
 
-            MovieDto result;
+            ScreeningDto result;
 
             if (_id.HasValue)
             {
-                result = await _screeningsApi.Update<MovieDto>(_id, _request);
+                result = await _screeningsApi.Update<ScreeningDto>(_id, _request);                
             }
             else
             {
-                result = await _screeningsApi.Insert<MovieDto>(_request);
+                result = await _screeningsApi.Insert<ScreeningDto>(_request);
+                _id = result.Id;
             }
 
-            await LoadReadOnly();
+            await LoadScreeningDetails();
 
             if (result != null)
             {
@@ -199,11 +176,6 @@ namespace Cinema.WinUI.Movies
             this.Close();
         }
 
-        private async void btnEdit_ButtonClicked(object sender, EventArgs e)
-        {
-            await LoadEdit();
-        }
-
         private async void btnDelete_ButtonClicked(object sender, EventArgs e)
         {
             var result = await _screeningsApi.Delete<MovieDto>(_id);
@@ -213,5 +185,18 @@ namespace Cinema.WinUI.Movies
         }
 
         #endregion
+
+        private void dtpScreeningDate_Validating(object sender, CancelEventArgs e)
+        {
+            if (dtpScreeningDate.Value.ToUniversalTime() <= DateTime.UtcNow)
+            {
+                errorProvider1.SetError(dtpScreeningDate, Properties.Resources.Validation_FutureDateRequired);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider1.SetError(dtpScreeningDate, null);
+            }
+        }
     }
 }

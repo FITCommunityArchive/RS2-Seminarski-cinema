@@ -36,8 +36,11 @@
             this.lblBreadcrumbs = new System.Windows.Forms.Label();
             this.lblViewTitle = new System.Windows.Forms.Label();
             this.pnlDetails = new System.Windows.Forms.Panel();
+            this.cmbPrice = new System.Windows.Forms.ComboBox();
+            this.cmbMovie = new System.Windows.Forms.ComboBox();
+            this.cmbHall = new System.Windows.Forms.ComboBox();
+            this.dtpScreeningDate = new System.Windows.Forms.DateTimePicker();
             this.btnDelete = new Cinema.WinUI.UserControls.Buttons.DeleteButton();
-            this.btnEdit = new Cinema.WinUI.UserControls.Buttons.EditButton();
             this.btnBack = new Cinema.WinUI.UserControls.Buttons.BackButton();
             this.btnSaveChanges = new Cinema.WinUI.UserControls.Buttons.SaveChangesButton();
             this.picPoster = new System.Windows.Forms.PictureBox();
@@ -49,10 +52,6 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.lblFormCorner = new System.Windows.Forms.Label();
             this.pnlCornerLabel = new System.Windows.Forms.Panel();
-            this.dtpScreeningDate = new System.Windows.Forms.DateTimePicker();
-            this.cmbHall = new System.Windows.Forms.ComboBox();
-            this.cmbMovie = new System.Windows.Forms.ComboBox();
-            this.cmbPrice = new System.Windows.Forms.ComboBox();
             this.pnlFormTitle.SuspendLayout();
             this.pnlDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPoster)).BeginInit();
@@ -77,7 +76,7 @@
             // logoSmall1
             // 
             this.logoSmall1.Location = new System.Drawing.Point(1340, 18);
-            this.logoSmall1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.logoSmall1.Margin = new System.Windows.Forms.Padding(5);
             this.logoSmall1.Name = "logoSmall1";
             this.logoSmall1.Size = new System.Drawing.Size(165, 60);
             this.logoSmall1.TabIndex = 4;
@@ -125,7 +124,6 @@
             this.pnlDetails.Controls.Add(this.cmbHall);
             this.pnlDetails.Controls.Add(this.dtpScreeningDate);
             this.pnlDetails.Controls.Add(this.btnDelete);
-            this.pnlDetails.Controls.Add(this.btnEdit);
             this.pnlDetails.Controls.Add(this.btnBack);
             this.pnlDetails.Controls.Add(this.btnSaveChanges);
             this.pnlDetails.Controls.Add(this.picPoster);
@@ -135,40 +133,71 @@
             this.pnlDetails.Controls.Add(this.lblSchedule);
             this.pnlDetails.ForeColor = System.Drawing.Color.White;
             this.pnlDetails.Location = new System.Drawing.Point(32, 187);
-            this.pnlDetails.Margin = new System.Windows.Forms.Padding(20, 20, 20, 20);
+            this.pnlDetails.Margin = new System.Windows.Forms.Padding(20);
             this.pnlDetails.Name = "pnlDetails";
-            this.pnlDetails.Padding = new System.Windows.Forms.Padding(15, 15, 15, 15);
+            this.pnlDetails.Padding = new System.Windows.Forms.Padding(15);
             this.pnlDetails.Size = new System.Drawing.Size(1473, 672);
             this.pnlDetails.TabIndex = 11;
+            // 
+            // cmbPrice
+            // 
+            this.cmbPrice.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbPrice.ForeColor = System.Drawing.Color.Gray;
+            this.cmbPrice.FormattingEnabled = true;
+            this.cmbPrice.Location = new System.Drawing.Point(728, 210);
+            this.cmbPrice.Name = "cmbPrice";
+            this.cmbPrice.Size = new System.Drawing.Size(703, 26);
+            this.cmbPrice.TabIndex = 31;
+            // 
+            // cmbMovie
+            // 
+            this.cmbMovie.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbMovie.ForeColor = System.Drawing.Color.Gray;
+            this.cmbMovie.FormattingEnabled = true;
+            this.cmbMovie.Location = new System.Drawing.Point(728, 153);
+            this.cmbMovie.Name = "cmbMovie";
+            this.cmbMovie.Size = new System.Drawing.Size(703, 26);
+            this.cmbMovie.TabIndex = 30;
+            // 
+            // cmbHall
+            // 
+            this.cmbHall.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbHall.ForeColor = System.Drawing.Color.Gray;
+            this.cmbHall.FormattingEnabled = true;
+            this.cmbHall.Location = new System.Drawing.Point(728, 97);
+            this.cmbHall.Name = "cmbHall";
+            this.cmbHall.Size = new System.Drawing.Size(703, 26);
+            this.cmbHall.TabIndex = 29;
+            // 
+            // dtpScreeningDate
+            // 
+            this.dtpScreeningDate.CalendarForeColor = System.Drawing.Color.Gray;
+            this.dtpScreeningDate.CalendarTitleForeColor = System.Drawing.Color.Gray;
+            this.dtpScreeningDate.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpScreeningDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpScreeningDate.Location = new System.Drawing.Point(728, 37);
+            this.dtpScreeningDate.Name = "dtpScreeningDate";
+            this.dtpScreeningDate.Size = new System.Drawing.Size(703, 26);
+            this.dtpScreeningDate.TabIndex = 28;
+            this.dtpScreeningDate.Validating += new System.ComponentModel.CancelEventHandler(this.dtpScreeningDate_Validating);
             // 
             // btnDelete
             // 
             this.btnDelete.AutoSize = true;
             this.btnDelete.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnDelete.Location = new System.Drawing.Point(1078, 297);
+            this.btnDelete.Location = new System.Drawing.Point(903, 292);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(120, 40);
             this.btnDelete.TabIndex = 27;
             this.btnDelete.ButtonClicked += new System.EventHandler(this.btnDelete_ButtonClicked);
             // 
-            // btnEdit
-            // 
-            this.btnEdit.AutoSize = true;
-            this.btnEdit.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnEdit.Location = new System.Drawing.Point(728, 297);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(160, 49);
-            this.btnEdit.TabIndex = 26;
-            this.btnEdit.ButtonClicked += new System.EventHandler(this.btnEdit_ButtonClicked);
-            // 
             // btnBack
             // 
             this.btnBack.AutoSize = true;
             this.btnBack.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnBack.Location = new System.Drawing.Point(1252, 297);
-            this.btnBack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBack.Location = new System.Drawing.Point(1077, 292);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(4);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(120, 40);
             this.btnBack.TabIndex = 25;
@@ -178,7 +207,7 @@
             // 
             this.btnSaveChanges.AutoSize = true;
             this.btnSaveChanges.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnSaveChanges.Location = new System.Drawing.Point(903, 297);
+            this.btnSaveChanges.Location = new System.Drawing.Point(728, 292);
             this.btnSaveChanges.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSaveChanges.Name = "btnSaveChanges";
             this.btnSaveChanges.Size = new System.Drawing.Size(120, 40);
@@ -203,7 +232,7 @@
             this.lblPrice.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPrice.ForeColor = System.Drawing.Color.Gray;
             this.lblPrice.Location = new System.Drawing.Point(511, 213);
-            this.lblPrice.Margin = new System.Windows.Forms.Padding(15, 15, 15, 15);
+            this.lblPrice.Margin = new System.Windows.Forms.Padding(15);
             this.lblPrice.Name = "lblPrice";
             this.lblPrice.Size = new System.Drawing.Size(43, 18);
             this.lblPrice.TabIndex = 6;
@@ -216,7 +245,7 @@
             this.lblMovieTitle.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMovieTitle.ForeColor = System.Drawing.Color.Gray;
             this.lblMovieTitle.Location = new System.Drawing.Point(511, 156);
-            this.lblMovieTitle.Margin = new System.Windows.Forms.Padding(15, 15, 15, 15);
+            this.lblMovieTitle.Margin = new System.Windows.Forms.Padding(15);
             this.lblMovieTitle.Name = "lblMovieTitle";
             this.lblMovieTitle.Size = new System.Drawing.Size(52, 18);
             this.lblMovieTitle.TabIndex = 5;
@@ -229,7 +258,7 @@
             this.lblHall.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHall.ForeColor = System.Drawing.Color.Gray;
             this.lblHall.Location = new System.Drawing.Point(511, 100);
-            this.lblHall.Margin = new System.Windows.Forms.Padding(15, 15, 15, 15);
+            this.lblHall.Margin = new System.Windows.Forms.Padding(15);
             this.lblHall.Name = "lblHall";
             this.lblHall.Size = new System.Drawing.Size(34, 18);
             this.lblHall.TabIndex = 4;
@@ -242,7 +271,7 @@
             this.lblSchedule.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSchedule.ForeColor = System.Drawing.Color.Gray;
             this.lblSchedule.Location = new System.Drawing.Point(511, 43);
-            this.lblSchedule.Margin = new System.Windows.Forms.Padding(15, 15, 15, 15);
+            this.lblSchedule.Margin = new System.Windows.Forms.Padding(15);
             this.lblSchedule.Name = "lblSchedule";
             this.lblSchedule.Size = new System.Drawing.Size(121, 18);
             this.lblSchedule.TabIndex = 3;
@@ -281,47 +310,6 @@
             this.pnlCornerLabel.Size = new System.Drawing.Size(188, 50);
             this.pnlCornerLabel.TabIndex = 12;
             // 
-            // dtpScreeningDate
-            // 
-            this.dtpScreeningDate.CalendarForeColor = System.Drawing.Color.Gray;
-            this.dtpScreeningDate.CalendarTitleForeColor = System.Drawing.Color.Gray;
-            this.dtpScreeningDate.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpScreeningDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpScreeningDate.Location = new System.Drawing.Point(728, 37);
-            this.dtpScreeningDate.Name = "dtpScreeningDate";
-            this.dtpScreeningDate.Size = new System.Drawing.Size(703, 26);
-            this.dtpScreeningDate.TabIndex = 28;
-            // 
-            // cmbHall
-            // 
-            this.cmbHall.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbHall.ForeColor = System.Drawing.Color.Gray;
-            this.cmbHall.FormattingEnabled = true;
-            this.cmbHall.Location = new System.Drawing.Point(728, 97);
-            this.cmbHall.Name = "cmbHall";
-            this.cmbHall.Size = new System.Drawing.Size(703, 26);
-            this.cmbHall.TabIndex = 29;
-            // 
-            // cmbMovie
-            // 
-            this.cmbMovie.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbMovie.ForeColor = System.Drawing.Color.Gray;
-            this.cmbMovie.FormattingEnabled = true;
-            this.cmbMovie.Location = new System.Drawing.Point(728, 153);
-            this.cmbMovie.Name = "cmbMovie";
-            this.cmbMovie.Size = new System.Drawing.Size(703, 26);
-            this.cmbMovie.TabIndex = 30;
-            // 
-            // cmbPrice
-            // 
-            this.cmbPrice.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbPrice.ForeColor = System.Drawing.Color.Gray;
-            this.cmbPrice.FormattingEnabled = true;
-            this.cmbPrice.Location = new System.Drawing.Point(728, 210);
-            this.cmbPrice.Name = "cmbPrice";
-            this.cmbPrice.Size = new System.Drawing.Size(703, 26);
-            this.cmbPrice.TabIndex = 31;
-            // 
             // FormScreeningDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -330,10 +318,10 @@
             this.Controls.Add(this.pnlCornerLabel);
             this.Controls.Add(this.pnlDetails);
             this.Controls.Add(this.pnlFormTitle);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormScreeningDetails";
             this.Text = "frmMovieDetails";
-            this.Load += new System.EventHandler(this.frmMovieDetails_Load);
+            this.Load += new System.EventHandler(this.frmScreeningDetails_Load);
             this.pnlFormTitle.ResumeLayout(false);
             this.pnlFormTitle.PerformLayout();
             this.pnlDetails.ResumeLayout(false);
@@ -359,7 +347,6 @@
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private UserControls.Buttons.BackButton btnBack;
-        private UserControls.Buttons.EditButton btnEdit;
         private UserControls.Buttons.DeleteButton btnDelete;
         private System.Windows.Forms.Label lblFormCorner;
         private System.Windows.Forms.Panel pnlCornerLabel;

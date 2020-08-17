@@ -100,6 +100,8 @@ namespace Cinema.Web.API
             services.AddScoped<ICRUDService<ApplicationUserDto, UserSearchRequest, UserUpsertRequest, UserUpsertRequest>, UserService>();
             services.AddScoped<ICRUDService<ScreeningDto, ScreeningSearchRequest, ScreeningUpsertRequest, ScreeningUpsertRequest>, ScreeningService>();
             services.AddScoped<IService<GenreDto, BaseSearchRequest>, BaseService<GenreDto, BaseSearchRequest, Genre>>();
+            services.AddScoped<IService<HallDto, BaseSearchRequest>, BaseService<HallDto, BaseSearchRequest, Hall>>();
+            services.AddScoped<IService<PricingDto, BaseSearchRequest>, BaseService<PricingDto, BaseSearchRequest, Pricing>>();
 
             services.AddScoped<IMovieService, MovieService>();
             services.AddScoped<IScreeningService, ScreeningService>();
