@@ -178,7 +178,7 @@ namespace Cinema.WinUI.Movies
 
         private async void btnDelete_ButtonClicked(object sender, EventArgs e)
         {
-            var result = await _screeningsApi.Delete<MovieDto>(_id);
+            var result = await _screeningsApi.Delete<ScreeningDto>(_id);
 
             OnItemDeleted(EventArgs.Empty);
             this.Close();

@@ -85,15 +85,37 @@ namespace Cinema.Services
             return dto;
         }
 
-        public Task<ScreeningDto> UpdateAsync(int id, ScreeningUpsertRequest req)
+        public async Task<ScreeningDto> UpdateAsync(int id, ScreeningUpsertRequest req)
         {
-            throw new NotImplementedException();
+            Screening screening = _mapper.Map<Screening>(req);
+            screening.Id = id;
+
+            if (!ValidateScreeningDate(screening))
+            {
+                throw new ScreeningAvailabilityException(Shared.Constants.ValidationMessages.DATE_NOT_FUTURE);
+            }
+
+            /* // Uncomment after setting identity entities with id key
+            if (!await ValidateScreeningHallAvailabilityAsync(screening))
+            {
+                throw new ScreeningAvailabilityException(Shared.Constants.ValidationMessages.HALL_ALREADY_OCCUPIED);
+            }*/
+
+            await _screeningRepo.UpdateAsync(screening, id);
+            await _unit.SaveAsync();
+
+            var dto = _mapper.Map<ScreeningDto>(screening);
+            return dto;
         }
 
-        public Task<bool> DeleteAsync(int id)
+        public async Task<bool> DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            await _screeningRepo.DeleteAsync(id);
+            await _unit.SaveAsync();
+
+            return true;
         }        
+
         private bool ValidateScreeningDate(Screening screening)
         {
             return screening.DateAndTime >= DateTime.UtcNow;

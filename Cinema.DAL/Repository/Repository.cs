@@ -33,7 +33,7 @@ namespace Cinema.Dal.Repository
             var query = _dbSet.AsQueryable();
             Entity entity;
 
-            if (includes.Count() > 0)
+            if (includes?.Count() > 0)
             {
                 query = AddIncludes(query, includes);
                 entity = await query.AsQueryable().FirstOrDefaultAsync(GetByIdExpression(id));
