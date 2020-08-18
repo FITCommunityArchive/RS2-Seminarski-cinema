@@ -34,7 +34,7 @@ namespace Cinema.Dal.Repository
 
         public async Task<ApplicationUser> GetByIdWithRolesAsync(int id)
         {
-            var entity = await _dbSet.Include(x => x.UserRoles)
+            var entity = await _dbSet.Include(x => x.UserRoles).ThenInclude(x=> x.Role)
                                      .FirstOrDefaultAsync(x => x.Id == id);
 
             return entity;

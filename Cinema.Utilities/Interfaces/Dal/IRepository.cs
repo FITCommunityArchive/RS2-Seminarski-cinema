@@ -15,5 +15,6 @@ namespace Cinema.Utilities.Interfaces.Dal
         Task InsertAsync(Entity entity);
         Task UpdateAsync(Entity entity, Key id);
         Task DeleteAsync(Key id);
+        Task<bool> DetachLocal(Expression<Func<Entity, bool>> match);
     }
 }

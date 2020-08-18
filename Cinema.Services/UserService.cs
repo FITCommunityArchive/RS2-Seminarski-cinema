@@ -18,6 +18,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Security.Claims;
 using System.Collections.Generic;
+using System.Net.Http;
 
 namespace Cinema.Services
 {
@@ -27,6 +28,8 @@ namespace Cinema.Services
         private IConfiguration _config;
 
         protected readonly IUserRepository _userRepo;
+        protected readonly IRepository<ApplicationUserRole, int> _userRoleRepo;
+        protected readonly IRepository<ApplicationRole, int> _roleRepo;
         protected readonly IUnitOfWork _unit;
         protected readonly IMapper _mapper;
         public UserService(IUnitOfWork unit, IMapper mapper, UserManager<ApplicationUser> userManager, IConfiguration config)
@@ -36,6 +39,8 @@ namespace Cinema.Services
             _userRepo = unit.Users;
             _config = config;
             _mapper = mapper;
+            _userRoleRepo = unit.Repository<ApplicationUserRole, int>();
+            _roleRepo = unit.Repository<ApplicationRole, int>();
         }
 
 
@@ -52,21 +57,48 @@ namespace Cinema.Services
                 ApplicationRole role = await _unit.Roles.GetAsync(model.RoleId);
                 await _userManager.AddToRoleAsync(userIdentity, role.Name);
             } 
-            //pokupiti zasto je failalo ako nije result.SUccedded i ispisati
-            //ima dodatni error cycle ???
+
             return _mapper.Map<ApplicationUserDto>(userIdentity);
         }
         
         public async Task<ApplicationUserDto> UpdateAsync(int id, UserUpsertRequest req)
         {
-            ApplicationUser user = _mapper.Map<ApplicationUser>(req);
-            user.Id = id;
+            var user = await _userRepo.GetByIdWithRolesAsync(id);
 
-            await _unit.Users.UpdateAsync(user, id);
+            user.UserName = req.UserName;
+            user.FirstName = req.FirstName;
+            user.LastName = req.LastName;
+            user.PhoneNumber = req.PhoneNumber;
+
+            if (user.UserRoles[0].RoleId != req.RoleId)
+            {
+                var getRoleName = await _roleRepo.GetAsync(req.RoleId);
+                await _userManager.RemoveFromRoleAsync(user, user.UserRoles[0].Role.Name);
+                await _userManager.AddToRoleAsync(user, getRoleName.Name);
+            } 
+
             await _unit.SaveAsync();
 
             return _mapper.Map<ApplicationUserDto>(user);
-           
+        }
+
+        public async Task<bool> ResetPassword(int userId, string newPassword,string token)
+        {
+            var user = _userManager.Users.Where(x => x.Id == userId).FirstOrDefault();
+
+            var passwordChanged = await _userManager.ResetPasswordAsync(user, token, newPassword);
+            if (passwordChanged.Succeeded)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public async Task<string> ResetPasswordToken(int userId)
+        {
+            var user = _userManager.Users.Where(x => x.Id == userId).FirstOrDefault();
+
+            return await _userManager.GeneratePasswordResetTokenAsync(user);
         }
 
         public async Task<IPagedList<ApplicationUserDto>> GetPagedAsync(UserSearchRequest search)

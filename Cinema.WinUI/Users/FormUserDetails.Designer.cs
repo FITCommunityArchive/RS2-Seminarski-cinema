@@ -31,9 +31,9 @@
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.lblUsername = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnChangePassword = new System.Windows.Forms.Button();
             this.clbRoles = new System.Windows.Forms.CheckedListBox();
             this.picLoading = new System.Windows.Forms.PictureBox();
-            this.btnSaveChanges = new Cinema.WinUI.UserControls.Buttons.SaveChangesButton();
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.lblPhone = new System.Windows.Forms.Label();
             this.txtLastName = new System.Windows.Forms.TextBox();
@@ -42,12 +42,13 @@
             this.lblFirstName = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
-            this.txtPassword2 = new System.Windows.Forms.TextBox();
-            this.lblPasssword2 = new System.Windows.Forms.Label();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.lblPassword = new System.Windows.Forms.Label();
             this.txtFormTitle = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btnSaveChanges = new Cinema.WinUI.UserControls.Buttons.SaveChangesButton();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.lblPassword = new System.Windows.Forms.Label();
+            this.txtConfirmPassword = new System.Windows.Forms.TextBox();
+            this.lblPasswordConfirm = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLoading)).BeginInit();
             this.panel4.SuspendLayout();
@@ -75,6 +76,11 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.txtConfirmPassword);
+            this.panel1.Controls.Add(this.lblPasswordConfirm);
+            this.panel1.Controls.Add(this.txtPassword);
+            this.panel1.Controls.Add(this.lblPassword);
+            this.panel1.Controls.Add(this.btnChangePassword);
             this.panel1.Controls.Add(this.clbRoles);
             this.panel1.Controls.Add(this.picLoading);
             this.panel1.Controls.Add(this.btnSaveChanges);
@@ -86,10 +92,6 @@
             this.panel1.Controls.Add(this.lblFirstName);
             this.panel1.Controls.Add(this.txtEmail);
             this.panel1.Controls.Add(this.lblEmail);
-            this.panel1.Controls.Add(this.txtPassword2);
-            this.panel1.Controls.Add(this.lblPasssword2);
-            this.panel1.Controls.Add(this.txtPassword);
-            this.panel1.Controls.Add(this.lblPassword);
             this.panel1.Controls.Add(this.txtUsername);
             this.panel1.Controls.Add(this.lblUsername);
             this.panel1.Location = new System.Drawing.Point(28, 107);
@@ -97,10 +99,20 @@
             this.panel1.Size = new System.Drawing.Size(904, 422);
             this.panel1.TabIndex = 2;
             // 
+            // btnChangePassword
+            // 
+            this.btnChangePassword.Location = new System.Drawing.Point(335, 198);
+            this.btnChangePassword.Name = "btnChangePassword";
+            this.btnChangePassword.Size = new System.Drawing.Size(232, 27);
+            this.btnChangePassword.TabIndex = 25;
+            this.btnChangePassword.Text = "Change password";
+            this.btnChangePassword.UseVisualStyleBackColor = true;
+            this.btnChangePassword.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnChangePassword_MouseClick);
+            // 
             // clbRoles
             // 
             this.clbRoles.FormattingEnabled = true;
-            this.clbRoles.Location = new System.Drawing.Point(335, 272);
+            this.clbRoles.Location = new System.Drawing.Point(611, 66);
             this.clbRoles.Name = "clbRoles";
             this.clbRoles.Size = new System.Drawing.Size(232, 94);
             this.clbRoles.TabIndex = 24;
@@ -116,22 +128,11 @@
             this.picLoading.TabIndex = 23;
             this.picLoading.TabStop = false;
             // 
-            // btnSaveChanges
-            // 
-            this.btnSaveChanges.AutoSize = true;
-            this.btnSaveChanges.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnSaveChanges.Location = new System.Drawing.Point(57, 338);
-            this.btnSaveChanges.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSaveChanges.Name = "btnSaveChanges";
-            this.btnSaveChanges.Size = new System.Drawing.Size(120, 40);
-            this.btnSaveChanges.TabIndex = 22;
-            this.btnSaveChanges.ButtonClicked += new System.EventHandler(this.btnSaveChanges_ButtonClicked);
-            // 
             // txtPhone
             // 
             this.txtPhone.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtPhone.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPhone.Location = new System.Drawing.Point(57, 272);
+            this.txtPhone.Location = new System.Drawing.Point(57, 198);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(232, 27);
             this.txtPhone.TabIndex = 12;
@@ -140,7 +141,7 @@
             // 
             this.lblPhone.AutoSize = true;
             this.lblPhone.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPhone.Location = new System.Drawing.Point(54, 251);
+            this.lblPhone.Location = new System.Drawing.Point(54, 177);
             this.lblPhone.Name = "lblPhone";
             this.lblPhone.Size = new System.Drawing.Size(125, 18);
             this.lblPhone.TabIndex = 13;
@@ -150,7 +151,7 @@
             // 
             this.txtLastName.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtLastName.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLastName.Location = new System.Drawing.Point(335, 198);
+            this.txtLastName.Location = new System.Drawing.Point(335, 131);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(232, 27);
             this.txtLastName.TabIndex = 10;
@@ -159,7 +160,7 @@
             // 
             this.lblLastName.AutoSize = true;
             this.lblLastName.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLastName.Location = new System.Drawing.Point(332, 177);
+            this.lblLastName.Location = new System.Drawing.Point(332, 110);
             this.lblLastName.Name = "lblLastName";
             this.lblLastName.Size = new System.Drawing.Size(94, 18);
             this.lblLastName.TabIndex = 11;
@@ -169,7 +170,7 @@
             // 
             this.txtFirstName.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtFirstName.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFirstName.Location = new System.Drawing.Point(57, 198);
+            this.txtFirstName.Location = new System.Drawing.Point(57, 131);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(232, 27);
             this.txtFirstName.TabIndex = 8;
@@ -178,7 +179,7 @@
             // 
             this.lblFirstName.AutoSize = true;
             this.lblFirstName.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFirstName.Location = new System.Drawing.Point(54, 177);
+            this.lblFirstName.Location = new System.Drawing.Point(54, 110);
             this.lblFirstName.Name = "lblFirstName";
             this.lblFirstName.Size = new System.Drawing.Size(95, 18);
             this.lblFirstName.TabIndex = 9;
@@ -188,7 +189,7 @@
             // 
             this.txtEmail.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtEmail.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(57, 131);
+            this.txtEmail.Location = new System.Drawing.Point(335, 66);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(232, 27);
             this.txtEmail.TabIndex = 6;
@@ -197,49 +198,11 @@
             // 
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmail.Location = new System.Drawing.Point(54, 110);
+            this.lblEmail.Location = new System.Drawing.Point(332, 45);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(53, 18);
             this.lblEmail.TabIndex = 7;
             this.lblEmail.Text = "Email";
-            // 
-            // txtPassword2
-            // 
-            this.txtPassword2.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtPassword2.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword2.Location = new System.Drawing.Point(335, 131);
-            this.txtPassword2.Name = "txtPassword2";
-            this.txtPassword2.Size = new System.Drawing.Size(232, 27);
-            this.txtPassword2.TabIndex = 4;
-            // 
-            // lblPasssword2
-            // 
-            this.lblPasssword2.AutoSize = true;
-            this.lblPasssword2.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPasssword2.Location = new System.Drawing.Point(332, 110);
-            this.lblPasssword2.Name = "lblPasssword2";
-            this.lblPasssword2.Size = new System.Drawing.Size(154, 18);
-            this.lblPasssword2.TabIndex = 5;
-            this.lblPasssword2.Text = "Confirm password";
-            // 
-            // txtPassword
-            // 
-            this.txtPassword.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtPassword.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(335, 66);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(232, 27);
-            this.txtPassword.TabIndex = 2;
-            // 
-            // lblPassword
-            // 
-            this.lblPassword.AutoSize = true;
-            this.lblPassword.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPassword.Location = new System.Drawing.Point(332, 45);
-            this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(85, 18);
-            this.lblPassword.TabIndex = 3;
-            this.lblPassword.Text = "Password";
             // 
             // txtFormTitle
             // 
@@ -263,6 +226,55 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(961, 73);
             this.panel4.TabIndex = 5;
+            // 
+            // btnSaveChanges
+            // 
+            this.btnSaveChanges.AutoSize = true;
+            this.btnSaveChanges.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnSaveChanges.Location = new System.Drawing.Point(57, 338);
+            this.btnSaveChanges.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSaveChanges.Name = "btnSaveChanges";
+            this.btnSaveChanges.Size = new System.Drawing.Size(120, 40);
+            this.btnSaveChanges.TabIndex = 22;
+            this.btnSaveChanges.ButtonClicked += new System.EventHandler(this.btnSaveChanges_ButtonClicked);
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtPassword.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPassword.Location = new System.Drawing.Point(335, 198);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(232, 27);
+            this.txtPassword.TabIndex = 26;
+            // 
+            // lblPassword
+            // 
+            this.lblPassword.AutoSize = true;
+            this.lblPassword.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPassword.Location = new System.Drawing.Point(332, 177);
+            this.lblPassword.Name = "lblPassword";
+            this.lblPassword.Size = new System.Drawing.Size(85, 18);
+            this.lblPassword.TabIndex = 27;
+            this.lblPassword.Text = "Password";
+            // 
+            // txtConfirmPassword
+            // 
+            this.txtConfirmPassword.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtConfirmPassword.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtConfirmPassword.Location = new System.Drawing.Point(335, 264);
+            this.txtConfirmPassword.Name = "txtConfirmPassword";
+            this.txtConfirmPassword.Size = new System.Drawing.Size(232, 27);
+            this.txtConfirmPassword.TabIndex = 28;
+            // 
+            // lblPasswordConfirm
+            // 
+            this.lblPasswordConfirm.AutoSize = true;
+            this.lblPasswordConfirm.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPasswordConfirm.Location = new System.Drawing.Point(332, 243);
+            this.lblPasswordConfirm.Name = "lblPasswordConfirm";
+            this.lblPasswordConfirm.Size = new System.Drawing.Size(154, 18);
+            this.lblPasswordConfirm.TabIndex = 29;
+            this.lblPasswordConfirm.Text = "Confirm password";
             // 
             // FormUserDetails
             // 
@@ -296,14 +308,15 @@
         private System.Windows.Forms.Label lblFirstName;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label lblEmail;
-        private System.Windows.Forms.TextBox txtPassword2;
-        private System.Windows.Forms.Label lblPasssword2;
-        private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.Label lblPhone;
         private UserControls.Buttons.SaveChangesButton btnSaveChanges;
         private System.Windows.Forms.PictureBox picLoading;
         private System.Windows.Forms.CheckedListBox clbRoles;
+        private System.Windows.Forms.Button btnChangePassword;
+        private System.Windows.Forms.TextBox txtConfirmPassword;
+        private System.Windows.Forms.Label lblPasswordConfirm;
+        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.Label lblPassword;
     }
 }

@@ -28,6 +28,16 @@ namespace Cinema.WinUI.Users
             InitializeComponent();
             _id = id;
             picLoading.Visible = false;
+            if(_id.HasValue)
+            {
+                txtConfirmPassword.Visible = false;
+                txtPassword.Visible = false;
+                lblPasswordConfirm.Visible = false;
+                lblPassword.Visible = false;
+            } else
+            {
+                btnChangePassword.Visible = false;
+            }
         }
 
         private async void FormUserDetails_Load(object sender, EventArgs e)
@@ -106,15 +116,9 @@ namespace Cinema.WinUI.Users
 
         private async void btnSaveChanges_ButtonClicked(object sender, EventArgs e)
         {
-
+            string message = "";
             if (!this.ValidateChildren())
             {
-                return;
-            }
-
-            if (txtPassword.Text != txtPassword2.Text)
-            {
-                MessageBox.Show("Passwords don't match. Please make sure you typed in same password in both fields.", "Validation error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -125,7 +129,6 @@ namespace Cinema.WinUI.Users
             try
             {
                 _request.UserName = txtUsername.Text;
-                _request.Password = txtPassword.Text;
                 _request.Email = txtEmail.Text;
                 _request.FirstName = txtFirstName.Text;
                 _request.LastName = txtLastName.Text;
@@ -137,15 +140,24 @@ namespace Cinema.WinUI.Users
                 if(_id.HasValue)
                 {
                     result = await _usersApi.Update<ApplicationUserDto>(_id, _request);
+                    message = "Changes saved.";
                 } else
                 {
+                    if(txtPassword.Text != txtConfirmPassword.Text)
+                    {
+                        MessageBox.Show("Passowrds do not match.Make sure you type in same password in both fields", "Validation error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    _request.Password = txtPassword.Text;
                     result = await _usersApi.Insert<ApplicationUserDto>(_request);
+                    message = "New user has been added.";
                 }
 
                 if (result != null)
                 {
                     SetLoading(false);
-                    MessageBox.Show("New user has been added.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(message, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
             }
@@ -154,6 +166,15 @@ namespace Cinema.WinUI.Users
                 SetLoading(false);
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnChangePassword_MouseClick(object sender, MouseEventArgs e)
+        {
+            if(_id.HasValue)
+            {
+                FormChangePassword formChangePassword = new FormChangePassword((int)_id);
+                formChangePassword.ShowDialog();
+            } 
         }
     }
 }
