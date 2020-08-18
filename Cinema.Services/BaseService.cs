@@ -3,6 +3,8 @@ using Cinema.Models.Requests;
 using Cinema.Shared.Pagination;
 using Cinema.Utilities.Interfaces.Dal;
 using Cinema.Utilities.Interfaces.Services;
+using System.Collections;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Cinema.Services
@@ -29,9 +31,9 @@ namespace Cinema.Services
             return dtoList;
         }
 
-        public async virtual Task<TModel> GetByIdAsync(int id)
+        public async virtual Task<TModel> GetByIdAsync(int id, ICollection<string> includes = null)
         {
-            var entity = await _repo.GetAsync(id);
+            var entity = await _repo.GetAsync(id, includes);
             return _mapper.Map<TModel>(entity);
         }
     }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Cinema.Utilities.Interfaces.Dal
 {
     public interface ICinemaDbContext
-    {       
+    {
         DbSet<Event> Events { get; set; }
         DbSet<EventType> EventTypes { get; set; }
         DbSet<Genre> Genres { get; set; }

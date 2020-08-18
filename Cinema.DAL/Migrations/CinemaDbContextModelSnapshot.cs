@@ -354,7 +354,7 @@ namespace Cinema.Dal.Migrations
                         new
                         {
                             Id = "-1",
-                            ConcurrencyStamp = "d3d49faf-3c90-4903-8cc3-31a815a4274d",
+                            ConcurrencyStamp = "a1e40b2c-a659-41da-9990-50ba08070a0f",
                             Deleted = false,
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
@@ -362,7 +362,7 @@ namespace Cinema.Dal.Migrations
                         new
                         {
                             Id = "-2",
-                            ConcurrencyStamp = "091b3e13-6ca7-45a5-81dd-c4223dafe198",
+                            ConcurrencyStamp = "7dde52ba-a686-4510-b934-1019a49986fc",
                             Deleted = false,
                             Name = "Content Editor",
                             NormalizedName = "CONTENT EDITOR"
@@ -370,7 +370,7 @@ namespace Cinema.Dal.Migrations
                         new
                         {
                             Id = "-3",
-                            ConcurrencyStamp = "c376f31d-7efe-484e-8c9b-aa01cf645392",
+                            ConcurrencyStamp = "aba15515-ffc2-4304-8649-daef219468f0",
                             Deleted = false,
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
@@ -479,17 +479,17 @@ namespace Cinema.Dal.Migrations
                         {
                             Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c30444ae-ad87-4013-ba03-0e62d5efbc19",
+                            ConcurrencyStamp = "b2dd5950-ec6a-4cb8-bf3d-9027176fa51a",
                             Deleted = false,
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDsrAYSVjNaxe6yiHEP3QaHCt0SD4AXQbUSPXemQSyNLDrFfQhJEkhD6Tl+VDRoZPw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEH0Pod8GhbEvZLOjMRZCL/llu6q0Efk05+l0qBKU7MDWEp2JNgeXjDyvV2P5kYZwKQ==",
                             PhoneNumber = "123456789",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6904ab63-2fe6-413c-b93e-067a17ceae65",
+                            SecurityStamp = "6050b0fa-6aaa-45a0-a3ba-9f27f70643a0",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         });
@@ -968,6 +968,168 @@ namespace Cinema.Dal.Migrations
                     b.HasIndex("PricingId");
 
                     b.ToTable("Screenings");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = -1,
+                            CreatedAt = new DateTime(2020, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateAndTime = new DateTime(2019, 8, 12, 20, 15, 0, 0, DateTimeKind.Unspecified),
+                            HallId = -1,
+                            IsDeleted = false,
+                            MovieId = -1,
+                            PricingId = -1
+                        },
+                        new
+                        {
+                            Id = -2,
+                            CreatedAt = new DateTime(2020, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateAndTime = new DateTime(2019, 8, 13, 19, 15, 0, 0, DateTimeKind.Unspecified),
+                            HallId = -2,
+                            IsDeleted = false,
+                            MovieId = -1,
+                            PricingId = -1
+                        },
+                        new
+                        {
+                            Id = -3,
+                            CreatedAt = new DateTime(2020, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateAndTime = new DateTime(2019, 9, 20, 19, 15, 0, 0, DateTimeKind.Unspecified),
+                            HallId = -1,
+                            IsDeleted = false,
+                            MovieId = -1,
+                            PricingId = -3
+                        },
+                        new
+                        {
+                            Id = -4,
+                            CreatedAt = new DateTime(2020, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateAndTime = new DateTime(2019, 11, 20, 20, 15, 0, 0, DateTimeKind.Unspecified),
+                            HallId = -2,
+                            IsDeleted = false,
+                            MovieId = -1,
+                            PricingId = -3
+                        },
+                        new
+                        {
+                            Id = -5,
+                            CreatedAt = new DateTime(2020, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateAndTime = new DateTime(2020, 5, 20, 20, 15, 0, 0, DateTimeKind.Unspecified),
+                            HallId = -2,
+                            IsDeleted = false,
+                            MovieId = -2,
+                            PricingId = -4
+                        },
+                        new
+                        {
+                            Id = -6,
+                            CreatedAt = new DateTime(2020, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateAndTime = new DateTime(2020, 5, 25, 21, 0, 0, 0, DateTimeKind.Unspecified),
+                            HallId = -1,
+                            IsDeleted = false,
+                            MovieId = -2,
+                            PricingId = -1
+                        },
+                        new
+                        {
+                            Id = -7,
+                            CreatedAt = new DateTime(2020, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateAndTime = new DateTime(2020, 6, 25, 21, 0, 0, 0, DateTimeKind.Unspecified),
+                            HallId = -2,
+                            IsDeleted = false,
+                            MovieId = -2,
+                            PricingId = -1
+                        },
+                        new
+                        {
+                            Id = -8,
+                            CreatedAt = new DateTime(2020, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateAndTime = new DateTime(2020, 7, 10, 21, 0, 0, 0, DateTimeKind.Unspecified),
+                            HallId = -1,
+                            IsDeleted = false,
+                            MovieId = -3,
+                            PricingId = -5
+                        },
+                        new
+                        {
+                            Id = -9,
+                            CreatedAt = new DateTime(2020, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateAndTime = new DateTime(2020, 7, 10, 23, 0, 0, 0, DateTimeKind.Unspecified),
+                            HallId = -2,
+                            IsDeleted = false,
+                            MovieId = -3,
+                            PricingId = -1
+                        },
+                        new
+                        {
+                            Id = -10,
+                            CreatedAt = new DateTime(2020, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateAndTime = new DateTime(2020, 7, 20, 20, 0, 0, 0, DateTimeKind.Unspecified),
+                            HallId = -1,
+                            IsDeleted = false,
+                            MovieId = -3,
+                            PricingId = -3
+                        },
+                        new
+                        {
+                            Id = -11,
+                            CreatedAt = new DateTime(2020, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateAndTime = new DateTime(2020, 7, 21, 20, 0, 0, 0, DateTimeKind.Unspecified),
+                            HallId = -2,
+                            IsDeleted = false,
+                            MovieId = -3,
+                            PricingId = -3
+                        },
+                        new
+                        {
+                            Id = -12,
+                            CreatedAt = new DateTime(2020, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateAndTime = new DateTime(2020, 8, 21, 20, 0, 0, 0, DateTimeKind.Unspecified),
+                            HallId = -2,
+                            IsDeleted = false,
+                            MovieId = -3,
+                            PricingId = -3
+                        },
+                        new
+                        {
+                            Id = -14,
+                            CreatedAt = new DateTime(2020, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateAndTime = new DateTime(2020, 8, 22, 20, 0, 0, 0, DateTimeKind.Utc),
+                            HallId = -1,
+                            IsDeleted = false,
+                            MovieId = -4,
+                            PricingId = -1
+                        },
+                        new
+                        {
+                            Id = -15,
+                            CreatedAt = new DateTime(2020, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateAndTime = new DateTime(2020, 8, 22, 22, 0, 0, 0, DateTimeKind.Utc),
+                            HallId = -1,
+                            IsDeleted = false,
+                            MovieId = -4,
+                            PricingId = -1
+                        },
+                        new
+                        {
+                            Id = -16,
+                            CreatedAt = new DateTime(2020, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateAndTime = new DateTime(2020, 8, 27, 18, 0, 0, 0, DateTimeKind.Utc),
+                            HallId = -1,
+                            IsDeleted = false,
+                            MovieId = -4,
+                            PricingId = -1
+                        },
+                        new
+                        {
+                            Id = -17,
+                            CreatedAt = new DateTime(2020, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateAndTime = new DateTime(2020, 9, 6, 18, 0, 0, 0, DateTimeKind.Utc),
+                            HallId = -1,
+                            IsDeleted = false,
+                            MovieId = -4,
+                            PricingId = -5
+                        });
                 });
 
             modelBuilder.Entity("Cinema.Domain.Entities.Seat", b =>

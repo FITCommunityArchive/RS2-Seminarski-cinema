@@ -19,14 +19,17 @@ namespace Cinema.Dal.Repository
         {
             var query = _dbSet.AsQueryable();
 
-            query = ApplyFilter(query, searchTerm, searchYear, searchDuration);
+            if (!searchRequest.ReturnAll)
+            {
+                query = ApplyFilter(query, searchTerm, searchYear, searchDuration);
+            }            
 
             if (searchRequest.SortOrder != null && searchRequest.SortColumn != null)
             {
                 query = ApplySorting(query, searchRequest);
             }
 
-            var pagedList = await ApplyPaginationAsync(query, searchRequest.PageIndex, searchRequest.PageSize);
+            var pagedList = await ApplyPaginationAsync(query, searchRequest.PageIndex, searchRequest.PageSize, searchRequest.ReturnAll);
             return pagedList;
         }
 

@@ -3,12 +3,11 @@ using Cinema.Shared.Pagination;
 using Cinema.Utilities.Interfaces.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Cinema.Web.Api.Controllers
 {
-    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     [Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme)]
@@ -29,9 +28,9 @@ namespace Cinema.Web.Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<T>> GetById(int id)
+        public async Task<ActionResult<T>> GetById(int id, [FromQuery]ICollection<string> includes = null)
         {
-            var result = await _service.GetByIdAsync(id);
+            var result = await _service.GetByIdAsync(id, includes);
 
             return Ok(result);
         }

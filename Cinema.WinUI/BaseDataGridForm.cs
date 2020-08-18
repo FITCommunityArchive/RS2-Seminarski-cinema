@@ -1,8 +1,9 @@
 ﻿using Cinema.Shared.Search;
 using Cinema.WinUI.Authorization;
 using Cinema.WinUI.Constants;
-using Cinema.WinUI.UserControls;
+using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace Cinema.WinUI
@@ -53,6 +54,56 @@ namespace Cinema.WinUI
             searchRequest.PageIndex = Paging.DEFAULT_PAGE_INDEX;
 
             return searchRequest;
+        }
+
+        //https://www.codeproject.com/Questions/1171964/How-do-I-manually-bind-datagridview-columns-to-val
+        protected virtual void BindNavigationColumns(DataGridView dataGridView, object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if ((dataGridView.Rows[e.RowIndex].DataBoundItem != null)
+                && (dataGridView.Columns[e.ColumnIndex].DataPropertyName.Contains(".")))
+            {
+                e.Value = BindProperty(
+                              dataGridView.Rows[e.RowIndex].DataBoundItem,
+                              dataGridView.Columns[e.ColumnIndex].DataPropertyName
+                            );
+            }
+        }
+
+        //https://www.codeproject.com/Questions/1171964/How-do-I-manually-bind-datagridview-columns-to-val
+        protected virtual string BindProperty(object property, string propertyName)
+        {
+            string retValue = "";
+
+            if (propertyName.Contains("."))
+            {
+                PropertyInfo[] arrayProperties;
+                string leftPropertyName;
+
+                leftPropertyName = propertyName.Substring(0, propertyName.IndexOf("."));
+                arrayProperties = property.GetType().GetProperties();
+
+                foreach (PropertyInfo propertyInfo in arrayProperties)
+                {
+                    if (propertyInfo.Name == leftPropertyName)
+                    {
+                        retValue = BindProperty(
+                          propertyInfo.GetValue(property, null),
+                          propertyName.Substring(propertyName.IndexOf(".") + 1));
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                Type propertyType;
+                PropertyInfo propertyInfo;
+
+                propertyType = property.GetType();
+                propertyInfo = propertyType.GetProperty(propertyName);
+                retValue = propertyInfo.GetValue(property, null).ToString();
+            }
+
+            return retValue;
         }
     }
 }

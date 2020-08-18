@@ -6,6 +6,7 @@ using Cinema.Domain.Entities.Identity;
 using Cinema.Models.Dtos;
 using Cinema.Models.Requests;
 using Cinema.Models.Requests.Movies;
+using Cinema.Models.Requests.Screenings;
 using Cinema.Models.Requests.Users;
 using Cinema.Services;
 using Cinema.Utilities.Interfaces;
@@ -73,23 +74,23 @@ namespace Cinema.Web.API
                 });
             });
 
-            services.AddAuthentication(option =>  
-            {  
-                option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;  
-                option.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;  
-  
-            }).AddJwtBearer(options =>  
-            {  
-                options.TokenValidationParameters = new TokenValidationParameters  
-                {  
-                    ValidateIssuer = true,  
-                    ValidateAudience = true,  
-                    ValidateLifetime = false,  
-                    ValidateIssuerSigningKey = true,  
-                    ValidIssuer = Configuration["Jwt:Issuer"],  
-                    ValidAudience = Configuration["Jwt:Issuer"],  
+            services.AddAuthentication(option =>
+            {
+                option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                option.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+
+            }).AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = false,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = Configuration["Jwt:Issuer"],
+                    ValidAudience = Configuration["Jwt:Issuer"],
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"])) //Configuration["JwtToken:SecretKey"]  
-                };  
+                };
             });
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -97,9 +98,13 @@ namespace Cinema.Web.API
 
             services.AddScoped<ICRUDService<MovieDto, MovieSearchRequest, MovieUpsertRequest, MovieUpsertRequest>, MovieService>();
             services.AddScoped<ICRUDService<ApplicationUserDto, UserSearchRequest, UserUpsertRequest, UserUpsertRequest>, UserService>();
+            services.AddScoped<ICRUDService<ScreeningDto, ScreeningSearchRequest, ScreeningUpsertRequest, ScreeningUpsertRequest>, ScreeningService>();
             services.AddScoped<IService<GenreDto, BaseSearchRequest>, BaseService<GenreDto, BaseSearchRequest, Genre>>();
+            services.AddScoped<IService<HallDto, BaseSearchRequest>, BaseService<HallDto, BaseSearchRequest, Hall>>();
+            services.AddScoped<IService<PricingDto, BaseSearchRequest>, BaseService<PricingDto, BaseSearchRequest, Pricing>>();
 
             services.AddScoped<IMovieService, MovieService>();
+            services.AddScoped<IScreeningService, ScreeningService>();
             services.AddScoped<IUserService, UserService>();
 
             services.AddScoped<IMovieRepository, MovieRepository>();

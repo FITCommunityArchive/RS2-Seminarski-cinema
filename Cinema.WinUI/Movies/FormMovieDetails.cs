@@ -1,16 +1,17 @@
 ﻿using Cinema.Models.Dtos;
-using Cinema.Shared.Pagination;
-using System;
-using System.Linq;
-using System.Windows.Forms;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Threading.Tasks;
 using Cinema.Models.Requests.Movies;
-using System.ComponentModel;
-using System.IO;
+using Cinema.Shared.Pagination;
 using Cinema.WinUI.Helpers;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using Cinema.WinUI.Services;
 
 namespace Cinema.WinUI.Movies
 {
@@ -37,33 +38,18 @@ namespace Cinema.WinUI.Movies
             ItemDeleted?.Invoke(this, e);
         }
 
-        private async void frmMovieDetails_Load(object sender, EventArgs e)
-        {
-            _genres = await _genresApi.Get<PagedList<GenreDto>>(null);
-
-            if (_id.HasValue)
-            {
-                await LoadReadOnly();
-            }
-            else
-            {
-                InsertNew();
-            }
-
-        }
-
         private void InsertNew()
         {
             chlGenres.DataSource = _genres.Data;
             chlGenres.DisplayMember = nameof(GenreDto.Name);
 
-            SetReadonly(false);        
+            SetReadonly(false);
         }
 
 
         private async Task LoadReadOnly()
         {
-            var result = await _moviesApi.GetById<MovieDto>(_id);            
+            var result = await _moviesApi.GetById<MovieDto>(_id);
 
             SetReadonly(true);
 
@@ -141,46 +127,7 @@ namespace Cinema.WinUI.Movies
             rtxVideoLink.ReadOnly = _isReadonly;
 
             SetGenresListReadonly(isReadonly);
-        }
-
-        private async void btnSaveChanges_ButtonClicked(object sender, EventArgs e)
-        {
-            if (!this.ValidateChildren()) return;
-
-            List<int> movieGenreIds = chlGenres.CheckedItems.Cast<GenreDto>().Select(x => x.Id).ToList();
-
-            _request.Actors = txtActors.Text;
-            _request.Country = txtCountry.Text;
-            _request.Directors = txtDirectors.Text;
-            _request.Writers = txtWriters.Text;
-            _request.Duration = int.Parse(txtDuration.Text);
-            _request.Title = txtMovieTitle.Text;
-            _request.Year = int.Parse(txtReleaseYear.Text);
-            _request.VideoLink = rtxVideoLink.Text;
-            _request.Genres = movieGenreIds;
-
-            MovieDto result;
-
-            if (_id.HasValue)
-            {
-                result = await _moviesApi.Update<MovieDto>(_id, _request);                
-            }
-            else
-            {
-                result = await _moviesApi.Insert<MovieDto>(_request);
-            }
-
-            await LoadReadOnly();
-
-            if (result != null)
-            {
-                MessageBox.Show(Properties.Resources.Operation_Successful);
-            }
-            else
-            {
-                MessageBox.Show(Properties.Resources.Operation_BadRequest);
-            }            
-        }
+        }        
 
         private void ValidateEmptyField(Control control, CancelEventArgs e)
         {
@@ -209,6 +156,62 @@ namespace Cinema.WinUI.Movies
             else
             {
                 errorProvider1.SetError(control, null);
+            }
+        }
+
+        #region Event methods
+
+        private async void frmMovieDetails_Load(object sender, EventArgs e)
+        {
+            _genres = await _genresApi.Get<PagedList<GenreDto>>(null);
+
+            if (_id.HasValue)
+            {
+                await LoadReadOnly();
+            }
+            else
+            {
+                InsertNew();
+            }
+
+        }
+
+        private async void btnSaveChanges_ButtonClicked(object sender, EventArgs e)
+        {
+            if (!this.ValidateChildren()) return;
+
+            List<int> movieGenreIds = chlGenres.CheckedItems.Cast<GenreDto>().Select(x => x.Id).ToList();
+
+            _request.Actors = txtActors.Text;
+            _request.Country = txtCountry.Text;
+            _request.Directors = txtDirectors.Text;
+            _request.Writers = txtWriters.Text;
+            _request.Duration = int.Parse(txtDuration.Text);
+            _request.Title = txtMovieTitle.Text;
+            _request.Year = int.Parse(txtReleaseYear.Text);
+            _request.VideoLink = rtxVideoLink.Text;
+            _request.Genres = movieGenreIds;
+
+            MovieDto result;
+
+            if (_id.HasValue)
+            {
+                result = await _moviesApi.Update<MovieDto>(_id, _request);
+            }
+            else
+            {
+                result = await _moviesApi.Insert<MovieDto>(_request);
+            }
+
+            await LoadReadOnly();
+
+            if (result != null)
+            {
+                MessageBox.Show(Properties.Resources.Operation_Successful);
+            }
+            else
+            {
+                MessageBox.Show(Properties.Resources.Operation_BadRequest);
             }
         }
 
@@ -286,5 +289,7 @@ namespace Cinema.WinUI.Movies
             videoLinkProcess = new Process();
             videoLinkProcess = Process.Start(e.LinkText);
         }
+
+        #endregion
     }
 }

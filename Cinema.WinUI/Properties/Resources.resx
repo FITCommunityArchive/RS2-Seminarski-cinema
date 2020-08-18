@@ -133,4 +133,7 @@
   <data name="Validation_RequiredField" xml:space="preserve">
     <value>The field is required!</value>
   </data>
+  <data name="Validation_FutureDateRequired" xml:space="preserve">
+    <value>Date and time must be in the future!</value>
+  </data>
 </root>

@@ -1,13 +1,7 @@
 ﻿using Cinema.WinUI.Authorization;
+using Cinema.WinUI.Services;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Cinema.WinUI
@@ -17,7 +11,7 @@ namespace Cinema.WinUI
         ApiService _service = new ApiService("login");
 
         IList<string> _nextFormPrincipal;
-        public FormLogin(IList<string> userPrincipal) : base (new string[] { "Guest" },userPrincipal)
+        public FormLogin(IList<string> userPrincipal) : base(new string[] { "Guest" }, userPrincipal)
         {
             _nextFormPrincipal = userPrincipal;
             InitializeComponent();
@@ -57,7 +51,7 @@ namespace Cinema.WinUI
                 ApiService.Password = txtPassword.Text;
 
                 var maybeLogin = await _service.AuthUser();
-                
+
                 if (maybeLogin == true)
                 {
                     SetLoading(false);
@@ -68,10 +62,10 @@ namespace Cinema.WinUI
 
                     this.Close();
                     form1.Show();
-                    
+
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 SetLoading(false);
                 MessageBox.Show("Invalid credentials.", "Authentication", MessageBoxButtons.OK, MessageBoxIcon.Error);

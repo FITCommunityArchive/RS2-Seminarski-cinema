@@ -5,7 +5,7 @@ namespace Cinema.WinUI.Helpers
 {
     public static class ImageHelper
     {
-        public static Image ToImage (this byte[] byteArray)
+        public static Image ToImage(this byte[] byteArray)
         {
             using (MemoryStream memoryStream = new MemoryStream(byteArray))
             {
