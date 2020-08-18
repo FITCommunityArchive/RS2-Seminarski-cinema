@@ -91,6 +91,11 @@ namespace Cinema.Dal.Data
             builder.Entity<ApplicationRole>().HasQueryFilter(x => !x.Deleted);
             builder.Entity<ApplicationUserRole>().HasQueryFilter(x => !x.Deleted);
 
+            builder.Entity<Reservation>()
+                   .HasOne(x => x.Invoice)
+                   .WithOne(x => x.Reservation)
+                   .HasForeignKey<Invoice>(x => x.ReservationId);
+
             builder.Entity<ApplicationUser>().Ignore(x => x.FullName);
 
             //Add Query filters to ApplicationUser and ApplicationRole            

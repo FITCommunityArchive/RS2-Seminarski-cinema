@@ -8,21 +8,21 @@ namespace Cinema.Domain.Entities
         public Reservation()
         {
             SeatReservations = new List<SeatReservation>();
-            Invoices = new List<Invoice>();
         }
+
+        public bool IsCancelled { get; set; }
+        public string ReservationCode { get; set; }
+        public int TicketQuantity { get; set; }
 
         public string UserId { get; set; }
         public virtual ApplicationUser User { get; set; }
 
         public int ScreeningId { get; set; }
         public virtual Screening Screening { get; set; }
-        //public virtual Invoice Invoice { get; set; }
+
+        public int? InvoiceId { get; set; }
+        public virtual Invoice Invoice { get; set; }
 
         public virtual IList<SeatReservation> SeatReservations { get; set; }
-        public virtual IList<Invoice> Invoices { get; set; }
-
-        public bool IsCancelled { get; set; }
-
-        public string ReservationCode { get; set; }
     }
 }

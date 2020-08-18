@@ -4,14 +4,16 @@ using Cinema.Dal.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Cinema.Dal.Migrations
 {
     [DbContext(typeof(CinemaDbContext))]
-    partial class CinemaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200818193949_AddedInvoicesAndSeatReservations")]
+    partial class AddedInvoicesAndSeatReservations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -354,7 +356,7 @@ namespace Cinema.Dal.Migrations
                         new
                         {
                             Id = "-1",
-                            ConcurrencyStamp = "477428ee-0834-4dff-be31-c27e2b73d1f6",
+                            ConcurrencyStamp = "b23dee4a-6af4-40fe-9863-657d5ef02a07",
                             Deleted = false,
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
@@ -362,7 +364,7 @@ namespace Cinema.Dal.Migrations
                         new
                         {
                             Id = "-2",
-                            ConcurrencyStamp = "ccad7d38-03bd-4559-8294-cd7a785ab966",
+                            ConcurrencyStamp = "2891f86c-df3b-486d-a149-69e585e55766",
                             Deleted = false,
                             Name = "Content Editor",
                             NormalizedName = "CONTENT EDITOR"
@@ -370,7 +372,7 @@ namespace Cinema.Dal.Migrations
                         new
                         {
                             Id = "-3",
-                            ConcurrencyStamp = "b84cd58e-555b-446b-890c-1015ce6eae5c",
+                            ConcurrencyStamp = "9b79c306-ac3d-48b4-844a-3b3d7b8439a9",
                             Deleted = false,
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
@@ -479,17 +481,17 @@ namespace Cinema.Dal.Migrations
                         {
                             Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e4b84acf-dca9-4034-8c62-b0ba03809b49",
+                            ConcurrencyStamp = "53b853be-01bb-46b2-af5e-358fe4dd44b5",
                             Deleted = false,
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAENQG31X4XbGUaSoQRQcemFNDSnEi2b15wdanQKYtO+0ZW6s3sCqtwI80qvjoYV+Lwg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELwqo0OKyMcvWAkrTIEMq4ISY3RMsxKyQ4q2yaujENHDzx5lUxZmfeA+4ZM8xFhpfQ==",
                             PhoneNumber = "123456789",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d9ac63e2-e197-4060-b818-1b3d31d9520b",
+                            SecurityStamp = "05317624-e971-4312-aa32-6bfeb0ad6c50",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         },
@@ -497,17 +499,17 @@ namespace Cinema.Dal.Migrations
                         {
                             Id = "a18be9c0-aa65-4af8-bd17-00bd9344e600",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5ef99dfa-ba82-4ee3-b28d-5ae04cc7f4b1",
+                            ConcurrencyStamp = "1fcb043e-fb0e-4958-9e7d-007561ffda30",
                             Deleted = false,
                             Email = "test1@test-customer.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "TEST1@TEST-CUSTOMER.COM",
                             NormalizedUserName = "TEST.CUSTOMER1",
-                            PasswordHash = "AQAAAAEAACcQAAAAECuR1AEkamVdItD+TNXGVloAeWODxoJc1K+5tSQp1m2Pa2KqU6LQkHyQnpJfBlcgWQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDZbmczN/XAC30nC5KCPmInCFon+WiqHgfyZYkFlrXwXuh770i8/DaEbbfgve/KZLQ==",
                             PhoneNumber = "123456789",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "9b9d76b4-89cb-4e57-b766-00e714fda6c7",
+                            SecurityStamp = "98a4692e-bd98-487b-95e1-1f00742dbc1b",
                             TwoFactorEnabled = false,
                             UserName = "test.customer1"
                         },
@@ -515,17 +517,17 @@ namespace Cinema.Dal.Migrations
                         {
                             Id = "a18be9c0-aa65-4af8-bd17-00bd9344e601",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "596457ad-c431-43fb-9390-7cb985214152",
+                            ConcurrencyStamp = "f48421ab-adb9-4559-8ca9-ba3f9d5558be",
                             Deleted = false,
                             Email = "test2@test-customer.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "TEST2@TEST-CUSTOMER.COM",
                             NormalizedUserName = "TEST.CUSTOMER2",
-                            PasswordHash = "AQAAAAEAACcQAAAAEEfjZhs3UnNfb19pASYUks92JDvaFgu8PnLWF29sHbkEj3wvnVYhxfuxrOnhVrqhlg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHF6ezgmfa4M1a0vJlqjpV2sReZZqoEjzwIbpOnkIVfPDlVPW2/qfB1hfzZP0HY46Q==",
                             PhoneNumber = "123456789",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "61b9d724-e273-4e93-9057-210274690686",
+                            SecurityStamp = "4f5b8f11-1ecc-4786-8e3d-55d2cc9cf789",
                             TwoFactorEnabled = false,
                             UserName = "test.customer2"
                         });
@@ -659,6 +661,9 @@ namespace Cinema.Dal.Migrations
                     b.Property<decimal>("TaxAmount")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<int>("TicketQuantity")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("OfferTypeId");
@@ -677,7 +682,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -1,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -687,7 +693,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -2,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -697,7 +704,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -3,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -707,7 +715,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -4,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -717,7 +726,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -5,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -727,7 +737,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -6,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -737,7 +748,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -7,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -747,7 +759,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -8,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -757,7 +770,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -9,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -767,7 +781,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -10,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -777,7 +792,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -11,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -787,7 +803,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -12,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -797,7 +814,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -13,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -807,7 +825,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -14,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -817,7 +836,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -15,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -827,7 +847,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -16,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -837,7 +858,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -17,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -847,7 +869,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -18,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -857,7 +880,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -19,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -867,7 +891,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -20,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -877,7 +902,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -21,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -887,7 +913,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -22,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -897,7 +924,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -23,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -907,7 +935,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -24,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -917,7 +946,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -25,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -927,7 +957,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -26,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -937,7 +968,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -27,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -947,7 +979,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -28,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -957,7 +990,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -29,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -967,7 +1001,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -30,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -977,7 +1012,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -31,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -987,7 +1023,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -32,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -997,7 +1034,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -33,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1007,7 +1045,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -34,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1017,7 +1056,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -35,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1027,7 +1067,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -36,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1037,7 +1078,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -37,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1047,7 +1089,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -38,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1057,7 +1100,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -39,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1067,7 +1111,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -40,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1077,7 +1122,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -41,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1087,7 +1133,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -42,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1097,7 +1144,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -43,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1107,7 +1155,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -44,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1117,7 +1166,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -45,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1127,7 +1177,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -46,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1137,7 +1188,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -47,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1147,7 +1199,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -48,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1157,7 +1210,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -49,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1167,7 +1221,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -50,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1177,7 +1232,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -51,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1187,7 +1243,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -52,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1197,7 +1254,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -53,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1207,7 +1265,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -54,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1217,7 +1276,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -55,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1227,7 +1287,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -56,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1237,7 +1298,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -57,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1247,7 +1309,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -58,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1257,7 +1320,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -59,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1267,7 +1331,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -60,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1277,7 +1342,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -61,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1287,7 +1353,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -62,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1297,7 +1364,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -63,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1307,7 +1375,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -64,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1317,7 +1386,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -65,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1327,7 +1397,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -66,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1337,7 +1408,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -67,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1347,7 +1419,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -68,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1357,7 +1430,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -69,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1367,7 +1441,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -70,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1377,7 +1452,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -71,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1387,7 +1463,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -72,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1397,7 +1474,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -73,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1407,7 +1485,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -74,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1417,7 +1496,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -75,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1427,7 +1507,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -76,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1437,7 +1518,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -77,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1447,7 +1529,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -78,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1457,7 +1540,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -79,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1467,7 +1551,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -80,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1477,7 +1562,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -81,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1487,7 +1573,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -82,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1497,7 +1584,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -83,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1507,7 +1595,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -84,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1517,7 +1606,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -85,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1527,7 +1617,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -86,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1537,7 +1628,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -87,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1547,7 +1639,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -88,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1557,7 +1650,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -89,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1567,7 +1661,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -90,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1577,7 +1672,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -91,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1587,7 +1683,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -92,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1597,7 +1694,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -93,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1607,7 +1705,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -94,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1617,7 +1716,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -95,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1627,7 +1727,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -96,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1637,7 +1738,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -97,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1647,7 +1749,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -98,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1657,7 +1760,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -99,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1667,7 +1771,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -100,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1677,7 +1782,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -101,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1687,7 +1793,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -102,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1697,7 +1804,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -103,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1707,7 +1815,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -104,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1717,7 +1826,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -105,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1727,7 +1837,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -106,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1737,7 +1848,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -107,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1747,7 +1859,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -108,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1757,7 +1870,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -109,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1767,7 +1881,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -110,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1777,7 +1892,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -111,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1787,7 +1903,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -112,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1797,7 +1914,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -113,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1807,7 +1925,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -114,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1817,7 +1936,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -115,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1827,7 +1947,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -116,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1837,7 +1958,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -117,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1847,7 +1969,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -118,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1857,7 +1980,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -119,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1867,7 +1991,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -120,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1877,7 +2002,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -121,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1887,7 +2013,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -122,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1897,7 +2024,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -123,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1907,7 +2035,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -124,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1917,7 +2046,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -125,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1927,7 +2057,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -126,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1937,7 +2068,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -127,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1947,7 +2079,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -128,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1957,7 +2090,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -129,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1967,7 +2101,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -130,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1977,7 +2112,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -131,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -1987,7 +2123,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -132,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -1997,7 +2134,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -133,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2007,7 +2145,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -134,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2017,7 +2156,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -135,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2027,7 +2167,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -136,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2037,7 +2178,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -137,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2047,7 +2189,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -138,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2057,7 +2200,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -139,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2067,7 +2211,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -140,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2077,7 +2222,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -141,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2087,7 +2233,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -142,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2097,7 +2244,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -143,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2107,7 +2255,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -144,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2117,7 +2266,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -145,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2127,7 +2277,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -146,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2137,7 +2288,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -147,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2147,7 +2299,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -148,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2157,7 +2310,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -149,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2167,7 +2321,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -150,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2177,7 +2332,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -151,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2187,7 +2343,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -152,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2197,7 +2354,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -153,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2207,7 +2365,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -154,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2217,7 +2376,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -155,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2227,7 +2387,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -156,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2237,7 +2398,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -157,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2247,7 +2409,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -158,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2257,7 +2420,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -159,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2267,7 +2431,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -160,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2277,7 +2442,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -161,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2287,7 +2453,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -162,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2297,7 +2464,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -163,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2307,7 +2475,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -164,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2317,7 +2486,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -165,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2327,7 +2497,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -166,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2337,7 +2508,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -167,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2347,7 +2519,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -168,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2357,7 +2530,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -169,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2367,7 +2541,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -170,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2377,7 +2552,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -171,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2387,7 +2563,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -172,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2397,7 +2574,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -173,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2407,7 +2585,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -174,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2417,7 +2596,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -175,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2427,7 +2607,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -176,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2437,7 +2618,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -177,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2447,7 +2629,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -178,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2457,7 +2640,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -179,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2467,7 +2651,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -180,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2477,7 +2662,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -181,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2487,7 +2673,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -182,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2497,7 +2684,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -183,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2507,7 +2695,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -184,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2517,7 +2706,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -185,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2527,7 +2717,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -186,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2537,7 +2728,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -187,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2547,7 +2739,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -188,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2557,7 +2750,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -189,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2567,7 +2761,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -190,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2577,7 +2772,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -191,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2587,7 +2783,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -192,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2597,7 +2794,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -193,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2607,7 +2805,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -194,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2617,7 +2816,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -195,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2627,7 +2827,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -196,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2637,7 +2838,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -197,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2647,7 +2849,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -198,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2657,7 +2860,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -199,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2667,7 +2871,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -200,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2677,7 +2882,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -201,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2687,7 +2893,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -202,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2697,7 +2904,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -203,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2707,7 +2915,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -204,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2717,7 +2926,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -205,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2727,7 +2937,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -206,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2737,7 +2948,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -207,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2747,7 +2959,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -208,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2757,7 +2970,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -209,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2767,7 +2981,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -210,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2777,7 +2992,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -211,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2787,7 +3003,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -212,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2797,7 +3014,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -213,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2807,7 +3025,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -214,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2817,7 +3036,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -215,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2827,7 +3047,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -216,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2837,7 +3058,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -217,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2847,7 +3069,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -218,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2857,7 +3080,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -219,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2867,7 +3091,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -220,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2877,7 +3102,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -221,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2887,7 +3113,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -222,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2897,7 +3124,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -223,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2907,7 +3135,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -224,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2917,7 +3146,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -225,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2927,7 +3157,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -226,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2937,7 +3168,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -227,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2947,7 +3179,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -228,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2957,7 +3190,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -229,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2967,7 +3201,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -230,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2977,7 +3212,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -231,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -2987,7 +3223,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -232,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -2997,7 +3234,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -233,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -3007,7 +3245,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -234,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -3017,7 +3256,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -235,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -3027,7 +3267,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -236,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -3037,7 +3278,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -237,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -3047,7 +3289,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -238,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -3057,7 +3300,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -239,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -3067,7 +3311,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -240,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -3077,7 +3322,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -241,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -3087,7 +3333,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -242,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -3097,7 +3344,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -243,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -3107,7 +3355,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -244,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -3117,7 +3366,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -245,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -3127,7 +3377,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -246,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -3137,7 +3388,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -247,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -3147,7 +3399,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -248,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -3157,7 +3410,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -249,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -3167,7 +3421,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -250,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -3177,7 +3432,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -251,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -3187,7 +3443,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -252,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -3197,7 +3454,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -253,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -3207,7 +3465,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -254,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -3217,7 +3476,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -255,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -3227,7 +3487,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -256,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -3237,7 +3498,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -257,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -3247,7 +3509,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -258,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -3257,7 +3520,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -259,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -3267,7 +3531,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -260,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -3277,7 +3542,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -261,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -3287,7 +3553,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -262,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -3297,7 +3564,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -263,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -3307,7 +3575,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -264,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -3317,7 +3586,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -265,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -3327,7 +3597,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -266,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -3337,7 +3608,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -267,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -3347,7 +3619,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -268,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -3357,7 +3630,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -269,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -3367,7 +3641,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -270,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -3377,7 +3652,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -271,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -3387,7 +3663,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -272,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -3397,7 +3674,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -273,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -3407,7 +3685,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -274,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -3417,7 +3696,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -275,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -3427,7 +3707,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -276,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -3437,7 +3718,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -277,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -3447,7 +3729,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -278,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -3457,7 +3740,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -279,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -3467,7 +3751,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -280,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -3477,7 +3762,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -281,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -3487,7 +3773,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -282,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -3497,7 +3784,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -283,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -3507,7 +3795,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -284,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -3517,7 +3806,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -285,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -3527,7 +3817,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -286,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -3537,7 +3828,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -287,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -3547,7 +3839,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -288,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -3557,7 +3850,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -289,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -3567,7 +3861,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -290,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -3577,7 +3872,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -291,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -3587,7 +3883,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -292,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -3597,7 +3894,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -293,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -3607,7 +3905,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -294,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -3617,7 +3916,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -295,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -3627,7 +3927,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -296,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -3637,7 +3938,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -297,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -3647,7 +3949,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -298,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         },
                         new
                         {
@@ -3657,7 +3960,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 10m,
                             ReservationId = -299,
-                            TaxAmount = 1.7m
+                            TaxAmount = 1.7m,
+                            TicketQuantity = 2
                         },
                         new
                         {
@@ -3667,7 +3971,8 @@ namespace Cinema.Dal.Migrations
                             OfferTypeId = -1,
                             Price = 8m,
                             ReservationId = -300,
-                            TaxAmount = 1.36m
+                            TaxAmount = 1.36m,
+                            TicketQuantity = 1
                         });
                 });
 
@@ -3939,9 +4244,6 @@ namespace Cinema.Dal.Migrations
                     b.Property<int>("ScreeningId")
                         .HasColumnType("int");
 
-                    b.Property<int>("TicketQuantity")
-                        .HasColumnType("int");
-
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
@@ -3963,7 +4265,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -3974,8 +4275,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -3987,7 +4287,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -3998,8 +4297,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -4011,7 +4309,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -4022,8 +4319,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -4035,7 +4331,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -4046,8 +4341,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -4059,7 +4353,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -4070,8 +4363,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -4083,7 +4375,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -4094,8 +4385,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -4107,7 +4397,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -4118,8 +4407,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -4131,7 +4419,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -4142,8 +4429,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -4155,7 +4441,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -4166,8 +4451,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -4179,7 +4463,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -4190,8 +4473,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -4203,7 +4485,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -4214,8 +4495,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -4227,7 +4507,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -4238,8 +4517,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -4251,7 +4529,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -4262,8 +4539,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -4275,7 +4551,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -4286,8 +4561,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -4299,7 +4573,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -4310,8 +4583,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -4323,7 +4595,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -4334,8 +4605,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -4347,7 +4617,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -4358,8 +4627,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -4371,7 +4639,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -4382,8 +4649,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -4395,7 +4661,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -4406,8 +4671,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -4419,7 +4683,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -4430,8 +4693,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -4443,7 +4705,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -4454,8 +4715,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -4467,7 +4727,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -4478,8 +4737,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -4491,7 +4749,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -4502,8 +4759,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -4515,7 +4771,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -4526,8 +4781,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -4539,7 +4793,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -4550,8 +4803,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -4563,7 +4815,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -4574,8 +4825,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -4587,7 +4837,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -4598,8 +4847,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -4611,7 +4859,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -4622,8 +4869,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -4635,7 +4881,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -4646,8 +4891,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -4659,7 +4903,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -4670,8 +4913,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -4683,7 +4925,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -4694,8 +4935,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -4707,7 +4947,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -4718,8 +4957,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -4731,7 +4969,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -4742,8 +4979,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -4755,7 +4991,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -4766,8 +5001,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -4779,7 +5013,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -4790,8 +5023,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -4803,7 +5035,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -4814,8 +5045,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -4827,7 +5057,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -4838,8 +5067,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -4851,7 +5079,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -4862,8 +5089,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -4875,7 +5101,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -4886,8 +5111,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -4899,7 +5123,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -4910,8 +5133,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -4923,7 +5145,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -4934,8 +5155,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -4947,7 +5167,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -4958,8 +5177,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -4971,7 +5189,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -4982,8 +5199,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -4995,7 +5211,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -5006,8 +5221,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -5019,7 +5233,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -5030,8 +5243,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -5043,7 +5255,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -5054,8 +5265,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -5067,7 +5277,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -5078,8 +5287,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -5091,7 +5299,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -5102,8 +5309,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -5115,7 +5321,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -5126,8 +5331,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -5139,7 +5343,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -5150,8 +5353,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -5163,7 +5365,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -5174,8 +5375,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -5187,7 +5387,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -5198,8 +5397,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -5211,7 +5409,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -5222,8 +5419,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -5235,7 +5431,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -5246,8 +5441,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -5259,7 +5453,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -5270,8 +5463,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -5283,7 +5475,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -5294,8 +5485,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -5307,7 +5497,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -5318,8 +5507,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -5331,7 +5519,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -5342,8 +5529,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -5355,7 +5541,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -5366,8 +5551,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -5379,7 +5563,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -5390,8 +5573,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -5403,7 +5585,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -5414,8 +5595,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -5427,7 +5607,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -5438,8 +5617,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -5451,7 +5629,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -5462,8 +5639,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -5475,7 +5651,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -5486,8 +5661,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -5499,7 +5673,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -5510,8 +5683,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -5523,7 +5695,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -5534,8 +5705,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -5547,7 +5717,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -5558,8 +5727,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -5571,7 +5739,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -5582,8 +5749,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -5595,7 +5761,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -5606,8 +5771,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -5619,7 +5783,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -5630,8 +5793,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -5643,7 +5805,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -5654,8 +5815,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -5667,7 +5827,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -5678,8 +5837,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -5691,7 +5849,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -5702,8 +5859,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -5715,7 +5871,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -5726,8 +5881,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -5739,7 +5893,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -5750,8 +5903,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -5763,7 +5915,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -5774,8 +5925,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -5787,7 +5937,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -5798,8 +5947,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -5811,7 +5959,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -5822,8 +5969,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -5835,7 +5981,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -5846,8 +5991,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -5859,7 +6003,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -5870,8 +6013,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -5883,7 +6025,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -5894,8 +6035,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -5907,7 +6047,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -5918,8 +6057,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -5931,7 +6069,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -5942,8 +6079,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -5955,7 +6091,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -5966,8 +6101,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -5979,7 +6113,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -5990,8 +6123,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -6003,7 +6135,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -6014,8 +6145,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -6027,7 +6157,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -6038,8 +6167,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -6051,7 +6179,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -6062,8 +6189,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -6075,7 +6201,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -6086,8 +6211,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -6099,7 +6223,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -6110,8 +6233,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -6123,7 +6245,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -6134,8 +6255,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -6147,7 +6267,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -6158,8 +6277,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -6171,7 +6289,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -6182,8 +6299,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -6195,7 +6311,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -6206,8 +6321,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -6219,7 +6333,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -6230,8 +6343,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -6243,7 +6355,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -6254,8 +6365,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -6267,7 +6377,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -6278,8 +6387,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -6291,7 +6399,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -6302,8 +6409,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -6315,7 +6421,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -6326,8 +6431,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -6339,7 +6443,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -6350,8 +6453,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -6363,7 +6465,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -6374,8 +6475,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -6387,7 +6487,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -6398,8 +6497,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -6411,7 +6509,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -6422,8 +6519,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -6435,7 +6531,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -6446,8 +6541,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -6459,7 +6553,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -6470,8 +6563,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -6483,7 +6575,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -6494,8 +6585,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -6507,7 +6597,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -6518,8 +6607,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -6531,7 +6619,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -6542,8 +6629,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -6555,7 +6641,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -6566,8 +6651,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -6579,7 +6663,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -6590,8 +6673,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -6603,7 +6685,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -6614,8 +6695,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -6627,7 +6707,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -6638,8 +6717,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -6651,7 +6729,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -6662,8 +6739,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -6675,7 +6751,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -6686,8 +6761,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -6699,7 +6773,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -6710,8 +6783,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -6723,7 +6795,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -6734,8 +6805,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -6747,7 +6817,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -6758,8 +6827,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -6771,7 +6839,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -6782,8 +6849,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -6795,7 +6861,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -6806,8 +6871,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -6819,7 +6883,6 @@ namespace Cinema.Dal.Migrations
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
                             ScreeningId = -1,
-                            TicketQuantity = 1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -6830,8 +6893,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -1,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -6842,8 +6904,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 1,
+                            ScreeningId = -1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -6854,8 +6915,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -6866,8 +6926,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 1,
+                            ScreeningId = -1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -6878,8 +6937,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -6890,8 +6948,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 1,
+                            ScreeningId = -1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -6902,8 +6959,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -6914,8 +6970,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 1,
+                            ScreeningId = -1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -6926,8 +6981,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -6938,8 +6992,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 1,
+                            ScreeningId = -1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -6950,8 +7003,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -6962,8 +7014,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 1,
+                            ScreeningId = -1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -6974,8 +7025,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -6986,8 +7036,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 1,
+                            ScreeningId = -1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -6998,8 +7047,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -7010,8 +7058,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 1,
+                            ScreeningId = -1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -7022,8 +7069,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -7034,8 +7080,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 1,
+                            ScreeningId = -1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -7046,8 +7091,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -7058,8 +7102,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 1,
+                            ScreeningId = -1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -7070,8 +7113,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -7082,8 +7124,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 1,
+                            ScreeningId = -1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -7094,8 +7135,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -7106,8 +7146,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 1,
+                            ScreeningId = -1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -7118,8 +7157,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -7130,8 +7168,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 1,
+                            ScreeningId = -1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -7142,8 +7179,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -7154,8 +7190,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 1,
+                            ScreeningId = -1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -7166,8 +7201,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -7178,8 +7212,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 1,
+                            ScreeningId = -1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -7190,8 +7223,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -7202,8 +7234,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 1,
+                            ScreeningId = -1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -7214,8 +7245,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -7226,8 +7256,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 1,
+                            ScreeningId = -1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -7238,8 +7267,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -7250,8 +7278,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 1,
+                            ScreeningId = -1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -7262,8 +7289,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -7274,8 +7300,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 1,
+                            ScreeningId = -1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -7286,8 +7311,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -7298,8 +7322,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 1,
+                            ScreeningId = -1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -7310,8 +7333,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -7322,8 +7344,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 1,
+                            ScreeningId = -1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -7334,8 +7355,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -7346,8 +7366,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 1,
+                            ScreeningId = -1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -7358,8 +7377,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -7370,8 +7388,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 1,
+                            ScreeningId = -1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -7382,8 +7399,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -7394,8 +7410,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 1,
+                            ScreeningId = -1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -7406,8 +7421,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -7418,8 +7432,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 1,
+                            ScreeningId = -1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -7430,8 +7443,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -7442,8 +7454,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 1,
+                            ScreeningId = -1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -7454,8 +7465,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -7466,8 +7476,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 1,
+                            ScreeningId = -1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -7478,8 +7487,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -7490,8 +7498,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 1,
+                            ScreeningId = -1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -7502,8 +7509,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -7514,8 +7520,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 1,
+                            ScreeningId = -1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -7526,8 +7531,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         },
                         new
@@ -7538,8 +7542,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 1,
+                            ScreeningId = -1,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600"
                         },
                         new
@@ -7550,8 +7553,7 @@ namespace Cinema.Dal.Migrations
                             IsCancelled = false,
                             IsDeleted = false,
                             ReservationCode = "qr_code_placeholder",
-                            ScreeningId = -2,
-                            TicketQuantity = 0,
+                            ScreeningId = -3,
                             UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601"
                         });
                 });
@@ -7829,9 +7831,9 @@ namespace Cinema.Dal.Migrations
                         {
                             Id = -2,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 2
+                            SeatNumber = 1
                         },
                         new
                         {
@@ -7839,15 +7841,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 3
+                            SeatNumber = 2
                         },
                         new
                         {
                             Id = -4,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 4
+                            SeatNumber = 2
                         },
                         new
                         {
@@ -7855,15 +7857,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 5
+                            SeatNumber = 3
                         },
                         new
                         {
                             Id = -6,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 6
+                            SeatNumber = 3
                         },
                         new
                         {
@@ -7871,15 +7873,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 7
+                            SeatNumber = 4
                         },
                         new
                         {
                             Id = -8,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 8
+                            SeatNumber = 4
                         },
                         new
                         {
@@ -7887,15 +7889,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 9
+                            SeatNumber = 5
                         },
                         new
                         {
                             Id = -10,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 10
+                            SeatNumber = 5
                         },
                         new
                         {
@@ -7903,15 +7905,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 11
+                            SeatNumber = 6
                         },
                         new
                         {
                             Id = -12,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 12
+                            SeatNumber = 6
                         },
                         new
                         {
@@ -7919,15 +7921,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 13
+                            SeatNumber = 7
                         },
                         new
                         {
                             Id = -14,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 14
+                            SeatNumber = 7
                         },
                         new
                         {
@@ -7935,15 +7937,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 15
+                            SeatNumber = 8
                         },
                         new
                         {
                             Id = -16,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 2
+                            SeatNumber = 8
                         },
                         new
                         {
@@ -7951,15 +7953,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 4
+                            SeatNumber = 9
                         },
                         new
                         {
                             Id = -18,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 6
+                            SeatNumber = 9
                         },
                         new
                         {
@@ -7967,13 +7969,13 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 8
+                            SeatNumber = 10
                         },
                         new
                         {
                             Id = -20,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
                             SeatNumber = 10
                         },
@@ -7983,15 +7985,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 12
+                            SeatNumber = 11
                         },
                         new
                         {
                             Id = -22,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 14
+                            SeatNumber = 11
                         },
                         new
                         {
@@ -7999,15 +8001,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 16
+                            SeatNumber = 12
                         },
                         new
                         {
                             Id = -24,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 18
+                            SeatNumber = 12
                         },
                         new
                         {
@@ -8015,15 +8017,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 20
+                            SeatNumber = 13
                         },
                         new
                         {
                             Id = -26,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 22
+                            SeatNumber = 13
                         },
                         new
                         {
@@ -8031,15 +8033,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 24
+                            SeatNumber = 14
                         },
                         new
                         {
                             Id = -28,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 26
+                            SeatNumber = 14
                         },
                         new
                         {
@@ -8047,15 +8049,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 28
+                            SeatNumber = 15
                         },
                         new
                         {
                             Id = -30,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 30
+                            SeatNumber = 15
                         },
                         new
                         {
@@ -8063,15 +8065,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 3
+                            SeatNumber = 2
                         },
                         new
                         {
                             Id = -32,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 6
+                            SeatNumber = 2
                         },
                         new
                         {
@@ -8079,15 +8081,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 9
+                            SeatNumber = 4
                         },
                         new
                         {
                             Id = -34,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 12
+                            SeatNumber = 4
                         },
                         new
                         {
@@ -8095,15 +8097,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 15
+                            SeatNumber = 6
                         },
                         new
                         {
                             Id = -36,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 18
+                            SeatNumber = 6
                         },
                         new
                         {
@@ -8111,15 +8113,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 21
+                            SeatNumber = 8
                         },
                         new
                         {
                             Id = -38,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 24
+                            SeatNumber = 8
                         },
                         new
                         {
@@ -8127,15 +8129,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 27
+                            SeatNumber = 10
                         },
                         new
                         {
                             Id = -40,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 30
+                            SeatNumber = 10
                         },
                         new
                         {
@@ -8143,15 +8145,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 33
+                            SeatNumber = 12
                         },
                         new
                         {
                             Id = -42,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 36
+                            SeatNumber = 12
                         },
                         new
                         {
@@ -8159,15 +8161,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 39
+                            SeatNumber = 14
                         },
                         new
                         {
                             Id = -44,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 42
+                            SeatNumber = 14
                         },
                         new
                         {
@@ -8175,15 +8177,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 45
+                            SeatNumber = 16
                         },
                         new
                         {
                             Id = -46,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 4
+                            SeatNumber = 16
                         },
                         new
                         {
@@ -8191,15 +8193,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 8
+                            SeatNumber = 18
                         },
                         new
                         {
                             Id = -48,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 12
+                            SeatNumber = 18
                         },
                         new
                         {
@@ -8207,13 +8209,13 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 16
+                            SeatNumber = 20
                         },
                         new
                         {
                             Id = -50,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
                             SeatNumber = 20
                         },
@@ -8223,15 +8225,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 24
+                            SeatNumber = 22
                         },
                         new
                         {
                             Id = -52,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 28
+                            SeatNumber = 22
                         },
                         new
                         {
@@ -8239,15 +8241,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 32
+                            SeatNumber = 24
                         },
                         new
                         {
                             Id = -54,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 36
+                            SeatNumber = 24
                         },
                         new
                         {
@@ -8255,15 +8257,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 40
+                            SeatNumber = 26
                         },
                         new
                         {
                             Id = -56,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 44
+                            SeatNumber = 26
                         },
                         new
                         {
@@ -8271,15 +8273,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 48
+                            SeatNumber = 28
                         },
                         new
                         {
                             Id = -58,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 52
+                            SeatNumber = 28
                         },
                         new
                         {
@@ -8287,15 +8289,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 56
+                            SeatNumber = 30
                         },
                         new
                         {
                             Id = -60,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 60
+                            SeatNumber = 30
                         },
                         new
                         {
@@ -8303,15 +8305,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 5
+                            SeatNumber = 3
                         },
                         new
                         {
                             Id = -62,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 10
+                            SeatNumber = 3
                         },
                         new
                         {
@@ -8319,15 +8321,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 15
+                            SeatNumber = 6
                         },
                         new
                         {
                             Id = -64,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 20
+                            SeatNumber = 6
                         },
                         new
                         {
@@ -8335,15 +8337,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 25
+                            SeatNumber = 9
                         },
                         new
                         {
                             Id = -66,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 30
+                            SeatNumber = 9
                         },
                         new
                         {
@@ -8351,15 +8353,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 35
+                            SeatNumber = 12
                         },
                         new
                         {
                             Id = -68,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 40
+                            SeatNumber = 12
                         },
                         new
                         {
@@ -8367,15 +8369,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 45
+                            SeatNumber = 15
                         },
                         new
                         {
                             Id = -70,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 50
+                            SeatNumber = 15
                         },
                         new
                         {
@@ -8383,15 +8385,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 55
+                            SeatNumber = 18
                         },
                         new
                         {
                             Id = -72,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 60
+                            SeatNumber = 18
                         },
                         new
                         {
@@ -8399,15 +8401,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 65
+                            SeatNumber = 21
                         },
                         new
                         {
                             Id = -74,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 70
+                            SeatNumber = 21
                         },
                         new
                         {
@@ -8415,15 +8417,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 75
+                            SeatNumber = 24
                         },
                         new
                         {
                             Id = -76,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 6
+                            SeatNumber = 24
                         },
                         new
                         {
@@ -8431,15 +8433,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 12
+                            SeatNumber = 27
                         },
                         new
                         {
                             Id = -78,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 18
+                            SeatNumber = 27
                         },
                         new
                         {
@@ -8447,13 +8449,13 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 24
+                            SeatNumber = 30
                         },
                         new
                         {
                             Id = -80,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
                             SeatNumber = 30
                         },
@@ -8463,15 +8465,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 36
+                            SeatNumber = 33
                         },
                         new
                         {
                             Id = -82,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 42
+                            SeatNumber = 33
                         },
                         new
                         {
@@ -8479,15 +8481,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 48
+                            SeatNumber = 36
                         },
                         new
                         {
                             Id = -84,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 54
+                            SeatNumber = 36
                         },
                         new
                         {
@@ -8495,15 +8497,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 60
+                            SeatNumber = 39
                         },
                         new
                         {
                             Id = -86,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 66
+                            SeatNumber = 39
                         },
                         new
                         {
@@ -8511,15 +8513,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 72
+                            SeatNumber = 42
                         },
                         new
                         {
                             Id = -88,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 78
+                            SeatNumber = 42
                         },
                         new
                         {
@@ -8527,15 +8529,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 84
+                            SeatNumber = 45
                         },
                         new
                         {
                             Id = -90,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 90
+                            SeatNumber = 45
                         },
                         new
                         {
@@ -8543,15 +8545,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 7
+                            SeatNumber = 4
                         },
                         new
                         {
                             Id = -92,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 14
+                            SeatNumber = 4
                         },
                         new
                         {
@@ -8559,15 +8561,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 21
+                            SeatNumber = 8
                         },
                         new
                         {
                             Id = -94,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 28
+                            SeatNumber = 8
                         },
                         new
                         {
@@ -8575,15 +8577,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 35
+                            SeatNumber = 12
                         },
                         new
                         {
                             Id = -96,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 42
+                            SeatNumber = 12
                         },
                         new
                         {
@@ -8591,15 +8593,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 49
+                            SeatNumber = 16
                         },
                         new
                         {
                             Id = -98,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 56
+                            SeatNumber = 16
                         },
                         new
                         {
@@ -8607,15 +8609,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 63
+                            SeatNumber = 20
                         },
                         new
                         {
                             Id = -100,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 70
+                            SeatNumber = 20
                         },
                         new
                         {
@@ -8623,15 +8625,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 77
+                            SeatNumber = 24
                         },
                         new
                         {
                             Id = -102,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 84
+                            SeatNumber = 24
                         },
                         new
                         {
@@ -8639,15 +8641,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 91
+                            SeatNumber = 28
                         },
                         new
                         {
                             Id = -104,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 98
+                            SeatNumber = 28
                         },
                         new
                         {
@@ -8655,15 +8657,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 105
+                            SeatNumber = 32
                         },
                         new
                         {
                             Id = -106,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 8
+                            SeatNumber = 32
                         },
                         new
                         {
@@ -8671,15 +8673,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 16
+                            SeatNumber = 36
                         },
                         new
                         {
                             Id = -108,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 24
+                            SeatNumber = 36
                         },
                         new
                         {
@@ -8687,13 +8689,13 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 32
+                            SeatNumber = 40
                         },
                         new
                         {
                             Id = -110,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
                             SeatNumber = 40
                         },
@@ -8703,15 +8705,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 48
+                            SeatNumber = 44
                         },
                         new
                         {
                             Id = -112,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 56
+                            SeatNumber = 44
                         },
                         new
                         {
@@ -8719,15 +8721,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 64
+                            SeatNumber = 48
                         },
                         new
                         {
                             Id = -114,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 72
+                            SeatNumber = 48
                         },
                         new
                         {
@@ -8735,15 +8737,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 80
+                            SeatNumber = 52
                         },
                         new
                         {
                             Id = -116,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 88
+                            SeatNumber = 52
                         },
                         new
                         {
@@ -8751,15 +8753,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 96
+                            SeatNumber = 56
                         },
                         new
                         {
                             Id = -118,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 104
+                            SeatNumber = 56
                         },
                         new
                         {
@@ -8767,15 +8769,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 112
+                            SeatNumber = 60
                         },
                         new
                         {
                             Id = -120,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 120
+                            SeatNumber = 60
                         },
                         new
                         {
@@ -8783,15 +8785,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 9
+                            SeatNumber = 5
                         },
                         new
                         {
                             Id = -122,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 18
+                            SeatNumber = 5
                         },
                         new
                         {
@@ -8799,15 +8801,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 27
+                            SeatNumber = 10
                         },
                         new
                         {
                             Id = -124,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 36
+                            SeatNumber = 10
                         },
                         new
                         {
@@ -8815,15 +8817,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 45
+                            SeatNumber = 15
                         },
                         new
                         {
                             Id = -126,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 54
+                            SeatNumber = 15
                         },
                         new
                         {
@@ -8831,15 +8833,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 63
+                            SeatNumber = 20
                         },
                         new
                         {
                             Id = -128,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 72
+                            SeatNumber = 20
                         },
                         new
                         {
@@ -8847,15 +8849,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 81
+                            SeatNumber = 25
                         },
                         new
                         {
                             Id = -130,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 90
+                            SeatNumber = 25
                         },
                         new
                         {
@@ -8863,15 +8865,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 99
+                            SeatNumber = 30
                         },
                         new
                         {
                             Id = -132,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 108
+                            SeatNumber = 30
                         },
                         new
                         {
@@ -8879,15 +8881,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 117
+                            SeatNumber = 35
                         },
                         new
                         {
                             Id = -134,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 126
+                            SeatNumber = 35
                         },
                         new
                         {
@@ -8895,15 +8897,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 135
+                            SeatNumber = 40
                         },
                         new
                         {
                             Id = -136,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 10
+                            SeatNumber = 40
                         },
                         new
                         {
@@ -8911,15 +8913,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 20
+                            SeatNumber = 45
                         },
                         new
                         {
                             Id = -138,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 30
+                            SeatNumber = 45
                         },
                         new
                         {
@@ -8927,13 +8929,13 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 40
+                            SeatNumber = 50
                         },
                         new
                         {
                             Id = -140,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
                             SeatNumber = 50
                         },
@@ -8943,15 +8945,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 60
+                            SeatNumber = 55
                         },
                         new
                         {
                             Id = -142,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 70
+                            SeatNumber = 55
                         },
                         new
                         {
@@ -8959,15 +8961,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 80
+                            SeatNumber = 60
                         },
                         new
                         {
                             Id = -144,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 90
+                            SeatNumber = 60
                         },
                         new
                         {
@@ -8975,15 +8977,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 100
+                            SeatNumber = 65
                         },
                         new
                         {
                             Id = -146,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 110
+                            SeatNumber = 65
                         },
                         new
                         {
@@ -8991,15 +8993,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 120
+                            SeatNumber = 70
                         },
                         new
                         {
                             Id = -148,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 130
+                            SeatNumber = 70
                         },
                         new
                         {
@@ -9007,15 +9009,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 140
+                            SeatNumber = 75
                         },
                         new
                         {
                             Id = -150,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 150
+                            SeatNumber = 75
                         },
                         new
                         {
@@ -9023,15 +9025,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 11
+                            SeatNumber = 6
                         },
                         new
                         {
                             Id = -152,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 22
+                            SeatNumber = 6
                         },
                         new
                         {
@@ -9039,15 +9041,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 33
+                            SeatNumber = 12
                         },
                         new
                         {
                             Id = -154,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 44
+                            SeatNumber = 12
                         },
                         new
                         {
@@ -9055,15 +9057,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 55
+                            SeatNumber = 18
                         },
                         new
                         {
                             Id = -156,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 66
+                            SeatNumber = 18
                         },
                         new
                         {
@@ -9071,15 +9073,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 77
+                            SeatNumber = 24
                         },
                         new
                         {
                             Id = -158,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 88
+                            SeatNumber = 24
                         },
                         new
                         {
@@ -9087,15 +9089,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 99
+                            SeatNumber = 30
                         },
                         new
                         {
                             Id = -160,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 110
+                            SeatNumber = 30
                         },
                         new
                         {
@@ -9103,15 +9105,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 121
+                            SeatNumber = 36
                         },
                         new
                         {
                             Id = -162,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 132
+                            SeatNumber = 36
                         },
                         new
                         {
@@ -9119,15 +9121,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 143
+                            SeatNumber = 42
                         },
                         new
                         {
                             Id = -164,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 154
+                            SeatNumber = 42
                         },
                         new
                         {
@@ -9135,15 +9137,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 165
+                            SeatNumber = 48
                         },
                         new
                         {
                             Id = -166,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 12
+                            SeatNumber = 48
                         },
                         new
                         {
@@ -9151,15 +9153,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 24
+                            SeatNumber = 54
                         },
                         new
                         {
                             Id = -168,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 36
+                            SeatNumber = 54
                         },
                         new
                         {
@@ -9167,13 +9169,13 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 48
+                            SeatNumber = 60
                         },
                         new
                         {
                             Id = -170,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
                             SeatNumber = 60
                         },
@@ -9183,15 +9185,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 72
+                            SeatNumber = 66
                         },
                         new
                         {
                             Id = -172,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 84
+                            SeatNumber = 66
                         },
                         new
                         {
@@ -9199,15 +9201,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 96
+                            SeatNumber = 72
                         },
                         new
                         {
                             Id = -174,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 108
+                            SeatNumber = 72
                         },
                         new
                         {
@@ -9215,15 +9217,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 120
+                            SeatNumber = 78
                         },
                         new
                         {
                             Id = -176,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 132
+                            SeatNumber = 78
                         },
                         new
                         {
@@ -9231,15 +9233,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 144
+                            SeatNumber = 84
                         },
                         new
                         {
                             Id = -178,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 156
+                            SeatNumber = 84
                         },
                         new
                         {
@@ -9247,15 +9249,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 168
+                            SeatNumber = 90
                         },
                         new
                         {
                             Id = -180,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 180
+                            SeatNumber = 90
                         },
                         new
                         {
@@ -9263,15 +9265,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 13
+                            SeatNumber = 7
                         },
                         new
                         {
                             Id = -182,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 26
+                            SeatNumber = 7
                         },
                         new
                         {
@@ -9279,15 +9281,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 39
+                            SeatNumber = 14
                         },
                         new
                         {
                             Id = -184,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 52
+                            SeatNumber = 14
                         },
                         new
                         {
@@ -9295,15 +9297,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 65
+                            SeatNumber = 21
                         },
                         new
                         {
                             Id = -186,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 78
+                            SeatNumber = 21
                         },
                         new
                         {
@@ -9311,15 +9313,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 91
+                            SeatNumber = 28
                         },
                         new
                         {
                             Id = -188,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 104
+                            SeatNumber = 28
                         },
                         new
                         {
@@ -9327,15 +9329,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 117
+                            SeatNumber = 35
                         },
                         new
                         {
                             Id = -190,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 130
+                            SeatNumber = 35
                         },
                         new
                         {
@@ -9343,15 +9345,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 143
+                            SeatNumber = 42
                         },
                         new
                         {
                             Id = -192,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 156
+                            SeatNumber = 42
                         },
                         new
                         {
@@ -9359,15 +9361,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 169
+                            SeatNumber = 49
                         },
                         new
                         {
                             Id = -194,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 182
+                            SeatNumber = 49
                         },
                         new
                         {
@@ -9375,15 +9377,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 195
+                            SeatNumber = 56
                         },
                         new
                         {
                             Id = -196,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 14
+                            SeatNumber = 56
                         },
                         new
                         {
@@ -9391,15 +9393,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 28
+                            SeatNumber = 63
                         },
                         new
                         {
                             Id = -198,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 42
+                            SeatNumber = 63
                         },
                         new
                         {
@@ -9407,13 +9409,13 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 56
+                            SeatNumber = 70
                         },
                         new
                         {
                             Id = -200,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
                             SeatNumber = 70
                         },
@@ -9423,15 +9425,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 84
+                            SeatNumber = 77
                         },
                         new
                         {
                             Id = -202,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 98
+                            SeatNumber = 77
                         },
                         new
                         {
@@ -9439,15 +9441,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 112
+                            SeatNumber = 84
                         },
                         new
                         {
                             Id = -204,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 126
+                            SeatNumber = 84
                         },
                         new
                         {
@@ -9455,15 +9457,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 140
+                            SeatNumber = 91
                         },
                         new
                         {
                             Id = -206,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 154
+                            SeatNumber = 91
                         },
                         new
                         {
@@ -9471,15 +9473,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 168
+                            SeatNumber = 98
                         },
                         new
                         {
                             Id = -208,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 182
+                            SeatNumber = 98
                         },
                         new
                         {
@@ -9487,15 +9489,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 196
+                            SeatNumber = 105
                         },
                         new
                         {
                             Id = -210,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 210
+                            SeatNumber = 105
                         },
                         new
                         {
@@ -9503,15 +9505,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 15
+                            SeatNumber = 8
                         },
                         new
                         {
                             Id = -212,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 30
+                            SeatNumber = 8
                         },
                         new
                         {
@@ -9519,15 +9521,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 45
+                            SeatNumber = 16
                         },
                         new
                         {
                             Id = -214,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 60
+                            SeatNumber = 16
                         },
                         new
                         {
@@ -9535,15 +9537,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 75
+                            SeatNumber = 24
                         },
                         new
                         {
                             Id = -216,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 90
+                            SeatNumber = 24
                         },
                         new
                         {
@@ -9551,15 +9553,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 105
+                            SeatNumber = 32
                         },
                         new
                         {
                             Id = -218,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 120
+                            SeatNumber = 32
                         },
                         new
                         {
@@ -9567,15 +9569,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 135
+                            SeatNumber = 40
                         },
                         new
                         {
                             Id = -220,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 150
+                            SeatNumber = 40
                         },
                         new
                         {
@@ -9583,15 +9585,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 165
+                            SeatNumber = 48
                         },
                         new
                         {
                             Id = -222,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 180
+                            SeatNumber = 48
                         },
                         new
                         {
@@ -9599,15 +9601,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 195
+                            SeatNumber = 56
                         },
                         new
                         {
                             Id = -224,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 210
+                            SeatNumber = 56
                         },
                         new
                         {
@@ -9615,15 +9617,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 225
+                            SeatNumber = 64
                         },
                         new
                         {
                             Id = -226,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 16
+                            SeatNumber = 64
                         },
                         new
                         {
@@ -9631,15 +9633,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 32
+                            SeatNumber = 72
                         },
                         new
                         {
                             Id = -228,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 48
+                            SeatNumber = 72
                         },
                         new
                         {
@@ -9647,13 +9649,13 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 64
+                            SeatNumber = 80
                         },
                         new
                         {
                             Id = -230,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
                             SeatNumber = 80
                         },
@@ -9663,15 +9665,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 96
+                            SeatNumber = 88
                         },
                         new
                         {
                             Id = -232,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 112
+                            SeatNumber = 88
                         },
                         new
                         {
@@ -9679,15 +9681,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 128
+                            SeatNumber = 96
                         },
                         new
                         {
                             Id = -234,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 144
+                            SeatNumber = 96
                         },
                         new
                         {
@@ -9695,15 +9697,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 160
+                            SeatNumber = 104
                         },
                         new
                         {
                             Id = -236,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 176
+                            SeatNumber = 104
                         },
                         new
                         {
@@ -9711,15 +9713,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 192
+                            SeatNumber = 112
                         },
                         new
                         {
                             Id = -238,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 208
+                            SeatNumber = 112
                         },
                         new
                         {
@@ -9727,23 +9729,23 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 224
+                            SeatNumber = 120
                         },
                         new
                         {
                             Id = -240,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -1,
+                            HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 240
+                            SeatNumber = 120
                         },
                         new
                         {
                             Id = -241,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 1
+                            SeatNumber = 9
                         },
                         new
                         {
@@ -9751,15 +9753,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 2
+                            SeatNumber = 9
                         },
                         new
                         {
                             Id = -243,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 3
+                            SeatNumber = 18
                         },
                         new
                         {
@@ -9767,15 +9769,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 4
+                            SeatNumber = 18
                         },
                         new
                         {
                             Id = -245,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 5
+                            SeatNumber = 27
                         },
                         new
                         {
@@ -9783,15 +9785,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 6
+                            SeatNumber = 27
                         },
                         new
                         {
                             Id = -247,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 7
+                            SeatNumber = 36
                         },
                         new
                         {
@@ -9799,15 +9801,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 8
+                            SeatNumber = 36
                         },
                         new
                         {
                             Id = -249,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 9
+                            SeatNumber = 45
                         },
                         new
                         {
@@ -9815,15 +9817,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 10
+                            SeatNumber = 45
                         },
                         new
                         {
                             Id = -251,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 11
+                            SeatNumber = 54
                         },
                         new
                         {
@@ -9831,15 +9833,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 12
+                            SeatNumber = 54
                         },
                         new
                         {
                             Id = -253,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 13
+                            SeatNumber = 63
                         },
                         new
                         {
@@ -9847,15 +9849,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 14
+                            SeatNumber = 63
                         },
                         new
                         {
                             Id = -255,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 15
+                            SeatNumber = 72
                         },
                         new
                         {
@@ -9863,15 +9865,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 2
+                            SeatNumber = 72
                         },
                         new
                         {
                             Id = -257,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 4
+                            SeatNumber = 81
                         },
                         new
                         {
@@ -9879,15 +9881,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 6
+                            SeatNumber = 81
                         },
                         new
                         {
                             Id = -259,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 8
+                            SeatNumber = 90
                         },
                         new
                         {
@@ -9895,15 +9897,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 10
+                            SeatNumber = 90
                         },
                         new
                         {
                             Id = -261,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 12
+                            SeatNumber = 99
                         },
                         new
                         {
@@ -9911,15 +9913,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 14
+                            SeatNumber = 99
                         },
                         new
                         {
                             Id = -263,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 16
+                            SeatNumber = 108
                         },
                         new
                         {
@@ -9927,15 +9929,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 18
+                            SeatNumber = 108
                         },
                         new
                         {
                             Id = -265,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 20
+                            SeatNumber = 117
                         },
                         new
                         {
@@ -9943,15 +9945,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 22
+                            SeatNumber = 117
                         },
                         new
                         {
                             Id = -267,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 24
+                            SeatNumber = 126
                         },
                         new
                         {
@@ -9959,15 +9961,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 26
+                            SeatNumber = 126
                         },
                         new
                         {
                             Id = -269,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 28
+                            SeatNumber = 135
                         },
                         new
                         {
@@ -9975,15 +9977,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 30
+                            SeatNumber = 135
                         },
                         new
                         {
                             Id = -271,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 3
+                            SeatNumber = 10
                         },
                         new
                         {
@@ -9991,15 +9993,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 6
+                            SeatNumber = 10
                         },
                         new
                         {
                             Id = -273,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 9
+                            SeatNumber = 20
                         },
                         new
                         {
@@ -10007,15 +10009,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 12
+                            SeatNumber = 20
                         },
                         new
                         {
                             Id = -275,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 15
+                            SeatNumber = 30
                         },
                         new
                         {
@@ -10023,15 +10025,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 18
+                            SeatNumber = 30
                         },
                         new
                         {
                             Id = -277,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 21
+                            SeatNumber = 40
                         },
                         new
                         {
@@ -10039,15 +10041,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 24
+                            SeatNumber = 40
                         },
                         new
                         {
                             Id = -279,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 27
+                            SeatNumber = 50
                         },
                         new
                         {
@@ -10055,15 +10057,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 30
+                            SeatNumber = 50
                         },
                         new
                         {
                             Id = -281,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 33
+                            SeatNumber = 60
                         },
                         new
                         {
@@ -10071,15 +10073,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 36
+                            SeatNumber = 60
                         },
                         new
                         {
                             Id = -283,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 39
+                            SeatNumber = 70
                         },
                         new
                         {
@@ -10087,15 +10089,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 42
+                            SeatNumber = 70
                         },
                         new
                         {
                             Id = -285,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 45
+                            SeatNumber = 80
                         },
                         new
                         {
@@ -10103,15 +10105,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 4
+                            SeatNumber = 80
                         },
                         new
                         {
                             Id = -287,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 8
+                            SeatNumber = 90
                         },
                         new
                         {
@@ -10119,15 +10121,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 12
+                            SeatNumber = 90
                         },
                         new
                         {
                             Id = -289,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 16
+                            SeatNumber = 100
                         },
                         new
                         {
@@ -10135,15 +10137,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 20
+                            SeatNumber = 100
                         },
                         new
                         {
                             Id = -291,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 24
+                            SeatNumber = 110
                         },
                         new
                         {
@@ -10151,15 +10153,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 28
+                            SeatNumber = 110
                         },
                         new
                         {
                             Id = -293,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 32
+                            SeatNumber = 120
                         },
                         new
                         {
@@ -10167,15 +10169,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 36
+                            SeatNumber = 120
                         },
                         new
                         {
                             Id = -295,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 40
+                            SeatNumber = 130
                         },
                         new
                         {
@@ -10183,15 +10185,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 44
+                            SeatNumber = 130
                         },
                         new
                         {
                             Id = -297,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 48
+                            SeatNumber = 140
                         },
                         new
                         {
@@ -10199,15 +10201,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 52
+                            SeatNumber = 140
                         },
                         new
                         {
                             Id = -299,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 56
+                            SeatNumber = 150
                         },
                         new
                         {
@@ -10215,15 +10217,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 60
+                            SeatNumber = 150
                         },
                         new
                         {
                             Id = -301,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 5
+                            SeatNumber = 11
                         },
                         new
                         {
@@ -10231,15 +10233,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 10
+                            SeatNumber = 11
                         },
                         new
                         {
                             Id = -303,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 15
+                            SeatNumber = 22
                         },
                         new
                         {
@@ -10247,15 +10249,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 20
+                            SeatNumber = 22
                         },
                         new
                         {
                             Id = -305,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 25
+                            SeatNumber = 33
                         },
                         new
                         {
@@ -10263,15 +10265,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 30
+                            SeatNumber = 33
                         },
                         new
                         {
                             Id = -307,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 35
+                            SeatNumber = 44
                         },
                         new
                         {
@@ -10279,15 +10281,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 40
+                            SeatNumber = 44
                         },
                         new
                         {
                             Id = -309,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 45
+                            SeatNumber = 55
                         },
                         new
                         {
@@ -10295,15 +10297,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 50
+                            SeatNumber = 55
                         },
                         new
                         {
                             Id = -311,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 55
+                            SeatNumber = 66
                         },
                         new
                         {
@@ -10311,15 +10313,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 60
+                            SeatNumber = 66
                         },
                         new
                         {
                             Id = -313,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 65
+                            SeatNumber = 77
                         },
                         new
                         {
@@ -10327,15 +10329,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 70
+                            SeatNumber = 77
                         },
                         new
                         {
                             Id = -315,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 75
+                            SeatNumber = 88
                         },
                         new
                         {
@@ -10343,15 +10345,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 6
+                            SeatNumber = 88
                         },
                         new
                         {
                             Id = -317,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 12
+                            SeatNumber = 99
                         },
                         new
                         {
@@ -10359,15 +10361,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 18
+                            SeatNumber = 99
                         },
                         new
                         {
                             Id = -319,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 24
+                            SeatNumber = 110
                         },
                         new
                         {
@@ -10375,15 +10377,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 30
+                            SeatNumber = 110
                         },
                         new
                         {
                             Id = -321,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 36
+                            SeatNumber = 121
                         },
                         new
                         {
@@ -10391,15 +10393,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 42
+                            SeatNumber = 121
                         },
                         new
                         {
                             Id = -323,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 48
+                            SeatNumber = 132
                         },
                         new
                         {
@@ -10407,15 +10409,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 54
+                            SeatNumber = 132
                         },
                         new
                         {
                             Id = -325,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 60
+                            SeatNumber = 143
                         },
                         new
                         {
@@ -10423,15 +10425,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 66
+                            SeatNumber = 143
                         },
                         new
                         {
                             Id = -327,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 72
+                            SeatNumber = 154
                         },
                         new
                         {
@@ -10439,15 +10441,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 78
+                            SeatNumber = 154
                         },
                         new
                         {
                             Id = -329,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 84
+                            SeatNumber = 165
                         },
                         new
                         {
@@ -10455,15 +10457,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 90
+                            SeatNumber = 165
                         },
                         new
                         {
                             Id = -331,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 7
+                            SeatNumber = 12
                         },
                         new
                         {
@@ -10471,15 +10473,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 14
+                            SeatNumber = 12
                         },
                         new
                         {
                             Id = -333,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 21
+                            SeatNumber = 24
                         },
                         new
                         {
@@ -10487,15 +10489,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 28
+                            SeatNumber = 24
                         },
                         new
                         {
                             Id = -335,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 35
+                            SeatNumber = 36
                         },
                         new
                         {
@@ -10503,15 +10505,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 42
+                            SeatNumber = 36
                         },
                         new
                         {
                             Id = -337,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 49
+                            SeatNumber = 48
                         },
                         new
                         {
@@ -10519,15 +10521,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 56
+                            SeatNumber = 48
                         },
                         new
                         {
                             Id = -339,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 63
+                            SeatNumber = 60
                         },
                         new
                         {
@@ -10535,15 +10537,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 70
+                            SeatNumber = 60
                         },
                         new
                         {
                             Id = -341,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 77
+                            SeatNumber = 72
                         },
                         new
                         {
@@ -10551,15 +10553,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 84
+                            SeatNumber = 72
                         },
                         new
                         {
                             Id = -343,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 91
+                            SeatNumber = 84
                         },
                         new
                         {
@@ -10567,15 +10569,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 98
+                            SeatNumber = 84
                         },
                         new
                         {
                             Id = -345,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 105
+                            SeatNumber = 96
                         },
                         new
                         {
@@ -10583,15 +10585,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 8
+                            SeatNumber = 96
                         },
                         new
                         {
                             Id = -347,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 16
+                            SeatNumber = 108
                         },
                         new
                         {
@@ -10599,15 +10601,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 24
+                            SeatNumber = 108
                         },
                         new
                         {
                             Id = -349,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 32
+                            SeatNumber = 120
                         },
                         new
                         {
@@ -10615,15 +10617,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 40
+                            SeatNumber = 120
                         },
                         new
                         {
                             Id = -351,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 48
+                            SeatNumber = 132
                         },
                         new
                         {
@@ -10631,15 +10633,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 56
+                            SeatNumber = 132
                         },
                         new
                         {
                             Id = -353,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 64
+                            SeatNumber = 144
                         },
                         new
                         {
@@ -10647,15 +10649,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 72
+                            SeatNumber = 144
                         },
                         new
                         {
                             Id = -355,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 80
+                            SeatNumber = 156
                         },
                         new
                         {
@@ -10663,15 +10665,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 88
+                            SeatNumber = 156
                         },
                         new
                         {
                             Id = -357,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 96
+                            SeatNumber = 168
                         },
                         new
                         {
@@ -10679,15 +10681,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 104
+                            SeatNumber = 168
                         },
                         new
                         {
                             Id = -359,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 112
+                            SeatNumber = 180
                         },
                         new
                         {
@@ -10695,15 +10697,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 120
+                            SeatNumber = 180
                         },
                         new
                         {
                             Id = -361,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 9
+                            SeatNumber = 13
                         },
                         new
                         {
@@ -10711,15 +10713,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 18
+                            SeatNumber = 13
                         },
                         new
                         {
                             Id = -363,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 27
+                            SeatNumber = 26
                         },
                         new
                         {
@@ -10727,15 +10729,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 36
+                            SeatNumber = 26
                         },
                         new
                         {
                             Id = -365,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 45
+                            SeatNumber = 39
                         },
                         new
                         {
@@ -10743,15 +10745,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 54
+                            SeatNumber = 39
                         },
                         new
                         {
                             Id = -367,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 63
+                            SeatNumber = 52
                         },
                         new
                         {
@@ -10759,15 +10761,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 72
+                            SeatNumber = 52
                         },
                         new
                         {
                             Id = -369,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 81
+                            SeatNumber = 65
                         },
                         new
                         {
@@ -10775,15 +10777,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 90
+                            SeatNumber = 65
                         },
                         new
                         {
                             Id = -371,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 99
+                            SeatNumber = 78
                         },
                         new
                         {
@@ -10791,15 +10793,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 108
+                            SeatNumber = 78
                         },
                         new
                         {
                             Id = -373,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 117
+                            SeatNumber = 91
                         },
                         new
                         {
@@ -10807,15 +10809,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 126
+                            SeatNumber = 91
                         },
                         new
                         {
                             Id = -375,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 135
+                            SeatNumber = 104
                         },
                         new
                         {
@@ -10823,15 +10825,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 10
+                            SeatNumber = 104
                         },
                         new
                         {
                             Id = -377,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 20
+                            SeatNumber = 117
                         },
                         new
                         {
@@ -10839,15 +10841,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 30
+                            SeatNumber = 117
                         },
                         new
                         {
                             Id = -379,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 40
+                            SeatNumber = 130
                         },
                         new
                         {
@@ -10855,15 +10857,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 50
+                            SeatNumber = 130
                         },
                         new
                         {
                             Id = -381,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 60
+                            SeatNumber = 143
                         },
                         new
                         {
@@ -10871,15 +10873,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 70
+                            SeatNumber = 143
                         },
                         new
                         {
                             Id = -383,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 80
+                            SeatNumber = 156
                         },
                         new
                         {
@@ -10887,15 +10889,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 90
+                            SeatNumber = 156
                         },
                         new
                         {
                             Id = -385,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 100
+                            SeatNumber = 169
                         },
                         new
                         {
@@ -10903,15 +10905,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 110
+                            SeatNumber = 169
                         },
                         new
                         {
                             Id = -387,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 120
+                            SeatNumber = 182
                         },
                         new
                         {
@@ -10919,15 +10921,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 130
+                            SeatNumber = 182
                         },
                         new
                         {
                             Id = -389,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 140
+                            SeatNumber = 195
                         },
                         new
                         {
@@ -10935,15 +10937,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 150
+                            SeatNumber = 195
                         },
                         new
                         {
                             Id = -391,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 11
+                            SeatNumber = 14
                         },
                         new
                         {
@@ -10951,15 +10953,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 22
+                            SeatNumber = 14
                         },
                         new
                         {
                             Id = -393,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 33
+                            SeatNumber = 28
                         },
                         new
                         {
@@ -10967,15 +10969,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 44
+                            SeatNumber = 28
                         },
                         new
                         {
                             Id = -395,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 55
+                            SeatNumber = 42
                         },
                         new
                         {
@@ -10983,15 +10985,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 66
+                            SeatNumber = 42
                         },
                         new
                         {
                             Id = -397,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 77
+                            SeatNumber = 56
                         },
                         new
                         {
@@ -10999,15 +11001,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 88
+                            SeatNumber = 56
                         },
                         new
                         {
                             Id = -399,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 99
+                            SeatNumber = 70
                         },
                         new
                         {
@@ -11015,15 +11017,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 110
+                            SeatNumber = 70
                         },
                         new
                         {
                             Id = -401,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 121
+                            SeatNumber = 84
                         },
                         new
                         {
@@ -11031,15 +11033,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 132
+                            SeatNumber = 84
                         },
                         new
                         {
                             Id = -403,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 143
+                            SeatNumber = 98
                         },
                         new
                         {
@@ -11047,15 +11049,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 154
+                            SeatNumber = 98
                         },
                         new
                         {
                             Id = -405,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 165
+                            SeatNumber = 112
                         },
                         new
                         {
@@ -11063,15 +11065,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 12
+                            SeatNumber = 112
                         },
                         new
                         {
                             Id = -407,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 24
+                            SeatNumber = 126
                         },
                         new
                         {
@@ -11079,15 +11081,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 36
+                            SeatNumber = 126
                         },
                         new
                         {
                             Id = -409,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 48
+                            SeatNumber = 140
                         },
                         new
                         {
@@ -11095,15 +11097,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 60
+                            SeatNumber = 140
                         },
                         new
                         {
                             Id = -411,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 72
+                            SeatNumber = 154
                         },
                         new
                         {
@@ -11111,15 +11113,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 84
+                            SeatNumber = 154
                         },
                         new
                         {
                             Id = -413,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 96
+                            SeatNumber = 168
                         },
                         new
                         {
@@ -11127,15 +11129,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 108
+                            SeatNumber = 168
                         },
                         new
                         {
                             Id = -415,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 120
+                            SeatNumber = 182
                         },
                         new
                         {
@@ -11143,15 +11145,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 132
+                            SeatNumber = 182
                         },
                         new
                         {
                             Id = -417,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 144
+                            SeatNumber = 196
                         },
                         new
                         {
@@ -11159,15 +11161,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 156
+                            SeatNumber = 196
                         },
                         new
                         {
                             Id = -419,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 168
+                            SeatNumber = 210
                         },
                         new
                         {
@@ -11175,15 +11177,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 180
+                            SeatNumber = 210
                         },
                         new
                         {
                             Id = -421,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 13
+                            SeatNumber = 15
                         },
                         new
                         {
@@ -11191,15 +11193,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 26
+                            SeatNumber = 15
                         },
                         new
                         {
                             Id = -423,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 39
+                            SeatNumber = 30
                         },
                         new
                         {
@@ -11207,15 +11209,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 52
+                            SeatNumber = 30
                         },
                         new
                         {
                             Id = -425,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 65
+                            SeatNumber = 45
                         },
                         new
                         {
@@ -11223,15 +11225,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 78
+                            SeatNumber = 45
                         },
                         new
                         {
                             Id = -427,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 91
+                            SeatNumber = 60
                         },
                         new
                         {
@@ -11239,15 +11241,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 104
+                            SeatNumber = 60
                         },
                         new
                         {
                             Id = -429,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 117
+                            SeatNumber = 75
                         },
                         new
                         {
@@ -11255,15 +11257,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 130
+                            SeatNumber = 75
                         },
                         new
                         {
                             Id = -431,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 143
+                            SeatNumber = 90
                         },
                         new
                         {
@@ -11271,15 +11273,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 156
+                            SeatNumber = 90
                         },
                         new
                         {
                             Id = -433,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 169
+                            SeatNumber = 105
                         },
                         new
                         {
@@ -11287,15 +11289,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 182
+                            SeatNumber = 105
                         },
                         new
                         {
                             Id = -435,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 195
+                            SeatNumber = 120
                         },
                         new
                         {
@@ -11303,15 +11305,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 14
+                            SeatNumber = 120
                         },
                         new
                         {
                             Id = -437,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 28
+                            SeatNumber = 135
                         },
                         new
                         {
@@ -11319,15 +11321,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 42
+                            SeatNumber = 135
                         },
                         new
                         {
                             Id = -439,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 56
+                            SeatNumber = 150
                         },
                         new
                         {
@@ -11335,15 +11337,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 70
+                            SeatNumber = 150
                         },
                         new
                         {
                             Id = -441,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 84
+                            SeatNumber = 165
                         },
                         new
                         {
@@ -11351,15 +11353,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 98
+                            SeatNumber = 165
                         },
                         new
                         {
                             Id = -443,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 112
+                            SeatNumber = 180
                         },
                         new
                         {
@@ -11367,15 +11369,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 126
+                            SeatNumber = 180
                         },
                         new
                         {
                             Id = -445,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 140
+                            SeatNumber = 195
                         },
                         new
                         {
@@ -11383,15 +11385,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 154
+                            SeatNumber = 195
                         },
                         new
                         {
                             Id = -447,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 168
+                            SeatNumber = 210
                         },
                         new
                         {
@@ -11399,15 +11401,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 182
+                            SeatNumber = 210
                         },
                         new
                         {
                             Id = -449,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 196
+                            SeatNumber = 225
                         },
                         new
                         {
@@ -11415,15 +11417,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 210
+                            SeatNumber = 225
                         },
                         new
                         {
                             Id = -451,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 15
+                            SeatNumber = 16
                         },
                         new
                         {
@@ -11431,15 +11433,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 30
+                            SeatNumber = 16
                         },
                         new
                         {
                             Id = -453,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 45
+                            SeatNumber = 32
                         },
                         new
                         {
@@ -11447,15 +11449,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 60
+                            SeatNumber = 32
                         },
                         new
                         {
                             Id = -455,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 75
+                            SeatNumber = 48
                         },
                         new
                         {
@@ -11463,15 +11465,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 90
+                            SeatNumber = 48
                         },
                         new
                         {
                             Id = -457,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 105
+                            SeatNumber = 64
                         },
                         new
                         {
@@ -11479,15 +11481,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 120
+                            SeatNumber = 64
                         },
                         new
                         {
                             Id = -459,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 135
+                            SeatNumber = 80
                         },
                         new
                         {
@@ -11495,15 +11497,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 150
+                            SeatNumber = 80
                         },
                         new
                         {
                             Id = -461,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 165
+                            SeatNumber = 96
                         },
                         new
                         {
@@ -11511,15 +11513,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 180
+                            SeatNumber = 96
                         },
                         new
                         {
                             Id = -463,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 195
+                            SeatNumber = 112
                         },
                         new
                         {
@@ -11527,15 +11529,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 210
+                            SeatNumber = 112
                         },
                         new
                         {
                             Id = -465,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 225
+                            SeatNumber = 128
                         },
                         new
                         {
@@ -11543,15 +11545,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 16
+                            SeatNumber = 128
                         },
                         new
                         {
                             Id = -467,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 32
+                            SeatNumber = 144
                         },
                         new
                         {
@@ -11559,15 +11561,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 48
+                            SeatNumber = 144
                         },
                         new
                         {
                             Id = -469,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 64
+                            SeatNumber = 160
                         },
                         new
                         {
@@ -11575,15 +11577,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 80
+                            SeatNumber = 160
                         },
                         new
                         {
                             Id = -471,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 96
+                            SeatNumber = 176
                         },
                         new
                         {
@@ -11591,15 +11593,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 112
+                            SeatNumber = 176
                         },
                         new
                         {
                             Id = -473,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 128
+                            SeatNumber = 192
                         },
                         new
                         {
@@ -11607,15 +11609,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 144
+                            SeatNumber = 192
                         },
                         new
                         {
                             Id = -475,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 160
+                            SeatNumber = 208
                         },
                         new
                         {
@@ -11623,15 +11625,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 176
+                            SeatNumber = 208
                         },
                         new
                         {
                             Id = -477,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 192
+                            SeatNumber = 224
                         },
                         new
                         {
@@ -11639,15 +11641,15 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            SeatNumber = 208
+                            SeatNumber = 224
                         },
                         new
                         {
                             Id = -479,
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HallId = -2,
+                            HallId = -1,
                             IsDeleted = false,
-                            SeatNumber = 224
+                            SeatNumber = 240
                         },
                         new
                         {
