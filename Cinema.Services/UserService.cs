@@ -8,17 +8,16 @@ using Cinema.Utilities.Interfaces.Dal;
 using Cinema.Utilities.Interfaces.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
-using System;
-using System.Text;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using System;
+using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
-using System.Collections.Generic;
-using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Cinema.Services
 {
@@ -48,7 +47,7 @@ namespace Cinema.Services
         public async Task<ApplicationUserDto> InsertAsync(UserUpsertRequest model)
         {
             var userIdentity = _mapper.Map<ApplicationUser>(model);
-            
+
 
             var result = await _userManager.CreateAsync(userIdentity, model.Password);
 
@@ -60,7 +59,7 @@ namespace Cinema.Services
 
             return _mapper.Map<ApplicationUserDto>(userIdentity);
         }
-        
+
         public async Task<ApplicationUserDto> UpdateAsync(int id, UserUpsertRequest req)
         {
             var user = await _userRepo.GetByIdWithRolesAsync(id);
@@ -103,14 +102,14 @@ namespace Cinema.Services
 
         public async Task<IPagedList<ApplicationUserDto>> GetPagedAsync(UserSearchRequest search)
         {
-            var list = await _userRepo.GetPagedAsync(search,search.searchTerm);
+            var list = await _userRepo.GetPagedAsync(search, search.searchTerm);
             var dtoList = PagedList<ApplicationUserDto>.Map<ApplicationUser>(_mapper, list);
 
             return dtoList;
         }
 
 
-        public async Task<ApplicationUserDto> GetByIdAsync(int id)
+        public async Task<ApplicationUserDto> GetByIdAsync(int id, ICollection<string> includes = null)
         {
             var user = await _userRepo.GetByIdWithRolesAsync(id);
             return _mapper.Map<ApplicationUserDto>(user);
@@ -123,7 +122,7 @@ namespace Cinema.Services
 
             if (user != null)
             {
-                
+
                 var result = _userManager.PasswordHasher.VerifyHashedPassword(user, user.PasswordHash, password);
                 if (PasswordVerificationResult.Success == result)
                 {
@@ -169,7 +168,7 @@ namespace Cinema.Services
 
         public async Task<string> DecodeJSONWebToken(string token)
         {
-            
+
             var handler = new JwtSecurityTokenHandler();
             var readToken = handler.ReadJwtToken(token);
 

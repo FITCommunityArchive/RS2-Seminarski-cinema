@@ -75,7 +75,7 @@
             // logoLargeWhite1
             // 
             this.logoLargeWhite1.Location = new System.Drawing.Point(14, 617);
-            this.logoLargeWhite1.Margin = new System.Windows.Forms.Padding(5);
+            this.logoLargeWhite1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.logoLargeWhite1.Name = "logoLargeWhite1";
             this.logoLargeWhite1.Size = new System.Drawing.Size(220, 85);
             this.logoLargeWhite1.TabIndex = 5;
@@ -114,6 +114,7 @@
             this.btnScreenings.Text = "Screenings";
             this.btnScreenings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnScreenings.UseVisualStyleBackColor = true;
+            this.btnScreenings.Click += new System.EventHandler(this.btnScreenings_Click);
             // 
             // btnMovies
             // 
@@ -232,9 +233,9 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnLogin.Location = new System.Drawing.Point(900, 13);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(15, 3, 5, 3);
+            this.btnLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLogin.Location = new System.Drawing.Point(911, 9);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(75, 23);
             this.btnLogin.TabIndex = 1;
@@ -245,8 +246,8 @@
             // btnLogout
             // 
             this.btnLogout.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnLogout.Location = new System.Drawing.Point(995, 13);
-            this.btnLogout.Margin = new System.Windows.Forms.Padding(15, 3, 15, 3);
+            this.btnLogout.Location = new System.Drawing.Point(999, 9);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(11, 2, 11, 2);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(75, 23);
             this.btnLogout.TabIndex = 0;
@@ -278,6 +279,7 @@
             this.panelChildForm.Controls.Add(this.tableLayoutPanel1);
             this.panelChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelChildForm.Location = new System.Drawing.Point(250, 0);
+            this.panelChildForm.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelChildForm.Name = "panelChildForm";
             this.panelChildForm.Size = new System.Drawing.Size(1085, 702);
             this.panelChildForm.TabIndex = 3;
@@ -296,12 +298,13 @@
             this.tableLayoutPanel1.Controls.Add(this.btnLogout, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnLogin, 1, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.MaximumSize = new System.Drawing.Size(0, 50);
-            this.tableLayoutPanel1.MinimumSize = new System.Drawing.Size(1085, 50);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.MaximumSize = new System.Drawing.Size(0, 41);
+            this.tableLayoutPanel1.MinimumSize = new System.Drawing.Size(814, 41);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1085, 50);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1085, 41);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // FormMain
@@ -313,7 +316,7 @@
             this.Controls.Add(this.panelChildForm);
             this.Controls.Add(this.panelBottomBar);
             this.Controls.Add(this.panelSideMenu);
-            this.MinimumSize = new System.Drawing.Size(950, 599);
+            this.MinimumSize = new System.Drawing.Size(950, 597);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "eCinema";

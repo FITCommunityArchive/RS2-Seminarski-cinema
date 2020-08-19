@@ -17,6 +17,7 @@ namespace Cinema.Dal.Data
         public IUserRepository Users => Repository<ApplicationUser, int>() as IUserRepository;
         public IRepository<ApplicationRole, int> Roles => Repository<ApplicationRole, int>();
         public IMovieRepository Movies => Repository<Movie, int>() as IMovieRepository;
+        public IScreeningRepository Screenings => Repository<Screening, int>() as IScreeningRepository;
 
         public UnitOfWork(ICinemaDbContext context)
         {
@@ -66,6 +67,8 @@ namespace Cinema.Dal.Data
                     return (IRepository<Entity, Key>)new MovieRepository(_context);
                 case nameof(ApplicationUser):
                     return (IRepository<Entity, Key>)new UserRepository(_context);
+                case nameof(Screening):
+                    return (IRepository<Entity, Key>)new ScreeningRepository(_context);
                 default:
                     {
                         var repositoryType = typeof(Repository<,>);

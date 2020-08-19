@@ -9,7 +9,7 @@ namespace Cinema.Utilities.Interfaces.Dal
     public interface IRepository<Entity, Key> : IDisposable
     {
         IEnumerable<Entity> Get();
-        Task<Entity> GetAsync(Key id);
+        Task<Entity> GetAsync(Key id, ICollection<string> includes = null);
         Task<IEnumerable<Entity>> GetAsync(Expression<Func<Entity, bool>> where);
         Task<IPagedList<Entity>> GetPagedAsync(Expression<Func<Entity, bool>> where, int pageIndex, int pageSize);
         Task InsertAsync(Entity entity);

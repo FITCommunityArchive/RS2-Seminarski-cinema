@@ -33,6 +33,175 @@ namespace Cinema.Dal.Data
             SeedGenreMovies(modelBuilder);
             SeedRoles(modelBuilder);
             SeedUsers(modelBuilder);
+            SeedScreenings(modelBuilder);
+        }
+
+        private static void SeedScreenings(ModelBuilder modelBuilder)
+        {
+            DateTime today = DateTime.UtcNow.Date;
+
+            modelBuilder.Entity<Screening>().HasData(
+                new Screening
+                {
+                    Id = -1,
+                    MovieId = -1,
+                    HallId = -1,
+                    PricingId = -1,
+                    CreatedAt = new DateTime(2020, 8, 12),
+                    IsDeleted = false,
+                    DateAndTime = new DateTime(2019, 8, 12, 20, 15, 0)
+                },
+                new Screening
+                {
+                    Id = -2,
+                    MovieId = -1,
+                    HallId = -2,
+                    PricingId = -1,
+                    CreatedAt = new DateTime(2020, 8, 12),
+                    IsDeleted = false,
+                    DateAndTime = new DateTime(2019, 8, 13, 19, 15, 0)
+                },
+                new Screening
+                {
+                    Id = -3,
+                    MovieId = -1,
+                    HallId = -1,
+                    PricingId = -3,
+                    CreatedAt = new DateTime(2020, 8, 12),
+                    IsDeleted = false,
+                    DateAndTime = new DateTime(2019, 9, 20, 19, 15, 0)
+                },
+                new Screening
+                {
+                    Id = -4,
+                    MovieId = -1,
+                    HallId = -2,
+                    PricingId = -3,
+                    CreatedAt = new DateTime(2020, 8, 12),
+                    IsDeleted = false,
+                    DateAndTime = new DateTime(2019, 11, 20, 20, 15, 0)
+                },
+                new Screening
+                {
+                    Id = -5,
+                    MovieId = -2,
+                    HallId = -2,
+                    PricingId = -4,
+                    CreatedAt = new DateTime(2020, 8, 12),
+                    IsDeleted = false,
+                    DateAndTime = new DateTime(2020, 5, 20, 20, 15, 0)
+                },
+                new Screening
+                {
+                    Id = -6,
+                    MovieId = -2,
+                    HallId = -1,
+                    PricingId = -1,
+                    CreatedAt = new DateTime(2020, 8, 12),
+                    IsDeleted = false,
+                    DateAndTime = new DateTime(2020, 5, 25, 21, 0, 0)
+                },
+                new Screening
+                {
+                    Id = -7,
+                    MovieId = -2,
+                    HallId = -2,
+                    PricingId = -1,
+                    CreatedAt = new DateTime(2020, 8, 12),
+                    IsDeleted = false,
+                    DateAndTime = new DateTime(2020, 6, 25, 21, 0, 0)
+                },
+                new Screening
+                {
+                    Id = -8,
+                    MovieId = -3,
+                    HallId = -1,
+                    PricingId = -5,
+                    CreatedAt = new DateTime(2020, 8, 12),
+                    IsDeleted = false,
+                    DateAndTime = new DateTime(2020, 7, 10, 21, 0, 0)
+                },
+                new Screening
+                {
+                    Id = -9,
+                    MovieId = -3,
+                    HallId = -2,
+                    PricingId = -1,
+                    CreatedAt = new DateTime(2020, 8, 12),
+                    IsDeleted = false,
+                    DateAndTime = new DateTime(2020, 7, 10, 23, 0, 0)
+                },
+                new Screening
+                {
+                    Id = -10,
+                    MovieId = -3,
+                    HallId = -1,
+                    PricingId = -3,
+                    CreatedAt = new DateTime(2020, 8, 12),
+                    IsDeleted = false,
+                    DateAndTime = new DateTime(2020, 7, 20, 20, 0, 0)
+                },
+                new Screening
+                {
+                    Id = -11,
+                    MovieId = -3,
+                    HallId = -2,
+                    PricingId = -3,
+                    CreatedAt = new DateTime(2020, 8, 12),
+                    IsDeleted = false,
+                    DateAndTime = new DateTime(2020, 7, 21, 20, 0, 0)
+                },
+                new Screening
+                {
+                    Id = -12,
+                    MovieId = -3,
+                    HallId = -2,
+                    PricingId = -3,
+                    CreatedAt = new DateTime(2020, 8, 12),
+                    IsDeleted = false,
+                    DateAndTime = new DateTime(2020, 8, 21, 20, 0, 0)
+                },
+                new Screening
+                {
+                    Id = -14,
+                    MovieId = -4,
+                    HallId = -1,
+                    PricingId = -1,
+                    CreatedAt = new DateTime(2020, 8, 12),
+                    IsDeleted = false,
+                    DateAndTime = today.AddHours(20).AddDays(10)
+                },
+                new Screening
+                {
+                    Id = -15,
+                    MovieId = -4,
+                    HallId = -1,
+                    PricingId = -1,
+                    CreatedAt = new DateTime(2020, 8, 12),
+                    IsDeleted = false,
+                    DateAndTime = today.AddHours(22).AddDays(10)
+                },
+                new Screening
+                {
+                    Id = -16,
+                    MovieId = -4,
+                    HallId = -1,
+                    PricingId = -1,
+                    CreatedAt = new DateTime(2020, 8, 12),
+                    IsDeleted = false,
+                    DateAndTime = today.AddHours(18).AddDays(15)
+                },
+                new Screening
+                {
+                    Id = -17,
+                    MovieId = -4,
+                    HallId = -1,
+                    PricingId = -5,
+                    CreatedAt = new DateTime(2020, 8, 12),
+                    IsDeleted = false,
+                    DateAndTime = today.AddHours(18).AddDays(25)
+                }
+            );
         }
 
         private static void SeedGenreMovies(ModelBuilder modelBuilder)

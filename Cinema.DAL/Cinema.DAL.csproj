@@ -17,6 +17,10 @@
     <Compile Remove="Migrations\20200807194849_AddedPoster.Designer.cs" />
     <Compile Remove="Migrations\20200808102933_AddedWritersToMovie.cs" />
     <Compile Remove="Migrations\20200808102933_AddedWritersToMovie.Designer.cs" />
+    <Compile Remove="Migrations\20200812203333_AddedScreeningInitialData.cs" />
+    <Compile Remove="Migrations\20200812203333_AddedScreeningInitialData.Designer.cs" />
+    <Compile Remove="Migrations\20200812203559_ChangedInitialSeedScreeningData.cs" />
+    <Compile Remove="Migrations\20200812203559_ChangedInitialSeedScreeningData.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -5,7 +5,6 @@ using Cinema.Models.Requests.Movies;
 using Cinema.Shared.Pagination;
 using Cinema.Utilities.Interfaces.Dal;
 using Cinema.Utilities.Interfaces.Services;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -27,7 +26,7 @@ namespace Cinema.Services
             _genreMovieRepo = unit.Repository<GenreMovie, int>();
         }
 
-        public async Task<MovieDto> GetByIdAsync(int id)
+        public async Task<MovieDto> GetByIdAsync(int id, ICollection<string> includes = null)
         {
             var entity = await _movieRepo.GetByIdWithGenresAsync(id);
             return _mapper.Map<MovieDto>(entity);

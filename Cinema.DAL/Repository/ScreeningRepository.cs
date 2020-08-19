@@ -1,42 +1,126 @@
 ﻿using Cinema.Domain.Entities;
+using Cinema.Shared.Enums;
+using Cinema.Shared.Pagination;
+using Cinema.Shared.Search;
 using Cinema.Utilities.Interfaces.Dal;
 using System;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace Cinema.Dal.Repository
 {
-    public class ScreeningRepository : Repository<Screening, int>
+    public class ScreeningRepository : Repository<Screening, int>, IScreeningRepository
     {
         public ScreeningRepository(ICinemaDbContext context) : base(context) { }
 
-        public bool ValidateScreeningDate(Screening screening)
+        public async Task<IPagedList<Screening>> GetPagedAsync(ISearchRequest searchRequest, string searchTerm, string hall, decimal? price, TimingStatus? status, DateTime? screeningDate)
         {
-            return screening.DateAndTime >= DateTime.UtcNow;
-        }
+            var query = _dbSet.AsQueryable();
 
-        public async Task<bool> ValidateScreeningHallAvailabilityAsync(Screening validatedScreening)
-        {
-            Hall hall = await _context.Halls.FindAsync(validatedScreening.HallId);
-            Movie movie = await _context.Movies.FindAsync(validatedScreening.MovieId);
-
-            if (hall == null || movie == null) return false;
-
-            DateTime validatedStartTime = validatedScreening.DateAndTime;
-            DateTime validatedEndTime = validatedScreening.DateAndTime.AddMinutes(movie.Duration);
-
-            var hallScreenings = hall.Screenings.Where(x => x.DateAndTime.Date == validatedStartTime.Date).ToList();
-
-            foreach (var screening in hallScreenings)
+            if (status == null)
             {
-                DateTime startTime = screening.DateAndTime;
-                DateTime endTime = screening.DateAndTime.AddMinutes(screening.Movie.Duration);
-
-                if (validatedStartTime >= startTime && validatedStartTime <= endTime) return false;
-                if (validatedEndTime >= startTime && validatedEndTime <= endTime) return false;
+                status = TimingStatus.SCHEDULED;
             }
 
-            return true;
+            query = ApplyFilter(query, searchTerm, hall, price, status, screeningDate);
+
+            if (searchRequest.SortOrder == null || searchRequest.SortColumn == null)
+            {
+                searchRequest.SortOrder = SortOrder.DESC;
+                searchRequest.SortColumn = nameof(Screening.DateAndTime);
+            }
+
+            query = ApplySorting(query, searchRequest);
+
+            if (searchRequest.Includes.Count() > 0)
+            {
+                query = AddIncludes(query, searchRequest.Includes);
+            }            
+
+            var pagedList = await ApplyPaginationAsync(query, searchRequest.PageIndex, searchRequest.PageSize);
+            return pagedList;
+        }
+
+        protected override Expression<Func<Screening, bool>> GetByIdExpression(int id)
+        {
+            return x => x.Id == id;
+        }
+
+        private IQueryable<Screening> ApplyFilter(IQueryable<Screening> query, string searchTerm, string hall, decimal? price, TimingStatus? status, DateTime? screeningDate)
+        {
+            
+            if (screeningDate.HasValue)
+            {
+                query = query.Where(x => x.DateAndTime.Date == screeningDate.Value.Date);
+            }
+
+            if (!string.IsNullOrWhiteSpace(searchTerm))
+            {
+                query = query.Where(x => x.Movie.Title.ToLower().StartsWith(searchTerm.ToLower()));
+            }
+
+            if (!string.IsNullOrWhiteSpace(hall))
+            {
+                query = query.Where(x => x.Hall.Name.ToLower().StartsWith(hall.ToLower()));
+            }
+
+            if (price.HasValue)
+            {
+                query = query.Where(x => x.Pricing.Price.ToString().StartsWith(price.Value.ToString()));
+            }
+
+            if (status.HasValue)
+            {
+                switch (status.Value)
+                {
+                    case TimingStatus.STARTED:
+                        query = query.Where(x => x.DateAndTime <= DateTime.UtcNow);
+                        break;
+                    case TimingStatus.SCHEDULED:
+                        query = query.Where(x => x.DateAndTime > DateTime.UtcNow);
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            return query;
+        }
+
+        protected override IQueryable<Screening> ApplySorting(IQueryable<Screening> query, ISearchRequest searchRequest)
+        {
+            Expression<Func<Screening, object>> expression = GetSortExpression(searchRequest);
+
+            if (searchRequest.SortOrder == SortOrder.ASC)
+            {
+                query = query.OrderBy(expression);
+            }
+            else
+            {
+                query = query.OrderByDescending(expression);
+            }
+
+            return query;
+        }
+
+        protected override Expression<Func<Screening, object>> GetSortExpression(ISearchRequest searchRequest)
+        {
+            switch (searchRequest.SortColumn)
+            {
+                case nameof(Screening.Movie.Title):
+                    return x => x.Movie.Title;
+                case nameof(Screening.Hall.Name):
+                    return x => x.Hall.Name;
+                case nameof(Screening.Pricing.Price):
+                    return x => x.Pricing.Price;
+                case nameof(Screening.DateAndTime):
+                    return x => x.DateAndTime;
+                case "Status":
+                    return x => x.DateAndTime;
+                default:
+                    return x => x.DateAndTime;
+            }
         }
     }
 }
