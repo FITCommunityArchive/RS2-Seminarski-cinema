@@ -2,6 +2,7 @@
 using Cinema.Models.Requests.Users;
 using Cinema.Shared.Pagination;
 using Cinema.WinUI.Authorization;
+using Cinema.WinUI.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

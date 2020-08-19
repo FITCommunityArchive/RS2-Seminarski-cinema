@@ -2,13 +2,11 @@
 using Flurl;
 using Flurl.Http;
 using Newtonsoft.Json;
-<<<<<<< HEAD:Cinema.WinUI/ApiService.cs
 using Newtonsoft.Json.Linq;
 using System.Net.Http;
 using Cinema.Models.Requests.Users;
-=======
+
 using System.Threading.Tasks;
->>>>>>> dev:Cinema.WinUI/Services/ApiService.cs
 
 namespace Cinema.WinUI.Services
 {
