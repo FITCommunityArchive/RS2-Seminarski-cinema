@@ -96,9 +96,7 @@ namespace Cinema.Web.API
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ICinemaDbContext, CinemaDbContext>();
 
-            services.AddScoped<ICRUDService<MovieDto, MovieSearchRequest, MovieUpsertRequest, MovieUpsertRequest>, MovieService>();
             services.AddScoped<ICRUDService<ApplicationUserDto, UserSearchRequest, UserUpsertRequest, UserUpsertRequest>, UserService>();
-            services.AddScoped<ICRUDService<ScreeningDto, ScreeningSearchRequest, ScreeningUpsertRequest, ScreeningUpsertRequest>, ScreeningService>();
             services.AddScoped<IService<GenreDto, BaseSearchRequest>, BaseService<GenreDto, BaseSearchRequest, Genre>>();
             services.AddScoped<IService<HallDto, BaseSearchRequest>, BaseService<HallDto, BaseSearchRequest, Hall>>();
             services.AddScoped<IService<PricingDto, BaseSearchRequest>, BaseService<PricingDto, BaseSearchRequest, Pricing>>();
@@ -106,6 +104,7 @@ namespace Cinema.Web.API
             services.AddScoped<IMovieService, MovieService>();
             services.AddScoped<IScreeningService, ScreeningService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IReservationService, ReservationService>();
 
             services.AddScoped<IMovieRepository, MovieRepository>();
             services.AddScoped<IUserRepository, UserRepository>();

@@ -60,7 +60,7 @@ namespace Cinema.Dal.Data
                          CreatedAt = new DateTime(2020, 8, 18),
                          IsDeleted = false,
                          Price = 10,
-                         OfferTypeId = -1,
+                         PricingId = -1,
                          TaxAmount = (decimal)1.7,
                          ReservationId = id
                      });
@@ -74,7 +74,7 @@ namespace Cinema.Dal.Data
                          CreatedAt = new DateTime(2020, 8, 18),
                          IsDeleted = false,
                          Price = 8,
-                         OfferTypeId = -1,
+                         PricingId = -1,
                          TaxAmount = (decimal)1.36,
                          ReservationId = id
                      });

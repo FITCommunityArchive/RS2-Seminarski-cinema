@@ -6,7 +6,7 @@ namespace Cinema.Web.Api.Controllers
 {
     public class MoviesController : BaseCRUDController<MovieDto, MovieSearchRequest, MovieUpsertRequest, MovieUpsertRequest>
     {
-        public MoviesController(ICRUDService<MovieDto, MovieSearchRequest, MovieUpsertRequest, MovieUpsertRequest> service) : base(service)
+        public MoviesController(IMovieService service) : base(service)
         {
         }
     }
