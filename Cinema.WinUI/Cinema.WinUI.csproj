@@ -175,6 +175,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\IncludesSearchRequest.cs" />
+    <Compile Include="Reservations\FormReservationList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reservations\FormReservationList.Designer.cs">
+      <DependentUpon>FormReservationList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Screenings\FormScreeningDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -342,6 +348,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reservations\FormReservationList.resx">
+      <DependentUpon>FormReservationList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Screenings\FormScreeningDetails.resx">
       <DependentUpon>FormScreeningDetails.cs</DependentUpon>
     </EmbeddedResource>

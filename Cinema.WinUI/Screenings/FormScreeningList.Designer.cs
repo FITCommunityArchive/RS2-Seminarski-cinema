@@ -322,7 +322,6 @@
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(188, 26);
             this.cmbStatus.TabIndex = 7;
-            this.cmbStatus.SelectedIndexChanged += new System.EventHandler(this.SearchChanged);
             // 
             // lblDate
             // 

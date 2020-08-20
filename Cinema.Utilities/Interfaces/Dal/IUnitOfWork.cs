@@ -10,6 +10,7 @@ namespace Cinema.Utilities.Interfaces.Dal
         public IRepository<ApplicationRole, int> Roles => Repository<ApplicationRole, int>();
         public IMovieRepository Movies => Repository<Movie, int>() as IMovieRepository;
         public IScreeningRepository Screenings => Repository<Screening, int>() as IScreeningRepository;
+        public IReservationRepository Reservations => Repository<Reservation, int>() as IReservationRepository;
 
         IRepository<Entity, Key> Repository<Entity, Key>() where Entity : class;
 

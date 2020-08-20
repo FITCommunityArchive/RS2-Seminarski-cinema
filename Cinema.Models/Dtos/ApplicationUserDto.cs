@@ -14,6 +14,13 @@ namespace Cinema.Models.Dtos
         public string Email { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string FullName
+        {
+            get
+            {
+                return FirstName + " " + LastName;
+            }
+        }
         public string PhoneNumber { get; set; }
 
         public IList<ApplicationUserRoleDto> UserRoles { get; set; }

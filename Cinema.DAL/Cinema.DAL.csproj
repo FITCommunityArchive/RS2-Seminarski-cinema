@@ -5,22 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20200515182245_InvoiceSoftDelete.cs" />
-    <Compile Remove="Migrations\20200515182245_InvoiceSoftDelete.Designer.cs" />
-    <Compile Remove="Migrations\20200807193113_ChangedImageToByteType.cs" />
-    <Compile Remove="Migrations\20200807193113_ChangedImageToByteType.Designer.cs" />
-    <Compile Remove="Migrations\20200807193929_AddedPosterRemovedImageProperty.cs" />
-    <Compile Remove="Migrations\20200807193929_AddedPosterRemovedImageProperty.Designer.cs" />
-    <Compile Remove="Migrations\20200807194535_AddedPosterToMovie.cs" />
-    <Compile Remove="Migrations\20200807194535_AddedPosterToMovie.Designer.cs" />
-    <Compile Remove="Migrations\20200807194849_AddedPoster.cs" />
-    <Compile Remove="Migrations\20200807194849_AddedPoster.Designer.cs" />
-    <Compile Remove="Migrations\20200808102933_AddedWritersToMovie.cs" />
-    <Compile Remove="Migrations\20200808102933_AddedWritersToMovie.Designer.cs" />
-    <Compile Remove="Migrations\20200812203333_AddedScreeningInitialData.cs" />
-    <Compile Remove="Migrations\20200812203333_AddedScreeningInitialData.Designer.cs" />
-    <Compile Remove="Migrations\20200812203559_ChangedInitialSeedScreeningData.cs" />
-    <Compile Remove="Migrations\20200812203559_ChangedInitialSeedScreeningData.Designer.cs" />
+    <Compile Remove="Migrations\20200820202026_AddedReservationsInitialData.cs" />
+    <Compile Remove="Migrations\20200820202026_AddedReservationsInitialData.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
