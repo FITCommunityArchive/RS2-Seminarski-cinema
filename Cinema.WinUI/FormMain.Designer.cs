@@ -46,13 +46,13 @@
             this.panelBottomBar = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.panelChildForm = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tlpTopBar = new System.Windows.Forms.TableLayoutPanel();
             this.panelSideMenu.SuspendLayout();
             this.panelDashboardSubmenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             this.panelBottomBar.SuspendLayout();
             this.panelChildForm.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.tlpTopBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelSideMenu
@@ -75,7 +75,7 @@
             // logoLargeWhite1
             // 
             this.logoLargeWhite1.Location = new System.Drawing.Point(14, 617);
-            this.logoLargeWhite1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.logoLargeWhite1.Margin = new System.Windows.Forms.Padding(5);
             this.logoLargeWhite1.Name = "logoLargeWhite1";
             this.logoLargeWhite1.Size = new System.Drawing.Size(220, 85);
             this.logoLargeWhite1.TabIndex = 5;
@@ -235,7 +235,7 @@
             // 
             this.btnLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLogin.Location = new System.Drawing.Point(911, 9);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(75, 23);
             this.btnLogin.TabIndex = 1;
@@ -276,36 +276,35 @@
             // panelChildForm
             // 
             this.panelChildForm.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panelChildForm.Controls.Add(this.tableLayoutPanel1);
+            this.panelChildForm.Controls.Add(this.tlpTopBar);
             this.panelChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelChildForm.Location = new System.Drawing.Point(250, 0);
-            this.panelChildForm.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelChildForm.Margin = new System.Windows.Forms.Padding(2);
             this.panelChildForm.Name = "panelChildForm";
             this.panelChildForm.Size = new System.Drawing.Size(1085, 702);
             this.panelChildForm.TabIndex = 3;
             // 
-            // tableLayoutPanel1
+            // tlpTopBar
             // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.AutoSize = true;
-            this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.White;
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.Controls.Add(this.btnLogout, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnLogin, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tableLayoutPanel1.MaximumSize = new System.Drawing.Size(0, 41);
-            this.tableLayoutPanel1.MinimumSize = new System.Drawing.Size(814, 41);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1085, 41);
-            this.tableLayoutPanel1.TabIndex = 3;
+            this.tlpTopBar.AutoSize = true;
+            this.tlpTopBar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tlpTopBar.BackColor = System.Drawing.Color.White;
+            this.tlpTopBar.ColumnCount = 3;
+            this.tlpTopBar.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpTopBar.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpTopBar.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpTopBar.Controls.Add(this.btnLogout, 2, 0);
+            this.tlpTopBar.Controls.Add(this.btnLogin, 1, 0);
+            this.tlpTopBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tlpTopBar.Location = new System.Drawing.Point(0, 0);
+            this.tlpTopBar.Margin = new System.Windows.Forms.Padding(2);
+            this.tlpTopBar.MaximumSize = new System.Drawing.Size(0, 41);
+            this.tlpTopBar.MinimumSize = new System.Drawing.Size(814, 41);
+            this.tlpTopBar.Name = "tlpTopBar";
+            this.tlpTopBar.RowCount = 1;
+            this.tlpTopBar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpTopBar.Size = new System.Drawing.Size(1085, 41);
+            this.tlpTopBar.TabIndex = 3;
             // 
             // FormMain
             // 
@@ -329,7 +328,7 @@
             this.panelBottomBar.PerformLayout();
             this.panelChildForm.ResumeLayout(false);
             this.panelChildForm.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tlpTopBar.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -353,7 +352,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnUsers;
         private UserControls.Logos.LogoLargeWhite logoLargeWhite1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tlpTopBar;
     }
 }
 
