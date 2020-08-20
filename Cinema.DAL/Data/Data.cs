@@ -1,5 +1,4 @@
-﻿using Cinema.Dal.Migrations;
-using Cinema.Domain.Entities;
+﻿using Cinema.Domain.Entities;
 using Cinema.Domain.Entities.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;

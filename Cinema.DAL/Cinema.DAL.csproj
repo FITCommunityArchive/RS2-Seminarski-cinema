@@ -5,39 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20200515182245_InvoiceSoftDelete.cs" />
-    <Compile Remove="Migrations\20200515182245_InvoiceSoftDelete.Designer.cs" />
-    <Compile Remove="Migrations\20200807193113_ChangedImageToByteType.cs" />
-    <Compile Remove="Migrations\20200807193113_ChangedImageToByteType.Designer.cs" />
-    <Compile Remove="Migrations\20200807193929_AddedPosterRemovedImageProperty.cs" />
-    <Compile Remove="Migrations\20200807193929_AddedPosterRemovedImageProperty.Designer.cs" />
-    <Compile Remove="Migrations\20200807194535_AddedPosterToMovie.cs" />
-    <Compile Remove="Migrations\20200807194535_AddedPosterToMovie.Designer.cs" />
-    <Compile Remove="Migrations\20200807194849_AddedPoster.cs" />
-    <Compile Remove="Migrations\20200807194849_AddedPoster.Designer.cs" />
-    <Compile Remove="Migrations\20200808102933_AddedWritersToMovie.cs" />
-    <Compile Remove="Migrations\20200808102933_AddedWritersToMovie.Designer.cs" />
-    <Compile Remove="Migrations\20200812203333_AddedScreeningInitialData.cs" />
-    <Compile Remove="Migrations\20200812203333_AddedScreeningInitialData.Designer.cs" />
-    <Compile Remove="Migrations\20200812203559_ChangedInitialSeedScreeningData.cs" />
-    <Compile Remove="Migrations\20200812203559_ChangedInitialSeedScreeningData.Designer.cs" />
-    <Compile Remove="Migrations\20200818191622_AddedInitialSeedReservation.cs" />
-    <Compile Remove="Migrations\20200818191622_AddedInitialSeedReservation.Designer.cs" />
-    <Compile Remove="Migrations\20200818191736_AddedInitialSeedSeatReservation.cs" />
-    <Compile Remove="Migrations\20200818191736_AddedInitialSeedSeatReservation.Designer.cs" />
-    <Compile Remove="Migrations\20200818191816_AddedInitialSeedInvoice.cs" />
-    <Compile Remove="Migrations\20200818191816_AddedInitialSeedInvoice.Designer.cs" />
-    <Compile Remove="Migrations\20200818192456_AddedInitialSeedReservationInvoiceId.cs" />
-    <Compile Remove="Migrations\20200818192456_AddedInitialSeedReservationInvoiceId.Designer.cs" />
-    <Compile Remove="Migrations\20200818194711_ChangedScreeningIdsInReservationSeed.cs" />
-    <Compile Remove="Migrations\20200818194711_ChangedScreeningIdsInReservationSeed.Designer.cs" />
-    <Compile Remove="Migrations\20200818194817_ChangedScreeningIdInReservationSeed.cs" />
-    <Compile Remove="Migrations\20200818194817_ChangedScreeningIdInReservationSeed.Designer.cs" />
-    <Compile Remove="Migrations\20200818195111_ChangedScreeningIdsInReservationSeed.cs" />
-    <Compile Remove="Migrations\20200818195111_ChangedScreeningIdsInReservationSeed.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.5">
       <PrivateAssets>all</PrivateAssets>
