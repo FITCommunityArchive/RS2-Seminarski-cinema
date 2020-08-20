@@ -16,6 +16,7 @@ using Cinema.Web.Api.Filters;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -38,7 +39,7 @@ namespace Cinema.Web.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers(x => x.Filters.Add<ErrorFilter>());
+            services.AddControllers(x => x.Filters.Add<ErrorFilter>()).AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             services.AddRouting(options => options.LowercaseUrls = true);
 
@@ -97,6 +98,8 @@ namespace Cinema.Web.API
             services.AddScoped<ICinemaDbContext, CinemaDbContext>();
 
             services.AddScoped<ICRUDService<ApplicationUserDto, UserSearchRequest, UserUpsertRequest, UserUpsertRequest>, UserService>();
+            services.AddScoped<IService<ApplicationRoleDto, BaseSearchRequest>, BaseService<ApplicationRoleDto, BaseSearchRequest,ApplicationRole>>();
+            services.AddScoped<ICRUDService<ScreeningDto, ScreeningSearchRequest, ScreeningUpsertRequest, ScreeningUpsertRequest>, ScreeningService>();
             services.AddScoped<IService<GenreDto, BaseSearchRequest>, BaseService<GenreDto, BaseSearchRequest, Genre>>();
             services.AddScoped<IService<HallDto, BaseSearchRequest>, BaseService<HallDto, BaseSearchRequest, Hall>>();
             services.AddScoped<IService<PricingDto, BaseSearchRequest>, BaseService<PricingDto, BaseSearchRequest, Pricing>>();
@@ -119,7 +122,7 @@ namespace Cinema.Web.API
             {
                 options.SignIn.RequireConfirmedAccount = true;
                 //options.User.RequireUniqueEmail = true;
-            }).AddEntityFrameworkStores<CinemaDbContext>();
+            }).AddEntityFrameworkStores<CinemaDbContext>().AddDefaultTokenProviders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

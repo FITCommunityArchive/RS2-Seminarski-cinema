@@ -64,6 +64,18 @@ namespace Cinema.Dal.Repository
             return pagedList;
         }
 
+        public async Task<bool> DetachLocal(Expression<Func<Entity, bool>> match)
+        {
+            Entity local = await Task.Run(() => _dbSet.Where(match).FirstOrDefault());
+            if (local != null)
+            {
+                this._context.Entry(local).State = EntityState.Detached;
+                return true;
+            }
+
+            return false;
+        }
+
         public virtual async Task InsertAsync(Entity newEnt)
         {
             await _dbSet.AddAsync(newEnt);

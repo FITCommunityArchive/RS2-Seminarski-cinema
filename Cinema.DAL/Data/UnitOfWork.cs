@@ -14,8 +14,8 @@ namespace Cinema.Dal.Data
         private Dictionary<string, object> _repositories;
         protected ICinemaDbContext _context;
 
-        public IUserRepository Users => Repository<ApplicationUser, string>() as IUserRepository;
-        public IRepository<ApplicationRole, string> Roles => Repository<ApplicationRole, string>();
+        public IUserRepository Users => Repository<ApplicationUser, int>() as IUserRepository;
+        public IRepository<ApplicationRole, int> Roles => Repository<ApplicationRole, int>();
         public IMovieRepository Movies => Repository<Movie, int>() as IMovieRepository;
         public IScreeningRepository Screenings => Repository<Screening, int>() as IScreeningRepository;
         public IReservationRepository Reservations => Repository<Reservation, int>() as IReservationRepository;

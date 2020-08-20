@@ -9,7 +9,7 @@ namespace Cinema.WinUI
 {
     public partial class FormMain : SecureBaseForm
     {
-        private Form activeForm = null;
+        private SecureBaseForm activeForm = null;
 
         private IList<string> _nextFormPrincipal;
         public FormMain(IList<string> userPrincipal) : base(new string[] { "Administrator", "Content Editor" }, userPrincipal)
@@ -24,6 +24,7 @@ namespace Cinema.WinUI
             btnScreenings.Visible = this.ValidatedUserRoles.Contains("Administrator");
             btnDashboard.Visible = this.ValidatedUserRoles.Contains("Administrator");
             btnMovies.Visible = this.ValidatedUserRoles.Contains("Administrator");
+            btnUsers.Visible = this.ValidatedUserRoles.Contains("Administrator");
             btnLogin.Visible = false;
         }
 
@@ -53,28 +54,6 @@ namespace Cinema.WinUI
             }
         }
 
-        private void buttonDashboard_Click(object sender, EventArgs e)
-        {
-            ShowSubmenu(panelDashboardSubmenu);
-            openChildForm(new FormDashboard(_nextFormPrincipal));
-        }
-
-        private void buttonDashaboardSubmenu1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonDashaboardSubmenu2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void refreshParentForm(object sender, EventArgs e)
-        {
-            this.Owner.Refresh();
-            this.Close();
-        }
-
         private void openChildForm(SecureBaseForm childForm)
         {
             if (activeForm != null)
@@ -91,13 +70,13 @@ namespace Cinema.WinUI
             childForm.Show();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void btnMovies_Click(object sender, EventArgs e)
         {
             FormMovieList frmMoviesList = new FormMovieList(_nextFormPrincipal);
             openChildForm(frmMoviesList);
         }
 
-        private void buttonLogIn_Click(object sender, EventArgs e)
+        private void btnLogIn_Click(object sender, EventArgs e)
         {
             FormLogin loginForm = new FormLogin(_nextFormPrincipal);
             openChildForm(loginForm);
@@ -109,6 +88,21 @@ namespace Cinema.WinUI
             openChildForm(formUsers);
         }
 
+        private void btnDashboard_Click(object sender, EventArgs e)
+        {
+            ShowSubmenu(panelDashboardSubmenu);
+            openChildForm(new FormDashboard(_nextFormPrincipal));
+        }
+
+        private void btnDashaboardSubmenu1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDashaboardSubmenu2_Click(object sender, EventArgs e)
+        {
+
+        }
         private void btnScreenings_Click(object sender, EventArgs e)
         {
             FormScreeningList formScreeningList = new FormScreeningList(_nextFormPrincipal);
