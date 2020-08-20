@@ -1,17 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using Cinema.Shared.Enums;
+using System;
 
 namespace Cinema.Models.Dtos
 {
     public class ReservationDto : BaseDto
     {
-        public ReservationDto()
-        {
-            SeatReservations = new List<SeatReservationDto>();
-        }
-
         public bool IsCancelled { get; set; }
         public string ReservationCode { get; set; }
         public int TicketQuantity { get; set; }
+        public DateTime CreatedAt { get; set; }
 
         public string UserId { get; set; }
         public ApplicationUserDto User { get; set; }
@@ -22,6 +19,6 @@ namespace Cinema.Models.Dtos
         public int? InvoiceId { get; set; }
         public InvoiceDto Invoice { get; set; }
 
-        public IList<SeatReservationDto> SeatReservations { get; set; }
+        public ReservationStatus Status { get; set; }
     }
 }

@@ -4,14 +4,16 @@ using Cinema.Dal.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Cinema.Dal.Migrations
 {
     [DbContext(typeof(CinemaDbContext))]
-    partial class CinemaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200820181823_ChangedColumnNameInvoice")]
+    partial class ChangedColumnNameInvoice
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -354,7 +356,7 @@ namespace Cinema.Dal.Migrations
                         new
                         {
                             Id = "-1",
-                            ConcurrencyStamp = "47ff150a-6526-4442-87d5-607750f04535",
+                            ConcurrencyStamp = "5a4a10a9-410f-41c8-b7a3-6a35a8de7d96",
                             Deleted = false,
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
@@ -362,7 +364,7 @@ namespace Cinema.Dal.Migrations
                         new
                         {
                             Id = "-2",
-                            ConcurrencyStamp = "a90f1ceb-7cc5-4be6-a075-1b32b55e2e02",
+                            ConcurrencyStamp = "2e8a0121-65d4-46d1-b15c-bf1c818e59d6",
                             Deleted = false,
                             Name = "Content Editor",
                             NormalizedName = "CONTENT EDITOR"
@@ -370,7 +372,7 @@ namespace Cinema.Dal.Migrations
                         new
                         {
                             Id = "-3",
-                            ConcurrencyStamp = "048a60d2-4d3a-46b7-b422-87f4298fad35",
+                            ConcurrencyStamp = "e93adde7-b5de-42bc-b496-f38df5e5ec3d",
                             Deleted = false,
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
@@ -479,19 +481,17 @@ namespace Cinema.Dal.Migrations
                         {
                             Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d0434005-1b3f-4105-9be0-9f735fff88be",
+                            ConcurrencyStamp = "644aab0a-a364-4cb9-b605-64b306fdcf10",
                             Deleted = false,
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
-                            FirstName = "Admin",
-                            LastName = "Test",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAECGNvtl19/rRBhGJ0XoE1wZ5JVnwvwAvtjCIo1ijQZ+/0f54nPyEkNNqAe7s4pobBA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJP/5QTbIDiuGOdk3t6t38nhuztKS0RwUI76KBBH1k6xlWl+ud9/kABwptOxIdQxlg==",
                             PhoneNumber = "123456789",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "45e49ea3-19bb-440e-adaa-ef281c4bed94",
+                            SecurityStamp = "e73b48be-057a-4bbb-ad6e-a82c3bca4831",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         },
@@ -499,19 +499,17 @@ namespace Cinema.Dal.Migrations
                         {
                             Id = "a18be9c0-aa65-4af8-bd17-00bd9344e600",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c1ba2657-9b90-4d16-b894-585ac641314b",
+                            ConcurrencyStamp = "56fd4b5a-a392-45cd-bfe6-0281c9c5f77d",
                             Deleted = false,
                             Email = "test1@test-customer.com",
                             EmailConfirmed = true,
-                            FirstName = "First",
-                            LastName = "Customer",
                             LockoutEnabled = false,
                             NormalizedEmail = "TEST1@TEST-CUSTOMER.COM",
                             NormalizedUserName = "TEST.CUSTOMER1",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPy+MGiaRCYc2mXEZEgpZnYoiXI1xQhvHWOHaOGsBy5XKRvbwTc6vYCgl5kV3ZTk/g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMxAqCLzpdVg3OuT1HI4G4paI3SVDbWPjn3s0nYvm6TtxQ+/k476QD/xrK/npo1nfQ==",
                             PhoneNumber = "123456789",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b68f3908-b7cb-4a49-8720-6ca6e681f484",
+                            SecurityStamp = "b8c1cdb5-6fb9-486e-b199-804e328ca0e7",
                             TwoFactorEnabled = false,
                             UserName = "test.customer1"
                         },
@@ -519,19 +517,17 @@ namespace Cinema.Dal.Migrations
                         {
                             Id = "a18be9c0-aa65-4af8-bd17-00bd9344e601",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "7202d6ec-1954-4cbe-ae6b-79e262fbd2c5",
+                            ConcurrencyStamp = "e1046934-34b6-44e8-9fe0-23672107abaf",
                             Deleted = false,
                             Email = "test2@test-customer.com",
                             EmailConfirmed = true,
-                            FirstName = "First",
-                            LastName = "Customer",
                             LockoutEnabled = false,
                             NormalizedEmail = "TEST2@TEST-CUSTOMER.COM",
                             NormalizedUserName = "TEST.CUSTOMER2",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDhR1PPFERa6PmrH6YMLxHAL7q18RFn/DLs2KHrwkUe84DH9hlrObE5cEaRQzNqJkA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPK0VYzXnDwypDTtr1ZTsLI21v8XcVeIuRbxz7eEpv+sWUq2aD6gBEpBYoAMm7ecfw==",
                             PhoneNumber = "123456789",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "afc5a335-a4ff-4568-9b1d-6df2c27e4d1d",
+                            SecurityStamp = "8ee5f804-d287-4644-9842-8183c49bf236",
                             TwoFactorEnabled = false,
                             UserName = "test.customer2"
                         });

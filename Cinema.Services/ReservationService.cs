@@ -3,6 +3,7 @@ using Cinema.Domain.Entities;
 using Cinema.Models.Dtos;
 using Cinema.Models.Requests.Movies;
 using Cinema.Models.Requests.Reservations;
+using Cinema.Shared.Enums;
 using Cinema.Shared.Pagination;
 using Cinema.Utilities.Interfaces.Dal;
 using Cinema.Utilities.Interfaces.Services;
@@ -32,8 +33,13 @@ namespace Cinema.Services
 
         public async Task<IPagedList<ReservationDto>> GetPagedAsync(ReservationSearchRequest search)
         {
-            var list = await _reservationRepo.GetPagedAsync(search, search.ReservationId, search.CustomerId, search.Price, search.CreatedAt, search.Status);
+            var list = await _reservationRepo.GetPagedAsync(search, search.ReservationId, search.Movie, search.CustomerFullName, search.Price, search.CreatedAt, search.Status);
             var dtoList = PagedList<ReservationDto>.Map<Reservation>(_mapper, list);
+
+            foreach (var reservation in dtoList.Data)
+            {
+                reservation.Status = GetReservationStatus(reservation);
+            }
 
             return dtoList;
         }
@@ -51,6 +57,22 @@ namespace Cinema.Services
         public Task<bool> DeleteAsync(int id)
         {
             throw new System.NotImplementedException();
+        }
+
+        private ReservationStatus GetReservationStatus(ReservationDto reservation)
+        {
+            if (reservation.IsCancelled)
+            {
+                return ReservationStatus.CANCELED;
+            }
+            else if (reservation.Invoice == null)
+            {
+                return ReservationStatus.BOOKED;
+            }
+            else
+            {
+                return ReservationStatus.PAID;
+            }
         }
     }
 }

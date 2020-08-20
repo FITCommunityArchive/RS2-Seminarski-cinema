@@ -3,6 +3,7 @@ using Cinema.Shared.Enums;
 using Cinema.Shared.Pagination;
 using Cinema.Shared.Search;
 using Cinema.Utilities.Interfaces.Dal;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
@@ -14,11 +15,11 @@ namespace Cinema.Dal.Repository
     {
         public ReservationRepository(ICinemaDbContext context) : base(context) { }
                 
-        public async Task<IPagedList<Reservation>> GetPagedAsync(ISearchRequest searchRequest, int? reservationId, int? customerId, decimal? price, DateTime? createdAt, ReservationStatus? status)
+        public async Task<IPagedList<Reservation>> GetPagedAsync(ISearchRequest searchRequest, int? reservationId, string movieTitle, string customerFullName, decimal? price, DateTime? createdAt, ReservationStatus? status)
         {
             var query = _dbSet.AsQueryable();
 
-            query = ApplyFilter(query, reservationId, customerId, price, createdAt, status);
+            query = ApplyFilter(query, reservationId, movieTitle, customerFullName, price, createdAt, status);
 
             query = ApplySorting(query, searchRequest);
 
@@ -36,18 +37,22 @@ namespace Cinema.Dal.Repository
             return x => x.Id == id;
         }
 
-        private IQueryable<Reservation> ApplyFilter(IQueryable<Reservation> query, int? reservationId, int? customerId, decimal? price, DateTime? createdAt, ReservationStatus? status)
+        private IQueryable<Reservation> ApplyFilter(IQueryable<Reservation> query, int? reservationId, string movieTitle, string customerFullName, decimal? price, DateTime? createdAt, ReservationStatus? status)
         {
             
             if (reservationId.HasValue)
             {
-                query = query.Where(x => x.Id == reservationId.Value);
+                query = query.Where(x => x.Id == reservationId);
             }
 
-            if (customerId.HasValue)
+            if (!string.IsNullOrWhiteSpace(movieTitle))
             {
-                //TODO
-                //query = query.Where(x => x.UserId == customerId.Value);
+                query = query.Where(x => x.Screening.Movie.Title.ToLower().StartsWith(movieTitle.ToLower()));
+            }
+
+            if (!string.IsNullOrWhiteSpace(customerFullName))
+            {
+                query = query.Where(x => (x.User.FirstName + ' ' + x.User.LastName).ToLower().StartsWith(customerFullName.ToLower()));
             }
 
             if (price.HasValue)
@@ -64,14 +69,14 @@ namespace Cinema.Dal.Repository
             {
                 switch (status.Value)
                 {
+                    case ReservationStatus.CANCELED:
+                        query = query.Where(x => x.IsCancelled);
+                        break;
                     case ReservationStatus.BOOKED:
                         query = query.Where(x => x.InvoiceId == null);
                         break;
                     case ReservationStatus.PAID:
-                        query = query.Where(x => x.InvoiceId != null && !x.IsCancelled);
-                        break;
-                    case ReservationStatus.CANCELED:
-                        query = query.Where(x => x.IsCancelled);
+                        query = query.Where(x => x.InvoiceId != null);
                         break;
                     default:
                         break;

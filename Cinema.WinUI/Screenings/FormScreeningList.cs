@@ -36,7 +36,7 @@ namespace Cinema.WinUI.Movies
 
             if (!_dateFilterCleared)
             {
-                searchRequest.Date = dtpScreeningDate.Value;
+                searchRequest.Date = dtpScreeningDate.Value.ToUniversalTime();
             }
             else
             {
@@ -90,9 +90,14 @@ namespace Cinema.WinUI.Movies
             AddIncludes(ref searchRequest);
 
             searchRequest = ApplyDefaultSearchValues(searchRequest) as ScreeningSearchRequest;
+            searchRequest.Status = TimingStatus.SCHEDULED;
 
             cmbStatus.DataSource = Enum.GetValues(typeof(TimingStatus));
             cmbStatus.SelectedItem = TimingStatus.SCHEDULED;
+
+            /* The handler is added code-first in order to prevent the SearchChanged method being triggered
+             * in the value initialisation for status above.*/
+            cmbStatus.SelectedIndexChanged += new EventHandler(SearchChanged);
 
             await LoadScreenings(searchRequest);
         }

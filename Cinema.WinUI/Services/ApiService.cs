@@ -25,8 +25,6 @@ namespace Cinema.WinUI.Services
         {
             var loginUrl = $"{Properties.Settings.Default.APIUrl}/login";
 
-
-
             var result = await loginUrl.PostJsonAsync(new
             {
                 userName = Username,

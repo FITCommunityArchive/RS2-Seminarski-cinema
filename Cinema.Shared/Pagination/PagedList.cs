@@ -31,8 +31,8 @@ namespace Cinema.Shared.Pagination
                 return (PageIndex > 1);
             }
         }
-        [JsonProperty]
 
+        [JsonProperty]
         public bool HasNextPage
         {
             get
