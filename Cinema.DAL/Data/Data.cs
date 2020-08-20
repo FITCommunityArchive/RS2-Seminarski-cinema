@@ -23,6 +23,12 @@ namespace Cinema.Dal.Data
 
         public static void Seed(ModelBuilder modelBuilder)
         {
+            int adminId = 1;
+            int firstUserId = 2;
+            int secondUserId = 3;
+
+            int numberOfTickets = 150;
+
             SeedHalls(modelBuilder);
             SeedSeats(modelBuilder);
             SeedPricings(modelBuilder);
@@ -32,8 +38,128 @@ namespace Cinema.Dal.Data
             SeedMovies(modelBuilder);
             SeedGenreMovies(modelBuilder);
             SeedRoles(modelBuilder);
-            SeedUsers(modelBuilder);
+            SeedUsers(modelBuilder, adminId);
+            SeedCustomers(modelBuilder, firstUserId, secondUserId);
             SeedScreenings(modelBuilder);
+            SeedReservations(modelBuilder, numberOfTickets, firstUserId, secondUserId);
+            SeedInvoices(modelBuilder, numberOfTickets);
+            SeedSeatReservations(modelBuilder, numberOfTickets);    
+        }
+
+        private static void SeedInvoices(ModelBuilder modelBuilder, int numberOfTickets)
+        {
+            int id = -1;
+
+            for (int i = 0; i < numberOfTickets; i++)
+            {
+                //first tier
+                modelBuilder.Entity<Invoice>().HasData(
+                     new Invoice
+                     {
+                         Id = id,
+                         CreatedAt = new DateTime(2020, 8, 18),
+                         IsDeleted = false,
+                         Price = 10,
+                         PricingId = -1,
+                         TaxAmount = (decimal)1.7,
+                         ReservationId = id
+                     });
+
+                id--;
+          
+                modelBuilder.Entity<Invoice>().HasData(
+                     new Invoice
+                     {
+                         Id = id,
+                         CreatedAt = new DateTime(2020, 8, 18),
+                         IsDeleted = false,
+                         Price = 8,
+                         PricingId = -1,
+                         TaxAmount = (decimal)1.36,
+                         ReservationId = id
+                     });
+
+                id--;
+            }
+        }
+
+        private static void SeedSeatReservations(ModelBuilder modelBuilder, int numberOfTickets)
+        {
+            int id = -1;
+
+            for (int i = 0; i < numberOfTickets; i++)
+            {
+                //first tier            
+                modelBuilder.Entity<SeatReservation>().HasData(
+                     new SeatReservation
+                     {
+                         Id = id,
+                         ReservationId = id,
+                         IsDeleted = false,
+                         CreatedAt = new DateTime(2020, 8, 18),
+                         SeatId = id
+                     });
+
+                id--;
+
+                //second tier          
+                modelBuilder.Entity<SeatReservation>().HasData(
+                     new SeatReservation
+                     {
+                         Id = id,
+                         ReservationId = id,
+                         IsDeleted = false,
+                         CreatedAt = new DateTime(2020, 8, 18),
+                         SeatId = id
+                     });
+
+                id--;
+            }
+        }
+
+        private static void SeedReservations(ModelBuilder modelBuilder, int numberOfTickets, int firstUserId, int secondUserId)
+        {
+            int id = -1;
+
+            for (int i = 0; i < numberOfTickets; i++)
+            {
+                int screeningId = id >= -240 ? -1 : -5;
+
+                //first tier
+                modelBuilder.Entity<Reservation>().HasData(
+                    new Reservation
+                    {
+                        Id = id,
+                        CreatedAt = new DateTime(2020, 8, 18),
+                        IsDeleted = false,
+                        IsCancelled = false,
+                        TicketQuantity = 1,
+                        ReservationCode = "qr_code_placeholder",
+                        ScreeningId = screeningId, //depending on the hall and available seat for seat reservation
+                        UserId = firstUserId,
+                        InvoiceId = id
+                    }
+                );
+
+                id--;
+
+                //second tier
+                modelBuilder.Entity<Reservation>().HasData(
+                    new Reservation
+                    {
+                        Id = id,
+                        CreatedAt = new DateTime(2020, 8, 18),
+                        IsDeleted = false,
+                        IsCancelled = false,
+                        ReservationCode = "qr_code_placeholder",
+                        ScreeningId = screeningId,
+                        UserId = secondUserId,
+                        InvoiceId = id
+                    }
+                );
+
+                id--;
+            }            
         }
 
         private static void SeedScreenings(ModelBuilder modelBuilder)
@@ -483,6 +609,14 @@ namespace Cinema.Dal.Data
                         SeatNumber = i * j
                     };
 
+                    seats.Add(seatFirstHall);
+                }
+            }
+
+            for (int i = 1; i <= numberOfHallColumns; i++)
+            {
+                for (int j = 1; j <= numberOfHallRows; j++)
+                {
                     Seat seatSecondHall = new Seat
                     {
                         Id = seatId--,
@@ -492,7 +626,6 @@ namespace Cinema.Dal.Data
                         SeatNumber = i * j
                     };
 
-                    seats.Add(seatFirstHall);
                     seats.Add(seatSecondHall);
                 }
             }
@@ -570,17 +703,17 @@ namespace Cinema.Dal.Data
             );
         }
 
-        private static void SeedUsers(ModelBuilder modelBuilder)
+        private static void SeedUsers(ModelBuilder modelBuilder, int adminId)
         {
-
-            const int ADMIN_ID = 1;
             ApplicationUser appUser = new ApplicationUser
             {
-                Id = ADMIN_ID,
+                Id = adminId,
                 UserName = "admin",
                 Email = "admin@admin.com",
                 NormalizedEmail = "admin@admin.com".ToUpper(),
                 NormalizedUserName = "admin".ToUpper(),
+                FirstName = "Admin",
+                LastName = "Test",
                 TwoFactorEnabled = false,
                 EmailConfirmed = true,
                 PhoneNumber = "123456789",
@@ -596,9 +729,64 @@ namespace Cinema.Dal.Data
 
             modelBuilder.Entity<ApplicationUserRole>().HasData(new ApplicationUserRole
             {
-                UserId = ADMIN_ID,
+                UserId = adminId,
                 RoleId = -1
             });
         }
+
+
+        private static void SeedCustomers(ModelBuilder modelBuilder, int firstUserId, int secondUserId)
+        {
+            PasswordHasher<ApplicationUser> ph = new PasswordHasher<ApplicationUser>();
+
+            ApplicationUser fistTestCustomer = new ApplicationUser
+            {
+                Id = firstUserId,
+                UserName = "test.customer1",
+                Email = "test1@test-customer.com",
+                NormalizedEmail = "test1@test-customer.com".ToUpper(),
+                NormalizedUserName = "test.customer1".ToUpper(),
+                FirstName = "First",
+                LastName = "Customer",
+                TwoFactorEnabled = false,
+                EmailConfirmed = true,
+                PhoneNumber = "123456789",
+                PhoneNumberConfirmed = false
+            };
+
+            ApplicationUser secondTestCustomer = new ApplicationUser
+            {
+                Id = secondUserId,
+                UserName = "test.customer2",
+                Email = "test2@test-customer.com",
+                NormalizedEmail = "test2@test-customer.com".ToUpper(),
+                NormalizedUserName = "test.customer2".ToUpper(),
+                FirstName = "Second",
+                LastName = "Customer",
+                TwoFactorEnabled = false,
+                EmailConfirmed = true,
+                PhoneNumber = "123456789",
+                PhoneNumberConfirmed = false
+            };
+
+            fistTestCustomer.PasswordHash = ph.HashPassword(fistTestCustomer, "test");
+            secondTestCustomer.PasswordHash = ph.HashPassword(secondTestCustomer, "test");
+
+            modelBuilder.Entity<ApplicationUser>().HasData(fistTestCustomer, secondTestCustomer);
+
+            modelBuilder.Entity<ApplicationUserRole>().HasData(
+                new ApplicationUserRole
+                {
+                    UserId = firstUserId,
+                    RoleId = -3
+                },
+                new ApplicationUserRole
+                {
+                    UserId = secondUserId,
+                    RoleId = -3
+                }
+            );
+        }
+
     }
 }

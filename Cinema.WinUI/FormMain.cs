@@ -108,5 +108,11 @@ namespace Cinema.WinUI
             FormScreeningList formScreeningList = new FormScreeningList(_nextFormPrincipal);
             openChildForm(formScreeningList);
         }
+
+        private void btnReservations_Click(object sender, EventArgs e)
+        {
+            FormReservationList formReservationList = new FormReservationList(_nextFormPrincipal);
+            openChildForm(formReservationList);
+        }
     }
 }

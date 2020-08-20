@@ -6,7 +6,7 @@ namespace Cinema.Web.Api.Controllers
 {
     public class ScreeningsController : BaseCRUDController<ScreeningDto, ScreeningSearchRequest, ScreeningUpsertRequest, ScreeningUpsertRequest>
     {
-        public ScreeningsController(ICRUDService<ScreeningDto, ScreeningSearchRequest, ScreeningUpsertRequest, ScreeningUpsertRequest> service) : base(service)
+        public ScreeningsController(IScreeningService service) : base(service)
         {
         }
     }

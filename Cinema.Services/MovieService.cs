@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Cinema.Services
 {
-    public class MovieService : ICRUDService<MovieDto, MovieSearchRequest, MovieUpsertRequest, MovieUpsertRequest>, IMovieService
+    public class MovieService : IMovieService
     {
         protected readonly IMovieRepository _movieRepo;
         protected readonly IRepository<GenreMovie, int> _genreMovieRepo;

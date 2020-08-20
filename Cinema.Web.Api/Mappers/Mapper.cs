@@ -3,6 +3,7 @@ using Cinema.Domain.Entities;
 using Cinema.Domain.Entities.Identity;
 using Cinema.Models.Dtos;
 using Cinema.Models.Requests.Movies;
+using Cinema.Models.Requests.Reservations;
 using Cinema.Models.Requests.Screenings;
 using Cinema.Models.Requests.Users;
 
@@ -36,6 +37,11 @@ namespace Cinema.Web.Api.Mappers
             CreateMap<Hall, HallDto>();
 
             CreateMap<Pricing, PricingDto>();
+
+            CreateMap<Reservation, ReservationDto>();
+            CreateMap<Reservation, ReservationUpsertRequest>().ReverseMap();
+
+            CreateMap<Invoice, InvoiceDto>();
         }
     }
 }

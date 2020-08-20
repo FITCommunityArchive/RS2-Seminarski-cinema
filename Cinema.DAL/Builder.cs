@@ -141,7 +141,7 @@ namespace Cinema.Dal
 
         private static bool HasNoChildren(Reservation reservation)
         {
-            return reservation.SeatReservations.Count + reservation.Invoices.Count == 0;
+            return reservation.SeatReservations.Count == 0 && reservation.Invoice != null;
         }
 
         private static bool HasNoChildren(Seat seat)
