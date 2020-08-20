@@ -23,8 +23,9 @@ namespace Cinema.Dal.Data
 
         public static void Seed(ModelBuilder modelBuilder)
         {
-            string firstUserId = "a18be9c0-aa65-4af8-bd17-00bd9344e600";
-            string secondUserId = "a18be9c0-aa65-4af8-bd17-00bd9344e601";
+            int adminId = 1;
+            int firstUserId = 2;
+            int secondUserId = 3;
 
             int numberOfTickets = 150;
 
@@ -37,7 +38,7 @@ namespace Cinema.Dal.Data
             SeedMovies(modelBuilder);
             SeedGenreMovies(modelBuilder);
             SeedRoles(modelBuilder);
-            SeedUsers(modelBuilder);
+            SeedUsers(modelBuilder, adminId);
             SeedCustomers(modelBuilder, firstUserId, secondUserId);
             SeedScreenings(modelBuilder);
             SeedReservations(modelBuilder, numberOfTickets, firstUserId, secondUserId);
@@ -116,7 +117,7 @@ namespace Cinema.Dal.Data
             }
         }
 
-        private static void SeedReservations(ModelBuilder modelBuilder, int numberOfTickets, string firstUserId, string secondUserId)
+        private static void SeedReservations(ModelBuilder modelBuilder, int numberOfTickets, int firstUserId, int secondUserId)
         {
             int id = -1;
 
@@ -702,13 +703,11 @@ namespace Cinema.Dal.Data
             );
         }
 
-        private static void SeedUsers(ModelBuilder modelBuilder)
+        private static void SeedUsers(ModelBuilder modelBuilder, int adminId)
         {
-
-            const int ADMIN_ID = 1;
             ApplicationUser appUser = new ApplicationUser
             {
-                Id = ADMIN_ID,
+                Id = adminId,
                 UserName = "admin",
                 Email = "admin@admin.com",
                 NormalizedEmail = "admin@admin.com".ToUpper(),
@@ -730,13 +729,13 @@ namespace Cinema.Dal.Data
 
             modelBuilder.Entity<ApplicationUserRole>().HasData(new ApplicationUserRole
             {
-                UserId = ADMIN_ID,
+                UserId = adminId,
                 RoleId = -1
             });
         }
 
 
-        private static void SeedCustomers(ModelBuilder modelBuilder, string firstUserId, string secondUserId)
+        private static void SeedCustomers(ModelBuilder modelBuilder, int firstUserId, int secondUserId)
         {
             PasswordHasher<ApplicationUser> ph = new PasswordHasher<ApplicationUser>();
 
@@ -779,12 +778,12 @@ namespace Cinema.Dal.Data
                 new ApplicationUserRole
                 {
                     UserId = firstUserId,
-                    RoleId = "-3"
+                    RoleId = -3
                 },
                 new ApplicationUserRole
                 {
                     UserId = secondUserId,
-                    RoleId = "-3"
+                    RoleId = -3
                 }
             );
         }

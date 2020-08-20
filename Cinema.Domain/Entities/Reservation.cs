@@ -14,7 +14,7 @@ namespace Cinema.Domain.Entities
         public string ReservationCode { get; set; }
         public int TicketQuantity { get; set; }
 
-        public string UserId { get; set; }
+        public int UserId { get; set; }
         public virtual ApplicationUser User { get; set; }
 
         public int ScreeningId { get; set; }
