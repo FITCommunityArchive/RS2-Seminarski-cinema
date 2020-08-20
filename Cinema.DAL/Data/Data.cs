@@ -123,7 +123,7 @@ namespace Cinema.Dal.Data
 
             for (int i = 0; i < numberOfTickets; i++)
             {
-                int screeningId = id >= -240 ? -1 : -2;
+                int screeningId = id >= -240 ? -1 : -5;
 
                 //first tier
                 modelBuilder.Entity<Reservation>().HasData(
