@@ -27,7 +27,10 @@ namespace Cinema.Dal.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("AuthorId")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("AuthorId1")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -55,7 +58,7 @@ namespace Cinema.Dal.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AuthorId");
+                    b.HasIndex("AuthorId1");
 
                     b.HasIndex("TypeId");
 
@@ -323,8 +326,10 @@ namespace Cinema.Dal.Migrations
 
             modelBuilder.Entity("Cinema.Domain.Entities.Identity.ApplicationRole", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -353,24 +358,24 @@ namespace Cinema.Dal.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "-1",
-                            ConcurrencyStamp = "a1e40b2c-a659-41da-9990-50ba08070a0f",
+                            Id = -1,
+                            ConcurrencyStamp = "f8035ee8-d4a2-45bc-b9d9-954d46075c64",
                             Deleted = false,
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
-                            Id = "-2",
-                            ConcurrencyStamp = "7dde52ba-a686-4510-b934-1019a49986fc",
+                            Id = -2,
+                            ConcurrencyStamp = "5e41a3da-0648-48be-adc1-16c39f4b4415",
                             Deleted = false,
                             Name = "Content Editor",
                             NormalizedName = "CONTENT EDITOR"
                         },
                         new
                         {
-                            Id = "-3",
-                            ConcurrencyStamp = "aba15515-ffc2-4304-8649-daef219468f0",
+                            Id = -3,
+                            ConcurrencyStamp = "709931a7-608f-4070-8c83-b994ae946fae",
                             Deleted = false,
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
@@ -390,9 +395,8 @@ namespace Cinema.Dal.Migrations
                     b.Property<string>("ClaimValue")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("RoleId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -403,8 +407,10 @@ namespace Cinema.Dal.Migrations
 
             modelBuilder.Entity("Cinema.Domain.Entities.Identity.ApplicationUser", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
@@ -477,19 +483,18 @@ namespace Cinema.Dal.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575",
+                            Id = 1,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b2dd5950-ec6a-4cb8-bf3d-9027176fa51a",
+                            ConcurrencyStamp = "7f0754f0-8d5f-493e-9e9a-253d01abe567",
                             Deleted = false,
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEH0Pod8GhbEvZLOjMRZCL/llu6q0Efk05+l0qBKU7MDWEp2JNgeXjDyvV2P5kYZwKQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAECk6h9FmfExOIykQz6EkqJzc0B4ur10Oi1dRtHUuiAUn4Hj65rexiOH8IsDOVF7pCQ==",
                             PhoneNumber = "123456789",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6050b0fa-6aaa-45a0-a3ba-9f27f70643a0",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         });
@@ -508,9 +513,8 @@ namespace Cinema.Dal.Migrations
                     b.Property<string>("ClaimValue")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -530,9 +534,8 @@ namespace Cinema.Dal.Migrations
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("LoginProvider", "ProviderKey");
 
@@ -543,11 +546,11 @@ namespace Cinema.Dal.Migrations
 
             modelBuilder.Entity("Cinema.Domain.Entities.Identity.ApplicationUserRole", b =>
                 {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("RoleId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("Deleted")
                         .HasColumnType("bit");
@@ -561,16 +564,16 @@ namespace Cinema.Dal.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e575",
-                            RoleId = "-1",
+                            UserId = 1,
+                            RoleId = -1,
                             Deleted = false
                         });
                 });
 
             modelBuilder.Entity("Cinema.Domain.Entities.Identity.ApplicationUserToken", b =>
                 {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("LoginProvider")
                         .HasColumnType("nvarchar(450)");
@@ -734,7 +737,10 @@ namespace Cinema.Dal.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("AuthorId")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("AuthorId1")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -756,7 +762,7 @@ namespace Cinema.Dal.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AuthorId");
+                    b.HasIndex("AuthorId1");
 
                     b.HasIndex("TypeId");
 
@@ -889,13 +895,16 @@ namespace Cinema.Dal.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("UserId1")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ScreeningId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId1");
 
                     b.ToTable("Reservations");
                 });
@@ -923,13 +932,16 @@ namespace Cinema.Dal.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("UserId1")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("MovieId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId1");
 
                     b.ToTable("Reviews");
                 });
@@ -5035,7 +5047,7 @@ namespace Cinema.Dal.Migrations
                 {
                     b.HasOne("Cinema.Domain.Entities.Identity.ApplicationUser", "Author")
                         .WithMany("Events")
-                        .HasForeignKey("AuthorId")
+                        .HasForeignKey("AuthorId1")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("Cinema.Domain.Entities.EventType", "Type")
@@ -5130,7 +5142,7 @@ namespace Cinema.Dal.Migrations
                 {
                     b.HasOne("Cinema.Domain.Entities.Identity.ApplicationUser", "Author")
                         .WithMany("News")
-                        .HasForeignKey("AuthorId")
+                        .HasForeignKey("AuthorId1")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("Cinema.Domain.Entities.NewsType", "Type")
@@ -5150,7 +5162,7 @@ namespace Cinema.Dal.Migrations
 
                     b.HasOne("Cinema.Domain.Entities.Identity.ApplicationUser", "User")
                         .WithMany("Reservations")
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("UserId1")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
@@ -5164,7 +5176,7 @@ namespace Cinema.Dal.Migrations
 
                     b.HasOne("Cinema.Domain.Entities.Identity.ApplicationUser", "User")
                         .WithMany("Reviews")
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("UserId1")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 

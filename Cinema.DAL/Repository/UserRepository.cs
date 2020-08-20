@@ -3,17 +3,17 @@ using Cinema.Shared.Enums;
 using Cinema.Shared.Pagination;
 using Cinema.Shared.Search;
 using Cinema.Utilities.Interfaces.Dal;
-using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Cinema.Dal.Repository
 {
-    public class UserRepository : Repository<ApplicationUser, string>, IUserRepository
+    public class UserRepository : Repository<ApplicationUser, int>, IUserRepository
     {
         public UserRepository(ICinemaDbContext context) : base(context) { }
 
-        public override async Task UpdateAsync(ApplicationUser newEnt, string id)
+        public override async Task UpdateAsync(ApplicationUser newEnt, int id)
         {
             ApplicationUser oldEnt = await GetAsync(id);
 
@@ -32,7 +32,15 @@ namespace Cinema.Dal.Repository
             }
         }
 
-        public async Task<IPagedList<ApplicationUser>> GetPagedAsync(ISearchRequest searchRequest, string searchTerm)
+        public async Task<ApplicationUser> GetByIdWithRolesAsync(int id)
+        {
+            var entity = await _dbSet.Include(x => x.UserRoles).ThenInclude(x=> x.Role)
+                                     .FirstOrDefaultAsync(x => x.Id == id);
+
+            return entity;
+        }
+
+        public async Task<IPagedList<ApplicationUser>> GetPagedAsync(ISearchRequest searchRequest,string searchTerm)
         {
             var query = _dbSet.AsQueryable();
 
@@ -117,21 +125,6 @@ namespace Cinema.Dal.Repository
             }
 
             return query;
-        }
-
-        public Task<ApplicationUser> GetAsync(int id, ICollection<string> includes = null)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Task UpdateAsync(ApplicationUser entity, int id)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Task DeleteAsync(int id)
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

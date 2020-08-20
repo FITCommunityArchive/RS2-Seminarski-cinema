@@ -2,6 +2,10 @@
 using Flurl;
 using Flurl.Http;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Net.Http;
+using Cinema.Models.Requests.Users;
+
 using System.Threading.Tasks;
 
 namespace Cinema.WinUI.Services
@@ -24,8 +28,6 @@ namespace Cinema.WinUI.Services
         public async Task<bool> AuthUser()
         {
             var loginUrl = $"{Properties.Settings.Default.APIUrl}/login";
-
-
 
             var result = await loginUrl.PostJsonAsync(new
             {
@@ -54,6 +56,27 @@ namespace Cinema.WinUI.Services
             }
 
             return false;
+        }
+
+        public async Task<bool> ResetPassword(int id, UserPasswordResetRequest request)
+        {
+            var resetPassUrl = $"{Properties.Settings.Default.APIUrl}/{_route}/{id}/resetPassword";
+
+            var result = await resetPassUrl.WithOAuthBearerToken(Token).PutJsonAsync(request);
+
+            if(result.IsSuccessStatusCode)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public async Task<string> ResetPasswordToken(int id)
+        {
+            var resetPassTokenUrl = $"{Properties.Settings.Default.APIUrl}/{_route}/{id}/resetPasswordToken";
+            var tokenResult = await resetPassTokenUrl.WithOAuthBearerToken(Token).GetStringAsync();
+            return tokenResult;
         }
 
         public async Task<T> Get<T>(object search)

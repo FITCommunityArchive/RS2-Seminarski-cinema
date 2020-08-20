@@ -157,6 +157,10 @@
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.7.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -294,6 +298,18 @@
     <Compile Include="UserControls\Pagination.Designer.cs">
       <DependentUpon>Pagination.cs</DependentUpon>
     </Compile>
+    <Compile Include="Users\FormChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\FormChangePassword.Designer.cs">
+      <DependentUpon>FormChangePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\FormUserDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\FormUserDetails.Designer.cs">
+      <DependentUpon>FormUserDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Users\FormUsers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -357,6 +373,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Pagination.resx">
       <DependentUpon>Pagination.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\FormChangePassword.resx">
+      <DependentUpon>FormChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\FormUserDetails.resx">
+      <DependentUpon>FormUserDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Users\FormUsers.resx">
       <DependentUpon>FormUsers.cs</DependentUpon>

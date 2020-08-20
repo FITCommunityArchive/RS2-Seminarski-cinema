@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtFormTitle = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -36,13 +38,16 @@
             this.lblSearch = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dgvUsers = new System.Windows.Forms.DataGridView();
+            this.pgnUsers = new Cinema.WinUI.UserControls.Pagination();
+            this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
+            this.btnAddNew = new Cinema.WinUI.UserControls.Buttons.AddNewButton();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pgnUsers = new Cinema.WinUI.UserControls.Pagination();
-            this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
+            this.DetailsAction = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -74,9 +79,6 @@
             // 
             // panel2
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.AutoSize = true;
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.txtSearch);
@@ -133,7 +135,7 @@
             this.dgvUsers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvUsers.BackgroundColor = System.Drawing.Color.White;
             this.dgvUsers.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvUsers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
+            this.dgvUsers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvUsers.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -145,16 +147,28 @@
             this.dgvUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUsers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
             this.Username,
             this.Email,
             this.FirstName,
             this.LastName,
-            this.Phone});
+            this.Phone,
+            this.DetailsAction});
             this.dgvUsers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvUsers.EnableHeadersVisualStyles = false;
+            this.dgvUsers.GridColor = System.Drawing.Color.White;
             this.dgvUsers.Location = new System.Drawing.Point(15, 15);
             this.dgvUsers.Margin = new System.Windows.Forms.Padding(15);
             this.dgvUsers.Name = "dgvUsers";
             this.dgvUsers.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvUsers.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvUsers.RowHeadersVisible = false;
             this.dgvUsers.RowHeadersWidth = 51;
             this.dgvUsers.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -166,6 +180,39 @@
             this.dgvUsers.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvUsers.Size = new System.Drawing.Size(1009, 378);
             this.dgvUsers.TabIndex = 0;
+            this.dgvUsers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsersList_CellContentClick);
+            // 
+            // pgnUsers
+            // 
+            this.pgnUsers.AutoSize = true;
+            this.pgnUsers.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.pgnUsers.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pgnUsers.Location = new System.Drawing.Point(849, 590);
+            this.pgnUsers.Margin = new System.Windows.Forms.Padding(4);
+            this.pgnUsers.Name = "pgnUsers";
+            this.pgnUsers.PageIndex = 0;
+            this.pgnUsers.Size = new System.Drawing.Size(210, 35);
+            this.pgnUsers.TabIndex = 11;
+            this.pgnUsers.TotalPages = 0;
+            this.pgnUsers.PageChanged += new System.EventHandler(this.pgnUsersList_PageChanged);
+            // 
+            // btnAddNew
+            // 
+            this.btnAddNew.AutoSize = true;
+            this.btnAddNew.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnAddNew.Location = new System.Drawing.Point(723, 590);
+            this.btnAddNew.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAddNew.Name = "btnAddNew";
+            this.btnAddNew.Size = new System.Drawing.Size(120, 40);
+            this.btnAddNew.TabIndex = 12;
+            this.btnAddNew.ButtonClicked += new System.EventHandler(this.BtnAddNew_ButtonClicked);
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
             // 
             // Username
             // 
@@ -202,18 +249,18 @@
             this.Phone.Name = "Phone";
             this.Phone.ReadOnly = true;
             // 
-            // pgnUsers
+            // DetailsAction
             // 
-            this.pgnUsers.AutoSize = true;
-            this.pgnUsers.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.pgnUsers.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pgnUsers.Location = new System.Drawing.Point(849, 590);
-            this.pgnUsers.Margin = new System.Windows.Forms.Padding(4);
-            this.pgnUsers.Name = "pgnUsers";
-            this.pgnUsers.PageIndex = 0;
-            this.pgnUsers.Size = new System.Drawing.Size(210, 35);
-            this.pgnUsers.TabIndex = 11;
-            this.pgnUsers.TotalPages = 0;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            this.DetailsAction.DefaultCellStyle = dataGridViewCellStyle2;
+            this.DetailsAction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DetailsAction.HeaderText = "Action";
+            this.DetailsAction.Name = "DetailsAction";
+            this.DetailsAction.ReadOnly = true;
+            this.DetailsAction.Text = "Details";
+            this.DetailsAction.UseColumnTextForButtonValue = true;
             // 
             // FormUsers
             // 
@@ -221,6 +268,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1085, 650);
+            this.Controls.Add(this.btnAddNew);
             this.Controls.Add(this.pgnUsers);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -251,10 +299,13 @@
         private System.Windows.Forms.TextBox txtSearch;
         private UserControls.Pagination pgnUsers;
         private System.Windows.Forms.PageSetupDialog pageSetupDialog1;
+        private UserControls.Buttons.AddNewButton btnAddNew;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Username;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.DataGridViewTextBoxColumn FirstName;
         private System.Windows.Forms.DataGridViewTextBoxColumn LastName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Phone;
+        private System.Windows.Forms.DataGridViewButtonColumn DetailsAction;
     }
 }

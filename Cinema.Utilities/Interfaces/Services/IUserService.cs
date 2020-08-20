@@ -10,5 +10,7 @@ namespace Cinema.Utilities.Interfaces
         Task<ApplicationUserDto> Authenticate(string userName, string password);
         string GenerateJSONWebToken(ApplicationUserDto user);
         Task<string> DecodeJSONWebToken(string token);
+        Task<bool> ResetPassword(int userId, string newPassword, string token);
+        Task<string> ResetPasswordToken(int userId);
     }
 }

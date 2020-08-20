@@ -73,18 +73,18 @@ namespace Cinema.Utilities.Factory
             };
         }
 
-        public static IdentityMasterModel CreateMaster(this ApplicationUser user)
+        public static MasterDto CreateMaster(this ApplicationUser user)
         {
-            return new IdentityMasterModel
+            return new MasterDto
             {
                 Id = user.Id,
                 Name = user.FullName
             };
         }
 
-        public static IdentityMasterModel CreateMaster(this ApplicationRole role)
+        public static MasterDto CreateMaster(this ApplicationRole role)
         {
-            return new IdentityMasterModel
+            return new MasterDto
             {
                 Id = role.Id,
                 Name = role.Name
