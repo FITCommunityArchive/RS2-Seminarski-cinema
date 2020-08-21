@@ -122,6 +122,13 @@ namespace Cinema.WinUI.Services
             return await url.WithOAuthBearerToken(Token).PutJsonAsync(request).ReceiveJson<T>();
         }
 
+        public async Task<T> UpdateWithRoute<T>(object id, object request, string route)
+        {
+            var url = $"{Properties.Settings.Default.APIUrl}/{_route}/{id}/{route}";
+
+            return await url.WithOAuthBearerToken(Token).PutJsonAsync(request).ReceiveJson<T>();
+        }
+
         public async Task<T> Delete<T>(object id)
         {
             var url = $"{Properties.Settings.Default.APIUrl}/{_route}/{id}";

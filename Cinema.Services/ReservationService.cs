@@ -54,6 +54,19 @@ namespace Cinema.Services
             throw new System.NotImplementedException();
         }
 
+        public async Task<bool> ChangeReservationStatus(int id)
+        {
+            Reservation reservation = await _reservationRepo.GetAsync(id);
+
+            if (reservation == null) return false;
+
+            reservation.IsCancelled = !reservation.IsCancelled;
+
+            await _unit.SaveAsync();
+
+            return true;
+        }
+
         public Task<bool> DeleteAsync(int id)
         {
             throw new System.NotImplementedException();

@@ -3,7 +3,6 @@ using Cinema.Shared.Enums;
 using Cinema.Shared.Pagination;
 using Cinema.Shared.Search;
 using Cinema.Utilities.Interfaces.Dal;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
@@ -115,11 +114,13 @@ namespace Cinema.Dal.Repository
                 case nameof(Reservation.Id):
                     return x => x.Id;
                 case nameof(Reservation.User.FullName):
-                    return x => x.User.FullName;
+                    return x => x.User.FirstName + " " + x.User.LastName;
                 case nameof(Reservation.Invoice.Price):
                     return x => x.Invoice.Price;
                 case nameof(Reservation.CreatedAt):
                     return x => x.CreatedAt;
+                case "Status":
+                    return x => x.IsCancelled;
                 default:
                     return x => x.Id;
             }

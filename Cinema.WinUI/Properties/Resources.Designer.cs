@@ -61,6 +61,15 @@ namespace Cinema.WinUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid column header name.
+        /// </summary>
+        internal static string Exception_InvalidColumnHeaderName {
+            get {
+                return ResourceManager.GetString("Exception_InvalidColumnHeaderName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Something went wrong!.
         /// </summary>
         internal static string Operation_BadRequest {
