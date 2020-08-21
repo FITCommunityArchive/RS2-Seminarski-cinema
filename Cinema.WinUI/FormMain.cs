@@ -28,6 +28,12 @@ namespace Cinema.WinUI
             btnLogin.Visible = false;
         }
 
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            FormDashboard formDashborad = new FormDashboard(_nextFormPrincipal);
+            openChildForm(formDashborad);
+        }
+
         private void customizeDesign()
         {
             panelDashboardSubmenu.Visible = false;
