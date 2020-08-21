@@ -1,16 +1,16 @@
 ﻿using Cinema.Models.Dtos;
+using Cinema.Models.Requests.Reservations;
 using Cinema.Shared.Constants;
+using Cinema.Shared.Enums;
 using Cinema.Shared.Pagination;
+using Cinema.WinUI.Constants;
 using Cinema.WinUI.Helpers;
+using Cinema.WinUI.Services;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Cinema.WinUI.Services;
-using Cinema.Shared.Enums;
-using Cinema.Models.Requests.Reservations;
-using System.Drawing;
-using Cinema.WinUI.Constants;
 
 namespace Cinema.WinUI.Movies
 {

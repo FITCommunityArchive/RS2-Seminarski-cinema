@@ -2,7 +2,6 @@
 using Cinema.Models.Requests.Users;
 using Cinema.Utilities.Interfaces;
 using Cinema.Utilities.Interfaces.Services;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 

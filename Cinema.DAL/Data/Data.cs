@@ -43,7 +43,7 @@ namespace Cinema.Dal.Data
             SeedScreenings(modelBuilder);
             SeedReservations(modelBuilder, numberOfTickets, firstUserId, secondUserId);
             SeedInvoices(modelBuilder, numberOfTickets);
-            SeedSeatReservations(modelBuilder, numberOfTickets);    
+            SeedSeatReservations(modelBuilder, numberOfTickets);
         }
 
         private static void SeedInvoices(ModelBuilder modelBuilder, int numberOfTickets)
@@ -66,7 +66,7 @@ namespace Cinema.Dal.Data
                      });
 
                 id--;
-          
+
                 modelBuilder.Entity<Invoice>().HasData(
                      new Invoice
                      {
@@ -159,7 +159,7 @@ namespace Cinema.Dal.Data
                 );
 
                 id--;
-            }            
+            }
         }
 
         private static void SeedScreenings(ModelBuilder modelBuilder)

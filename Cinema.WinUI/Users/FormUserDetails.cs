@@ -1,15 +1,11 @@
 ﻿using Cinema.Models.Dtos;
 using Cinema.Models.Requests.Users;
 using Cinema.Shared.Pagination;
-using Cinema.WinUI.Authorization;
 using Cinema.WinUI.Services;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -29,13 +25,14 @@ namespace Cinema.WinUI.Users
             InitializeComponent();
             _id = id;
             picLoading.Visible = false;
-            if(_id.HasValue)
+            if (_id.HasValue)
             {
                 txtConfirmPassword.Visible = false;
                 txtPassword.Visible = false;
                 lblPasswordConfirm.Visible = false;
                 lblPassword.Visible = false;
-            } else
+            }
+            else
             {
                 btnChangePassword.Visible = false;
             }
@@ -138,13 +135,14 @@ namespace Cinema.WinUI.Users
 
                 ApplicationUserDto result;
 
-                if(_id.HasValue)
+                if (_id.HasValue)
                 {
                     result = await _usersApi.Update<ApplicationUserDto>(_id, _request);
                     message = "Changes saved.";
-                } else
+                }
+                else
                 {
-                    if(txtPassword.Text != txtConfirmPassword.Text)
+                    if (txtPassword.Text != txtConfirmPassword.Text)
                     {
                         MessageBox.Show("Passowrds do not match.Make sure you type in same password in both fields", "Validation error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
@@ -171,11 +169,11 @@ namespace Cinema.WinUI.Users
 
         private void btnChangePassword_MouseClick(object sender, MouseEventArgs e)
         {
-            if(_id.HasValue)
+            if (_id.HasValue)
             {
                 FormChangePassword formChangePassword = new FormChangePassword((int)_id);
                 formChangePassword.ShowDialog();
-            } 
+            }
         }
     }
 }

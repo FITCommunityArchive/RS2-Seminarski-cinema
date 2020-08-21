@@ -1,8 +1,6 @@
 ﻿using Cinema.Models.Dtos;
 using Cinema.Models.Requests.Screenings;
 using Cinema.Shared.Pagination;
-using Cinema.WinUI.Authorization;
-using Cinema.WinUI.Constants;
 using Cinema.WinUI.Helpers;
 using Cinema.WinUI.Services;
 using System;
@@ -115,7 +113,7 @@ namespace Cinema.WinUI
             dgvScreenings.DataSource = screenings.Data;
             pgnScreenings.PageIndex = screenings.PageIndex;
             pgnScreenings.TotalPages = screenings.TotalPages;
-            
+
         }
 
         private void tlpWidget_CellPaint(object sender, TableLayoutCellPaintEventArgs e)
@@ -128,7 +126,8 @@ namespace Cinema.WinUI
                     e.Graphics.DrawLine(Pens.LightGray, new Point(e.CellBounds.Left, e.CellBounds.Bottom),
                         new Point(e.CellBounds.Right, e.CellBounds.Bottom));
                 }
-            } else if(e.Row == tlpWidget.RowCount-1)
+            }
+            else if (e.Row == tlpWidget.RowCount - 1)
             {
                 if (e.Column == 0 || e.Column == 1 || e.Column == 2)
                 {

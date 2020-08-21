@@ -5,7 +5,6 @@ using Cinema.Domain.Entities;
 using Cinema.Domain.Entities.Identity;
 using Cinema.Models.Dtos;
 using Cinema.Models.Requests;
-using Cinema.Models.Requests.Movies;
 using Cinema.Models.Requests.Screenings;
 using Cinema.Models.Requests.Users;
 using Cinema.Services;
@@ -98,7 +97,7 @@ namespace Cinema.Web.API
             services.AddScoped<ICinemaDbContext, CinemaDbContext>();
 
             services.AddScoped<ICRUDService<ApplicationUserDto, UserSearchRequest, UserUpsertRequest, UserUpsertRequest>, UserService>();
-            services.AddScoped<IService<ApplicationRoleDto, BaseSearchRequest>, BaseService<ApplicationRoleDto, BaseSearchRequest,ApplicationRole>>();
+            services.AddScoped<IService<ApplicationRoleDto, BaseSearchRequest>, BaseService<ApplicationRoleDto, BaseSearchRequest, ApplicationRole>>();
             services.AddScoped<ICRUDService<ScreeningDto, ScreeningSearchRequest, ScreeningUpsertRequest, ScreeningUpsertRequest>, ScreeningService>();
             services.AddScoped<IService<GenreDto, BaseSearchRequest>, BaseService<GenreDto, BaseSearchRequest, Genre>>();
             services.AddScoped<IService<HallDto, BaseSearchRequest>, BaseService<HallDto, BaseSearchRequest, Hall>>();

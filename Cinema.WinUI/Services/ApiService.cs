@@ -1,11 +1,8 @@
-﻿using Cinema.Shared.Helpers;
+﻿using Cinema.Models.Requests.Users;
+using Cinema.Shared.Helpers;
 using Flurl;
 using Flurl.Http;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System.Net.Http;
-using Cinema.Models.Requests.Users;
-
 using System.Threading.Tasks;
 
 namespace Cinema.WinUI.Services
@@ -64,7 +61,7 @@ namespace Cinema.WinUI.Services
 
             var result = await resetPassUrl.WithOAuthBearerToken(Token).PutJsonAsync(request);
 
-            if(result.IsSuccessStatusCode)
+            if (result.IsSuccessStatusCode)
             {
                 return true;
             }

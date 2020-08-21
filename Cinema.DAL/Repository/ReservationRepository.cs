@@ -13,7 +13,7 @@ namespace Cinema.Dal.Repository
     public class ReservationRepository : Repository<Reservation, int>, IReservationRepository
     {
         public ReservationRepository(ICinemaDbContext context) : base(context) { }
-                
+
         public async Task<IPagedList<Reservation>> GetPagedAsync(ISearchRequest searchRequest, int? reservationId, string movieTitle, string customerFullName, decimal? price, DateTime? createdAt, ReservationStatus? status)
         {
             var query = _dbSet.AsQueryable();
@@ -38,7 +38,7 @@ namespace Cinema.Dal.Repository
 
         private IQueryable<Reservation> ApplyFilter(IQueryable<Reservation> query, int? reservationId, string movieTitle, string customerFullName, decimal? price, DateTime? createdAt, ReservationStatus? status)
         {
-            
+
             if (reservationId.HasValue)
             {
                 query = query.Where(x => x.Id == reservationId);

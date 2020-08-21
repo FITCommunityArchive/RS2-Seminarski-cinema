@@ -1,11 +1,9 @@
-﻿using Cinema.Domain.Entities;
-using Cinema.Shared.Constants;
+﻿using Cinema.Shared.Constants;
 using Cinema.Shared.Pagination;
 using Cinema.Shared.Search;
 using Cinema.Utilities.Exceptions;
 using Cinema.Utilities.Interfaces.Dal;
 using Microsoft.EntityFrameworkCore;
-using OfficeOpenXml.FormulaParsing.Excel.Functions.Math;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -151,7 +149,7 @@ namespace Cinema.Dal.Repository
             {
                 pageSize = Paging.DEFAULT_PAGE_SIZE;
             }
-                       
+
             var items = await query.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToListAsync();
             return new PagedList<Entity>(items, count, pageIndex, pageSize);
         }

@@ -1,5 +1,5 @@
-﻿using System;
-using Cinema.Shared.Enums;
+﻿using Cinema.Shared.Enums;
+using System;
 
 namespace Cinema.Models.Requests.Reservations
 {

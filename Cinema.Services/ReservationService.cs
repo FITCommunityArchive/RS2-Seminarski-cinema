@@ -1,14 +1,13 @@
 ﻿using AutoMapper;
 using Cinema.Domain.Entities;
 using Cinema.Models.Dtos;
-using Cinema.Models.Requests.Movies;
 using Cinema.Models.Requests.Reservations;
 using Cinema.Shared.Enums;
 using Cinema.Shared.Pagination;
 using Cinema.Utilities.Interfaces.Dal;
 using Cinema.Utilities.Interfaces.Services;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Cinema.Services
@@ -16,6 +15,7 @@ namespace Cinema.Services
     public class ReservationService : IReservationService
     {
         protected readonly IReservationRepository _reservationRepo;
+        protected readonly IScreeningRepository _screeningRepo;
         protected readonly IUnitOfWork _unit;
         protected readonly IMapper _mapper;
 
@@ -24,6 +24,7 @@ namespace Cinema.Services
             _unit = unit;
             _mapper = mapper;
             _reservationRepo = unit.Reservations;
+            _screeningRepo = unit.Screenings;
         }
 
         public Task<ReservationDto> GetByIdAsync(int id, ICollection<string> includes = null)
@@ -57,7 +58,6 @@ namespace Cinema.Services
         public async Task<bool> ChangeReservationStatus(int id)
         {
             Reservation reservation = await _reservationRepo.GetAsync(id);
-
             if (reservation == null) return false;
 
             reservation.IsCancelled = !reservation.IsCancelled;
@@ -70,6 +70,20 @@ namespace Cinema.Services
         public Task<bool> DeleteAsync(int id)
         {
             throw new System.NotImplementedException();
+        }
+
+        private async Task<bool> ValidateStatusChange(int screeningID)
+        {
+            Screening screening = await _screeningRepo.GetAsync(screeningID);
+
+            if (screening == null || screening.DateAndTime <= DateTime.UtcNow) return false;
+
+            if (screening.DateAndTime <= DateTime.UtcNow)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         private ReservationStatus GetReservationStatus(ReservationDto reservation)

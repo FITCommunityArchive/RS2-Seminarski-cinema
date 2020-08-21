@@ -34,13 +34,13 @@ namespace Cinema.Dal.Repository
 
         public async Task<ApplicationUser> GetByIdWithRolesAsync(int id)
         {
-            var entity = await _dbSet.Include(x => x.UserRoles).ThenInclude(x=> x.Role)
+            var entity = await _dbSet.Include(x => x.UserRoles).ThenInclude(x => x.Role)
                                      .FirstOrDefaultAsync(x => x.Id == id);
 
             return entity;
         }
 
-        public async Task<IPagedList<ApplicationUser>> GetPagedAsync(ISearchRequest searchRequest,string searchTerm)
+        public async Task<IPagedList<ApplicationUser>> GetPagedAsync(ISearchRequest searchRequest, string searchTerm)
         {
             var query = _dbSet.AsQueryable();
 

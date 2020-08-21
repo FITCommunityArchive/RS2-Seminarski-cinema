@@ -1,5 +1,4 @@
-﻿using Cinema.Authorization.Constants;
-using Cinema.Authorization.Requirements;
+﻿using Cinema.Authorization.Requirements;
 using Cinema.Shared.Constants;
 using Microsoft.AspNetCore.Authorization;
 using System.Threading.Tasks;

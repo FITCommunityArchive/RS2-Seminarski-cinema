@@ -1,19 +1,14 @@
 ﻿using Cinema.Models.Dtos;
+using Cinema.Models.Requests;
 using Cinema.Models.Requests.Movies;
+using Cinema.Models.Requests.Screenings;
 using Cinema.Shared.Pagination;
-using Cinema.WinUI.Helpers;
+using Cinema.WinUI.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Drawing;
-using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Cinema.WinUI.Services;
-using Cinema.Models.Requests.Screenings;
-using Cinema.Models.Requests;
 
 namespace Cinema.WinUI.Movies
 {
@@ -151,7 +146,7 @@ namespace Cinema.WinUI.Movies
 
             if (_id.HasValue)
             {
-                result = await _screeningsApi.Update<ScreeningDto>(_id, _request);                
+                result = await _screeningsApi.Update<ScreeningDto>(_id, _request);
             }
             else
             {
@@ -169,7 +164,7 @@ namespace Cinema.WinUI.Movies
             {
                 MessageBox.Show(Properties.Resources.Operation_BadRequest);
             }
-        }   
+        }
 
         private void btnBack_ButtonClicked(object sender, EventArgs e)
         {

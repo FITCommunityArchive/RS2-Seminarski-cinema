@@ -3,7 +3,6 @@ using Cinema.Models.Requests;
 using Cinema.Shared.Pagination;
 using Cinema.Utilities.Interfaces.Dal;
 using Cinema.Utilities.Interfaces.Services;
-using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

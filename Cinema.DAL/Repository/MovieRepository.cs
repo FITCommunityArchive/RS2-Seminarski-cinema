@@ -22,7 +22,7 @@ namespace Cinema.Dal.Repository
             if (!searchRequest.ReturnAll)
             {
                 query = ApplyFilter(query, searchTerm, searchYear, searchDuration);
-            }            
+            }
 
             if (searchRequest.SortOrder != null && searchRequest.SortColumn != null)
             {
