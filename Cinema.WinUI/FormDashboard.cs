@@ -1,4 +1,10 @@
-﻿using Cinema.WinUI.Authorization;
+﻿using Cinema.Models.Dtos;
+using Cinema.Models.Requests.Screenings;
+using Cinema.Shared.Pagination;
+using Cinema.WinUI.Authorization;
+using Cinema.WinUI.Constants;
+using Cinema.WinUI.Helpers;
+using Cinema.WinUI.Services;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -6,9 +12,11 @@ using System.Windows.Forms;
 
 namespace Cinema.WinUI
 {
-    public partial class FormDashboard : SecureBaseForm
+    public partial class FormDashboard : BaseDataGridForm
     {
         private IList<string> _nextFormPrincipal;
+
+        private readonly ApiService _screeningsApi = new ApiService("Screenings");
 
         public FormDashboard(IList<string> userPrincipal) : base(new string[] { "Administrator", "Content Editor" }, userPrincipal)
         {
@@ -16,12 +24,7 @@ namespace Cinema.WinUI
             InitializeComponent();
         }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void FormDashboard_Load(object sender, EventArgs e)
+        private void LoadCharts()
         {
             float x1 = float.Parse("22");
             float x2 = float.Parse("33");
@@ -92,6 +95,29 @@ namespace Cinema.WinUI
             chart1.Series["Payments"].Points.AddXY(10, a10);
         }
 
+
+        private async void FormDashboard_Load(object sender, EventArgs e)
+        {
+            LoadCharts();
+
+            this.dgvScreenings.DoubleBuffered(true);
+            ScreeningSearchRequest searchRequest = new ScreeningSearchRequest();
+
+            searchRequest.Includes.Add("Movie");
+            searchRequest.Includes.Add("Hall");
+            searchRequest.Includes.Add("Pricing");
+
+            searchRequest = ApplyDefaultSearchValues(searchRequest) as ScreeningSearchRequest;
+
+            var screenings = await _screeningsApi.Get<PagedList<ScreeningDto>>(searchRequest);
+
+            dgvScreenings.AutoGenerateColumns = false;
+            dgvScreenings.DataSource = screenings.Data;
+            pgnScreenings.PageIndex = screenings.PageIndex;
+            pgnScreenings.TotalPages = screenings.TotalPages;
+            
+        }
+
         private void tlpWidget_CellPaint(object sender, TableLayoutCellPaintEventArgs e)
         {
             if (e.Row == 0)
@@ -112,5 +138,6 @@ namespace Cinema.WinUI
             }
 
         }
+
     }
 }

@@ -96,13 +96,9 @@
             // 
             // logoLargeWhite1
             // 
-<<<<<<< HEAD
-            this.logoLargeWhite1.Location = new System.Drawing.Point(14, 617);
-            this.logoLargeWhite1.Margin = new System.Windows.Forms.Padding(5);
-=======
+
             this.logoLargeWhite1.Location = new System.Drawing.Point(19, 759);
             this.logoLargeWhite1.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
->>>>>>> dev
             this.logoLargeWhite1.Name = "logoLargeWhite1";
             this.logoLargeWhite1.Size = new System.Drawing.Size(293, 105);
             this.logoLargeWhite1.TabIndex = 5;
@@ -271,13 +267,8 @@
             // btnLogin
             // 
             this.btnLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-<<<<<<< HEAD
-            this.btnLogin.Location = new System.Drawing.Point(911, 9);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(2);
-=======
             this.btnLogin.Location = new System.Drawing.Point(852, 11);
             this.btnLogin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
->>>>>>> dev
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(100, 28);
             this.btnLogin.TabIndex = 1;
@@ -322,18 +313,12 @@
             this.panelChildForm.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panelChildForm.Controls.Add(this.tlpTopBar);
             this.panelChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
-<<<<<<< HEAD
-            this.panelChildForm.Location = new System.Drawing.Point(250, 0);
-            this.panelChildForm.Margin = new System.Windows.Forms.Padding(2);
-=======
             this.panelChildForm.Location = new System.Drawing.Point(333, 0);
             this.panelChildForm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
->>>>>>> dev
             this.panelChildForm.Name = "panelChildForm";
             this.panelChildForm.Size = new System.Drawing.Size(1447, 864);
             this.panelChildForm.TabIndex = 3;
             // 
-<<<<<<< HEAD
             // tlpTopBar
             // 
             this.tlpTopBar.AutoSize = true;
@@ -355,30 +340,7 @@
             this.tlpTopBar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpTopBar.Size = new System.Drawing.Size(1085, 41);
             this.tlpTopBar.TabIndex = 3;
-=======
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.AutoSize = true;
-            this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.White;
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.Controls.Add(this.btnLogout, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnLogin, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tableLayoutPanel1.MaximumSize = new System.Drawing.Size(0, 50);
-            this.tableLayoutPanel1.MinimumSize = new System.Drawing.Size(1085, 50);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1085, 50);
-            this.tableLayoutPanel1.TabIndex = 3;
->>>>>>> dev
+
             // 
             // FormMain
             // 

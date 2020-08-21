@@ -31,6 +31,7 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tlpWidget = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.lblIncome = new System.Windows.Forms.Label();
@@ -60,6 +61,15 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.dgvScreenings = new System.Windows.Forms.DataGridView();
+            this.pgnScreenings = new Cinema.WinUI.UserControls.Pagination();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Hall = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateAndTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Action = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tlpWidget.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -67,6 +77,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvScreenings)).BeginInit();
             this.SuspendLayout();
             // 
             // tlpWidget
@@ -84,6 +95,7 @@
             this.tlpWidget.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpWidget.Location = new System.Drawing.Point(10, 10);
             this.tlpWidget.Margin = new System.Windows.Forms.Padding(10);
+            this.tlpWidget.MinimumSize = new System.Drawing.Size(0, 140);
             this.tlpWidget.Name = "tlpWidget";
             this.tlpWidget.RowCount = 3;
             this.tlpWidget.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45.16129F));
@@ -175,6 +187,7 @@
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(262, 10);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(10);
+            this.tableLayoutPanel1.MinimumSize = new System.Drawing.Size(0, 140);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45.16129F));
@@ -265,6 +278,7 @@
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(496, 10);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(10);
+            this.tableLayoutPanel2.MinimumSize = new System.Drawing.Size(0, 140);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45.16129F));
@@ -355,6 +369,7 @@
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(729, 10);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(10);
+            this.tableLayoutPanel3.MinimumSize = new System.Drawing.Size(0, 140);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 3;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45.16129F));
@@ -437,7 +452,7 @@
             this.tableLayoutPanel4.SetColumnSpan(this.chart1, 2);
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(3, 46);
+            this.chart1.Location = new System.Drawing.Point(3, 51);
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
@@ -465,14 +480,14 @@
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.97248F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 83.02752F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(937, 254);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(937, 264);
             this.tableLayoutPanel4.TabIndex = 5;
             // 
             // label6
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(3, 3);
+            this.label6.Location = new System.Drawing.Point(3, 4);
             this.label6.Name = "label6";
             this.label6.Padding = new System.Windows.Forms.Padding(10);
             this.label6.Size = new System.Drawing.Size(111, 36);
@@ -499,7 +514,7 @@
             // tableLayoutPanel5
             // 
             this.tableLayoutPanel5.ColumnCount = 4;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 234F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 233F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 238F));
@@ -508,21 +523,127 @@
             this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel2, 2, 0);
             this.tableLayoutPanel5.Controls.Add(this.tlpWidget, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel1, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.dgvScreenings, 0, 2);
+            this.tableLayoutPanel5.Controls.Add(this.pgnScreenings, 3, 3);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 3;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 36.81917F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 63.18083F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 122F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(957, 557);
+            this.tableLayoutPanel5.RowCount = 4;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 160F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 241F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(957, 730);
             this.tableLayoutPanel5.TabIndex = 6;
+            // 
+            // dgvScreenings
+            // 
+            this.dgvScreenings.AllowUserToAddRows = false;
+            this.dgvScreenings.AllowUserToDeleteRows = false;
+            this.dgvScreenings.AllowUserToResizeColumns = false;
+            this.dgvScreenings.AllowUserToResizeRows = false;
+            this.dgvScreenings.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvScreenings.BackgroundColor = System.Drawing.Color.White;
+            this.dgvScreenings.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvScreenings.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            this.dgvScreenings.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvScreenings.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvScreenings.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvScreenings.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
+            this.Title,
+            this.Hall,
+            this.DateAndTime,
+            this.Price,
+            this.Status,
+            this.Action});
+            this.tableLayoutPanel5.SetColumnSpan(this.dgvScreenings, 4);
+            this.dgvScreenings.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvScreenings.Location = new System.Drawing.Point(10, 454);
+            this.dgvScreenings.Margin = new System.Windows.Forms.Padding(10);
+            this.dgvScreenings.Name = "dgvScreenings";
+            this.dgvScreenings.ReadOnly = true;
+            this.dgvScreenings.RowHeadersVisible = false;
+            this.dgvScreenings.Size = new System.Drawing.Size(937, 221);
+            this.dgvScreenings.TabIndex = 6;
+            // 
+            // pgnScreenings
+            // 
+            this.pgnScreenings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pgnScreenings.AutoSize = true;
+            this.pgnScreenings.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.pgnScreenings.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pgnScreenings.Location = new System.Drawing.Point(737, 689);
+            this.pgnScreenings.Margin = new System.Windows.Forms.Padding(4, 4, 10, 4);
+            this.pgnScreenings.Name = "pgnScreenings";
+            this.pgnScreenings.PageIndex = 0;
+            this.pgnScreenings.Size = new System.Drawing.Size(210, 35);
+            this.pgnScreenings.TabIndex = 11;
+            this.pgnScreenings.TotalPages = 0;
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
+            // Title
+            // 
+            this.Title.DataPropertyName = "Movie.Title";
+            this.Title.HeaderText = "Title";
+            this.Title.Name = "Title";
+            this.Title.ReadOnly = true;
+            // 
+            // Hall
+            // 
+            this.Hall.DataPropertyName = "Hall.Name";
+            this.Hall.HeaderText = "Hall";
+            this.Hall.Name = "Hall";
+            this.Hall.ReadOnly = true;
+            // 
+            // DateAndTime
+            // 
+            this.DateAndTime.DataPropertyName = "DateAndTime";
+            this.DateAndTime.HeaderText = "Date And Time";
+            this.DateAndTime.Name = "DateAndTime";
+            this.DateAndTime.ReadOnly = true;
+            // 
+            // Price
+            // 
+            this.Price.DataPropertyName = "Pricing.Price";
+            this.Price.HeaderText = "Price";
+            this.Price.Name = "Price";
+            this.Price.ReadOnly = true;
+            // 
+            // Status
+            // 
+            this.Status.DataPropertyName = "TimingStatus";
+            this.Status.HeaderText = "Status";
+            this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
+            // 
+            // Action
+            // 
+            this.Action.HeaderText = "Action";
+            this.Action.Name = "Action";
+            this.Action.ReadOnly = true;
+            this.Action.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Action.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // FormDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(957, 557);
+            this.ClientSize = new System.Drawing.Size(957, 730);
             this.Controls.Add(this.tableLayoutPanel5);
             this.Name = "FormDashboard";
             this.Text = "Form2";
@@ -539,6 +660,8 @@
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvScreenings)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -574,5 +697,14 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.DataGridView dgvScreenings;
+        private UserControls.Pagination pgnScreenings;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Title;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Hall;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DateAndTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
+        private System.Windows.Forms.DataGridViewButtonColumn Action;
     }
 }
