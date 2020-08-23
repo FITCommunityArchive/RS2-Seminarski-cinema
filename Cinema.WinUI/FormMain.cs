@@ -1,5 +1,7 @@
-﻿using Cinema.WinUI.Authorization;
+﻿using Cinema.Shared.Constants;
+using Cinema.WinUI.Authorization;
 using Cinema.WinUI.Movies;
+using Cinema.WinUI.Reports;
 using Cinema.WinUI.Users;
 using System;
 using System.Collections.Generic;
@@ -12,7 +14,7 @@ namespace Cinema.WinUI
         private SecureBaseForm activeForm = null;
 
         private IList<string> _nextFormPrincipal;
-        public FormMain(IList<string> userPrincipal) : base(new string[] { "Administrator", "Content Editor" }, userPrincipal)
+        public FormMain(IList<string> userPrincipal) : base(new string[] { Roles.Administrator, Roles.ContentEditor }, userPrincipal)
         {
             _nextFormPrincipal = userPrincipal;
             InitializeComponent();
@@ -119,6 +121,12 @@ namespace Cinema.WinUI
         {
             FormReservationList formReservationList = new FormReservationList(_nextFormPrincipal);
             openChildForm(formReservationList);
+        }
+
+        private void btnReports_Click(object sender, EventArgs e)
+        {
+            FormReports formReports = new FormReports(_nextFormPrincipal);
+            openChildForm(formReports);
         }
     }
 }
