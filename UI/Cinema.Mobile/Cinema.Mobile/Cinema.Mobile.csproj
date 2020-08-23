@@ -18,6 +18,19 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Cinema.Models\Cinema.Models.csproj" />
     <ProjectReference Include="..\..\..\Cinema.Shared\Cinema.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\NowShowingScreeningsPage.xaml.cs">
+      <DependentUpon>NowShowingScreeningsPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Views\NowShowingScreeningsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

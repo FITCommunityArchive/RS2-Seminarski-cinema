@@ -7,7 +7,8 @@ namespace Cinema.Mobile.Models
     public enum MenuItemType
     {
         Browse,
-        About
+        About,
+        NowShowing
     }
     public class HomeMenuItem
     {

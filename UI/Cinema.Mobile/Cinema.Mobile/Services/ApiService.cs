@@ -40,7 +40,7 @@ namespace Cinema.Mobile.Services
                     url += await search.ToQueryString();
                 }
 
-                return await url.WithBasicAuth(Username, Password).GetJsonAsync<T>();
+                return await url.GetJsonAsync<T>();
             }
             catch (FlurlHttpException ex)
             {
@@ -57,7 +57,7 @@ namespace Cinema.Mobile.Services
         {
             var url = $"{_apiUrl}/{_route}/{id}";
 
-            return await url.WithBasicAuth(Username, Password).GetJsonAsync<T>();
+            return await url.GetJsonAsync<T>();
         }
 
         public async Task<T> Insert<T>(object request)
@@ -65,7 +65,7 @@ namespace Cinema.Mobile.Services
             try
             {
                 var url = $"{_apiUrl}/{_route}";
-                return await url.WithBasicAuth(Username, Password).PostJsonAsync(request).ReceiveJson<T>();
+                return await url.PostJsonAsync(request).ReceiveJson<T>();
             }
             catch (FlurlHttpException ex)
             {
@@ -90,7 +90,7 @@ namespace Cinema.Mobile.Services
             try
             {
                 var url = $"{_apiUrl}/{_route}/{id}";
-                return await url.WithBasicAuth(Username, Password).PutJsonAsync(request).ReceiveJson<T>();
+                return await url.PutJsonAsync(request).ReceiveJson<T>();
             }
             catch (FlurlHttpException ex)
             {
