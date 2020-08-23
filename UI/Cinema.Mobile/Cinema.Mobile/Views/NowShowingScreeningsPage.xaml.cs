@@ -51,11 +51,44 @@ namespace Cinema.Mobile.Views
             }
 
             var screening1 = _screenings[0];
-            var screening2 = _screenings[1];
-
             var stream1 = new MemoryStream(screening1.Movie.Poster);
-            
+
             grid.Children.Add(new Image
+            {
+                BindingContext = screening1,
+                Source = ImageSource.FromStream(() => stream1)
+            }, 0, 1);
+
+            var screening2 = _screenings[1];
+            var stream2 = new MemoryStream(screening2.Movie.Poster);
+
+            grid.Children.Add(new Image
+            {
+                BindingContext = screening2,
+                Source = ImageSource.FromStream(() => stream2)
+            }, 1, 1);
+
+            var screening3 = _screenings[2];
+            var stream3 = new MemoryStream(screening3.Movie.Poster);
+
+            grid.Children.Add(new Image
+            {
+                BindingContext = screening3,
+                Source = ImageSource.FromStream(() => stream3),
+                HeightRequest = 600
+            }, 0, 2);
+
+            var screening4 = _screenings[3];
+            var stream4 = new MemoryStream(screening4.Movie.Poster);
+
+            grid.Children.Add(new Image
+            {
+                BindingContext = screening4,
+                Source = ImageSource.FromStream(() => stream4),
+                HeightRequest = 600
+            }, 1, 2);
+
+            /*grid.Children.Add(new Image
             {
                 Source = ImageSource.FromStream(() => stream1)
             }, 0, 1);
@@ -65,7 +98,7 @@ namespace Cinema.Mobile.Views
             grid.Children.Add(new Image
             {
                 Source = ImageSource.FromStream(() => stream1)
-            }, 1, 1);
+            }, 1, 1);*/
 
             // Accomodate iPhone status bar.
             //this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
