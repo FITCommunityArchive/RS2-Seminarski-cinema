@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:viewModels="clr-namespace:Cinema.Mobile.ViewModels" xmlns:converters="clr-namespace:Cinema.Mobile.Helpers"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:viewModels="clr-namespace:Cinema.Mobile.ViewModels" xmlns:converters="clr-namespace:Cinema.Mobile.Helpers" xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
              mc:Ignorable="d"
              x:Class="Cinema.Mobile.Views.NowShowingScreeningsPage">
     <ContentPage.BindingContext>
@@ -12,21 +12,12 @@
         <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Screenings"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            <ListView ItemsSource="{Binding ScreeningsList}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Orientation="Vertical">
-                                <Image Source="{Binding Movie.Poster, Converter={StaticResource imgConv}}"></Image>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackLayout>
+        <flv:FlowListView Margin="50" FlowColumnCount="2" FlowItemsSource="{Binding ScreeningsList}">
+            <flv:FlowListView.FlowColumnTemplate>
+                <DataTemplate>
+                    <Image HeightRequest="600" WidthRequest="400" Margin="20" Source="{Binding Movie.Poster, Converter={StaticResource imgConv}}"></Image>
+                </DataTemplate>
+            </flv:FlowListView.FlowColumnTemplate>
+        </flv:FlowListView>
     </ContentPage.Content>
 </ContentPage>

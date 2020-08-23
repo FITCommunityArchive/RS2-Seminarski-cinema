@@ -1,4 +1,5 @@
 ﻿using Cinema.Mobile.ViewModels;
+using Cinema.Models.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,13 @@ namespace Cinema.Mobile.Views
         {
             base.OnAppearing();
             await model.Init();
+        }
+
+        private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var item = e.SelectedItem as ScreeningDto;
+
+            await Navigation.PushAsync(new ScreeningDetailPage(item));
         }
     }
 }
