@@ -28,14 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.pgnReport = new Cinema.WinUI.UserControls.Pagination();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.pgnScreenings = new Cinema.WinUI.UserControls.Pagination();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnLoadScreenings = new System.Windows.Forms.Button();
             this.btnLoadReservations = new System.Windows.Forms.Button();
             this.btnExportPDF = new System.Windows.Forms.Button();
+            this.btnPrint = new System.Windows.Forms.Button();
             this.btnExportExcel = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvReservationsList = new System.Windows.Forms.DataGridView();
@@ -45,64 +46,69 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreatedAt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvReportList = new System.Windows.Forms.DataGridView();
+            this.dgvScreeningsList = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Hall = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DateAndTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pgnReservations = new Cinema.WinUI.UserControls.Pagination();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReservationsList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvReportList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvScreeningsList)).BeginInit();
             this.SuspendLayout();
             // 
-            // pgnReport
+            // pgnScreenings
             // 
-            this.pgnReport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.pgnReport.AutoSize = true;
-            this.pgnReport.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.pgnReport.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pgnReport.Location = new System.Drawing.Point(902, 13);
-            this.pgnReport.Margin = new System.Windows.Forms.Padding(4);
-            this.pgnReport.Name = "pgnReport";
-            this.pgnReport.PageIndex = 0;
-            this.pgnReport.Size = new System.Drawing.Size(210, 35);
-            this.pgnReport.TabIndex = 11;
-            this.pgnReport.TotalPages = 0;
+            this.pgnScreenings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pgnScreenings.AutoSize = true;
+            this.pgnScreenings.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.pgnScreenings.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pgnScreenings.Location = new System.Drawing.Point(885, 13);
+            this.pgnScreenings.Margin = new System.Windows.Forms.Padding(4);
+            this.pgnScreenings.Name = "pgnScreenings";
+            this.pgnScreenings.PageIndex = 0;
+            this.pgnScreenings.Size = new System.Drawing.Size(210, 35);
+            this.pgnScreenings.TabIndex = 11;
+            this.pgnScreenings.TotalPages = 0;
+            this.pgnScreenings.PageChanged += new System.EventHandler(this.pgnScreenings_PageChanged);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.Controls.Add(this.pgnReport);
+            this.panel1.Controls.Add(this.pgnReservations);
+            this.panel1.Controls.Add(this.pgnScreenings);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 582);
             this.panel1.Margin = new System.Windows.Forms.Padding(30);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(11, 12, 11, 12);
-            this.panel1.Size = new System.Drawing.Size(1125, 61);
+            this.panel1.Size = new System.Drawing.Size(1108, 61);
             this.panel1.TabIndex = 12;
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.White;
-            this.tableLayoutPanel1.ColumnCount = 4;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.82645F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.17355F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 760F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
+            this.tableLayoutPanel1.ColumnCount = 5;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.Controls.Add(this.btnLoadScreenings, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnLoadReservations, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnExportPDF, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnExportExcel, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnPrint, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnExportExcel, 2, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1125, 58);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1108, 58);
             this.tableLayoutPanel1.TabIndex = 13;
             // 
             // btnLoadScreenings
@@ -110,12 +116,12 @@
             this.btnLoadScreenings.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnLoadScreenings.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(218)))), ((int)(((byte)(218)))));
             this.btnLoadScreenings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLoadScreenings.Location = new System.Drawing.Point(139, 17);
+            this.btnLoadScreenings.Location = new System.Drawing.Point(140, 17);
             this.btnLoadScreenings.Margin = new System.Windows.Forms.Padding(10);
             this.btnLoadScreenings.Name = "btnLoadScreenings";
-            this.btnLoadScreenings.Size = new System.Drawing.Size(105, 23);
+            this.btnLoadScreenings.Size = new System.Drawing.Size(95, 23);
             this.btnLoadScreenings.TabIndex = 3;
-            this.btnLoadScreenings.Text = "Load screenings";
+            this.btnLoadScreenings.Text = "Screenings data";
             this.btnLoadScreenings.UseVisualStyleBackColor = true;
             this.btnLoadScreenings.Click += new System.EventHandler(this.btnLoadScreenings_Click);
             // 
@@ -127,9 +133,9 @@
             this.btnLoadReservations.Location = new System.Drawing.Point(10, 17);
             this.btnLoadReservations.Margin = new System.Windows.Forms.Padding(10);
             this.btnLoadReservations.Name = "btnLoadReservations";
-            this.btnLoadReservations.Size = new System.Drawing.Size(109, 23);
+            this.btnLoadReservations.Size = new System.Drawing.Size(110, 23);
             this.btnLoadReservations.TabIndex = 2;
-            this.btnLoadReservations.Text = "Load reservations";
+            this.btnLoadReservations.Text = "Reservations data";
             this.btnLoadReservations.UseVisualStyleBackColor = true;
             this.btnLoadReservations.Click += new System.EventHandler(this.btnLoadReservations_Click);
             // 
@@ -138,7 +144,7 @@
             this.btnExportPDF.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnExportPDF.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(218)))), ((int)(((byte)(218)))));
             this.btnExportPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExportPDF.Location = new System.Drawing.Point(919, 17);
+            this.btnExportPDF.Location = new System.Drawing.Point(942, 17);
             this.btnExportPDF.Margin = new System.Windows.Forms.Padding(10);
             this.btnExportPDF.Name = "btnExportPDF";
             this.btnExportPDF.Size = new System.Drawing.Size(85, 23);
@@ -147,15 +153,29 @@
             this.btnExportPDF.UseVisualStyleBackColor = true;
             this.btnExportPDF.Click += new System.EventHandler(this.btnExportPDF_Click);
             // 
+            // btnPrint
+            // 
+            this.btnPrint.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnPrint.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(218)))), ((int)(((byte)(218)))));
+            this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrint.Location = new System.Drawing.Point(1047, 17);
+            this.btnPrint.Margin = new System.Windows.Forms.Padding(10);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(51, 23);
+            this.btnPrint.TabIndex = 4;
+            this.btnPrint.Text = "Print";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
             // btnExportExcel
             // 
             this.btnExportExcel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnExportExcel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(218)))), ((int)(((byte)(218)))));
             this.btnExportExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExportExcel.Location = new System.Drawing.Point(1027, 17);
+            this.btnExportExcel.Location = new System.Drawing.Point(833, 17);
             this.btnExportExcel.Margin = new System.Windows.Forms.Padding(10);
             this.btnExportExcel.Name = "btnExportExcel";
-            this.btnExportExcel.Size = new System.Drawing.Size(88, 23);
+            this.btnExportExcel.Size = new System.Drawing.Size(89, 23);
             this.btnExportExcel.TabIndex = 0;
             this.btnExportExcel.Text = "Export to excel";
             this.btnExportExcel.UseVisualStyleBackColor = true;
@@ -165,13 +185,13 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.dgvReservationsList);
-            this.panel2.Controls.Add(this.dgvReportList);
+            this.panel2.Controls.Add(this.dgvScreeningsList);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 58);
             this.panel2.Margin = new System.Windows.Forms.Padding(30);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(11, 12, 11, 12);
-            this.panel2.Size = new System.Drawing.Size(1125, 524);
+            this.panel2.Size = new System.Drawing.Size(1108, 524);
             this.panel2.TabIndex = 12;
             // 
             // dgvReservationsList
@@ -185,14 +205,14 @@
             this.dgvReservationsList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvReservationsList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.dgvReservationsList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvReservationsList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvReservationsList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvReservationsList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvReservationsList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -210,7 +230,7 @@
             this.dgvReservationsList.RowHeadersVisible = false;
             this.dgvReservationsList.RowHeadersWidth = 51;
             this.dgvReservationsList.RowTemplate.Height = 24;
-            this.dgvReservationsList.Size = new System.Drawing.Size(1103, 500);
+            this.dgvReservationsList.Size = new System.Drawing.Size(1086, 500);
             this.dgvReservationsList.TabIndex = 1;
             this.dgvReservationsList.Visible = false;
             this.dgvReservationsList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvReportReservations_CellFormatting);
@@ -270,45 +290,45 @@
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
-            // dgvReportList
+            // dgvScreeningsList
             // 
-            this.dgvReportList.AllowUserToAddRows = false;
-            this.dgvReportList.AllowUserToDeleteRows = false;
-            this.dgvReportList.AllowUserToResizeColumns = false;
-            this.dgvReportList.AllowUserToResizeRows = false;
-            this.dgvReportList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvReportList.BackgroundColor = System.Drawing.Color.White;
-            this.dgvReportList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvReportList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
-            this.dgvReportList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvReportList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvReportList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvReportList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvScreeningsList.AllowUserToAddRows = false;
+            this.dgvScreeningsList.AllowUserToDeleteRows = false;
+            this.dgvScreeningsList.AllowUserToResizeColumns = false;
+            this.dgvScreeningsList.AllowUserToResizeRows = false;
+            this.dgvScreeningsList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvScreeningsList.BackgroundColor = System.Drawing.Color.White;
+            this.dgvScreeningsList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvScreeningsList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
+            this.dgvScreeningsList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvScreeningsList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvScreeningsList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvScreeningsList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
             this.Title,
             this.Hall,
             this.DateAndTime,
             this.Price,
             this.Status});
-            this.dgvReportList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvReportList.GridColor = System.Drawing.Color.White;
-            this.dgvReportList.Location = new System.Drawing.Point(11, 12);
-            this.dgvReportList.Margin = new System.Windows.Forms.Padding(4, 12, 4, 4);
-            this.dgvReportList.Name = "dgvReportList";
-            this.dgvReportList.ReadOnly = true;
-            this.dgvReportList.RowHeadersVisible = false;
-            this.dgvReportList.RowHeadersWidth = 51;
-            this.dgvReportList.RowTemplate.Height = 24;
-            this.dgvReportList.Size = new System.Drawing.Size(1103, 500);
-            this.dgvReportList.TabIndex = 0;
-            this.dgvReportList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvReports_CellFormatting);
+            this.dgvScreeningsList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvScreeningsList.GridColor = System.Drawing.Color.White;
+            this.dgvScreeningsList.Location = new System.Drawing.Point(11, 12);
+            this.dgvScreeningsList.Margin = new System.Windows.Forms.Padding(4, 12, 4, 4);
+            this.dgvScreeningsList.Name = "dgvScreeningsList";
+            this.dgvScreeningsList.ReadOnly = true;
+            this.dgvScreeningsList.RowHeadersVisible = false;
+            this.dgvScreeningsList.RowHeadersWidth = 51;
+            this.dgvScreeningsList.RowTemplate.Height = 24;
+            this.dgvScreeningsList.Size = new System.Drawing.Size(1086, 500);
+            this.dgvScreeningsList.TabIndex = 0;
+            this.dgvScreeningsList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvReports_CellFormatting);
             // 
             // Id
             // 
@@ -367,11 +387,26 @@
             this.Status.Name = "Status";
             this.Status.ReadOnly = true;
             // 
+            // pgnReservations
+            // 
+            this.pgnReservations.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pgnReservations.AutoSize = true;
+            this.pgnReservations.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.pgnReservations.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pgnReservations.Location = new System.Drawing.Point(883, 13);
+            this.pgnReservations.Margin = new System.Windows.Forms.Padding(4);
+            this.pgnReservations.Name = "pgnReservations";
+            this.pgnReservations.PageIndex = 0;
+            this.pgnReservations.Size = new System.Drawing.Size(210, 35);
+            this.pgnReservations.TabIndex = 12;
+            this.pgnReservations.TotalPages = 0;
+            this.pgnReservations.PageChanged += new System.EventHandler(this.pgnReservations_PageChanged);
+            // 
             // FormReports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1125, 643);
+            this.ClientSize = new System.Drawing.Size(1108, 643);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.panel1);
@@ -383,25 +418,24 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvReservationsList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvReportList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvScreeningsList)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private UserControls.Pagination pgnReport;
+        private UserControls.Pagination pgnScreenings;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button btnExportExcel;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DataGridView dgvReportList;
+        private System.Windows.Forms.DataGridView dgvScreeningsList;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Title;
         private System.Windows.Forms.DataGridViewTextBoxColumn Hall;
         private System.Windows.Forms.DataGridViewTextBoxColumn DateAndTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
-        private System.Windows.Forms.Button btnExportPDF;
         private System.Windows.Forms.Button btnLoadReservations;
         private System.Windows.Forms.DataGridView dgvReservationsList;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
@@ -411,5 +445,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CreatedAt;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.Button btnLoadScreenings;
+        private System.Windows.Forms.Button btnExportPDF;
+        private System.Windows.Forms.Button btnPrint;
+        private UserControls.Pagination pgnReservations;
     }
 }
