@@ -3,11 +3,11 @@ using Cinema.Models.Requests.Movies;
 using Cinema.Shared.Constants;
 using Cinema.Shared.Pagination;
 using Cinema.WinUI.Helpers;
+using Cinema.WinUI.Services;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Cinema.WinUI.Services;
 
 namespace Cinema.WinUI.Movies
 {

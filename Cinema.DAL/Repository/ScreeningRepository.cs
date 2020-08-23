@@ -36,7 +36,7 @@ namespace Cinema.Dal.Repository
             if (searchRequest.Includes.Count() > 0)
             {
                 query = AddIncludes(query, searchRequest.Includes);
-            }            
+            }
 
             var pagedList = await ApplyPaginationAsync(query, searchRequest.PageIndex, searchRequest.PageSize);
             return pagedList;
@@ -49,7 +49,7 @@ namespace Cinema.Dal.Repository
 
         private IQueryable<Screening> ApplyFilter(IQueryable<Screening> query, string searchTerm, string hall, decimal? price, TimingStatus? status, DateTime? screeningDate)
         {
-            
+
             if (screeningDate.HasValue)
             {
                 query = query.Where(x => x.DateAndTime.Date == screeningDate.Value.Date);

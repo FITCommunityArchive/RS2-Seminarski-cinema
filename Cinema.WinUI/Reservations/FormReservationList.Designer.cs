@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grdReservationsList = new System.Windows.Forms.DataGridView();
             this.lblReservationId = new System.Windows.Forms.Label();
             this.pnlFormTitle = new System.Windows.Forms.Panel();
@@ -37,6 +37,8 @@
             this.lblBreadcrumbs = new System.Windows.Forms.Label();
             this.txtFormTitle = new System.Windows.Forms.TextBox();
             this.pnlSearchBars = new System.Windows.Forms.Panel();
+            this.lblMovie = new System.Windows.Forms.Label();
+            this.txtMovie = new Cinema.WinUI.UserControls.ExtendedTextBox();
             this.dtpDateAdded = new System.Windows.Forms.DateTimePicker();
             this.lblCustomer = new System.Windows.Forms.Label();
             this.txtCustomer = new Cinema.WinUI.UserControls.ExtendedTextBox();
@@ -49,8 +51,6 @@
             this.pnlDataGrid = new System.Windows.Forms.Panel();
             this.pnlContent = new System.Windows.Forms.Panel();
             this.pagination = new Cinema.WinUI.UserControls.Pagination();
-            this.lblMovie = new System.Windows.Forms.Label();
-            this.txtMovie = new Cinema.WinUI.UserControls.ExtendedTextBox();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Screening = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -76,14 +76,14 @@
             this.grdReservationsList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.grdReservationsList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.grdReservationsList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grdReservationsList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdReservationsList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.grdReservationsList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdReservationsList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
@@ -190,6 +190,31 @@
             this.pnlSearchBars.Padding = new System.Windows.Forms.Padding(15);
             this.pnlSearchBars.Size = new System.Drawing.Size(1383, 89);
             this.pnlSearchBars.TabIndex = 9;
+            // 
+            // lblMovie
+            // 
+            this.lblMovie.AutoSize = true;
+            this.lblMovie.BackColor = System.Drawing.Color.White;
+            this.lblMovie.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMovie.ForeColor = System.Drawing.Color.Gray;
+            this.lblMovie.Location = new System.Drawing.Point(214, 15);
+            this.lblMovie.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
+            this.lblMovie.Name = "lblMovie";
+            this.lblMovie.Size = new System.Drawing.Size(48, 18);
+            this.lblMovie.TabIndex = 13;
+            this.lblMovie.Text = "Movie";
+            // 
+            // txtMovie
+            // 
+            this.txtMovie.BorderColor = System.Drawing.Color.DarkGray;
+            this.txtMovie.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMovie.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtMovie.Location = new System.Drawing.Point(217, 37);
+            this.txtMovie.Margin = new System.Windows.Forms.Padding(25);
+            this.txtMovie.Name = "txtMovie";
+            this.txtMovie.Size = new System.Drawing.Size(182, 26);
+            this.txtMovie.TabIndex = 12;
+            this.txtMovie.TextChanged += new System.EventHandler(this.SearchChanged);
             // 
             // dtpDateAdded
             // 
@@ -339,31 +364,6 @@
             this.pagination.TotalPages = 0;
             this.pagination.PageChanged += new System.EventHandler(this.pagination_PageChanged);
             // 
-            // lblMovie
-            // 
-            this.lblMovie.AutoSize = true;
-            this.lblMovie.BackColor = System.Drawing.Color.White;
-            this.lblMovie.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMovie.ForeColor = System.Drawing.Color.Gray;
-            this.lblMovie.Location = new System.Drawing.Point(214, 15);
-            this.lblMovie.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
-            this.lblMovie.Name = "lblMovie";
-            this.lblMovie.Size = new System.Drawing.Size(48, 18);
-            this.lblMovie.TabIndex = 13;
-            this.lblMovie.Text = "Movie";
-            // 
-            // txtMovie
-            // 
-            this.txtMovie.BorderColor = System.Drawing.Color.DarkGray;
-            this.txtMovie.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMovie.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtMovie.Location = new System.Drawing.Point(217, 37);
-            this.txtMovie.Margin = new System.Windows.Forms.Padding(25);
-            this.txtMovie.Name = "txtMovie";
-            this.txtMovie.Size = new System.Drawing.Size(182, 26);
-            this.txtMovie.TabIndex = 12;
-            this.txtMovie.TextChanged += new System.EventHandler(this.SearchChanged);
-            // 
             // Id
             // 
             this.Id.DataPropertyName = "Id";
@@ -421,12 +421,12 @@
             // 
             // DetailsAction
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            this.DetailsAction.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            this.DetailsAction.DefaultCellStyle = dataGridViewCellStyle2;
             this.DetailsAction.FillWeight = 60F;
             this.DetailsAction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DetailsAction.HeaderText = "Action";
@@ -435,7 +435,6 @@
             this.DetailsAction.ReadOnly = true;
             this.DetailsAction.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.DetailsAction.Text = "Cancel Reservation";
-            this.DetailsAction.UseColumnTextForButtonValue = true;
             // 
             // FormReservationList
             // 

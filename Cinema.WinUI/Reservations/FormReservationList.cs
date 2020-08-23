@@ -1,15 +1,16 @@
 ﻿using Cinema.Models.Dtos;
+using Cinema.Models.Requests.Reservations;
 using Cinema.Shared.Constants;
+using Cinema.Shared.Enums;
 using Cinema.Shared.Pagination;
+using Cinema.WinUI.Constants;
 using Cinema.WinUI.Helpers;
+using Cinema.WinUI.Services;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Cinema.WinUI.Services;
-using Cinema.Shared.Enums;
-using Cinema.Models.Requests.Reservations;
-using Cinema.Models.Requests.Screenings;
 
 namespace Cinema.WinUI.Movies
 {
@@ -75,8 +76,40 @@ namespace Cinema.WinUI.Movies
 
             grdReservationsList.AutoGenerateColumns = false;
             grdReservationsList.DataSource = result.Data;
+
+            SetReservationCancelationButtons();
+
             pagination.PageIndex = result.PageIndex;
             pagination.TotalPages = result.TotalPages;
+        }
+
+        private void SetReservationCancelationButtons()
+        {
+            for (int i = 0; i < grdReservationsList.Rows.Count; i++)
+            {
+                var row = grdReservationsList.Rows[i];
+                string reservationActionHeaderText = "Action";
+
+                int lastColumnIndex = GetColumnIndexByHeaderText(grdReservationsList, reservationActionHeaderText);
+
+                ReservationDto reservation = row.DataBoundItem as ReservationDto;
+
+                DataGridViewButtonCell buttonCell = row.Cells[lastColumnIndex] as DataGridViewButtonCell;
+                buttonCell.ReadOnly = false;
+
+                if (reservation.Status == ReservationStatus.CANCELED)
+                {
+                    buttonCell.Value = ReservationStatusButtonText.AUTHORIZE_RESERVATION;
+                    buttonCell.Style.BackColor = Color.Green;
+                }
+                else
+                {
+                    buttonCell.Value = ReservationStatusButtonText.CANCEL_RESERVATION;
+                    buttonCell.Style.BackColor = Color.Red;
+                }
+
+                buttonCell.ReadOnly = true;
+            }
         }
 
         #region Event methods
@@ -108,8 +141,9 @@ namespace Cinema.WinUI.Movies
         private async void grdReservationsList_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             DataGridViewColumn clickedColumn = grdReservationsList.Columns[e.ColumnIndex];
+            string clickedColumnName = clickedColumn.Name;
 
-            ChangeSorting(clickedColumn.Name);
+            ChangeSorting(clickedColumnName);
 
             ReservationSearchRequest searchRequest = GetSearchRequest();
             searchRequest.SortColumn = CurrentSortPropertyName;
@@ -118,7 +152,7 @@ namespace Cinema.WinUI.Movies
             await LoadReservations(searchRequest);
         }
 
-        private void grdReservationsList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private async void grdReservationsList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var senderGrid = (DataGridView)sender;
 
@@ -128,8 +162,13 @@ namespace Cinema.WinUI.Movies
                 var clickedRow = senderGrid.Rows[e.RowIndex];
                 int.TryParse(clickedRow.Cells["id"].Value.ToString(), out int reservationId);
 
-                //TODO cancel reservation
+                bool success = await _reservationsApi.UpdateWithRoute<bool>(reservationId, null, "status");
 
+                if (success)
+                {
+                    ReservationSearchRequest searchRequest = GetSearchRequest();
+                    await LoadReservations(searchRequest);
+                }
             }
         }
 

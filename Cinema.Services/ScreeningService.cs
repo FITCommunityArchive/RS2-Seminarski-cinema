@@ -113,14 +113,14 @@ namespace Cinema.Services
             await _unit.SaveAsync();
 
             return true;
-        }        
+        }
 
         private bool ValidateScreeningDate(Screening screening)
         {
             return screening.DateAndTime >= DateTime.UtcNow;
         }
 
-        
+
         private async Task<bool> ValidateScreeningHallAvailabilityAsync(Screening screening)
         {
             Hall hall = await _hallRepo.GetAsync(screening.HallId, new List<string> { nameof(Hall.Screenings) });

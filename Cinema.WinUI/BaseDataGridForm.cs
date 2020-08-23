@@ -1,6 +1,8 @@
 ﻿using Cinema.Shared.Search;
 using Cinema.WinUI.Authorization;
 using Cinema.WinUI.Constants;
+using Cinema.WinUI.Exceptions;
+using Cinema.WinUI.Properties;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -104,6 +106,19 @@ namespace Cinema.WinUI
             }
 
             return retValue;
+        }
+
+        protected int GetColumnIndexByHeaderText(DataGridView dataGridView, string headerText)
+        {
+            for (int y = 0; y < dataGridView.Columns.Count; y++)
+            {
+                if (dataGridView.Columns[y].HeaderText.ToLower() == headerText.ToLower())
+                {
+                    return y;
+                }
+            }
+
+            throw new CinemaArgumentOutOfRangeException(Resources.Exception_InvalidColumnHeaderName);
         }
     }
 }

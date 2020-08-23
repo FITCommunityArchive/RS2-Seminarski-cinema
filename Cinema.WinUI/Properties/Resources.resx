@@ -136,4 +136,7 @@
   <data name="Validation_FutureDateRequired" xml:space="preserve">
     <value>Date and time must be in the future!</value>
   </data>
+  <data name="Exception_InvalidColumnHeaderName" xml:space="preserve">
+    <value>Invalid column header name</value>
+  </data>
 </root>

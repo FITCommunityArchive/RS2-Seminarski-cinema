@@ -28,7 +28,7 @@ namespace Cinema.Web.Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<T>> GetById(int id, [FromQuery]ICollection<string> includes = null)
+        public async Task<ActionResult<T>> GetById(int id, [FromQuery] ICollection<string> includes = null)
         {
             var result = await _service.GetByIdAsync(id, includes);
 

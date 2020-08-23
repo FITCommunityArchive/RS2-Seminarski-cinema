@@ -2,6 +2,7 @@
 using Cinema.Models.Requests.Movies;
 using Cinema.Shared.Pagination;
 using Cinema.WinUI.Helpers;
+using Cinema.WinUI.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,7 +12,6 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Cinema.WinUI.Services;
 
 namespace Cinema.WinUI.Movies
 {
@@ -127,7 +127,7 @@ namespace Cinema.WinUI.Movies
             rtxVideoLink.ReadOnly = _isReadonly;
 
             SetGenresListReadonly(isReadonly);
-        }        
+        }
 
         private void ValidateEmptyField(Control control, CancelEventArgs e)
         {

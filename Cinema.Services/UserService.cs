@@ -55,7 +55,7 @@ namespace Cinema.Services
             {
                 ApplicationRole role = await _unit.Roles.GetAsync(model.RoleId);
                 await _userManager.AddToRoleAsync(userIdentity, role.Name);
-            } 
+            }
 
             return _mapper.Map<ApplicationUserDto>(userIdentity);
         }
@@ -74,14 +74,14 @@ namespace Cinema.Services
                 var getRoleName = await _roleRepo.GetAsync(req.RoleId);
                 await _userManager.RemoveFromRoleAsync(user, user.UserRoles[0].Role.Name);
                 await _userManager.AddToRoleAsync(user, getRoleName.Name);
-            } 
+            }
 
             await _unit.SaveAsync();
 
             return _mapper.Map<ApplicationUserDto>(user);
         }
 
-        public async Task<bool> ResetPassword(int userId, string newPassword,string token)
+        public async Task<bool> ResetPassword(int userId, string newPassword, string token)
         {
             var user = _userManager.Users.Where(x => x.Id == userId).FirstOrDefault();
 

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Cinema.Models.Requests.Users
+﻿namespace Cinema.Models.Requests.Users
 {
     public class UserPasswordResetRequest
     {

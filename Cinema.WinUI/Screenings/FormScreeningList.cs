@@ -1,14 +1,14 @@
 ﻿using Cinema.Models.Dtos;
 using Cinema.Models.Requests.Screenings;
 using Cinema.Shared.Constants;
+using Cinema.Shared.Enums;
 using Cinema.Shared.Pagination;
 using Cinema.WinUI.Helpers;
+using Cinema.WinUI.Services;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Cinema.WinUI.Services;
-using Cinema.Shared.Enums;
 
 namespace Cinema.WinUI.Movies
 {
@@ -75,7 +75,7 @@ namespace Cinema.WinUI.Movies
         }
 
         private void InitializeDetailsForm(int? id)
-        {            
+        {
             _formScreeningDetails = new FormScreeningDetails(id);
             _formScreeningDetails.FormClosed += new System.Windows.Forms.FormClosedEventHandler(FormDetails_Closed);
             _formScreeningDetails.ShowDialog();

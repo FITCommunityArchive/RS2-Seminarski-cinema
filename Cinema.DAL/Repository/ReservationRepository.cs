@@ -3,7 +3,6 @@ using Cinema.Shared.Enums;
 using Cinema.Shared.Pagination;
 using Cinema.Shared.Search;
 using Cinema.Utilities.Interfaces.Dal;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
@@ -14,7 +13,7 @@ namespace Cinema.Dal.Repository
     public class ReservationRepository : Repository<Reservation, int>, IReservationRepository
     {
         public ReservationRepository(ICinemaDbContext context) : base(context) { }
-                
+
         public async Task<IPagedList<Reservation>> GetPagedAsync(ISearchRequest searchRequest, int? reservationId, string movieTitle, string customerFullName, decimal? price, DateTime? createdAt, ReservationStatus? status)
         {
             var query = _dbSet.AsQueryable();
@@ -39,7 +38,7 @@ namespace Cinema.Dal.Repository
 
         private IQueryable<Reservation> ApplyFilter(IQueryable<Reservation> query, int? reservationId, string movieTitle, string customerFullName, decimal? price, DateTime? createdAt, ReservationStatus? status)
         {
-            
+
             if (reservationId.HasValue)
             {
                 query = query.Where(x => x.Id == reservationId);
@@ -115,11 +114,13 @@ namespace Cinema.Dal.Repository
                 case nameof(Reservation.Id):
                     return x => x.Id;
                 case nameof(Reservation.User.FullName):
-                    return x => x.User.FullName;
+                    return x => x.User.FirstName + " " + x.User.LastName;
                 case nameof(Reservation.Invoice.Price):
                     return x => x.Invoice.Price;
                 case nameof(Reservation.CreatedAt):
                     return x => x.CreatedAt;
+                case "Status":
+                    return x => x.IsCancelled;
                 default:
                     return x => x.Id;
             }
