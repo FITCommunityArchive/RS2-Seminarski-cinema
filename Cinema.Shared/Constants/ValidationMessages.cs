@@ -8,5 +8,6 @@
         public const string INTERNAL_SERVER_ERROR = "Internal Server Error.";
         public const string PRICE_INVALID = "Price amount is not valid.";
         public const string ALL_FIELDS_REQUIRED = "All fields are required.";
+        public const string NOT_AUTHENTICATED = "Not authenticated.";
     }
 }
