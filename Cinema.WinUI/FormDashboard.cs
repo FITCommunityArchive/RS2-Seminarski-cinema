@@ -138,5 +138,10 @@ namespace Cinema.WinUI
 
         }
 
+        private void dgvScreenings_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            BindNavigationColumns(dgvScreenings, sender, e);
+        }
+
     }
 }

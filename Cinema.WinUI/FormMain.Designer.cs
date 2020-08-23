@@ -48,6 +48,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.panelChildForm = new System.Windows.Forms.Panel();
             this.tlpTopBar = new System.Windows.Forms.TableLayoutPanel();
+            this.btnReports = new System.Windows.Forms.Button();
             this.panelSideMenu.SuspendLayout();
             this.panelDashboardSubmenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
@@ -60,6 +61,7 @@
             // 
             this.panelSideMenu.AutoScroll = true;
             this.panelSideMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(88)))), ((int)(((byte)(209)))));
+            this.panelSideMenu.Controls.Add(this.btnReports);
             this.panelSideMenu.Controls.Add(this.btnReservations);
             this.panelSideMenu.Controls.Add(this.logoLargeWhite1);
             this.panelSideMenu.Controls.Add(this.btnUsers);
@@ -95,7 +97,7 @@
             // logoLargeWhite1
             // 
             this.logoLargeWhite1.Location = new System.Drawing.Point(14, 617);
-            this.logoLargeWhite1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.logoLargeWhite1.Margin = new System.Windows.Forms.Padding(5);
             this.logoLargeWhite1.Name = "logoLargeWhite1";
             this.logoLargeWhite1.Size = new System.Drawing.Size(220, 85);
             this.logoLargeWhite1.TabIndex = 5;
@@ -255,7 +257,7 @@
             // 
             this.btnLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLogin.Location = new System.Drawing.Point(911, 5);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(75, 23);
             this.btnLogin.TabIndex = 1;
@@ -299,7 +301,7 @@
             this.panelChildForm.Controls.Add(this.tlpTopBar);
             this.panelChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelChildForm.Location = new System.Drawing.Point(250, 0);
-            this.panelChildForm.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelChildForm.Margin = new System.Windows.Forms.Padding(2);
             this.panelChildForm.Name = "panelChildForm";
             this.panelChildForm.Size = new System.Drawing.Size(1085, 702);
             this.panelChildForm.TabIndex = 3;
@@ -325,6 +327,24 @@
             this.tlpTopBar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpTopBar.Size = new System.Drawing.Size(1085, 33);
             this.tlpTopBar.TabIndex = 3;
+            // 
+            // btnReports
+            // 
+            this.btnReports.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnReports.FlatAppearance.BorderSize = 0;
+            this.btnReports.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(42)))), ((int)(((byte)(97)))));
+            this.btnReports.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(42)))), ((int)(((byte)(97)))));
+            this.btnReports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReports.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnReports.Location = new System.Drawing.Point(0, 451);
+            this.btnReports.Name = "btnReports";
+            this.btnReports.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnReports.Size = new System.Drawing.Size(250, 45);
+            this.btnReports.TabIndex = 7;
+            this.btnReports.Text = "Reports";
+            this.btnReports.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReports.UseVisualStyleBackColor = true;
+            this.btnReports.Click += new System.EventHandler(this.btnReports_Click);
             // 
             // FormMain
             // 
@@ -375,6 +395,7 @@
         private UserControls.Logos.LogoLargeWhite logoLargeWhite1;
         private System.Windows.Forms.TableLayoutPanel tlpTopBar;
         private System.Windows.Forms.Button btnReservations;
+        private System.Windows.Forms.Button btnReports;
     }
 }
 
