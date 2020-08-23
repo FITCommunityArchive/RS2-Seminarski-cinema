@@ -30,11 +30,12 @@ namespace Cinema.Mobile.Views
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            await LoadScreenings();            
-            
+            await LoadScreenings();
+
             Grid grid = new Grid
             {
-                VerticalOptions = LayoutOptions.FillAndExpand,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
                 ColumnDefinitions =
                 {
                     new ColumnDefinition { Width = GridLength.Auto },
@@ -47,61 +48,32 @@ namespace Cinema.Mobile.Views
 
             for (int i = 0; i < numberOfRows; i++)
             {
-                grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+                grid.RowDefinitions.Add(new RowDefinition { Height = 620 });
             }
 
-            var screening1 = _screenings[0];
-            var stream1 = new MemoryStream(screening1.Movie.Poster);
+            int screeningIndex = 0;
 
-            grid.Children.Add(new Image
+            for (int i = 0; i < numberOfRows; i++)
             {
-                BindingContext = screening1,
-                Source = ImageSource.FromStream(() => stream1)
-            }, 0, 1);
+                for (int j = 0; j < 2; j++)
+                {
+                    var screening = _screenings[screeningIndex];
+                    var stream = new MemoryStream(screening.Movie.Poster);
 
-            var screening2 = _screenings[1];
-            var stream2 = new MemoryStream(screening2.Movie.Poster);
+                    ImageButton image = new ImageButton
+                    {
+                        BindingContext = screening,
+                        Source = ImageSource.FromStream(() => stream),
+                        HeightRequest = 600,
+                        Command = new Command(async () => await OpenDetails(screening))
+                    };
 
-            grid.Children.Add(new Image
-            {
-                BindingContext = screening2,
-                Source = ImageSource.FromStream(() => stream2)
-            }, 1, 1);
-
-            var screening3 = _screenings[2];
-            var stream3 = new MemoryStream(screening3.Movie.Poster);
-
-            grid.Children.Add(new Image
-            {
-                BindingContext = screening3,
-                Source = ImageSource.FromStream(() => stream3),
-                HeightRequest = 600
-            }, 0, 2);
-
-            var screening4 = _screenings[3];
-            var stream4 = new MemoryStream(screening4.Movie.Poster);
-
-            grid.Children.Add(new Image
-            {
-                BindingContext = screening4,
-                Source = ImageSource.FromStream(() => stream4),
-                HeightRequest = 600
-            }, 1, 2);
-
-            /*grid.Children.Add(new Image
-            {
-                Source = ImageSource.FromStream(() => stream1)
-            }, 0, 1);
-
-            stream1 = new MemoryStream(screening2.Movie.Poster);
-
-            grid.Children.Add(new Image
-            {
-                Source = ImageSource.FromStream(() => stream1)
-            }, 1, 1);*/
+                    grid.Children.Add(image, j, i);
+                }
+            }
 
             // Accomodate iPhone status bar.
-            //this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
+            this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
 
             // Build the page.
             this.Content = grid;
@@ -110,11 +82,9 @@ namespace Cinema.Mobile.Views
             await model.Init();
         }
 
-        private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private async Task OpenDetails(ScreeningDto screening3)
         {
-            var item = e.SelectedItem as ScreeningDto;
-
-            await Navigation.PushAsync(new ScreeningDetailPage(item));
+            await Navigation.PushAsync(new ScreeningDetailPage(screening3));
         }
 
         private async Task LoadScreenings()
