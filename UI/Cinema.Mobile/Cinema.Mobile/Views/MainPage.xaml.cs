@@ -39,6 +39,9 @@ namespace Cinema.Mobile.Views
                     case (int)MenuItemType.NowShowing:
                         MenuPages.Add(id, new NavigationPage(new NowShowingScreeningsPage()));
                         break;
+                    case (int)MenuItemType.GridDemo:
+                        MenuPages.Add(id, new NavigationPage(new GridDemoPage()));
+                        break;
                 }
             }
 

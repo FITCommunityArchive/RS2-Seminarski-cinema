@@ -22,7 +22,8 @@ namespace Cinema.Mobile.Views
             {
                 new HomeMenuItem {Id = MenuItemType.Browse, Title="Browse" },
                 new HomeMenuItem {Id = MenuItemType.About, Title="About" },
-                new HomeMenuItem {Id = MenuItemType.NowShowing, Title="Now Showing" }
+                new HomeMenuItem {Id = MenuItemType.NowShowing, Title="Now Showing" },
+                new HomeMenuItem {Id = MenuItemType.GridDemo, Title="Grid Demo" }
             };
 
             ListViewMenu.ItemsSource = menuItems;
