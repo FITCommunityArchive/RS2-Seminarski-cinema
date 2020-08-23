@@ -8,7 +8,8 @@ namespace Cinema.Mobile.Models
     {
         Browse,
         About,
-        NowShowing
+        NowShowing,
+        GridDemo
     }
     public class HomeMenuItem
     {

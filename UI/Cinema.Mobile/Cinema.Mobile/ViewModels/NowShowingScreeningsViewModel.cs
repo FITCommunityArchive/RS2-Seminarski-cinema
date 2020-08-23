@@ -17,6 +17,16 @@ namespace Cinema.Mobile.ViewModels
 
         public NowShowingScreeningsViewModel()
         {
+
+        }
+
+        public NowShowingScreeningsViewModel(List<ScreeningDto> screenings)
+        {
+            foreach (var screening in screenings)
+            {
+                ScreeningsList.Add(screening);
+            }
+
             InitCommand = new Command(async () => await Init());
         }
 
@@ -25,19 +35,20 @@ namespace Cinema.Mobile.ViewModels
         public ICommand InitCommand { get; set; }
 
         public async Task Init()
-        {               
+        {           
+            
             ScreeningSearchRequest search = new ScreeningSearchRequest();
             search.Includes.Add("Movie");
             
             var list = await _screeningsApi.Get<PagedList<ScreeningDto>>(search);
 
+            /*
             ScreeningsList.Clear();
-            
+
             foreach (var screening in list.Data)
             {
                 ScreeningsList.Add(screening);
-            }
-            
+            }*/
         }   
     }       
 }
