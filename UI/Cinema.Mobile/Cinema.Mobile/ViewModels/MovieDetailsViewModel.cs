@@ -6,13 +6,13 @@ using Xamarin.Forms;
 
 namespace Cinema.Mobile.ViewModels
 {
-    public class ScreeningDetailsViewModel : BaseViewModel
+    public class MovieDetailsViewModel : BaseViewModel
     {
-        public ScreeningDetailsViewModel()
+        public MovieDetailsViewModel()
         {
 
         }
 
-        public ScreeningDto Screening { get; set; }
+        public MovieDto Movie { get; set; }
     }
 }

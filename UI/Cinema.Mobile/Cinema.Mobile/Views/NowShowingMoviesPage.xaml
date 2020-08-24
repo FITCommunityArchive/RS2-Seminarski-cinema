@@ -4,9 +4,9 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:viewModels="clr-namespace:Cinema.Mobile.ViewModels" xmlns:converters="clr-namespace:Cinema.Mobile.Helpers"
              mc:Ignorable="d"
-             x:Class="Cinema.Mobile.Views.NowShowingScreeningsPage">
+             x:Class="Cinema.Mobile.Views.NowShowingMoviesPage">
     <ContentPage.BindingContext>
-        <viewModels:NowShowingScreeningsViewModel></viewModels:NowShowingScreeningsViewModel>
+        <viewModels:NowShowingMoviesViewModel></viewModels:NowShowingMoviesViewModel>
     </ContentPage.BindingContext>
     <ContentPage.Resources>
         <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>

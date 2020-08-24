@@ -16,13 +16,13 @@ using Xamarin.Forms.Xaml;
 namespace Cinema.Mobile.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class NowShowingScreeningsPage : ContentPage
+    public partial class NowShowingMoviesPage : ContentPage
     {
-        private readonly ApiService _screeningsApi = new ApiService("Screenings");
-        private List<ScreeningDto> _screenings;
-        NowShowingScreeningsViewModel model = null;
+        private readonly ApiService _moviesApi = new ApiService("Movies");
+        private List<MovieDto> _movies;
+        NowShowingMoviesViewModel model = null;
 
-        public NowShowingScreeningsPage()
+        public NowShowingMoviesPage()
         {
             InitializeComponent();
         }
@@ -30,7 +30,7 @@ namespace Cinema.Mobile.Views
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            await LoadScreenings();
+            await LoadMovies();
 
             Grid grid = new Grid
             {
@@ -43,8 +43,14 @@ namespace Cinema.Mobile.Views
                 }
             };
 
-            int screeningsCount = _screenings.Count;
-            int numberOfRows = (int)Math.Ceiling(screeningsCount / 2.0);
+            int moviesCount = _movies.Count;
+            int numberOfRows = (int)Math.Ceiling(moviesCount / 2.0);
+
+            int numberOfColumns = 2;
+            if (moviesCount == 1)
+            {
+                numberOfColumns = 1;
+            }
 
             for (int i = 0; i < numberOfRows; i++)
             {
@@ -53,19 +59,20 @@ namespace Cinema.Mobile.Views
 
             int screeningIndex = 0;
 
+
             for (int i = 0; i < numberOfRows; i++)
             {
-                for (int j = 0; j < 2; j++)
+                for (int j = 0; j < numberOfColumns; j++)
                 {
-                    var screening = _screenings[screeningIndex];
-                    var stream = new MemoryStream(screening.Movie.Poster);
+                    var movie = _movies[screeningIndex];
+                    var stream = new MemoryStream(movie.Poster);
 
                     ImageButton image = new ImageButton
                     {
-                        BindingContext = screening,
+                        BindingContext = movie,
                         Source = ImageSource.FromStream(() => stream),
                         HeightRequest = 300,
-                        Command = new Command(async () => await OpenDetails(screening))
+                        Command = new Command(async () => await OpenDetails(movie))
                     };
 
                     grid.Children.Add(image, j, i);
@@ -78,22 +85,21 @@ namespace Cinema.Mobile.Views
             // Build the page.
             this.Content = grid;
 
-            BindingContext = model = new NowShowingScreeningsViewModel(_screenings);
+            BindingContext = model = new NowShowingMoviesViewModel(_movies);
             await model.Init();
         }
 
-        private async Task OpenDetails(ScreeningDto screening3)
+        private async Task OpenDetails(MovieDto movie)
         {
-            await Navigation.PushAsync(new ScreeningDetailPage(screening3));
+            await Navigation.PushAsync(new MovieDetailPage(movie));
         }
 
-        private async Task LoadScreenings()
+        private async Task LoadMovies()
         {
-            ScreeningSearchRequest search = new ScreeningSearchRequest();
-            search.Includes.Add("Movie");
+            string route = "now-showing";
+            var list = await _moviesApi.Get<List<MovieDto>>(null, route);
 
-            var list = await _screeningsApi.Get<PagedList<ScreeningDto>>(search);
-            _screenings = list.Data;
+            _movies = list;
         }
     }
 }

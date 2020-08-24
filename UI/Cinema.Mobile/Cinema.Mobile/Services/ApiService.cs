@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Cinema.Shared.Helpers;
 using Cinema.Shared.Constants;
+using System.Globalization;
 
 namespace Cinema.Mobile.Services
 {
@@ -28,11 +29,16 @@ namespace Cinema.Mobile.Services
             _route = route;
         }
 
-        public async Task<T> Get<T>(object search)
+        public async Task<T> Get<T>(object search, string route = null)
         {           
             try
             {
                 var url = $"{_apiUrl}/{_route}";
+
+                if (!string.IsNullOrEmpty(route))
+                {
+                    url += $"/{route}";
+                }
 
                 if (search != null)
                 {
