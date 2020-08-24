@@ -62,7 +62,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvScreenings = new System.Windows.Forms.DataGridView();
-            this.pgnScreenings = new Cinema.WinUI.UserControls.Pagination();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Hall = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -70,6 +69,7 @@
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Action = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.pgnScreenings = new Cinema.WinUI.UserControls.Pagination();
             this.tlpWidget.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -573,20 +573,7 @@
             this.dgvScreenings.RowHeadersVisible = false;
             this.dgvScreenings.Size = new System.Drawing.Size(937, 221);
             this.dgvScreenings.TabIndex = 6;
-            // 
-            // pgnScreenings
-            // 
-            this.pgnScreenings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pgnScreenings.AutoSize = true;
-            this.pgnScreenings.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.pgnScreenings.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pgnScreenings.Location = new System.Drawing.Point(737, 689);
-            this.pgnScreenings.Margin = new System.Windows.Forms.Padding(4, 4, 10, 4);
-            this.pgnScreenings.Name = "pgnScreenings";
-            this.pgnScreenings.PageIndex = 0;
-            this.pgnScreenings.Size = new System.Drawing.Size(210, 35);
-            this.pgnScreenings.TabIndex = 11;
-            this.pgnScreenings.TotalPages = 0;
+            this.dgvScreenings.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvScreenings_CellFormatting);
             // 
             // Id
             // 
@@ -638,6 +625,20 @@
             this.Action.ReadOnly = true;
             this.Action.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Action.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // pgnScreenings
+            // 
+            this.pgnScreenings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pgnScreenings.AutoSize = true;
+            this.pgnScreenings.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.pgnScreenings.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pgnScreenings.Location = new System.Drawing.Point(737, 689);
+            this.pgnScreenings.Margin = new System.Windows.Forms.Padding(4, 4, 10, 4);
+            this.pgnScreenings.Name = "pgnScreenings";
+            this.pgnScreenings.PageIndex = 0;
+            this.pgnScreenings.Size = new System.Drawing.Size(210, 35);
+            this.pgnScreenings.TabIndex = 11;
+            this.pgnScreenings.TotalPages = 0;
             // 
             // FormDashboard
             // 
