@@ -48,10 +48,7 @@ namespace Cinema.Services
             List<string> screeningIncludes = new List<string> { nameof(Screening.Movie) };
             var screenings = await _screeningRepo.GetAsync(x => x.DateAndTime >= DateTime.UtcNow, screeningIncludes);
 
-            var query = _unit.Screenings.Get().Where(x => x.DateAndTime >= DateTime.UtcNow && x.DateAndTime <= DateTime.UtcNow.AddDays(30))
-                                              .OrderBy(x => x.DateAndTime);
-
-            List<Movie> moviesList = query.Select(x => x.Movie).Distinct().ToList();
+            List<Movie> moviesList = screenings.Select(x => x.Movie).Distinct().ToList();
 
             List<MovieDto> dtoList = _mapper.Map<List<MovieDto>>(moviesList);
             return dtoList;
