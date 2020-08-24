@@ -48,7 +48,7 @@ namespace Cinema.Mobile.Views
 
             for (int i = 0; i < numberOfRows; i++)
             {
-                grid.RowDefinitions.Add(new RowDefinition { Height = 620 });
+                grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
             }
 
             int screeningIndex = 0;
@@ -64,7 +64,7 @@ namespace Cinema.Mobile.Views
                     {
                         BindingContext = screening,
                         Source = ImageSource.FromStream(() => stream),
-                        HeightRequest = 600,
+                        HeightRequest = 300,
                         Command = new Command(async () => await OpenDetails(screening))
                     };
 
