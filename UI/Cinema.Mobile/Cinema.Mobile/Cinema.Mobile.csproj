@@ -25,8 +25,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\NowShowingScreeningsPage.xaml.cs">
-      <DependentUpon>NowShowingScreeningsPage.xaml</DependentUpon>
+    <Compile Update="Views\NowShowingMoviesPage.xaml.cs">
+      <DependentUpon>NowShowingMoviesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\MovieDetailPage.xaml.cs">
+      <DependentUpon>MovieDetailPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -40,10 +43,10 @@
     <EmbeddedResource Update="Views\GridDemoPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\NowShowingScreeningsPage.xaml">
+    <EmbeddedResource Update="Views\NowShowingMoviesPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ScreeningDetailPage.xaml">
+    <EmbeddedResource Update="Views\MovieDetailPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

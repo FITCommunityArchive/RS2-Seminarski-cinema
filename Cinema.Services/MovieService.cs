@@ -5,6 +5,7 @@ using Cinema.Models.Requests.Movies;
 using Cinema.Shared.Pagination;
 using Cinema.Utilities.Interfaces.Dal;
 using Cinema.Utilities.Interfaces.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ namespace Cinema.Services
     public class MovieService : IMovieService
     {
         protected readonly IMovieRepository _movieRepo;
+        protected readonly IScreeningRepository _screeningRepo;
         protected readonly IRepository<GenreMovie, int> _genreMovieRepo;
         protected readonly IUnitOfWork _unit;
         protected readonly IMapper _mapper;
@@ -23,6 +25,7 @@ namespace Cinema.Services
             _unit = unit;
             _mapper = mapper;
             _movieRepo = unit.Movies;
+            _screeningRepo = unit.Screenings;
             _genreMovieRepo = unit.Repository<GenreMovie, int>();
         }
 
@@ -37,6 +40,17 @@ namespace Cinema.Services
             var list = await _movieRepo.GetPagedAsync(search, search.SearchTerm, search.Year, search.Duration);
             var dtoList = PagedList<MovieDto>.Map<Movie>(_mapper, list);
 
+            return dtoList;
+        }
+
+        public async Task<List<MovieDto>> GetNowShowingAsync()
+        {
+            List<string> screeningIncludes = new List<string> { nameof(Screening.Movie) };
+            var screenings = await _screeningRepo.GetAsync(x => x.DateAndTime >= DateTime.UtcNow, screeningIncludes);
+
+            List<Movie> moviesList = screenings.Select(x => x.Movie).Distinct().ToList();
+
+            List<MovieDto> dtoList = _mapper.Map<List<MovieDto>>(moviesList);
             return dtoList;
         }
 
