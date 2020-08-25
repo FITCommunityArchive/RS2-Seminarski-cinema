@@ -44,9 +44,16 @@ namespace Cinema.Dal.Repository
             return entity;
         }
 
-        public virtual async Task<IEnumerable<Entity>> GetAsync(Expression<Func<Entity, bool>> where)
+        public virtual async Task<IEnumerable<Entity>> GetAsync(Expression<Func<Entity, bool>> where, ICollection<string> includes = null)
         {
-            return await _dbSet.Where(where).ToListAsync();
+            var query = _dbSet.AsQueryable();
+
+            if (includes.Count() > 0)
+            {
+                query = AddIncludes(query, includes);
+            }
+
+            return await query.Where(where).ToListAsync();
         }
 
         public virtual async Task<IPagedList<Entity>> GetPagedAsync(Expression<Func<Entity, bool>> where, int pageIndex, int pageSize)

@@ -11,33 +11,41 @@ using Xamarin.Forms;
 
 namespace Cinema.Mobile.ViewModels
 {
-    public class NowShowingScreeningsViewModel : BaseViewModel
+    public class NowShowingMoviesViewModel : BaseViewModel
     {
-        private readonly ApiService _screeningsApi = new ApiService("Screenings");
+        private readonly ApiService _moviesApi = new ApiService("Movies");
 
-        public NowShowingScreeningsViewModel()
+        public NowShowingMoviesViewModel()
         {
+
+        }
+
+        public NowShowingMoviesViewModel(List<MovieDto> movies)
+        {
+            foreach (var movie in movies)
+            {
+                MoviesList.Add(movie);
+            }
+
             InitCommand = new Command(async () => await Init());
         }
 
-        public ObservableCollection<ScreeningDto> ScreeningsList { get; set; } = new ObservableCollection<ScreeningDto>();
+        public ObservableCollection<MovieDto> MoviesList { get; set; } = new ObservableCollection<MovieDto>();
                 
         public ICommand InitCommand { get; set; }
 
         public async Task Init()
-        {               
-            ScreeningSearchRequest search = new ScreeningSearchRequest();
-            search.Includes.Add("Movie");
-            
-            var list = await _screeningsApi.Get<PagedList<ScreeningDto>>(search);
+        {
+            string route = "now-showing";
+            var list = await _moviesApi.Get<List<MovieDto>>(null, route);
 
+            /*
             ScreeningsList.Clear();
-            
+
             foreach (var screening in list.Data)
             {
                 ScreeningsList.Add(screening);
-            }
-            
+            }*/
         }   
     }       
 }
