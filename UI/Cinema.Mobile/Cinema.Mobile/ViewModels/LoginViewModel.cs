@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Cinema.Mobile.Services;
+using Cinema.Mobile.Views;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -8,13 +11,12 @@ namespace Cinema.Mobile.ViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
+        private readonly ApiService _usersApi = new ApiService("Users");
         public LoginViewModel()
         {
-            LoginCommand = new Command(() =>
-            {
-                //potrebno definisati funkciju za logovanje (ubaciti i token iz winUI)
-            });
+            LoginCommand = new Command(async () => await Login());
         }
+
         string _username = string.Empty;
         public string Username
         {
@@ -29,5 +31,28 @@ namespace Cinema.Mobile.ViewModels
             set { SetProperty(ref _password, value); }
         }
         public ICommand LoginCommand { get; set; }
+
+        async Task Login()
+        {
+            IsBusy = true;
+            try
+            {
+                ApiService.Username = Username;
+                ApiService.Password = Password;
+
+                var maybeLogin = await _usersApi.AuthUser();
+
+                if (maybeLogin == true)
+                {
+                    Application.Current.MainPage = new MainPage();
+                }
+            }
+            catch (Exception ex)
+            {
+                IsBusy = false;
+                await Application.Current.MainPage.DisplayAlert("Error", "Invalid credentials.", "OK");
+            }
+        }
+
     }
 }

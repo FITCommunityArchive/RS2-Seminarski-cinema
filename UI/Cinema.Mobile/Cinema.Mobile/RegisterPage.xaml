@@ -6,10 +6,26 @@
              mc:Ignorable="d"
              x:Class="Cinema.Mobile.RegisterPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout VerticalOptions="CenterAndExpand" Margin="10">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Text="eCinema Register" FontSize="30" HorizontalTextAlignment="Center" Margin="30" Grid.ColumnSpan="2"></Label>
+                <Label VerticalTextAlignment="Center" Text="Email" FontSize="18" Grid.Row="1"></Label>
+                <Entry x:Name="Email" Grid.Column="1" Grid.Row="1" ></Entry>
+                <Label VerticalTextAlignment="Center" Text="Password" Grid.Row="2" FontSize="18" ></Label>
+                <Entry x:Name="Password" IsPassword="True" Grid.Row="2" Grid.Column="1"></Entry>
+                <Button x:Name="registerBtn" Text="Register" Grid.Row="3" Grid.ColumnSpan="2" />
+            </Grid>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

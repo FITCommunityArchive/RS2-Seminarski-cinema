@@ -14,9 +14,12 @@
             <Label Text="Username" />
             <Entry Text="{Binding Username}"></Entry>
             <Label Text="Password" />
-            <Entry Text="{Binding Password}"></Entry>
+            <Entry Text="{Binding Password}" IsPassword="True"></Entry>
             <Button Text="Login" Command="{Binding LoginCommand}" ></Button>
-            <Button Text="Register"></Button>
+            <Button Text="Register" Clicked="btnRegister"></Button>
+            <AbsoluteLayout>
+                <ActivityIndicator Color="Orange" IsRunning="{Binding IsBusy}" />
+            </AbsoluteLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

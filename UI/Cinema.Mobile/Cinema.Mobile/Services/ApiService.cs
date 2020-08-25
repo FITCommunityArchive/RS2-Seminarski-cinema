@@ -6,6 +6,7 @@ using Xamarin.Forms;
 using Cinema.Shared.Helpers;
 using Cinema.Shared.Constants;
 using System.Globalization;
+using Newtonsoft.Json;
 
 namespace Cinema.Mobile.Services
 {
@@ -13,6 +14,8 @@ namespace Cinema.Mobile.Services
     {
         public static string Username { get; set; }
         public static string Password { get; set; }
+        public static string Role { get; set; }
+        public static string Token { get; set; }
 
         private string _route = null;
 
@@ -27,6 +30,31 @@ namespace Cinema.Mobile.Services
         public ApiService(string route)
         {
             _route = route;
+        }
+
+        public async Task<bool> AuthUser()
+        {
+            var loginUrl = $"{_apiUrl}/login";
+
+            var result = await loginUrl.PostJsonAsync(new
+            {
+                userName = Username,
+                password = Password
+            });
+            if (result.IsSuccessStatusCode)
+            {
+                var json = await result.Content.ReadAsStringAsync();
+                var dynamicJson = JsonConvert.DeserializeObject<dynamic>(json);
+                Token = dynamicJson.token;
+
+                return true;
+            }
+            else
+            {
+                Token = "";
+            }
+
+            return false;
         }
 
         public async Task<T> Get<T>(object search, string route = null)
@@ -46,7 +74,7 @@ namespace Cinema.Mobile.Services
                     url += await search.ToQueryString();
                 }
 
-                return await url.GetJsonAsync<T>();
+                return await url.WithOAuthBearerToken(Token).GetJsonAsync<T>();
             }
             catch (FlurlHttpException ex)
             {
@@ -63,7 +91,7 @@ namespace Cinema.Mobile.Services
         {
             var url = $"{_apiUrl}/{_route}/{id}";
 
-            return await url.GetJsonAsync<T>();
+            return await url.WithOAuthBearerToken(Token).GetJsonAsync<T>();
         }
 
         public async Task<T> Insert<T>(object request)
@@ -71,7 +99,7 @@ namespace Cinema.Mobile.Services
             try
             {
                 var url = $"{_apiUrl}/{_route}";
-                return await url.PostJsonAsync(request).ReceiveJson<T>();
+                return await url.WithOAuthBearerToken(Token).PostJsonAsync(request).ReceiveJson<T>();
             }
             catch (FlurlHttpException ex)
             {
@@ -96,7 +124,7 @@ namespace Cinema.Mobile.Services
             try
             {
                 var url = $"{_apiUrl}/{_route}/{id}";
-                return await url.PutJsonAsync(request).ReceiveJson<T>();
+                return await url.WithOAuthBearerToken(Token).PutJsonAsync(request).ReceiveJson<T>();
             }
             catch (FlurlHttpException ex)
             {

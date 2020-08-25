@@ -16,5 +16,10 @@ namespace Cinema.Mobile
         {
             InitializeComponent();
         }
+
+        private async void btnRegister(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new RegisterPage());
+        }
     }
 }
