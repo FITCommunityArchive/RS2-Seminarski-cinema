@@ -13,7 +13,7 @@ namespace Cinema.Mobile.ViewModels
 {
     public class RegisterViewModel : BaseViewModel
     {
-        private readonly ApiService _usersApi = new ApiService("Users");
+        private readonly ApiService _usersApi = new ApiService("Users/register");
         public RegisterViewModel()
         {
             RegisterCommand = new Command(async () => await Register());
@@ -58,8 +58,7 @@ namespace Cinema.Mobile.ViewModels
         private async Task Register()
         {
             IsBusy = true;
-            var roleId = -3;
-            UserUpsertRequest user = new UserUpsertRequest();
+            UserRegisterRequest user = new UserRegisterRequest();
 
             try
             {
@@ -68,13 +67,14 @@ namespace Cinema.Mobile.ViewModels
                 user.Password = Password;
                 user.FirstName = FirstName;
                 user.LastName = LastName;
-                user.RoleId = roleId;
 
-                var result = await _usersApi.Insert<UserUpsertRequest>(user);
+                var result = await _usersApi.Register<UserRegisterRequest>(user);
 
                 if (result != null)
                 {
                     await Application.Current.MainPage.DisplayAlert("Success", "Registered sucessufully", "OK");
+                    ApiService.Username = result.UserName;
+                    ApiService.Password = result.Password;
                     Application.Current.MainPage = new MainPage();
                 }
 

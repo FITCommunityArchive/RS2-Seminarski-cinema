@@ -25,6 +25,7 @@ namespace Cinema.Web.Api.Mappers
             CreateMap<ApplicationUserRole, ApplicationUserRoleDto>();
 
             CreateMap<ApplicationUser, UserUpsertRequest>().ReverseMap();
+            CreateMap<ApplicationUser, UserRegisterRequest>().ReverseMap();
             CreateMap<ApplicationUser, UserSearchRequest>().ReverseMap();
 
             CreateMap<Genre, GenreDto>();
