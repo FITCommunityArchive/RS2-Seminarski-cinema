@@ -9,7 +9,8 @@ namespace Cinema.Mobile.Models
         Browse,
         About,
         NowShowing,
-        GridDemo
+        GridDemo,
+        LogOut
     }
     public class HomeMenuItem
     {
