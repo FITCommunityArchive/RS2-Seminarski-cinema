@@ -2,6 +2,7 @@
 using Cinema.Models.Requests.Users;
 using Cinema.Utilities.Interfaces;
 using Cinema.Utilities.Interfaces.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -37,6 +38,12 @@ namespace Cinema.Web.Api.Controllers
         public async Task<string> ResetPasswordToken(int id)
         {
             return await _userService.ResetPasswordToken(id);
+        }
+
+        [HttpPost("register"), AllowAnonymous]
+        public async Task<ApplicationUserDto> RegisterAsync(UserRegisterRequest model)
+        {
+            return await _userService.RegisterAsync(model);
         }
     }
 }

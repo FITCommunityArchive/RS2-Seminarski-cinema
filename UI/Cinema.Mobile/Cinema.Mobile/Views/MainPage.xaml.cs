@@ -57,5 +57,6 @@ namespace Cinema.Mobile.Views
                 IsPresented = false;
             }
         }
+
     }
 }
