@@ -110,9 +110,15 @@ namespace Cinema.Web.API
 
             services.AddScoped<IMovieRepository, MovieRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IInvoiceRepository, InvoiceRepository>();
+            services.AddScoped<IReservationRepository, ReservationRepository>();
+            services.AddScoped<ISeatReservationRepository, SeatReservationRepository>();
 
             services.AddScoped<IRepository<ApplicationUser, int>, UserRepository>();
             services.AddScoped<IRepository<Movie, int>, MovieRepository>();
+            services.AddScoped<IRepository<Reservation, int>, ReservationRepository>();
+            services.AddScoped<IRepository<SeatReservation, int>, SeatReservationRepository>();
+            services.AddScoped<IRepository<Invoice, int>, InvoiceRepository>();
 
             string connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<CinemaDbContext>(options => options.UseSqlServer(connection));

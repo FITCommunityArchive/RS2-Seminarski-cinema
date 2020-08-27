@@ -1,9 +1,11 @@
-﻿using Cinema.Domain.Entities.Identity;
+﻿using Cinema.Domain.Entities;
+using Cinema.Domain.Entities.Identity;
 using Cinema.Shared.Enums;
 using Cinema.Shared.Pagination;
 using Cinema.Shared.Search;
 using Cinema.Utilities.Interfaces.Dal;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -83,6 +85,26 @@ namespace Cinema.Dal.Repository
             var result = _context.Users.SingleOrDefault(e => e.UserName == userName.ToString());
 
             return result;
+        }
+
+        public bool DeleteUserRoleReferences(int id)
+        {
+            // soft delete user from the userRole 
+            var role = _context.UserRoles.Where(x => x.UserId == id).FirstOrDefault();
+            if (role != null) { 
+                role.Deleted = true;
+                _context.Entry(role).State = EntityState.Modified;
+                
+            }
+            return true;
+        }
+
+        public bool DeleteUser(int id)
+        {
+            var user = _context.Users.Where(x => x.Id == id).FirstOrDefault();
+            user.Deleted = true;
+            _context.Entry(user).State = EntityState.Modified;
+            return true;
         }
 
         public IQueryable<ApplicationUser> Sort(IQueryable<ApplicationUser> query, SortOrder? sortOrder, string sortProperty)

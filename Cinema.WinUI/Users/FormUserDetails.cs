@@ -20,6 +20,8 @@ namespace Cinema.WinUI.Users
         private UserUpsertRequest _request = new UserUpsertRequest();
         private IPagedList<ApplicationRoleDto> _roles = null;
 
+        public event EventHandler ItemDeleted;
+
         public FormUserDetails(int? id)
         {
             InitializeComponent();
@@ -36,6 +38,11 @@ namespace Cinema.WinUI.Users
             {
                 btnChangePassword.Visible = false;
             }
+        }
+
+        protected virtual void OnItemDeleted(EventArgs e)
+        {
+            ItemDeleted?.Invoke(this, e);
         }
 
         private async void FormUserDetails_Load(object sender, EventArgs e)
@@ -174,6 +181,24 @@ namespace Cinema.WinUI.Users
                 FormChangePassword formChangePassword = new FormChangePassword((int)_id);
                 formChangePassword.ShowDialog();
             }
+        }
+
+        private async void btnDelete_ButtonClicked(object sender, EventArgs e)
+        {
+            try
+            {
+                var result = await _usersApi.Delete<ApplicationUserDto>(_id);
+                if(result != null)
+                {
+                    MessageBox.Show("User deleted.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            } catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            OnItemDeleted(EventArgs.Empty);
+            this.Close();
         }
     }
 }

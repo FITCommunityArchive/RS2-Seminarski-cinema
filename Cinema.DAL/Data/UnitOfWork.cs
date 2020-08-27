@@ -19,6 +19,8 @@ namespace Cinema.Dal.Data
         public IMovieRepository Movies => Repository<Movie, int>() as IMovieRepository;
         public IScreeningRepository Screenings => Repository<Screening, int>() as IScreeningRepository;
         public IReservationRepository Reservations => Repository<Reservation, int>() as IReservationRepository;
+        public IInvoiceRepository Invoices => Repository<Invoice, int>() as IInvoiceRepository;
+        public ISeatReservationRepository SeatReservations => Repository<SeatReservation, int>() as ISeatReservationRepository;
 
         public UnitOfWork(ICinemaDbContext context)
         {
@@ -72,6 +74,10 @@ namespace Cinema.Dal.Data
                     return (IRepository<Entity, Key>)new ScreeningRepository(_context);
                 case nameof(Reservation):
                     return (IRepository<Entity, Key>)new ReservationRepository(_context);
+                case nameof(Invoice):
+                    return (IRepository<Entity, Key>)new InvoiceRepository(_context);
+                case nameof(SeatReservation):
+                    return (IRepository<Entity, Key>)new SeatReservationRepository(_context);
                 default:
                     {
                         var repositoryType = typeof(Repository<,>);

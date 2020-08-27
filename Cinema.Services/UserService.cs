@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Cinema.Domain.Entities;
 using Cinema.Domain.Entities.Identity;
 using Cinema.Models.Dtos;
 using Cinema.Models.Requests.Users;
@@ -21,14 +22,17 @@ using System.Threading.Tasks;
 
 namespace Cinema.Services
 {
-    public class UserService : ICRUDService<ApplicationUserDto, UserSearchRequest, UserUpsertRequest, UserUpsertRequest>, IUserService
+    public class UserService : IUserService
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private IConfiguration _config;
 
         protected readonly IUserRepository _userRepo;
         protected readonly IRepository<ApplicationUserRole, int> _userRoleRepo;
+        protected readonly ISeatReservationRepository _seatReservationRepo;
+        protected readonly IReservationRepository _reservationRepo;
         protected readonly IRepository<ApplicationRole, int> _roleRepo;
+        protected readonly IInvoiceRepository _invoiceRepo;
         protected readonly IUnitOfWork _unit;
         protected readonly IMapper _mapper;
         public UserService(IUnitOfWork unit, IMapper mapper, UserManager<ApplicationUser> userManager, IConfiguration config)
@@ -40,6 +44,9 @@ namespace Cinema.Services
             _mapper = mapper;
             _userRoleRepo = unit.Repository<ApplicationUserRole, int>();
             _roleRepo = unit.Repository<ApplicationRole, int>();
+            _reservationRepo = unit.Reservations;
+            _invoiceRepo = unit.Invoices;
+            _seatReservationRepo = unit.SeatReservations;
         }
 
 
@@ -178,9 +185,32 @@ namespace Cinema.Services
             return roleName;
         }
 
-        public Task<bool> DeleteAsync(int id)
+        public async Task<bool> DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            //var reservations = _reservationRepo.GetReservationsByUserId(id);
+
+            //await _invoiceRepo.DeleteReservationReferences(reservations);
+            //await _seatReservationRepo.DeleteReservationReferences(reservations);
+
+            //await _reservationRepo.DeleteUserReferences(id);
+            //_userRepo.DeleteUserRoleReferences(id);
+
+            await _userRepo.DeleteAsync(id);
+            await _unit.SaveAsync();
+
+            return true;
+        }
+
+        private async Task<bool> DeleteUserReferences(int id)
+        {
+            var reservations = _reservationRepo.GetReservationsByUserId(id);
+
+            await _invoiceRepo.DeleteReservationReferences(reservations);
+            await _seatReservationRepo.DeleteReservationReferences(reservations);
+            await _reservationRepo.DeleteUserReferences(id);
+            _userRepo.DeleteUserRoleReferences(id);
+
+            return true;
         }
 
     }

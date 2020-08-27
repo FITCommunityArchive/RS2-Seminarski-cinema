@@ -3,7 +3,9 @@ using Cinema.Shared.Enums;
 using Cinema.Shared.Pagination;
 using Cinema.Shared.Search;
 using Cinema.Utilities.Interfaces.Dal;
+using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
@@ -124,6 +126,25 @@ namespace Cinema.Dal.Repository
                 default:
                     return x => x.Id;
             }
+        }
+
+        public async Task<bool> DeleteUserReferences(int id)
+        {
+
+            // Soft delete user from all reservations found
+            var reservations = _context.Reservations.Where(x => x.UserId == id).ToList();
+            foreach (Reservation r in reservations)
+            {
+                await DeleteAsync(r.Id);
+            }
+
+            
+            return true;
+        }
+
+        public List<Reservation> GetReservationsByUserId(int id)
+        {
+            return _dbSet.Where(x => x.UserId == id).ToList();
         }
     }
 }

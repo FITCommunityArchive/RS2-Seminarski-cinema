@@ -69,7 +69,7 @@ namespace Cinema.Dal.Data
             //This line is in order to prevent Cascade Delete
             foreach (var relationship in builder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
             {
-                relationship.DeleteBehavior = DeleteBehavior.Restrict;
+                relationship.DeleteBehavior = DeleteBehavior.Cascade;
             }
 
             builder.Entity<Event>().HasQueryFilter(x => !x.IsDeleted);

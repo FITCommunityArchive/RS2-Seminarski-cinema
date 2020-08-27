@@ -105,14 +105,7 @@ namespace Cinema.Dal.Repository
 
             if (entity != null)
             {
-                if (entity.CanDelete())
-                {
-                    Delete(entity);
-                }
-                else
-                {
-                    throw new DependentObjectsPresentException();
-                }
+                Delete(entity);
             }
         }
 

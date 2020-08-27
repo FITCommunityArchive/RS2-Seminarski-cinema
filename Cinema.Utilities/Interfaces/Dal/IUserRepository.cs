@@ -10,5 +10,7 @@ namespace Cinema.Utilities.Interfaces.Dal
         ApplicationUser GetUserByEmail(string email);
         Task<ApplicationUser> GetByIdWithRolesAsync(int id);
         Task<IPagedList<ApplicationUser>> GetPagedAsync(ISearchRequest searchRequest, string searchTerm);
+        bool DeleteUserRoleReferences(int id);
+        bool DeleteUser(int id);
     }
 }
