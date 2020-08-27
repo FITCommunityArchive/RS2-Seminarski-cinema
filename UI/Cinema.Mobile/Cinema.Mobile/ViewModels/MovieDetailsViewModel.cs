@@ -3,7 +3,6 @@ using Cinema.Models.Dtos;
 using Cinema.Models.Requests.Screenings;
 using Cinema.Shared.Enums;
 using Cinema.Shared.Pagination;
-using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;

@@ -1,8 +1,5 @@
-﻿using System;
+﻿using Cinema.Mobile.Services;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-using Cinema.Mobile.Services;
-using Cinema.Mobile.Views;
 
 namespace Cinema.Mobile
 {

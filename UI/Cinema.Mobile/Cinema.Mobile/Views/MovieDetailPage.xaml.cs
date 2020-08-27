@@ -1,6 +1,5 @@
 ﻿using Cinema.Mobile.ViewModels;
 using Cinema.Models.Dtos;
-using Cinema.Shared.Pagination;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 

@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Cinema.Mobile.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Cinema.Mobile.Models;
 
 namespace Cinema.Mobile.Services
 {

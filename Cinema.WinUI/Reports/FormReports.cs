@@ -5,17 +5,9 @@ using Cinema.Shared.Constants;
 using Cinema.Shared.Pagination;
 using Cinema.WinUI.Helpers;
 using Cinema.WinUI.Services;
-using iTextSharp.text;
-using iTextSharp.text.pdf;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Cinema.WinUI.Reports
@@ -68,7 +60,7 @@ namespace Cinema.WinUI.Reports
             this.dgvReservationsList.DoubleBuffered(true);
             //load reservations
             ReservationSearchRequest reservationSearchRequest = new ReservationSearchRequest();
-            
+
             reservationSearchRequest.Includes.Add("User");
             reservationSearchRequest.Includes.Add("Invoice");
             reservationSearchRequest.Includes.Add("Screening.Movie");

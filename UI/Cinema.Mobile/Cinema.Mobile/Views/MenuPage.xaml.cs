@@ -1,11 +1,8 @@
 ﻿using Cinema.Mobile.Models;
 using Cinema.Mobile.Services;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using Xamarin.Forms;
-using Xamarin.Forms.Internals;
-using Xamarin.Forms.Xaml;
 
 namespace Cinema.Mobile.Views
 {
@@ -39,10 +36,12 @@ namespace Cinema.Mobile.Views
 
                 var id = (int)((HomeMenuItem)e.SelectedItem).Id;
 
-                if(id == 4)
+                if (id == 4)
                 {
                     LogOut();
-                } else { 
+                }
+                else
+                {
 
                     await RootPage.NavigateFromMenu(id);
                 }

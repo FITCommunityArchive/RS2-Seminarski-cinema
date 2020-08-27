@@ -1,14 +1,9 @@
 ﻿using Cinema.Mobile.Services;
 using Cinema.Mobile.ViewModels;
 using Cinema.Models.Dtos;
-using Cinema.Models.Requests.Screenings;
-using Cinema.Shared.Enums;
-using Cinema.Shared.Pagination;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;

@@ -1,9 +1,6 @@
 ﻿using Cinema.Models.ModelValidation;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace Cinema.Models.Requests.Users
 {

@@ -6,8 +6,6 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Text;
 
 namespace Cinema.Dal.Data
 {

@@ -1,12 +1,10 @@
-﻿using System;
+﻿using Cinema.Mobile.Models;
+using Cinema.Mobile.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-
 using Xamarin.Forms;
-
-using Cinema.Mobile.Models;
-using Cinema.Mobile.Services;
 
 namespace Cinema.Mobile.ViewModels
 {

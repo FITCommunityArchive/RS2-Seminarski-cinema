@@ -1,12 +1,11 @@
-﻿using Flurl.Http;
+﻿using Cinema.Shared.Constants;
+using Cinema.Shared.Helpers;
+using Flurl.Http;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using Cinema.Shared.Helpers;
-using Cinema.Shared.Constants;
-using System.Globalization;
-using Newtonsoft.Json;
 
 namespace Cinema.Mobile.Services
 {
@@ -58,7 +57,7 @@ namespace Cinema.Mobile.Services
         }
 
         public async Task<T> Get<T>(object search, string route = null)
-        {           
+        {
             try
             {
                 var url = $"{_apiUrl}/{_route}";
@@ -84,7 +83,7 @@ namespace Cinema.Mobile.Services
                 }
 
                 throw;
-            }            
+            }
         }
 
         public async Task<T> GetById<T>(object id)
@@ -95,7 +94,7 @@ namespace Cinema.Mobile.Services
         }
 
         public async Task<T> Insert<T>(object request)
-        {           
+        {
             try
             {
                 var url = $"{_apiUrl}/{_route}";
@@ -116,7 +115,7 @@ namespace Cinema.Mobile.Services
                 return default(T);
             }
 
-            
+
         }
 
         public async Task<T> Register<T>(object request)
