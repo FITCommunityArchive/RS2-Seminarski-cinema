@@ -12,67 +12,102 @@
         <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="25" RowSpacing="20" ColumnSpacing="20">
-            
-            <Grid.RowDefinitions>
-                <RowDefinition Height="120"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="50"/>
-            </Grid.RowDefinitions>
-            
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="80"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            
-            <StackLayout Grid.Row="0" Grid.Column="0">
-                <Frame CornerRadius="10" IsClippedToBounds="True" Padding="0">
-                    <Image Source="{Binding Movie.Poster, Converter={StaticResource imgConv}}" HorizontalOptions="Center" VerticalOptions="Center"></Image>
-                </Frame>
-            </StackLayout>
 
-            <StackLayout Orientation="Vertical" Grid.Row="1" Grid.Column="0">
-                
-                <StackLayout Margin="0, 0, 0, 20">
-                    <Label Text="Duration" TextColor="Gray" Style="{DynamicResource ListItemDetailTextStyle}"/>
-                    <Label Text="{Binding Movie.Duration}" TextColor="Gray" Style="{DynamicResource ListItemTextStyle}"/>
+        <StackLayout Padding="25">
+            
+            <Grid Padding="0, 0, 0, 70" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" RowSpacing="20" ColumnSpacing="20">
+            
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="120"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+            
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+            
+                <StackLayout Grid.Row="0" Grid.Column="0">
+                    <Frame CornerRadius="10" IsClippedToBounds="True" Padding="0">
+                        <Image Source="{Binding Movie.Poster, Converter={StaticResource imgConv}}" HorizontalOptions="Center" VerticalOptions="Center"></Image>
+                    </Frame>
                 </StackLayout>
 
-                <StackLayout Margin="0, 0, 0, 20">
-                    <Label Text="Year" TextColor="Gray" Style="{DynamicResource ListItemDetailTextStyle}"/>
-                    <Label Text="{Binding Movie.Year}" TextColor="Gray" Style="{DynamicResource ListItemTextStyle}"/>
+                <StackLayout Orientation="Vertical" Grid.Row="1" Grid.Column="0">
+                
+                    <StackLayout Margin="0, 0, 0, 20">
+                        <Label Text="Duration" TextColor="Gray" Style="{DynamicResource ListItemDetailTextStyle}"/>
+                        <Label Text="{Binding Movie.Duration}" TextColor="Gray" Style="{DynamicResource ListItemTextStyle}"/>
+                    </StackLayout>
+
+                    <StackLayout Margin="0, 0, 0, 20">
+                        <Label Text="Year" TextColor="Gray" Style="{DynamicResource ListItemDetailTextStyle}"/>
+                        <Label Text="{Binding Movie.Year}" TextColor="Gray" Style="{DynamicResource ListItemTextStyle}"/>
+                    </StackLayout>
+
+                    <StackLayout Margin="0, 0, 0, 20">
+                        <Label Text="Country" TextColor="Gray" Style="{DynamicResource ListItemDetailTextStyle}"/>
+                        <Label Text="{Binding Movie.Country}" TextColor="Gray" Style="{DynamicResource ListItemTextStyle}"/>
+                    </StackLayout>
+                
+                </StackLayout>
+            
+                <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="1">
+                
+                    <Label Text="{Binding Movie.Title}" TextColor="Gray" HorizontalOptions="Start" Style="{DynamicResource TitleStyle}"/>
+                
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source="screeningdetailavataricon.png" HeightRequest="10"/>
+                        <Label Text="{Binding Movie.Directors}" TextColor="Gray" FontSize="Small" HorizontalOptions="Start" Style="{DynamicResource SubtitleStyle}"/>
+                    </StackLayout>
+
+                    <Label Text="{Binding Movie.Writers}" TextColor="Gray" FontSize="Small" HorizontalOptions="Start" Style="{DynamicResource SubtitleStyle}"/>
+            
+                </StackLayout>
+            
+                <StackLayout Orientation="Vertical" Grid.Row="1" Grid.Column="1">
+                    <Label Style="{DynamicResource BodyStyle}" TextColor="Gray" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."/>
+                    <Label Style="{DynamicResource BodyStyle}" TextColor="Gray" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."/>
                 </StackLayout>
 
-                <StackLayout Margin="0, 0, 0, 20">
-                    <Label Text="Country" TextColor="Gray" Style="{DynamicResource ListItemDetailTextStyle}"/>
-                    <Label Text="{Binding Movie.Country}" TextColor="Gray" Style="{DynamicResource ListItemTextStyle}"/>
+                <StackLayout Orientation="Horizontal" Grid.Row="2" Grid.Column="1">
+                    <Image Source="imdbicongray.png" HeightRequest="100" Margin="10, 0, 20, 0"/>
+                    <Image Source="youtubeicongray.png" HeightRequest="100" Margin="0, 0, 20, 0"/>
                 </StackLayout>
-                
-            </StackLayout>
-            
-            <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="1">
-                
-                <Label Text="{Binding Movie.Title}" TextColor="Gray" HorizontalOptions="Start" Style="{DynamicResource TitleStyle}"/>
-                
-                <StackLayout Orientation="Horizontal">
-                    <Image Source="screeningdetailavataricon.png" HeightRequest="10"/>
-                    <Label Text="{Binding Movie.Directors}" TextColor="Gray" FontSize="Small" HorizontalOptions="Start" Style="{DynamicResource SubtitleStyle}"/>
-                </StackLayout>
+           
+            </Grid>
 
-                <Label Text="{Binding Movie.Writers}" TextColor="Gray" FontSize="Small" HorizontalOptions="Start" Style="{DynamicResource SubtitleStyle}"/>
-            
-            </StackLayout>
-            
-            <StackLayout Orientation="Vertical" Grid.Row="1" Grid.Column="1">
-                <Label Style="{DynamicResource BodyStyle}" TextColor="Gray" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."/>
-                <Label Style="{DynamicResource BodyStyle}" TextColor="Gray" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."/>
-            </StackLayout>
+            <StackLayout>
 
-            <StackLayout Orientation="Horizontal" Grid.Row="2" Grid.Column="1">
-                <Image Source="imdbicongray.png" HeightRequest="100" Margin="10, 0, 20, 0"/>
-                <Image Source="youtubeicongray.png" HeightRequest="100" Margin="0, 0, 20, 0"/>
+                <Label Text="Screening times" Padding="0, 0, 0, 10" TextColor="Gray" Style="{DynamicResource BodyStyle}"/>
+
+                <ListView ItemsSource="{Binding ScreeningsList}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Padding="0, 0, 0, 5"  Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                                    <Label Text="{Binding DateAndTime, StringFormat='{0:dd.MM.yyyy}'}" TextColor="Gray" FontAttributes="Bold" Style="{DynamicResource BodyStyle}"/>
+                                    <StackLayout Orientation="Horizontal">
+                                        <StackLayout Orientation="Horizontal" VerticalOptions="Start">
+                                            <Label Text="{Binding Hall.Name}" TextColor="Gray" Style="{DynamicResource BodyStyle}"/>
+                                            <Label Text=" | " TextColor="Gray" Style="{DynamicResource BodyStyle}"/>
+                                            <Label Text="{Binding DateAndTime, StringFormat='{0:HH:mm}'}" TextColor="Gray" Style="{DynamicResource BodyStyle}"/>
+                                        </StackLayout>
+                                        <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="Start">
+                                            <Button Text="Reserve" CommandParameter="{Binding Id}" Command="{Binding ReserveCommand}" TextColor="White" CornerRadius="2" BackgroundColor="#1f85c9"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+                </ListView>
+
             </StackLayout>
-            
-        </Grid>
+   
+        </StackLayout>      
+        
     </ContentPage.Content>
 </ContentPage>

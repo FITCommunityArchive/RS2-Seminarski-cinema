@@ -9,6 +9,6 @@ namespace Cinema.Utilities.Interfaces.Dal
 {
     public interface IScreeningRepository : IRepository<Screening, int>
     {
-        Task<IPagedList<Screening>> GetPagedAsync(ISearchRequest searchRequest, string searchTerm, string hall, decimal? price, TimingStatus? status, DateTime? screeningDate);
+        Task<IPagedList<Screening>> GetPagedAsync(ISearchRequest searchRequest, string searchTerm, int? movieId, string hall, decimal? price, TimingStatus? status, DateTime? screeningDate);
     }
 }

@@ -1,7 +1,6 @@
 ﻿using Cinema.Mobile.ViewModels;
 using Cinema.Models.Dtos;
-
-
+using Cinema.Shared.Pagination;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,7 +14,13 @@ namespace Cinema.Mobile.Views
         public MovieDetailPage(MovieDto movie)
         {
             InitializeComponent();
-            BindingContext = model = new MovieDetailsViewModel() { Movie = movie };
+            BindingContext = model = new MovieDetailsViewModel { Movie = movie };
+        }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            await model.Init();
         }
     }
 }

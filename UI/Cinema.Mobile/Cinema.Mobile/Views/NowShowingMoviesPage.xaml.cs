@@ -2,6 +2,7 @@
 using Cinema.Mobile.ViewModels;
 using Cinema.Models.Dtos;
 using Cinema.Models.Requests.Screenings;
+using Cinema.Shared.Enums;
 using Cinema.Shared.Pagination;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,6 @@ namespace Cinema.Mobile.Views
     public partial class NowShowingMoviesPage : ContentPage
     {
         private readonly ApiService _moviesApi = new ApiService("Movies");
-        private List<MovieDto> _movies;
         NowShowingMoviesViewModel model = null;
 
         public NowShowingMoviesPage()
@@ -43,7 +43,8 @@ namespace Cinema.Mobile.Views
                 }
             };
 
-            int moviesCount = _movies.Count;
+            List<MovieDto> movies = await LoadMovies();
+            int moviesCount = movies.Count;
             int numberOfRows = (int)Math.Ceiling(moviesCount / 2.0);
 
             int numberOfColumns = 2;
@@ -64,7 +65,7 @@ namespace Cinema.Mobile.Views
             {
                 for (int j = 0; j < numberOfColumns; j++)
                 {
-                    var movie = _movies[screeningIndex];
+                    var movie = movies[screeningIndex++];
                     var stream = new MemoryStream(movie.Poster);
 
                     ImageButton image = new ImageButton
@@ -85,7 +86,7 @@ namespace Cinema.Mobile.Views
             // Build the page.
             this.Content = grid;
 
-            BindingContext = model = new NowShowingMoviesViewModel(_movies);
+            BindingContext = model = new NowShowingMoviesViewModel(movies);
             await model.Init();
         }
 
@@ -94,12 +95,12 @@ namespace Cinema.Mobile.Views
             await Navigation.PushAsync(new MovieDetailPage(movie));
         }
 
-        private async Task LoadMovies()
+        private async Task<List<MovieDto>> LoadMovies()
         {
             string route = "now-showing";
             var list = await _moviesApi.Get<List<MovieDto>>(null, route);
 
-            _movies = list;
+            return list;
         }
     }
 }

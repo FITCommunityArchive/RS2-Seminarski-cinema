@@ -14,7 +14,7 @@ namespace Cinema.Dal.Repository
     {
         public ScreeningRepository(ICinemaDbContext context) : base(context) { }
 
-        public async Task<IPagedList<Screening>> GetPagedAsync(ISearchRequest searchRequest, string searchTerm, string hall, decimal? price, TimingStatus? status, DateTime? screeningDate)
+        public async Task<IPagedList<Screening>> GetPagedAsync(ISearchRequest searchRequest, string searchTerm, int? movieId, string hall, decimal? price, TimingStatus? status, DateTime? screeningDate)
         {
             var query = _dbSet.AsQueryable();
 
@@ -23,7 +23,7 @@ namespace Cinema.Dal.Repository
                 status = TimingStatus.SCHEDULED;
             }
 
-            query = ApplyFilter(query, searchTerm, hall, price, status, screeningDate);
+            query = ApplyFilter(query, searchTerm, movieId, hall, price, status, screeningDate);
 
             if (searchRequest.SortOrder == null || searchRequest.SortColumn == null)
             {
@@ -47,17 +47,22 @@ namespace Cinema.Dal.Repository
             return x => x.Id == id;
         }
 
-        private IQueryable<Screening> ApplyFilter(IQueryable<Screening> query, string searchTerm, string hall, decimal? price, TimingStatus? status, DateTime? screeningDate)
+        private IQueryable<Screening> ApplyFilter(IQueryable<Screening> query, string searchTerm, int? movieId, string hall, decimal? price, TimingStatus? status, DateTime? screeningDate)
         {
-
-            if (screeningDate.HasValue)
-            {
-                query = query.Where(x => x.DateAndTime.Date == screeningDate.Value.Date);
-            }
 
             if (!string.IsNullOrWhiteSpace(searchTerm))
             {
                 query = query.Where(x => x.Movie.Title.ToLower().StartsWith(searchTerm.ToLower()));
+            }
+
+            if (movieId.HasValue)
+            {
+                query = query.Where(x => x.MovieId == movieId.Value);
+            }
+
+            if (screeningDate.HasValue)
+            {
+                query = query.Where(x => x.DateAndTime.Date == screeningDate.Value.Date);
             }
 
             if (!string.IsNullOrWhiteSpace(hall))
