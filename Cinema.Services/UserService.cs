@@ -200,18 +200,5 @@ namespace Cinema.Services
 
             return true;
         }
-
-        private async Task<bool> DeleteUserReferences(int id)
-        {
-            var reservations = _reservationRepo.GetReservationsByUserId(id);
-
-            await _invoiceRepo.DeleteReservationReferences(reservations);
-            await _seatReservationRepo.DeleteReservationReferences(reservations);
-            await _reservationRepo.DeleteUserReferences(id);
-            _userRepo.DeleteUserRoleReferences(id);
-
-            return true;
-        }
-
     }
 }

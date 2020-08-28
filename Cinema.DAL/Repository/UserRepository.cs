@@ -87,26 +87,6 @@ namespace Cinema.Dal.Repository
             return result;
         }
 
-        public bool DeleteUserRoleReferences(int id)
-        {
-            // soft delete user from the userRole 
-            var role = _context.UserRoles.Where(x => x.UserId == id).FirstOrDefault();
-            if (role != null) { 
-                role.Deleted = true;
-                _context.Entry(role).State = EntityState.Modified;
-                
-            }
-            return true;
-        }
-
-        public bool DeleteUser(int id)
-        {
-            var user = _context.Users.Where(x => x.Id == id).FirstOrDefault();
-            user.Deleted = true;
-            _context.Entry(user).State = EntityState.Modified;
-            return true;
-        }
-
         public IQueryable<ApplicationUser> Sort(IQueryable<ApplicationUser> query, SortOrder? sortOrder, string sortProperty)
         {
             if (sortOrder == SortOrder.ASC)

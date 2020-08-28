@@ -110,58 +110,5 @@ namespace Cinema.Dal
             oldEnt.TypeId = newEnt.TypeId;
             oldEnt.AuthorId = newEnt.AuthorId;
         }
-
-        public static bool CanDelete<T>(this T entity)
-        {
-            if (typeof(T) == typeof(Hall)) return HasNoChildren(entity as Hall);
-            if (typeof(T) == typeof(Movie)) return HasNoChildren(entity as Movie);
-            if (typeof(T) == typeof(Screening)) return HasNoChildren(entity as Screening);
-            if (typeof(T) == typeof(Reservation)) return HasNoChildren(entity as Reservation);
-            if (typeof(T) == typeof(ApplicationUser)) return HasNoChildren(entity as ApplicationUser);
-            if (typeof(T) == typeof(ApplicationRole)) return HasNoChildren(entity as ApplicationRole);
-            if (typeof(T) == typeof(Pricing)) return HasNoChildren(entity as Pricing);
-
-            return true;
-        }
-
-        private static bool HasNoChildren(Hall hall)
-        {
-            return hall.Screenings.Count + hall.Seats.Count == 0;
-        }
-
-        private static bool HasNoChildren(Movie movie)
-        {
-            return movie.Screenings.Count + movie.Reviews.Count == 0;
-        }
-
-        private static bool HasNoChildren(Screening screening)
-        {
-            return screening.Reservations.Count == 0;
-        }
-
-        private static bool HasNoChildren(Reservation reservation)
-        {
-            return reservation.SeatReservations.Count == 0 && reservation.Invoice == null;
-        }
-
-        private static bool HasNoChildren(Seat seat)
-        {
-            return seat.SeatReservations.Count == 0;
-        }
-
-        private static bool HasNoChildren(ApplicationUser user)
-        {
-            return user.Reviews.Count + user.Reservations.Count + user.News.Count + user.Events.Count == 0;
-        }
-
-        private static bool HasNoChildren(ApplicationRole role)
-        {
-            return role.RoleClaims.Count == 0;
-        }
-
-        private static bool HasNoChildren(Pricing pricing)
-        {
-            return pricing.Invoices.Count == 0 && pricing.Screenings.Count == 0;
-        }
     }
 }
