@@ -48,7 +48,7 @@ namespace Cinema.Mobile.ViewModels
 
             foreach (var screening in movieScreenings.Data)
             {
-                screening.DateAndTime = screening.DateAndTime.ToLocalTime();
+                screening.DateAndTime = screening.DateAndTime.ToLocalTime();               
                 ScreeningsList.Add(screening);
             }
         }
