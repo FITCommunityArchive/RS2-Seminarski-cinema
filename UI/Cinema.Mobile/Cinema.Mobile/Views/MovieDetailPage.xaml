@@ -82,20 +82,20 @@
 
                 <Label Text="Screening times" Padding="0, 0, 0, 10" TextColor="Gray" Style="{DynamicResource BodyStyle}"/>
 
-                <ListView ItemsSource="{Binding ScreeningsList}">
+                <ListView ItemsSource="{Binding ScreeningsList}" ItemSelected="ListView_ItemSelected">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <StackLayout Padding="0, 0, 0, 5"  Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                                <StackLayout Padding="0, 0, 0, 25"  Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
                                     <Label Text="{Binding DateAndTime, StringFormat='{0:dd.MM.yyyy}'}" TextColor="Gray" FontAttributes="Bold" Style="{DynamicResource BodyStyle}"/>
                                     <StackLayout Orientation="Horizontal">
                                         <StackLayout Orientation="Horizontal" VerticalOptions="Start">
                                             <Label Text="{Binding Hall.Name}" TextColor="Gray" Style="{DynamicResource BodyStyle}"/>
                                             <Label Text=" | " TextColor="Gray" Style="{DynamicResource BodyStyle}"/>
                                             <Label Text="{Binding DateAndTime, StringFormat='{0:HH:mm}'}" TextColor="Gray" Style="{DynamicResource BodyStyle}"/>
-                                        </StackLayout>
-                                        <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="Start">
-                                            <Button Text="Reserve" CommandParameter="{Binding Id}" Command="{Binding ReserveCommand}" TextColor="White" CornerRadius="2" BackgroundColor="#1f85c9"/>
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer NumberOfTapsRequired="1"></TapGestureRecognizer>
+                                            </StackLayout.GestureRecognizers>                                            
                                         </StackLayout>
                                     </StackLayout>
                                 </StackLayout>

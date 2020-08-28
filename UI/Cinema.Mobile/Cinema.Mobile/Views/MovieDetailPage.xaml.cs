@@ -21,5 +21,12 @@ namespace Cinema.Mobile.Views
             base.OnAppearing();
             await model.Init();
         }
+
+        private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var item = e.SelectedItem as ScreeningDto;
+
+            await Navigation.PushAsync(new NewReservationPage(item));
+        }
     }
 }

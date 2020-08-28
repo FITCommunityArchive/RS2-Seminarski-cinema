@@ -17,19 +17,12 @@ namespace Cinema.Mobile.ViewModels
 
         public MovieDetailsViewModel()
         {
-            ReserveCommand = new Command(Reserve);
             InitCommand = new Command(async () => await Init());
         }
 
-        public ICommand ReserveCommand { get; private set; }
         public ICommand InitCommand { get; private set; }
         public MovieDto Movie { get; set; }
         public ObservableCollection<ScreeningDto> ScreeningsList { get; set; } = new ObservableCollection<ScreeningDto>();
-
-        private void Reserve()
-        {
-
-        }
 
         public async Task Init()
         {
