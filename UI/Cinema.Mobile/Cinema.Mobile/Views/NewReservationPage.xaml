@@ -2,9 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:vm="clr-namespace:Cinema.Mobile.ViewModels"
              mc:Ignorable="d"
              x:Class="Cinema.Mobile.Views.NewReservationPage">
+    <ContentPage.BindingContext>
+        <vm:NewReservationViewModel></vm:NewReservationViewModel>
+    </ContentPage.BindingContext>
     <ContentPage.Content>
         <ScrollView HorizontalOptions="Fill" Orientation="Horizontal">
             <Grid ColumnSpacing="1" RowSpacing="1">

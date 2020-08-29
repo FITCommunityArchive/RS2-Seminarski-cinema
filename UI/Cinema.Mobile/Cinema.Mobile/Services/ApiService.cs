@@ -93,6 +93,13 @@ namespace Cinema.Mobile.Services
             return await url.WithOAuthBearerToken(Token).GetJsonAsync<T>();
         }
 
+        public async Task<T> GetById<T>(object id, string route)
+        {
+            var url = $"{_apiUrl}/{_route}/{id}/{route}";
+
+            return await url.WithOAuthBearerToken(Token).GetJsonAsync<T>();
+        }
+
         public async Task<T> Insert<T>(object request)
         {
             try

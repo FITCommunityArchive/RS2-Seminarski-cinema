@@ -26,7 +26,6 @@ namespace Cinema.Mobile.Views
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            await LoadMovies();
 
             List<MovieDto> movies = await LoadMovies();
             int moviesCount = movies.Count;
