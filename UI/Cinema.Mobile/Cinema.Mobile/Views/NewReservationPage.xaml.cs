@@ -27,21 +27,14 @@ namespace Cinema.Mobile.Views
         protected async override void OnAppearing()
         {
             base.OnAppearing();
+            BindingContext = model = new NewReservationViewModel { Screening = _screening };            
 
             List<SeatingModel> seats = await LoadSeating(_screening.Id);
 
-            int moviesCount = seats.Count;
             int numberOfRows = _screening.Hall.NumberOfRows;
             int numberOfColumns = _screening.Hall.NumberOfColumns;
 
-            ScrollView scrollView = new ScrollView
-            {
-                Orientation = ScrollOrientation.Both,
-                HorizontalOptions = LayoutOptions.CenterAndExpand,
-                VerticalOptions = LayoutOptions.CenterAndExpand
-            };
-
-            Grid grid = SetUpGrid(numberOfRows, numberOfColumns);
+            SetUpGrid(numberOfRows, numberOfColumns);
 
             int seatIndex = 0;
 
@@ -57,18 +50,12 @@ namespace Cinema.Mobile.Views
                     var seat = seats[seatIndex++];
                     Button seatButton = CreateButton(seat);
 
-                    grid.Children.Add(seatButton, j, i);
+                    this.NewReservationSeatingGrid.Children.Add(seatButton, j, i);
                 }
             }
 
             // Accomodate iPhone status bar.
             this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
-
-            // Build the page.
-            scrollView.Content = grid;
-            this.Content = scrollView;
-
-            BindingContext = model = new NewReservationViewModel { Screening = _screening };
 
             await model.Init();
         }
@@ -79,6 +66,7 @@ namespace Cinema.Mobile.Views
             {
                 BindingContext = seat,
                 Text = seat.Seat.Label,
+                BackgroundColor = seat.IsReserved ? Color.Gray : Color.White,
                 Command = new Command(async () => await AddToCart(seat, _screening.Id))
             };
 
@@ -90,25 +78,17 @@ namespace Cinema.Mobile.Views
             throw new NotImplementedException();
         }
 
-        private Grid SetUpGrid(int numberOfRows, int numberOfColumns)
+        private void SetUpGrid(int numberOfRows, int numberOfColumns)
         {
-            Grid grid = new Grid
-            {
-                HorizontalOptions = LayoutOptions.CenterAndExpand,
-                VerticalOptions = LayoutOptions.CenterAndExpand
-            };
-
             for (int i = 0; i < numberOfColumns; i++)
             {
-                grid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+                this.NewReservationSeatingGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
             }
 
             for (int i = 0; i < numberOfRows; i++)
             {
-                grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+                this.NewReservationSeatingGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
             }
-
-            return grid;
         }
 
         public async Task<List<SeatingModel>> LoadSeating(int screeningId)

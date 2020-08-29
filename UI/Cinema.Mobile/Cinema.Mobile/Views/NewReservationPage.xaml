@@ -9,61 +9,14 @@
         <vm:NewReservationViewModel></vm:NewReservationViewModel>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <ScrollView HorizontalOptions="Fill" Orientation="Horizontal">
-            <Grid ColumnSpacing="1" RowSpacing="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="30"/>
-                    <ColumnDefinition Width="30"/>
-                    <ColumnDefinition Width="30"/>
-                    <ColumnDefinition Width="30"/>
-                    <ColumnDefinition Width="30"/>
-                    <ColumnDefinition Width="30"/>
-                    <ColumnDefinition Width="30"/>
-                    <ColumnDefinition Width="30"/>
-                    <ColumnDefinition Width="30"/>
-                    <ColumnDefinition Width="30"/>
-                    <ColumnDefinition Width="30"/>
-                    <ColumnDefinition Width="30"/>
-                    <ColumnDefinition Width="30"/>
-                    <ColumnDefinition Width="30"/>
-                    <ColumnDefinition Width="30"/>
-                    <ColumnDefinition Width="30"/>
-                </Grid.ColumnDefinitions>
+        <ScrollView x:Name="NewReservationScrollView" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Orientation="Both">
+            <Grid x:Name="NewReservationLayoutGrid">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-
-                <Button Text="1" Grid.Row="0" Grid.Column="0"/>
-                <Button Text="1" Grid.Row="0" Grid.Column="1"/>
-                <Button Text="1" Grid.Row="0" Grid.Column="2"/>
-                <Button Text="1" Grid.Row="0" Grid.Column="3"/>
-                <Button Text="1" Grid.Row="0" Grid.Column="4"/>
-                <Button Text="1" Grid.Row="0" Grid.Column="5"/>
-                <Button Text="1" Grid.Row="0" Grid.Column="6"/>
-                <Button Text="1" Grid.Row="0" Grid.Column="7"/>
-                <Button Text="1" Grid.Row="0" Grid.Column="8"/>
-                <Button Text="1" Grid.Row="0" Grid.Column="9"/>
-                <Button Text="1" Grid.Row="0" Grid.Column="10"/>
-                <Button Text="1" Grid.Row="0" Grid.Column="11"/>
-                <Button Text="1" Grid.Row="0" Grid.Column="12"/>
-                <Button Text="1" Grid.Row="0" Grid.Column="13"/>
-                <Button Text="1" Grid.Row="0" Grid.Column="14"/>
-                <Button Text="1" Grid.Row="0" Grid.Column="15"/>
+                <Label Grid.Row="0" Text="Reserve your tickets" FontSize="Title" Padding="40"/>
+                <Grid x:Name="NewReservationSeatingGrid" Grid.Row="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
             </Grid>
         </ScrollView>
     </ContentPage.Content>
