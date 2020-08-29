@@ -127,24 +127,5 @@ namespace Cinema.Dal.Repository
                     return x => x.Id;
             }
         }
-
-        public async Task<bool> DeleteUserReferences(int id)
-        {
-
-            // Soft delete user from all reservations found
-            var reservations = _context.Reservations.Where(x => x.UserId == id).ToList();
-            foreach (Reservation r in reservations)
-            {
-                await DeleteAsync(r.Id);
-            }
-
-            
-            return true;
-        }
-
-        public List<Reservation> GetReservationsByUserId(int id)
-        {
-            return _dbSet.Where(x => x.UserId == id).ToList();
-        }
     }
 }

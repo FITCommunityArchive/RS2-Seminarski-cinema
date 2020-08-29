@@ -20,21 +20,5 @@ namespace Cinema.Dal.Repository
             invoice.Price = invoice.Reservation.Screening.Pricing.Price * ticketQuantity;
             invoice.TaxAmount = invoice.Price * taxPercentage;
         }
-
-        public async Task<bool> DeleteReservationReferences(List<Reservation> reservations)
-        {
-
-            // Soft delete reservation from all Invoices found for the provided user id
-            foreach (Reservation r in reservations)
-            {
-                var item = _context.Invoices.Where(x => x.ReservationId == r.Id).FirstOrDefault();
-                if(item != null)
-                {
-                    await DeleteAsync(item.Id);
-                }
-            }
-            
-            return true;
-        }
     }
 }
