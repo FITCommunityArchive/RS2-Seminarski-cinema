@@ -7,10 +7,10 @@ namespace Cinema.Domain.Entities.Identity
     {
         public ApplicationUserRole()
         {
-            Deleted = false;
+            IsDeleted = false;
         }
         public virtual ApplicationUser User { get; set; }
         public virtual ApplicationRole Role { get; set; }
-        public bool Deleted { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

@@ -1,17 +1,17 @@
 ﻿using Cinema.Domain.Entities;
 using Cinema.Utilities.Interfaces.Dal;
 using Microsoft.Extensions.Configuration;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Cinema.Dal.Repository
 {
-    public class InvoiceRepository : Repository<Invoice, int>
+    public class InvoiceRepository : Repository<Invoice, int>, IInvoiceRepository
     {
         private readonly IConfiguration _configuration;
 
-        public InvoiceRepository(ICinemaDbContext context, IConfiguration configuration) : base(context)
-        {
-            _configuration = configuration;
-        }
+        public InvoiceRepository(ICinemaDbContext context) : base(context) { }
 
         public void SetInvoicePrice(Invoice invoice, int ticketQuantity)
         {

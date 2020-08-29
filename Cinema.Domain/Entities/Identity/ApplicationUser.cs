@@ -16,7 +16,7 @@ namespace Cinema.Domain.Entities.Identity
             Claims = new List<ApplicationUserClaim>();
             Logins = new List<ApplicationUserLogin>();
             Tokens = new List<ApplicationUserToken>();
-            Deleted = false;
+            IsDeleted = false;
         }
 
         public string FirstName { get; set; }
@@ -29,7 +29,7 @@ namespace Cinema.Domain.Entities.Identity
                 return FirstName + " " + LastName;
             }
         }
-        public bool Deleted { get; set; }
+        public bool IsDeleted { get; set; }
         public virtual IList<Review> Reviews { get; set; }
         public virtual IList<Reservation> Reservations { get; set; }
         public virtual IList<News> News { get; set; }

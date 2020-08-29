@@ -3,6 +3,7 @@ using Cinema.Domain.Entities.Identity;
 using Cinema.Utilities.Interfaces.Dal;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -15,7 +16,10 @@ namespace Cinema.Dal.Data
     {
         private string _connectionString;
         public CinemaDbContext(DbContextOptions<CinemaDbContext> options)
-            : base(options) { }
+            : base(options) {
+            ChangeTracker.CascadeDeleteTiming = CascadeTiming.OnSaveChanges;
+            ChangeTracker.DeleteOrphansTiming = CascadeTiming.OnSaveChanges;
+        }
 
         public CinemaDbContext(string connectionString)
         {
@@ -53,23 +57,12 @@ namespace Cinema.Dal.Data
         }
         protected override void OnModelCreating(ModelBuilder builder)
         {
-
-            //var typesToRegister = Assembly.Load("Cinema.Domain").GetTypes()
-            //    .Where(type => !String.IsNullOrEmpty(type.Namespace))
-            //    .Where(type => type.BaseType != null && type.BaseType.IsGenericType && type.BaseType.GetGenericTypeDefinition() == typeof(IEntityTypeConfiguration<>));
-
-            //foreach(var type in typesToRegister)
-            //{
-            //    dynamic configurationInstance = Activator.CreateInstance(type);
-            //    builder.ApplyConfiguration(configurationInstance);
-            //}
-
             base.OnModelCreating(builder);
 
             //This line is in order to prevent Cascade Delete
             foreach (var relationship in builder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
             {
-                relationship.DeleteBehavior = DeleteBehavior.Restrict;
+                relationship.DeleteBehavior = DeleteBehavior.Cascade;
             }
 
             builder.Entity<Event>().HasQueryFilter(x => !x.IsDeleted);
@@ -87,9 +80,9 @@ namespace Cinema.Dal.Data
             builder.Entity<Screening>().HasQueryFilter(x => !x.IsDeleted);
             builder.Entity<Seat>().HasQueryFilter(x => !x.IsDeleted);
             builder.Entity<SeatReservation>().HasQueryFilter(x => !x.IsDeleted);
-            builder.Entity<ApplicationUser>().HasQueryFilter(x => !x.Deleted);
-            builder.Entity<ApplicationRole>().HasQueryFilter(x => !x.Deleted);
-            builder.Entity<ApplicationUserRole>().HasQueryFilter(x => !x.Deleted);
+            builder.Entity<ApplicationUser>().HasQueryFilter(x => !x.IsDeleted);
+            builder.Entity<ApplicationRole>().HasQueryFilter(x => !x.IsDeleted);
+            builder.Entity<ApplicationUserRole>().HasQueryFilter(x => !x.IsDeleted);
 
             builder.Entity<Reservation>()
                    .HasOne(x => x.Invoice)
@@ -174,10 +167,51 @@ namespace Cinema.Dal.Data
 
         private void AuditChanges()
         {
-            foreach (var entry in ChangeTracker.Entries().Where(x => x.State == EntityState.Deleted && x.Entity is BaseClass))
+            foreach (var entry in ChangeTracker.Entries())
             {
-                entry.State = EntityState.Modified;
-                entry.CurrentValues[nameof(BaseClass.IsDeleted)] = true;
+                switch (entry.State)
+                {
+                    case EntityState.Deleted:
+                        entry.State = EntityState.Modified;
+                        entry.CurrentValues["IsDeleted"] = true;
+                        // iterate over each nav. prop to performe cascade soft delete = true
+                        RecursiveChildrenIsDeletedHandler(entry);
+                        break;
+                }
+            }
+        }
+
+        public void RecursiveChildrenIsDeletedHandler(EntityEntry entry)
+        {
+            foreach (var navigationEntry in entry.Navigations
+                            .Where(n => !n.Metadata.IsDependentToPrincipal()))
+            {
+                if (navigationEntry is CollectionEntry collectionEntry)
+                {
+                    foreach (var dependentEntry in collectionEntry.CurrentValue)
+                    {
+                        HandleDependent(Entry(dependentEntry));
+                    }
+
+                }
+                else
+                {
+                    var dependentEntry = navigationEntry.CurrentValue;
+                    if (dependentEntry != null)
+                    {
+                        HandleDependent(Entry(dependentEntry));
+                    }
+                }
+            }
+        }
+        private void HandleDependent(EntityEntry entry)
+        {
+            entry.State = EntityState.Modified;
+            entry.CurrentValues["IsDeleted"] = true;
+
+            if (entry.Navigations.Where(n => !n.Metadata.IsDependentToPrincipal()).Count() > 0)
+            {
+                RecursiveChildrenIsDeletedHandler(entry);
             }
         }
     }
