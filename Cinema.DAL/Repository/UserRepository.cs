@@ -87,6 +87,24 @@ namespace Cinema.Dal.Repository
             return result;
         }
 
+        public override async Task DeleteAsync(int id)
+        {
+            ApplicationUser entity = await GetAsync(id);
+            
+            var test = _dbSet
+                .Include(c=> c.UserRoles)
+                .Include(c=> c.Reservations).ThenInclude(c=>c.SeatReservations)
+                .Include(c=> c.Reservations).ThenInclude(c=>c.Invoice)
+                .Where(x => x.Id == id).FirstOrDefault();
+
+            if (entity != null)
+            {
+                Delete(entity);
+            }
+        }
+
+        private void Delete(ApplicationUser entity) => _dbSet.Remove(entity);
+
         public IQueryable<ApplicationUser> Sort(IQueryable<ApplicationUser> query, SortOrder? sortOrder, string sortProperty)
         {
             if (sortOrder == SortOrder.ASC)

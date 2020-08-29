@@ -1,4 +1,5 @@
-﻿using Cinema.Shared.Constants;
+﻿using Cinema.Domain.Entities;
+using Cinema.Shared.Constants;
 using Cinema.Shared.Pagination;
 using Cinema.Shared.Search;
 using Cinema.Utilities.Exceptions;

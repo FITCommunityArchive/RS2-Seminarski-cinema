@@ -178,7 +178,6 @@ namespace Cinema.Dal.Data
 
         private void AuditChanges()
         {
-            ChangeTracker.DetectChanges();
             foreach (var entry in ChangeTracker.Entries())
             {
                 switch (entry.State)
@@ -187,36 +186,44 @@ namespace Cinema.Dal.Data
                         entry.State = EntityState.Modified;
                         entry.CurrentValues["IsDeleted"] = true;
                         // iterate over each nav. prop to performe cascade soft delete = true
-
-                        foreach (var navigationEntry in entry.Navigations
-                            .Where(n => !n.Metadata.IsDependentToPrincipal()))
-                        {
-                            if (navigationEntry is CollectionEntry collectionEntry)
-                            {
-                                foreach (var dependentEntry in collectionEntry.CurrentValue)
-                                {
-                                    HandleDependent(Entry(dependentEntry));
-                                }
-                            }
-                            else
-                            {
-                                var dependentEntry = navigationEntry.CurrentValue;
-                                if (dependentEntry != null)
-                                {
-                                    HandleDependent(Entry(dependentEntry));
-                                }
-                            }
-                        }
-
+                        RecursiveChildrenIsDeletedHandler(entry);
                         break;
                 }
             }
         }
 
+        public void RecursiveChildrenIsDeletedHandler(EntityEntry entry)
+        {
+            foreach (var navigationEntry in entry.Navigations
+                            .Where(n => !n.Metadata.IsDependentToPrincipal()))
+            {
+                if (navigationEntry is CollectionEntry collectionEntry)
+                {
+                    foreach (var dependentEntry in collectionEntry.CurrentValue)
+                    {
+                        HandleDependent(Entry(dependentEntry));
+                    }
+
+                }
+                else
+                {
+                    var dependentEntry = navigationEntry.CurrentValue;
+                    if (dependentEntry != null)
+                    {
+                        HandleDependent(Entry(dependentEntry));
+                    }
+                }
+            }
+        }
         private void HandleDependent(EntityEntry entry)
         {
             entry.State = EntityState.Modified;
             entry.CurrentValues["IsDeleted"] = true;
+
+            if (entry.Navigations.Where(n => !n.Metadata.IsDependentToPrincipal()).Count() > 0)
+            {
+                RecursiveChildrenIsDeletedHandler(entry);
+            }
         }
     }
 }
