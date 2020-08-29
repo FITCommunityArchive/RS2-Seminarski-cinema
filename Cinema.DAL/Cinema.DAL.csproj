@@ -7,6 +7,8 @@
   <ItemGroup>
     <Compile Remove="Migrations\20200820202026_AddedReservationsInitialData.cs" />
     <Compile Remove="Migrations\20200820202026_AddedReservationsInitialData.Designer.cs" />
+    <Compile Remove="Migrations\20200828073750_ChangeIDentityEntityDeletedToIsDeleted.cs" />
+    <Compile Remove="Migrations\20200828073750_ChangeIDentityEntityDeletedToIsDeleted.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -335,7 +335,7 @@ namespace Cinema.Dal.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsDeleted")
+                    b.Property<bool>("Deleted")
                         .HasColumnType("bit");
 
                     b.Property<string>("Name")
@@ -359,24 +359,24 @@ namespace Cinema.Dal.Migrations
                         new
                         {
                             Id = -1,
-                            ConcurrencyStamp = "4af6e001-0efc-4e88-b2a4-a5892ef1ae3e",
-                            IsDeleted = false,
+                            ConcurrencyStamp = "67768d9e-5926-4d8b-9ad0-d049e9c1322f",
+                            Deleted = false,
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
                             Id = -2,
-                            ConcurrencyStamp = "758d1f2c-777d-4ea3-8d11-602be3a2ac20",
-                            IsDeleted = false,
+                            ConcurrencyStamp = "740ab7b1-f35c-480b-b2ff-77f7fc5ca03d",
+                            Deleted = false,
                             Name = "Content Editor",
                             NormalizedName = "CONTENT EDITOR"
                         },
                         new
                         {
                             Id = -3,
-                            ConcurrencyStamp = "84fe698f-4d2b-4d53-aba2-a4006ded8aa7",
-                            IsDeleted = false,
+                            ConcurrencyStamp = "fc7f25a8-01ac-4674-99f8-2b9fe07eaf9a",
+                            Deleted = false,
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         });
@@ -419,6 +419,9 @@ namespace Cinema.Dal.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
@@ -428,9 +431,6 @@ namespace Cinema.Dal.Migrations
 
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
 
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
@@ -485,16 +485,16 @@ namespace Cinema.Dal.Migrations
                         {
                             Id = 1,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "39cd5e40-94f1-4ae9-b7c3-ca88a7d80974",
+                            ConcurrencyStamp = "0c91d39c-e4fc-47a0-9970-3616b98081cf",
+                            Deleted = false,
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             FirstName = "Admin",
-                            IsDeleted = false,
                             LastName = "Test",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJLaE822m2i+OHjTzieF7KJrV6U0a/vlMAA6jM7YOKCqPGHWgl/Knyu+inRepxmjRA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBfdViydAx8Z/cka4vIpGCPN2nhIzhTUyQDb86w+lsXs1kJj+o+xlgkrLjy+TRrrcw==",
                             PhoneNumber = "123456789",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -504,16 +504,16 @@ namespace Cinema.Dal.Migrations
                         {
                             Id = 2,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6643179a-845f-4e41-8508-89426e192f60",
+                            ConcurrencyStamp = "1fbbf698-7852-4312-93b2-43bfb7a94ca6",
+                            Deleted = false,
                             Email = "test1@test-customer.com",
                             EmailConfirmed = true,
                             FirstName = "First",
-                            IsDeleted = false,
                             LastName = "Customer",
                             LockoutEnabled = false,
                             NormalizedEmail = "TEST1@TEST-CUSTOMER.COM",
                             NormalizedUserName = "TEST.CUSTOMER1",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHsYLF3D9hLI8+gWbt7pLIl+WK9/S20fS/o8zrPDcCb/2zW5WiOyHTXA8NO/XS6HVw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBHoFL1bBhbZB6oVuMegD4BO9CezJX46qQyImtZNAyA0Ilka76O5mr+OZJUVawK5yQ==",
                             PhoneNumber = "123456789",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -523,16 +523,16 @@ namespace Cinema.Dal.Migrations
                         {
                             Id = 3,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c122058c-34e0-4609-89d8-a897547b7a32",
+                            ConcurrencyStamp = "4f4ef353-1895-4d0c-a292-13a2e0b78405",
+                            Deleted = false,
                             Email = "test2@test-customer.com",
                             EmailConfirmed = true,
                             FirstName = "Second",
-                            IsDeleted = false,
                             LastName = "Customer",
                             LockoutEnabled = false,
                             NormalizedEmail = "TEST2@TEST-CUSTOMER.COM",
                             NormalizedUserName = "TEST.CUSTOMER2",
-                            PasswordHash = "AQAAAAEAACcQAAAAEAr55HM+2t5vJadlY9x43yRf5cQQomGl+LMbwRze8kbR7hb9cBdAWWDA4BK13p3u7g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELRDmvFK9iW7gxUj9aIDG7R+Qb1GW0aukRgWqOBdBfkRgPTqqPJczKJ/wwrn/PcRVg==",
                             PhoneNumber = "123456789",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -592,7 +592,7 @@ namespace Cinema.Dal.Migrations
                     b.Property<int>("RoleId")
                         .HasColumnType("int");
 
-                    b.Property<bool>("IsDeleted")
+                    b.Property<bool>("Deleted")
                         .HasColumnType("bit");
 
                     b.HasKey("UserId", "RoleId");
@@ -606,19 +606,19 @@ namespace Cinema.Dal.Migrations
                         {
                             UserId = 1,
                             RoleId = -1,
-                            IsDeleted = false
+                            Deleted = false
                         },
                         new
                         {
                             UserId = 2,
                             RoleId = -3,
-                            IsDeleted = false
+                            Deleted = false
                         },
                         new
                         {
                             UserId = 3,
                             RoleId = -3,
-                            IsDeleted = false
+                            Deleted = false
                         });
                 });
 
@@ -7763,7 +7763,7 @@ namespace Cinema.Dal.Migrations
                         {
                             Id = -14,
                             CreatedAt = new DateTime(2020, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateAndTime = new DateTime(2020, 9, 7, 20, 0, 0, 0, DateTimeKind.Utc),
+                            DateAndTime = new DateTime(2020, 8, 30, 20, 0, 0, 0, DateTimeKind.Utc),
                             HallId = -1,
                             IsDeleted = false,
                             MovieId = -4,
@@ -7773,7 +7773,7 @@ namespace Cinema.Dal.Migrations
                         {
                             Id = -15,
                             CreatedAt = new DateTime(2020, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateAndTime = new DateTime(2020, 9, 7, 22, 0, 0, 0, DateTimeKind.Utc),
+                            DateAndTime = new DateTime(2020, 8, 30, 22, 0, 0, 0, DateTimeKind.Utc),
                             HallId = -1,
                             IsDeleted = false,
                             MovieId = -4,
@@ -7783,7 +7783,7 @@ namespace Cinema.Dal.Migrations
                         {
                             Id = -16,
                             CreatedAt = new DateTime(2020, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateAndTime = new DateTime(2020, 9, 12, 18, 0, 0, 0, DateTimeKind.Utc),
+                            DateAndTime = new DateTime(2020, 9, 4, 18, 0, 0, 0, DateTimeKind.Utc),
                             HallId = -1,
                             IsDeleted = false,
                             MovieId = -4,
@@ -7793,7 +7793,7 @@ namespace Cinema.Dal.Migrations
                         {
                             Id = -17,
                             CreatedAt = new DateTime(2020, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateAndTime = new DateTime(2020, 9, 22, 18, 0, 0, 0, DateTimeKind.Utc),
+                            DateAndTime = new DateTime(2020, 9, 14, 18, 0, 0, 0, DateTimeKind.Utc),
                             HallId = -1,
                             IsDeleted = false,
                             MovieId = -4,
@@ -14107,12 +14107,12 @@ namespace Cinema.Dal.Migrations
                     b.HasOne("Cinema.Domain.Entities.Identity.ApplicationUser", "Author")
                         .WithMany("Events")
                         .HasForeignKey("AuthorId1")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("Cinema.Domain.Entities.EventType", "Type")
                         .WithMany("Events")
                         .HasForeignKey("TypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -14121,13 +14121,13 @@ namespace Cinema.Dal.Migrations
                     b.HasOne("Cinema.Domain.Entities.Genre", "Genre")
                         .WithMany("GenreMovies")
                         .HasForeignKey("GenreId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Cinema.Domain.Entities.Movie", "Movie")
                         .WithMany("GenreMovies")
                         .HasForeignKey("MovieId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -14136,7 +14136,7 @@ namespace Cinema.Dal.Migrations
                     b.HasOne("Cinema.Domain.Entities.Identity.ApplicationRole", "Role")
                         .WithMany("RoleClaims")
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -14145,7 +14145,7 @@ namespace Cinema.Dal.Migrations
                     b.HasOne("Cinema.Domain.Entities.Identity.ApplicationUser", "User")
                         .WithMany("Claims")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -14154,7 +14154,7 @@ namespace Cinema.Dal.Migrations
                     b.HasOne("Cinema.Domain.Entities.Identity.ApplicationUser", "User")
                         .WithMany("Logins")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -14163,7 +14163,7 @@ namespace Cinema.Dal.Migrations
                     b.HasOne("Cinema.Domain.Entities.Identity.ApplicationRole", "Role")
                         .WithMany("UserRoles")
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Cinema.Domain.Entities.Identity.ApplicationUser", "User")
@@ -14178,7 +14178,7 @@ namespace Cinema.Dal.Migrations
                     b.HasOne("Cinema.Domain.Entities.Identity.ApplicationUser", "User")
                         .WithMany("Tokens")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -14187,13 +14187,13 @@ namespace Cinema.Dal.Migrations
                     b.HasOne("Cinema.Domain.Entities.Pricing", "Pricing")
                         .WithMany("Invoices")
                         .HasForeignKey("PricingId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Cinema.Domain.Entities.Reservation", "Reservation")
                         .WithOne("Invoice")
                         .HasForeignKey("Cinema.Domain.Entities.Invoice", "ReservationId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -14202,12 +14202,12 @@ namespace Cinema.Dal.Migrations
                     b.HasOne("Cinema.Domain.Entities.Identity.ApplicationUser", "Author")
                         .WithMany("News")
                         .HasForeignKey("AuthorId1")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("Cinema.Domain.Entities.NewsType", "Type")
                         .WithMany("News")
                         .HasForeignKey("TypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -14216,13 +14216,13 @@ namespace Cinema.Dal.Migrations
                     b.HasOne("Cinema.Domain.Entities.Screening", "Screening")
                         .WithMany("Reservations")
                         .HasForeignKey("ScreeningId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Cinema.Domain.Entities.Identity.ApplicationUser", "User")
                         .WithMany("Reservations")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -14231,13 +14231,13 @@ namespace Cinema.Dal.Migrations
                     b.HasOne("Cinema.Domain.Entities.Movie", "Movie")
                         .WithMany("Reviews")
                         .HasForeignKey("MovieId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Cinema.Domain.Entities.Identity.ApplicationUser", "User")
                         .WithMany("Reviews")
                         .HasForeignKey("UserId1")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("Cinema.Domain.Entities.Screening", b =>
@@ -14245,19 +14245,19 @@ namespace Cinema.Dal.Migrations
                     b.HasOne("Cinema.Domain.Entities.Hall", "Hall")
                         .WithMany("Screenings")
                         .HasForeignKey("HallId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Cinema.Domain.Entities.Movie", "Movie")
                         .WithMany("Screenings")
                         .HasForeignKey("MovieId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Cinema.Domain.Entities.Pricing", "Pricing")
                         .WithMany("Screenings")
                         .HasForeignKey("PricingId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -14266,7 +14266,7 @@ namespace Cinema.Dal.Migrations
                     b.HasOne("Cinema.Domain.Entities.Hall", "Hall")
                         .WithMany("Seats")
                         .HasForeignKey("HallId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -14275,13 +14275,13 @@ namespace Cinema.Dal.Migrations
                     b.HasOne("Cinema.Domain.Entities.Reservation", "Reservation")
                         .WithMany("SeatReservations")
                         .HasForeignKey("ReservationId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Cinema.Domain.Entities.Seat", "Seat")
                         .WithMany("SeatReservations")
                         .HasForeignKey("SeatId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 #pragma warning restore 612, 618
