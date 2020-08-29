@@ -72,9 +72,9 @@ namespace Cinema.Services
             throw new System.NotImplementedException();
         }
 
-        private async Task<bool> ValidateStatusChange(int screeningID)
+        private async Task<bool> ValidateStatusChange(int screeningId)
         {
-            Screening screening = await _screeningRepo.GetAsync(screeningID);
+            Screening screening = await _screeningRepo.GetAsync(screeningId);
 
             if (screening == null || screening.DateAndTime <= DateTime.UtcNow) return false;
 

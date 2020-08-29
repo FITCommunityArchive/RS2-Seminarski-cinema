@@ -1,7 +1,6 @@
 ﻿using Cinema.Mobile.Services;
 using Cinema.Mobile.ViewModels;
 using Cinema.Models.Dtos;
-using Cinema.Shared.Helpers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -91,7 +90,7 @@ namespace Cinema.Mobile.Views
             {
                 return 2;
             }
-            else if(moviesCount == 1)
+            else if (moviesCount == 1)
             {
                 return 1;
             }

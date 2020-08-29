@@ -3,7 +3,9 @@ using Cinema.Shared.Enums;
 using Cinema.Shared.Pagination;
 using Cinema.Shared.Search;
 using Cinema.Utilities.Interfaces.Dal;
+using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
@@ -29,6 +31,15 @@ namespace Cinema.Dal.Repository
 
             var pagedList = await ApplyPaginationAsync(query, searchRequest.PageIndex, searchRequest.PageSize);
             return pagedList;
+        }
+
+        public async Task<IEnumerable<Reservation>> GetByScreeningIdAsync(int screeningId, bool isCancelled = false)
+        {
+            var query = _dbSet.Include(x => x.SeatReservations).ThenInclude(x => x.Seat)
+                              .Where(x => x.ScreeningId == screeningId && x.IsCancelled == isCancelled);
+
+            var list = await query.ToListAsync();
+            return list;
         }
 
         protected override Expression<Func<Reservation, bool>> GetByIdExpression(int id)
