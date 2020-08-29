@@ -67,6 +67,21 @@ namespace Cinema.Services
             return _mapper.Map<ApplicationUserDto>(userIdentity);
         }
 
+        [HttpPost]
+        public async Task<ApplicationUserDto> RegisterAsync(UserRegisterRequest model)
+        {
+            var userIdentity = _mapper.Map<ApplicationUser>(model);
+            var result = await _userManager.CreateAsync(userIdentity, model.Password);
+
+            if (result.Succeeded)
+            {
+                ApplicationRole role = await _unit.Roles.GetAsync(-3);
+                await _userManager.AddToRoleAsync(userIdentity, role.Name);
+            }
+
+            return _mapper.Map<ApplicationUserDto>(userIdentity);
+        }
+
         public async Task<ApplicationUserDto> UpdateAsync(int id, UserUpsertRequest req)
         {
             var user = await _userRepo.GetByIdWithRolesAsync(id);

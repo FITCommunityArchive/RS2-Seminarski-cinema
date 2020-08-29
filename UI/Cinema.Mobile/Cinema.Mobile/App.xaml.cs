@@ -1,8 +1,5 @@
-﻿using System;
+﻿using Cinema.Mobile.Services;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-using Cinema.Mobile.Services;
-using Cinema.Mobile.Views;
 
 namespace Cinema.Mobile
 {
@@ -14,7 +11,7 @@ namespace Cinema.Mobile
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new LoginPage());
         }
 
         protected override void OnStart()

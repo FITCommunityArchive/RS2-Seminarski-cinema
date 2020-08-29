@@ -1,9 +1,8 @@
 ﻿using Cinema.Mobile.Models;
-using System;
+using Cinema.Mobile.Services;
 using System.Collections.Generic;
 using System.ComponentModel;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace Cinema.Mobile.Views
 {
@@ -23,7 +22,8 @@ namespace Cinema.Mobile.Views
                 new HomeMenuItem {Id = MenuItemType.Browse, Title="Browse" },
                 new HomeMenuItem {Id = MenuItemType.About, Title="About" },
                 new HomeMenuItem {Id = MenuItemType.NowShowing, Title="Now Showing" },
-                new HomeMenuItem {Id = MenuItemType.GridDemo, Title="Grid Demo" }
+                new HomeMenuItem {Id = MenuItemType.GridDemo, Title="Grid Demo" },
+                new HomeMenuItem {Id = MenuItemType.LogOut, Title="Log out" }
             };
 
             ListViewMenu.ItemsSource = menuItems;
@@ -35,8 +35,25 @@ namespace Cinema.Mobile.Views
                     return;
 
                 var id = (int)((HomeMenuItem)e.SelectedItem).Id;
-                await RootPage.NavigateFromMenu(id);
+
+                if (id == 4)
+                {
+                    LogOut();
+                }
+                else
+                {
+
+                    await RootPage.NavigateFromMenu(id);
+                }
             };
+        }
+
+        private void LogOut()
+        {
+            ApiService.Username = null;
+            ApiService.Password = null;
+            ApiService.Token = null;
+            Application.Current.MainPage = new LoginPage();
         }
     }
 }

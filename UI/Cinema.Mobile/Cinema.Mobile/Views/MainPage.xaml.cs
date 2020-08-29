@@ -1,11 +1,8 @@
-﻿using System;
+﻿using Cinema.Mobile.Models;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-
-using Cinema.Mobile.Models;
 
 namespace Cinema.Mobile.Views
 {
@@ -57,5 +54,6 @@ namespace Cinema.Mobile.Views
                 IsPresented = false;
             }
         }
+
     }
 }

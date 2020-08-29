@@ -94,6 +94,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="imdbicongray.png" />
+    <Content Include="movieposterplaceholder.png" />
     <Content Include="screeningdetailavataricon.png" />
     <Content Include="youtubeicongray.png" />
   </ItemGroup>

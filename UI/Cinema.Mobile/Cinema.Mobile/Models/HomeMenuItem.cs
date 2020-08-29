@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Cinema.Mobile.Models
+﻿namespace Cinema.Mobile.Models
 {
     public enum MenuItemType
     {
         Browse,
         About,
         NowShowing,
-        GridDemo
+        GridDemo,
+        LogOut
     }
     public class HomeMenuItem
     {

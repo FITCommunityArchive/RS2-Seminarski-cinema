@@ -2,9 +2,11 @@
 using Cinema.Domain.Entities;
 using Cinema.Models.Dtos;
 using Cinema.Models.Requests.Screenings;
+using Cinema.Models.SpecificModels;
 using Cinema.Shared.Enums;
 using Cinema.Shared.Pagination;
 using Cinema.Utilities.Exceptions;
+using Cinema.Utilities.Factory;
 using Cinema.Utilities.Interfaces.Dal;
 using Cinema.Utilities.Interfaces.Services;
 using System;
@@ -18,7 +20,9 @@ namespace Cinema.Services
     {
         protected readonly IScreeningRepository _screeningRepo;
         protected readonly IMovieRepository _movieRepo;
+        protected readonly IReservationRepository _reservationRepo;
         protected readonly IRepository<Hall, int> _hallRepo;
+        protected readonly IRepository<Seat, int> _seatRepo;
         protected readonly IUnitOfWork _unit;
         protected readonly IMapper _mapper;
 
@@ -28,7 +32,9 @@ namespace Cinema.Services
             _mapper = mapper;
             _screeningRepo = unit.Screenings;
             _movieRepo = unit.Movies;
+            _reservationRepo = unit.Reservations;
             _hallRepo = unit.Repository<Hall, int>();
+            _seatRepo = unit.Repository<Seat, int>();
         }
 
         public async Task<ScreeningDto> GetByIdAsync(int id, ICollection<string> includes = null)
@@ -39,7 +45,7 @@ namespace Cinema.Services
 
         public async Task<IPagedList<ScreeningDto>> GetPagedAsync(ScreeningSearchRequest search)
         {
-            var list = await _screeningRepo.GetPagedAsync(search, search.SearchTerm, search.Hall, search.Price, search.Status, search.Date);
+            var list = await _screeningRepo.GetPagedAsync(search, search.SearchTerm, search.MovieId, search.Hall, search.Price, search.Status, search.Date);
             var dtoList = PagedList<ScreeningDto>.Map<Screening>(_mapper, list);
 
             foreach (var screening in dtoList.Data)
@@ -48,6 +54,38 @@ namespace Cinema.Services
             }
 
             return dtoList;
+        }
+
+        public async Task<List<SeatingModel>> GetSeatingAsync(int id)
+        {
+            Screening screening = await _screeningRepo.GetAsync(id);
+
+            IEnumerable<Reservation> screeningReservations = await _reservationRepo.GetByScreeningIdAsync(id);
+
+            //gets reserved seats first
+            List<SeatingModel> screeningSeats = screeningReservations.SelectMany(x => x.SeatReservations)
+                                                                          .Select(x => new SeatingModel
+                                                                          {
+                                                                              IsReserved = true,
+                                                                              Seat = _mapper.Map<SeatDto>(x.Seat)
+                                                                          }).ToList();
+
+            //gets all seats
+            IEnumerable<Seat> hallSeats = await _seatRepo.GetAsync(x => x.HallId == screening.HallId);
+            IEnumerable<Seat> freeSeats = hallSeats.Where(x => !screeningSeats.Select(y => y.Seat.Id).Contains(x.Id)).ToList();
+
+            foreach (Seat seat in freeSeats)
+            {
+                SeatingModel seatingModel = new SeatingModel
+                {
+                    IsReserved = false,
+                    Seat = _mapper.Map<SeatDto>(seat)
+                };
+
+                screeningSeats.Add(seatingModel);
+            }
+
+            return screeningSeats.OrderBy(x => x.Seat.SeatNumber).ToList();
         }
 
         private TimingStatus GetTimingStatus(ScreeningDto screening)

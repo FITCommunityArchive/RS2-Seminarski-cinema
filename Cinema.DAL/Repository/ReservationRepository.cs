@@ -33,6 +33,15 @@ namespace Cinema.Dal.Repository
             return pagedList;
         }
 
+        public async Task<IEnumerable<Reservation>> GetByScreeningIdAsync(int screeningId, bool isCancelled = false)
+        {
+            var query = _dbSet.Include(x => x.SeatReservations).ThenInclude(x => x.Seat)
+                              .Where(x => x.ScreeningId == screeningId && x.IsCancelled == isCancelled);
+
+            var list = await query.ToListAsync();
+            return list;
+        }
+
         protected override Expression<Func<Reservation, bool>> GetByIdExpression(int id)
         {
             return x => x.Id == id;

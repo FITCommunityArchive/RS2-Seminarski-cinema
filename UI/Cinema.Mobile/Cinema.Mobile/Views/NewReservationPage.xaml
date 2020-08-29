@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:vm="clr-namespace:Cinema.Mobile.ViewModels"
+             mc:Ignorable="d"
+             x:Class="Cinema.Mobile.Views.NewReservationPage">
+    <ContentPage.BindingContext>
+        <vm:NewReservationViewModel></vm:NewReservationViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <ScrollView x:Name="NewReservationScrollView" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Orientation="Both">
+            <Grid x:Name="NewReservationLayoutGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Text="Reserve your tickets" FontSize="Title" Padding="40"/>
+                <Grid x:Name="NewReservationSeatingGrid" Grid.Row="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

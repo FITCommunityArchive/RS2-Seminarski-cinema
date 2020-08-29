@@ -1,13 +1,10 @@
 ﻿using Cinema.Mobile.Services;
 using Cinema.Mobile.ViewModels;
 using Cinema.Models.Dtos;
-using Cinema.Models.Requests.Screenings;
-using Cinema.Shared.Pagination;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -19,7 +16,6 @@ namespace Cinema.Mobile.Views
     public partial class NowShowingMoviesPage : ContentPage
     {
         private readonly ApiService _moviesApi = new ApiService("Movies");
-        private List<MovieDto> _movies;
         NowShowingMoviesViewModel model = null;
 
         public NowShowingMoviesPage()
@@ -30,50 +26,27 @@ namespace Cinema.Mobile.Views
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            await LoadMovies();
 
-            Grid grid = new Grid
-            {
-                HorizontalOptions = LayoutOptions.CenterAndExpand,
-                VerticalOptions = LayoutOptions.CenterAndExpand,
-                ColumnDefinitions =
-                {
-                    new ColumnDefinition { Width = GridLength.Auto },
-                    new ColumnDefinition { Width = GridLength.Auto }
-                }
-            };
-
-            int moviesCount = _movies.Count;
+            List<MovieDto> movies = await LoadMovies();
+            int moviesCount = movies.Count;
             int numberOfRows = (int)Math.Ceiling(moviesCount / 2.0);
+            int numberOfColumns = GetNumberOfColumns(moviesCount);
 
-            int numberOfColumns = 2;
-            if (moviesCount == 1)
-            {
-                numberOfColumns = 1;
-            }
-
-            for (int i = 0; i < numberOfRows; i++)
-            {
-                grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-            }
+            Grid grid = SetUpGrid(numberOfRows);
 
             int screeningIndex = 0;
-
 
             for (int i = 0; i < numberOfRows; i++)
             {
                 for (int j = 0; j < numberOfColumns; j++)
                 {
-                    var movie = _movies[screeningIndex];
-                    var stream = new MemoryStream(movie.Poster);
-
-                    ImageButton image = new ImageButton
+                    if (screeningIndex == movies.Count)
                     {
-                        BindingContext = movie,
-                        Source = ImageSource.FromStream(() => stream),
-                        HeightRequest = 300,
-                        Command = new Command(async () => await OpenDetails(movie))
-                    };
+                        break;
+                    }
+
+                    var movie = movies[screeningIndex++];
+                    ImageButton image = CreateImageButton(movie);
 
                     grid.Children.Add(image, j, i);
                 }
@@ -85,8 +58,68 @@ namespace Cinema.Mobile.Views
             // Build the page.
             this.Content = grid;
 
-            BindingContext = model = new NowShowingMoviesViewModel(_movies);
+            BindingContext = model = new NowShowingMoviesViewModel(movies);
             await model.Init();
+        }
+
+        private static Grid SetUpGrid(int numberOfRows)
+        {
+            Grid grid = new Grid
+            {
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                ColumnDefinitions =
+                {
+                    new ColumnDefinition { Width = GridLength.Auto },
+                    new ColumnDefinition { Width = GridLength.Auto }
+                }
+            };
+
+            for (int i = 0; i < numberOfRows; i++)
+            {
+                grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+            }
+
+            return grid;
+        }
+
+        private int GetNumberOfColumns(int moviesCount)
+        {
+            if (moviesCount >= 2)
+            {
+                return 2;
+            }
+            else if (moviesCount == 1)
+            {
+                return 1;
+            }
+
+            return 0;
+        }
+
+        private ImageButton CreateImageButton(MovieDto movie)
+        {
+            ImageSource imageSource;
+
+            if (movie.Poster.Count() == 0)
+            {
+                imageSource = ImageSource.FromFile("movieposterplaceholder.png");
+            }
+            else
+            {
+                var stream = new MemoryStream(movie.Poster);
+                imageSource = ImageSource.FromStream(() => stream);
+            }
+
+            ImageButton image = new ImageButton
+            {
+                BindingContext = movie,
+                Source = imageSource,
+                HeightRequest = 300,
+                Command = new Command(async () => await OpenDetails(movie))
+            };
+
+            return image;
         }
 
         private async Task OpenDetails(MovieDto movie)
@@ -94,12 +127,12 @@ namespace Cinema.Mobile.Views
             await Navigation.PushAsync(new MovieDetailPage(movie));
         }
 
-        private async Task LoadMovies()
+        private async Task<List<MovieDto>> LoadMovies()
         {
             string route = "now-showing";
             var list = await _moviesApi.Get<List<MovieDto>>(null, route);
 
-            _movies = list;
+            return list;
         }
     }
 }

@@ -36,6 +36,8 @@
             this.lblBreadcrumbs = new System.Windows.Forms.Label();
             this.lblViewTitle = new System.Windows.Forms.Label();
             this.pnlDetails = new System.Windows.Forms.Panel();
+            this.dtpScreeningTime = new System.Windows.Forms.DateTimePicker();
+            this.lblScreeningTime = new System.Windows.Forms.Label();
             this.cmbPrice = new System.Windows.Forms.ComboBox();
             this.cmbMovie = new System.Windows.Forms.ComboBox();
             this.cmbHall = new System.Windows.Forms.ComboBox();
@@ -119,6 +121,8 @@
             // pnlDetails
             // 
             this.pnlDetails.BackColor = System.Drawing.Color.White;
+            this.pnlDetails.Controls.Add(this.dtpScreeningTime);
+            this.pnlDetails.Controls.Add(this.lblScreeningTime);
             this.pnlDetails.Controls.Add(this.cmbPrice);
             this.pnlDetails.Controls.Add(this.cmbMovie);
             this.pnlDetails.Controls.Add(this.cmbHall);
@@ -139,12 +143,37 @@
             this.pnlDetails.Size = new System.Drawing.Size(1473, 672);
             this.pnlDetails.TabIndex = 11;
             // 
+            // dtpScreeningTime
+            // 
+            this.dtpScreeningTime.CalendarForeColor = System.Drawing.Color.Gray;
+            this.dtpScreeningTime.CalendarTitleForeColor = System.Drawing.Color.Gray;
+            this.dtpScreeningTime.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpScreeningTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpScreeningTime.Location = new System.Drawing.Point(728, 95);
+            this.dtpScreeningTime.Name = "dtpScreeningTime";
+            this.dtpScreeningTime.ShowUpDown = true;
+            this.dtpScreeningTime.Size = new System.Drawing.Size(703, 26);
+            this.dtpScreeningTime.TabIndex = 33;
+            // 
+            // lblScreeningTime
+            // 
+            this.lblScreeningTime.AutoSize = true;
+            this.lblScreeningTime.BackColor = System.Drawing.Color.White;
+            this.lblScreeningTime.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblScreeningTime.ForeColor = System.Drawing.Color.Gray;
+            this.lblScreeningTime.Location = new System.Drawing.Point(511, 100);
+            this.lblScreeningTime.Margin = new System.Windows.Forms.Padding(15);
+            this.lblScreeningTime.Name = "lblScreeningTime";
+            this.lblScreeningTime.Size = new System.Drawing.Size(118, 18);
+            this.lblScreeningTime.TabIndex = 32;
+            this.lblScreeningTime.Text = "Screening time";
+            // 
             // cmbPrice
             // 
             this.cmbPrice.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPrice.ForeColor = System.Drawing.Color.Gray;
             this.cmbPrice.FormattingEnabled = true;
-            this.cmbPrice.Location = new System.Drawing.Point(728, 210);
+            this.cmbPrice.Location = new System.Drawing.Point(728, 269);
             this.cmbPrice.Name = "cmbPrice";
             this.cmbPrice.Size = new System.Drawing.Size(703, 26);
             this.cmbPrice.TabIndex = 31;
@@ -154,7 +183,7 @@
             this.cmbMovie.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbMovie.ForeColor = System.Drawing.Color.Gray;
             this.cmbMovie.FormattingEnabled = true;
-            this.cmbMovie.Location = new System.Drawing.Point(728, 153);
+            this.cmbMovie.Location = new System.Drawing.Point(728, 211);
             this.cmbMovie.Name = "cmbMovie";
             this.cmbMovie.Size = new System.Drawing.Size(703, 26);
             this.cmbMovie.TabIndex = 30;
@@ -164,7 +193,7 @@
             this.cmbHall.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbHall.ForeColor = System.Drawing.Color.Gray;
             this.cmbHall.FormattingEnabled = true;
-            this.cmbHall.Location = new System.Drawing.Point(728, 97);
+            this.cmbHall.Location = new System.Drawing.Point(728, 153);
             this.cmbHall.Name = "cmbHall";
             this.cmbHall.Size = new System.Drawing.Size(703, 26);
             this.cmbHall.TabIndex = 29;
@@ -174,7 +203,7 @@
             this.dtpScreeningDate.CalendarForeColor = System.Drawing.Color.Gray;
             this.dtpScreeningDate.CalendarTitleForeColor = System.Drawing.Color.Gray;
             this.dtpScreeningDate.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpScreeningDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpScreeningDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpScreeningDate.Location = new System.Drawing.Point(728, 37);
             this.dtpScreeningDate.Name = "dtpScreeningDate";
             this.dtpScreeningDate.Size = new System.Drawing.Size(703, 26);
@@ -185,7 +214,7 @@
             // 
             this.btnDelete.AutoSize = true;
             this.btnDelete.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnDelete.Location = new System.Drawing.Point(903, 292);
+            this.btnDelete.Location = new System.Drawing.Point(903, 351);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(120, 40);
@@ -196,7 +225,7 @@
             // 
             this.btnBack.AutoSize = true;
             this.btnBack.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnBack.Location = new System.Drawing.Point(1077, 292);
+            this.btnBack.Location = new System.Drawing.Point(1077, 351);
             this.btnBack.Margin = new System.Windows.Forms.Padding(4);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(120, 40);
@@ -207,7 +236,7 @@
             // 
             this.btnSaveChanges.AutoSize = true;
             this.btnSaveChanges.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnSaveChanges.Location = new System.Drawing.Point(728, 292);
+            this.btnSaveChanges.Location = new System.Drawing.Point(728, 351);
             this.btnSaveChanges.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSaveChanges.Name = "btnSaveChanges";
             this.btnSaveChanges.Size = new System.Drawing.Size(120, 40);
@@ -231,7 +260,7 @@
             this.lblPrice.BackColor = System.Drawing.Color.White;
             this.lblPrice.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPrice.ForeColor = System.Drawing.Color.Gray;
-            this.lblPrice.Location = new System.Drawing.Point(511, 213);
+            this.lblPrice.Location = new System.Drawing.Point(511, 271);
             this.lblPrice.Margin = new System.Windows.Forms.Padding(15);
             this.lblPrice.Name = "lblPrice";
             this.lblPrice.Size = new System.Drawing.Size(43, 18);
@@ -244,7 +273,7 @@
             this.lblMovieTitle.BackColor = System.Drawing.Color.White;
             this.lblMovieTitle.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMovieTitle.ForeColor = System.Drawing.Color.Gray;
-            this.lblMovieTitle.Location = new System.Drawing.Point(511, 156);
+            this.lblMovieTitle.Location = new System.Drawing.Point(511, 214);
             this.lblMovieTitle.Margin = new System.Windows.Forms.Padding(15);
             this.lblMovieTitle.Name = "lblMovieTitle";
             this.lblMovieTitle.Size = new System.Drawing.Size(52, 18);
@@ -257,7 +286,7 @@
             this.lblHall.BackColor = System.Drawing.Color.White;
             this.lblHall.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHall.ForeColor = System.Drawing.Color.Gray;
-            this.lblHall.Location = new System.Drawing.Point(511, 100);
+            this.lblHall.Location = new System.Drawing.Point(511, 157);
             this.lblHall.Margin = new System.Windows.Forms.Padding(15);
             this.lblHall.Name = "lblHall";
             this.lblHall.Size = new System.Drawing.Size(34, 18);
@@ -273,9 +302,9 @@
             this.lblSchedule.Location = new System.Drawing.Point(511, 43);
             this.lblSchedule.Margin = new System.Windows.Forms.Padding(15);
             this.lblSchedule.Name = "lblSchedule";
-            this.lblSchedule.Size = new System.Drawing.Size(121, 18);
+            this.lblSchedule.Size = new System.Drawing.Size(118, 18);
             this.lblSchedule.TabIndex = 3;
-            this.lblSchedule.Text = "Movie schedule";
+            this.lblSchedule.Text = "Screening date";
             // 
             // errorProvider1
             // 
@@ -358,5 +387,7 @@
         private System.Windows.Forms.ComboBox cmbPrice;
         private System.Windows.Forms.ComboBox cmbMovie;
         private System.Windows.Forms.ComboBox cmbHall;
+        private System.Windows.Forms.DateTimePicker dtpScreeningTime;
+        private System.Windows.Forms.Label lblScreeningTime;
     }
 }
