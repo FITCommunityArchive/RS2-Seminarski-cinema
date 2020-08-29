@@ -137,7 +137,9 @@ namespace Cinema.WinUI.Movies
             int hallId = (int)cmbHall.SelectedValue;
             int pricingId = (int)cmbPrice.SelectedValue;
 
-            _request.DateAndTime = dtpScreeningDate.Value.ToUniversalTime();
+            DateTime dateTime = dtpScreeningDate.Value.ToUniversalTime().Date + dtpScreeningTime.Value.ToUniversalTime().TimeOfDay;
+
+            _request.DateAndTime = dateTime;
             _request.MovieId = movieId;
             _request.HallId = hallId;
             _request.PricingId = pricingId;

@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Microsoft.Office.Interop.Excel;
+using System;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
-using Microsoft.Office.Interop.Excel;
-using System.IO;
 
 namespace Cinema.WinUI.Helpers
 {

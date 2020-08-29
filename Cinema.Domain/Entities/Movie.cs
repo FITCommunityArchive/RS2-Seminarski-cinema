@@ -14,6 +14,7 @@ namespace Cinema.Domain.Entities
         public int Duration { get; set; }
         public int Year { get; set; }
         public string Country { get; set; }
+        public string Synopsis { get; set; }
         public byte[] Poster { get; set; }
         public string VideoLink { get; set; }
         public string Directors { get; set; }

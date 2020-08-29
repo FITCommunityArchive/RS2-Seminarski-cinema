@@ -10,7 +10,8 @@ namespace Cinema.Utilities.Interfaces.Dal
     {
         IEnumerable<Entity> Get();
         Task<Entity> GetAsync(Key id, ICollection<string> includes = null);
-        Task<IEnumerable<Entity>> GetAsync(Expression<Func<Entity, bool>> where, ICollection<string> includes = null);
+        Task<IEnumerable<Entity>> GetAsync(Expression<Func<Entity, bool>> where);
+        Task<IEnumerable<Entity>> GetAsync(Expression<Func<Entity, bool>> where, IList<string> includes);
         Task<IPagedList<Entity>> GetPagedAsync(Expression<Func<Entity, bool>> where, int pageIndex, int pageSize);
         Task InsertAsync(Entity entity);
         Task UpdateAsync(Entity entity, Key id);

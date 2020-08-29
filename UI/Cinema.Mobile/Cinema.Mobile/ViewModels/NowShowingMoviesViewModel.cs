@@ -1,10 +1,7 @@
 ﻿using Cinema.Mobile.Services;
 using Cinema.Models.Dtos;
-using Cinema.Models.Requests.Screenings;
-using Cinema.Shared.Pagination;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -20,7 +17,7 @@ namespace Cinema.Mobile.ViewModels
 
         }
 
-        public NowShowingMoviesViewModel(List<MovieDto> movies)
+        public NowShowingMoviesViewModel(IEnumerable<MovieDto> movies)
         {
             foreach (var movie in movies)
             {
@@ -31,21 +28,13 @@ namespace Cinema.Mobile.ViewModels
         }
 
         public ObservableCollection<MovieDto> MoviesList { get; set; } = new ObservableCollection<MovieDto>();
-                
+
         public ICommand InitCommand { get; set; }
 
         public async Task Init()
         {
             string route = "now-showing";
             var list = await _moviesApi.Get<List<MovieDto>>(null, route);
-
-            /*
-            ScreeningsList.Clear();
-
-            foreach (var screening in list.Data)
-            {
-                ScreeningsList.Add(screening);
-            }*/
-        }   
-    }       
+        }
+    }
 }

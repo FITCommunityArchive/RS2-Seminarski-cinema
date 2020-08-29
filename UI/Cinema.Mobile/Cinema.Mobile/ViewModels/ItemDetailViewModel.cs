@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 using Cinema.Mobile.Models;
 
 namespace Cinema.Mobile.ViewModels

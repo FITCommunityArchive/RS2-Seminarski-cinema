@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Cinema.Mobile.Models
+﻿namespace Cinema.Mobile.Models
 {
     public class Item
     {

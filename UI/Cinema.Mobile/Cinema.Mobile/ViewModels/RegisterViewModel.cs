@@ -1,10 +1,7 @@
 ﻿using Cinema.Mobile.Services;
 using Cinema.Mobile.Views;
-using Cinema.Models.Dtos;
 using Cinema.Models.Requests.Users;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
