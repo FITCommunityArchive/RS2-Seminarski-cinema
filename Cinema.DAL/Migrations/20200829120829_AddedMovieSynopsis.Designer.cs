@@ -4,14 +4,16 @@ using Cinema.Dal.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Cinema.Dal.Migrations
 {
     [DbContext(typeof(CinemaDbContext))]
-    partial class CinemaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200829120829_AddedMovieSynopsis")]
+    partial class AddedMovieSynopsis
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -359,7 +361,7 @@ namespace Cinema.Dal.Migrations
                         new
                         {
                             Id = -1,
-                            ConcurrencyStamp = "a374ee47-4c9d-42bb-becc-aeaeb9b8d539",
+                            ConcurrencyStamp = "34661455-182e-42ef-9075-b78f91dde3c4",
                             Deleted = false,
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
@@ -367,7 +369,7 @@ namespace Cinema.Dal.Migrations
                         new
                         {
                             Id = -2,
-                            ConcurrencyStamp = "51a854b9-6d61-4914-9adb-04c3c7c135f9",
+                            ConcurrencyStamp = "a7a24a80-4592-463c-bd65-3149a78ea686",
                             Deleted = false,
                             Name = "Content Editor",
                             NormalizedName = "CONTENT EDITOR"
@@ -375,7 +377,7 @@ namespace Cinema.Dal.Migrations
                         new
                         {
                             Id = -3,
-                            ConcurrencyStamp = "4704cefc-4fcb-4da9-b19e-471caa1ed5a7",
+                            ConcurrencyStamp = "0d6cabeb-29a5-45b7-b518-aacf840f47e9",
                             Deleted = false,
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
@@ -485,7 +487,7 @@ namespace Cinema.Dal.Migrations
                         {
                             Id = 1,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "61c39953-f51a-4d5f-8d01-809688f882ab",
+                            ConcurrencyStamp = "95a7c92f-4155-4fc9-92ac-5695015403ad",
                             Deleted = false,
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
@@ -494,7 +496,7 @@ namespace Cinema.Dal.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAELN8simUuN2ja0G2bw++8p9U0sEeRqCZT6lxMsnF9kJWdiVaGmWWA1twfjA0trfxEA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKkctddQxcgwz8jDhghMuy8DFyFXLFSBGffWb2eetQa1lMXMEYTds+11x4y0LDV/oQ==",
                             PhoneNumber = "123456789",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -504,7 +506,7 @@ namespace Cinema.Dal.Migrations
                         {
                             Id = 2,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "bd95c4f8-123c-49a3-833c-c91ccd80af50",
+                            ConcurrencyStamp = "f0aa23cf-ba7c-4fdd-94bd-5b3fb89691ea",
                             Deleted = false,
                             Email = "test1@test-customer.com",
                             EmailConfirmed = true,
@@ -513,7 +515,7 @@ namespace Cinema.Dal.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "TEST1@TEST-CUSTOMER.COM",
                             NormalizedUserName = "TEST.CUSTOMER1",
-                            PasswordHash = "AQAAAAEAACcQAAAAEEndrCNcE3HNH7WbWGzo64/D+g7AusSZmFDAQjPsG1pE19Ltior8qPW6xbRzHFJdog==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEO+atX7tmEAdznGAY7OWnOcHt0plBi6+wJseIEVGPROl/QzWFqSEkPM/meeSht9qjg==",
                             PhoneNumber = "123456789",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -523,7 +525,7 @@ namespace Cinema.Dal.Migrations
                         {
                             Id = 3,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b4a15c82-e127-4e10-82dc-d3657ec8ffb4",
+                            ConcurrencyStamp = "b3cc7f5a-3177-44ee-b580-d92a6786db56",
                             Deleted = false,
                             Email = "test2@test-customer.com",
                             EmailConfirmed = true,
@@ -532,7 +534,7 @@ namespace Cinema.Dal.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "TEST2@TEST-CUSTOMER.COM",
                             NormalizedUserName = "TEST.CUSTOMER2",
-                            PasswordHash = "AQAAAAEAACcQAAAAEM6OY1wo3XaiXTHQswVUhIvcXOko4//i63xZEBmqZeaJxBjTOtZ3GVdpCRpLcaxRTQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAc8HSfgOklqgqOLAHu3I9qAvYsBsqfNcxiTFccte9ZpMKWT4y1AZ+PzpoKF6xi7/w==",
                             PhoneNumber = "123456789",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -7843,7 +7845,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "A1",
                             SeatNumber = 1
                         },
                         new
@@ -7852,7 +7853,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "A2",
                             SeatNumber = 2
                         },
                         new
@@ -7861,7 +7861,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "A3",
                             SeatNumber = 3
                         },
                         new
@@ -7870,7 +7869,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "A4",
                             SeatNumber = 4
                         },
                         new
@@ -7879,7 +7877,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "A5",
                             SeatNumber = 5
                         },
                         new
@@ -7888,7 +7885,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "A6",
                             SeatNumber = 6
                         },
                         new
@@ -7897,7 +7893,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "A7",
                             SeatNumber = 7
                         },
                         new
@@ -7906,7 +7901,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "A8",
                             SeatNumber = 8
                         },
                         new
@@ -7915,7 +7909,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "A9",
                             SeatNumber = 9
                         },
                         new
@@ -7924,7 +7917,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "A10",
                             SeatNumber = 10
                         },
                         new
@@ -7933,7 +7925,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "A11",
                             SeatNumber = 11
                         },
                         new
@@ -7942,7 +7933,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "A12",
                             SeatNumber = 12
                         },
                         new
@@ -7951,7 +7941,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "A13",
                             SeatNumber = 13
                         },
                         new
@@ -7960,7 +7949,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "A14",
                             SeatNumber = 14
                         },
                         new
@@ -7969,7 +7957,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "A15",
                             SeatNumber = 15
                         },
                         new
@@ -7978,8 +7965,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "A16",
-                            SeatNumber = 16
+                            SeatNumber = 2
                         },
                         new
                         {
@@ -7987,8 +7973,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "B1",
-                            SeatNumber = 17
+                            SeatNumber = 4
                         },
                         new
                         {
@@ -7996,8 +7981,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "B2",
-                            SeatNumber = 18
+                            SeatNumber = 6
                         },
                         new
                         {
@@ -8005,8 +7989,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "B3",
-                            SeatNumber = 19
+                            SeatNumber = 8
                         },
                         new
                         {
@@ -8014,8 +7997,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "B4",
-                            SeatNumber = 20
+                            SeatNumber = 10
                         },
                         new
                         {
@@ -8023,8 +8005,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "B5",
-                            SeatNumber = 21
+                            SeatNumber = 12
                         },
                         new
                         {
@@ -8032,8 +8013,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "B6",
-                            SeatNumber = 22
+                            SeatNumber = 14
                         },
                         new
                         {
@@ -8041,8 +8021,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "B7",
-                            SeatNumber = 23
+                            SeatNumber = 16
                         },
                         new
                         {
@@ -8050,8 +8029,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "B8",
-                            SeatNumber = 24
+                            SeatNumber = 18
                         },
                         new
                         {
@@ -8059,8 +8037,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "B9",
-                            SeatNumber = 25
+                            SeatNumber = 20
                         },
                         new
                         {
@@ -8068,8 +8045,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "B10",
-                            SeatNumber = 26
+                            SeatNumber = 22
                         },
                         new
                         {
@@ -8077,8 +8053,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "B11",
-                            SeatNumber = 27
+                            SeatNumber = 24
                         },
                         new
                         {
@@ -8086,8 +8061,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "B12",
-                            SeatNumber = 28
+                            SeatNumber = 26
                         },
                         new
                         {
@@ -8095,8 +8069,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "B13",
-                            SeatNumber = 29
+                            SeatNumber = 28
                         },
                         new
                         {
@@ -8104,7 +8077,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "B14",
                             SeatNumber = 30
                         },
                         new
@@ -8113,8 +8085,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "B15",
-                            SeatNumber = 31
+                            SeatNumber = 3
                         },
                         new
                         {
@@ -8122,8 +8093,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "B16",
-                            SeatNumber = 32
+                            SeatNumber = 6
                         },
                         new
                         {
@@ -8131,8 +8101,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "C1",
-                            SeatNumber = 33
+                            SeatNumber = 9
                         },
                         new
                         {
@@ -8140,8 +8109,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "C2",
-                            SeatNumber = 34
+                            SeatNumber = 12
                         },
                         new
                         {
@@ -8149,8 +8117,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "C3",
-                            SeatNumber = 35
+                            SeatNumber = 15
                         },
                         new
                         {
@@ -8158,8 +8125,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "C4",
-                            SeatNumber = 36
+                            SeatNumber = 18
                         },
                         new
                         {
@@ -8167,8 +8133,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "C5",
-                            SeatNumber = 37
+                            SeatNumber = 21
                         },
                         new
                         {
@@ -8176,8 +8141,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "C6",
-                            SeatNumber = 38
+                            SeatNumber = 24
                         },
                         new
                         {
@@ -8185,8 +8149,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "C7",
-                            SeatNumber = 39
+                            SeatNumber = 27
                         },
                         new
                         {
@@ -8194,8 +8157,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "C8",
-                            SeatNumber = 40
+                            SeatNumber = 30
                         },
                         new
                         {
@@ -8203,8 +8165,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "C9",
-                            SeatNumber = 41
+                            SeatNumber = 33
                         },
                         new
                         {
@@ -8212,8 +8173,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "C10",
-                            SeatNumber = 42
+                            SeatNumber = 36
                         },
                         new
                         {
@@ -8221,8 +8181,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "C11",
-                            SeatNumber = 43
+                            SeatNumber = 39
                         },
                         new
                         {
@@ -8230,8 +8189,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "C12",
-                            SeatNumber = 44
+                            SeatNumber = 42
                         },
                         new
                         {
@@ -8239,7 +8197,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "C13",
                             SeatNumber = 45
                         },
                         new
@@ -8248,8 +8205,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "C14",
-                            SeatNumber = 46
+                            SeatNumber = 4
                         },
                         new
                         {
@@ -8257,8 +8213,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "C15",
-                            SeatNumber = 47
+                            SeatNumber = 8
                         },
                         new
                         {
@@ -8266,8 +8221,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "C16",
-                            SeatNumber = 48
+                            SeatNumber = 12
                         },
                         new
                         {
@@ -8275,8 +8229,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "D1",
-                            SeatNumber = 49
+                            SeatNumber = 16
                         },
                         new
                         {
@@ -8284,8 +8237,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "D2",
-                            SeatNumber = 50
+                            SeatNumber = 20
                         },
                         new
                         {
@@ -8293,8 +8245,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "D3",
-                            SeatNumber = 51
+                            SeatNumber = 24
                         },
                         new
                         {
@@ -8302,8 +8253,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "D4",
-                            SeatNumber = 52
+                            SeatNumber = 28
                         },
                         new
                         {
@@ -8311,8 +8261,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "D5",
-                            SeatNumber = 53
+                            SeatNumber = 32
                         },
                         new
                         {
@@ -8320,8 +8269,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "D6",
-                            SeatNumber = 54
+                            SeatNumber = 36
                         },
                         new
                         {
@@ -8329,8 +8277,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "D7",
-                            SeatNumber = 55
+                            SeatNumber = 40
                         },
                         new
                         {
@@ -8338,8 +8285,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "D8",
-                            SeatNumber = 56
+                            SeatNumber = 44
                         },
                         new
                         {
@@ -8347,8 +8293,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "D9",
-                            SeatNumber = 57
+                            SeatNumber = 48
                         },
                         new
                         {
@@ -8356,8 +8301,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "D10",
-                            SeatNumber = 58
+                            SeatNumber = 52
                         },
                         new
                         {
@@ -8365,8 +8309,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "D11",
-                            SeatNumber = 59
+                            SeatNumber = 56
                         },
                         new
                         {
@@ -8374,7 +8317,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "D12",
                             SeatNumber = 60
                         },
                         new
@@ -8383,8 +8325,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "D13",
-                            SeatNumber = 61
+                            SeatNumber = 5
                         },
                         new
                         {
@@ -8392,8 +8333,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "D14",
-                            SeatNumber = 62
+                            SeatNumber = 10
                         },
                         new
                         {
@@ -8401,8 +8341,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "D15",
-                            SeatNumber = 63
+                            SeatNumber = 15
                         },
                         new
                         {
@@ -8410,8 +8349,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "D16",
-                            SeatNumber = 64
+                            SeatNumber = 20
                         },
                         new
                         {
@@ -8419,8 +8357,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "E1",
-                            SeatNumber = 65
+                            SeatNumber = 25
                         },
                         new
                         {
@@ -8428,8 +8365,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "E2",
-                            SeatNumber = 66
+                            SeatNumber = 30
                         },
                         new
                         {
@@ -8437,8 +8373,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "E3",
-                            SeatNumber = 67
+                            SeatNumber = 35
                         },
                         new
                         {
@@ -8446,8 +8381,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "E4",
-                            SeatNumber = 68
+                            SeatNumber = 40
                         },
                         new
                         {
@@ -8455,8 +8389,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "E5",
-                            SeatNumber = 69
+                            SeatNumber = 45
                         },
                         new
                         {
@@ -8464,8 +8397,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "E6",
-                            SeatNumber = 70
+                            SeatNumber = 50
                         },
                         new
                         {
@@ -8473,8 +8405,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "E7",
-                            SeatNumber = 71
+                            SeatNumber = 55
                         },
                         new
                         {
@@ -8482,8 +8413,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "E8",
-                            SeatNumber = 72
+                            SeatNumber = 60
                         },
                         new
                         {
@@ -8491,8 +8421,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "E9",
-                            SeatNumber = 73
+                            SeatNumber = 65
                         },
                         new
                         {
@@ -8500,8 +8429,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "E10",
-                            SeatNumber = 74
+                            SeatNumber = 70
                         },
                         new
                         {
@@ -8509,7 +8437,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "E11",
                             SeatNumber = 75
                         },
                         new
@@ -8518,8 +8445,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "E12",
-                            SeatNumber = 76
+                            SeatNumber = 6
                         },
                         new
                         {
@@ -8527,8 +8453,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "E13",
-                            SeatNumber = 77
+                            SeatNumber = 12
                         },
                         new
                         {
@@ -8536,8 +8461,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "E14",
-                            SeatNumber = 78
+                            SeatNumber = 18
                         },
                         new
                         {
@@ -8545,8 +8469,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "E15",
-                            SeatNumber = 79
+                            SeatNumber = 24
                         },
                         new
                         {
@@ -8554,8 +8477,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "E16",
-                            SeatNumber = 80
+                            SeatNumber = 30
                         },
                         new
                         {
@@ -8563,8 +8485,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "F1",
-                            SeatNumber = 81
+                            SeatNumber = 36
                         },
                         new
                         {
@@ -8572,8 +8493,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "F2",
-                            SeatNumber = 82
+                            SeatNumber = 42
                         },
                         new
                         {
@@ -8581,8 +8501,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "F3",
-                            SeatNumber = 83
+                            SeatNumber = 48
                         },
                         new
                         {
@@ -8590,8 +8509,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "F4",
-                            SeatNumber = 84
+                            SeatNumber = 54
                         },
                         new
                         {
@@ -8599,8 +8517,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "F5",
-                            SeatNumber = 85
+                            SeatNumber = 60
                         },
                         new
                         {
@@ -8608,8 +8525,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "F6",
-                            SeatNumber = 86
+                            SeatNumber = 66
                         },
                         new
                         {
@@ -8617,8 +8533,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "F7",
-                            SeatNumber = 87
+                            SeatNumber = 72
                         },
                         new
                         {
@@ -8626,8 +8541,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "F8",
-                            SeatNumber = 88
+                            SeatNumber = 78
                         },
                         new
                         {
@@ -8635,8 +8549,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "F9",
-                            SeatNumber = 89
+                            SeatNumber = 84
                         },
                         new
                         {
@@ -8644,7 +8557,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "F10",
                             SeatNumber = 90
                         },
                         new
@@ -8653,8 +8565,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "F11",
-                            SeatNumber = 91
+                            SeatNumber = 7
                         },
                         new
                         {
@@ -8662,8 +8573,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "F12",
-                            SeatNumber = 92
+                            SeatNumber = 14
                         },
                         new
                         {
@@ -8671,8 +8581,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "F13",
-                            SeatNumber = 93
+                            SeatNumber = 21
                         },
                         new
                         {
@@ -8680,8 +8589,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "F14",
-                            SeatNumber = 94
+                            SeatNumber = 28
                         },
                         new
                         {
@@ -8689,8 +8597,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "F15",
-                            SeatNumber = 95
+                            SeatNumber = 35
                         },
                         new
                         {
@@ -8698,8 +8605,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "F16",
-                            SeatNumber = 96
+                            SeatNumber = 42
                         },
                         new
                         {
@@ -8707,8 +8613,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "G1",
-                            SeatNumber = 97
+                            SeatNumber = 49
                         },
                         new
                         {
@@ -8716,8 +8621,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "G2",
-                            SeatNumber = 98
+                            SeatNumber = 56
                         },
                         new
                         {
@@ -8725,8 +8629,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "G3",
-                            SeatNumber = 99
+                            SeatNumber = 63
                         },
                         new
                         {
@@ -8734,8 +8637,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "G4",
-                            SeatNumber = 100
+                            SeatNumber = 70
                         },
                         new
                         {
@@ -8743,8 +8645,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "G5",
-                            SeatNumber = 101
+                            SeatNumber = 77
                         },
                         new
                         {
@@ -8752,8 +8653,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "G6",
-                            SeatNumber = 102
+                            SeatNumber = 84
                         },
                         new
                         {
@@ -8761,8 +8661,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "G7",
-                            SeatNumber = 103
+                            SeatNumber = 91
                         },
                         new
                         {
@@ -8770,8 +8669,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "G8",
-                            SeatNumber = 104
+                            SeatNumber = 98
                         },
                         new
                         {
@@ -8779,7 +8677,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "G9",
                             SeatNumber = 105
                         },
                         new
@@ -8788,8 +8685,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "G10",
-                            SeatNumber = 106
+                            SeatNumber = 8
                         },
                         new
                         {
@@ -8797,8 +8693,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "G11",
-                            SeatNumber = 107
+                            SeatNumber = 16
                         },
                         new
                         {
@@ -8806,8 +8701,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "G12",
-                            SeatNumber = 108
+                            SeatNumber = 24
                         },
                         new
                         {
@@ -8815,8 +8709,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "G13",
-                            SeatNumber = 109
+                            SeatNumber = 32
                         },
                         new
                         {
@@ -8824,8 +8717,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "G14",
-                            SeatNumber = 110
+                            SeatNumber = 40
                         },
                         new
                         {
@@ -8833,8 +8725,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "G15",
-                            SeatNumber = 111
+                            SeatNumber = 48
                         },
                         new
                         {
@@ -8842,8 +8733,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "G16",
-                            SeatNumber = 112
+                            SeatNumber = 56
                         },
                         new
                         {
@@ -8851,8 +8741,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "H1",
-                            SeatNumber = 113
+                            SeatNumber = 64
                         },
                         new
                         {
@@ -8860,8 +8749,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "H2",
-                            SeatNumber = 114
+                            SeatNumber = 72
                         },
                         new
                         {
@@ -8869,8 +8757,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "H3",
-                            SeatNumber = 115
+                            SeatNumber = 80
                         },
                         new
                         {
@@ -8878,8 +8765,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "H4",
-                            SeatNumber = 116
+                            SeatNumber = 88
                         },
                         new
                         {
@@ -8887,8 +8773,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "H5",
-                            SeatNumber = 117
+                            SeatNumber = 96
                         },
                         new
                         {
@@ -8896,8 +8781,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "H6",
-                            SeatNumber = 118
+                            SeatNumber = 104
                         },
                         new
                         {
@@ -8905,8 +8789,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "H7",
-                            SeatNumber = 119
+                            SeatNumber = 112
                         },
                         new
                         {
@@ -8914,7 +8797,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "H8",
                             SeatNumber = 120
                         },
                         new
@@ -8923,8 +8805,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "H9",
-                            SeatNumber = 121
+                            SeatNumber = 9
                         },
                         new
                         {
@@ -8932,8 +8813,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "H10",
-                            SeatNumber = 122
+                            SeatNumber = 18
                         },
                         new
                         {
@@ -8941,8 +8821,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "H11",
-                            SeatNumber = 123
+                            SeatNumber = 27
                         },
                         new
                         {
@@ -8950,8 +8829,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "H12",
-                            SeatNumber = 124
+                            SeatNumber = 36
                         },
                         new
                         {
@@ -8959,8 +8837,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "H13",
-                            SeatNumber = 125
+                            SeatNumber = 45
                         },
                         new
                         {
@@ -8968,8 +8845,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "H14",
-                            SeatNumber = 126
+                            SeatNumber = 54
                         },
                         new
                         {
@@ -8977,8 +8853,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "H15",
-                            SeatNumber = 127
+                            SeatNumber = 63
                         },
                         new
                         {
@@ -8986,8 +8861,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "H16",
-                            SeatNumber = 128
+                            SeatNumber = 72
                         },
                         new
                         {
@@ -8995,8 +8869,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "I1",
-                            SeatNumber = 129
+                            SeatNumber = 81
                         },
                         new
                         {
@@ -9004,8 +8877,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "I2",
-                            SeatNumber = 130
+                            SeatNumber = 90
                         },
                         new
                         {
@@ -9013,8 +8885,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "I3",
-                            SeatNumber = 131
+                            SeatNumber = 99
                         },
                         new
                         {
@@ -9022,8 +8893,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "I4",
-                            SeatNumber = 132
+                            SeatNumber = 108
                         },
                         new
                         {
@@ -9031,8 +8901,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "I5",
-                            SeatNumber = 133
+                            SeatNumber = 117
                         },
                         new
                         {
@@ -9040,8 +8909,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "I6",
-                            SeatNumber = 134
+                            SeatNumber = 126
                         },
                         new
                         {
@@ -9049,7 +8917,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "I7",
                             SeatNumber = 135
                         },
                         new
@@ -9058,8 +8925,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "I8",
-                            SeatNumber = 136
+                            SeatNumber = 10
                         },
                         new
                         {
@@ -9067,8 +8933,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "I9",
-                            SeatNumber = 137
+                            SeatNumber = 20
                         },
                         new
                         {
@@ -9076,8 +8941,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "I10",
-                            SeatNumber = 138
+                            SeatNumber = 30
                         },
                         new
                         {
@@ -9085,8 +8949,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "I11",
-                            SeatNumber = 139
+                            SeatNumber = 40
                         },
                         new
                         {
@@ -9094,8 +8957,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "I12",
-                            SeatNumber = 140
+                            SeatNumber = 50
                         },
                         new
                         {
@@ -9103,8 +8965,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "I13",
-                            SeatNumber = 141
+                            SeatNumber = 60
                         },
                         new
                         {
@@ -9112,8 +8973,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "I14",
-                            SeatNumber = 142
+                            SeatNumber = 70
                         },
                         new
                         {
@@ -9121,8 +8981,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "I15",
-                            SeatNumber = 143
+                            SeatNumber = 80
                         },
                         new
                         {
@@ -9130,8 +8989,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "I16",
-                            SeatNumber = 144
+                            SeatNumber = 90
                         },
                         new
                         {
@@ -9139,8 +8997,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "J1",
-                            SeatNumber = 145
+                            SeatNumber = 100
                         },
                         new
                         {
@@ -9148,8 +9005,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "J2",
-                            SeatNumber = 146
+                            SeatNumber = 110
                         },
                         new
                         {
@@ -9157,8 +9013,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "J3",
-                            SeatNumber = 147
+                            SeatNumber = 120
                         },
                         new
                         {
@@ -9166,8 +9021,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "J4",
-                            SeatNumber = 148
+                            SeatNumber = 130
                         },
                         new
                         {
@@ -9175,8 +9029,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "J5",
-                            SeatNumber = 149
+                            SeatNumber = 140
                         },
                         new
                         {
@@ -9184,7 +9037,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "J6",
                             SeatNumber = 150
                         },
                         new
@@ -9193,8 +9045,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "J7",
-                            SeatNumber = 151
+                            SeatNumber = 11
                         },
                         new
                         {
@@ -9202,8 +9053,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "J8",
-                            SeatNumber = 152
+                            SeatNumber = 22
                         },
                         new
                         {
@@ -9211,8 +9061,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "J9",
-                            SeatNumber = 153
+                            SeatNumber = 33
                         },
                         new
                         {
@@ -9220,8 +9069,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "J10",
-                            SeatNumber = 154
+                            SeatNumber = 44
                         },
                         new
                         {
@@ -9229,8 +9077,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "J11",
-                            SeatNumber = 155
+                            SeatNumber = 55
                         },
                         new
                         {
@@ -9238,8 +9085,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "J12",
-                            SeatNumber = 156
+                            SeatNumber = 66
                         },
                         new
                         {
@@ -9247,8 +9093,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "J13",
-                            SeatNumber = 157
+                            SeatNumber = 77
                         },
                         new
                         {
@@ -9256,8 +9101,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "J14",
-                            SeatNumber = 158
+                            SeatNumber = 88
                         },
                         new
                         {
@@ -9265,8 +9109,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "J15",
-                            SeatNumber = 159
+                            SeatNumber = 99
                         },
                         new
                         {
@@ -9274,8 +9117,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "J16",
-                            SeatNumber = 160
+                            SeatNumber = 110
                         },
                         new
                         {
@@ -9283,8 +9125,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "K1",
-                            SeatNumber = 161
+                            SeatNumber = 121
                         },
                         new
                         {
@@ -9292,8 +9133,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "K2",
-                            SeatNumber = 162
+                            SeatNumber = 132
                         },
                         new
                         {
@@ -9301,8 +9141,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "K3",
-                            SeatNumber = 163
+                            SeatNumber = 143
                         },
                         new
                         {
@@ -9310,8 +9149,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "K4",
-                            SeatNumber = 164
+                            SeatNumber = 154
                         },
                         new
                         {
@@ -9319,7 +9157,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "K5",
                             SeatNumber = 165
                         },
                         new
@@ -9328,8 +9165,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "K6",
-                            SeatNumber = 166
+                            SeatNumber = 12
                         },
                         new
                         {
@@ -9337,8 +9173,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "K7",
-                            SeatNumber = 167
+                            SeatNumber = 24
                         },
                         new
                         {
@@ -9346,8 +9181,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "K8",
-                            SeatNumber = 168
+                            SeatNumber = 36
                         },
                         new
                         {
@@ -9355,8 +9189,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "K9",
-                            SeatNumber = 169
+                            SeatNumber = 48
                         },
                         new
                         {
@@ -9364,8 +9197,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "K10",
-                            SeatNumber = 170
+                            SeatNumber = 60
                         },
                         new
                         {
@@ -9373,8 +9205,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "K11",
-                            SeatNumber = 171
+                            SeatNumber = 72
                         },
                         new
                         {
@@ -9382,8 +9213,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "K12",
-                            SeatNumber = 172
+                            SeatNumber = 84
                         },
                         new
                         {
@@ -9391,8 +9221,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "K13",
-                            SeatNumber = 173
+                            SeatNumber = 96
                         },
                         new
                         {
@@ -9400,8 +9229,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "K14",
-                            SeatNumber = 174
+                            SeatNumber = 108
                         },
                         new
                         {
@@ -9409,8 +9237,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "K15",
-                            SeatNumber = 175
+                            SeatNumber = 120
                         },
                         new
                         {
@@ -9418,8 +9245,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "K16",
-                            SeatNumber = 176
+                            SeatNumber = 132
                         },
                         new
                         {
@@ -9427,8 +9253,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "L1",
-                            SeatNumber = 177
+                            SeatNumber = 144
                         },
                         new
                         {
@@ -9436,8 +9261,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "L2",
-                            SeatNumber = 178
+                            SeatNumber = 156
                         },
                         new
                         {
@@ -9445,8 +9269,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "L3",
-                            SeatNumber = 179
+                            SeatNumber = 168
                         },
                         new
                         {
@@ -9454,7 +9277,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "L4",
                             SeatNumber = 180
                         },
                         new
@@ -9463,8 +9285,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "L5",
-                            SeatNumber = 181
+                            SeatNumber = 13
                         },
                         new
                         {
@@ -9472,8 +9293,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "L6",
-                            SeatNumber = 182
+                            SeatNumber = 26
                         },
                         new
                         {
@@ -9481,8 +9301,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "L7",
-                            SeatNumber = 183
+                            SeatNumber = 39
                         },
                         new
                         {
@@ -9490,8 +9309,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "L8",
-                            SeatNumber = 184
+                            SeatNumber = 52
                         },
                         new
                         {
@@ -9499,8 +9317,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "L9",
-                            SeatNumber = 185
+                            SeatNumber = 65
                         },
                         new
                         {
@@ -9508,8 +9325,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "L10",
-                            SeatNumber = 186
+                            SeatNumber = 78
                         },
                         new
                         {
@@ -9517,8 +9333,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "L11",
-                            SeatNumber = 187
+                            SeatNumber = 91
                         },
                         new
                         {
@@ -9526,8 +9341,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "L12",
-                            SeatNumber = 188
+                            SeatNumber = 104
                         },
                         new
                         {
@@ -9535,8 +9349,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "L13",
-                            SeatNumber = 189
+                            SeatNumber = 117
                         },
                         new
                         {
@@ -9544,8 +9357,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "L14",
-                            SeatNumber = 190
+                            SeatNumber = 130
                         },
                         new
                         {
@@ -9553,8 +9365,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "L15",
-                            SeatNumber = 191
+                            SeatNumber = 143
                         },
                         new
                         {
@@ -9562,8 +9373,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "L16",
-                            SeatNumber = 192
+                            SeatNumber = 156
                         },
                         new
                         {
@@ -9571,8 +9381,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "M1",
-                            SeatNumber = 193
+                            SeatNumber = 169
                         },
                         new
                         {
@@ -9580,8 +9389,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "M2",
-                            SeatNumber = 194
+                            SeatNumber = 182
                         },
                         new
                         {
@@ -9589,7 +9397,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "M3",
                             SeatNumber = 195
                         },
                         new
@@ -9598,8 +9405,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "M4",
-                            SeatNumber = 196
+                            SeatNumber = 14
                         },
                         new
                         {
@@ -9607,8 +9413,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "M5",
-                            SeatNumber = 197
+                            SeatNumber = 28
                         },
                         new
                         {
@@ -9616,8 +9421,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "M6",
-                            SeatNumber = 198
+                            SeatNumber = 42
                         },
                         new
                         {
@@ -9625,8 +9429,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "M7",
-                            SeatNumber = 199
+                            SeatNumber = 56
                         },
                         new
                         {
@@ -9634,8 +9437,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "M8",
-                            SeatNumber = 200
+                            SeatNumber = 70
                         },
                         new
                         {
@@ -9643,8 +9445,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "M9",
-                            SeatNumber = 201
+                            SeatNumber = 84
                         },
                         new
                         {
@@ -9652,8 +9453,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "M10",
-                            SeatNumber = 202
+                            SeatNumber = 98
                         },
                         new
                         {
@@ -9661,8 +9461,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "M11",
-                            SeatNumber = 203
+                            SeatNumber = 112
                         },
                         new
                         {
@@ -9670,8 +9469,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "M12",
-                            SeatNumber = 204
+                            SeatNumber = 126
                         },
                         new
                         {
@@ -9679,8 +9477,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "M13",
-                            SeatNumber = 205
+                            SeatNumber = 140
                         },
                         new
                         {
@@ -9688,8 +9485,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "M14",
-                            SeatNumber = 206
+                            SeatNumber = 154
                         },
                         new
                         {
@@ -9697,8 +9493,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "M15",
-                            SeatNumber = 207
+                            SeatNumber = 168
                         },
                         new
                         {
@@ -9706,8 +9501,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "M16",
-                            SeatNumber = 208
+                            SeatNumber = 182
                         },
                         new
                         {
@@ -9715,8 +9509,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "N1",
-                            SeatNumber = 209
+                            SeatNumber = 196
                         },
                         new
                         {
@@ -9724,7 +9517,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "N2",
                             SeatNumber = 210
                         },
                         new
@@ -9733,8 +9525,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "N3",
-                            SeatNumber = 211
+                            SeatNumber = 15
                         },
                         new
                         {
@@ -9742,8 +9533,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "N4",
-                            SeatNumber = 212
+                            SeatNumber = 30
                         },
                         new
                         {
@@ -9751,8 +9541,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "N5",
-                            SeatNumber = 213
+                            SeatNumber = 45
                         },
                         new
                         {
@@ -9760,8 +9549,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "N6",
-                            SeatNumber = 214
+                            SeatNumber = 60
                         },
                         new
                         {
@@ -9769,8 +9557,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "N7",
-                            SeatNumber = 215
+                            SeatNumber = 75
                         },
                         new
                         {
@@ -9778,8 +9565,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "N8",
-                            SeatNumber = 216
+                            SeatNumber = 90
                         },
                         new
                         {
@@ -9787,8 +9573,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "N9",
-                            SeatNumber = 217
+                            SeatNumber = 105
                         },
                         new
                         {
@@ -9796,8 +9581,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "N10",
-                            SeatNumber = 218
+                            SeatNumber = 120
                         },
                         new
                         {
@@ -9805,8 +9589,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "N11",
-                            SeatNumber = 219
+                            SeatNumber = 135
                         },
                         new
                         {
@@ -9814,8 +9597,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "N12",
-                            SeatNumber = 220
+                            SeatNumber = 150
                         },
                         new
                         {
@@ -9823,8 +9605,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "N13",
-                            SeatNumber = 221
+                            SeatNumber = 165
                         },
                         new
                         {
@@ -9832,8 +9613,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "N14",
-                            SeatNumber = 222
+                            SeatNumber = 180
                         },
                         new
                         {
@@ -9841,8 +9621,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "N15",
-                            SeatNumber = 223
+                            SeatNumber = 195
                         },
                         new
                         {
@@ -9850,8 +9629,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "N16",
-                            SeatNumber = 224
+                            SeatNumber = 210
                         },
                         new
                         {
@@ -9859,7 +9637,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "O1",
                             SeatNumber = 225
                         },
                         new
@@ -9868,8 +9645,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "O2",
-                            SeatNumber = 226
+                            SeatNumber = 16
                         },
                         new
                         {
@@ -9877,8 +9653,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "O3",
-                            SeatNumber = 227
+                            SeatNumber = 32
                         },
                         new
                         {
@@ -9886,8 +9661,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "O4",
-                            SeatNumber = 228
+                            SeatNumber = 48
                         },
                         new
                         {
@@ -9895,8 +9669,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "O5",
-                            SeatNumber = 229
+                            SeatNumber = 64
                         },
                         new
                         {
@@ -9904,8 +9677,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "O6",
-                            SeatNumber = 230
+                            SeatNumber = 80
                         },
                         new
                         {
@@ -9913,8 +9685,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "O7",
-                            SeatNumber = 231
+                            SeatNumber = 96
                         },
                         new
                         {
@@ -9922,8 +9693,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "O8",
-                            SeatNumber = 232
+                            SeatNumber = 112
                         },
                         new
                         {
@@ -9931,8 +9701,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "O9",
-                            SeatNumber = 233
+                            SeatNumber = 128
                         },
                         new
                         {
@@ -9940,8 +9709,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "O10",
-                            SeatNumber = 234
+                            SeatNumber = 144
                         },
                         new
                         {
@@ -9949,8 +9717,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "O11",
-                            SeatNumber = 235
+                            SeatNumber = 160
                         },
                         new
                         {
@@ -9958,8 +9725,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "O12",
-                            SeatNumber = 236
+                            SeatNumber = 176
                         },
                         new
                         {
@@ -9967,8 +9733,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "O13",
-                            SeatNumber = 237
+                            SeatNumber = 192
                         },
                         new
                         {
@@ -9976,8 +9741,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "O14",
-                            SeatNumber = 238
+                            SeatNumber = 208
                         },
                         new
                         {
@@ -9985,8 +9749,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "O15",
-                            SeatNumber = 239
+                            SeatNumber = 224
                         },
                         new
                         {
@@ -9994,7 +9757,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -1,
                             IsDeleted = false,
-                            Label = "O16",
                             SeatNumber = 240
                         },
                         new
@@ -10003,7 +9765,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "A1",
                             SeatNumber = 1
                         },
                         new
@@ -10012,7 +9773,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "A2",
                             SeatNumber = 2
                         },
                         new
@@ -10021,7 +9781,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "A3",
                             SeatNumber = 3
                         },
                         new
@@ -10030,7 +9789,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "A4",
                             SeatNumber = 4
                         },
                         new
@@ -10039,7 +9797,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "A5",
                             SeatNumber = 5
                         },
                         new
@@ -10048,7 +9805,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "A6",
                             SeatNumber = 6
                         },
                         new
@@ -10057,7 +9813,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "A7",
                             SeatNumber = 7
                         },
                         new
@@ -10066,7 +9821,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "A8",
                             SeatNumber = 8
                         },
                         new
@@ -10075,7 +9829,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "A9",
                             SeatNumber = 9
                         },
                         new
@@ -10084,7 +9837,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "A10",
                             SeatNumber = 10
                         },
                         new
@@ -10093,7 +9845,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "A11",
                             SeatNumber = 11
                         },
                         new
@@ -10102,7 +9853,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "A12",
                             SeatNumber = 12
                         },
                         new
@@ -10111,7 +9861,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "A13",
                             SeatNumber = 13
                         },
                         new
@@ -10120,7 +9869,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "A14",
                             SeatNumber = 14
                         },
                         new
@@ -10129,7 +9877,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "A15",
                             SeatNumber = 15
                         },
                         new
@@ -10138,8 +9885,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "A16",
-                            SeatNumber = 16
+                            SeatNumber = 2
                         },
                         new
                         {
@@ -10147,8 +9893,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "B1",
-                            SeatNumber = 17
+                            SeatNumber = 4
                         },
                         new
                         {
@@ -10156,8 +9901,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "B2",
-                            SeatNumber = 18
+                            SeatNumber = 6
                         },
                         new
                         {
@@ -10165,8 +9909,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "B3",
-                            SeatNumber = 19
+                            SeatNumber = 8
                         },
                         new
                         {
@@ -10174,8 +9917,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "B4",
-                            SeatNumber = 20
+                            SeatNumber = 10
                         },
                         new
                         {
@@ -10183,8 +9925,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "B5",
-                            SeatNumber = 21
+                            SeatNumber = 12
                         },
                         new
                         {
@@ -10192,8 +9933,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "B6",
-                            SeatNumber = 22
+                            SeatNumber = 14
                         },
                         new
                         {
@@ -10201,8 +9941,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "B7",
-                            SeatNumber = 23
+                            SeatNumber = 16
                         },
                         new
                         {
@@ -10210,8 +9949,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "B8",
-                            SeatNumber = 24
+                            SeatNumber = 18
                         },
                         new
                         {
@@ -10219,8 +9957,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "B9",
-                            SeatNumber = 25
+                            SeatNumber = 20
                         },
                         new
                         {
@@ -10228,8 +9965,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "B10",
-                            SeatNumber = 26
+                            SeatNumber = 22
                         },
                         new
                         {
@@ -10237,8 +9973,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "B11",
-                            SeatNumber = 27
+                            SeatNumber = 24
                         },
                         new
                         {
@@ -10246,8 +9981,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "B12",
-                            SeatNumber = 28
+                            SeatNumber = 26
                         },
                         new
                         {
@@ -10255,8 +9989,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "B13",
-                            SeatNumber = 29
+                            SeatNumber = 28
                         },
                         new
                         {
@@ -10264,7 +9997,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "B14",
                             SeatNumber = 30
                         },
                         new
@@ -10273,8 +10005,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "B15",
-                            SeatNumber = 31
+                            SeatNumber = 3
                         },
                         new
                         {
@@ -10282,8 +10013,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "B16",
-                            SeatNumber = 32
+                            SeatNumber = 6
                         },
                         new
                         {
@@ -10291,8 +10021,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "C1",
-                            SeatNumber = 33
+                            SeatNumber = 9
                         },
                         new
                         {
@@ -10300,8 +10029,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "C2",
-                            SeatNumber = 34
+                            SeatNumber = 12
                         },
                         new
                         {
@@ -10309,8 +10037,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "C3",
-                            SeatNumber = 35
+                            SeatNumber = 15
                         },
                         new
                         {
@@ -10318,8 +10045,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "C4",
-                            SeatNumber = 36
+                            SeatNumber = 18
                         },
                         new
                         {
@@ -10327,8 +10053,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "C5",
-                            SeatNumber = 37
+                            SeatNumber = 21
                         },
                         new
                         {
@@ -10336,8 +10061,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "C6",
-                            SeatNumber = 38
+                            SeatNumber = 24
                         },
                         new
                         {
@@ -10345,8 +10069,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "C7",
-                            SeatNumber = 39
+                            SeatNumber = 27
                         },
                         new
                         {
@@ -10354,8 +10077,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "C8",
-                            SeatNumber = 40
+                            SeatNumber = 30
                         },
                         new
                         {
@@ -10363,8 +10085,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "C9",
-                            SeatNumber = 41
+                            SeatNumber = 33
                         },
                         new
                         {
@@ -10372,8 +10093,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "C10",
-                            SeatNumber = 42
+                            SeatNumber = 36
                         },
                         new
                         {
@@ -10381,8 +10101,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "C11",
-                            SeatNumber = 43
+                            SeatNumber = 39
                         },
                         new
                         {
@@ -10390,8 +10109,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "C12",
-                            SeatNumber = 44
+                            SeatNumber = 42
                         },
                         new
                         {
@@ -10399,7 +10117,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "C13",
                             SeatNumber = 45
                         },
                         new
@@ -10408,8 +10125,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "C14",
-                            SeatNumber = 46
+                            SeatNumber = 4
                         },
                         new
                         {
@@ -10417,8 +10133,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "C15",
-                            SeatNumber = 47
+                            SeatNumber = 8
                         },
                         new
                         {
@@ -10426,8 +10141,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "C16",
-                            SeatNumber = 48
+                            SeatNumber = 12
                         },
                         new
                         {
@@ -10435,8 +10149,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "D1",
-                            SeatNumber = 49
+                            SeatNumber = 16
                         },
                         new
                         {
@@ -10444,8 +10157,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "D2",
-                            SeatNumber = 50
+                            SeatNumber = 20
                         },
                         new
                         {
@@ -10453,8 +10165,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "D3",
-                            SeatNumber = 51
+                            SeatNumber = 24
                         },
                         new
                         {
@@ -10462,8 +10173,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "D4",
-                            SeatNumber = 52
+                            SeatNumber = 28
                         },
                         new
                         {
@@ -10471,8 +10181,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "D5",
-                            SeatNumber = 53
+                            SeatNumber = 32
                         },
                         new
                         {
@@ -10480,8 +10189,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "D6",
-                            SeatNumber = 54
+                            SeatNumber = 36
                         },
                         new
                         {
@@ -10489,8 +10197,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "D7",
-                            SeatNumber = 55
+                            SeatNumber = 40
                         },
                         new
                         {
@@ -10498,8 +10205,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "D8",
-                            SeatNumber = 56
+                            SeatNumber = 44
                         },
                         new
                         {
@@ -10507,8 +10213,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "D9",
-                            SeatNumber = 57
+                            SeatNumber = 48
                         },
                         new
                         {
@@ -10516,8 +10221,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "D10",
-                            SeatNumber = 58
+                            SeatNumber = 52
                         },
                         new
                         {
@@ -10525,8 +10229,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "D11",
-                            SeatNumber = 59
+                            SeatNumber = 56
                         },
                         new
                         {
@@ -10534,7 +10237,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "D12",
                             SeatNumber = 60
                         },
                         new
@@ -10543,8 +10245,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "D13",
-                            SeatNumber = 61
+                            SeatNumber = 5
                         },
                         new
                         {
@@ -10552,8 +10253,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "D14",
-                            SeatNumber = 62
+                            SeatNumber = 10
                         },
                         new
                         {
@@ -10561,8 +10261,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "D15",
-                            SeatNumber = 63
+                            SeatNumber = 15
                         },
                         new
                         {
@@ -10570,8 +10269,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "D16",
-                            SeatNumber = 64
+                            SeatNumber = 20
                         },
                         new
                         {
@@ -10579,8 +10277,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "E1",
-                            SeatNumber = 65
+                            SeatNumber = 25
                         },
                         new
                         {
@@ -10588,8 +10285,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "E2",
-                            SeatNumber = 66
+                            SeatNumber = 30
                         },
                         new
                         {
@@ -10597,8 +10293,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "E3",
-                            SeatNumber = 67
+                            SeatNumber = 35
                         },
                         new
                         {
@@ -10606,8 +10301,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "E4",
-                            SeatNumber = 68
+                            SeatNumber = 40
                         },
                         new
                         {
@@ -10615,8 +10309,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "E5",
-                            SeatNumber = 69
+                            SeatNumber = 45
                         },
                         new
                         {
@@ -10624,8 +10317,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "E6",
-                            SeatNumber = 70
+                            SeatNumber = 50
                         },
                         new
                         {
@@ -10633,8 +10325,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "E7",
-                            SeatNumber = 71
+                            SeatNumber = 55
                         },
                         new
                         {
@@ -10642,8 +10333,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "E8",
-                            SeatNumber = 72
+                            SeatNumber = 60
                         },
                         new
                         {
@@ -10651,8 +10341,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "E9",
-                            SeatNumber = 73
+                            SeatNumber = 65
                         },
                         new
                         {
@@ -10660,8 +10349,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "E10",
-                            SeatNumber = 74
+                            SeatNumber = 70
                         },
                         new
                         {
@@ -10669,7 +10357,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "E11",
                             SeatNumber = 75
                         },
                         new
@@ -10678,8 +10365,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "E12",
-                            SeatNumber = 76
+                            SeatNumber = 6
                         },
                         new
                         {
@@ -10687,8 +10373,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "E13",
-                            SeatNumber = 77
+                            SeatNumber = 12
                         },
                         new
                         {
@@ -10696,8 +10381,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "E14",
-                            SeatNumber = 78
+                            SeatNumber = 18
                         },
                         new
                         {
@@ -10705,8 +10389,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "E15",
-                            SeatNumber = 79
+                            SeatNumber = 24
                         },
                         new
                         {
@@ -10714,8 +10397,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "E16",
-                            SeatNumber = 80
+                            SeatNumber = 30
                         },
                         new
                         {
@@ -10723,8 +10405,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "F1",
-                            SeatNumber = 81
+                            SeatNumber = 36
                         },
                         new
                         {
@@ -10732,8 +10413,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "F2",
-                            SeatNumber = 82
+                            SeatNumber = 42
                         },
                         new
                         {
@@ -10741,8 +10421,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "F3",
-                            SeatNumber = 83
+                            SeatNumber = 48
                         },
                         new
                         {
@@ -10750,8 +10429,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "F4",
-                            SeatNumber = 84
+                            SeatNumber = 54
                         },
                         new
                         {
@@ -10759,8 +10437,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "F5",
-                            SeatNumber = 85
+                            SeatNumber = 60
                         },
                         new
                         {
@@ -10768,8 +10445,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "F6",
-                            SeatNumber = 86
+                            SeatNumber = 66
                         },
                         new
                         {
@@ -10777,8 +10453,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "F7",
-                            SeatNumber = 87
+                            SeatNumber = 72
                         },
                         new
                         {
@@ -10786,8 +10461,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "F8",
-                            SeatNumber = 88
+                            SeatNumber = 78
                         },
                         new
                         {
@@ -10795,8 +10469,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "F9",
-                            SeatNumber = 89
+                            SeatNumber = 84
                         },
                         new
                         {
@@ -10804,7 +10477,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "F10",
                             SeatNumber = 90
                         },
                         new
@@ -10813,8 +10485,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "F11",
-                            SeatNumber = 91
+                            SeatNumber = 7
                         },
                         new
                         {
@@ -10822,8 +10493,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "F12",
-                            SeatNumber = 92
+                            SeatNumber = 14
                         },
                         new
                         {
@@ -10831,8 +10501,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "F13",
-                            SeatNumber = 93
+                            SeatNumber = 21
                         },
                         new
                         {
@@ -10840,8 +10509,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "F14",
-                            SeatNumber = 94
+                            SeatNumber = 28
                         },
                         new
                         {
@@ -10849,8 +10517,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "F15",
-                            SeatNumber = 95
+                            SeatNumber = 35
                         },
                         new
                         {
@@ -10858,8 +10525,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "F16",
-                            SeatNumber = 96
+                            SeatNumber = 42
                         },
                         new
                         {
@@ -10867,8 +10533,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "G1",
-                            SeatNumber = 97
+                            SeatNumber = 49
                         },
                         new
                         {
@@ -10876,8 +10541,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "G2",
-                            SeatNumber = 98
+                            SeatNumber = 56
                         },
                         new
                         {
@@ -10885,8 +10549,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "G3",
-                            SeatNumber = 99
+                            SeatNumber = 63
                         },
                         new
                         {
@@ -10894,8 +10557,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "G4",
-                            SeatNumber = 100
+                            SeatNumber = 70
                         },
                         new
                         {
@@ -10903,8 +10565,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "G5",
-                            SeatNumber = 101
+                            SeatNumber = 77
                         },
                         new
                         {
@@ -10912,8 +10573,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "G6",
-                            SeatNumber = 102
+                            SeatNumber = 84
                         },
                         new
                         {
@@ -10921,8 +10581,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "G7",
-                            SeatNumber = 103
+                            SeatNumber = 91
                         },
                         new
                         {
@@ -10930,8 +10589,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "G8",
-                            SeatNumber = 104
+                            SeatNumber = 98
                         },
                         new
                         {
@@ -10939,7 +10597,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "G9",
                             SeatNumber = 105
                         },
                         new
@@ -10948,8 +10605,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "G10",
-                            SeatNumber = 106
+                            SeatNumber = 8
                         },
                         new
                         {
@@ -10957,8 +10613,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "G11",
-                            SeatNumber = 107
+                            SeatNumber = 16
                         },
                         new
                         {
@@ -10966,8 +10621,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "G12",
-                            SeatNumber = 108
+                            SeatNumber = 24
                         },
                         new
                         {
@@ -10975,8 +10629,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "G13",
-                            SeatNumber = 109
+                            SeatNumber = 32
                         },
                         new
                         {
@@ -10984,8 +10637,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "G14",
-                            SeatNumber = 110
+                            SeatNumber = 40
                         },
                         new
                         {
@@ -10993,8 +10645,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "G15",
-                            SeatNumber = 111
+                            SeatNumber = 48
                         },
                         new
                         {
@@ -11002,8 +10653,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "G16",
-                            SeatNumber = 112
+                            SeatNumber = 56
                         },
                         new
                         {
@@ -11011,8 +10661,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "H1",
-                            SeatNumber = 113
+                            SeatNumber = 64
                         },
                         new
                         {
@@ -11020,8 +10669,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "H2",
-                            SeatNumber = 114
+                            SeatNumber = 72
                         },
                         new
                         {
@@ -11029,8 +10677,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "H3",
-                            SeatNumber = 115
+                            SeatNumber = 80
                         },
                         new
                         {
@@ -11038,8 +10685,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "H4",
-                            SeatNumber = 116
+                            SeatNumber = 88
                         },
                         new
                         {
@@ -11047,8 +10693,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "H5",
-                            SeatNumber = 117
+                            SeatNumber = 96
                         },
                         new
                         {
@@ -11056,8 +10701,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "H6",
-                            SeatNumber = 118
+                            SeatNumber = 104
                         },
                         new
                         {
@@ -11065,8 +10709,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "H7",
-                            SeatNumber = 119
+                            SeatNumber = 112
                         },
                         new
                         {
@@ -11074,7 +10717,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "H8",
                             SeatNumber = 120
                         },
                         new
@@ -11083,8 +10725,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "H9",
-                            SeatNumber = 121
+                            SeatNumber = 9
                         },
                         new
                         {
@@ -11092,8 +10733,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "H10",
-                            SeatNumber = 122
+                            SeatNumber = 18
                         },
                         new
                         {
@@ -11101,8 +10741,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "H11",
-                            SeatNumber = 123
+                            SeatNumber = 27
                         },
                         new
                         {
@@ -11110,8 +10749,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "H12",
-                            SeatNumber = 124
+                            SeatNumber = 36
                         },
                         new
                         {
@@ -11119,8 +10757,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "H13",
-                            SeatNumber = 125
+                            SeatNumber = 45
                         },
                         new
                         {
@@ -11128,8 +10765,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "H14",
-                            SeatNumber = 126
+                            SeatNumber = 54
                         },
                         new
                         {
@@ -11137,8 +10773,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "H15",
-                            SeatNumber = 127
+                            SeatNumber = 63
                         },
                         new
                         {
@@ -11146,8 +10781,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "H16",
-                            SeatNumber = 128
+                            SeatNumber = 72
                         },
                         new
                         {
@@ -11155,8 +10789,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "I1",
-                            SeatNumber = 129
+                            SeatNumber = 81
                         },
                         new
                         {
@@ -11164,8 +10797,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "I2",
-                            SeatNumber = 130
+                            SeatNumber = 90
                         },
                         new
                         {
@@ -11173,8 +10805,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "I3",
-                            SeatNumber = 131
+                            SeatNumber = 99
                         },
                         new
                         {
@@ -11182,8 +10813,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "I4",
-                            SeatNumber = 132
+                            SeatNumber = 108
                         },
                         new
                         {
@@ -11191,8 +10821,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "I5",
-                            SeatNumber = 133
+                            SeatNumber = 117
                         },
                         new
                         {
@@ -11200,8 +10829,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "I6",
-                            SeatNumber = 134
+                            SeatNumber = 126
                         },
                         new
                         {
@@ -11209,7 +10837,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "I7",
                             SeatNumber = 135
                         },
                         new
@@ -11218,8 +10845,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "I8",
-                            SeatNumber = 136
+                            SeatNumber = 10
                         },
                         new
                         {
@@ -11227,8 +10853,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "I9",
-                            SeatNumber = 137
+                            SeatNumber = 20
                         },
                         new
                         {
@@ -11236,8 +10861,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "I10",
-                            SeatNumber = 138
+                            SeatNumber = 30
                         },
                         new
                         {
@@ -11245,8 +10869,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "I11",
-                            SeatNumber = 139
+                            SeatNumber = 40
                         },
                         new
                         {
@@ -11254,8 +10877,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "I12",
-                            SeatNumber = 140
+                            SeatNumber = 50
                         },
                         new
                         {
@@ -11263,8 +10885,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "I13",
-                            SeatNumber = 141
+                            SeatNumber = 60
                         },
                         new
                         {
@@ -11272,8 +10893,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "I14",
-                            SeatNumber = 142
+                            SeatNumber = 70
                         },
                         new
                         {
@@ -11281,8 +10901,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "I15",
-                            SeatNumber = 143
+                            SeatNumber = 80
                         },
                         new
                         {
@@ -11290,8 +10909,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "I16",
-                            SeatNumber = 144
+                            SeatNumber = 90
                         },
                         new
                         {
@@ -11299,8 +10917,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "J1",
-                            SeatNumber = 145
+                            SeatNumber = 100
                         },
                         new
                         {
@@ -11308,8 +10925,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "J2",
-                            SeatNumber = 146
+                            SeatNumber = 110
                         },
                         new
                         {
@@ -11317,8 +10933,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "J3",
-                            SeatNumber = 147
+                            SeatNumber = 120
                         },
                         new
                         {
@@ -11326,8 +10941,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "J4",
-                            SeatNumber = 148
+                            SeatNumber = 130
                         },
                         new
                         {
@@ -11335,8 +10949,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "J5",
-                            SeatNumber = 149
+                            SeatNumber = 140
                         },
                         new
                         {
@@ -11344,7 +10957,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "J6",
                             SeatNumber = 150
                         },
                         new
@@ -11353,8 +10965,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "J7",
-                            SeatNumber = 151
+                            SeatNumber = 11
                         },
                         new
                         {
@@ -11362,8 +10973,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "J8",
-                            SeatNumber = 152
+                            SeatNumber = 22
                         },
                         new
                         {
@@ -11371,8 +10981,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "J9",
-                            SeatNumber = 153
+                            SeatNumber = 33
                         },
                         new
                         {
@@ -11380,8 +10989,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "J10",
-                            SeatNumber = 154
+                            SeatNumber = 44
                         },
                         new
                         {
@@ -11389,8 +10997,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "J11",
-                            SeatNumber = 155
+                            SeatNumber = 55
                         },
                         new
                         {
@@ -11398,8 +11005,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "J12",
-                            SeatNumber = 156
+                            SeatNumber = 66
                         },
                         new
                         {
@@ -11407,8 +11013,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "J13",
-                            SeatNumber = 157
+                            SeatNumber = 77
                         },
                         new
                         {
@@ -11416,8 +11021,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "J14",
-                            SeatNumber = 158
+                            SeatNumber = 88
                         },
                         new
                         {
@@ -11425,8 +11029,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "J15",
-                            SeatNumber = 159
+                            SeatNumber = 99
                         },
                         new
                         {
@@ -11434,8 +11037,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "J16",
-                            SeatNumber = 160
+                            SeatNumber = 110
                         },
                         new
                         {
@@ -11443,8 +11045,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "K1",
-                            SeatNumber = 161
+                            SeatNumber = 121
                         },
                         new
                         {
@@ -11452,8 +11053,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "K2",
-                            SeatNumber = 162
+                            SeatNumber = 132
                         },
                         new
                         {
@@ -11461,8 +11061,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "K3",
-                            SeatNumber = 163
+                            SeatNumber = 143
                         },
                         new
                         {
@@ -11470,8 +11069,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "K4",
-                            SeatNumber = 164
+                            SeatNumber = 154
                         },
                         new
                         {
@@ -11479,7 +11077,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "K5",
                             SeatNumber = 165
                         },
                         new
@@ -11488,8 +11085,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "K6",
-                            SeatNumber = 166
+                            SeatNumber = 12
                         },
                         new
                         {
@@ -11497,8 +11093,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "K7",
-                            SeatNumber = 167
+                            SeatNumber = 24
                         },
                         new
                         {
@@ -11506,8 +11101,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "K8",
-                            SeatNumber = 168
+                            SeatNumber = 36
                         },
                         new
                         {
@@ -11515,8 +11109,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "K9",
-                            SeatNumber = 169
+                            SeatNumber = 48
                         },
                         new
                         {
@@ -11524,8 +11117,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "K10",
-                            SeatNumber = 170
+                            SeatNumber = 60
                         },
                         new
                         {
@@ -11533,8 +11125,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "K11",
-                            SeatNumber = 171
+                            SeatNumber = 72
                         },
                         new
                         {
@@ -11542,8 +11133,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "K12",
-                            SeatNumber = 172
+                            SeatNumber = 84
                         },
                         new
                         {
@@ -11551,8 +11141,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "K13",
-                            SeatNumber = 173
+                            SeatNumber = 96
                         },
                         new
                         {
@@ -11560,8 +11149,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "K14",
-                            SeatNumber = 174
+                            SeatNumber = 108
                         },
                         new
                         {
@@ -11569,8 +11157,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "K15",
-                            SeatNumber = 175
+                            SeatNumber = 120
                         },
                         new
                         {
@@ -11578,8 +11165,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "K16",
-                            SeatNumber = 176
+                            SeatNumber = 132
                         },
                         new
                         {
@@ -11587,8 +11173,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "L1",
-                            SeatNumber = 177
+                            SeatNumber = 144
                         },
                         new
                         {
@@ -11596,8 +11181,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "L2",
-                            SeatNumber = 178
+                            SeatNumber = 156
                         },
                         new
                         {
@@ -11605,8 +11189,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "L3",
-                            SeatNumber = 179
+                            SeatNumber = 168
                         },
                         new
                         {
@@ -11614,7 +11197,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "L4",
                             SeatNumber = 180
                         },
                         new
@@ -11623,8 +11205,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "L5",
-                            SeatNumber = 181
+                            SeatNumber = 13
                         },
                         new
                         {
@@ -11632,8 +11213,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "L6",
-                            SeatNumber = 182
+                            SeatNumber = 26
                         },
                         new
                         {
@@ -11641,8 +11221,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "L7",
-                            SeatNumber = 183
+                            SeatNumber = 39
                         },
                         new
                         {
@@ -11650,8 +11229,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "L8",
-                            SeatNumber = 184
+                            SeatNumber = 52
                         },
                         new
                         {
@@ -11659,8 +11237,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "L9",
-                            SeatNumber = 185
+                            SeatNumber = 65
                         },
                         new
                         {
@@ -11668,8 +11245,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "L10",
-                            SeatNumber = 186
+                            SeatNumber = 78
                         },
                         new
                         {
@@ -11677,8 +11253,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "L11",
-                            SeatNumber = 187
+                            SeatNumber = 91
                         },
                         new
                         {
@@ -11686,8 +11261,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "L12",
-                            SeatNumber = 188
+                            SeatNumber = 104
                         },
                         new
                         {
@@ -11695,8 +11269,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "L13",
-                            SeatNumber = 189
+                            SeatNumber = 117
                         },
                         new
                         {
@@ -11704,8 +11277,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "L14",
-                            SeatNumber = 190
+                            SeatNumber = 130
                         },
                         new
                         {
@@ -11713,8 +11285,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "L15",
-                            SeatNumber = 191
+                            SeatNumber = 143
                         },
                         new
                         {
@@ -11722,8 +11293,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "L16",
-                            SeatNumber = 192
+                            SeatNumber = 156
                         },
                         new
                         {
@@ -11731,8 +11301,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "M1",
-                            SeatNumber = 193
+                            SeatNumber = 169
                         },
                         new
                         {
@@ -11740,8 +11309,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "M2",
-                            SeatNumber = 194
+                            SeatNumber = 182
                         },
                         new
                         {
@@ -11749,7 +11317,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "M3",
                             SeatNumber = 195
                         },
                         new
@@ -11758,8 +11325,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "M4",
-                            SeatNumber = 196
+                            SeatNumber = 14
                         },
                         new
                         {
@@ -11767,8 +11333,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "M5",
-                            SeatNumber = 197
+                            SeatNumber = 28
                         },
                         new
                         {
@@ -11776,8 +11341,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "M6",
-                            SeatNumber = 198
+                            SeatNumber = 42
                         },
                         new
                         {
@@ -11785,8 +11349,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "M7",
-                            SeatNumber = 199
+                            SeatNumber = 56
                         },
                         new
                         {
@@ -11794,8 +11357,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "M8",
-                            SeatNumber = 200
+                            SeatNumber = 70
                         },
                         new
                         {
@@ -11803,8 +11365,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "M9",
-                            SeatNumber = 201
+                            SeatNumber = 84
                         },
                         new
                         {
@@ -11812,8 +11373,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "M10",
-                            SeatNumber = 202
+                            SeatNumber = 98
                         },
                         new
                         {
@@ -11821,8 +11381,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "M11",
-                            SeatNumber = 203
+                            SeatNumber = 112
                         },
                         new
                         {
@@ -11830,8 +11389,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "M12",
-                            SeatNumber = 204
+                            SeatNumber = 126
                         },
                         new
                         {
@@ -11839,8 +11397,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "M13",
-                            SeatNumber = 205
+                            SeatNumber = 140
                         },
                         new
                         {
@@ -11848,8 +11405,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "M14",
-                            SeatNumber = 206
+                            SeatNumber = 154
                         },
                         new
                         {
@@ -11857,8 +11413,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "M15",
-                            SeatNumber = 207
+                            SeatNumber = 168
                         },
                         new
                         {
@@ -11866,8 +11421,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "M16",
-                            SeatNumber = 208
+                            SeatNumber = 182
                         },
                         new
                         {
@@ -11875,8 +11429,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "N1",
-                            SeatNumber = 209
+                            SeatNumber = 196
                         },
                         new
                         {
@@ -11884,7 +11437,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "N2",
                             SeatNumber = 210
                         },
                         new
@@ -11893,8 +11445,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "N3",
-                            SeatNumber = 211
+                            SeatNumber = 15
                         },
                         new
                         {
@@ -11902,8 +11453,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "N4",
-                            SeatNumber = 212
+                            SeatNumber = 30
                         },
                         new
                         {
@@ -11911,8 +11461,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "N5",
-                            SeatNumber = 213
+                            SeatNumber = 45
                         },
                         new
                         {
@@ -11920,8 +11469,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "N6",
-                            SeatNumber = 214
+                            SeatNumber = 60
                         },
                         new
                         {
@@ -11929,8 +11477,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "N7",
-                            SeatNumber = 215
+                            SeatNumber = 75
                         },
                         new
                         {
@@ -11938,8 +11485,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "N8",
-                            SeatNumber = 216
+                            SeatNumber = 90
                         },
                         new
                         {
@@ -11947,8 +11493,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "N9",
-                            SeatNumber = 217
+                            SeatNumber = 105
                         },
                         new
                         {
@@ -11956,8 +11501,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "N10",
-                            SeatNumber = 218
+                            SeatNumber = 120
                         },
                         new
                         {
@@ -11965,8 +11509,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "N11",
-                            SeatNumber = 219
+                            SeatNumber = 135
                         },
                         new
                         {
@@ -11974,8 +11517,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "N12",
-                            SeatNumber = 220
+                            SeatNumber = 150
                         },
                         new
                         {
@@ -11983,8 +11525,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "N13",
-                            SeatNumber = 221
+                            SeatNumber = 165
                         },
                         new
                         {
@@ -11992,8 +11533,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "N14",
-                            SeatNumber = 222
+                            SeatNumber = 180
                         },
                         new
                         {
@@ -12001,8 +11541,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "N15",
-                            SeatNumber = 223
+                            SeatNumber = 195
                         },
                         new
                         {
@@ -12010,8 +11549,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "N16",
-                            SeatNumber = 224
+                            SeatNumber = 210
                         },
                         new
                         {
@@ -12019,7 +11557,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "O1",
                             SeatNumber = 225
                         },
                         new
@@ -12028,8 +11565,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "O2",
-                            SeatNumber = 226
+                            SeatNumber = 16
                         },
                         new
                         {
@@ -12037,8 +11573,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "O3",
-                            SeatNumber = 227
+                            SeatNumber = 32
                         },
                         new
                         {
@@ -12046,8 +11581,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "O4",
-                            SeatNumber = 228
+                            SeatNumber = 48
                         },
                         new
                         {
@@ -12055,8 +11589,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "O5",
-                            SeatNumber = 229
+                            SeatNumber = 64
                         },
                         new
                         {
@@ -12064,8 +11597,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "O6",
-                            SeatNumber = 230
+                            SeatNumber = 80
                         },
                         new
                         {
@@ -12073,8 +11605,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "O7",
-                            SeatNumber = 231
+                            SeatNumber = 96
                         },
                         new
                         {
@@ -12082,8 +11613,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "O8",
-                            SeatNumber = 232
+                            SeatNumber = 112
                         },
                         new
                         {
@@ -12091,8 +11621,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "O9",
-                            SeatNumber = 233
+                            SeatNumber = 128
                         },
                         new
                         {
@@ -12100,8 +11629,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "O10",
-                            SeatNumber = 234
+                            SeatNumber = 144
                         },
                         new
                         {
@@ -12109,8 +11637,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "O11",
-                            SeatNumber = 235
+                            SeatNumber = 160
                         },
                         new
                         {
@@ -12118,8 +11645,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "O12",
-                            SeatNumber = 236
+                            SeatNumber = 176
                         },
                         new
                         {
@@ -12127,8 +11653,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "O13",
-                            SeatNumber = 237
+                            SeatNumber = 192
                         },
                         new
                         {
@@ -12136,8 +11661,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "O14",
-                            SeatNumber = 238
+                            SeatNumber = 208
                         },
                         new
                         {
@@ -12145,8 +11669,7 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "O15",
-                            SeatNumber = 239
+                            SeatNumber = 224
                         },
                         new
                         {
@@ -12154,7 +11677,6 @@ namespace Cinema.Dal.Migrations
                             CreatedAt = new DateTime(2020, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HallId = -2,
                             IsDeleted = false,
-                            Label = "O16",
                             SeatNumber = 240
                         });
                 });

@@ -1,7 +1,9 @@
 ﻿using Cinema.Models.Dtos;
 using Cinema.Models.Requests.Screenings;
+using Cinema.Models.SpecificModels;
 using Cinema.Utilities.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Cinema.Web.Api.Controllers
@@ -15,7 +17,7 @@ namespace Cinema.Web.Api.Controllers
         }
 
         [HttpGet("{id}/seating")]
-        public async Task<ActionResult<bool>> GetSeating(int id)
+        public async Task<ActionResult<List<SeatingModel>>> GetSeating(int id)
         {
             var result = await _screeningService.GetSeatingAsync(id);
             return Ok(result);

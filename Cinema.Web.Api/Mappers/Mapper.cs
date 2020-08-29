@@ -43,6 +43,8 @@ namespace Cinema.Web.Api.Mappers
             CreateMap<Reservation, ReservationUpsertRequest>().ReverseMap();
 
             CreateMap<Invoice, InvoiceDto>();
+
+            CreateMap<Seat, SeatDto>();
         }
     }
 }

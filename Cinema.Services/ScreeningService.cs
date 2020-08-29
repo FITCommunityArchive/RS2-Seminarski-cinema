@@ -22,6 +22,7 @@ namespace Cinema.Services
         protected readonly IMovieRepository _movieRepo;
         protected readonly IReservationRepository _reservationRepo;
         protected readonly IRepository<Hall, int> _hallRepo;
+        protected readonly IRepository<Seat, int> _seatRepo;
         protected readonly IUnitOfWork _unit;
         protected readonly IMapper _mapper;
 
@@ -33,6 +34,7 @@ namespace Cinema.Services
             _movieRepo = unit.Movies;
             _reservationRepo = unit.Reservations;
             _hallRepo = unit.Repository<Hall, int>();
+            _seatRepo = unit.Repository<Seat, int>();
         }
 
         public async Task<ScreeningDto> GetByIdAsync(int id, ICollection<string> includes = null)
@@ -56,45 +58,34 @@ namespace Cinema.Services
 
         public async Task<List<SeatingModel>> GetSeatingAsync(int id)
         {
-            List<string> screeningIncludes = new List<string> { $"{nameof(Screening.Hall)}.{nameof(Hall.Seats)}" };
-            Screening screening = await _screeningRepo.GetAsync(id, screeningIncludes);
+            Screening screening = await _screeningRepo.GetAsync(id);
 
             IEnumerable<Reservation> screeningReservations = await _reservationRepo.GetByScreeningIdAsync(id);
 
             //gets reserved seats first
             List<SeatingModel> screeningSeats = screeningReservations.SelectMany(x => x.SeatReservations)
-                                                                     .Select(x => x.Seat.CreateSeating(true)).ToList();
-
-            //int row, col = 0;
-            /*foreach (var i in screeningSeats)
-            {
-                int row = (i.SeatNumber / screening.Hall.NumberOfColumns);
-                row++;
-                int col = i.SeatNumber % screening.Hall.NumberOfColumns;
-                if (row == 0)
-                {
-                    row = 1;
-                }
-                if (col == 0)
-                {
-                    row--;
-                    col = screening.Hall.NumberOfColumns;
-                }
-            }*/
+                                                                          .Select(x => new SeatingModel
+                                                                          {
+                                                                              IsReserved = true,
+                                                                              Seat = _mapper.Map<SeatDto>(x.Seat)
+                                                                          }).ToList();
 
             //gets all seats
-            List<Seat> hallSeats = screening.Hall.Seats.ToList();
+            IEnumerable<Seat> hallSeats = await _seatRepo.GetAsync(x => x.HallId == screening.HallId);
+            IEnumerable<Seat> freeSeats = hallSeats.Where(x => !screeningSeats.Select(y => y.Seat.Id).Contains(x.Id)).ToList();
 
-            foreach (Seat seat in hallSeats)
+            foreach (Seat seat in freeSeats)
             {
-                //adds non-reserved seats
-                if (!screeningSeats.Any(x => x.Seat.Id == seat.Id))
+                SeatingModel seatingModel = new SeatingModel
                 {
-                    screeningSeats.Add(seat.CreateSeating(false));
-                }
+                    IsReserved = false,
+                    Seat = _mapper.Map<SeatDto>(seat)
+                };
+
+                screeningSeats.Add(seatingModel);
             }
 
-            return screeningSeats.OrderBy(x => x.Seat.Id).ToList();
+            return screeningSeats.OrderBy(x => x.Seat.SeatNumber).ToList();
         }
 
         private TimingStatus GetTimingStatus(ScreeningDto screening)
