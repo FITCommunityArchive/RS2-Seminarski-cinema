@@ -57,17 +57,6 @@ namespace Cinema.Dal.Data
         }
         protected override void OnModelCreating(ModelBuilder builder)
         {
-
-            //var typesToRegister = Assembly.Load("Cinema.Domain").GetTypes()
-            //    .Where(type => !String.IsNullOrEmpty(type.Namespace))
-            //    .Where(type => type.BaseType != null && type.BaseType.IsGenericType && type.BaseType.GetGenericTypeDefinition() == typeof(IEntityTypeConfiguration<>));
-
-            //foreach(var type in typesToRegister)
-            //{
-            //    dynamic configurationInstance = Activator.CreateInstance(type);
-            //    builder.ApplyConfiguration(configurationInstance);
-            //}
-
             base.OnModelCreating(builder);
 
             //This line is in order to prevent Cascade Delete

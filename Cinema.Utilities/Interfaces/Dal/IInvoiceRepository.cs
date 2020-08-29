@@ -8,6 +8,6 @@ namespace Cinema.Utilities.Interfaces.Dal
 {
     public interface IInvoiceRepository : IRepository<Invoice,int>
     {
-        Task<bool> DeleteReservationReferences(List<Reservation> reservations);
+
     }
 }

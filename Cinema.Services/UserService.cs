@@ -187,14 +187,6 @@ namespace Cinema.Services
 
         public async Task<bool> DeleteAsync(int id)
         {
-            //var reservations = _reservationRepo.GetReservationsByUserId(id);
-
-            //await _invoiceRepo.DeleteReservationReferences(reservations);
-            //await _seatReservationRepo.DeleteReservationReferences(reservations);
-
-            //await _reservationRepo.DeleteUserReferences(id);
-            //_userRepo.DeleteUserRoleReferences(id);
-
             await _userRepo.DeleteAsync(id);
             await _unit.SaveAsync();
 
