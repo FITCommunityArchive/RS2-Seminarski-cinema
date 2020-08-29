@@ -10,13 +10,54 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <ScrollView x:Name="NewReservationScrollView" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Orientation="Both">
-            <Grid x:Name="NewReservationLayoutGrid">
+            <Grid x:Name="NewReservationLayoutGrid">                
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
+                
                 <Label Grid.Row="0" Text="Reserve your tickets" FontSize="Title" Padding="40"/>
+                
                 <Grid x:Name="NewReservationSeatingGrid" Grid.Row="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+
+                <StackLayout Grid.Row="2" HorizontalOptions="CenterAndExpand" VerticalOptions="Start">
+                    
+                    <Label Text="Booking Details" FontSize="Medium"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{Binding SelectedSeats.Count, StringFormat='Selected Seats ({0})'}" FontSize="Small"/>
+                    </StackLayout>
+
+
+                    <ListView x:Name="SelectedSeatsListView" ItemsSource="{Binding SelectedSeats}" HeightRequest="100">
+                        
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="Seat "/>
+                                            <Label Text="{Binding Seat.Label}"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+
+                    </ListView>
+                    
+                </StackLayout>
+
+                <StackLayout Grid.Row="3" VerticalOptions="Start">
+                    <StackLayout>
+                        <Label Text="{Binding Total, StringFormat='Total: {0:C}'}"  FontSize="Medium"/>
+                    </StackLayout>
+
+                    <Button HorizontalOptions="FillAndExpand" VerticalOptions="Start" Text="Reserve" BackgroundColor="Red" TextColor="White"/>
+
+                </StackLayout>
+                
             </Grid>
         </ScrollView>
     </ContentPage.Content>
