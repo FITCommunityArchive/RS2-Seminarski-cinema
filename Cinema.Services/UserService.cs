@@ -168,7 +168,7 @@ namespace Cinema.Services
 
             List<Claim> claims = new List<Claim>()
             {
-                new Claim(ClaimTypes.NameIdentifier,user.UserName)
+                new Claim(ClaimTypes.NameIdentifier, user.UserName)
             };
 
             foreach (var role in user.UserRoles)

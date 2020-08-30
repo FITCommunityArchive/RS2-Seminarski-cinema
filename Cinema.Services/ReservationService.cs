@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Cinema.Domain.Entities;
 using Cinema.Domain.Entities.Identity;
+using Cinema.EmailService;
 using Cinema.Models.Dtos;
 using Cinema.Models.Requests.Reservations;
 using Cinema.Shared.Constants;
@@ -8,13 +9,17 @@ using Cinema.Shared.Enums;
 using Cinema.Shared.Pagination;
 using Cinema.Utilities.Exceptions;
 using Cinema.Utilities.Interfaces.Dal;
+using Cinema.Utilities.Interfaces.Integrations;
 using Cinema.Utilities.Interfaces.Services;
 using Microsoft.AspNetCore.Components.Forms;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -26,6 +31,9 @@ namespace Cinema.Services
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IScreeningService _screeningService;
         private readonly IConfiguration _configuration;
+        private readonly IAuthService _authService;
+        private readonly IQRCodeService _qRCodeService;
+        private readonly IEmailSender _emailSender;
         protected readonly IReservationRepository _reservationRepo;
         protected readonly IScreeningRepository _screeningRepo;
         protected readonly IUserRepository _userRepo;
@@ -33,7 +41,7 @@ namespace Cinema.Services
         protected readonly IUnitOfWork _unit;
         protected readonly IMapper _mapper;
 
-        public ReservationService(IUnitOfWork unit, IMapper mapper, UserManager<ApplicationUser> userManager, IScreeningService screeningService, IConfiguration configuration)
+        public ReservationService(IUnitOfWork unit, IMapper mapper, UserManager<ApplicationUser> userManager, IScreeningService screeningService, IConfiguration configuration, IAuthService authService, IQRCodeService qRCodeService, IEmailSender emailSender)
         {
             _unit = unit;
             _mapper = mapper;
@@ -44,6 +52,9 @@ namespace Cinema.Services
             _userManager = userManager;
             _screeningService = screeningService;
             _configuration = configuration;
+            _authService = authService;
+            _qRCodeService = qRCodeService;
+            _emailSender = emailSender;
         }
 
         public Task<ReservationDto> GetByIdAsync(int id, ICollection<string> includes = null)
@@ -66,19 +77,20 @@ namespace Cinema.Services
 
         public async Task<ReservationDto> InsertAsync(ReservationUpsertRequest req)
         {
-            List<string> screeningIncludes = new List<string> { nameof(Screening.Pricing) };
+            List<string> screeningIncludes = new List<string> { nameof(Screening.Pricing), nameof(Screening.Movie) };
             Screening screening = await _unit.Screenings.GetAsync(req.ScreeningId, screeningIncludes);
-            int userId = int.Parse(_userManager.GetUserId(ClaimsPrincipal.Current));
+
+            ApplicationUserDto currentUser = await _authService.GetCurrentUserAsync();
 
             IEnumerable<int> selectedSeatIds = req.SelectedSeats;            
 
             await ValidateRequestAsync(req, screening, selectedSeatIds);
 
-            ApplicationUser user = await _userRepo.GetAsync(userId);
+            //ApplicationUser user = await _userRepo.GetAsync(userId);
 
             Reservation reservation = new Reservation
             {
-                User = user,
+                UserId = currentUser.Id,
                 Screening = screening,
                 IsCancelled = false,
                 TicketQuantity = req.SelectedSeats.Count,
@@ -103,15 +115,12 @@ namespace Cinema.Services
             await _reservationRepo.InsertAsync(reservation);
             await _unit.SaveAsync();
 
-            ReservationDto reservationDto = _mapper.Map<ReservationDto>(reservation);
+            ReservationDto reservationDto = _mapper.Map<ReservationDto>(reservation);            
 
-            return reservationDto;
-
-            /*
-            var imageUri = _qRCodeService.GenerateCode(reservation.ReservationCode);
+/*            var imageUri = _qRCodeService.GenerateCode(reservation.ReservationCode);
             var imageUrl = String.Format("data:image/png;base64,{0}", imageUri);
 
-            var attachment = new FormFileCollection();
+            var attachment = new FormFileCollection();*/
             var messageContent = "";
             messageContent += "<h3>Your reservation code: " + reservation.ReservationCode + "</h3>";
             messageContent += "<p>You can pick up your movie tickets with your booking number directly from the box office during business hours.</p>";
@@ -121,6 +130,7 @@ namespace Cinema.Services
             messageContent += "<p>Information: Discounts are only possible with the appropriate membership card before printing cinema tickets(e.g.Family Movie Club Card, Cineplexx Bonus Card)";
             messageContent += "<h4>Have a great time at our cinema!</h4>";
 
+            /*
             using (var stream = System.IO.File.OpenRead("wwwroot/qrr/" + reservation.ReservationCode + ".jpg"))
             {
                 var file = new FormFile(stream, 0, stream.Length, null, Path.GetFileName(stream.Name))
@@ -130,9 +140,10 @@ namespace Cinema.Services
                 };
                 attachment.Add(file);
 
-                var message = new Message(new string[] { reservation.User.Email }, "Your Ticket for the movie " + screening.Movie.Title, messageContent, attachment);
-                await _emailSender.SendEmailAsync(message);
-            }
+                await _emailSender.SendEmailAsync(new string[] { reservation.User.Email }, "Your Ticket for the movie " + screening.Movie.Title, messageContent, attachment);
+            }*/
+
+            await _emailSender.SendEmailAsync(new string[] { currentUser.Email }, "Your Ticket for the movie " + screening.Movie.Title, messageContent);
 
             // when we go live we can just use the path of the image and add it to the image tag and link it directly. That way we don't have to create FormFile and then send the message.
 
@@ -140,7 +151,7 @@ namespace Cinema.Services
             //var message2 = new Message(new string[] { "boris@cloudronin.com" }, "Your Ticket for the movie " + currentScreening.Movie.Title, "<img src='"+ path+"' />");
             //await _emailSender.SendEmailAsync(message2);
 
-            return RedirectToAction("Thankyou", new { reservationID = reservation.Id });*/
+            return reservationDto;
         }
 
         private async Task ValidateRequestAsync(ReservationUpsertRequest req, Screening screening, IEnumerable<int> selectedSeatIds)

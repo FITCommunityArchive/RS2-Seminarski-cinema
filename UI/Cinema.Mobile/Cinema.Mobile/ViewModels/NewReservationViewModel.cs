@@ -1,7 +1,9 @@
 ﻿using Cinema.Mobile.Services;
 using Cinema.Models.Dtos;
+using Cinema.Models.Requests.Reservations;
 using Cinema.Models.SpecificModels;
 using Cinema.Shared.Constants;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -14,10 +16,12 @@ namespace Cinema.Mobile.ViewModels
     public class NewReservationViewModel : BaseViewModel
     {
         private readonly ApiService _screeningsApi = new ApiService("Screenings");
+        private readonly ApiService _reservationsApi = new ApiService("Reservations");
 
         public NewReservationViewModel()
         {
             InitCommand = new Command(async () => await Init());
+            ReserveCommand = new Command(async () => await Reserve());
         }
 
         private decimal _total = 0;
@@ -38,9 +42,27 @@ namespace Cinema.Mobile.ViewModels
         public ObservableCollection<SeatingModel> SelectedSeats { get; private set; } = new ObservableCollection<SeatingModel>();
 
         public ICommand InitCommand { get; private set; }
+        public ICommand ReserveCommand { get; private set; }
 
         public async Task Init()
         {
+        }
+
+
+        private async Task Reserve()
+        {
+            if (Screening == null || SelectedSeats.Count == 0)
+            {
+                return;
+            }
+
+            ReservationUpsertRequest request = new ReservationUpsertRequest
+            {
+                ScreeningId = Screening.Id,
+                SelectedSeats = SelectedSeats?.Select(x => x.Seat.Id).ToList()
+            };
+
+            var result = await _reservationsApi.Insert<ReservationDto>(request);
         }
 
         public void AddToCart(SeatingModel selectedSeat)

@@ -3,6 +3,7 @@ using Cinema.Dal.Data;
 using Cinema.Dal.Repository;
 using Cinema.Domain.Entities;
 using Cinema.Domain.Entities.Identity;
+using Cinema.EmailService;
 using Cinema.Models.Dtos;
 using Cinema.Models.Requests;
 using Cinema.Models.Requests.Pricing;
@@ -11,11 +12,13 @@ using Cinema.Models.Requests.Users;
 using Cinema.Services;
 using Cinema.Utilities.Interfaces;
 using Cinema.Utilities.Interfaces.Dal;
+using Cinema.Utilities.Interfaces.Integrations;
 using Cinema.Utilities.Interfaces.Services;
 using Cinema.Web.Api.Filters;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -94,6 +97,20 @@ namespace Cinema.Web.API
                 };
             });
 
+            services.AddHttpContextAccessor();
+
+            var emailConfig = Configuration.GetSection("EmailConfiguration")
+                                           .Get<EmailConfiguration>();
+
+            services.AddSingleton(emailConfig);
+
+            services.Configure<FormOptions>(o =>
+            {
+                o.ValueLengthLimit = int.MaxValue;
+                o.MultipartBodyLengthLimit = int.MaxValue;
+                o.MemoryBufferThreshold = int.MaxValue;
+            });
+
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ICinemaDbContext, CinemaDbContext>();
 
@@ -108,6 +125,9 @@ namespace Cinema.Web.API
             services.AddScoped<IScreeningService, ScreeningService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IReservationService, ReservationService>();
+            services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IQRCodeService, QRCodeService>();
+            services.AddScoped<IEmailSender, EmailSender>();
 
             services.AddScoped<IMovieRepository, MovieRepository>();
             services.AddScoped<IUserRepository, UserRepository>();

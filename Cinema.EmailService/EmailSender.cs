@@ -1,5 +1,7 @@
 ﻿using MailKit.Net.Smtp;
+using Microsoft.AspNetCore.Http;
 using MimeKit;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -27,6 +29,20 @@ namespace Cinema.EmailService
             var mailMessage = CreateEmailMessage(message);
 
             await SendAsync(mailMessage);
+        }
+
+        public async Task SendEmailAsync(IEnumerable<string> to, string subject, string content, IFormFileCollection attachments)
+        {
+            Message message = new Message(to, subject, content, attachments);
+
+            await SendEmailAsync(message);
+        }
+
+        public async Task SendEmailAsync(IEnumerable<string> to, string subject, string content)
+        {
+            Message message = new Message(to, subject, content);
+
+            await SendEmailAsync(message);
         }
 
         private MimeMessage CreateEmailMessage(Message message)
@@ -66,7 +82,6 @@ namespace Cinema.EmailService
 
             emailMessage.Body = bodyBuilder.ToMessageBody();
             return emailMessage;
-
         }
 
         private void Send(MimeMessage mailMessage)

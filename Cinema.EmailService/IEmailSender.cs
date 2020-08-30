@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Cinema.EmailService
 {
@@ -6,5 +8,7 @@ namespace Cinema.EmailService
     {
         void SendEmail(Message message);
         Task SendEmailAsync(Message message);
+        Task SendEmailAsync(IEnumerable<string> to, string subject, string content, IFormFileCollection attachments);
+        Task SendEmailAsync(IEnumerable<string> to, string subject, string content);
     }
 }
