@@ -41,6 +41,7 @@ namespace Cinema.Services
         public virtual async Task<bool> DeleteAsync(int id)
         {
             await _repo.DeleteAsync(id);
+            _unit.Save();
 
             return true;
         }
