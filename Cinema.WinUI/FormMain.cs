@@ -1,6 +1,7 @@
 ﻿using Cinema.Shared.Constants;
 using Cinema.WinUI.Authorization;
 using Cinema.WinUI.Movies;
+using Cinema.WinUI.Pricing;
 using Cinema.WinUI.Reports;
 using Cinema.WinUI.Users;
 using System;
@@ -126,6 +127,12 @@ namespace Cinema.WinUI
         private void btnReports_Click(object sender, EventArgs e)
         {
             FormReports formReports = new FormReports(_nextFormPrincipal);
+            openChildForm(formReports);
+        }
+
+        private void btnPricing_Click(object sender, EventArgs e)
+        {
+            FormPricings formReports = new FormPricings(_nextFormPrincipal);
             openChildForm(formReports);
         }
     }

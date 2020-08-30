@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.panelSideMenu = new System.Windows.Forms.Panel();
+            this.btnReports = new System.Windows.Forms.Button();
             this.btnReservations = new System.Windows.Forms.Button();
             this.logoLargeWhite1 = new Cinema.WinUI.UserControls.Logos.LogoLargeWhite();
             this.btnUsers = new System.Windows.Forms.Button();
@@ -48,7 +49,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.panelChildForm = new System.Windows.Forms.Panel();
             this.tlpTopBar = new System.Windows.Forms.TableLayoutPanel();
-            this.btnReports = new System.Windows.Forms.Button();
+            this.btnPricing = new System.Windows.Forms.Button();
             this.panelSideMenu.SuspendLayout();
             this.panelDashboardSubmenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
@@ -61,6 +62,7 @@
             // 
             this.panelSideMenu.AutoScroll = true;
             this.panelSideMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(88)))), ((int)(((byte)(209)))));
+            this.panelSideMenu.Controls.Add(this.btnPricing);
             this.panelSideMenu.Controls.Add(this.btnReports);
             this.panelSideMenu.Controls.Add(this.btnReservations);
             this.panelSideMenu.Controls.Add(this.logoLargeWhite1);
@@ -75,6 +77,24 @@
             this.panelSideMenu.Name = "panelSideMenu";
             this.panelSideMenu.Size = new System.Drawing.Size(250, 734);
             this.panelSideMenu.TabIndex = 0;
+            // 
+            // btnReports
+            // 
+            this.btnReports.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnReports.FlatAppearance.BorderSize = 0;
+            this.btnReports.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(42)))), ((int)(((byte)(97)))));
+            this.btnReports.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(42)))), ((int)(((byte)(97)))));
+            this.btnReports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReports.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnReports.Location = new System.Drawing.Point(0, 451);
+            this.btnReports.Name = "btnReports";
+            this.btnReports.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnReports.Size = new System.Drawing.Size(250, 45);
+            this.btnReports.TabIndex = 7;
+            this.btnReports.Text = "Reports";
+            this.btnReports.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReports.UseVisualStyleBackColor = true;
+            this.btnReports.Click += new System.EventHandler(this.btnReports_Click);
             // 
             // btnReservations
             // 
@@ -328,23 +348,23 @@
             this.tlpTopBar.Size = new System.Drawing.Size(1085, 33);
             this.tlpTopBar.TabIndex = 3;
             // 
-            // btnReports
+            // btnPricing
             // 
-            this.btnReports.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnReports.FlatAppearance.BorderSize = 0;
-            this.btnReports.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(42)))), ((int)(((byte)(97)))));
-            this.btnReports.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(42)))), ((int)(((byte)(97)))));
-            this.btnReports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReports.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnReports.Location = new System.Drawing.Point(0, 451);
-            this.btnReports.Name = "btnReports";
-            this.btnReports.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnReports.Size = new System.Drawing.Size(250, 45);
-            this.btnReports.TabIndex = 7;
-            this.btnReports.Text = "Reports";
-            this.btnReports.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReports.UseVisualStyleBackColor = true;
-            this.btnReports.Click += new System.EventHandler(this.btnReports_Click);
+            this.btnPricing.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnPricing.FlatAppearance.BorderSize = 0;
+            this.btnPricing.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(42)))), ((int)(((byte)(97)))));
+            this.btnPricing.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(42)))), ((int)(((byte)(97)))));
+            this.btnPricing.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPricing.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnPricing.Location = new System.Drawing.Point(0, 496);
+            this.btnPricing.Name = "btnPricing";
+            this.btnPricing.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnPricing.Size = new System.Drawing.Size(250, 45);
+            this.btnPricing.TabIndex = 8;
+            this.btnPricing.Text = "Pricing";
+            this.btnPricing.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPricing.UseVisualStyleBackColor = true;
+            this.btnPricing.Click += new System.EventHandler(this.btnPricing_Click);
             // 
             // FormMain
             // 
@@ -396,6 +416,7 @@
         private System.Windows.Forms.TableLayoutPanel tlpTopBar;
         private System.Windows.Forms.Button btnReservations;
         private System.Windows.Forms.Button btnReports;
+        private System.Windows.Forms.Button btnPricing;
     }
 }
 
