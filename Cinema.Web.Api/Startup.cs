@@ -5,6 +5,7 @@ using Cinema.Domain.Entities;
 using Cinema.Domain.Entities.Identity;
 using Cinema.Models.Dtos;
 using Cinema.Models.Requests;
+using Cinema.Models.Requests.Pricing;
 using Cinema.Models.Requests.Screenings;
 using Cinema.Models.Requests.Users;
 using Cinema.Services;
@@ -101,7 +102,7 @@ namespace Cinema.Web.API
             services.AddScoped<ICRUDService<ScreeningDto, ScreeningSearchRequest, ScreeningUpsertRequest, ScreeningUpsertRequest>, ScreeningService>();
             services.AddScoped<IService<GenreDto, BaseSearchRequest>, BaseService<GenreDto, BaseSearchRequest, Genre>>();
             services.AddScoped<IService<HallDto, BaseSearchRequest>, BaseService<HallDto, BaseSearchRequest, Hall>>();
-            services.AddScoped<IService<PricingDto, BaseSearchRequest>, BaseService<PricingDto, BaseSearchRequest, Pricing>>();
+            services.AddScoped<ICRUDService<PricingDto, PricingSearchRequest, PricingUpsertRequest, PricingUpsertRequest>, PricingService>();
 
             services.AddScoped<IMovieService, MovieService>();
             services.AddScoped<IScreeningService, ScreeningService>();
@@ -110,9 +111,15 @@ namespace Cinema.Web.API
 
             services.AddScoped<IMovieRepository, MovieRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IInvoiceRepository, InvoiceRepository>();
+            services.AddScoped<IReservationRepository, ReservationRepository>();
+            services.AddScoped<ISeatReservationRepository, SeatReservationRepository>();
 
             services.AddScoped<IRepository<ApplicationUser, int>, UserRepository>();
             services.AddScoped<IRepository<Movie, int>, MovieRepository>();
+            services.AddScoped<IRepository<Reservation, int>, ReservationRepository>();
+            services.AddScoped<IRepository<SeatReservation, int>, SeatReservationRepository>();
+            services.AddScoped<IRepository<Invoice, int>, InvoiceRepository>();
 
             string connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<CinemaDbContext>(options => options.UseSqlServer(connection));

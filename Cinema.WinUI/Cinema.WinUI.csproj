@@ -192,6 +192,18 @@
     <Compile Include="Helpers\ModuleExcel.cs" />
     <Compile Include="Helpers\ModulePDF.cs" />
     <Compile Include="Models\IncludesSearchRequest.cs" />
+    <Compile Include="Pricing\FormPricings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pricing\FormPricings.Designer.cs">
+      <DependentUpon>FormPricings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pricing\FormPricingsDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pricing\FormPricingsDetails.Designer.cs">
+      <DependentUpon>FormPricingsDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\FormReports.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -203,6 +215,12 @@
     </Compile>
     <Compile Include="Reservations\FormReservationList.Designer.cs">
       <DependentUpon>FormReservationList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Schema\FormList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Schema\FormList.Designer.cs">
+      <DependentUpon>FormList.cs</DependentUpon>
     </Compile>
     <Compile Include="Screenings\FormScreeningDetails.cs">
       <SubType>Form</SubType>
@@ -361,6 +379,12 @@
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pricing\FormPricings.resx">
+      <DependentUpon>FormPricings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pricing\FormPricingsDetails.resx">
+      <DependentUpon>FormPricingsDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -376,6 +400,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reservations\FormReservationList.resx">
       <DependentUpon>FormReservationList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Schema\FormList.resx">
+      <DependentUpon>FormList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Screenings\FormScreeningDetails.resx">
       <DependentUpon>FormScreeningDetails.cs</DependentUpon>
