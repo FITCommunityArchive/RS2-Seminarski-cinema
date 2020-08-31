@@ -17,8 +17,19 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                
-                <Label Grid.Row="0" Text="Reserve your tickets" FontSize="Title" Padding="40"/>
+
+                <StackLayout Grid.Row="0" Padding="0, 40, 0, 40" Spacing="20" Orientation="Vertical">
+                    <Label  Text="Reserve your tickets" FontSize="Title" />
+                    <StackLayout Orientation="Horizontal">
+                        <Label  Text="{Binding Screening.Movie.Title}" FontSize="Subtitle"/>
+                        <Label  Text="{Binding Screening.Movie.Duration, StringFormat='({0} min)'}" FontSize="Subtitle"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label  Text="{Binding Screening.Hall.Name}" FontSize="Subtitle"/>
+                        <Label  Text="{Binding Screening.DateAndTime}" FontSize="Subtitle"/>
+                    </StackLayout>
+
+                </StackLayout>                                
                 
                 <Grid x:Name="NewReservationSeatingGrid" Grid.Row="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
 
@@ -29,16 +40,15 @@
                         <Label Text="{Binding SelectedSeats.Count, StringFormat='Selected Seats ({0})'}" FontSize="Small"/>
                     </StackLayout>
 
-
                     <ListView x:Name="SelectedSeatsListView" ItemsSource="{Binding SelectedSeats}" HeightRequest="100">
                         
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                                        <StackLayout Orientation="Horizontal">
-                                            <Label Text="Seat "/>
-                                            <Label Text="{Binding Seat.Label}"/>
+                                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Spacing="10">
+                                        <StackLayout Orientation="Horizontal" BackgroundColor="LightGray" Padding="10">
+                                            <Label Text="{Binding Description}"/>
+                                            <Button Text="X" BackgroundColor="LightGray"/>
                                         </StackLayout>
                                     </StackLayout>
                                 </ViewCell>
@@ -51,10 +61,15 @@
 
                 <StackLayout Grid.Row="3" VerticalOptions="Start">
                     <StackLayout>
-                        <Label Text="{Binding Total, StringFormat='Total: {0:C}'}"  FontSize="Medium"/>
+                        <Label Text="{Binding Total, StringFormat='Total: {0:0.00 }'}"  FontSize="Medium"/>
+                        <Label Text="{Binding Currency}"  FontSize="Medium"/>
                     </StackLayout>
 
-                    <Button Command="{Binding ReserveCommand}" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Text="Reserve" BackgroundColor="Red" TextColor="White"/>
+                    <Button Clicked="OnButtonClicked" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Text="Reserve" BackgroundColor="Red" TextColor="White">
+                        <Button.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1"></TapGestureRecognizer>
+                        </Button.GestureRecognizers>
+                    </Button>
 
                 </StackLayout>
                 

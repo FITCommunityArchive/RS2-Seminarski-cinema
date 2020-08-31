@@ -15,13 +15,10 @@ namespace Cinema.Mobile.ViewModels
 {
     public class NewReservationViewModel : BaseViewModel
     {
-        private readonly ApiService _screeningsApi = new ApiService("Screenings");
-        private readonly ApiService _reservationsApi = new ApiService("Reservations");
-
+        private readonly PricingService _pricingService = new PricingService();
         public NewReservationViewModel()
         {
-            InitCommand = new Command(async () => await Init());
-            ReserveCommand = new Command(async () => await Reserve());
+            InitCommand = new Command(() => Init());
         }
 
         private decimal _total = 0;
@@ -37,32 +34,18 @@ namespace Cinema.Mobile.ViewModels
                 }
             }
         }
+
+        public string Currency { get; set; }
         public ScreeningDto Screening { get; set; }
         public List<SeatingModel> Seats { get; set; } = new List<SeatingModel>();
-        public ObservableCollection<SeatingModel> SelectedSeats { get; private set; } = new ObservableCollection<SeatingModel>();
+        public ObservableCollection<SelectedSeatViewModel> SelectedSeats { get; private set; } = new ObservableCollection<SelectedSeatViewModel>();
 
         public ICommand InitCommand { get; private set; }
         public ICommand ReserveCommand { get; private set; }
 
-        public async Task Init()
+        public void Init()
         {
-        }
-
-
-        private async Task Reserve()
-        {
-            if (Screening == null || SelectedSeats.Count == 0)
-            {
-                return;
-            }
-
-            ReservationUpsertRequest request = new ReservationUpsertRequest
-            {
-                ScreeningId = Screening.Id,
-                SelectedSeats = SelectedSeats?.Select(x => x.Seat.Id).ToList()
-            };
-
-            var result = await _reservationsApi.Insert<ReservationDto>(request);
+            Currency = Currencies.DEFAULT;
         }
 
         public void AddToCart(SeatingModel selectedSeat)
@@ -72,11 +55,19 @@ namespace Cinema.Mobile.ViewModels
 
             SelectedSeats.Clear();
 
-            IEnumerable<SeatingModel> selectedSeats = Seats.Where(x => x.IsSelected);            
+            IEnumerable<SeatingModel> selectedSeats = Seats.Where(x => x.IsSelected);
+
+            decimal seatPriceWithVat = _pricingService.CalculateTotalWithVatAmount(Screening.Pricing.Price);
 
             foreach (var seat in selectedSeats)
             {
-                SelectedSeats.Add(seat);
+                SelectedSeatViewModel selectedSeatViewModel = new SelectedSeatViewModel
+                {
+                    SeatingModel = seat,
+                    Description = $"{Screening.Pricing.Name} Seat {seat.Seat.Label} - {seatPriceWithVat} {Currency}"
+                };
+
+                SelectedSeats.Add(selectedSeatViewModel);
             }
 
             Total = SelectedSeats.Count * Screening.Pricing.Price;

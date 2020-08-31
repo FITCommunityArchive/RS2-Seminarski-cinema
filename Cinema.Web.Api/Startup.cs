@@ -10,6 +10,7 @@ using Cinema.Models.Requests.Pricing;
 using Cinema.Models.Requests.Screenings;
 using Cinema.Models.Requests.Users;
 using Cinema.Services;
+using Cinema.Shared.Constants;
 using Cinema.Utilities.Interfaces;
 using Cinema.Utilities.Interfaces.Dal;
 using Cinema.Utilities.Interfaces.Integrations;

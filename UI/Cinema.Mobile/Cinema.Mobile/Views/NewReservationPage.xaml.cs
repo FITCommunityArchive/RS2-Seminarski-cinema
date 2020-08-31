@@ -16,7 +16,7 @@ namespace Cinema.Mobile.Views
         NewReservationViewModel model = null;
         private readonly ScreeningDto _screening;
         private readonly ApiService _screeningsApi = new ApiService("Screenings");
-        private readonly int _selectedSeatsRowHeight = 20;
+        private readonly int _selectedSeatsRowHeight = 50;
 
         public NewReservationPage(ScreeningDto screening)
         {
@@ -64,7 +64,7 @@ namespace Cinema.Mobile.Views
             // Accomodate iPhone status bar.
             this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
 
-            await model.Init();
+            model.Init();
         }
 
         private Button CreateButton(SeatingModel seat)
@@ -120,6 +120,11 @@ namespace Cinema.Mobile.Views
             var list = await _screeningsApi.GetById<List<SeatingModel>>(screeningId, route);
 
             return list;
+        }
+
+        private async void OnButtonClicked(object sender, EventArgs args)
+        {
+            await Navigation.PushAsync(new ConfirmReservationPage(model));
         }
     }
 }
