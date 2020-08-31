@@ -8,5 +8,6 @@ namespace Cinema.Utilities.Interfaces.Services
     public interface IMovieService : ICRUDService<MovieDto, MovieSearchRequest, MovieUpsertRequest, MovieUpsertRequest>
     {
         Task<List<MovieDto>> GetNowShowingAsync();
+        double GetMovieReviewScore(int id);
     }
 }

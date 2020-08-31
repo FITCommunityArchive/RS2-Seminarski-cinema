@@ -22,10 +22,15 @@ namespace Cinema.Mobile.ViewModels
 
         public ICommand InitCommand { get; private set; }
         public MovieDto Movie { get; set; }
+
+        public double ReviewScore { get; set; }
         public ObservableCollection<ScreeningDto> ScreeningsList { get; set; } = new ObservableCollection<ScreeningDto>();
 
         public async Task Init()
         {
+
+            //ReviewScore = 
+
             ScreeningSearchRequest screeningSearchRequest = new ScreeningSearchRequest
             {
                 MovieId = Movie.Id,

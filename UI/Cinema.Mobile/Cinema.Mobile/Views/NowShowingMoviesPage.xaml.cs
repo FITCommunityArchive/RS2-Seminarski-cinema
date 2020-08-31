@@ -16,6 +16,7 @@ namespace Cinema.Mobile.Views
     public partial class NowShowingMoviesPage : ContentPage
     {
         private readonly ApiService _moviesApi = new ApiService("Movies");
+        private readonly ApiService _reviewsApi = new ApiService("Reviews");
         NowShowingMoviesViewModel model = null;
 
         public NowShowingMoviesPage()
@@ -124,6 +125,8 @@ namespace Cinema.Mobile.Views
 
         private async Task OpenDetails(MovieDto movie)
         {
+
+            //var reviewScore = _reviewsApi.
             await Navigation.PushAsync(new MovieDetailPage(movie));
         }
 
