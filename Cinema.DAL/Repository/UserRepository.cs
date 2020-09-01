@@ -80,9 +80,9 @@ namespace Cinema.Dal.Repository
             return result;
         }
 
-        public ApplicationUser GetUserByUserName(string userName)
+        public async Task<ApplicationUser> GetUserByUserNameAsync(string userName)
         {
-            var result = _context.Users.SingleOrDefault(e => e.UserName == userName.ToString());
+            var result = await _dbSet.FirstOrDefaultAsync(x => x.UserName.ToLower() == userName.ToLower());
 
             return result;
         }

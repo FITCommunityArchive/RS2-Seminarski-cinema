@@ -9,5 +9,6 @@ namespace Cinema.Utilities.Interfaces.Services
     public interface IScreeningService : ICRUDService<ScreeningDto, ScreeningSearchRequest, ScreeningUpsertRequest, ScreeningUpsertRequest>
     {
         Task<List<SeatingModel>> GetSeatingAsync(int id);
+        Task<bool> AreSeatsFreeAsync(int id, IEnumerable<int> seatIds);
     }
 }

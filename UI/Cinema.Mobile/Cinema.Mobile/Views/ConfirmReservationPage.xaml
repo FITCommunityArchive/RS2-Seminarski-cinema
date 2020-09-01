@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:vm="clr-namespace:Cinema.Mobile.ViewModels"
+             mc:Ignorable="d"
+             x:Class="Cinema.Mobile.Views.ConfirmReservationPage">
+    <ContentPage.BindingContext>
+        <vm:ConfirmReservationViewModel></vm:ConfirmReservationViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <ScrollView x:Name="ConfirmReservationScrollView">
+            
+            <StackLayout x:Name="ConfirmReservationStackLayout">
+                <Label x:Name="LabelConfirmationText" Text="Please confirm your reservation:"/>
+                <Label Text="Your details:"/>
+                <Label Text="{Binding NewReservation.Screening.Movie.Title, StringFormat='Movie: {0}'}"/>
+                <Label Text="Hall: "/>
+                <Label Text="Date: "/>
+                <Label Text="Time: "/>
+                <Label Text="Reservation code: "/>
+
+                <ListView ItemsSource="{Binding NewReservation.SelectedSeats}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Seat "/>
+                                        <Label Text="{Binding Seat.Label}"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <Label Text="Price: "/>
+                <Label Text="+ VAT: "/>
+                <Label Text="Price with VAT: "/>
+
+                <Button Clicked="OnButtonClicked" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Text="Confirm" BackgroundColor="Red" TextColor="White">
+                    <Button.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="1"></TapGestureRecognizer>
+                    </Button.GestureRecognizers>
+                </Button>
+
+            </StackLayout>
+        
+        </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>

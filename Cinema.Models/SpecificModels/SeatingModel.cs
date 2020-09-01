@@ -6,5 +6,6 @@ namespace Cinema.Models.SpecificModels
     {
         public SeatDto Seat { get; set; }
         public bool IsReserved { get; set; }
+        public bool IsSelected { get; set; } = false;
     }
 }

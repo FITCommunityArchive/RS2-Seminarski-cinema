@@ -23,6 +23,7 @@ namespace Cinema.Services
         protected readonly IReservationRepository _reservationRepo;
         protected readonly IRepository<Hall, int> _hallRepo;
         protected readonly IRepository<Seat, int> _seatRepo;
+        protected readonly IRepository<SeatReservation, int> _seatReservationRepo;
         protected readonly IUnitOfWork _unit;
         protected readonly IMapper _mapper;
 
@@ -35,6 +36,7 @@ namespace Cinema.Services
             _reservationRepo = unit.Reservations;
             _hallRepo = unit.Repository<Hall, int>();
             _seatRepo = unit.Repository<Seat, int>();
+            _seatReservationRepo = unit.Repository<SeatReservation, int>();
         }
 
         public async Task<ScreeningDto> GetByIdAsync(int id, ICollection<string> includes = null)
@@ -86,6 +88,30 @@ namespace Cinema.Services
             }
 
             return screeningSeats.OrderBy(x => x.Seat.SeatNumber).ToList();
+        }
+
+        public async Task<bool> AreSeatsFreeAsync(int id, IEnumerable<int> seatIds)
+        {
+            Screening screening = await _screeningRepo.GetAsync(id);
+            IEnumerable<SeatReservation> screeningReservations = await _seatReservationRepo.GetAsync(x => x.Reservation.ScreeningId == id);
+
+            foreach (var seatId in seatIds)
+            {
+                if (screeningReservations.Select(x => x.SeatId).Contains(seatId))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        public async Task<bool> IsSeatReservedAsync(int id, int seatId)
+        {
+            Screening screening = await _screeningRepo.GetAsync(id);
+            IEnumerable<SeatReservation> screeningReservations = await _seatReservationRepo.GetAsync(x => x.Reservation.ScreeningId == id);
+
+            return screeningReservations.Select(x => x.SeatId).Contains(seatId);
         }
 
         private TimingStatus GetTimingStatus(ScreeningDto screening)

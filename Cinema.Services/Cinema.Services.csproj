@@ -23,6 +23,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Cinema.Dal\Cinema.Dal.csproj" />
     <ProjectReference Include="..\Cinema.Domain\Cinema.Domain.csproj" />
+    <ProjectReference Include="..\Cinema.EmailService\Cinema.EmailService.csproj" />
     <ProjectReference Include="..\Cinema.Models\Cinema.Models.csproj" />
     <ProjectReference Include="..\Cinema.Utilities\Cinema.Utilities.csproj" />
   </ItemGroup>

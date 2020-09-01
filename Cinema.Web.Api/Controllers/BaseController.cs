@@ -10,8 +10,7 @@ namespace Cinema.Web.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme)]
-    [AllowAnonymous]
+    [Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme)]
     public class BaseController<T, TSearch> : ControllerBase where TSearch : BaseSearchRequest
     {
         private readonly IService<T, TSearch> _service;
