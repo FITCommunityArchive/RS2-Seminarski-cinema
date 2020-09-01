@@ -56,11 +56,10 @@ namespace Cinema.Mobile.Services
             return false;
         }
 
-        public Task<dynamic> GetMovieReviewScore(int id)
+        public async Task<double> GetMovieReviewScore(int id)
         {
-            var url = $"{_apiUrl}/Movies/{id}";
-
-            return url.WithOAuthBearerToken(Token).GetJsonAsync();
+            var url = $"{_apiUrl}/Movies/{id}/review-score";
+            return await url.WithOAuthBearerToken(Token).GetJsonAsync<double>(); ;
         }
 
         public async Task<T> Get<T>(object search, string route = null)

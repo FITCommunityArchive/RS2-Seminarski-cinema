@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:vm="clr-namespace:Cinema.Mobile.ViewModels" xmlns:converters="clr-namespace:Cinema.Mobile.Helpers" xmlns:controls="clr-namespace:Cinema.Mobile.Controls.Rating"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:vm="clr-namespace:Cinema.Mobile.ViewModels" xmlns:converters="clr-namespace:Cinema.Mobile.Helpers" xmlns:controls="clr-namespace:Cinema.Mobile.Controls.Rating" xmlns:customcontrol="clr-namespace:Cinema.Mobile.Templates"
              mc:Ignorable="d"
              x:Class="Cinema.Mobile.Views.MovieDetailPage">
     <ContentPage.BindingContext>
@@ -75,13 +75,18 @@
                 <StackLayout Orientation="Horizontal" Grid.Row="2" Grid.Column="1">
                     <Image Source="imdbicongray.png" HeightRequest="100" Margin="10, 0, 20, 0"/>
                     <Image Source="youtubeicongray.png" HeightRequest="100" Margin="0, 0, 20, 0"/>
+                    <Label Text="{Binding ReviewScore}" />
                     <controls:RatingStars
-                                    Rating="5"
+                                    Rating="{Binding ReviewScore}"
                                     Precision="Half"
+                                    HorizontalOptions="Start"
                                     HeightRequest="12"
                                     WidthRequest="150"/>
+
+                    <customcontrol:ReviewBar x:Name="customReviewBar" HorizontalOptions="Center"  ImageWidth="25" ImageHeight="25" Command="{Binding reviewBarCommand}" SelectedStarValue="{Binding ReviewScore}"   FillStarImage="ratingfull.png" EmptyStarImage="ratingempty.png"   />
+                    <Label Text="{Binding SelectedStar}"  HorizontalTextAlignment="Center" />
+                    <Button Command="{Binding clickCommand}" x:Name="voteBtn"  CommandParameter="{x:Reference Name=customReviewBar}" Text="Vote" />
                 </StackLayout>
-           
             </Grid>
 
             <StackLayout>
