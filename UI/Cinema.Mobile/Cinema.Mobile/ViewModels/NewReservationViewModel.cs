@@ -70,6 +70,21 @@ namespace Cinema.Mobile.ViewModels
                 SelectedSeats.Add(selectedSeatViewModel);
             }
 
+            CalculateTotal();
+        }
+
+        public void RemoveFromCart(int seatId)
+        {
+            SelectedSeatViewModel selectedSeatViewModel = SelectedSeats.FirstOrDefault(x => x.SeatingModel.Seat.Id == seatId);
+            SeatingModel seatingModel = selectedSeatViewModel.SeatingModel;
+            seatingModel.IsSelected = false;
+
+            SelectedSeats.Remove(selectedSeatViewModel);
+            CalculateTotal();
+        }
+
+        private void CalculateTotal()
+        {
             Total = SelectedSeats.Count * Screening.Pricing.Price;
         }
 
