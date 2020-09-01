@@ -94,7 +94,6 @@ namespace Cinema.Mobile.ViewModels
         void onClicked(object obj)
         {
             ReviewBar b = (ReviewBar)obj;
-            //App.Current.MainPage.DisplayAlert("Selected Value is", b.SelectedStarValue.ToString(), "OK");
 
             if(CanVote)
             {
