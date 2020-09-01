@@ -68,6 +68,16 @@ namespace Cinema.Mobile.Services
             return await url.WithOAuthBearerToken(Token).GetJsonAsync<int>(); ;
         }
 
+        public async Task<bool> UserCanVote(int userId,int movieId)
+        {
+            var url = $"{_apiUrl}/Reviews/canVote";
+            return await url.WithOAuthBearerToken(Token).SetQueryParams( new
+            {
+                userid = userId,
+                movieid = movieId
+            }).GetJsonAsync<bool>();
+        }
+
         public async Task<T> Get<T>(object search, string route = null)
         {
             try

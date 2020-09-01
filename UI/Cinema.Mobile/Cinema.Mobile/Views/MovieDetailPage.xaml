@@ -21,6 +21,7 @@
                     <RowDefinition Height="120"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
                 </Grid.RowDefinitions>
             
                 <Grid.ColumnDefinitions>
@@ -75,17 +76,13 @@
                 <StackLayout Orientation="Horizontal" Grid.Row="2" Grid.Column="1">
                     <Image Source="imdbicongray.png" HeightRequest="100" Margin="10, 0, 20, 0"/>
                     <Image Source="youtubeicongray.png" HeightRequest="100" Margin="0, 0, 20, 0"/>
-                    <Label Text="{Binding ReviewScore}" />
-                    <controls:RatingStars
-                                    Rating="{Binding ReviewScore}"
-                                    Precision="Half"
-                                    HorizontalOptions="Start"
-                                    HeightRequest="12"
-                                    WidthRequest="150"/>
+                </StackLayout>
 
-                    <customcontrol:ReviewBar x:Name="customReviewBar" HorizontalOptions="Center"  ImageWidth="25" ImageHeight="25" Command="{Binding reviewBarCommand}" SelectedStarValue="{Binding ReviewScore}"   FillStarImage="ratingfull.png" EmptyStarImage="ratingempty.png"   />
-                    <Label Text="{Binding SelectedStar}"  HorizontalTextAlignment="Center" />
-                    <Button Command="{Binding clickCommand}" IsVisible="{Binding }"  CommandParameter="{x:Reference Name=customReviewBar}" Text="Vote" />
+                <StackLayout Orientation="Vertical" Grid.Row="3" Grid.Column="1">
+                    <Label Text="{Binding ReviewScoreAverage, StringFormat='Rating: {0}'}" />
+                    <customcontrol:ReviewBar x:Name="customReviewBar" HorizontalOptions="Start"  ImageWidth="25" ImageHeight="25" Command="{Binding reviewBarCommand}" SelectedStarValue="{Binding ReviewScore}"   FillStarImage="ratingfull.png" EmptyStarImage="ratingempty.png"   />
+                    <Label Text="{Binding SelectedStar}"  HorizontalTextAlignment="Start" />
+                    <Button Command="{Binding clickCommand}" IsVisible="{Binding CanVote}" WidthRequest="150" HorizontalOptions="Start"  CommandParameter="{x:Reference Name=customReviewBar}" Text="Vote" />
                 </StackLayout>
             </Grid>
 

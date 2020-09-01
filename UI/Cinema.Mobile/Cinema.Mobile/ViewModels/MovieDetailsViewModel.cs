@@ -1,6 +1,7 @@
 ﻿using Cinema.Mobile.Services;
 using Cinema.Mobile.Templates;
 using Cinema.Models.Dtos;
+using Cinema.Models.Requests.Reviews;
 using Cinema.Models.Requests.Screenings;
 using Cinema.Shared.Enums;
 using Cinema.Shared.Pagination;
@@ -38,6 +39,20 @@ namespace Cinema.Mobile.ViewModels
             set { SetProperty(ref _reviewScore, value); }
         }
 
+        public double _reviewScoreAverage;
+        public double ReviewScoreAverage
+        {
+            get { return _reviewScoreAverage; }
+            set { SetProperty(ref _reviewScoreAverage, value); }
+        }
+
+        public int _userId;
+        public int UserId
+        {
+            get { return _userId; }
+            set { SetProperty(ref _userId, value); }
+        }
+
         public bool _canVote = true;
         public bool CanVote
         {
@@ -49,10 +64,11 @@ namespace Cinema.Mobile.ViewModels
         public async Task Init()
         {
 
-            var reviewScore = await _screeningsApi.GetMovieReviewScore(Movie.Id);
-            ReviewScore = Convert.ToInt32(reviewScore);
+            ReviewScoreAverage = await _screeningsApi.GetMovieReviewScore(Movie.Id);
+            ReviewScore = Convert.ToInt32(ReviewScoreAverage);
+            UserId = await _screeningsApi.GetCurrentUserId();
 
-            var userId = await _screeningsApi.GetCurrentUserId();
+            CanVote = await _screeningsApi.UserCanVote(UserId, Movie.Id);
 
             ScreeningSearchRequest screeningSearchRequest = new ScreeningSearchRequest
             {
@@ -78,7 +94,24 @@ namespace Cinema.Mobile.ViewModels
         void onClicked(object obj)
         {
             ReviewBar b = (ReviewBar)obj;
-            App.Current.MainPage.DisplayAlert("Selected Value is", b.SelectedStarValue.ToString(), "OK");
+            //App.Current.MainPage.DisplayAlert("Selected Value is", b.SelectedStarValue.ToString(), "OK");
+
+            if(CanVote)
+            {
+                ReviewUpsertRequest review = new ReviewUpsertRequest 
+                {
+                    Rating = ReviewScore,
+                    MovieId = Movie.Id,
+                    UserId = UserId,
+                    Text = ""
+                };
+                var result = _reviewsApi.Insert<ReviewUpsertRequest>(review);
+                if(result != null)
+                {
+                    CanVote = false;
+                    App.Current.MainPage.DisplayAlert("Success","Thank you for your vote.", "OK");
+                }
+            }
             
         }
 

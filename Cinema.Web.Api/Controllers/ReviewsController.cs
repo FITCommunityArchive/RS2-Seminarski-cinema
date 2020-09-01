@@ -11,10 +11,16 @@ namespace Cinema.Web.Api.Controllers
 {
     public class ReviewsController : BaseCRUDController<ReviewDto, ReviewSearchRequest, ReviewUpsertRequest, ReviewUpsertRequest>
     {
-
-        public ReviewsController(ICRUDService<ReviewDto, ReviewSearchRequest, ReviewUpsertRequest, ReviewUpsertRequest> service) : base(service)
+        private readonly IReviewService _reviewService;
+        public ReviewsController(IReviewService service) : base(service)
         {
+            _reviewService = service;
+        }
 
+        [HttpGet("canVote")]
+        public bool UserCanVote(int userid,int movieid)
+        {
+            return _reviewService.UserCanVote(userid, movieid);
         }
     }
 }
