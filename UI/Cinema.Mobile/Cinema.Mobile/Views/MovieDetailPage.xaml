@@ -85,7 +85,7 @@
 
                     <customcontrol:ReviewBar x:Name="customReviewBar" HorizontalOptions="Center"  ImageWidth="25" ImageHeight="25" Command="{Binding reviewBarCommand}" SelectedStarValue="{Binding ReviewScore}"   FillStarImage="ratingfull.png" EmptyStarImage="ratingempty.png"   />
                     <Label Text="{Binding SelectedStar}"  HorizontalTextAlignment="Center" />
-                    <Button Command="{Binding clickCommand}" x:Name="voteBtn"  CommandParameter="{x:Reference Name=customReviewBar}" Text="Vote" />
+                    <Button Command="{Binding clickCommand}" IsVisible="{Binding }"  CommandParameter="{x:Reference Name=customReviewBar}" Text="Vote" />
                 </StackLayout>
             </Grid>
 

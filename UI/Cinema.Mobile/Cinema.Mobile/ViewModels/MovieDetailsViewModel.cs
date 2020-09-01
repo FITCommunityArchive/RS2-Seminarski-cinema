@@ -50,6 +50,7 @@ namespace Cinema.Mobile.ViewModels
 
             var reviewScore = await _screeningsApi.GetMovieReviewScore(Movie.Id);
             ReviewScore = Convert.ToInt32(reviewScore);
+            
 
 
             ScreeningSearchRequest screeningSearchRequest = new ScreeningSearchRequest
