@@ -62,6 +62,12 @@ namespace Cinema.Mobile.Services
             return await url.WithOAuthBearerToken(Token).GetJsonAsync<double>(); ;
         }
 
+        public async Task<int> GetCurrentUserId()
+        {
+            var url = $"{_apiUrl}/Users/getCurrent";
+            return await url.WithOAuthBearerToken(Token).GetJsonAsync<int>(); ;
+        }
+
         public async Task<T> Get<T>(object search, string route = null)
         {
             try

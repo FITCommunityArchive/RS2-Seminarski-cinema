@@ -18,6 +18,7 @@ namespace Cinema.Mobile.ViewModels
     {
 
         private readonly ApiService _screeningsApi = new ApiService("Screenings");
+        private readonly ApiService _reviewsApi = new ApiService("Reviews");
 
         public MovieDetailsViewModel()
         {
@@ -50,8 +51,8 @@ namespace Cinema.Mobile.ViewModels
 
             var reviewScore = await _screeningsApi.GetMovieReviewScore(Movie.Id);
             ReviewScore = Convert.ToInt32(reviewScore);
-            
 
+            var userId = await _screeningsApi.GetCurrentUserId();
 
             ScreeningSearchRequest screeningSearchRequest = new ScreeningSearchRequest
             {
