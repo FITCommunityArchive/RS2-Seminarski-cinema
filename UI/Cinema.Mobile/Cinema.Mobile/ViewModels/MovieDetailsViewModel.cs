@@ -30,7 +30,7 @@ namespace Cinema.Mobile.ViewModels
             {
                 MovieId = Movie.Id,
                 Status = TimingStatus.SCHEDULED,
-                Includes = { nameof(ScreeningDto.Hall) },
+                Includes = { nameof(ScreeningDto.Hall), nameof(ScreeningDto.Pricing), nameof(ScreeningDto.Movie) },
                 SortColumn = nameof(ScreeningDto.DateAndTime),
                 SortOrder = SortOrder.ASC
             };

@@ -8,6 +8,7 @@ namespace Cinema.Utilities.Interfaces.Dal
     public interface IUserRepository : IRepository<ApplicationUser, int>
     {
         ApplicationUser GetUserByEmail(string email);
+        Task<ApplicationUser> GetUserByUserNameAsync(string userName);
         Task<ApplicationUser> GetByIdWithRolesAsync(int id);
         Task<IPagedList<ApplicationUser>> GetPagedAsync(ISearchRequest searchRequest, string searchTerm);
     }

@@ -16,6 +16,7 @@ namespace Cinema.Mobile.Views
         NewReservationViewModel model = null;
         private readonly ScreeningDto _screening;
         private readonly ApiService _screeningsApi = new ApiService("Screenings");
+        private readonly int _selectedSeatsRowHeight = 50;
 
         public NewReservationPage(ScreeningDto screening)
         {
@@ -27,9 +28,13 @@ namespace Cinema.Mobile.Views
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            BindingContext = model = new NewReservationViewModel { Screening = _screening };            
-
             List<SeatingModel> seats = await LoadSeating(_screening.Id);
+
+            BindingContext = model = new NewReservationViewModel 
+            { 
+                Screening = _screening,
+                Seats = seats
+            };
 
             int numberOfRows = _screening.Hall.NumberOfRows;
             int numberOfColumns = _screening.Hall.NumberOfColumns;
@@ -54,10 +59,12 @@ namespace Cinema.Mobile.Views
                 }
             }
 
+            this.SelectedSeatsListView.RowHeight = _selectedSeatsRowHeight;
+
             // Accomodate iPhone status bar.
             this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
 
-            await model.Init();
+            model.Init();
         }
 
         private Button CreateButton(SeatingModel seat)
@@ -67,15 +74,31 @@ namespace Cinema.Mobile.Views
                 BindingContext = seat,
                 Text = seat.Seat.Label,
                 BackgroundColor = seat.IsReserved ? Color.Gray : Color.White,
-                Command = new Command(async () => await AddToCart(seat, _screening.Id))
+                TextColor = seat.IsReserved ? Color.White : Color.Gray
             };
 
+            button.Command = new Command(() => AddToCart(button, seat));
             return button;
         }
 
-        private Task AddToCart(SeatingModel seat, int screeningId)
+        private void AddToCart(Button button, SeatingModel seat)
         {
-            throw new NotImplementedException();
+            model.AddToCart(seat);
+
+            bool seatStatus = model.GetSeatStatus(seat.Seat.Id);
+
+            if (seatStatus)
+            {
+                button.BackgroundColor = Color.Green;
+                button.TextColor = Color.White;
+            }
+            else
+            {
+                button.BackgroundColor = Color.White;
+                button.TextColor = Color.Gray;
+            }
+
+            this.SelectedSeatsListView.HeightRequest = model.SelectedSeats.Count * _selectedSeatsRowHeight;
         }
 
         private void SetUpGrid(int numberOfRows, int numberOfColumns)
@@ -97,6 +120,11 @@ namespace Cinema.Mobile.Views
             var list = await _screeningsApi.GetById<List<SeatingModel>>(screeningId, route);
 
             return list;
+        }
+
+        private async void OnButtonClicked(object sender, EventArgs args)
+        {
+            await Navigation.PushAsync(new ConfirmReservationPage(model));
         }
     }
 }
