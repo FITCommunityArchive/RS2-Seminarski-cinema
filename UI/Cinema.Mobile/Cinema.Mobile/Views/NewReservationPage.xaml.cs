@@ -16,7 +16,6 @@ namespace Cinema.Mobile.Views
     {
         NewReservationViewModel model = null;
         private readonly ScreeningDto _screening;
-        private readonly ApiService _screeningsApi = new ApiService("Screenings");
         private readonly int _selectedSeatsRowHeight = 50;
 
         public NewReservationPage(ScreeningDto screening)
@@ -29,13 +28,9 @@ namespace Cinema.Mobile.Views
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            List<SeatingModel> seats = await LoadSeating(_screening.Id);
+            await model.Init();
 
-            BindingContext = model = new NewReservationViewModel 
-            { 
-                Screening = _screening,
-                Seats = seats
-            };
+            List<SeatingModel> seats = model.Seats;
 
             int numberOfRows = _screening.Hall.NumberOfRows;
             int numberOfColumns = _screening.Hall.NumberOfColumns;
@@ -60,12 +55,7 @@ namespace Cinema.Mobile.Views
                 }
             }
 
-            this.SelectedSeatsListView.RowHeight = _selectedSeatsRowHeight;
-
-            // Accomodate iPhone status bar.
-            this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
-
-            model.Init();
+            this.SelectedSeatsListView.RowHeight = _selectedSeatsRowHeight;            
         }
 
         private Button CreateButton(SeatingModel seat)
@@ -124,7 +114,6 @@ namespace Cinema.Mobile.Views
             }
         }
 
-
         private void SetUpGrid(int numberOfRows, int numberOfColumns)
         {
             for (int i = 0; i < numberOfColumns; i++)
@@ -136,14 +125,6 @@ namespace Cinema.Mobile.Views
             {
                 this.NewReservationSeatingGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
             }
-        }
-
-        private async Task<List<SeatingModel>> LoadSeating(int screeningId)
-        {
-            string route = "seating";
-            var list = await _screeningsApi.GetById<List<SeatingModel>>(screeningId, route);
-
-            return list;
         }
 
         private void OnButtonClicked_CancelSeat(object sender, SelectedItemChangedEventArgs e)

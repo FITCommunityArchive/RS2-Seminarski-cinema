@@ -15,10 +15,12 @@ namespace Cinema.Mobile.ViewModels
 {
     public class NewReservationViewModel : BaseViewModel
     {
+        private readonly int _screeningId;
+        private readonly ApiService _screeningsApi = new ApiService("Screenings");
         private readonly PricingService _pricingService = new PricingService();
         public NewReservationViewModel()
         {
-            InitCommand = new Command(() => Init());
+            InitCommand = new Command(async () => await Init());
         }
 
         private decimal _total = 0;
@@ -43,9 +45,14 @@ namespace Cinema.Mobile.ViewModels
         public ICommand InitCommand { get; private set; }
         public ICommand ReserveCommand { get; private set; }
 
-        public void Init()
+        public async Task Init()
         {
             Currency = Currencies.DEFAULT;
+
+            string route = "seating";
+            var list = await _screeningsApi.GetById<List<SeatingModel>>(Screening.Id, route);
+
+            Seats = list;
         }
 
         public void AddToCart(SeatingModel selectedSeat)
