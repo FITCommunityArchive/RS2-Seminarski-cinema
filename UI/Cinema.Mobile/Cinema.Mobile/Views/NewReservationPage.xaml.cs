@@ -16,7 +16,7 @@ namespace Cinema.Mobile.Views
     {
         NewReservationViewModel model = null;
         private readonly ScreeningDto _screening;
-        private readonly int _selectedSeatsRowHeight = 50;
+        private readonly int _selectedSeatsRowHeight = 70;
 
         public NewReservationPage(ScreeningDto screening)
         {
@@ -38,6 +38,9 @@ namespace Cinema.Mobile.Views
             SetUpGrid(numberOfRows, numberOfColumns);
 
             int seatIndex = 0;
+
+            //this.NewReservationSeatingGridLoadingLabel.HeightRequest = 0;
+            this.NewReservationSeatingGridLoadingLabel.IsVisible = false;
 
             for (int i = 0; i < numberOfRows; i++)
             {
@@ -139,7 +142,7 @@ namespace Cinema.Mobile.Views
             SeatDto seat = item.SeatingModel.Seat;
             model.RemoveFromCart(seat.Id);
 
-            var buttons = this.NewReservationSeatingGrid.Children;
+            var buttons = this.NewReservationSeatingGrid.Children.Where(x => x is Button);
 
             foreach (var button in buttons)
             {
