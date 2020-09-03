@@ -61,14 +61,19 @@ namespace Cinema.Mobile.Views
         private Button CreateButton(SeatingModel seat)
         {
             Button button = new Button
-            {
+            {                
                 BindingContext = seat,
                 Text = seat.Seat.Label,
+                IsEnabled = !seat.IsReserved,
                 BackgroundColor = seat.IsReserved ? Color.Gray : Color.White,
                 TextColor = seat.IsReserved ? Color.White : Color.Gray
             };
 
-            button.Command = new Command(() => AddToCart(button, seat));
+            if (!seat.IsReserved)
+            {
+                button.Command = new Command(() => AddToCart(button, seat));
+            }
+
             return button;
         }
 
