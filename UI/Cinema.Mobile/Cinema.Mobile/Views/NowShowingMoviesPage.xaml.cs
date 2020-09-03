@@ -15,19 +15,20 @@ namespace Cinema.Mobile.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NowShowingMoviesPage : ContentPage
     {
-        private readonly ApiService _moviesApi = new ApiService("Movies");
         NowShowingMoviesViewModel model = null;
 
         public NowShowingMoviesPage()
         {
+            BindingContext = model = new NowShowingMoviesViewModel();
             InitializeComponent();
         }
 
         protected async override void OnAppearing()
         {
-            base.OnAppearing();
+            base.OnAppearing();            
+            await model.Init();
 
-            List<MovieDto> movies = await LoadMovies();
+            var movies = model.MoviesList;
             int moviesCount = movies.Count;
             int numberOfRows = (int)Math.Ceiling(moviesCount / 2.0);
             int numberOfColumns = GetNumberOfColumns(moviesCount);
@@ -56,10 +57,7 @@ namespace Cinema.Mobile.Views
             this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
 
             // Build the page.
-            this.Content = grid;
-
-            BindingContext = model = new NowShowingMoviesViewModel(movies);
-            await model.Init();
+            this.Content = grid;            
         }
 
         private static Grid SetUpGrid(int numberOfRows)
@@ -125,14 +123,6 @@ namespace Cinema.Mobile.Views
         private async Task OpenDetails(MovieDto movie)
         {
             await Navigation.PushAsync(new MovieDetailPage(movie));
-        }
-
-        private async Task<List<MovieDto>> LoadMovies()
-        {
-            string route = "now-showing";
-            var list = await _moviesApi.Get<List<MovieDto>>(null, route);
-
-            return list;
         }
     }
 }
