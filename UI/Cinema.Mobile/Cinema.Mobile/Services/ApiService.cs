@@ -56,6 +56,28 @@ namespace Cinema.Mobile.Services
             return false;
         }
 
+        public async Task<double> GetMovieReviewScore(int id)
+        {
+            var url = $"{_apiUrl}/Movies/{id}/review-score";
+            return await url.WithOAuthBearerToken(Token).GetJsonAsync<double>(); ;
+        }
+
+        public async Task<int> GetCurrentUserId()
+        {
+            var url = $"{_apiUrl}/Users/getCurrent";
+            return await url.WithOAuthBearerToken(Token).GetJsonAsync<int>(); ;
+        }
+
+        public async Task<bool> UserCanVote(int userId,int movieId)
+        {
+            var url = $"{_apiUrl}/Reviews/canVote";
+            return await url.WithOAuthBearerToken(Token).SetQueryParams( new
+            {
+                userid = userId,
+                movieid = movieId
+            }).GetJsonAsync<bool>();
+        }
+
         public async Task<T> Get<T>(object search, string route = null)
         {
             try

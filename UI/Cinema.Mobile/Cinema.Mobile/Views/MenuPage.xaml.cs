@@ -53,7 +53,7 @@ namespace Cinema.Mobile.Views
             ApiService.Username = null;
             ApiService.Password = null;
             ApiService.Token = null;
-            Application.Current.MainPage = new LoginPage();
+            Application.Current.MainPage = new NavigationPage(new LoginPage());
         }
     }
 }

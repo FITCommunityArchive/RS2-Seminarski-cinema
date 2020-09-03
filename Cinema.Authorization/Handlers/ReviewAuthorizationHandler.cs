@@ -11,12 +11,12 @@ namespace Cinema.Authorization.Handlers
     {
         protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, OperationAuthorizationRequirement requirement, Review resource)
         {
-            var userId = context.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier).Value;
+            //var userId = context.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier).Value;
 
-            if (userId == resource.UserId)
-            {
-                context.Succeed(requirement);
-            }
+            //if (userId == resource.UserId)
+            //{
+            //    context.Succeed(requirement);
+            //}
 
             return Task.CompletedTask;
         }

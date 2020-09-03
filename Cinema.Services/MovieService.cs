@@ -5,6 +5,7 @@ using Cinema.Models.Requests.Movies;
 using Cinema.Shared.Pagination;
 using Cinema.Utilities.Interfaces.Dal;
 using Cinema.Utilities.Interfaces.Services;
+using Microsoft.EntityFrameworkCore.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace Cinema.Services
         protected readonly IMovieRepository _movieRepo;
         protected readonly IScreeningRepository _screeningRepo;
         protected readonly IRepository<GenreMovie, int> _genreMovieRepo;
+        protected readonly IRepository<Review, int> _reviewsRepo;
         protected readonly IUnitOfWork _unit;
         protected readonly IMapper _mapper;
 
@@ -135,6 +137,11 @@ namespace Cinema.Services
             await _unit.SaveAsync();
 
             return true;
+        }
+
+        public double GetMovieReviewScore(int id)
+        {
+            return _movieRepo.GetMovieReviewScore(id);
         }
     }
 }

@@ -9,5 +9,6 @@ namespace Cinema.Utilities.Interfaces.Dal
     {
         Task<IPagedList<Movie>> GetPagedAsync(ISearchRequest searchRequest, string searchTerm, int? searchYear, int? searchDuration);
         Task<Movie> GetByIdWithGenresAsync(int id);
+        double GetMovieReviewScore(int id);
     }
 }

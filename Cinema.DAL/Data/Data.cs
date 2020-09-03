@@ -45,6 +45,7 @@ namespace Cinema.Dal.Data
             SeedReservations(modelBuilder, numberOfTickets, firstUserId, secondUserId);
             SeedInvoices(modelBuilder, numberOfTickets);
             SeedSeatReservations(modelBuilder, numberOfTickets);
+            SeedReviews(modelBuilder);
         }
 
         private static void SeedInvoices(ModelBuilder modelBuilder, int numberOfTickets)
@@ -82,6 +83,42 @@ namespace Cinema.Dal.Data
 
                 id--;
             }
+        }
+
+        private static void SeedReviews(ModelBuilder modelBuilder)
+        {
+            int id = -1;
+
+            modelBuilder.Entity<Review>().HasData(
+                     new Review
+                     {
+                         Id = id,
+                         MovieId = -4,
+                         Rating = 2,
+                         Text = "Lorem ipsum",
+                         UserId = 1
+                     });
+
+            id--;
+            modelBuilder.Entity<Review>().HasData(
+                     new Review
+                     {
+                         Id = id,
+                         MovieId = -4,
+                         Rating = 4,
+                         Text = "Lorem ipsum",
+                         UserId = 2
+                     });
+            id--;
+            modelBuilder.Entity<Review>().HasData(
+                     new Review
+                     {
+                         Id = id,
+                         MovieId = -4,
+                         Rating = 5,
+                         Text = "Lorem ipsum",
+                         UserId = 3
+                     });
         }
 
         private static void SeedSeatReservations(ModelBuilder modelBuilder, int numberOfTickets)

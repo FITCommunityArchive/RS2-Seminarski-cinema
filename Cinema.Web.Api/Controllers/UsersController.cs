@@ -11,9 +11,11 @@ namespace Cinema.Web.Api.Controllers
     public class UsersController : BaseCRUDController<ApplicationUserDto, UserSearchRequest, UserUpsertRequest, UserUpsertRequest>
     {
         private readonly IUserService _userService;
-        public UsersController(ICRUDService<ApplicationUserDto, UserSearchRequest, UserUpsertRequest, UserUpsertRequest> service, IUserService userService) : base(service)
+        private readonly IAuthService _authService;
+        public UsersController(ICRUDService<ApplicationUserDto, UserSearchRequest, UserUpsertRequest, UserUpsertRequest> service, IUserService userService, IAuthService authService) : base(service)
         {
             _userService = userService;
+            _authService = authService;
         }
 
 
@@ -44,6 +46,12 @@ namespace Cinema.Web.Api.Controllers
         public async Task<ApplicationUserDto> RegisterAsync(UserRegisterRequest model)
         {
             return await _userService.RegisterAsync(model);
+        }
+
+        [HttpGet("getCurrent")]
+        public async Task<int> GetCUrrentUserIdAsync()
+        {
+            return await _authService.GetCurrentUserIdAsync();
         }
     }
 }

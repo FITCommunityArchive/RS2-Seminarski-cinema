@@ -71,8 +71,18 @@ namespace Cinema.Mobile.ViewModels
                 {
                     await Application.Current.MainPage.DisplayAlert("Success", "Registered sucessufully", "OK");
                     ApiService.Username = result.UserName;
-                    ApiService.Password = result.Password;
-                    Application.Current.MainPage = new MainPage();
+                    ApiService.Password = Password;
+
+                    var loggedIn = await _usersApi.AuthUser();
+
+                    if(loggedIn)
+                    {
+                        Application.Current.MainPage = new MainPage();
+                    } else
+                    {
+                        await App.Current.MainPage.DisplayAlert("Info", "We coudln't log you in. Please try later.", "OK");
+
+                    }
                 }
 
             }

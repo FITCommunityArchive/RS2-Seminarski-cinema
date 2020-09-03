@@ -22,5 +22,11 @@ namespace Cinema.Web.Api.Controllers
 
             return Ok(result);
         }
+
+        [HttpGet("{id}/review-score")]
+        public double GetMovieReviewScore(int id)
+        {
+            return _movieService.GetMovieReviewScore(id);
+        }
     }
 }
