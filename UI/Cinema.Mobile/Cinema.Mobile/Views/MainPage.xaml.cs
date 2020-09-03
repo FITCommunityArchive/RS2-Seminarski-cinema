@@ -18,7 +18,7 @@ namespace Cinema.Mobile.Views
 
             MasterBehavior = MasterBehavior.Popover;
 
-            MenuPages.Add((int)MenuItemType.Browse, (NavigationPage)Detail);
+            MenuPages.Add((int)MenuItemType.NowShowing, (NavigationPage)Detail);
         }
 
         public async Task NavigateFromMenu(int id)
@@ -26,18 +26,9 @@ namespace Cinema.Mobile.Views
             if (!MenuPages.ContainsKey(id))
             {
                 switch (id)
-                {
-                    case (int)MenuItemType.Browse:
-                        MenuPages.Add(id, new NavigationPage(new ItemsPage()));
-                        break;
-                    case (int)MenuItemType.About:
-                        MenuPages.Add(id, new NavigationPage(new AboutPage()));
-                        break;
+                {  
                     case (int)MenuItemType.NowShowing:
                         MenuPages.Add(id, new NavigationPage(new NowShowingMoviesPage()));
-                        break;
-                    case (int)MenuItemType.GridDemo:
-                        MenuPages.Add(id, new NavigationPage(new GridDemoPage()));
                         break;
                 }
             }
