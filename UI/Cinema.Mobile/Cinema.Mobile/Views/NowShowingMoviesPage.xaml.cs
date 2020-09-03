@@ -53,11 +53,7 @@ namespace Cinema.Mobile.Views
                 }
             }
 
-            // Accomodate iPhone status bar.
-            this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
-
-            // Build the page.
-            this.Content = grid;            
+            this.NowShowingMoviesScrollView.Content = grid;            
         }
 
         private static Grid SetUpGrid(int numberOfRows)
@@ -66,6 +62,8 @@ namespace Cinema.Mobile.Views
             {
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
+                RowSpacing = 25,
+                ColumnSpacing = 25,
                 ColumnDefinitions =
                 {
                     new ColumnDefinition { Width = GridLength.Auto },
@@ -114,6 +112,7 @@ namespace Cinema.Mobile.Views
                 BindingContext = movie,
                 Source = imageSource,
                 HeightRequest = 300,
+                CornerRadius = 5,
                 Command = new Command(async () => await OpenDetails(movie))
             };
 
