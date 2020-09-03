@@ -14,16 +14,6 @@ namespace Cinema.Mobile.ViewModels
 
         public NowShowingMoviesViewModel()
         {
-
-        }
-
-        public NowShowingMoviesViewModel(IEnumerable<MovieDto> movies)
-        {
-            foreach (var movie in movies)
-            {
-                MoviesList.Add(movie);
-            }
-
             InitCommand = new Command(async () => await Init());
         }
 
@@ -35,6 +25,13 @@ namespace Cinema.Mobile.ViewModels
         {
             string route = "now-showing";
             var list = await _moviesApi.Get<List<MovieDto>>(null, route);
+
+            MoviesList.Clear();
+
+            foreach (var movie in list)
+            {
+                MoviesList.Add(movie);
+            }
         }
     }
 }

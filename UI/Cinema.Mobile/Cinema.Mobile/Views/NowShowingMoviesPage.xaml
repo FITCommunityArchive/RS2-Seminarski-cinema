@@ -12,6 +12,13 @@
         <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
     </ContentPage.Resources>
     <ContentPage.Content>
-        
+        <StackLayout BackgroundColor="#f3f3f5" Padding="0">
+            <Label Text="Now Showing" BackgroundColor="White" FontSize="Title" TextColor="DimGray" FontAttributes="Bold" Padding="15"/>
+            <StackLayout Padding="25">
+                <ScrollView x:Name="NowShowingMoviesScrollView" Orientation="Vertical" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <Label Text="Loading..." FontSize="Title"/>
+                </ScrollView>
+            </StackLayout>
+        </StackLayout>      
     </ContentPage.Content> 
 </ContentPage>

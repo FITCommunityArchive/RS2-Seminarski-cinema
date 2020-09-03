@@ -2,10 +2,7 @@
 {
     public enum MenuItemType
     {
-        Browse,
-        About,
         NowShowing,
-        GridDemo,
         MyReservations,
         LogOut
     }

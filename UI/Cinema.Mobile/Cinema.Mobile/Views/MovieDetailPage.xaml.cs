@@ -1,5 +1,6 @@
 ﻿using Cinema.Mobile.ViewModels;
 using Cinema.Models.Dtos;
+using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -20,7 +21,12 @@ namespace Cinema.Mobile.Views
         {
             base.OnAppearing();
             await model.Init();
-            
+
+            if (model.Movie.Poster.Length == 0)
+            {
+                this.MovieDetailPoster.Source = ImageSource.FromFile("movieposterplaceholder.png");
+            }
+
         }
 
         private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)

@@ -40,15 +40,19 @@
                         <Label Text="{Binding SelectedSeats.Count, StringFormat='Selected Seats ({0})'}" FontSize="Small"/>
                     </StackLayout>
 
-                    <ListView x:Name="SelectedSeatsListView" ItemsSource="{Binding SelectedSeats}" HeightRequest="100">
+                    <ListView x:Name="SelectedSeatsListView" ItemsSource="{Binding SelectedSeats}" ItemSelected="OnButtonClicked_CancelSeat" HeightRequest="100">
                         
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Spacing="10">
-                                        <StackLayout Orientation="Horizontal" BackgroundColor="LightGray" Padding="10">
-                                            <Label Text="{Binding Description}"/>
-                                            <Button Text="X" BackgroundColor="LightGray"/>
+                                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Padding="10" Spacing="10">
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="LightGray" Padding="10">
+                                            <Label Text="{Binding Description}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
+                                            <Button Text="X" BackgroundColor="LightGray" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand">
+                                                <Button.GestureRecognizers>
+                                                    <TapGestureRecognizer NumberOfTapsRequired="1"></TapGestureRecognizer>
+                                                </Button.GestureRecognizers>
+                                            </Button>
                                         </StackLayout>
                                     </StackLayout>
                                 </ViewCell>
@@ -65,7 +69,7 @@
                         <Label Text="{Binding Currency}"  FontSize="Medium"/>
                     </StackLayout>
 
-                    <Button Clicked="OnButtonClicked" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Text="Reserve" BackgroundColor="Red" TextColor="White">
+                    <Button Clicked="OnButtonClicked_Reserve" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Text="Reserve" BackgroundColor="Red" TextColor="White">
                         <Button.GestureRecognizers>
                             <TapGestureRecognizer NumberOfTapsRequired="1"></TapGestureRecognizer>
                         </Button.GestureRecognizers>

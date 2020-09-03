@@ -15,19 +15,20 @@ namespace Cinema.Mobile.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NowShowingMoviesPage : ContentPage
     {
-        private readonly ApiService _moviesApi = new ApiService("Movies");
         NowShowingMoviesViewModel model = null;
 
         public NowShowingMoviesPage()
         {
+            BindingContext = model = new NowShowingMoviesViewModel();
             InitializeComponent();
         }
 
         protected async override void OnAppearing()
         {
-            base.OnAppearing();
+            base.OnAppearing();            
+            await model.Init();
 
-            List<MovieDto> movies = await LoadMovies();
+            var movies = model.MoviesList;
             int moviesCount = movies.Count;
             int numberOfRows = (int)Math.Ceiling(moviesCount / 2.0);
             int numberOfColumns = GetNumberOfColumns(moviesCount);
@@ -52,14 +53,7 @@ namespace Cinema.Mobile.Views
                 }
             }
 
-            // Accomodate iPhone status bar.
-            this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
-
-            // Build the page.
-            this.Content = grid;
-
-            BindingContext = model = new NowShowingMoviesViewModel(movies);
-            await model.Init();
+            this.NowShowingMoviesScrollView.Content = grid;            
         }
 
         private static Grid SetUpGrid(int numberOfRows)
@@ -68,6 +62,8 @@ namespace Cinema.Mobile.Views
             {
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
+                RowSpacing = 25,
+                ColumnSpacing = 25,
                 ColumnDefinitions =
                 {
                     new ColumnDefinition { Width = GridLength.Auto },
@@ -116,6 +112,7 @@ namespace Cinema.Mobile.Views
                 BindingContext = movie,
                 Source = imageSource,
                 HeightRequest = 300,
+                CornerRadius = 5,
                 Command = new Command(async () => await OpenDetails(movie))
             };
 
@@ -125,14 +122,6 @@ namespace Cinema.Mobile.Views
         private async Task OpenDetails(MovieDto movie)
         {
             await Navigation.PushAsync(new MovieDetailPage(movie));
-        }
-
-        private async Task<List<MovieDto>> LoadMovies()
-        {
-            string route = "now-showing";
-            var list = await _moviesApi.Get<List<MovieDto>>(null, route);
-
-            return list;
         }
     }
 }

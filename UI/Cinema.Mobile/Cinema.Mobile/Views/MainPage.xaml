@@ -19,7 +19,7 @@
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
-                <views:ItemsPage />
+                <views:NowShowingMoviesPage />
             </x:Arguments>
         </NavigationPage>
     </MasterDetailPage.Detail>
