@@ -6,6 +6,7 @@
         About,
         NowShowing,
         GridDemo,
+        MyReservations,
         LogOut
     }
     public class HomeMenuItem

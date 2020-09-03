@@ -23,6 +23,7 @@ namespace Cinema.Mobile.Views
                 new HomeMenuItem {Id = MenuItemType.About, Title="About" },
                 new HomeMenuItem {Id = MenuItemType.NowShowing, Title="Now Showing" },
                 new HomeMenuItem {Id = MenuItemType.GridDemo, Title="Grid Demo" },
+                new HomeMenuItem {Id = MenuItemType.MyReservations, Title="My Reservations" },
                 new HomeMenuItem {Id = MenuItemType.LogOut, Title="Log out" }
             };
 
@@ -36,7 +37,7 @@ namespace Cinema.Mobile.Views
 
                 var id = (int)((HomeMenuItem)e.SelectedItem).Id;
 
-                if (id == 4)
+                if (id == (int)MenuItemType.LogOut)
                 {
                     LogOut();
                 }

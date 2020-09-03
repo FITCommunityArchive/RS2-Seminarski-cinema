@@ -2,6 +2,7 @@
 using Cinema.Models.Requests.Reservations;
 using Cinema.Utilities.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Cinema.Web.Api.Controllers
@@ -19,6 +20,12 @@ namespace Cinema.Web.Api.Controllers
         {
             var result = await _reservationService.ChangeReservationStatus(id);
             return Ok(result);
+        }
+
+        [HttpGet("user/{id}")]
+        public async Task<ActionResult<List<ReservationDto>>> GetReservationsById(int id)
+        {
+            return await _reservationService.GetReservationsByUserId(id);
         }
     }
 }
