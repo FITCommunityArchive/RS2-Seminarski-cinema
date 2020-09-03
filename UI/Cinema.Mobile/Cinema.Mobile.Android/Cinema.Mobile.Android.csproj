@@ -96,6 +96,11 @@
     <Content Include="imdbicongray.png" />
     <Content Include="logosmall.png" />
     <Content Include="movieposterplaceholder.png" />
+    <Content Include="ratingempty.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ratingfull.png" />
+    <Content Include="ratinghalf.png" />
     <Content Include="screeningdetailavataricon.png" />
     <Content Include="youtubeicongray.png" />
   </ItemGroup>

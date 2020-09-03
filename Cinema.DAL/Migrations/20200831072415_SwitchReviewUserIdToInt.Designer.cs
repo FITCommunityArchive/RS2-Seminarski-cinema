@@ -4,14 +4,16 @@ using Cinema.Dal.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Cinema.Dal.Migrations
 {
     [DbContext(typeof(CinemaDbContext))]
-    partial class CinemaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200831072415_SwitchReviewUserIdToInt")]
+    partial class SwitchReviewUserIdToInt
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -359,7 +361,7 @@ namespace Cinema.Dal.Migrations
                         new
                         {
                             Id = -1,
-                            ConcurrencyStamp = "c211aef6-799c-4c28-bedb-a7454a6ea49a",
+                            ConcurrencyStamp = "00a8fe98-10d0-4453-a822-38acd67882c5",
                             IsDeleted = false,
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
@@ -367,7 +369,7 @@ namespace Cinema.Dal.Migrations
                         new
                         {
                             Id = -2,
-                            ConcurrencyStamp = "ef66da18-1b58-45e5-9bb7-b970e82de214",
+                            ConcurrencyStamp = "da84bcdf-bb59-4503-aacd-d4160aa022b9",
                             IsDeleted = false,
                             Name = "Content Editor",
                             NormalizedName = "CONTENT EDITOR"
@@ -375,7 +377,7 @@ namespace Cinema.Dal.Migrations
                         new
                         {
                             Id = -3,
-                            ConcurrencyStamp = "a79dfb40-6ec5-4486-a4ae-bb27f63f7a6f",
+                            ConcurrencyStamp = "ce369a0c-90dc-400d-8cb3-6074f00c2033",
                             IsDeleted = false,
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
@@ -485,7 +487,7 @@ namespace Cinema.Dal.Migrations
                         {
                             Id = 1,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "30baff6b-c10d-436d-99e1-028bf3d1dd06",
+                            ConcurrencyStamp = "ee27eb11-f702-4f5d-9b7e-496727671372",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             FirstName = "Admin",
@@ -494,7 +496,7 @@ namespace Cinema.Dal.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEIQFGi6iCXjkxR1XzmGBXpOPjPbn1vRa7zju3XtvCsuxkMMyHnKTAA/2lVv0L4lqsw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEI7fKIdY6sj5OJM4dzKCyAKsCQT4fy9j2kifDgYwriAAaRsJfB0rIHPyuhwFjtCMtg==",
                             PhoneNumber = "123456789",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -504,7 +506,7 @@ namespace Cinema.Dal.Migrations
                         {
                             Id = 2,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d5231008-b7c0-4055-b391-52c44a7fb992",
+                            ConcurrencyStamp = "53192723-ee2f-41dd-9c9b-ca2e7c511e68",
                             Email = "test1@test-customer.com",
                             EmailConfirmed = true,
                             FirstName = "First",
@@ -513,7 +515,7 @@ namespace Cinema.Dal.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "TEST1@TEST-CUSTOMER.COM",
                             NormalizedUserName = "TEST.CUSTOMER1",
-                            PasswordHash = "AQAAAAEAACcQAAAAENNpHONT66rAEzF4OPvS4ZDoFBSaiWl45A0j2GluoAgThSRL1W5xhvVt3zkw86UyrQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEIs3Swvp9eEQuU+s69Yr3DlcQXNWRu5UVF3CjMHJfKBirAFwOymzB9Rr4EbjB413Sw==",
                             PhoneNumber = "123456789",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -523,7 +525,7 @@ namespace Cinema.Dal.Migrations
                         {
                             Id = 3,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ab1dbb12-8af8-4250-b88e-32d7ec4cfe5a",
+                            ConcurrencyStamp = "d4e200bb-e9d7-4f8d-afc6-e44c5eac5222",
                             Email = "test2@test-customer.com",
                             EmailConfirmed = true,
                             FirstName = "Second",
@@ -532,7 +534,7 @@ namespace Cinema.Dal.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "TEST2@TEST-CUSTOMER.COM",
                             NormalizedUserName = "TEST.CUSTOMER2",
-                            PasswordHash = "AQAAAAEAACcQAAAAELj6FhnsAhoWFhbdmK18jT0MAzqW4KaBL0gNZUDxNU9Hpmz8FatIderc1VJ/BS5gdA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEIjqdNdQI/FGRtgPXykgSW9jbSOZjfkbPrCZnf+qWczTEG3t4c0oC8KBHyMvF7SyiQ==",
                             PhoneNumber = "123456789",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -7605,38 +7607,6 @@ namespace Cinema.Dal.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Reviews");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = -1,
-                            CreatedAt = new DateTime(2020, 9, 1, 6, 34, 21, 599, DateTimeKind.Utc).AddTicks(5269),
-                            IsDeleted = false,
-                            MovieId = -4,
-                            Rating = 2,
-                            Text = "Lorem ipsum",
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = -2,
-                            CreatedAt = new DateTime(2020, 9, 1, 6, 34, 21, 599, DateTimeKind.Utc).AddTicks(7255),
-                            IsDeleted = false,
-                            MovieId = -4,
-                            Rating = 4,
-                            Text = "Lorem ipsum",
-                            UserId = 2
-                        },
-                        new
-                        {
-                            Id = -3,
-                            CreatedAt = new DateTime(2020, 9, 1, 6, 34, 21, 599, DateTimeKind.Utc).AddTicks(7317),
-                            IsDeleted = false,
-                            MovieId = -4,
-                            Rating = 5,
-                            Text = "Lorem ipsum",
-                            UserId = 3
-                        });
                 });
 
             modelBuilder.Entity("Cinema.Domain.Entities.Screening", b =>
@@ -7799,7 +7769,7 @@ namespace Cinema.Dal.Migrations
                         {
                             Id = -14,
                             CreatedAt = new DateTime(2020, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateAndTime = new DateTime(2020, 9, 11, 20, 0, 0, 0, DateTimeKind.Utc),
+                            DateAndTime = new DateTime(2020, 9, 10, 20, 0, 0, 0, DateTimeKind.Utc),
                             HallId = -1,
                             IsDeleted = false,
                             MovieId = -4,
@@ -7809,7 +7779,7 @@ namespace Cinema.Dal.Migrations
                         {
                             Id = -15,
                             CreatedAt = new DateTime(2020, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateAndTime = new DateTime(2020, 9, 11, 22, 0, 0, 0, DateTimeKind.Utc),
+                            DateAndTime = new DateTime(2020, 9, 10, 22, 0, 0, 0, DateTimeKind.Utc),
                             HallId = -1,
                             IsDeleted = false,
                             MovieId = -4,
@@ -7819,7 +7789,7 @@ namespace Cinema.Dal.Migrations
                         {
                             Id = -16,
                             CreatedAt = new DateTime(2020, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateAndTime = new DateTime(2020, 9, 16, 18, 0, 0, 0, DateTimeKind.Utc),
+                            DateAndTime = new DateTime(2020, 9, 15, 18, 0, 0, 0, DateTimeKind.Utc),
                             HallId = -1,
                             IsDeleted = false,
                             MovieId = -4,
@@ -7829,7 +7799,7 @@ namespace Cinema.Dal.Migrations
                         {
                             Id = -17,
                             CreatedAt = new DateTime(2020, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateAndTime = new DateTime(2020, 9, 26, 18, 0, 0, 0, DateTimeKind.Utc),
+                            DateAndTime = new DateTime(2020, 9, 25, 18, 0, 0, 0, DateTimeKind.Utc),
                             HallId = -1,
                             IsDeleted = false,
                             MovieId = -4,
