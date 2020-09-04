@@ -43,7 +43,7 @@ namespace Cinema.Mobile.ViewModels
                 SelectedSeats = NewReservation.SelectedSeats?.Select(x => x.SeatingModel.Seat.Id).ToList()
             };
 
-            var result = await _reservationsApi.Insert<ReservationDto>(request);
+            ReservationDto result = await _reservationsApi.Insert<ReservationDto>(request);
 
             return result;
         }

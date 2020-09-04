@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cinema.Mobile.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,11 @@ namespace Cinema.Mobile.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ThankYouPage : ContentPage
     {
-        public ThankYouPage()
+        ThankYouViewModel model = null;
+        public ThankYouPage(string reservationCode)
         {
             InitializeComponent();
+            BindingContext = model = new ThankYouViewModel { ReservationCode = reservationCode };
         }
 
         private async void OnButtonClicked(object sender, EventArgs args)

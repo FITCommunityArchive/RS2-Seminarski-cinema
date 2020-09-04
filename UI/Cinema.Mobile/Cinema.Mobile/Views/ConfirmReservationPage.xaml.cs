@@ -35,11 +35,11 @@ namespace Cinema.Mobile.Views
 
         private async void OnButtonClicked(object sender, EventArgs args)
         {
-            var result = model.CheckoutReservation();
+            ReservationDto result = await model.CheckoutReservation();
 
             if (result != null)
             {
-                await Navigation.PushAsync(new ThankYouPage());
+                await Navigation.PushAsync(new ThankYouPage(result.ReservationCode));
             }
             else
             {

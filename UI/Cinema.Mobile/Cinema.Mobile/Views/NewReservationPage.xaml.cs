@@ -28,7 +28,10 @@ namespace Cinema.Mobile.Views
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            await model.Init();
+
+            this.NewReservationButton.IsEnabled = false;
+
+            await model.Init();            
 
             List<SeatingModel> seats = model.Seats;
 
@@ -58,7 +61,7 @@ namespace Cinema.Mobile.Views
                 }
             }
 
-            this.SelectedSeatsListView.RowHeight = _selectedSeatsRowHeight;            
+            this.SelectedSeatsListView.RowHeight = _selectedSeatsRowHeight;
         }
 
         private Button CreateButton(SeatingModel seat)
@@ -88,6 +91,21 @@ namespace Cinema.Mobile.Views
             model.AddToCart(seat);
 
             AdjustSelectedSeats(button, seat);
+
+            if (!this.NewReservationButton.IsEnabled)
+            {
+                SetReserveButton();
+            }
+        }
+
+        private void SetReserveButton()
+        {
+            if (model.SelectedSeats != null && model.SelectedSeats.Count > 0)
+            {
+                this.NewReservationButton.IsEnabled = true;
+                this.NewReservationButton.BackgroundColor = Color.FromHex("#f0514e");
+                this.NewReservationButton.Clicked += new EventHandler(OnButtonClicked_Reserve);
+            }
         }
 
         private void AdjustSelectedSeats(Button button, SeatingModel seat)
@@ -160,6 +178,11 @@ namespace Cinema.Mobile.Views
 
         private async void OnButtonClicked_Reserve(object sender, EventArgs args)
         {
+            if (model.SelectedSeats == null || model.SelectedSeats.Count <= 0)
+            {
+                return;
+            }
+
             await Navigation.PushAsync(new ConfirmReservationPage(model));
         }    
     }
