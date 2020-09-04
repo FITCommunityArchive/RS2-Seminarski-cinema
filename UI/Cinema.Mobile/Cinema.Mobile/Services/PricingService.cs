@@ -4,21 +4,21 @@ namespace Cinema.Mobile.Services
 {
     public class PricingService
     {
-        public decimal CalculateVatAmount(decimal amountWithoutVat)
+        public decimal CalculateVatAmount(decimal priceWithoutVat)
         {
-            decimal vatAmount = amountWithoutVat * Vat.VAT_PERCENTAGE;
+            decimal vatAmount = priceWithoutVat * Vat.VAT_PERCENTAGE;
             return vatAmount;
         }
 
-        public decimal CalculateTotalWithVatAmount(decimal amountWithoutVat)
+        public decimal CalculateTotalWithVatAmount(decimal priceWithoutVat)
         {
-            decimal vatAmount = CalculateVatAmount(amountWithoutVat);
-            return amountWithoutVat + vatAmount;
+            decimal vatAmount = CalculateVatAmount(priceWithoutVat);
+            return priceWithoutVat + vatAmount;
         }
 
-        public string GetTotalWithVatAmount(decimal amountWithoutVat)
+        public string GetTotalWithVatAmount(decimal priceWithoutVat)
         {
-            decimal total = CalculateTotalWithVatAmount(amountWithoutVat);
+            decimal total = CalculateTotalWithVatAmount(priceWithoutVat);
             return total.ToString("F2");
         }
     }

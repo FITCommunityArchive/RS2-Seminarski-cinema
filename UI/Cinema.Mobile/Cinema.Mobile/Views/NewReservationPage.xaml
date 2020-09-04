@@ -63,9 +63,9 @@
 
                 <StackLayout Grid.Row="3" Padding="20, 0, 20, 20" VerticalOptions="Start">
                     <StackLayout Orientation="Horizontal">
-                        <Label Text="Total" TextColor="DarkSlateBlue" FontSize="Medium"/>
-                        <Label Text="{Binding Total, StringFormat=' {0:0.00 }'}" TextColor="DarkSlateBlue" FontSize="Medium" FontAttributes="Bold"/>
-                        <Label Text="{Binding Currency}" TextColor="DarkSlateBlue" FontSize="Medium" FontAttributes="Bold"/>
+                        <Label Text="Total" TextColor="DarkSlateBlue" FontSize="Medium" FontAttributes="Bold"/>
+                        <Label Text="{Binding TotalWithVat, StringFormat=' {0:0.00 }'}" TextColor="DarkSlateBlue" FontSize="Medium"/>
+                        <Label Text="{Binding Currency}" TextColor="DarkSlateBlue" FontSize="Medium"/>
                     </StackLayout>
 
                     <Button Clicked="OnButtonClicked_Reserve" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Text="Reserve" FontAttributes="Bold" BackgroundColor="#f0514e" TextColor="White" Padding="10">

@@ -20,13 +20,11 @@ namespace Cinema.Mobile.ViewModels
         public ConfirmReservationViewModel()
         {
             InitCommand = new Command(async () => await Init());
-            //CheckoutReservationCommand = new Command(async () => await CheckoutReservation());
         }
 
         public NewReservationViewModel NewReservation { get; set; }
 
         public ICommand InitCommand { get; private set; }
-        //public ICommand CheckoutReservationCommand { get; private set; }
 
         public async Task Init()
         {

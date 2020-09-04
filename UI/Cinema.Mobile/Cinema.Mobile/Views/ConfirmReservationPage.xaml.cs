@@ -17,6 +17,7 @@ namespace Cinema.Mobile.Views
     public partial class ConfirmReservationPage : ContentPage
     {
         ConfirmReservationViewModel model = null;
+        private readonly int _selectedSeatsRowHeight = 70;
 
         public ConfirmReservationPage(NewReservationViewModel newReservationViewModel)
         {
@@ -28,6 +29,8 @@ namespace Cinema.Mobile.Views
         {
             base.OnAppearing();
             await model.Init();
+
+            this.ConfirmReservationListView.HeightRequest = model.NewReservation.SelectedSeats.Count * _selectedSeatsRowHeight;
         }
 
         private async void OnButtonClicked(object sender, EventArgs args)

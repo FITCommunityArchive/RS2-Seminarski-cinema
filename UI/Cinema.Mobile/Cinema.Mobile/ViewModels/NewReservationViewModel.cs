@@ -1,9 +1,7 @@
 ﻿using Cinema.Mobile.Services;
 using Cinema.Models.Dtos;
-using Cinema.Models.Requests.Reservations;
 using Cinema.Models.SpecificModels;
 using Cinema.Shared.Constants;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -15,7 +13,6 @@ namespace Cinema.Mobile.ViewModels
 {
     public class NewReservationViewModel : BaseViewModel
     {
-        private readonly int _screeningId;
         private readonly ApiService _screeningsApi = new ApiService("Screenings");
         private readonly PricingService _pricingService = new PricingService();
         public NewReservationViewModel()
@@ -24,14 +21,42 @@ namespace Cinema.Mobile.ViewModels
         }
 
         private decimal _total = 0;
-        public decimal Total 
-        { 
-            get { return _total; } 
+        public decimal Total
+        {
+            get { return _total; }
             set
             {
                 if (_total != value)
                 {
                     _total = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        private decimal _vat = 0;
+        public decimal Vat
+        {
+            get { return _vat; }
+            set
+            {
+                if (_vat != value)
+                {
+                    _vat = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        private decimal _totalWithVat = 0;
+        public decimal TotalWithVat 
+        { 
+            get { return _totalWithVat; } 
+            set
+            {
+                if (_totalWithVat != value)
+                {
+                    _totalWithVat = value;
                     OnPropertyChanged();                    
                 }
             }
@@ -90,7 +115,7 @@ namespace Cinema.Mobile.ViewModels
                 SelectedSeats.Add(selectedSeatViewModel);
             }
 
-            CalculateTotal();
+            CalculateTotals();
         }
 
         public void RemoveFromCart(int seatId)
@@ -100,13 +125,16 @@ namespace Cinema.Mobile.ViewModels
             seatingModel.IsSelected = false;
 
             SelectedSeats.Remove(selectedSeatViewModel);
-            CalculateTotal();
+            CalculateTotals();
         }
 
-        private void CalculateTotal()
+        private void CalculateTotals()
         {
+            Total = SelectedSeats.Count * Screening.Pricing.Price;
+            Vat = _pricingService.CalculateVatAmount(Total);
+
             decimal totalWithVat = _pricingService.CalculateTotalWithVatAmount(Screening.Pricing.Price);
-            Total = SelectedSeats.Count * totalWithVat;
+            TotalWithVat = SelectedSeats.Count * totalWithVat;
         }
 
         public bool GetSeatStatus(int selectedSeatId)
