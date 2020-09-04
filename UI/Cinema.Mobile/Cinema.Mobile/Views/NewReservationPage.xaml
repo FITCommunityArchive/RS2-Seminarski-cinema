@@ -18,7 +18,7 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <StackLayout Grid.Row="0" Padding="0, 40, 0, 40" Spacing="20" Orientation="Vertical">
+                <StackLayout Grid.Row="0" Padding="20, 40, 0, 40" Spacing="20" Orientation="Vertical">
                     <Label  Text="Reserve your tickets" FontSize="Title" FontAttributes="Bold" TextColor="Black" />
                     <StackLayout Orientation="Horizontal">
                         <Label  Text="{Binding Screening.Movie.Title}" TextColor="Gray" FontSize="Subtitle"/>
@@ -36,25 +36,21 @@
                     <Label x:Name="NewReservationSeatingGridLoadingLabel" Text="Loading..." FontSize="Title" TextColor="Gray" HeightRequest="100"/>
                 </Grid>
 
-                <StackLayout Grid.Row="2" Padding="20" HorizontalOptions="CenterAndExpand" VerticalOptions="Start">
+                <StackLayout Grid.Row="2" Margin="0, 20, 0, 0" Padding="20" HorizontalOptions="CenterAndExpand" VerticalOptions="Start">
                     
                     <Label Text="Booking Details" TextColor="Black" FontSize="Title"/>
                     <StackLayout Orientation="Horizontal">
                         <Label Text="{Binding SelectedSeats.Count, StringFormat='Selected Seats ({0})'}" TextColor="Gray" FontSize="Small"/>
                     </StackLayout>
 
-                    <ListView x:Name="SelectedSeatsListView" ItemsSource="{Binding SelectedSeats}" ItemSelected="OnButtonClicked_CancelSeat" HeightRequest="100">
+                    <ListView x:Name="SelectedSeatsListView" ItemsSource="{Binding SelectedSeats}" ItemSelected="OnButtonClicked_CancelSeat" HeightRequest="50">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
                                     <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#f3f3f5" Padding="10">
-                                            <Label Text="{Binding Description}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
-                                            <Button Text="X" BackgroundColor="LightGray" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand">
-                                                <Button.GestureRecognizers>
-                                                    <TapGestureRecognizer NumberOfTapsRequired="1"></TapGestureRecognizer>
-                                                </Button.GestureRecognizers>
-                                            </Button>
+                                            <Label Text="{Binding Description}" TextColor="Gray" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
+                                            <Label Text="X" TextColor="Gray" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"/>
                                         </StackLayout>
                                         <StackLayout BackgroundColor="White" HeightRequest="10"/>
                                     </StackLayout>
@@ -65,10 +61,10 @@
                     
                 </StackLayout>
 
-                <StackLayout Grid.Row="3" Padding="20" VerticalOptions="Start">
+                <StackLayout Grid.Row="3" Padding="20, 0, 20, 20" VerticalOptions="Start">
                     <StackLayout>
-                        <Label Text="{Binding Total, StringFormat='Total: {0:0.00 }'}"  FontSize="Medium"/>
-                        <Label Text="{Binding Currency}"  FontSize="Medium"/>
+                        <Label Text="{Binding Total, StringFormat='Total: {0:0.00 }'}" TextColor="DarkSlateBlue" FontSize="Medium"/>
+                        <Label Text="{Binding Currency}" TextColor="DarkSlateBlue" FontSize="Medium"/>
                     </StackLayout>
 
                     <Button Clicked="OnButtonClicked_Reserve" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Text="Reserve" BackgroundColor="Red" TextColor="White">

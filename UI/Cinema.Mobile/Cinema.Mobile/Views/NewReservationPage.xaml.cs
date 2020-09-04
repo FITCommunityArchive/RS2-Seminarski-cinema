@@ -16,7 +16,7 @@ namespace Cinema.Mobile.Views
     {
         NewReservationViewModel model = null;
         private readonly ScreeningDto _screening;
-        private readonly int _selectedSeatsRowHeight = 70;
+        private readonly int _selectedSeatsRowHeight = 50;
 
         public NewReservationPage(ScreeningDto screening)
         {
@@ -69,7 +69,10 @@ namespace Cinema.Mobile.Views
                 Text = seat.Seat.Label,
                 IsEnabled = !seat.IsReserved,
                 BackgroundColor = seat.IsReserved ? Color.Gray : Color.White,
-                TextColor = seat.IsReserved ? Color.White : Color.Gray
+                TextColor = seat.IsReserved ? Color.White : Color.Gray,
+                CornerRadius = 2,
+                BorderColor = Color.Gray,
+                WidthRequest = 45
             };
 
             if (!seat.IsReserved)
