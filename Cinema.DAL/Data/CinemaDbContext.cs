@@ -26,11 +26,6 @@ namespace Cinema.Dal.Data
             _connectionString = connectionString;
         }
 
-        public CinemaDbContext()
-        {
-            _connectionString = "Server=(localdb)\\mssqllocaldb;Database=Cinema;Trusted_Connection=True;MultipleActiveResultSets=true";
-        }
-
         public DbSet<Event> Events { get; set; }
         public DbSet<EventType> EventTypes { get; set; }
         public DbSet<Genre> Genres { get; set; }
