@@ -15,5 +15,11 @@ namespace Cinema.Mobile.Services
             decimal vatAmount = CalculateVatAmount(amountWithoutVat);
             return amountWithoutVat + vatAmount;
         }
+
+        public string GetTotalWithVatAmount(decimal amountWithoutVat)
+        {
+            decimal total = CalculateTotalWithVatAmount(amountWithoutVat);
+            return total.ToString("F2");
+        }
     }
 }

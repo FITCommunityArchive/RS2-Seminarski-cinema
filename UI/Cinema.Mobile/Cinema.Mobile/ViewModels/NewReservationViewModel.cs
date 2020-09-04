@@ -37,7 +37,20 @@ namespace Cinema.Mobile.ViewModels
             }
         }
 
-        public string Currency { get; set; }
+        private string _currency;
+        public string Currency
+        {
+            get { return _currency; }
+            set
+            {
+                if (_currency != value)
+                {
+                    _currency = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
         public ScreeningDto Screening { get; set; }
         public List<SeatingModel> Seats { get; set; } = new List<SeatingModel>();
         public ObservableCollection<SelectedSeatViewModel> SelectedSeats { get; private set; } = new ObservableCollection<SelectedSeatViewModel>();
@@ -64,7 +77,7 @@ namespace Cinema.Mobile.ViewModels
 
             IEnumerable<SeatingModel> selectedSeats = Seats.Where(x => x.IsSelected);
 
-            decimal seatPriceWithVat = _pricingService.CalculateTotalWithVatAmount(Screening.Pricing.Price);
+            string seatPriceWithVat = _pricingService.GetTotalWithVatAmount(Screening.Pricing.Price);
 
             foreach (var seat in selectedSeats)
             {
@@ -92,7 +105,8 @@ namespace Cinema.Mobile.ViewModels
 
         private void CalculateTotal()
         {
-            Total = SelectedSeats.Count * Screening.Pricing.Price;
+            decimal totalWithVat = _pricingService.CalculateTotalWithVatAmount(Screening.Pricing.Price);
+            Total = SelectedSeats.Count * totalWithVat;
         }
 
         public bool GetSeatStatus(int selectedSeatId)

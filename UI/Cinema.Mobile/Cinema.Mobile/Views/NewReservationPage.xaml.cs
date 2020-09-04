@@ -117,7 +117,7 @@ namespace Cinema.Mobile.Views
         {
             if (seatStatus)
             {
-                return Color.Green;
+                return Color.FromRgb(125, 180, 113);
             }
             else
             {
