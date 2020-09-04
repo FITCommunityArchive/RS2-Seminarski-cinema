@@ -115,12 +115,15 @@ namespace Cinema.Services
             await _reservationRepo.InsertAsync(reservation);
             await _unit.SaveAsync();
 
-            ReservationDto reservationDto = _mapper.Map<ReservationDto>(reservation);            
+            ReservationDto reservationDto = _mapper.Map<ReservationDto>(reservation);
+            reservationDto.User = null;
+            reservationDto.Invoice = null;
+            reservationDto.Screening = null;
 
-/*            var imageUri = _qRCodeService.GenerateCode(reservation.ReservationCode);
-            var imageUrl = String.Format("data:image/png;base64,{0}", imageUri);
+            /*            var imageUri = _qRCodeService.GenerateCode(reservation.ReservationCode);
+                        var imageUrl = String.Format("data:image/png;base64,{0}", imageUri);
 
-            var attachment = new FormFileCollection();*/
+                        var attachment = new FormFileCollection();*/
             var messageContent = "";
             messageContent += "<h3>Your reservation code: " + reservation.ReservationCode + "</h3>";
             messageContent += "<p>You can pick up your movie tickets with your booking number directly from the box office during business hours.</p>";
@@ -143,7 +146,7 @@ namespace Cinema.Services
                 await _emailSender.SendEmailAsync(new string[] { reservation.User.Email }, "Your Ticket for the movie " + screening.Movie.Title, messageContent, attachment);
             }*/
 
-            await _emailSender.SendEmailAsync(new string[] { currentUser.Email }, "Your Ticket for the movie " + screening.Movie.Title, messageContent);
+            //await _emailSender.SendEmailAsync(new string[] { currentUser.Email }, "Your Ticket for the movie " + screening.Movie.Title, messageContent);
 
             // when we go live we can just use the path of the image and add it to the image tag and link it directly. That way we don't have to create FormFile and then send the message.
 

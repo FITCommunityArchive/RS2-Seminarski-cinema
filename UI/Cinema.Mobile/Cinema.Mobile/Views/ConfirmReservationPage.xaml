@@ -9,37 +9,95 @@
         <vm:ConfirmReservationViewModel></vm:ConfirmReservationViewModel>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <ScrollView x:Name="ConfirmReservationScrollView">
-            
-            <StackLayout x:Name="ConfirmReservationStackLayout">
-                <Label x:Name="LabelConfirmationText" Text="Please confirm your reservation:"/>
-                <Label Text="Your details:"/>
-                <Label Text="{Binding NewReservation.Screening.Movie.Title, StringFormat='Movie: {0}'}"/>
-                <Label Text="Hall: "/>
-                <Label Text="Date: "/>
-                <Label Text="Time: "/>
-                <Label Text="Reservation code: "/>
+        <ScrollView x:Name="ConfirmReservationScrollView" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Orientation="Vertical">
 
-                <ListView ItemsSource="{Binding NewReservation.SelectedSeats}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                                    <StackLayout Orientation="Horizontal">
-                                        <Label Text="Seat "/>
-                                        <Label Text="{Binding Seat.Label}"/>
+            <StackLayout x:Name="ConfirmReservationStackLayout" Padding="25" VerticalOptions="Start">
+                <Label x:Name="LabelConfirmationText" Margin="0, 0, 0, 30" Text="Please confirm your reservation:" FontSize="Title" FontAttributes="Bold" TextColor="Black" />
+                <Label Text="Your details:" FontSize="Subtitle" FontAttributes="Bold" TextColor="Black"/>
+                
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Movie: " TextColor="Gray" FontSize="Subtitle"/>
+                    <Label Text="{Binding NewReservation.Screening.Movie.Title}" TextColor="Gray" FontSize="Subtitle" FontAttributes="Bold"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Hall: " TextColor="Gray" FontSize="Subtitle"/>
+                    <Label Text="{Binding NewReservation.Screening.Hall.Name}" TextColor="Gray" FontSize="Subtitle" FontAttributes="Bold"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Date: " TextColor="Gray" FontSize="Subtitle"/>
+                    <Label Text="{Binding NewReservation.Screening.DateAndTime, StringFormat='{0:dd.MM.yyyy}'}" TextColor="Gray" FontSize="Subtitle" FontAttributes="Bold"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Time: " TextColor="Gray" FontSize="Subtitle"/>
+                    <Label Text="{Binding NewReservation.Screening.DateAndTime, StringFormat='Time: {0:HH:mm}'}" TextColor="Gray" FontSize="Subtitle" FontAttributes="Bold"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Number of seats: " TextColor="Gray" FontSize="Subtitle"/>
+                    <Label Text="{Binding NewReservation.SelectedSeats.Count}" TextColor="Gray" FontSize="Subtitle" FontAttributes="Bold"/>
+                </StackLayout>
+
+                <StackLayout Margin="0, 20, 0, 20" Orientation="Vertical">
+                    
+                    <StackLayout Margin="0, 10, 0, 10" BackgroundColor="LightGray" HeightRequest="1" />
+
+                    <ListView x:Name="ConfirmReservationListView" SelectionMode="None" ItemsSource="{Binding NewReservation.SelectedSeats}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Margin="0, 20, 0, 0" HeightRequest="10">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#f3f3f5" Padding="10">
+                                            <Label Text="{Binding Description}" TextColor="Gray" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
+                                        </StackLayout>
+                                        <StackLayout BackgroundColor="White" HeightRequest="10"/>
                                     </StackLayout>
-                                </StackLayout>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
 
-                <Label Text="Price: "/>
-                <Label Text="+ VAT: "/>
-                <Label Text="Price with VAT: "/>
+                </StackLayout>
 
-                <Button Clicked="OnButtonClicked" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Text="Confirm" BackgroundColor="Red" TextColor="White">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" ColumnSpacing="20" Margin="0, 0, 0, 20">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label HorizontalOptions="Start" Grid.Row="0" Grid.Column="0" Text="Total without VAT: " TextColor="DarkSlateBlue" FontSize="Medium" FontAttributes="Bold"/>
+
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="End" Grid.Row="0" Grid.Column="1">
+                        <Label Text="{Binding NewReservation.Total, StringFormat='{0:0.00 }'}" TextColor="DarkSlateBlue" FontSize="Medium"/>
+                        <Label Text="{Binding NewReservation.Currency}" TextColor="DarkSlateBlue" FontSize="Medium"/>
+                    </StackLayout>
+
+                    <Label HorizontalOptions="Start" Grid.Row="1" Grid.Column="0" Text="+ VAT: " TextColor="DarkSlateBlue" FontSize="Medium" FontAttributes="Bold"/>
+
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="End" Grid.Row="1" Grid.Column="1">
+                        <Label Text="{Binding NewReservation.Vat, StringFormat='{0:0.00 }'}" TextColor="DarkSlateBlue" FontSize="Medium"/>
+                        <Label Text="{Binding NewReservation.Currency}" TextColor="DarkSlateBlue" FontSize="Medium" />
+                    </StackLayout>
+
+                    <Label HorizontalOptions="Start" Grid.Row="2" Grid.Column="0" Text="Total: " TextColor="DarkSlateBlue" FontSize="Medium" FontAttributes="Bold"/>
+
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="End" Grid.Row="2" Grid.Column="1">
+                        <Label Text="{Binding NewReservation.TotalWithVat, StringFormat='{0:0.00 }'}" TextColor="DarkSlateBlue" FontSize="Medium"/>
+                        <Label Text="{Binding NewReservation.Currency}" TextColor="DarkSlateBlue" FontSize="Medium"/>
+                    </StackLayout>
+                    
+                </Grid>
+
+                <Button Clicked="OnButtonClicked" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Text="Confirm" FontSize="Medium" FontAttributes="Bold" BackgroundColor="#7db471" TextColor="White" Padding="10">
                     <Button.GestureRecognizers>
                         <TapGestureRecognizer NumberOfTapsRequired="1"></TapGestureRecognizer>
                     </Button.GestureRecognizers>
