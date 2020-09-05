@@ -10,7 +10,7 @@ namespace Cinema.Models.Dtos
         public int TicketQuantity { get; set; }
         public DateTime CreatedAt { get; set; }
 
-        public string UserId { get; set; }
+        public int UserId { get; set; }
         public ApplicationUserDto User { get; set; }
 
         public int ScreeningId { get; set; }
@@ -19,6 +19,6 @@ namespace Cinema.Models.Dtos
         public int? InvoiceId { get; set; }
         public InvoiceDto Invoice { get; set; }
 
-        public ReservationStatus Status { get; set; }
+        public ReservationStatus? Status { get; set; }
     }
 }

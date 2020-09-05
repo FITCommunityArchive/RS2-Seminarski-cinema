@@ -752,7 +752,7 @@ namespace Cinema.Dal.Data
             ApplicationUser appUser = new ApplicationUser
             {
                 Id = adminId,
-                UserName = "admin",
+                UserName = "sa",
                 Email = "admin@admin.com",
                 NormalizedEmail = "admin@admin.com".ToUpper(),
                 NormalizedUserName = "admin".ToUpper(),
@@ -765,7 +765,7 @@ namespace Cinema.Dal.Data
             };
 
             PasswordHasher<ApplicationUser> ph = new PasswordHasher<ApplicationUser>();
-            appUser.PasswordHash = ph.HashPassword(appUser, "test1234");
+            appUser.PasswordHash = ph.HashPassword(appUser, "t");
 
             modelBuilder.Entity<ApplicationUser>().HasData(
                 appUser
