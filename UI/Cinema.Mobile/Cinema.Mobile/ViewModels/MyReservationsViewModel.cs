@@ -12,7 +12,7 @@ namespace Cinema.Mobile.ViewModels
 {
     public class MyReservationsViewModel : BaseViewModel
     {
-        private readonly ApiService _reservationsApi = new ApiService("Reservations");
+        private readonly ApiService _usersApi = new ApiService("Users");
 
         public MyReservationsViewModel()
         {
@@ -31,8 +31,8 @@ namespace Cinema.Mobile.ViewModels
 
         public async Task Init()
         {
-            var userId = await _reservationsApi.GetCurrentUserId();
-            var reservations = await _reservationsApi.GetReservationsByUserId(userId);
+            var userId = await _usersApi.GetCurrentUserId();
+            var reservations = await _usersApi.GetById<List<ReservationDto>>(userId, "reservations");
             foreach(ReservationDto r in reservations)
             {
                 UserReservations.Add(r);

@@ -78,11 +78,6 @@ namespace Cinema.Mobile.Services
                 movieid = movieId
             }).GetJsonAsync<bool>();
         }
-        public async Task<List<ReservationDto>> GetReservationsByUserId(int id)
-        {
-            var url = $"{_apiUrl}/Reservations/user/{id}";
-            return await url.WithOAuthBearerToken(Token).GetJsonAsync<List<ReservationDto>>();
-        }
 
         public async Task<T> Get<T>(object search, string route = null)
         {

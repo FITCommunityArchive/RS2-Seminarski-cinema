@@ -207,5 +207,12 @@ namespace Cinema.Services
 
             return true;
         }
+
+        public async Task<List<ReservationDto>> GetUserReservations(int id)
+        {
+            var reservations = await _reservationRepo.GetReservationsByUserId(id);
+
+            return _mapper.Map<List<ReservationDto>>(reservations);
+        }
     }
 }

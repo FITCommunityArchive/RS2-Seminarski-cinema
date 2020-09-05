@@ -4,6 +4,7 @@ using Cinema.Utilities.Interfaces;
 using Cinema.Utilities.Interfaces.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Cinema.Web.Api.Controllers
@@ -52,6 +53,12 @@ namespace Cinema.Web.Api.Controllers
         public async Task<int> GetCUrrentUserIdAsync()
         {
             return await _authService.GetCurrentUserIdAsync();
+        }
+
+        [HttpGet("{id}/reservations")]
+        public async Task<ActionResult<List<ReservationDto>>> GetReservationsById(int id)
+        {
+            return await _userService.GetUserReservations(id);
         }
     }
 }
