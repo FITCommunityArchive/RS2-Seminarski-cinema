@@ -21,5 +21,17 @@ namespace Cinema.Mobile.Views
             InitializeComponent();
             BindingContext = model = new MyReservationsDetailsViewModel { Reservation = reservation };
         }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            await model.Init();
+
+        }
+
+        protected async override void OnDisappearing()
+        {
+            MessagingCenter.Send(this, "refresh");
+        }
     }
 }

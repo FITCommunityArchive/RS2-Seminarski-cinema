@@ -202,5 +202,30 @@ namespace Cinema.Mobile.Services
             }
 
         }
+
+        public async Task<T> UpdateWithRoute<T>(object id, object request, string route)
+        {
+            try
+            {
+                var url = $"{_apiUrl}/{_route}/{id}/{route}";
+                return await url.WithOAuthBearerToken(Token).PutJsonAsync(request).ReceiveJson<T>();
+            }
+            catch (FlurlHttpException ex)
+            {
+                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
+
+                var stringBuilder = new StringBuilder();
+
+                foreach (var error in errors)
+                {
+                    stringBuilder.AppendLine($"{error.Key}, {string.Join(",", error.Value)}");
+                }
+
+                await Application.Current.MainPage.DisplayAlert("Error", stringBuilder.ToString(), "OK");
+
+                return default(T);
+            }
+
+        }
     }
 }

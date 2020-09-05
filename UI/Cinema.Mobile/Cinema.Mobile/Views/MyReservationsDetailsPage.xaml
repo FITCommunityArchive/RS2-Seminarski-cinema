@@ -36,7 +36,7 @@
 
                 <Label Grid.Row="4" Text="Hall"></Label>
                 <Label Grid.Row="4" Grid.Column="1" Text="{Binding Reservation.Screening.Hall.Name}"></Label>
-                <Button Grid.Row="5" Grid.ColumnSpan="2" Text="Cancel reservation" FontSize="21" BackgroundColor="Red" TextColor="White"></Button>
+                <Button Grid.Row="5" Grid.ColumnSpan="2" Text="Cancel reservation" FontSize="21" BackgroundColor="Red" Command="{Binding CancelCommand}" IsEnabled="{Binding BtnIsEnabled}" TextColor="White"></Button>
             </Grid>
         </StackLayout>
     </ContentPage.Content>

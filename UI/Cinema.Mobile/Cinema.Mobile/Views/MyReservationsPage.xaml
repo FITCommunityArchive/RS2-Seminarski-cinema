@@ -12,7 +12,7 @@
         <StackLayout>
             <ListView x:Name="Reservations" 
                       ItemsSource="{Binding UserReservations}"
-                      ItemSelected="OnListViewItemSelected">
+                      ItemTapped="OnListViewItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

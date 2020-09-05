@@ -17,6 +17,11 @@ namespace Cinema.Mobile.ViewModels
         public MyReservationsViewModel()
         {
             InitCommand = new Command(async() => await Init());
+
+            MessagingCenter.Subscribe<MyReservationsDetailsViewModel>(this, "refresh", (sender) =>
+             {
+                 App.Current.MainPage.DisplayAlert("Titl", "Opala", "Ok");
+             });
         }
 
         public ICommand InitCommand { get; set; }
