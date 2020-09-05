@@ -17,7 +17,8 @@ namespace Cinema.WinUI.Users
         private readonly ApiService _usersApi = new ApiService("Users");
         private readonly ApiService _rolesApi = new ApiService("Roles");
         private readonly int? _id = null;
-        private UserUpsertRequest _request = new UserUpsertRequest();
+        private UserInsertRequest _request = new UserInsertRequest();
+        private UserUpdateRequest _update = new UserUpdateRequest();
         private IPagedList<ApplicationRoleDto> _roles = null;
 
         public event EventHandler ItemDeleted;
@@ -133,18 +134,19 @@ namespace Cinema.WinUI.Users
 
             try
             {
-                _request.UserName = txtUsername.Text;
-                _request.Email = txtEmail.Text;
-                _request.FirstName = txtFirstName.Text;
-                _request.LastName = txtLastName.Text;
-                _request.PhoneNumber = txtPhone.Text;
-                _request.RoleId = roleId;
-
+                
                 ApplicationUserDto result;
 
                 if (_id.HasValue)
                 {
-                    result = await _usersApi.Update<ApplicationUserDto>(_id, _request);
+                    _update.UserName = txtUsername.Text;
+                    _update.Email = txtEmail.Text;
+                    _update.FirstName = txtFirstName.Text;
+                    _update.LastName = txtLastName.Text;
+                    _update.PhoneNumber = txtPhone.Text;
+                    _update.RoleId = roleId;
+
+                    result = await _usersApi.Update<ApplicationUserDto>(_id, _update);
                     message = "Changes saved.";
                 }
                 else
@@ -155,6 +157,12 @@ namespace Cinema.WinUI.Users
                         return;
                     }
 
+                    _request.UserName = txtUsername.Text;
+                    _request.Email = txtEmail.Text;
+                    _request.FirstName = txtFirstName.Text;
+                    _request.LastName = txtLastName.Text;
+                    _request.PhoneNumber = txtPhone.Text;
+                    _request.RoleId = roleId;
                     _request.Password = txtPassword.Text;
                     result = await _usersApi.Insert<ApplicationUserDto>(_request);
                     message = "New user has been added.";

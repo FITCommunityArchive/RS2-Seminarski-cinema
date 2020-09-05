@@ -51,7 +51,7 @@ namespace Cinema.Services
 
 
         [HttpPost]
-        public async Task<ApplicationUserDto> InsertAsync(UserUpsertRequest model)
+        public async Task<ApplicationUserDto> InsertAsync(UserInsertRequest model)
         {
             var userIdentity = _mapper.Map<ApplicationUser>(model);
 
@@ -82,14 +82,12 @@ namespace Cinema.Services
             return _mapper.Map<ApplicationUserDto>(userIdentity);
         }
 
-        public async Task<ApplicationUserDto> UpdateAsync(int id, UserUpsertRequest req)
+        public async Task<ApplicationUserDto> UpdateAsync(int id, UserUpdateRequest req)
         {
             var user = await _userRepo.GetByIdWithRolesAsync(id);
+            user = _mapper.Map(req, user);
 
-            user.UserName = req.UserName;
-            user.FirstName = req.FirstName;
-            user.LastName = req.LastName;
-            user.PhoneNumber = req.PhoneNumber;
+            await _userRepo.UpdateAsync(user, id);
 
             if (user.UserRoles[0].RoleId != req.RoleId)
             {

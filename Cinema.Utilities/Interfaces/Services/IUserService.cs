@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Cinema.Utilities.Interfaces
 {
-    public interface IUserService : ICRUDService<ApplicationUserDto, UserSearchRequest, UserUpsertRequest, UserUpsertRequest>
+    public interface IUserService : ICRUDService<ApplicationUserDto, UserSearchRequest, UserInsertRequest, UserUpdateRequest>
     {
         Task<ApplicationUserDto> Authenticate(string userName, string password);
 

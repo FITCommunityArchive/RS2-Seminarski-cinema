@@ -25,7 +25,7 @@ namespace Cinema.Mobile.ViewModels
         }
 
         public ICommand InitCommand { get; set; }
-        public bool AnyItems { get; set; } = true;
+        public bool NoItems { get; set; } = false;
 
         public ObservableCollection<ReservationDto> _userReservations = new ObservableCollection<ReservationDto>();
         public ObservableCollection<ReservationDto> UserReservations { get { return _userReservations; } }
@@ -36,7 +36,7 @@ namespace Cinema.Mobile.ViewModels
             var reservations = await _usersApi.GetById<List<ReservationDto>>(userId, "reservations");
             if(reservations.Count == 0)
             {
-                AnyItems = false;
+                NoItems = true;
             } else { 
                 //after each navigateBack button from the Reservations Details we need to clear the observableCollection since it will contain the existing data and populate it with the new (same) one again.
                 UserReservations.Clear();

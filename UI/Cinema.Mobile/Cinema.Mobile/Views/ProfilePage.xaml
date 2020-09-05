@@ -4,7 +4,11 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="Cinema.Mobile.Views.ProfilePage">
+             x:Class="Cinema.Mobile.Views.ProfilePage"
+             xmlns:viewModels="clr-namespace:Cinema.Mobile.ViewModels">
+    <ContentPage.BindingContext>
+        <viewModels:ProfileViewModel></viewModels:ProfileViewModel>
+    </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout VerticalOptions="FillAndExpand">
             <Label Text="Profile" VerticalOptions="Start" BackgroundColor="White" FontSize="Title" TextColor="DimGray" FontAttributes="Bold" Padding="15"/>
@@ -26,7 +30,14 @@
 
                 <Label Text="Last name" VerticalTextAlignment="Center" Grid.Row="2"></Label>
                 <Entry Text="{Binding CurrentUser.LastName}" Grid.Row="2" Grid.Column="1"></Entry>
-                <Button Text="Save changes" Grid.Row="3" Grid.Column="1" ></Button>
+
+                <Label Text="Phone number" VerticalTextAlignment="Center" Grid.Row="3"></Label>
+                <Entry Text="{Binding CurrentUser.PhoneNumber}" Grid.Row="3" Grid.Column="1"></Entry>
+
+                <Button Text="Save changes" Grid.Row="4" Grid.Column="1" Command="{Binding SaveCommand}" IsEnabled="{Binding !IsBusy}" ></Button>
+                <AbsoluteLayout>
+                    <ActivityIndicator Color="Orange" IsRunning="{Binding !IsBusy}" />
+                </AbsoluteLayout>
             </Grid>
         </StackLayout>
     </ContentPage.Content>

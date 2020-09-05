@@ -29,7 +29,7 @@ namespace Cinema.Dal.Repository
                 }
 
                 // Update operations should be handled outside of repositories (in services)
-                //_context.Entry(oldEnt).CurrentValues.SetValues(newEnt);
+                _context.Entry(oldEnt).CurrentValues.SetValues(newEnt);
                 oldEnt.Update(newEnt);
             }
         }

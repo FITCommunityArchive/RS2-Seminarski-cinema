@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Cinema.Web.Api.Controllers
 {
-    public class UsersController : BaseCRUDController<ApplicationUserDto, UserSearchRequest, UserUpsertRequest, UserUpsertRequest>
+    public class UsersController : BaseCRUDController<ApplicationUserDto, UserSearchRequest, UserInsertRequest, UserUpdateRequest>
     {
         private readonly IUserService _userService;
         private readonly IAuthService _authService;
-        public UsersController(ICRUDService<ApplicationUserDto, UserSearchRequest, UserUpsertRequest, UserUpsertRequest> service, IUserService userService, IAuthService authService) : base(service)
+        public UsersController(ICRUDService<ApplicationUserDto, UserSearchRequest, UserInsertRequest, UserUpdateRequest> service, IUserService userService, IAuthService authService) : base(service)
         {
             _userService = userService;
             _authService = authService;
