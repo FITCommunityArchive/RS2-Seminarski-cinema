@@ -29,9 +29,9 @@ namespace Cinema.Mobile.Views
 
         }
 
-        protected async override void OnDisappearing()
-        {
-            MessagingCenter.Send(this, "refresh");
-        }
+        //protected async override void OnDisappearing()
+        //{
+        //    MessagingCenter.Send(this, "refresh");
+        //}
     }
 }

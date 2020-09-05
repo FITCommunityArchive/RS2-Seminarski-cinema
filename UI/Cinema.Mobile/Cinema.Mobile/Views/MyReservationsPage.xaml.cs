@@ -25,12 +25,11 @@ namespace Cinema.Mobile.Views
         {
             base.OnAppearing();
             await model.Init();
-
         }
 
-        public async void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
+        public async void OnListViewItemSelected(object sender, ItemTappedEventArgs e)
         {
-            ReservationDto reservation = e.SelectedItem as ReservationDto;
+            ReservationDto reservation = e.Item as ReservationDto;
             await Navigation.PushAsync(new MyReservationsDetailsPage(reservation));
         }
     }

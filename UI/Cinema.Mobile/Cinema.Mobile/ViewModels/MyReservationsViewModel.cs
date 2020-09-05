@@ -1,4 +1,5 @@
 ﻿using Cinema.Mobile.Services;
+using Cinema.Mobile.Views;
 using Cinema.Models.Dtos;
 using System;
 using System.Collections.Generic;
@@ -16,12 +17,11 @@ namespace Cinema.Mobile.ViewModels
 
         public MyReservationsViewModel()
         {
+            //MessagingCenter.Subscribe<MyReservationsDetailsPage>(this, "refresh", (sender) =>
+            //{
+            //    App.Current.MainPage.DisplayAlert("Titl", "Posla brat ipak.", "Ok");
+            //});
             InitCommand = new Command(async() => await Init());
-
-            MessagingCenter.Subscribe<MyReservationsDetailsViewModel>(this, "refresh", (sender) =>
-             {
-                 App.Current.MainPage.DisplayAlert("Titl", "Opala", "Ok");
-             });
         }
 
         public ICommand InitCommand { get; set; }
@@ -33,6 +33,8 @@ namespace Cinema.Mobile.ViewModels
         {
             var userId = await _usersApi.GetCurrentUserId();
             var reservations = await _usersApi.GetById<List<ReservationDto>>(userId, "reservations");
+            //after each navigateBack button from the Reservations Details we need to clear the observableCollection since it will contain the existing data and populate it with the new (same) one again.
+            UserReservations.Clear();
             foreach(ReservationDto r in reservations)
             {
                 UserReservations.Add(r);
