@@ -4,6 +4,7 @@
     {
         NowShowing,
         MyReservations,
+        Profile,
         LogOut
     }
     public class HomeMenuItem

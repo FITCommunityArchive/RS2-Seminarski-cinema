@@ -10,6 +10,8 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
+            <Label Text="My Reservations" VerticalOptions="Start" BackgroundColor="White" FontSize="Title" TextColor="DimGray" FontAttributes="Bold" Padding="15"/>
+            <Label Text="You don't have any reservations currently." IsVisible="{Binding !AnyItems}" Padding="30"></Label>
             <ListView x:Name="Reservations" 
                       ItemsSource="{Binding UserReservations}"
                       ItemTapped="OnListViewItemSelected"
