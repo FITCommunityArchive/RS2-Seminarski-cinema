@@ -829,7 +829,46 @@ namespace Cinema.Dal.Data
                     RoleId = -3
                 }
             );
+
+            
+
+            for (int i =0; i < 600;i++)
+            {
+                ApplicationUser customer = new ApplicationUser
+                {
+                    Id = -650 + i,
+                    UserName = "customer" + i + "t",
+                    Email = "customer" + i + "@test-customer" + i + ".com",
+                    NormalizedEmail = "CUSTOMER" + i + "@TEST-CUSTOMER" + i + ".COM",
+                    NormalizedUserName = "CUSTOMER" + i + "T",
+                    FirstName = "Decko" + i,
+                    LastName = "Deckic" + i,
+                    TwoFactorEnabled = false,
+                    EmailConfirmed = true,
+                    PhoneNumber = RandomDigits(10),
+                    PhoneNumberConfirmed = false
+                };
+
+                ApplicationUserRole customerRole = new ApplicationUserRole
+                {
+                    UserId = customer.Id,
+                    RoleId = -3
+                };
+
+                customer.PasswordHash = ph.HashPassword(customer, "test");
+
+                modelBuilder.Entity<ApplicationUser>().HasData(customer);
+                modelBuilder.Entity<ApplicationUserRole>().HasData(customerRole);
+            }
         }
 
+        public static string RandomDigits(int length)
+        {
+            var random = new Random();
+            string s = string.Empty;
+            for (int i = 0; i < length; i++)
+                s = String.Concat(s, random.Next(9).ToString());
+            return s;
+        }
     }
 }
