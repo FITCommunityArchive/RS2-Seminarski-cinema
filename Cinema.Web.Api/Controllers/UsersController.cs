@@ -4,15 +4,16 @@ using Cinema.Utilities.Interfaces;
 using Cinema.Utilities.Interfaces.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Cinema.Web.Api.Controllers
 {
-    public class UsersController : BaseCRUDController<ApplicationUserDto, UserSearchRequest, UserUpsertRequest, UserUpsertRequest>
+    public class UsersController : BaseCRUDController<ApplicationUserDto, UserSearchRequest, UserInsertRequest, UserUpdateRequest>
     {
         private readonly IUserService _userService;
         private readonly IAuthService _authService;
-        public UsersController(ICRUDService<ApplicationUserDto, UserSearchRequest, UserUpsertRequest, UserUpsertRequest> service, IUserService userService, IAuthService authService) : base(service)
+        public UsersController(ICRUDService<ApplicationUserDto, UserSearchRequest, UserInsertRequest, UserUpdateRequest> service, IUserService userService, IAuthService authService) : base(service)
         {
             _userService = userService;
             _authService = authService;
@@ -52,6 +53,12 @@ namespace Cinema.Web.Api.Controllers
         public async Task<int> GetCUrrentUserIdAsync()
         {
             return await _authService.GetCurrentUserIdAsync();
+        }
+
+        [HttpGet("{id}/reservations")]
+        public async Task<ActionResult<List<ReservationDto>>> GetReservationsById(int id)
+        {
+            return await _userService.GetUserReservations(id);
         }
     }
 }

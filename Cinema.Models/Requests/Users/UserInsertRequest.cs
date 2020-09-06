@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Cinema.Models.Requests.Users
 {
-    public class UserUpsertRequest
+    public class UserInsertRequest
     {
         [Required(AllowEmptyStrings = false), MinLength(3)]
         public string UserName { get; set; }

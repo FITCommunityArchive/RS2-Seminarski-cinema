@@ -1,4 +1,5 @@
-﻿using Cinema.Shared.Constants;
+﻿using Cinema.Models.Dtos;
+using Cinema.Shared.Constants;
 using Cinema.Shared.Helpers;
 using Flurl.Http;
 using Newtonsoft.Json;
@@ -59,13 +60,13 @@ namespace Cinema.Mobile.Services
         public async Task<double> GetMovieReviewScore(int id)
         {
             var url = $"{_apiUrl}/Movies/{id}/review-score";
-            return await url.WithOAuthBearerToken(Token).GetJsonAsync<double>(); ;
+            return await url.WithOAuthBearerToken(Token).GetJsonAsync<double>(); 
         }
 
         public async Task<int> GetCurrentUserId()
         {
             var url = $"{_apiUrl}/Users/getCurrent";
-            return await url.WithOAuthBearerToken(Token).GetJsonAsync<int>(); ;
+            return await url.WithOAuthBearerToken(Token).GetJsonAsync<int>();
         }
 
         public async Task<bool> UserCanVote(int userId,int movieId)
@@ -177,6 +178,31 @@ namespace Cinema.Mobile.Services
             try
             {
                 var url = $"{_apiUrl}/{_route}/{id}";
+                return await url.WithOAuthBearerToken(Token).PutJsonAsync(request).ReceiveJson<T>();
+            }
+            catch (FlurlHttpException ex)
+            {
+                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
+
+                var stringBuilder = new StringBuilder();
+
+                foreach (var error in errors)
+                {
+                    stringBuilder.AppendLine($"{error.Key}, {string.Join(",", error.Value)}");
+                }
+
+                await Application.Current.MainPage.DisplayAlert("Error", stringBuilder.ToString(), "OK");
+
+                return default(T);
+            }
+
+        }
+
+        public async Task<T> UpdateWithRoute<T>(object id, object request, string route)
+        {
+            try
+            {
+                var url = $"{_apiUrl}/{_route}/{id}/{route}";
                 return await url.WithOAuthBearerToken(Token).PutJsonAsync(request).ReceiveJson<T>();
             }
             catch (FlurlHttpException ex)

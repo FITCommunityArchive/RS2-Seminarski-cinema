@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:viewModels="clr-namespace:Cinema.Mobile.ViewModels"
+             x:Class="Cinema.Mobile.Views.MyReservationsDetailsPage">
+    <ContentPage.BindingContext>
+        <viewModels:MyReservationsDetailsViewModel></viewModels:MyReservationsDetailsViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid Padding="30">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="150"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Image Grid.ColumnSpan="2" Source="movieposterplaceholder.png"
+                       WidthRequest="100"
+                       HeightRequest="100"
+                       Aspect="AspectFill"></Image>
+                <Label Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding Reservation.Screening.Movie.Title}" HorizontalTextAlignment="Center" FontSize="30"></Label>
+                <Label Grid.Row="2" Grid.ColumnSpan="2" Text="{Binding Reservation.Screening.DateAndTime}" HorizontalTextAlignment="Center" FontAttributes="Bold"></Label>
+
+                <Label Grid.Row="3" Text="Code"></Label>
+                <Label Grid.Row="3" Grid.Column="1" Text="{Binding Reservation.ReservationCode}"></Label>
+
+                <Label Grid.Row="4" Text="Hall"></Label>
+                <Label Grid.Row="4" Grid.Column="1" Text="{Binding Reservation.Screening.Hall.Name}"></Label>
+                <Button Grid.Row="5" Grid.ColumnSpan="2" Text="Cancel reservation" FontSize="21" BackgroundColor="Red" Command="{Binding CancelCommand}" IsEnabled="{Binding BtnIsEnabled}" TextColor="White"></Button>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
