@@ -30,6 +30,14 @@ namespace Cinema.Mobile.Views
                     case (int)MenuItemType.NowShowing:
                         MenuPages.Add(id, new NavigationPage(new NowShowingMoviesPage()));
                         break;
+
+                    case (int)MenuItemType.MyReservations:
+                        MenuPages.Add(id, new NavigationPage(new MyReservationsPage()));
+                        break;
+
+                    case (int)MenuItemType.Profile:
+                        MenuPages.Add(id, new NavigationPage(new ProfilePage()));
+                        break;
                 }
             }
 

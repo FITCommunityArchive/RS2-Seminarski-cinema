@@ -20,6 +20,8 @@ namespace Cinema.Mobile.Views
             menuItems = new List<HomeMenuItem>
             {
                 new HomeMenuItem {Id = MenuItemType.NowShowing, Title="Now Showing" },
+                new HomeMenuItem {Id = MenuItemType.MyReservations, Title="My Reservations" },
+                new HomeMenuItem {Id = MenuItemType.Profile, Title="Profile" },
                 new HomeMenuItem {Id = MenuItemType.LogOut, Title="Log out" }
             };
 

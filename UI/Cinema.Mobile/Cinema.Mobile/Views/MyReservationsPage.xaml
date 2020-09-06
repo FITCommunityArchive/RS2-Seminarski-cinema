@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:viewModels="clr-namespace:Cinema.Mobile.ViewModels"
+             mc:Ignorable="d"
+             x:Class="Cinema.Mobile.Views.MyReservationsPage">
+    <ContentPage.BindingContext>
+        <viewModels:MyReservationsViewModel></viewModels:MyReservationsViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="My Reservations" VerticalOptions="Start" BackgroundColor="White" FontSize="Title" TextColor="DimGray" FontAttributes="Bold" Padding="15"/>
+            <Label Text="You don't have any reservations currently." IsVisible="{Binding NoItems}" Padding="30"></Label>
+            <ListView x:Name="Reservations" 
+                      ItemsSource="{Binding UserReservations}"
+                      ItemTapped="OnListViewItemSelected"
+                      SelectionMode="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="10" RowSpacing="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.RowSpan="2"
+                                       Source="movieposterplaceholder.png"
+                                       WidthRequest="60"
+                                       HeightRequest="60"
+                                       Aspect="AspectFill"></Image>
+                                <Label Grid.Column="1" Text="{Binding Screening.Movie.Title}" FontAttributes="Bold"></Label>
+                                <Label Grid.Column="1" Grid.Row="1" Text="{Binding Screening.DateAndTime}" VerticalOptions="End"></Label>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

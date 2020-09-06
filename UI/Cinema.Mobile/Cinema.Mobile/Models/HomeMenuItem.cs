@@ -3,6 +3,8 @@
     public enum MenuItemType
     {
         NowShowing,
+        MyReservations,
+        Profile,
         LogOut
     }
     public class HomeMenuItem
