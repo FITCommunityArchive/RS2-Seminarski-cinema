@@ -23,6 +23,14 @@ namespace Cinema.Web.Api.Controllers
             return Ok(result);
         }
 
+        [HttpGet("{userId}/recommended")]
+        public async Task<ActionResult<List<MovieDto>>> GetRecommended(int userId)
+        {
+            var result = await _movieService.GetRecommendedAsync(userId);
+
+            return Ok(result);
+        }
+
         [HttpGet("{id}/review-score")]
         public double GetMovieReviewScore(int id)
         {

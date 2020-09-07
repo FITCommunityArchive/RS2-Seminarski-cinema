@@ -2,6 +2,7 @@
 using Cinema.Domain.Entities;
 using Cinema.Models.Dtos;
 using Cinema.Models.Requests.Movies;
+using Cinema.MovieRecommenderService;
 using Cinema.Shared.Pagination;
 using Cinema.Utilities.Interfaces.Dal;
 using Cinema.Utilities.Interfaces.Services;
@@ -21,14 +22,16 @@ namespace Cinema.Services
         protected readonly IRepository<Review, int> _reviewsRepo;
         protected readonly IUnitOfWork _unit;
         protected readonly IMapper _mapper;
+        protected readonly IMovieRecommender _movieRecommender;
 
-        public MovieService(IUnitOfWork unit, IMapper mapper)
+        public MovieService(IUnitOfWork unit, IMapper mapper, IMovieRecommender movieRecommender)
         {
             _unit = unit;
             _mapper = mapper;
             _movieRepo = unit.Movies;
             _screeningRepo = unit.Screenings;
             _genreMovieRepo = unit.Repository<GenreMovie, int>();
+            _movieRecommender = movieRecommender;
         }
 
         public async Task<MovieDto> GetByIdAsync(int id, ICollection<string> includes = null)
@@ -53,6 +56,25 @@ namespace Cinema.Services
             List<Movie> moviesList = screenings.Select(x => x.Movie).Distinct().ToList();
 
             List<MovieDto> dtoList = _mapper.Map<List<MovieDto>>(moviesList);
+            return dtoList;
+        }
+
+        public async Task<List<MovieDto>> GetRecommendedAsync(int userId)
+        {
+            var movies = _movieRepo.Get();
+            List<Movie> moviesList = new List<Movie>();
+            foreach (var movie in movies)
+            {
+                var score = _movieRecommender.PredictScore(userId, movie.Id);
+                if(Math.Round(score,1) > 3.5)
+                {       
+                    moviesList.Add(movie);
+                }
+            }
+            //objListOrder.Sort((x, y) => x.OrderDate.CompareTo(y.OrderDate));
+            
+            List<MovieDto> dtoList = _mapper.Map<List<MovieDto>>(moviesList);
+            await Task.CompletedTask;
             return dtoList;
         }
 
