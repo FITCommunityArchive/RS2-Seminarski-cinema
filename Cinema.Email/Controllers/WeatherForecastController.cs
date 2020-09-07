@@ -29,12 +29,11 @@ namespace Cinema.Email.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        public async Task<IEnumerable<WeatherForecast>> Get()
         {
             var rng = new Random();
 
-            var message = new Message(new string[] { "boris@cloudronin.com" }, "Test email", "This is the content from our email.");
-            _emailSender.SendEmail(message);
+            await _emailSender.SendEmailAsync(new string[] { "boris@cloudronin.com" }, "Test email", "This is the content from our email.");
 
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
@@ -52,8 +51,7 @@ namespace Cinema.Email.Controllers
 
             var files = Request.Form.Files.Any() ? Request.Form.Files : new FormFileCollection();
 
-            var message = new Message(new string[] { "boris@cloudronin.com" }, "Test mail with Attachments", "This is the content from our mail with attachments.", files);
-            await _emailSender.SendEmailAsync(message);
+            await _emailSender.SendEmailAsync(new string[] { "boris@cloudronin.com" }, "Test mail with Attachments", "This is the content from our mail with attachments.", files);
 
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {

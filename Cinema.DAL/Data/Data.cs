@@ -753,8 +753,8 @@ namespace Cinema.Dal.Data
             {
                 Id = adminId,
                 UserName = "sa",
-                Email = "admin@admin.com",
-                NormalizedEmail = "admin@admin.com".ToUpper(),
+                Email = "admin@admin-test-cinema.com",
+                NormalizedEmail = "admin@admin-test-cinema.com".ToUpper(),
                 NormalizedUserName = "admin".ToUpper(),
                 FirstName = "Admin",
                 LastName = "Test",
