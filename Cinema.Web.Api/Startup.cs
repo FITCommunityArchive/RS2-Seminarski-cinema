@@ -10,12 +10,14 @@ using Cinema.Models.Requests.Pricing;
 using Cinema.Models.Requests.Reviews;
 using Cinema.Models.Requests.Screenings;
 using Cinema.Models.Requests.Users;
+using Cinema.MovieRecommenderService;
 using Cinema.Services;
 using Cinema.Shared.Constants;
 using Cinema.Utilities.Interfaces;
 using Cinema.Utilities.Interfaces.Dal;
 using Cinema.Utilities.Interfaces.Integrations;
 using Cinema.Utilities.Interfaces.Services;
+using Cinema.Web.Api.DataModels;
 using Cinema.Web.Api.Filters;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -26,6 +28,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.ML;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
@@ -132,6 +135,7 @@ namespace Cinema.Web.API
             services.AddScoped<IQRCodeService, QRCodeService>();
             services.AddScoped<IEmailSender, EmailSender>();
             services.AddScoped<IReviewService, ReviewService>();
+            services.AddScoped<IMovieRecommender, MovieRecommender>();
 
             services.AddScoped<IMovieRepository, MovieRepository>();
             services.AddScoped<IReviewRepository, ReviewRepository>();
@@ -154,6 +158,11 @@ namespace Cinema.Web.API
                 options.SignIn.RequireConfirmedAccount = true;
                 //options.User.RequireUniqueEmail = true;
             }).AddEntityFrameworkStores<CinemaDbContext>().AddDefaultTokenProviders();
+
+            //string workingDirectory = Environment.CurrentDirectory;
+
+            services.AddPredictionEnginePool<MovieRating, MovieRatingPrediction>()
+                .FromFile(modelName: "MovieRatingAnalysisModel", filePath: "MLModels/MovieRecommenderModel.zip", watchForChanges: true);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

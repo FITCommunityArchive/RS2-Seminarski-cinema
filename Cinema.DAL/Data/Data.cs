@@ -87,38 +87,26 @@ namespace Cinema.Dal.Data
 
         private static void SeedReviews(ModelBuilder modelBuilder)
         {
-            int id = -1;
 
-            modelBuilder.Entity<Review>().HasData(
-                     new Review
-                     {
-                         Id = id,
-                         MovieId = -4,
-                         Rating = 2,
-                         Text = "Lorem ipsum",
-                         UserId = 1
-                     });
+            Random rnd = new Random();
+            int reviewId = -999999;
+            for (int i = -650; i < -51; i++)
+            {
+                for (int j = -10; j < 0; j++)
+                {
+                    modelBuilder.Entity<Review>().HasData(
+                        new Review
+                        {
+                            Id = reviewId++,
+                            MovieId = j,
+                            Rating = rnd.Next(1,6),
+                            Text = "Lorem ipsum",
+                            UserId = i
+                        }
+                    );
+                }
 
-            id--;
-            modelBuilder.Entity<Review>().HasData(
-                     new Review
-                     {
-                         Id = id,
-                         MovieId = -4,
-                         Rating = 4,
-                         Text = "Lorem ipsum",
-                         UserId = 2
-                     });
-            id--;
-            modelBuilder.Entity<Review>().HasData(
-                     new Review
-                     {
-                         Id = id,
-                         MovieId = -4,
-                         Rating = 5,
-                         Text = "Lorem ipsum",
-                         UserId = 3
-                     });
+            }
         }
 
         private static void SeedSeatReservations(ModelBuilder modelBuilder, int numberOfTickets)
@@ -514,6 +502,96 @@ namespace Cinema.Dal.Data
                     Directors = "Stuart Townsend",
                     Writers = "Stuart Townsend",
                     Actors = "André Benjamin, Jennifer Carpenter, Isaach De Bankolé",
+                    VideoLink = "https://www.imdb.com/video/vi1761450777?playlistId=tt0850253&ref_=tt_ov_vi"
+                },
+                new Movie
+                {
+                    Id = -5,
+                    CreatedAt = new DateTime(2020, 7, 7),
+                    IsDeleted = false,
+                    Title = "Vengeance Can Wait",
+                    Duration = 160,
+                    Year = 1971,
+                    Country = "China",
+                    Synopsis = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                    Directors = "Clare Bretland",
+                    Writers = "Clare Bretland",
+                    Actors = "Sheelagh Lathleiffure",
+                    VideoLink = "https://www.imdb.com/video/vi1761450777?playlistId=tt0850253&ref_=tt_ov_vi"
+                },
+                new Movie
+                {
+                    Id = -6,
+                    CreatedAt = new DateTime(2020, 7, 7),
+                    IsDeleted = false,
+                    Title = "Sharknado",
+                    Duration = 93,
+                    Year = 1986,
+                    Country = "Indonesia",
+                    Synopsis = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                    Directors = "Rebe Wynett",
+                    Writers = "Rebe Wynett",
+                    Actors = "Jerome Gourdon",
+                    VideoLink = "https://www.imdb.com/video/vi1761450777?playlistId=tt0850253&ref_=tt_ov_vi"
+                },
+                new Movie
+                {
+                    Id = -7,
+                    CreatedAt = new DateTime(2020, 7, 7),
+                    IsDeleted = false,
+                    Title = "Snow Creature, The",
+                    Duration = 68,
+                    Year = 1980,
+                    Country = "Greece",
+                    Synopsis = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                    Directors = "Anita Hancorn",
+                    Writers = "Anita Hancorn",
+                    Actors = "Kelsey Beig",
+                    VideoLink = "https://www.imdb.com/video/vi1761450777?playlistId=tt0850253&ref_=tt_ov_vi"
+                },
+                new Movie
+                {
+                    Id = -8,
+                    CreatedAt = new DateTime(2020, 7, 7),
+                    IsDeleted = false,
+                    Title = "Brothers Bloom, The",
+                    Duration = 61,
+                    Year = 2002,
+                    Country = "Russia",
+                    Synopsis = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                    Directors = "Constantine Ivatt",
+                    Writers = "Constantine Ivatt",
+                    Actors = "Farrand Jakubovicz",
+                    VideoLink = "https://www.imdb.com/video/vi1761450777?playlistId=tt0850253&ref_=tt_ov_vi"
+                },
+                new Movie
+                {
+                    Id = -9,
+                    CreatedAt = new DateTime(2020, 7, 7),
+                    IsDeleted = false,
+                    Title = "Police Academy 4: Citizens on Patrol",
+                    Duration = 96,
+                    Year = 1992,
+                    Country = "Japan",
+                    Synopsis = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                    Directors = "Katti Assard",
+                    Writers = "Katti Assard",
+                    Actors = "Christin Kernermann",
+                    VideoLink = "https://www.imdb.com/video/vi1761450777?playlistId=tt0850253&ref_=tt_ov_vi"
+                },
+                new Movie
+                {
+                    Id = -10,
+                    CreatedAt = new DateTime(2020, 7, 7),
+                    IsDeleted = false,
+                    Title = "Spy Kids",
+                    Duration = 2002,
+                    Year = 1992,
+                    Country = "Azerbaijan",
+                    Synopsis = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                    Directors = "Tades Bass",
+                    Writers = "Tades Bass",
+                    Actors = "Xerxes Slevin",
                     VideoLink = "https://www.imdb.com/video/vi1761450777?playlistId=tt0850253&ref_=tt_ov_vi"
                 }
             );

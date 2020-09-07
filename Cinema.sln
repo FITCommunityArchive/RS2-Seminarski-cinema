@@ -45,7 +45,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinema.Mobile.iOS", "UI\Cin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.Mobile", "UI\Cinema.Mobile\Cinema.Mobile\Cinema.Mobile.csproj", "{DA2F70C9-5577-4990-BCF7-4B1BB4B1456D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieRecommender", "MovieRecommender\MovieRecommender.csproj", "{69B8AB31-2471-4DD1-8528-6C3012FD9D06}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieRecommender", "MovieRecommender\MovieRecommender.csproj", "{69B8AB31-2471-4DD1-8528-6C3012FD9D06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinema.MovieRecommenderService", "Cinema.MovieRecommenderService\Cinema.MovieRecommenderService.csproj", "{5AE9F036-5D53-4C61-9F60-8D73DEF5393D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -479,6 +481,30 @@ Global
 		{69B8AB31-2471-4DD1-8528-6C3012FD9D06}.Release|x64.Build.0 = Release|Any CPU
 		{69B8AB31-2471-4DD1-8528-6C3012FD9D06}.Release|x86.ActiveCfg = Release|Any CPU
 		{69B8AB31-2471-4DD1-8528-6C3012FD9D06}.Release|x86.Build.0 = Release|Any CPU
+		{5AE9F036-5D53-4C61-9F60-8D73DEF5393D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AE9F036-5D53-4C61-9F60-8D73DEF5393D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AE9F036-5D53-4C61-9F60-8D73DEF5393D}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{5AE9F036-5D53-4C61-9F60-8D73DEF5393D}.Debug|ARM.Build.0 = Debug|Any CPU
+		{5AE9F036-5D53-4C61-9F60-8D73DEF5393D}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{5AE9F036-5D53-4C61-9F60-8D73DEF5393D}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{5AE9F036-5D53-4C61-9F60-8D73DEF5393D}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{5AE9F036-5D53-4C61-9F60-8D73DEF5393D}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{5AE9F036-5D53-4C61-9F60-8D73DEF5393D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{5AE9F036-5D53-4C61-9F60-8D73DEF5393D}.Debug|x64.Build.0 = Debug|Any CPU
+		{5AE9F036-5D53-4C61-9F60-8D73DEF5393D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5AE9F036-5D53-4C61-9F60-8D73DEF5393D}.Debug|x86.Build.0 = Debug|Any CPU
+		{5AE9F036-5D53-4C61-9F60-8D73DEF5393D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AE9F036-5D53-4C61-9F60-8D73DEF5393D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AE9F036-5D53-4C61-9F60-8D73DEF5393D}.Release|ARM.ActiveCfg = Release|Any CPU
+		{5AE9F036-5D53-4C61-9F60-8D73DEF5393D}.Release|ARM.Build.0 = Release|Any CPU
+		{5AE9F036-5D53-4C61-9F60-8D73DEF5393D}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{5AE9F036-5D53-4C61-9F60-8D73DEF5393D}.Release|iPhone.Build.0 = Release|Any CPU
+		{5AE9F036-5D53-4C61-9F60-8D73DEF5393D}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{5AE9F036-5D53-4C61-9F60-8D73DEF5393D}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{5AE9F036-5D53-4C61-9F60-8D73DEF5393D}.Release|x64.ActiveCfg = Release|Any CPU
+		{5AE9F036-5D53-4C61-9F60-8D73DEF5393D}.Release|x64.Build.0 = Release|Any CPU
+		{5AE9F036-5D53-4C61-9F60-8D73DEF5393D}.Release|x86.ActiveCfg = Release|Any CPU
+		{5AE9F036-5D53-4C61-9F60-8D73DEF5393D}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

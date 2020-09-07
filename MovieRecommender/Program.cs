@@ -1,14 +1,46 @@
-﻿using Microsoft.ML;
+﻿using Cinema.Dal.Data;
+using Cinema.Utilities.Interfaces.Dal;
+using Cinema.Utilities.Interfaces.Services;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.ML;
 using Microsoft.ML.Trainers;
 using System;
 using System.IO;
+using System.Linq;
 
 namespace MovieRecommender
 {
     class Program
     {
+        
+
         static void Main(string[] args)
         {
+            string workingDirectory = Environment.CurrentDirectory;
+
+            // In this example, "ApplicationDbContext" is my DbContext class
+            var options = new DbContextOptionsBuilder<CinemaDbContext>()
+                    .UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=Cinema;Trusted_Connection=True;MultipleActiveResultSets=true")
+                    .Options;
+
+            CinemaDbContext context = new CinemaDbContext(options);
+            var result = context.Reviews.ToList();
+
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            sb.AppendLine("userId,movieId,rating");
+            foreach (var item in result)
+            {
+                sb.AppendLine(item.UserId.ToString() + "," + item.MovieId.ToString() + "," + item.Rating.ToString());
+            }
+
+            File.WriteAllText(
+                Path.Combine(
+                Directory.GetParent(workingDirectory).Parent.Parent.FullName + "\\Data", "movieRecommend-training-data.csv"),
+                sb.ToString());
+
+            context.Dispose();
+
 
             MLContext mlContext = new MLContext();
             (IDataView trainingDataView, IDataView testDataView) = LoadData(mlContext);
@@ -22,7 +54,6 @@ namespace MovieRecommender
 
             //Define DataViewSchema for data preparation pipeline and trained model
             DataViewSchema modelSchema;
-            string workingDirectory = Environment.CurrentDirectory;
 
             // Load trained model
             ITransformer trainedModel = mlContext.Model.Load(Directory.GetParent(workingDirectory).Parent.Parent.FullName + "\\Data\\MovieRecommenderModel.zip", out modelSchema);
@@ -34,8 +65,8 @@ namespace MovieRecommender
         {
             string workingDirectory = Environment.CurrentDirectory;
 
-            var trainingDataPath = Path.Combine(Directory.GetParent(workingDirectory).Parent.Parent.FullName, "Data", "recommendation-ratings-train1.csv");
-            var testDataPath = Path.Combine(Directory.GetParent(workingDirectory).Parent.Parent.FullName, "Data", "recommendation-ratings-test1.csv");
+            var trainingDataPath = Path.Combine(Directory.GetParent(workingDirectory).Parent.Parent.FullName, "Data", "movieRecommend-training-data.csv");
+            var testDataPath = Path.Combine(Directory.GetParent(workingDirectory).Parent.Parent.FullName, "Data", "movieRecommend-test-data.csv");
 
             IDataView trainingDataView = mlContext.Data.LoadFromTextFile<MovieRating>(trainingDataPath, hasHeader: true, separatorChar: ',');
             IDataView testDataView = mlContext.Data.LoadFromTextFile<MovieRating>(testDataPath, hasHeader: true, separatorChar: ',');
@@ -80,7 +111,7 @@ namespace MovieRecommender
             Console.WriteLine("=============== Making a prediction ===============");
             var predictionEngine = mlContext.Model.CreatePredictionEngine<MovieRating, MovieRatingPrediction>(model);
 
-            var testInput = new MovieRating { userId = 611, movieId = 6871 };
+            var testInput = new MovieRating { userId = -500, movieId = -8 };
 
             var movieRatingPrediction = predictionEngine.Predict(testInput);
 
