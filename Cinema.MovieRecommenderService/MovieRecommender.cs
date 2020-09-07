@@ -3,6 +3,7 @@ using Cinema.Domain.Entities;
 using Cinema.MovieRecommenderService.Models;
 using Cinema.Utilities.Interfaces.Dal;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.ML;
 using Microsoft.ML;
 using Microsoft.ML.Trainers;
 using System;
@@ -17,13 +18,15 @@ namespace Cinema.MovieRecommenderService
     {
         public static string workingDirectory = Directory.GetParent(Environment.CurrentDirectory).FullName + "\\Cinema.MovieRecommenderService\\Data";
 
+        private readonly PredictionEnginePool<MovieRating, MovieRatingPrediction> _predictionEnginePool;
         private readonly IUnitOfWork _unit;
         private readonly IReviewRepository _reviewRepo;
         
-        public MovieRecommender(IUnitOfWork unit)
+        public MovieRecommender(IUnitOfWork unit, PredictionEnginePool<MovieRating, MovieRatingPrediction> predictionEnginePool)
         {
             _unit = unit;
-            _reviewRepo = unit.Reviews;
+            _reviewRepo = _unit.Reviews;
+            _predictionEnginePool = predictionEnginePool;
         }
 
         public bool TrainModel()
@@ -37,6 +40,18 @@ namespace Cinema.MovieRecommenderService
             ITransformer model = BuildAndTrainModel(mlContext, trainingDataView);
             SaveModel(mlContext, trainingDataView.Schema, model);
             return true;
+        }
+
+        public float PredictScore(int userId, int movieId)
+        {
+            MovieRating movieRating = new MovieRating
+            {
+                userId = userId,
+                movieId = movieId
+            };
+            MovieRatingPrediction prediction = _predictionEnginePool.Predict(modelName: "MovieRatingAnalysisModel", example: movieRating);
+
+            return prediction.Score;
         }
 
         private void BuildDataSpreadsheet(IEnumerable<Review> data)

@@ -12,12 +12,10 @@ using Cinema.Models.Requests.Screenings;
 using Cinema.Models.Requests.Users;
 using Cinema.MovieRecommenderService;
 using Cinema.Services;
-using Cinema.Shared.Constants;
 using Cinema.Utilities.Interfaces;
 using Cinema.Utilities.Interfaces.Dal;
 using Cinema.Utilities.Interfaces.Integrations;
 using Cinema.Utilities.Interfaces.Services;
-using Cinema.Web.Api.DataModels;
 using Cinema.Web.Api.Filters;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -161,7 +159,7 @@ namespace Cinema.Web.API
 
             //string workingDirectory = Environment.CurrentDirectory;
 
-            services.AddPredictionEnginePool<MovieRating, MovieRatingPrediction>()
+            services.AddPredictionEnginePool<Cinema.MovieRecommenderService.Models.MovieRating, Cinema.MovieRecommenderService.Models.MovieRatingPrediction>()
                 .FromFile(modelName: "MovieRatingAnalysisModel", filePath: "MLModels/MovieRecommenderModel.zip", watchForChanges: true);
         }
 
