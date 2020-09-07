@@ -23,10 +23,10 @@ namespace Cinema.Web.Api.Controllers
             return Ok(result);
         }
 
-        [HttpGet("{userId}/recommended")]
-        public async Task<ActionResult<List<MovieDto>>> GetRecommended(int userId)
+        [HttpGet("recommended")]
+        public async Task<ActionResult<List<MovieDto>>> GetRecommended([FromQuery] int id)
         {
-            var result = await _movieService.GetRecommendedAsync(userId);
+            var result = await _movieService.GetRecommendedAsync(id);
 
             return Ok(result);
         }

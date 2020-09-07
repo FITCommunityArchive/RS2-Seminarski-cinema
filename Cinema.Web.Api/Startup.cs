@@ -45,6 +45,9 @@ namespace Cinema.Web.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddPredictionEnginePool<Cinema.MovieRecommenderService.Models.MovieRating, Cinema.MovieRecommenderService.Models.MovieRatingPrediction>()
+                .FromFile(modelName: "MovieRatingAnalysisModel", filePath: "MLModels/MovieRecommenderModel.zip", watchForChanges: true);
+
             services.AddControllers(x => x.Filters.Add<ErrorFilter>()).AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             services.AddRouting(options => options.LowercaseUrls = true);
@@ -157,10 +160,7 @@ namespace Cinema.Web.API
                 //options.User.RequireUniqueEmail = true;
             }).AddEntityFrameworkStores<CinemaDbContext>().AddDefaultTokenProviders();
 
-            //string workingDirectory = Environment.CurrentDirectory;
-
-            services.AddPredictionEnginePool<Cinema.MovieRecommenderService.Models.MovieRating, Cinema.MovieRecommenderService.Models.MovieRatingPrediction>()
-                .FromFile(modelName: "MovieRatingAnalysisModel", filePath: "MLModels/MovieRecommenderModel.zip", watchForChanges: true);
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
