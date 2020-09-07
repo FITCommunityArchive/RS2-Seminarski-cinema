@@ -26,6 +26,10 @@ namespace Cinema.Mobile.ViewModels
             string route = "now-showing";
             var list = await _moviesApi.Get<List<MovieDto>>(null, route);
 
+            //string route = "recommended";
+            //var userId = _moviesApi.GetCurrentUserId();
+            //var list = await _moviesApi.Get<List<MovieDto>>(userId, route);
+
             MoviesList.Clear();
 
             foreach (var movie in list)
