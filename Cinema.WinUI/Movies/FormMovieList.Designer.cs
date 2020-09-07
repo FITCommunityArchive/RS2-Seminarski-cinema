@@ -322,9 +322,9 @@
             this.pnlSearchBars.Controls.Add(this.txtSearchBar);
             this.pnlSearchBars.Controls.Add(this.lblSearchDuration);
             this.pnlSearchBars.Location = new System.Drawing.Point(29, 113);
-            this.pnlSearchBars.Margin = new System.Windows.Forms.Padding(20, 20, 20, 20);
+            this.pnlSearchBars.Margin = new System.Windows.Forms.Padding(20);
             this.pnlSearchBars.Name = "pnlSearchBars";
-            this.pnlSearchBars.Padding = new System.Windows.Forms.Padding(15, 15, 15, 15);
+            this.pnlSearchBars.Padding = new System.Windows.Forms.Padding(15);
             this.pnlSearchBars.Size = new System.Drawing.Size(1383, 89);
             this.pnlSearchBars.TabIndex = 9;
             // 
@@ -333,9 +333,9 @@
             this.pnlDataGrid.BackColor = System.Drawing.Color.White;
             this.pnlDataGrid.Controls.Add(this.grdMoviesList);
             this.pnlDataGrid.Location = new System.Drawing.Point(29, 217);
-            this.pnlDataGrid.Margin = new System.Windows.Forms.Padding(20, 20, 20, 20);
+            this.pnlDataGrid.Margin = new System.Windows.Forms.Padding(20);
             this.pnlDataGrid.Name = "pnlDataGrid";
-            this.pnlDataGrid.Padding = new System.Windows.Forms.Padding(15, 15, 15, 15);
+            this.pnlDataGrid.Padding = new System.Windows.Forms.Padding(15);
             this.pnlDataGrid.Size = new System.Drawing.Size(1385, 502);
             this.pnlDataGrid.TabIndex = 10;
             // 
@@ -348,7 +348,7 @@
             this.pnlContent.Location = new System.Drawing.Point(0, 0);
             this.pnlContent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlContent.Name = "pnlContent";
-            this.pnlContent.Padding = new System.Windows.Forms.Padding(15, 15, 15, 15);
+            this.pnlContent.Padding = new System.Windows.Forms.Padding(15);
             this.pnlContent.Size = new System.Drawing.Size(1447, 800);
             this.pnlContent.TabIndex = 11;
             // 
@@ -356,7 +356,7 @@
             // 
             this.btnAddNew.AutoSize = true;
             this.btnAddNew.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnAddNew.Location = new System.Drawing.Point(964, 723);
+            this.btnAddNew.Location = new System.Drawing.Point(1074, 728);
             this.btnAddNew.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddNew.Name = "btnAddNew";
             this.btnAddNew.Size = new System.Drawing.Size(120, 40);
@@ -368,8 +368,8 @@
             this.pgnMoviesList.AutoSize = true;
             this.pgnMoviesList.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.pgnMoviesList.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pgnMoviesList.Location = new System.Drawing.Point(1132, 726);
-            this.pgnMoviesList.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.pgnMoviesList.Location = new System.Drawing.Point(1202, 728);
+            this.pgnMoviesList.Margin = new System.Windows.Forms.Padding(5);
             this.pgnMoviesList.Name = "pgnMoviesList";
             this.pgnMoviesList.PageIndex = 0;
             this.pgnMoviesList.Size = new System.Drawing.Size(210, 35);

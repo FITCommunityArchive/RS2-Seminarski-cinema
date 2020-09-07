@@ -19,6 +19,7 @@ namespace Cinema.WinUI.Movies
     {
         private readonly ApiService _moviesApi = new ApiService("Movies");
         private readonly ApiService _genresApi = new ApiService("Genres");
+        private MovieDto _movie = null;
         private readonly int? _id = null;
         private bool _isReadonly = true;
         private MovieUpsertRequest _request = new MovieUpsertRequest();
@@ -46,16 +47,15 @@ namespace Cinema.WinUI.Movies
             SetReadonly(false);
         }
 
-
         private async Task LoadReadOnly()
         {
-            var result = await _moviesApi.GetById<MovieDto>(_id);
+            _movie = await _moviesApi.GetById<MovieDto>(_id);
 
             SetReadonly(true);
 
-            LoadPropertyValues(result);
+            LoadPropertyValues(_movie);
 
-            List<GenreDto> movieGenres = _genres.Data.Where(x => result.GenreMovies.Select(y => y.GenreId).Contains(x.Id)).ToList();
+            List<GenreDto> movieGenres = _genres.Data.Where(x => _movie.GenreMovies.Select(y => y.GenreId).Contains(x.Id)).ToList();
 
             lbxGenres.DataSource = movieGenres;
             lbxGenres.DisplayMember = nameof(GenreDto.Name);
@@ -64,13 +64,13 @@ namespace Cinema.WinUI.Movies
         private async Task LoadEdit()
         {
             var resultGenres = await _genresApi.Get<PagedList<GenreDto>>(null);
-            var result = await _moviesApi.GetById<MovieDto>(_id);
+            _movie = await _moviesApi.GetById<MovieDto>(_id);
 
             SetReadonly(false);
 
-            LoadPropertyValues(result);
+            LoadPropertyValues(_movie);
 
-            List<GenreDto> movieGenres = resultGenres.Data.Where(x => result.GenreMovies.Select(y => y.GenreId).Contains(x.Id)).ToList();
+            List<GenreDto> movieGenres = resultGenres.Data.Where(x => _movie.GenreMovies.Select(y => y.GenreId).Contains(x.Id)).ToList();
 
             chlGenres.DataSource = resultGenres.Data;
             chlGenres.DisplayMember = nameof(GenreDto.Name);
@@ -79,7 +79,7 @@ namespace Cinema.WinUI.Movies
             {
                 GenreDto genre = chlGenres.Items[i] as GenreDto;
 
-                if (result.GenreMovies.Select(x => x.GenreId).Contains(genre.Id))
+                if (_movie.GenreMovies.Select(x => x.GenreId).Contains(genre.Id))
                 {
                     chlGenres.SetItemChecked(i, true);
                 }
@@ -116,6 +116,7 @@ namespace Cinema.WinUI.Movies
             btnSaveChanges.Enabled = !isReadonly;
             btnUploadPoster.Enabled = !isReadonly;
             btnEdit.Enabled = isReadonly;
+            btnEditSynopsis.Enabled = !isReadonly;
 
             txtMovieTitle.ReadOnly = _isReadonly;
             txtReleaseYear.ReadOnly = _isReadonly;
@@ -288,6 +289,18 @@ namespace Cinema.WinUI.Movies
         {
             videoLinkProcess = new Process();
             videoLinkProcess = Process.Start(e.LinkText);
+        }
+
+        private void btnAddSynopsis_Click(object sender, EventArgs e)
+        {
+            FormMovieSynopsis formMovieSynopsis = new FormMovieSynopsis(_movie);
+            formMovieSynopsis.SynopsisAdded += new EventHandler<ParameterEventArgs>(FormSynopsis_Closed);
+            formMovieSynopsis.ShowDialog();
+        }
+
+        private void FormSynopsis_Closed(object sender, ParameterEventArgs e)
+        {
+            _request.Synopsis = e.Value.ToString();
         }
 
         #endregion

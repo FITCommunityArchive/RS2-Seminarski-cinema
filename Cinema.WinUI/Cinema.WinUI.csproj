@@ -191,7 +191,14 @@
     <Compile Include="Helpers\dgvPrinter.cs" />
     <Compile Include="Helpers\ModuleExcel.cs" />
     <Compile Include="Helpers\ModulePDF.cs" />
+    <Compile Include="Helpers\ParameterEventArgs.cs" />
     <Compile Include="Models\IncludesSearchRequest.cs" />
+    <Compile Include="Movies\FormMovieSynopsis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Movies\FormMovieSynopsis.Designer.cs">
+      <DependentUpon>FormMovieSynopsis.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pricing\FormPricings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -295,6 +302,18 @@
     <Compile Include="UserControls\Buttons\DeleteButton.Designer.cs">
       <DependentUpon>DeleteButton.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Buttons\EditSynopsisButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Buttons\EditSynopsisButton.Designer.cs">
+      <DependentUpon>EditSynopsisButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Buttons\OKButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Buttons\OKButton.Designer.cs">
+      <DependentUpon>OKButton.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Buttons\EditButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -379,6 +398,9 @@
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Movies\FormMovieSynopsis.resx">
+      <DependentUpon>FormMovieSynopsis.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pricing\FormPricings.resx">
       <DependentUpon>FormPricings.cs</DependentUpon>
     </EmbeddedResource>
@@ -415,6 +437,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Buttons\DeleteButton.resx">
       <DependentUpon>DeleteButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Buttons\EditSynopsisButton.resx">
+      <DependentUpon>EditSynopsisButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Buttons\OKButton.resx">
+      <DependentUpon>OKButton.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Buttons\EditButton.resx">
       <DependentUpon>EditButton.cs</DependentUpon>

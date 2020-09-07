@@ -56,7 +56,7 @@ namespace Cinema.WinUI.UserControls
         }
 
         private void btnFirstPage_Click(object sender, EventArgs e)
-        {
+        {            
             if (!HasPreviousPage) return;
 
             _pageIndex = 1;
@@ -90,6 +90,16 @@ namespace Cinema.WinUI.UserControls
             _pageIndex = _totalPages;
 
             OnPageChanged(EventArgs.Empty);
+        }
+
+        private void btnCurrentPage_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnTotalPages_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

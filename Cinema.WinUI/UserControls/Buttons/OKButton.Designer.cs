@@ -1,6 +1,6 @@
 ﻿namespace Cinema.WinUI.UserControls.Buttons
 {
-    partial class EditButton
+    partial class OKButton
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,42 +29,42 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.btnEdit = new Cinema.WinUI.UserControls.ExtendedButton(this.components);
+            this.btnOk = new Cinema.WinUI.UserControls.ExtendedButton(this.components);
             this.SuspendLayout();
             // 
-            // btnEdit
+            // btnOk
             // 
-            this.btnEdit.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(195)))), ((int)(((byte)(75)))));
-            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEdit.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.ForeColor = System.Drawing.Color.White;
-            this.btnEdit.Location = new System.Drawing.Point(0, 0);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(0);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(120, 40);
-            this.btnEdit.TabIndex = 1;
-            this.btnEdit.Text = "Edit";
-            this.btnEdit.UseVisualStyleBackColor = false;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            this.btnOk.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnOk.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(195)))), ((int)(((byte)(75)))));
+            this.btnOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOk.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOk.ForeColor = System.Drawing.Color.White;
+            this.btnOk.Location = new System.Drawing.Point(0, 0);
+            this.btnOk.Margin = new System.Windows.Forms.Padding(0);
+            this.btnOk.Name = "btnOk";
+            this.btnOk.Size = new System.Drawing.Size(120, 40);
+            this.btnOk.TabIndex = 1;
+            this.btnOk.Text = "OK";
+            this.btnOk.UseVisualStyleBackColor = false;
+            this.btnOk.Click += new System.EventHandler(this.btnOK_Click);
             // 
-            // EditButton
+            // OKButton
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Controls.Add(this.btnEdit);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Name = "EditButton";
+            this.Controls.Add(this.btnOk);
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Name = "OKButton";
             this.Size = new System.Drawing.Size(120, 40);
-            this.EnabledChanged += new System.EventHandler(this.EditButton_EnabledChanged);
+            this.EnabledChanged += new System.EventHandler(this.OKButton_EnabledChanged);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private ExtendedButton btnEdit;
+        private ExtendedButton btnOk;
     }
 }

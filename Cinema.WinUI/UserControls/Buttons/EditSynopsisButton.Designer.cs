@@ -1,6 +1,6 @@
 ﻿namespace Cinema.WinUI.UserControls.Buttons
 {
-    partial class EditButton
+    partial class EditSynopsisButton
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,34 +29,34 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.btnEdit = new Cinema.WinUI.UserControls.ExtendedButton(this.components);
+            this.btnEditSynopsis = new Cinema.WinUI.UserControls.ExtendedButton(this.components);
             this.SuspendLayout();
             // 
-            // btnEdit
+            // btnEditSynopsis
             // 
-            this.btnEdit.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(195)))), ((int)(((byte)(75)))));
-            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEdit.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.ForeColor = System.Drawing.Color.White;
-            this.btnEdit.Location = new System.Drawing.Point(0, 0);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(0);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(120, 40);
-            this.btnEdit.TabIndex = 1;
-            this.btnEdit.Text = "Edit";
-            this.btnEdit.UseVisualStyleBackColor = false;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            this.btnEditSynopsis.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnEditSynopsis.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(195)))), ((int)(((byte)(75)))));
+            this.btnEditSynopsis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditSynopsis.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditSynopsis.ForeColor = System.Drawing.Color.White;
+            this.btnEditSynopsis.Location = new System.Drawing.Point(0, 0);
+            this.btnEditSynopsis.Margin = new System.Windows.Forms.Padding(0);
+            this.btnEditSynopsis.Name = "btnEditSynopsis";
+            this.btnEditSynopsis.Size = new System.Drawing.Size(120, 40);
+            this.btnEditSynopsis.TabIndex = 1;
+            this.btnEditSynopsis.Text = "Synopsis";
+            this.btnEditSynopsis.UseVisualStyleBackColor = false;
+            this.btnEditSynopsis.Click += new System.EventHandler(this.btnEdit_Click);
             // 
-            // EditButton
+            // EditSynopsisButton
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Controls.Add(this.btnEdit);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Name = "EditButton";
+            this.Controls.Add(this.btnEditSynopsis);
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Name = "EditSynopsisButton";
             this.Size = new System.Drawing.Size(120, 40);
             this.EnabledChanged += new System.EventHandler(this.EditButton_EnabledChanged);
             this.ResumeLayout(false);
@@ -65,6 +65,6 @@
 
         #endregion
 
-        private ExtendedButton btnEdit;
+        private ExtendedButton btnEditSynopsis;
     }
 }

@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnSaveChanges = new ExtendedButton();
+            this.components = new System.ComponentModel.Container();
+            this.btnSaveChanges = new Cinema.WinUI.UserControls.ExtendedButton(this.components);
             this.SuspendLayout();
             // 
             // btnSaveChanges
             // 
+            this.btnSaveChanges.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnSaveChanges.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(91)))), ((int)(((byte)(212)))));
             this.btnSaveChanges.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSaveChanges.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -42,13 +44,14 @@
             this.btnSaveChanges.Name = "btnSaveChanges";
             this.btnSaveChanges.Size = new System.Drawing.Size(120, 40);
             this.btnSaveChanges.TabIndex = 0;
-            this.btnSaveChanges.Text = "Save Changes";
+            this.btnSaveChanges.Text = "Save";
             this.btnSaveChanges.UseVisualStyleBackColor = false;
             this.btnSaveChanges.Click += new System.EventHandler(this.btnAddNew_Click);
             // 
             // SaveChangesButton
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.btnSaveChanges);

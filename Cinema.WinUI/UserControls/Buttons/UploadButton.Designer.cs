@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnUpload = new ExtendedButton();
+            this.components = new System.ComponentModel.Container();
+            this.btnUpload = new Cinema.WinUI.UserControls.ExtendedButton(this.components);
             this.SuspendLayout();
             // 
             // btnUpload
@@ -48,7 +49,8 @@
             // 
             // UploadButton
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.btnUpload);
