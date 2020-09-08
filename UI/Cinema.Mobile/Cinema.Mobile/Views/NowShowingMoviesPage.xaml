@@ -15,6 +15,17 @@
         <StackLayout BackgroundColor="#f3f3f5" Padding="0">
             <Label Text="Now Showing" BackgroundColor="White" FontSize="Title" TextColor="DimGray" FontAttributes="Bold" Padding="15"/>
             <StackLayout Padding="25">
+                <Grid HorizontalOptions="CenterAndExpand" Padding="30">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="BtnNowShowingMovies" Text="Now showing" Clicked="NowShowing_Clicked" ></Button>
+                    <Button x:Name="BtnRecommendedMovies" Text="Recommended" Clicked="Recommended_Clicked" Grid.Column="1"></Button>
+                </Grid>
                 <ScrollView x:Name="NowShowingMoviesScrollView" Orientation="Vertical" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                     <Label Text="Loading..." FontSize="Title"/>
                 </ScrollView>

@@ -11,5 +11,6 @@ namespace Cinema.Utilities.Interfaces.Dal
         Task<ApplicationUser> GetUserByUserNameAsync(string userName);
         Task<ApplicationUser> GetByIdWithRolesAsync(int id);
         Task<IPagedList<ApplicationUser>> GetPagedAsync(ISearchRequest searchRequest, string searchTerm);
+        Task<ApplicationUser> GetUserByIdAsync(int userId);
     }
 }

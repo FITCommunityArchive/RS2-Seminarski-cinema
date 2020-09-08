@@ -3,6 +3,7 @@ using Cinema.Mobile.ViewModels;
 using Cinema.Models.Dtos;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -28,7 +29,17 @@ namespace Cinema.Mobile.Views
             base.OnAppearing();            
             await model.Init();
 
+
             var movies = model.MoviesList;
+            if (BtnRecommendedMovies.IsEnabled == false)
+            {
+                movies = model.MoviesRecommendedList;
+            }
+            SetupMoviesView(movies);
+        }
+
+        private void SetupMoviesView(ObservableCollection<MovieDto> movies)
+        {
             int moviesCount = movies.Count;
             int numberOfRows = (int)Math.Ceiling(moviesCount / 2.0);
             int numberOfColumns = GetNumberOfColumns(moviesCount);
@@ -53,7 +64,7 @@ namespace Cinema.Mobile.Views
                 }
             }
 
-            this.NowShowingMoviesScrollView.Content = grid;            
+            this.NowShowingMoviesScrollView.Content = grid;
         }
 
         private static Grid SetUpGrid(int numberOfRows)
@@ -122,6 +133,25 @@ namespace Cinema.Mobile.Views
         private async Task OpenDetails(MovieDto movie)
         {
             await Navigation.PushAsync(new MovieDetailPage(movie));
+        }
+
+        protected void NowShowing_Clicked(object sender, EventArgs e)
+        {
+
+            var movies = model.MoviesList;
+            SetupMoviesView(movies);
+
+            BtnNowShowingMovies.IsEnabled = false;
+            BtnRecommendedMovies.IsEnabled = true;
+        }
+
+        protected void Recommended_Clicked(object sender, EventArgs e)
+        {
+            var movies = model.MoviesRecommendedList;
+            SetupMoviesView(movies);
+
+            BtnNowShowingMovies.IsEnabled = true;
+            BtnRecommendedMovies.IsEnabled = false;
         }
     }
 }
