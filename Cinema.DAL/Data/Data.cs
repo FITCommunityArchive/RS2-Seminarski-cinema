@@ -121,7 +121,7 @@ namespace Cinema.Dal.Data
 
                 modelBuilder.Entity<News>().HasData(newsFirstType, newsSecondType);
             }
-        }        
+        }
 
         private static void SeedInvoices(ModelBuilder modelBuilder, int numberOfTickets)
         {

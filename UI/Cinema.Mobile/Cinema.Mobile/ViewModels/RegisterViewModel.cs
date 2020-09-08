@@ -75,10 +75,11 @@ namespace Cinema.Mobile.ViewModels
 
                     var loggedIn = await _usersApi.AuthUser();
 
-                    if(loggedIn)
+                    if (loggedIn)
                     {
                         Application.Current.MainPage = new MainPage();
-                    } else
+                    }
+                    else
                     {
                         await App.Current.MainPage.DisplayAlert("Info", "We coudln't log you in. Please try later.", "OK");
 

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Cinema.Models.Requests.Reviews
+﻿namespace Cinema.Models.Requests.Reviews
 {
     public class ReviewUpsertRequest
     {

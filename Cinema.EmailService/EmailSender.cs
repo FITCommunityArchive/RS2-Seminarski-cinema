@@ -79,7 +79,7 @@ namespace Cinema.EmailService
             {
                 emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Html) { Text = string.Format("{0}", message.Content) };
             }
-            
+
             return emailMessage;
         }
 

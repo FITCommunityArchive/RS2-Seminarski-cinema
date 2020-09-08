@@ -1,12 +1,10 @@
 ﻿using AutoMapper;
-using Cinema.Domain.Entities;
 using Cinema.Domain.Entities.Identity;
 using Cinema.Models.Dtos;
 using Cinema.Models.Requests.Users;
 using Cinema.Shared.Pagination;
 using Cinema.Utilities.Interfaces;
 using Cinema.Utilities.Interfaces.Dal;
-using Cinema.Utilities.Interfaces.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

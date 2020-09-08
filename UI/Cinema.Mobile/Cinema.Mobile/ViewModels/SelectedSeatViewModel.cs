@@ -1,8 +1,4 @@
-﻿using Cinema.Models.Dtos;
-using Cinema.Models.SpecificModels;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Cinema.Models.SpecificModels;
 
 namespace Cinema.Mobile.ViewModels
 {

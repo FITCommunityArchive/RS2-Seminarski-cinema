@@ -134,7 +134,7 @@ namespace Cinema.WinUI.Users
 
             try
             {
-                
+
                 ApplicationUserDto result;
 
                 if (_id.HasValue)
@@ -196,11 +196,12 @@ namespace Cinema.WinUI.Users
             try
             {
                 var result = await _usersApi.Delete<ApplicationUserDto>(_id);
-                if(result != null)
+                if (result != null)
                 {
                     MessageBox.Show("User deleted.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-            } catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

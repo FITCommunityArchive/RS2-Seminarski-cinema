@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Cinema.Utilities.Interfaces.Integrations
+﻿namespace Cinema.Utilities.Interfaces.Integrations
 {
     public interface IQRCodeService
     {

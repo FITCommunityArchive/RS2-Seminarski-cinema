@@ -1,9 +1,5 @@
 ﻿using Cinema.Models.Dtos;
 using Cinema.Models.Requests.Reviews;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Cinema.Utilities.Interfaces.Services
 {

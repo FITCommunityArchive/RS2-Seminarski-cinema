@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Cinema.Utilities.Exceptions
 {
@@ -8,6 +6,6 @@ namespace Cinema.Utilities.Exceptions
     {
         public EmailSendingFailedException() :
             base("Email sending failed")
-        { }    
+        { }
     }
 }

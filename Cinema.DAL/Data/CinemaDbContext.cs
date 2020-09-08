@@ -16,7 +16,8 @@ namespace Cinema.Dal.Data
     {
         private string _connectionString;
         public CinemaDbContext(DbContextOptions<CinemaDbContext> options)
-            : base(options) {
+            : base(options)
+        {
             ChangeTracker.CascadeDeleteTiming = CascadeTiming.OnSaveChanges;
             ChangeTracker.DeleteOrphansTiming = CascadeTiming.OnSaveChanges;
         }

@@ -1,11 +1,9 @@
-﻿using Cinema.Mobile.Services;
-using Cinema.Mobile.ViewModels;
+﻿using Cinema.Mobile.ViewModels;
 using Cinema.Models.Dtos;
 using Cinema.Models.SpecificModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -31,7 +29,7 @@ namespace Cinema.Mobile.Views
 
             this.NewReservationButton.IsEnabled = false;
 
-            await model.Init();            
+            await model.Init();
 
             List<SeatingModel> seats = model.Seats;
 
@@ -67,7 +65,7 @@ namespace Cinema.Mobile.Views
         private Button CreateButton(SeatingModel seat)
         {
             Button button = new Button
-            {                
+            {
                 BindingContext = seat,
                 Text = seat.Seat.Label,
                 IsEnabled = !seat.IsReserved,
@@ -120,7 +118,7 @@ namespace Cinema.Mobile.Views
         }
 
         private Color GetButtonTextColor(bool seatStatus)
-        {            
+        {
             if (seatStatus)
             {
                 return Color.White;
@@ -184,6 +182,6 @@ namespace Cinema.Mobile.Views
             }
 
             await Navigation.PushAsync(new ConfirmReservationPage(model));
-        }    
+        }
     }
 }

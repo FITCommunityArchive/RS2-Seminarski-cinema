@@ -1,8 +1,6 @@
-﻿using Cinema.Mobile.Services;
-using Cinema.Mobile.ViewModels;
+﻿using Cinema.Mobile.ViewModels;
 using Cinema.Models.Dtos;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -25,7 +23,7 @@ namespace Cinema.Mobile.Views
 
         protected async override void OnAppearing()
         {
-            base.OnAppearing();            
+            base.OnAppearing();
             await model.Init();
 
             var movies = model.MoviesList;
@@ -53,7 +51,7 @@ namespace Cinema.Mobile.Views
                 }
             }
 
-            this.NowShowingMoviesScrollView.Content = grid;            
+            this.NowShowingMoviesScrollView.Content = grid;
         }
 
         private static Grid SetUpGrid(int numberOfRows)

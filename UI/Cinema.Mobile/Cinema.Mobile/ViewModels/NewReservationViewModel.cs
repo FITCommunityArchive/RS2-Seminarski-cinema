@@ -49,15 +49,15 @@ namespace Cinema.Mobile.ViewModels
         }
 
         private decimal _totalWithVat = 0;
-        public decimal TotalWithVat 
-        { 
-            get { return _totalWithVat; } 
+        public decimal TotalWithVat
+        {
+            get { return _totalWithVat; }
             set
             {
                 if (_totalWithVat != value)
                 {
                     _totalWithVat = value;
-                    OnPropertyChanged();                    
+                    OnPropertyChanged();
                 }
             }
         }

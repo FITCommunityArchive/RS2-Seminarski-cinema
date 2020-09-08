@@ -1,16 +1,13 @@
 ﻿using Cinema.Mobile.Services;
 using Cinema.Models.Dtos;
 using Cinema.Models.Requests.Users;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace Cinema.Mobile.ViewModels
 {
-    public class ProfileViewModel :BaseViewModel
+    public class ProfileViewModel : BaseViewModel
     {
 
         protected readonly ApiService _usersApi = new ApiService("Users");
@@ -49,7 +46,7 @@ namespace Cinema.Mobile.ViewModels
                 RoleId = CurrentUser.UserRoles[0].RoleId
             };
             var result = await _usersApi.Update<ApplicationUserDto>(UserId, request);
-            if(result != null)
+            if (result != null)
             {
                 IsBusy = false;
                 await App.Current.MainPage.DisplayAlert("Success", "Your changes have been saved.", "Ok");

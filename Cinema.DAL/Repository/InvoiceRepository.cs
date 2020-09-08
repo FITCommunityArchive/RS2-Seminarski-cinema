@@ -1,9 +1,6 @@
 ﻿using Cinema.Domain.Entities;
 using Cinema.Utilities.Interfaces.Dal;
 using Microsoft.Extensions.Configuration;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Cinema.Dal.Repository
 {

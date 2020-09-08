@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Cinema.Models.Dtos
+﻿namespace Cinema.Models.Dtos
 {
     public class SeatDto : BaseDto
     {

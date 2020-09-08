@@ -1,9 +1,7 @@
 ﻿using Cinema.Models.Dtos;
 using Cinema.Models.Requests;
 using Cinema.Models.Requests.News;
-using Cinema.Models.Requests.Screenings;
 using Cinema.Shared.Constants;
-using Cinema.Shared.Enums;
 using Cinema.Shared.Pagination;
 using Cinema.WinUI.Helpers;
 using Cinema.WinUI.Services;
@@ -28,7 +26,7 @@ namespace Cinema.WinUI.News
             InitializeComponent();
         }
 
-        
+
         private NewsSearchRequest GetSearchRequest()
         {
             NewsSearchRequest searchRequest = new NewsSearchRequest();
@@ -38,10 +36,10 @@ namespace Cinema.WinUI.News
             searchRequest.Title = txtSearchBar.Text;
             searchRequest.Author = txtAuthor.Text;
 
-            if(cmbType.SelectedValue != null && int.TryParse(cmbType.SelectedValue.ToString(), out int typeId))
+            if (cmbType.SelectedValue != null && int.TryParse(cmbType.SelectedValue.ToString(), out int typeId))
             {
                 searchRequest.TypeId = typeId;
-            }            
+            }
 
             AddIncludes(ref searchRequest);
 
@@ -67,9 +65,9 @@ namespace Cinema.WinUI.News
 
         private void InitializeDetailsForm(int? id)
         {
-/*            _formScreeningDetails = new FormScreeningDetails(id);
-            _formScreeningDetails.FormClosed += new System.Windows.Forms.FormClosedEventHandler(FormDetails_Closed);
-            _formScreeningDetails.ShowDialog();*/
+            /*            _formScreeningDetails = new FormScreeningDetails(id);
+                        _formScreeningDetails.FormClosed += new System.Windows.Forms.FormClosedEventHandler(FormDetails_Closed);
+                        _formScreeningDetails.ShowDialog();*/
         }
 
         #region Event methods
@@ -154,7 +152,7 @@ namespace Cinema.WinUI.News
                 /* The handler is added code-first in order to prevent the SearchChanged method being triggered
                 * in the value initialisation for status above.*/
                 cmbType.SelectedIndexChanged += new EventHandler(SearchChanged);
-            }            
+            }
         }
     }
 }

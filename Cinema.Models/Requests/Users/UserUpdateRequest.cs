@@ -1,5 +1,4 @@
-﻿using Cinema.Models.ModelValidation;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Cinema.Models.Requests.Users
 {

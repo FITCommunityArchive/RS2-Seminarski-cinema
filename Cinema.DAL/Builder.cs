@@ -1,5 +1,4 @@
 ﻿using Cinema.Domain.Entities;
-using Cinema.Domain.Entities.Identity;
 using Cinema.Utilities.Interfaces.Dal;
 using System.Threading.Tasks;
 

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -68,7 +64,8 @@ namespace Cinema.Mobile.Templates
 
             // here i added pan gesture recognizer for selecting the star 
             var panGesture = new PanGestureRecognizer();
-            panGesture.PanUpdated += (s, e) => {
+            panGesture.PanUpdated += (s, e) =>
+            {
                 // Handle the pan
                 var obj = e;
                 double width = star1.Width;

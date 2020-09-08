@@ -1,5 +1,4 @@
-﻿using Cinema.Models.Dtos;
-using Cinema.Shared.Constants;
+﻿using Cinema.Shared.Constants;
 using Cinema.Shared.Helpers;
 using Flurl.Http;
 using Newtonsoft.Json;
@@ -60,7 +59,7 @@ namespace Cinema.Mobile.Services
         public async Task<double> GetMovieReviewScore(int id)
         {
             var url = $"{_apiUrl}/Movies/{id}/review-score";
-            return await url.WithOAuthBearerToken(Token).GetJsonAsync<double>(); 
+            return await url.WithOAuthBearerToken(Token).GetJsonAsync<double>();
         }
 
         public async Task<int> GetCurrentUserId()
@@ -69,10 +68,10 @@ namespace Cinema.Mobile.Services
             return await url.WithOAuthBearerToken(Token).GetJsonAsync<int>();
         }
 
-        public async Task<bool> UserCanVote(int userId,int movieId)
+        public async Task<bool> UserCanVote(int userId, int movieId)
         {
             var url = $"{_apiUrl}/Reviews/canVote";
-            return await url.WithOAuthBearerToken(Token).SetQueryParams( new
+            return await url.WithOAuthBearerToken(Token).SetQueryParams(new
             {
                 userid = userId,
                 movieid = movieId

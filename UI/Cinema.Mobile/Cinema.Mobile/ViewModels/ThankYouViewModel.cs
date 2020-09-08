@@ -1,17 +1,4 @@
-﻿using Cinema.Mobile.Services;
-using Cinema.Models.Dtos;
-using Cinema.Models.Requests.Reservations;
-using Cinema.Models.SpecificModels;
-using Cinema.Shared.Constants;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using Xamarin.Forms;
-
-namespace Cinema.Mobile.ViewModels
+﻿namespace Cinema.Mobile.ViewModels
 {
     public class ThankYouViewModel : BaseViewModel
     {

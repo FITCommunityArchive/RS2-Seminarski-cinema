@@ -56,7 +56,7 @@ namespace Cinema.WinUI.UserControls
         }
 
         private void btnFirstPage_Click(object sender, EventArgs e)
-        {            
+        {
             if (!HasPreviousPage) return;
 
             _pageIndex = 1;

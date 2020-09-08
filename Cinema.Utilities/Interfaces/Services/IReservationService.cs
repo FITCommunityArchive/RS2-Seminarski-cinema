@@ -1,6 +1,5 @@
 ﻿using Cinema.Models.Dtos;
 using Cinema.Models.Requests.Reservations;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Cinema.Utilities.Interfaces.Services
