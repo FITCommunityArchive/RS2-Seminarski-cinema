@@ -82,11 +82,9 @@ namespace Cinema.Services
 
             ApplicationUserDto currentUser = await _authService.GetCurrentUserAsync();
 
-            IEnumerable<int> selectedSeatIds = req.SelectedSeats;            
+            IEnumerable<int> selectedSeatIds = req.SelectedSeats;
 
             await ValidateRequestAsync(req, screening, selectedSeatIds);
-
-            //ApplicationUser user = await _userRepo.GetAsync(userId);
 
             Reservation reservation = new Reservation
             {
@@ -94,7 +92,7 @@ namespace Cinema.Services
                 Screening = screening,
                 IsCancelled = false,
                 TicketQuantity = req.SelectedSeats.Count,
-                ReservationCode = Convert.ToString(System.Guid.NewGuid()).Substring(0, 7).ToUpper()
+                ReservationCode = GenerateReservationCode()
             };
 
             Invoice invoice = CreateInvoice(reservation, screening.PricingId, req.SelectedSeats.Count);
@@ -120,41 +118,28 @@ namespace Cinema.Services
             reservationDto.Invoice = null;
             reservationDto.Screening = null;
 
-            /*            var imageUri = _qRCodeService.GenerateCode(reservation.ReservationCode);
-                        var imageUrl = String.Format("data:image/png;base64,{0}", imageUri);
+            await SendReservationAsync(screening, currentUser, reservation);
 
-                        var attachment = new FormFileCollection();*/
+            return reservationDto;
+        }
+
+        private static string GenerateReservationCode()
+        {
+            return Convert.ToString(System.Guid.NewGuid()).Substring(0, 7).ToUpper();
+        }
+
+        private async Task SendReservationAsync(Screening screening, ApplicationUserDto currentUser, Reservation reservation)
+        {
             var messageContent = "";
             messageContent += "<h3>Your reservation code: " + reservation.ReservationCode + "</h3>";
             messageContent += "<p>You can pick up your movie tickets with your booking number directly from the box office during business hours.</p>";
             messageContent += "<p>Please note that your tickets must be raised no later than 30 minutes before the screening begins, otherwise the computer will cancel them. Please bring your booking confirmation with you.</p>";
             messageContent += "<p>During the evenings and weekends, count on the longer wait.</p>";
-            messageContent += "<p>Cancellation: Under \"My Cinema Tickets\" in your membership section, you can print, edit or cancel your reservation at any time. Please sign up for this on our website in the membership section.You will be shown the \"My Cinema Tickets\" category in the upper black section.</p>";
-            messageContent += "<p>Information: Discounts are only possible with the appropriate membership card before printing cinema tickets(e.g.Family Movie Club Card, Cineplexx Bonus Card)";
+            messageContent += "<p>Cancellation: Under \"My Reservations\" in our mobile app, you can print, or cancel your reservation.</p>";
             messageContent += "<h4>Have a great time at our cinema!</h4>";
 
-            /*
-            using (var stream = System.IO.File.OpenRead("wwwroot/qrr/" + reservation.ReservationCode + ".jpg"))
-            {
-                var file = new FormFile(stream, 0, stream.Length, null, Path.GetFileName(stream.Name))
-                {
-                    Headers = new HeaderDictionary(),
-                    ContentType = "image/jpg"
-                };
-                attachment.Add(file);
 
-                await _emailSender.SendEmailAsync(new string[] { reservation.User.Email }, "Your Ticket for the movie " + screening.Movie.Title, messageContent, attachment);
-            }*/
-
-            //await _emailSender.SendEmailAsync(new string[] { currentUser.Email }, "Your Ticket for the movie " + screening.Movie.Title, messageContent);
-
-            // when we go live we can just use the path of the image and add it to the image tag and link it directly. That way we don't have to create FormFile and then send the message.
-
-            //var path = _webHostEnvironment.WebRootFileProvider.GetFileInfo("qrr/f9899d012392550227.jpg");
-            //var message2 = new Message(new string[] { "boris@cloudronin.com" }, "Your Ticket for the movie " + currentScreening.Movie.Title, "<img src='"+ path+"' />");
-            //await _emailSender.SendEmailAsync(message2);
-
-            return reservationDto;
+            await _emailSender.SendEmailAsync(new string[] { currentUser.Email }, "Your Ticket for the movie " + screening.Movie.Title, messageContent);
         }
 
         private async Task ValidateRequestAsync(ReservationUpsertRequest req, Screening screening, IEnumerable<int> selectedSeatIds)
