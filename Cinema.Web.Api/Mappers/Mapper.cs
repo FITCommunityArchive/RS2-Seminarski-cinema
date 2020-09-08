@@ -3,6 +3,7 @@ using Cinema.Domain.Entities;
 using Cinema.Domain.Entities.Identity;
 using Cinema.Models.Dtos;
 using Cinema.Models.Requests.Movies;
+using Cinema.Models.Requests.News;
 using Cinema.Models.Requests.Pricing;
 using Cinema.Models.Requests.Reservations;
 using Cinema.Models.Requests.Reviews;
@@ -54,6 +55,11 @@ namespace Cinema.Web.Api.Mappers
             CreateMap<Invoice, InvoiceDto>();
 
             CreateMap<Seat, SeatDto>();
+
+            CreateMap<News, NewsDto>();
+            CreateMap<News, NewsUpsertRequest>().ReverseMap();
+
+            CreateMap<NewsType, NewsTypeDto>();
         }
     }
 }

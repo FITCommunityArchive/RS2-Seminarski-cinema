@@ -4,14 +4,16 @@ using Cinema.Dal.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Cinema.Dal.Migrations
 {
     [DbContext(typeof(CinemaDbContext))]
-    partial class CinemaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200908175306_AddedContentEditorData")]
+    partial class AddedContentEditorData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -60,228 +62,6 @@ namespace Cinema.Dal.Migrations
                     b.HasIndex("TypeId");
 
                     b.ToTable("Events");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = -1,
-                            AuthorId = 2,
-                            CreatedAt = new DateTime(2020, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateAndTime = new DateTime(2020, 8, 31, 20, 0, 0, 0, DateTimeKind.Utc),
-                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                            IsDeleted = false,
-                            Title = "Event 1",
-                            TypeId = -1
-                        },
-                        new
-                        {
-                            Id = -2,
-                            AuthorId = 2,
-                            CreatedAt = new DateTime(2020, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateAndTime = new DateTime(2020, 9, 1, 20, 0, 0, 0, DateTimeKind.Utc),
-                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                            IsDeleted = false,
-                            Title = "Event 2",
-                            TypeId = -2
-                        },
-                        new
-                        {
-                            Id = -3,
-                            AuthorId = 2,
-                            CreatedAt = new DateTime(2020, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateAndTime = new DateTime(2020, 9, 2, 20, 0, 0, 0, DateTimeKind.Utc),
-                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                            IsDeleted = false,
-                            Title = "Event 3",
-                            TypeId = -1
-                        },
-                        new
-                        {
-                            Id = -4,
-                            AuthorId = 2,
-                            CreatedAt = new DateTime(2020, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateAndTime = new DateTime(2020, 9, 3, 20, 0, 0, 0, DateTimeKind.Utc),
-                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                            IsDeleted = false,
-                            Title = "Event 4",
-                            TypeId = -2
-                        },
-                        new
-                        {
-                            Id = -5,
-                            AuthorId = 2,
-                            CreatedAt = new DateTime(2020, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateAndTime = new DateTime(2020, 9, 4, 20, 0, 0, 0, DateTimeKind.Utc),
-                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                            IsDeleted = false,
-                            Title = "Event 5",
-                            TypeId = -1
-                        },
-                        new
-                        {
-                            Id = -6,
-                            AuthorId = 2,
-                            CreatedAt = new DateTime(2020, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateAndTime = new DateTime(2020, 9, 5, 20, 0, 0, 0, DateTimeKind.Utc),
-                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                            IsDeleted = false,
-                            Title = "Event 6",
-                            TypeId = -2
-                        },
-                        new
-                        {
-                            Id = -7,
-                            AuthorId = 2,
-                            CreatedAt = new DateTime(2020, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateAndTime = new DateTime(2020, 9, 6, 20, 0, 0, 0, DateTimeKind.Utc),
-                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                            IsDeleted = false,
-                            Title = "Event 7",
-                            TypeId = -1
-                        },
-                        new
-                        {
-                            Id = -8,
-                            AuthorId = 2,
-                            CreatedAt = new DateTime(2020, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateAndTime = new DateTime(2020, 9, 7, 20, 0, 0, 0, DateTimeKind.Utc),
-                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                            IsDeleted = false,
-                            Title = "Event 8",
-                            TypeId = -2
-                        },
-                        new
-                        {
-                            Id = -9,
-                            AuthorId = 2,
-                            CreatedAt = new DateTime(2020, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateAndTime = new DateTime(2020, 9, 8, 20, 0, 0, 0, DateTimeKind.Utc),
-                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                            IsDeleted = false,
-                            Title = "Event 9",
-                            TypeId = -1
-                        },
-                        new
-                        {
-                            Id = -10,
-                            AuthorId = 2,
-                            CreatedAt = new DateTime(2020, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateAndTime = new DateTime(2020, 9, 9, 20, 0, 0, 0, DateTimeKind.Utc),
-                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                            IsDeleted = false,
-                            Title = "Event 10",
-                            TypeId = -2
-                        },
-                        new
-                        {
-                            Id = -11,
-                            AuthorId = 2,
-                            CreatedAt = new DateTime(2020, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateAndTime = new DateTime(2020, 9, 10, 20, 0, 0, 0, DateTimeKind.Utc),
-                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                            IsDeleted = false,
-                            Title = "Event 11",
-                            TypeId = -1
-                        },
-                        new
-                        {
-                            Id = -12,
-                            AuthorId = 2,
-                            CreatedAt = new DateTime(2020, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateAndTime = new DateTime(2020, 9, 11, 20, 0, 0, 0, DateTimeKind.Utc),
-                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                            IsDeleted = false,
-                            Title = "Event 12",
-                            TypeId = -2
-                        },
-                        new
-                        {
-                            Id = -13,
-                            AuthorId = 2,
-                            CreatedAt = new DateTime(2020, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateAndTime = new DateTime(2020, 9, 12, 20, 0, 0, 0, DateTimeKind.Utc),
-                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                            IsDeleted = false,
-                            Title = "Event 13",
-                            TypeId = -1
-                        },
-                        new
-                        {
-                            Id = -14,
-                            AuthorId = 2,
-                            CreatedAt = new DateTime(2020, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateAndTime = new DateTime(2020, 9, 13, 20, 0, 0, 0, DateTimeKind.Utc),
-                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                            IsDeleted = false,
-                            Title = "Event 14",
-                            TypeId = -2
-                        },
-                        new
-                        {
-                            Id = -15,
-                            AuthorId = 2,
-                            CreatedAt = new DateTime(2020, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateAndTime = new DateTime(2020, 9, 14, 20, 0, 0, 0, DateTimeKind.Utc),
-                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                            IsDeleted = false,
-                            Title = "Event 15",
-                            TypeId = -1
-                        },
-                        new
-                        {
-                            Id = -16,
-                            AuthorId = 2,
-                            CreatedAt = new DateTime(2020, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateAndTime = new DateTime(2020, 9, 15, 20, 0, 0, 0, DateTimeKind.Utc),
-                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                            IsDeleted = false,
-                            Title = "Event 16",
-                            TypeId = -2
-                        },
-                        new
-                        {
-                            Id = -17,
-                            AuthorId = 2,
-                            CreatedAt = new DateTime(2020, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateAndTime = new DateTime(2020, 9, 16, 20, 0, 0, 0, DateTimeKind.Utc),
-                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                            IsDeleted = false,
-                            Title = "Event 17",
-                            TypeId = -1
-                        },
-                        new
-                        {
-                            Id = -18,
-                            AuthorId = 2,
-                            CreatedAt = new DateTime(2020, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateAndTime = new DateTime(2020, 9, 17, 20, 0, 0, 0, DateTimeKind.Utc),
-                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                            IsDeleted = false,
-                            Title = "Event 18",
-                            TypeId = -2
-                        },
-                        new
-                        {
-                            Id = -19,
-                            AuthorId = 2,
-                            CreatedAt = new DateTime(2020, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateAndTime = new DateTime(2020, 9, 18, 20, 0, 0, 0, DateTimeKind.Utc),
-                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                            IsDeleted = false,
-                            Title = "Event 19",
-                            TypeId = -1
-                        },
-                        new
-                        {
-                            Id = -20,
-                            AuthorId = 2,
-                            CreatedAt = new DateTime(2020, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateAndTime = new DateTime(2020, 9, 19, 20, 0, 0, 0, DateTimeKind.Utc),
-                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                            IsDeleted = false,
-                            Title = "Event 20",
-                            TypeId = -2
-                        });
                 });
 
             modelBuilder.Entity("Cinema.Domain.Entities.EventType", b =>
@@ -578,7 +358,7 @@ namespace Cinema.Dal.Migrations
                         new
                         {
                             Id = -1,
-                            ConcurrencyStamp = "9b93b53b-9457-4d6a-a547-b8e284b912ff",
+                            ConcurrencyStamp = "6db3b171-07b9-406b-bde1-5dc1f56e3a12",
                             IsDeleted = false,
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
@@ -586,7 +366,7 @@ namespace Cinema.Dal.Migrations
                         new
                         {
                             Id = -2,
-                            ConcurrencyStamp = "2db928c7-8630-4c99-9c7d-54219bbd9e21",
+                            ConcurrencyStamp = "0a716e0b-4a63-4157-a6c1-2b78e03be76a",
                             IsDeleted = false,
                             Name = "Content Editor",
                             NormalizedName = "CONTENT EDITOR"
@@ -594,7 +374,7 @@ namespace Cinema.Dal.Migrations
                         new
                         {
                             Id = -3,
-                            ConcurrencyStamp = "f811d394-7baa-449c-b57e-f5a31b050490",
+                            ConcurrencyStamp = "cbad9fe6-dcd1-4701-aa15-8ebf9ccffc8d",
                             IsDeleted = false,
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
@@ -704,7 +484,7 @@ namespace Cinema.Dal.Migrations
                         {
                             Id = 1,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f4b3d74f-d8bf-4825-b32b-9867f58e68ad",
+                            ConcurrencyStamp = "32e335b7-850d-478e-ba05-33bcd6031ac9",
                             Email = "admin@admin-test-cinema.com",
                             EmailConfirmed = true,
                             FirstName = "Admin",
@@ -713,7 +493,7 @@ namespace Cinema.Dal.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN-TEST-CINEMA.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEA4LemEseK+XZqxEzbpX6V8kIyqvHP13p8+JJDlTKgnXj4gHBIKQHF4cePRc074TLQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDHQ1gsv4/mUIx7F0LtmavKli+sgHoGylvXF1KutnlIAHPUNVFB9WElappJsAq1HJA==",
                             PhoneNumber = "123456789",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -723,7 +503,7 @@ namespace Cinema.Dal.Migrations
                         {
                             Id = 2,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2381d64a-9aab-476d-9e38-af7c14247985",
+                            ConcurrencyStamp = "dc305eda-8930-4299-b709-f17f0f49e01e",
                             Email = "content.editor@admin-test-cinema.com",
                             EmailConfirmed = true,
                             FirstName = "Content",
@@ -732,7 +512,7 @@ namespace Cinema.Dal.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "CONTENT.EDITOR@ADMIN-TEST-CINEMA.COM",
                             NormalizedUserName = "CONTENT.EDITOR",
-                            PasswordHash = "AQAAAAEAACcQAAAAENiARuMhm/ud7jWbOTThwtFk+xj9eLWItVBUi41cYcRE/Gg1Z1rQMFFmifp7yCYFyw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFrNu1Ojs2LT0MPIAp7xmXfNHyZcVAGFgQZPpHMaUFk0tXnR5mQf3s65qeeUnRDwVw==",
                             PhoneNumber = "123456789",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -742,7 +522,7 @@ namespace Cinema.Dal.Migrations
                         {
                             Id = 3,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b8e8a6da-ce09-4743-8dd9-28128264d484",
+                            ConcurrencyStamp = "080c03dd-7b71-49ac-9ec3-f98cf4aace63",
                             Email = "test1@test-customer.com",
                             EmailConfirmed = true,
                             FirstName = "First",
@@ -751,7 +531,7 @@ namespace Cinema.Dal.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "TEST1@TEST-CUSTOMER.COM",
                             NormalizedUserName = "TEST.CUSTOMER1",
-                            PasswordHash = "AQAAAAEAACcQAAAAENpUQ6zTd1/VayS6gj84JWtjPsV2UrZH7irpkHjF/LvH95r2IRy2BicxcLhPbbmVdQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAAZK1RBesIj8q9eVS8UoJg00U9IFg1RIGB2G/vPB9/+DWzd7/4Ic+1Ug7acZK6cZw==",
                             PhoneNumber = "123456789",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -761,7 +541,7 @@ namespace Cinema.Dal.Migrations
                         {
                             Id = 4,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "1d51a28f-1e60-4e94-ac3c-c54a81f7a13a",
+                            ConcurrencyStamp = "ab34ac0b-a6a7-46af-80c2-a6111dfc436d",
                             Email = "test2@test-customer.com",
                             EmailConfirmed = true,
                             FirstName = "Second",
@@ -770,7 +550,7 @@ namespace Cinema.Dal.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "TEST2@TEST-CUSTOMER.COM",
                             NormalizedUserName = "TEST.CUSTOMER2",
-                            PasswordHash = "AQAAAAEAACcQAAAAEFqhVE8ftNfE23sXQC4Htgzmed61UHqlbcboeojrnPcDNeVNq6ZXzc/Ropa7Sl1Q7Q==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDzeVVMbMA1YKm5WrImXEzL6cVHCTblBSi132+wFZOHhG9PJuL4zqEr3aQ+OhGixGQ==",
                             PhoneNumber = "123456789",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -4067,208 +3847,6 @@ namespace Cinema.Dal.Migrations
                     b.HasIndex("TypeId");
 
                     b.ToTable("News");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = -1,
-                            AuthorId = 2,
-                            CreatedAt = new DateTime(2020, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                            IsDeleted = false,
-                            Title = "News 1",
-                            TypeId = -1
-                        },
-                        new
-                        {
-                            Id = -2,
-                            AuthorId = 2,
-                            CreatedAt = new DateTime(2020, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                            IsDeleted = false,
-                            Title = "News 2",
-                            TypeId = -2
-                        },
-                        new
-                        {
-                            Id = -3,
-                            AuthorId = 2,
-                            CreatedAt = new DateTime(2020, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                            IsDeleted = false,
-                            Title = "News 3",
-                            TypeId = -1
-                        },
-                        new
-                        {
-                            Id = -4,
-                            AuthorId = 2,
-                            CreatedAt = new DateTime(2020, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                            IsDeleted = false,
-                            Title = "News 4",
-                            TypeId = -2
-                        },
-                        new
-                        {
-                            Id = -5,
-                            AuthorId = 2,
-                            CreatedAt = new DateTime(2020, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                            IsDeleted = false,
-                            Title = "News 5",
-                            TypeId = -1
-                        },
-                        new
-                        {
-                            Id = -6,
-                            AuthorId = 2,
-                            CreatedAt = new DateTime(2020, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                            IsDeleted = false,
-                            Title = "News 6",
-                            TypeId = -2
-                        },
-                        new
-                        {
-                            Id = -7,
-                            AuthorId = 2,
-                            CreatedAt = new DateTime(2020, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                            IsDeleted = false,
-                            Title = "News 7",
-                            TypeId = -1
-                        },
-                        new
-                        {
-                            Id = -8,
-                            AuthorId = 2,
-                            CreatedAt = new DateTime(2020, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                            IsDeleted = false,
-                            Title = "News 8",
-                            TypeId = -2
-                        },
-                        new
-                        {
-                            Id = -9,
-                            AuthorId = 2,
-                            CreatedAt = new DateTime(2020, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                            IsDeleted = false,
-                            Title = "News 9",
-                            TypeId = -1
-                        },
-                        new
-                        {
-                            Id = -10,
-                            AuthorId = 2,
-                            CreatedAt = new DateTime(2020, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                            IsDeleted = false,
-                            Title = "News 10",
-                            TypeId = -2
-                        },
-                        new
-                        {
-                            Id = -11,
-                            AuthorId = 2,
-                            CreatedAt = new DateTime(2020, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                            IsDeleted = false,
-                            Title = "News 11",
-                            TypeId = -1
-                        },
-                        new
-                        {
-                            Id = -12,
-                            AuthorId = 2,
-                            CreatedAt = new DateTime(2020, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                            IsDeleted = false,
-                            Title = "News 12",
-                            TypeId = -2
-                        },
-                        new
-                        {
-                            Id = -13,
-                            AuthorId = 2,
-                            CreatedAt = new DateTime(2020, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                            IsDeleted = false,
-                            Title = "News 13",
-                            TypeId = -1
-                        },
-                        new
-                        {
-                            Id = -14,
-                            AuthorId = 2,
-                            CreatedAt = new DateTime(2020, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                            IsDeleted = false,
-                            Title = "News 14",
-                            TypeId = -2
-                        },
-                        new
-                        {
-                            Id = -15,
-                            AuthorId = 2,
-                            CreatedAt = new DateTime(2020, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                            IsDeleted = false,
-                            Title = "News 15",
-                            TypeId = -1
-                        },
-                        new
-                        {
-                            Id = -16,
-                            AuthorId = 2,
-                            CreatedAt = new DateTime(2020, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                            IsDeleted = false,
-                            Title = "News 16",
-                            TypeId = -2
-                        },
-                        new
-                        {
-                            Id = -17,
-                            AuthorId = 2,
-                            CreatedAt = new DateTime(2020, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                            IsDeleted = false,
-                            Title = "News 17",
-                            TypeId = -1
-                        },
-                        new
-                        {
-                            Id = -18,
-                            AuthorId = 2,
-                            CreatedAt = new DateTime(2020, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                            IsDeleted = false,
-                            Title = "News 18",
-                            TypeId = -2
-                        },
-                        new
-                        {
-                            Id = -19,
-                            AuthorId = 2,
-                            CreatedAt = new DateTime(2020, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                            IsDeleted = false,
-                            Title = "News 19",
-                            TypeId = -1
-                        },
-                        new
-                        {
-                            Id = -20,
-                            AuthorId = 2,
-                            CreatedAt = new DateTime(2020, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                            IsDeleted = false,
-                            Title = "News 20",
-                            TypeId = -2
-                        });
                 });
 
             modelBuilder.Entity("Cinema.Domain.Entities.NewsType", b =>
@@ -8053,7 +7631,7 @@ namespace Cinema.Dal.Migrations
                         new
                         {
                             Id = -1,
-                            CreatedAt = new DateTime(2020, 9, 8, 18, 6, 37, 308, DateTimeKind.Utc).AddTicks(6733),
+                            CreatedAt = new DateTime(2020, 9, 8, 17, 53, 3, 903, DateTimeKind.Utc).AddTicks(197),
                             IsDeleted = false,
                             MovieId = -4,
                             Rating = 2,
@@ -8063,7 +7641,7 @@ namespace Cinema.Dal.Migrations
                         new
                         {
                             Id = -2,
-                            CreatedAt = new DateTime(2020, 9, 8, 18, 6, 37, 309, DateTimeKind.Utc).AddTicks(152),
+                            CreatedAt = new DateTime(2020, 9, 8, 17, 53, 3, 903, DateTimeKind.Utc).AddTicks(3776),
                             IsDeleted = false,
                             MovieId = -4,
                             Rating = 4,
@@ -8073,7 +7651,7 @@ namespace Cinema.Dal.Migrations
                         new
                         {
                             Id = -3,
-                            CreatedAt = new DateTime(2020, 9, 8, 18, 6, 37, 309, DateTimeKind.Utc).AddTicks(308),
+                            CreatedAt = new DateTime(2020, 9, 8, 17, 53, 3, 903, DateTimeKind.Utc).AddTicks(3881),
                             IsDeleted = false,
                             MovieId = -4,
                             Rating = 5,

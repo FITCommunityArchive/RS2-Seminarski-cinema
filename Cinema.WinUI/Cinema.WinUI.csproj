@@ -199,6 +199,12 @@
     <Compile Include="Movies\FormMovieSynopsis.Designer.cs">
       <DependentUpon>FormMovieSynopsis.cs</DependentUpon>
     </Compile>
+    <Compile Include="News\FormNewsList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="News\FormNewsList.Designer.cs">
+      <DependentUpon>FormNewsList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pricing\FormPricings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -400,6 +406,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Movies\FormMovieSynopsis.resx">
       <DependentUpon>FormMovieSynopsis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="News\FormNewsList.resx">
+      <DependentUpon>FormNewsList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pricing\FormPricings.resx">
       <DependentUpon>FormPricings.cs</DependentUpon>

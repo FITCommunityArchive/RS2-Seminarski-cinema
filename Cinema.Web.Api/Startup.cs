@@ -6,6 +6,7 @@ using Cinema.Domain.Entities.Identity;
 using Cinema.EmailService;
 using Cinema.Models.Dtos;
 using Cinema.Models.Requests;
+using Cinema.Models.Requests.News;
 using Cinema.Models.Requests.Pricing;
 using Cinema.Models.Requests.Reviews;
 using Cinema.Models.Requests.Screenings;
@@ -116,13 +117,14 @@ namespace Cinema.Web.API
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ICinemaDbContext, CinemaDbContext>();
 
-            services.AddScoped<ICRUDService<ApplicationUserDto, UserSearchRequest, UserInsertRequest, UserUpdateRequest>, UserService>();
+            services.AddScoped<IService<NewsTypeDto, BaseSearchRequest>, BaseService<NewsTypeDto, BaseSearchRequest, NewsType>>();
             services.AddScoped<IService<ApplicationRoleDto, BaseSearchRequest>, BaseService<ApplicationRoleDto, BaseSearchRequest, ApplicationRole>>();
-            services.AddScoped<ICRUDService<ScreeningDto, ScreeningSearchRequest, ScreeningUpsertRequest, ScreeningUpsertRequest>, ScreeningService>();
             services.AddScoped<IService<GenreDto, BaseSearchRequest>, BaseService<GenreDto, BaseSearchRequest, Genre>>();
             services.AddScoped<IService<HallDto, BaseSearchRequest>, BaseService<HallDto, BaseSearchRequest, Hall>>();
             services.AddScoped<ICRUDService<PricingDto, PricingSearchRequest, PricingUpsertRequest, PricingUpsertRequest>, PricingService>();
-            
+            services.AddScoped<ICRUDService<ApplicationUserDto, UserSearchRequest, UserInsertRequest, UserUpdateRequest>, UserService>();
+            services.AddScoped<ICRUDService<ScreeningDto, ScreeningSearchRequest, ScreeningUpsertRequest, ScreeningUpsertRequest>, ScreeningService>();
+
 
             services.AddScoped<IMovieService, MovieService>();
             services.AddScoped<IScreeningService, ScreeningService>();
@@ -132,6 +134,7 @@ namespace Cinema.Web.API
             services.AddScoped<IQRCodeService, QRCodeService>();
             services.AddScoped<IEmailSender, EmailSender>();
             services.AddScoped<IReviewService, ReviewService>();
+            services.AddScoped<INewsService, NewsService>();
 
             services.AddScoped<IMovieRepository, MovieRepository>();
             services.AddScoped<IReviewRepository, ReviewRepository>();

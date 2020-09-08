@@ -11,6 +11,8 @@
     <Compile Remove="Migrations\20200827210447_ChangeDeleteBehaviourToCascade.Designer.cs" />
     <Compile Remove="Migrations\20200828073750_ChangeIDentityEntityDeletedToIsDeleted.cs" />
     <Compile Remove="Migrations\20200828073750_ChangeIDentityEntityDeletedToIsDeleted.Designer.cs" />
+    <Compile Remove="Migrations\20200908172958_ChangedPostImageType.cs" />
+    <Compile Remove="Migrations\20200908172958_ChangedPostImageType.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

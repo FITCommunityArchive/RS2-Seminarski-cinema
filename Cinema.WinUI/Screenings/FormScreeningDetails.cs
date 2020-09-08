@@ -10,7 +10,7 @@ using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Cinema.WinUI.Movies
+namespace Cinema.WinUI.Screenings
 {
     public partial class FormScreeningDetails : Form
     {

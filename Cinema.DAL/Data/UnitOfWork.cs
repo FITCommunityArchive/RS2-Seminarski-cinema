@@ -18,6 +18,7 @@ namespace Cinema.Dal.Data
         public IRepository<ApplicationRole, int> Roles => Repository<ApplicationRole, int>();
         public IMovieRepository Movies => Repository<Movie, int>() as IMovieRepository;
         public IScreeningRepository Screenings => Repository<Screening, int>() as IScreeningRepository;
+        public INewsRepository News => Repository<News, int>() as INewsRepository;
         public IReservationRepository Reservations => Repository<Reservation, int>() as IReservationRepository;
         public IInvoiceRepository Invoices => Repository<Invoice, int>() as IInvoiceRepository;
         public IReviewRepository Reviews => Repository<Review, int>() as IReviewRepository;
@@ -81,6 +82,8 @@ namespace Cinema.Dal.Data
                     return (IRepository<Entity, Key>)new SeatReservationRepository(_context);
                 case nameof(Review):
                     return (IRepository<Entity, Key>)new ReviewRepository(_context);
+                case nameof(News):
+                    return (IRepository<Entity, Key>)new NewsRepository(_context);
                 default:
                     {
                         var repositoryType = typeof(Repository<,>);

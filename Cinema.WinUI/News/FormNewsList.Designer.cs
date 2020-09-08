@@ -1,6 +1,6 @@
-﻿namespace Cinema.WinUI.Screenings
+﻿namespace Cinema.WinUI.News
 {
-    partial class FormScreeningList
+    partial class FormNewsList
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,12 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.grdScreeningsList = new System.Windows.Forms.DataGridView();
+            this.grdList = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Hall = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DateAndTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Author = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DetailsAction = new System.Windows.Forms.DataGridViewButtonColumn();
             this.lblSearch = new System.Windows.Forms.Label();
             this.pnlFormTitle = new System.Windows.Forms.Panel();
@@ -44,37 +43,33 @@
             this.lblBreadcrumbs = new System.Windows.Forms.Label();
             this.txtFormTitle = new System.Windows.Forms.TextBox();
             this.pnlSearchBars = new System.Windows.Forms.Panel();
-            this.dtpScreeningDate = new System.Windows.Forms.DateTimePicker();
-            this.lblHall = new System.Windows.Forms.Label();
-            this.txtHall = new Cinema.WinUI.UserControls.ExtendedTextBox();
-            this.lblStatus = new System.Windows.Forms.Label();
-            this.cmbStatus = new System.Windows.Forms.ComboBox();
-            this.lblDate = new System.Windows.Forms.Label();
-            this.lblPrice = new System.Windows.Forms.Label();
-            this.txtPrice = new Cinema.WinUI.UserControls.ExtendedTextBox();
+            this.lblAuthor = new System.Windows.Forms.Label();
+            this.txtAuthor = new Cinema.WinUI.UserControls.ExtendedTextBox();
+            this.lblType = new System.Windows.Forms.Label();
+            this.cmbType = new System.Windows.Forms.ComboBox();
             this.txtSearchBar = new Cinema.WinUI.UserControls.ExtendedTextBox();
             this.pnlDataGrid = new System.Windows.Forms.Panel();
             this.pnlContent = new System.Windows.Forms.Panel();
             this.btnAddNew = new Cinema.WinUI.UserControls.Buttons.AddNewButton();
             this.pagination = new Cinema.WinUI.UserControls.Pagination();
-            ((System.ComponentModel.ISupportInitialize)(this.grdScreeningsList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdList)).BeginInit();
             this.pnlFormTitle.SuspendLayout();
             this.pnlSearchBars.SuspendLayout();
             this.pnlDataGrid.SuspendLayout();
             this.pnlContent.SuspendLayout();
             this.SuspendLayout();
             // 
-            // grdScreeningsList
+            // grdList
             // 
-            this.grdScreeningsList.AllowUserToAddRows = false;
-            this.grdScreeningsList.AllowUserToDeleteRows = false;
-            this.grdScreeningsList.AllowUserToResizeColumns = false;
-            this.grdScreeningsList.AllowUserToResizeRows = false;
-            this.grdScreeningsList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.grdScreeningsList.BackgroundColor = System.Drawing.Color.White;
-            this.grdScreeningsList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.grdScreeningsList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
-            this.grdScreeningsList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.grdList.AllowUserToAddRows = false;
+            this.grdList.AllowUserToDeleteRows = false;
+            this.grdList.AllowUserToResizeColumns = false;
+            this.grdList.AllowUserToResizeRows = false;
+            this.grdList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.grdList.BackgroundColor = System.Drawing.Color.White;
+            this.grdList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.grdList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
+            this.grdList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -82,29 +77,28 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grdScreeningsList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.grdScreeningsList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdScreeningsList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.grdList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.grdList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
             this.Title,
-            this.Hall,
-            this.DateAndTime,
-            this.Price,
-            this.Status,
+            this.Description,
+            this.Author,
+            this.Type,
             this.DetailsAction});
-            this.grdScreeningsList.GridColor = System.Drawing.Color.White;
-            this.grdScreeningsList.Location = new System.Drawing.Point(20, 30);
-            this.grdScreeningsList.Margin = new System.Windows.Forms.Padding(5, 15, 5, 5);
-            this.grdScreeningsList.Name = "grdScreeningsList";
-            this.grdScreeningsList.ReadOnly = true;
-            this.grdScreeningsList.RowHeadersVisible = false;
-            this.grdScreeningsList.RowHeadersWidth = 51;
-            this.grdScreeningsList.RowTemplate.Height = 24;
-            this.grdScreeningsList.Size = new System.Drawing.Size(1345, 470);
-            this.grdScreeningsList.TabIndex = 0;
-            this.grdScreeningsList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdScreeningsList_CellContentClick);
-            this.grdScreeningsList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grdScreeningsList_CellFormatting);
-            this.grdScreeningsList.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.grdScreeningsList_ColumnHeaderMouseClick);
+            this.grdList.GridColor = System.Drawing.Color.White;
+            this.grdList.Location = new System.Drawing.Point(20, 30);
+            this.grdList.Margin = new System.Windows.Forms.Padding(5, 15, 5, 5);
+            this.grdList.Name = "grdList";
+            this.grdList.ReadOnly = true;
+            this.grdList.RowHeadersVisible = false;
+            this.grdList.RowHeadersWidth = 51;
+            this.grdList.RowTemplate.Height = 24;
+            this.grdList.Size = new System.Drawing.Size(1345, 470);
+            this.grdList.TabIndex = 0;
+            this.grdList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdList_CellContentClick);
+            this.grdList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grdList_CellFormatting);
+            this.grdList.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.grdList_ColumnHeaderMouseClick);
             // 
             // Id
             // 
@@ -117,7 +111,7 @@
             // 
             // Title
             // 
-            this.Title.DataPropertyName = "Movie.Title";
+            this.Title.DataPropertyName = "Title";
             this.Title.FillWeight = 175F;
             this.Title.HeaderText = "Title";
             this.Title.MinimumWidth = 50;
@@ -125,43 +119,33 @@
             this.Title.ReadOnly = true;
             this.Title.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // Hall
+            // Description
             // 
-            this.Hall.DataPropertyName = "Hall.Name";
-            this.Hall.FillWeight = 70F;
-            this.Hall.HeaderText = "Hall";
-            this.Hall.MinimumWidth = 6;
-            this.Hall.Name = "Hall";
-            this.Hall.ReadOnly = true;
-            this.Hall.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Description.DataPropertyName = "Description";
+            this.Description.FillWeight = 70F;
+            this.Description.HeaderText = "Description";
+            this.Description.MinimumWidth = 6;
+            this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
+            this.Description.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // DateAndTime
+            // Author
             // 
-            this.DateAndTime.DataPropertyName = "DateAndTime";
-            this.DateAndTime.FillWeight = 70F;
-            this.DateAndTime.HeaderText = "Date and Time";
-            this.DateAndTime.MinimumWidth = 6;
-            this.DateAndTime.Name = "DateAndTime";
-            this.DateAndTime.ReadOnly = true;
+            this.Author.DataPropertyName = "Author.FullName";
+            this.Author.FillWeight = 70F;
+            this.Author.HeaderText = "Author";
+            this.Author.MinimumWidth = 6;
+            this.Author.Name = "Author";
+            this.Author.ReadOnly = true;
             // 
-            // Price
+            // Type
             // 
-            this.Price.DataPropertyName = "Pricing.Price";
-            this.Price.FillWeight = 70F;
-            this.Price.HeaderText = "Price";
-            this.Price.MinimumWidth = 6;
-            this.Price.Name = "Price";
-            this.Price.ReadOnly = true;
-            this.Price.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Status
-            // 
-            this.Status.DataPropertyName = "TimingStatus";
-            this.Status.FillWeight = 70F;
-            this.Status.HeaderText = "Status";
-            this.Status.MinimumWidth = 6;
-            this.Status.Name = "Status";
-            this.Status.ReadOnly = true;
+            this.Type.DataPropertyName = "Type.Name";
+            this.Type.FillWeight = 70F;
+            this.Type.HeaderText = "Type";
+            this.Type.MinimumWidth = 6;
+            this.Type.Name = "Type";
+            this.Type.ReadOnly = true;
             // 
             // DetailsAction
             // 
@@ -189,9 +173,9 @@
             this.lblSearch.Location = new System.Drawing.Point(17, 15);
             this.lblSearch.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
             this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(89, 18);
+            this.lblSearch.Size = new System.Drawing.Size(77, 18);
             this.lblSearch.TabIndex = 2;
-            this.lblSearch.Text = "Movie name";
+            this.lblSearch.Text = "News Title";
             // 
             // pnlFormTitle
             // 
@@ -214,9 +198,9 @@
             this.lblBreadCrumbsCurrent.Location = new System.Drawing.Point(99, 59);
             this.lblBreadCrumbsCurrent.Margin = new System.Windows.Forms.Padding(0);
             this.lblBreadCrumbsCurrent.Name = "lblBreadCrumbsCurrent";
-            this.lblBreadCrumbsCurrent.Size = new System.Drawing.Size(93, 17);
+            this.lblBreadCrumbsCurrent.Size = new System.Drawing.Size(50, 17);
             this.lblBreadCrumbsCurrent.TabIndex = 5;
-            this.lblBreadCrumbsCurrent.Text = "Screenings";
+            this.lblBreadCrumbsCurrent.Text = "News";
             // 
             // lblBreadcrumbs
             // 
@@ -240,19 +224,15 @@
             this.txtFormTitle.Name = "txtFormTitle";
             this.txtFormTitle.Size = new System.Drawing.Size(161, 33);
             this.txtFormTitle.TabIndex = 0;
-            this.txtFormTitle.Text = "Screenings";
+            this.txtFormTitle.Text = "News";
             // 
             // pnlSearchBars
             // 
             this.pnlSearchBars.BackColor = System.Drawing.Color.White;
-            this.pnlSearchBars.Controls.Add(this.dtpScreeningDate);
-            this.pnlSearchBars.Controls.Add(this.lblHall);
-            this.pnlSearchBars.Controls.Add(this.txtHall);
-            this.pnlSearchBars.Controls.Add(this.lblStatus);
-            this.pnlSearchBars.Controls.Add(this.cmbStatus);
-            this.pnlSearchBars.Controls.Add(this.lblDate);
-            this.pnlSearchBars.Controls.Add(this.lblPrice);
-            this.pnlSearchBars.Controls.Add(this.txtPrice);
+            this.pnlSearchBars.Controls.Add(this.lblAuthor);
+            this.pnlSearchBars.Controls.Add(this.txtAuthor);
+            this.pnlSearchBars.Controls.Add(this.lblType);
+            this.pnlSearchBars.Controls.Add(this.cmbType);
             this.pnlSearchBars.Controls.Add(this.lblSearch);
             this.pnlSearchBars.Controls.Add(this.txtSearchBar);
             this.pnlSearchBars.Location = new System.Drawing.Point(29, 113);
@@ -262,104 +242,54 @@
             this.pnlSearchBars.Size = new System.Drawing.Size(1383, 89);
             this.pnlSearchBars.TabIndex = 9;
             // 
-            // dtpScreeningDate
+            // lblAuthor
             // 
-            this.dtpScreeningDate.CalendarForeColor = System.Drawing.Color.Gray;
-            this.dtpScreeningDate.CalendarTitleForeColor = System.Drawing.Color.Gray;
-            this.dtpScreeningDate.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpScreeningDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpScreeningDate.Location = new System.Drawing.Point(698, 37);
-            this.dtpScreeningDate.Name = "dtpScreeningDate";
-            this.dtpScreeningDate.Size = new System.Drawing.Size(214, 26);
-            this.dtpScreeningDate.TabIndex = 11;
-            this.dtpScreeningDate.ValueChanged += new System.EventHandler(this.dtpScreeningDate_ValueChanged);
-            this.dtpScreeningDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtpScreeningDate_KeyDown);
+            this.lblAuthor.AutoSize = true;
+            this.lblAuthor.BackColor = System.Drawing.Color.White;
+            this.lblAuthor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAuthor.ForeColor = System.Drawing.Color.Gray;
+            this.lblAuthor.Location = new System.Drawing.Point(473, 15);
+            this.lblAuthor.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
+            this.lblAuthor.Name = "lblAuthor";
+            this.lblAuthor.Size = new System.Drawing.Size(51, 18);
+            this.lblAuthor.TabIndex = 10;
+            this.lblAuthor.Text = "Author";
             // 
-            // lblHall
+            // txtAuthor
             // 
-            this.lblHall.AutoSize = true;
-            this.lblHall.BackColor = System.Drawing.Color.White;
-            this.lblHall.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHall.ForeColor = System.Drawing.Color.Gray;
-            this.lblHall.Location = new System.Drawing.Point(473, 15);
-            this.lblHall.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
-            this.lblHall.Name = "lblHall";
-            this.lblHall.Size = new System.Drawing.Size(33, 18);
-            this.lblHall.TabIndex = 10;
-            this.lblHall.Text = "Hall";
+            this.txtAuthor.BorderColor = System.Drawing.Color.DarkGray;
+            this.txtAuthor.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAuthor.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtAuthor.Location = new System.Drawing.Point(476, 37);
+            this.txtAuthor.Margin = new System.Windows.Forms.Padding(25);
+            this.txtAuthor.Name = "txtAuthor";
+            this.txtAuthor.Size = new System.Drawing.Size(182, 26);
+            this.txtAuthor.TabIndex = 9;
+            this.txtAuthor.TextChanged += new System.EventHandler(this.SearchChanged);
             // 
-            // txtHall
+            // lblType
             // 
-            this.txtHall.BorderColor = System.Drawing.Color.DarkGray;
-            this.txtHall.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHall.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtHall.Location = new System.Drawing.Point(476, 37);
-            this.txtHall.Margin = new System.Windows.Forms.Padding(25);
-            this.txtHall.Name = "txtHall";
-            this.txtHall.Size = new System.Drawing.Size(182, 26);
-            this.txtHall.TabIndex = 9;
-            this.txtHall.TextChanged += new System.EventHandler(this.SearchChanged);
+            this.lblType.AutoSize = true;
+            this.lblType.BackColor = System.Drawing.Color.White;
+            this.lblType.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblType.ForeColor = System.Drawing.Color.Gray;
+            this.lblType.Location = new System.Drawing.Point(683, 15);
+            this.lblType.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
+            this.lblType.Name = "lblType";
+            this.lblType.Size = new System.Drawing.Size(40, 18);
+            this.lblType.TabIndex = 8;
+            this.lblType.Text = "Type";
             // 
-            // lblStatus
+            // cmbType
             // 
-            this.lblStatus.AutoSize = true;
-            this.lblStatus.BackColor = System.Drawing.Color.White;
-            this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatus.ForeColor = System.Drawing.Color.Gray;
-            this.lblStatus.Location = new System.Drawing.Point(1171, 15);
-            this.lblStatus.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(50, 18);
-            this.lblStatus.TabIndex = 8;
-            this.lblStatus.Text = "Status";
-            // 
-            // cmbStatus
-            // 
-            this.cmbStatus.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbStatus.ForeColor = System.Drawing.Color.Gray;
-            this.cmbStatus.FormattingEnabled = true;
-            this.cmbStatus.Location = new System.Drawing.Point(1174, 37);
-            this.cmbStatus.Name = "cmbStatus";
-            this.cmbStatus.Size = new System.Drawing.Size(188, 26);
-            this.cmbStatus.TabIndex = 7;
-            // 
-            // lblDate
-            // 
-            this.lblDate.AutoSize = true;
-            this.lblDate.BackColor = System.Drawing.Color.White;
-            this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDate.ForeColor = System.Drawing.Color.Gray;
-            this.lblDate.Location = new System.Drawing.Point(695, 15);
-            this.lblDate.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
-            this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(39, 18);
-            this.lblDate.TabIndex = 6;
-            this.lblDate.Text = "Date";
-            // 
-            // lblPrice
-            // 
-            this.lblPrice.AutoSize = true;
-            this.lblPrice.BackColor = System.Drawing.Color.White;
-            this.lblPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrice.ForeColor = System.Drawing.Color.Gray;
-            this.lblPrice.Location = new System.Drawing.Point(948, 15);
-            this.lblPrice.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
-            this.lblPrice.Name = "lblPrice";
-            this.lblPrice.Size = new System.Drawing.Size(42, 18);
-            this.lblPrice.TabIndex = 4;
-            this.lblPrice.Text = "Price";
-            // 
-            // txtPrice
-            // 
-            this.txtPrice.BorderColor = System.Drawing.Color.DarkGray;
-            this.txtPrice.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPrice.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtPrice.Location = new System.Drawing.Point(952, 37);
-            this.txtPrice.Margin = new System.Windows.Forms.Padding(25);
-            this.txtPrice.Name = "txtPrice";
-            this.txtPrice.Size = new System.Drawing.Size(182, 26);
-            this.txtPrice.TabIndex = 3;
-            this.txtPrice.TextChanged += new System.EventHandler(this.SearchChanged);
+            this.cmbType.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbType.ForeColor = System.Drawing.Color.Gray;
+            this.cmbType.FormattingEnabled = true;
+            this.cmbType.Location = new System.Drawing.Point(686, 37);
+            this.cmbType.Name = "cmbType";
+            this.cmbType.Size = new System.Drawing.Size(188, 26);
+            this.cmbType.TabIndex = 7;
+            this.cmbType.Click += new System.EventHandler(this.cmbType_Click);
             // 
             // txtSearchBar
             // 
@@ -376,7 +306,7 @@
             // pnlDataGrid
             // 
             this.pnlDataGrid.BackColor = System.Drawing.Color.White;
-            this.pnlDataGrid.Controls.Add(this.grdScreeningsList);
+            this.pnlDataGrid.Controls.Add(this.grdList);
             this.pnlDataGrid.Location = new System.Drawing.Point(29, 217);
             this.pnlDataGrid.Margin = new System.Windows.Forms.Padding(20);
             this.pnlDataGrid.Name = "pnlDataGrid";
@@ -422,7 +352,7 @@
             this.pagination.TotalPages = 0;
             this.pagination.PageChanged += new System.EventHandler(this.pagination_PageChanged);
             // 
-            // FormScreeningList
+            // FormNewsList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -433,10 +363,10 @@
             this.Controls.Add(this.pnlContent);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "FormScreeningList";
+            this.Name = "FormNewsList";
             this.Text = "frmMoviesList";
-            this.Load += new System.EventHandler(this.FormScreeningList_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.grdScreeningsList)).EndInit();
+            this.Load += new System.EventHandler(this.FormNewsList_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.grdList)).EndInit();
             this.pnlFormTitle.ResumeLayout(false);
             this.pnlFormTitle.PerformLayout();
             this.pnlSearchBars.ResumeLayout(false);
@@ -450,7 +380,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView grdScreeningsList;
+        private System.Windows.Forms.DataGridView grdList;
         private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.Panel pnlFormTitle;
         private System.Windows.Forms.TextBox txtFormTitle;
@@ -461,21 +391,16 @@
         private UserControls.Buttons.AddNewButton btnAddNew;
         private System.Windows.Forms.Label lblBreadCrumbsCurrent;
         private System.Windows.Forms.Label lblBreadcrumbs;
-        private System.Windows.Forms.Label lblDate;
-        private System.Windows.Forms.Label lblPrice;
-        private System.Windows.Forms.Label lblStatus;
-        private System.Windows.Forms.ComboBox cmbStatus;
-        private UserControls.ExtendedTextBox txtPrice;
+        private System.Windows.Forms.Label lblType;
+        private System.Windows.Forms.ComboBox cmbType;
         private UserControls.ExtendedTextBox txtSearchBar;
-        private System.Windows.Forms.Label lblHall;
-        private UserControls.ExtendedTextBox txtHall;
-        private System.Windows.Forms.DateTimePicker dtpScreeningDate;
+        private System.Windows.Forms.Label lblAuthor;
+        private UserControls.ExtendedTextBox txtAuthor;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Title;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Hall;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DateAndTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Author;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Type;
         private System.Windows.Forms.DataGridViewButtonColumn DetailsAction;
     }
 }

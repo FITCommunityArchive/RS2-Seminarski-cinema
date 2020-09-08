@@ -26,8 +26,9 @@ namespace Cinema.Dal.Data
         public static void Seed(ModelBuilder modelBuilder)
         {
             int adminId = 1;
-            int firstUserId = 2;
-            int secondUserId = 3;
+            int contentEditorId = 2;
+            int firstUserId = 3;
+            int secondUserId = 4;
 
             int numberOfTickets = 150;
 
@@ -39,7 +40,9 @@ namespace Cinema.Dal.Data
             SeedMovies(modelBuilder);
             SeedGenreMovies(modelBuilder);
             SeedRoles(modelBuilder);
-            SeedUsers(modelBuilder, adminId);
+            SeedUsers(modelBuilder, adminId, contentEditorId);
+            SeedNews(modelBuilder, contentEditorId);
+            SeedEvents(modelBuilder, contentEditorId);
             SeedCustomers(modelBuilder, firstUserId, secondUserId);
             SeedScreenings(modelBuilder);
             SeedReservations(modelBuilder, numberOfTickets, firstUserId, secondUserId);
@@ -47,6 +50,78 @@ namespace Cinema.Dal.Data
             SeedSeatReservations(modelBuilder, numberOfTickets);
             SeedReviews(modelBuilder);
         }
+
+        private static void SeedEvents(ModelBuilder modelBuilder, int contentEditorId)
+        {
+            int id = 0;
+
+            DateTime dateTime = DateTime.UtcNow.Date.AddHours(20).AddDays(-8);
+
+            for (int j = 0; j < 10; j++)
+            {
+                Event eventFirstType = new Event
+                {
+                    Id = --id,
+                    Title = $"Event {Math.Abs(id)}",
+                    AuthorId = contentEditorId,
+                    Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                    CreatedAt = new DateTime(2020, 9, 9),
+                    TypeId = -1,
+                    DateAndTime = dateTime,
+                    IsDeleted = false
+                };
+
+                dateTime = dateTime.AddDays(1);
+
+                Event eventSecondType = new Event
+                {
+                    Id = --id,
+                    Title = $"Event {Math.Abs(id)}",
+                    AuthorId = contentEditorId,
+                    Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                    CreatedAt = new DateTime(2020, 9, 9),
+                    TypeId = -2,
+                    DateAndTime = dateTime,
+                    IsDeleted = false
+                };
+
+                dateTime = dateTime.AddDays(1);
+
+                modelBuilder.Entity<Event>().HasData(eventFirstType, eventSecondType);
+            }
+        }
+
+        private static void SeedNews(ModelBuilder modelBuilder, int contentEditorId)
+        {
+            int id = 0;
+
+            for (int j = 0; j < 10; j++)
+            {
+                News newsFirstType = new News
+                {
+                    Id = --id,
+                    Title = $"News {Math.Abs(id)}",
+                    AuthorId = contentEditorId,
+                    Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                    CreatedAt = new DateTime(2020, 9, 9),
+                    TypeId = -1,
+                    IsDeleted = false
+                };
+
+                News newsSecondType = new News
+                {
+                    Id = --id,
+                    Title = $"News {Math.Abs(id)}",
+                    AuthorId = contentEditorId,
+                    Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                    CreatedAt = new DateTime(2020, 9, 9),
+                    TypeId = -2,
+                    IsDeleted = false
+                };
+
+                modelBuilder.Entity<News>().HasData(newsFirstType, newsSecondType);
+            }
+        }        
 
         private static void SeedInvoices(ModelBuilder modelBuilder, int numberOfTickets)
         {
@@ -747,9 +822,9 @@ namespace Cinema.Dal.Data
             );
         }
 
-        private static void SeedUsers(ModelBuilder modelBuilder, int adminId)
+        private static void SeedUsers(ModelBuilder modelBuilder, int adminId, int contentEditorId)
         {
-            ApplicationUser appUser = new ApplicationUser
+            ApplicationUser admin = new ApplicationUser
             {
                 Id = adminId,
                 UserName = "sa",
@@ -765,16 +840,39 @@ namespace Cinema.Dal.Data
             };
 
             PasswordHasher<ApplicationUser> ph = new PasswordHasher<ApplicationUser>();
-            appUser.PasswordHash = ph.HashPassword(appUser, "t");
+            admin.PasswordHash = ph.HashPassword(admin, "t");
+
+            ApplicationUser contentEditor = new ApplicationUser
+            {
+                Id = contentEditorId,
+                UserName = "content.editor",
+                Email = "content.editor@admin-test-cinema.com",
+                NormalizedEmail = "content.editor@admin-test-cinema.com".ToUpper(),
+                NormalizedUserName = "content.editor".ToUpper(),
+                FirstName = "Content",
+                LastName = "Editor",
+                TwoFactorEnabled = false,
+                EmailConfirmed = true,
+                PhoneNumber = "123456789",
+                PhoneNumberConfirmed = false
+            };
+
+            contentEditor.PasswordHash = ph.HashPassword(contentEditor, "t");
 
             modelBuilder.Entity<ApplicationUser>().HasData(
-                appUser
+                admin, contentEditor
             );
 
-            modelBuilder.Entity<ApplicationUserRole>().HasData(new ApplicationUserRole
+            modelBuilder.Entity<ApplicationUserRole>().HasData(
+            new ApplicationUserRole
             {
                 UserId = adminId,
                 RoleId = -1
+            },
+            new ApplicationUserRole
+            {
+                UserId = contentEditorId,
+                RoleId = -2
             });
         }
 
