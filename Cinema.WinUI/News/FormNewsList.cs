@@ -4,6 +4,7 @@ using Cinema.Models.Requests.News;
 using Cinema.Shared.Constants;
 using Cinema.Shared.Pagination;
 using Cinema.WinUI.Helpers;
+using Cinema.WinUI.Screenings;
 using Cinema.WinUI.Services;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace Cinema.WinUI.News
         private readonly ApiService _newsTypesApi = new ApiService("NewsTypes");
         private IPagedList<NewsTypeDto> _newsTypes = null;
         private IList<string> _nextFormPrincipal;
-        //private FormScreeningDetails _formScreeningDetails = null;
+        private FormNewsDetails _formNewsDetails = null;
 
         public FormNewsList(IList<string> userPrincipal) : base(new string[] { Roles.Administrator, Roles.ContentEditor }, userPrincipal)
         {
@@ -65,9 +66,9 @@ namespace Cinema.WinUI.News
 
         private void InitializeDetailsForm(int? id)
         {
-            /*            _formScreeningDetails = new FormScreeningDetails(id);
-                        _formScreeningDetails.FormClosed += new System.Windows.Forms.FormClosedEventHandler(FormDetails_Closed);
-                        _formScreeningDetails.ShowDialog();*/
+            _formNewsDetails = new FormNewsDetails(id);
+            _formNewsDetails.FormClosed += new System.Windows.Forms.FormClosedEventHandler(FormDetails_Closed);
+            _formNewsDetails.ShowDialog();
         }
 
         #region Event methods

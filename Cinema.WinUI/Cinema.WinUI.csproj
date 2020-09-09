@@ -205,6 +205,12 @@
     <Compile Include="News\FormNewsList.Designer.cs">
       <DependentUpon>FormNewsList.cs</DependentUpon>
     </Compile>
+    <Compile Include="News\FormNewsDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="News\FormNewsDetails.Designer.cs">
+      <DependentUpon>FormNewsDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pricing\FormPricings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -410,6 +416,9 @@
     <EmbeddedResource Include="News\FormNewsList.resx">
       <DependentUpon>FormNewsList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="News\FormNewsDetails.resx">
+      <DependentUpon>FormNewsDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pricing\FormPricings.resx">
       <DependentUpon>FormPricings.cs</DependentUpon>
     </EmbeddedResource>
@@ -537,6 +546,7 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\imagenotavailable.png" />
     <Content Include="Assets\logo-large.png" />
     <Content Include="Assets\logo-small.png" />
     <Content Include="Resources\Spinner.gif" />

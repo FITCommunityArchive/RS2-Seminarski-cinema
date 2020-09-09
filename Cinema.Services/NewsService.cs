@@ -21,9 +21,10 @@ namespace Cinema.Services
             _mapper = mapper;
         }
 
-        public Task<NewsDto> GetByIdAsync(int id, ICollection<string> includes = null)
+        public async Task<NewsDto> GetByIdAsync(int id, ICollection<string> includes = null)
         {
-            throw new System.NotImplementedException();
+            var entity = await _newsRepo.GetAsync(id, includes);
+            return _mapper.Map<NewsDto>(entity);
         }
 
         public async Task<IPagedList<NewsDto>> GetPagedAsync(NewsSearchRequest search)

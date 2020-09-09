@@ -60,6 +60,11 @@ namespace Cinema.Dal.Repository
             return query;
         }
 
+        protected override Expression<Func<News, bool>> GetByIdExpression(int id)
+        {
+            return x => x.Id == id;
+        }
+
         protected override IQueryable<News> ApplySorting(IQueryable<News> query, ISearchRequest searchRequest)
         {
             Expression<Func<News, object>> expression = GetSortExpression(searchRequest);
