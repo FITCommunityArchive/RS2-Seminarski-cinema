@@ -85,6 +85,13 @@ namespace Cinema.Dal.Repository
             return result;
         }
 
+        public async Task<ApplicationUser> GetUserByIdAsync(int userId)
+        {
+            var result = await _dbSet.FirstOrDefaultAsync(x => x.Id == userId);
+
+            return result;
+        }
+
         public override async Task DeleteAsync(int id)
         {
             ApplicationUser entity = _dbSet

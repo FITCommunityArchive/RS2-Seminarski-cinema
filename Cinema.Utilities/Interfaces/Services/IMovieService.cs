@@ -9,5 +9,6 @@ namespace Cinema.Utilities.Interfaces.Services
     {
         Task<List<MovieDto>> GetNowShowingAsync();
         double GetMovieReviewScore(int id);
+        Task<List<MovieDto>> GetRecommendedAsync(int userId);
     }
 }

@@ -9,6 +9,7 @@ using Cinema.Models.Requests;
 using Cinema.Models.Requests.Pricing;
 using Cinema.Models.Requests.Screenings;
 using Cinema.Models.Requests.Users;
+using Cinema.MovieRecommenderService;
 using Cinema.Services;
 using Cinema.Utilities.Interfaces;
 using Cinema.Utilities.Interfaces.Dal;
@@ -24,6 +25,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.ML;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
@@ -42,6 +44,9 @@ namespace Cinema.Web.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddPredictionEnginePool<Cinema.MovieRecommenderService.Models.MovieRating, Cinema.MovieRecommenderService.Models.MovieRatingPrediction>()
+                .FromFile(modelName: "MovieRatingAnalysisModel", filePath: "MLModels/MovieRecommenderModel.zip", watchForChanges: true);
+
             services.AddControllers(x => x.Filters.Add<ErrorFilter>()).AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             services.AddRouting(options => options.LowercaseUrls = true);
@@ -131,6 +136,7 @@ namespace Cinema.Web.API
             services.AddScoped<IQRCodeService, QRCodeService>();
             services.AddScoped<IEmailSender, EmailSender>();
             services.AddScoped<IReviewService, ReviewService>();
+            services.AddScoped<IMovieRecommender, MovieRecommender>();
             services.AddScoped<INewsService, NewsService>();
 
             services.AddScoped<IMovieRepository, MovieRepository>();
@@ -154,6 +160,8 @@ namespace Cinema.Web.API
                 options.SignIn.RequireConfirmedAccount = true;
                 //options.User.RequireUniqueEmail = true;
             }).AddEntityFrameworkStores<CinemaDbContext>().AddDefaultTokenProviders();
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

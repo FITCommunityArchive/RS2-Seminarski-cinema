@@ -2,6 +2,7 @@
 using Cinema.Domain.Entities.Identity;
 using Cinema.Models.Dtos;
 using Cinema.Models.Requests.Users;
+using Cinema.Shared.Constants;
 using Cinema.Shared.Pagination;
 using Cinema.Utilities.Interfaces;
 using Cinema.Utilities.Interfaces.Dal;
@@ -164,7 +165,8 @@ namespace Cinema.Services
 
             List<Claim> claims = new List<Claim>()
             {
-                new Claim(ClaimTypes.NameIdentifier, user.UserName)
+                new Claim(ClaimTypes.NameIdentifier, user.UserName),
+                new Claim(CinemaClaimTypes.UserId, user.Id.ToString())
             };
 
             foreach (var role in user.UserRoles)

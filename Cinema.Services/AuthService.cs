@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Cinema.Domain.Entities.Identity;
 using Cinema.Models.Dtos;
+using Cinema.Shared.Constants;
 using Cinema.Utilities.Exceptions;
 using Cinema.Utilities.Interfaces.Dal;
 using Cinema.Utilities.Interfaces.Services;
@@ -25,10 +26,10 @@ namespace Cinema.Services
 
         public async Task<int> GetCurrentUserIdAsync()
         {
-            var userNameClaim = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier);
-            var userName = userNameClaim?.Value;
+            var userNameClaim = _httpContextAccessor.HttpContext.User.FindFirst(CinemaClaimTypes.UserId);
+            int.TryParse(userNameClaim.Value, out int userId);
 
-            ApplicationUser user = await _userRepo.GetUserByUserNameAsync(userName);
+            ApplicationUser user = await _userRepo.GetUserByIdAsync(userId);
 
             if (user == null)
             {

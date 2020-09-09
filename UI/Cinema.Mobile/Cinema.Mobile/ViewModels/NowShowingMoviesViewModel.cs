@@ -1,5 +1,6 @@
 ﻿using Cinema.Mobile.Services;
 using Cinema.Models.Dtos;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
@@ -19,7 +20,9 @@ namespace Cinema.Mobile.ViewModels
 
         public ObservableCollection<MovieDto> MoviesList { get; set; } = new ObservableCollection<MovieDto>();
 
-        public ICommand InitCommand { get; set; }
+        public ObservableCollection<MovieDto> MoviesRecommendedList { get; set; } = new ObservableCollection<MovieDto>();
+
+        public ICommand InitCommand { get; set; } 
 
         public async Task Init()
         {
@@ -31,6 +34,17 @@ namespace Cinema.Mobile.ViewModels
             foreach (var movie in list)
             {
                 MoviesList.Add(movie);
+            }
+
+
+            var userId = await _moviesApi.GetCurrentUserId();
+            var listRecommended = await _moviesApi.Get<List<MovieDto>>(userId, "recommended");
+
+            MoviesRecommendedList.Clear();
+
+            foreach (var movie in listRecommended)
+            {
+                MoviesRecommendedList.Add(movie);
             }
         }
     }
