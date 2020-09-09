@@ -91,5 +91,15 @@ namespace Cinema.WinUI.UserControls
 
             OnPageChanged(EventArgs.Empty);
         }
+
+        private void btnCurrentPage_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnTotalPages_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

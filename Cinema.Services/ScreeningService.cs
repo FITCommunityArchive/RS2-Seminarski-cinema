@@ -6,7 +6,6 @@ using Cinema.Models.SpecificModels;
 using Cinema.Shared.Enums;
 using Cinema.Shared.Pagination;
 using Cinema.Utilities.Exceptions;
-using Cinema.Utilities.Factory;
 using Cinema.Utilities.Interfaces.Dal;
 using Cinema.Utilities.Interfaces.Services;
 using System;

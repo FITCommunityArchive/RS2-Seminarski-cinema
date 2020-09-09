@@ -1,4 +1,4 @@
-﻿namespace Cinema.WinUI.Movies
+﻿namespace Cinema.WinUI.Screenings
 {
     partial class FormScreeningList
     {

@@ -26,7 +26,7 @@ namespace Cinema.Mobile.Views
             if (!MenuPages.ContainsKey(id))
             {
                 switch (id)
-                {  
+                {
                     case (int)MenuItemType.NowShowing:
                         MenuPages.Add(id, new NavigationPage(new NowShowingMoviesPage()));
                         break;

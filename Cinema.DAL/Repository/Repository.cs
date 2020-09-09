@@ -1,13 +1,10 @@
-﻿using Cinema.Domain.Entities;
-using Cinema.Shared.Constants;
+﻿using Cinema.Shared.Constants;
 using Cinema.Shared.Pagination;
 using Cinema.Shared.Search;
-using Cinema.Utilities.Exceptions;
 using Cinema.Utilities.Interfaces.Dal;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;

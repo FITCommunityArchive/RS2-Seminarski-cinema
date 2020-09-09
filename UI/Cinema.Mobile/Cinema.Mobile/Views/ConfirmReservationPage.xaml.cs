@@ -1,12 +1,6 @@
 ﻿using Cinema.Mobile.ViewModels;
 using Cinema.Models.Dtos;
-using Cinema.Models.SpecificModels;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -47,7 +41,7 @@ namespace Cinema.Mobile.Views
                 {
                     Text = "We were unable to process your reservation."
                 };
-            }           
+            }
         }
     }
 }

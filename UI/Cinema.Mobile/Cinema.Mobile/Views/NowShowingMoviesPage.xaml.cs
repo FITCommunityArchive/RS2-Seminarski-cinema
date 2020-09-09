@@ -1,5 +1,4 @@
-﻿using Cinema.Mobile.Services;
-using Cinema.Mobile.ViewModels;
+﻿using Cinema.Mobile.ViewModels;
 using Cinema.Models.Dtos;
 using System;
 using System.Collections.Generic;
@@ -26,7 +25,7 @@ namespace Cinema.Mobile.Views
 
         protected async override void OnAppearing()
         {
-            base.OnAppearing();            
+            base.OnAppearing();
             await model.Init();
 
 

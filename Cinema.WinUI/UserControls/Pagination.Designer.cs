@@ -38,6 +38,7 @@
             // 
             // btnNextPage
             // 
+            this.btnNextPage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnNextPage.BackColor = System.Drawing.Color.White;
             this.btnNextPage.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.btnNextPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -53,6 +54,7 @@
             // 
             // btnPreviousPage
             // 
+            this.btnPreviousPage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnPreviousPage.BackColor = System.Drawing.Color.White;
             this.btnPreviousPage.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.btnPreviousPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -68,6 +70,7 @@
             // 
             // btnLastPage
             // 
+            this.btnLastPage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnLastPage.BackColor = System.Drawing.Color.White;
             this.btnLastPage.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.btnLastPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -83,6 +86,7 @@
             // 
             // btnFirstPage
             // 
+            this.btnFirstPage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnFirstPage.BackColor = System.Drawing.Color.White;
             this.btnFirstPage.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.btnFirstPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -98,6 +102,7 @@
             // 
             // btnCurrentPage
             // 
+            this.btnCurrentPage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnCurrentPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(195)))), ((int)(((byte)(75)))));
             this.btnCurrentPage.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.btnCurrentPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -110,9 +115,11 @@
             this.btnCurrentPage.TabIndex = 18;
             this.btnCurrentPage.Text = "1";
             this.btnCurrentPage.UseVisualStyleBackColor = false;
+            this.btnCurrentPage.Click += new System.EventHandler(this.btnCurrentPage_Click);
             // 
             // btnTotalPages
             // 
+            this.btnTotalPages.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnTotalPages.BackColor = System.Drawing.Color.White;
             this.btnTotalPages.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.btnTotalPages.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -124,11 +131,12 @@
             this.btnTotalPages.TabIndex = 19;
             this.btnTotalPages.Text = "1";
             this.btnTotalPages.UseVisualStyleBackColor = false;
+            this.btnTotalPages.Click += new System.EventHandler(this.btnTotalPages_Click);
             // 
             // Pagination
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.AutoSize = true;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.btnTotalPages);
             this.Controls.Add(this.btnCurrentPage);

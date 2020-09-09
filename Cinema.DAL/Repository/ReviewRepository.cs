@@ -1,9 +1,6 @@
 ﻿using Cinema.Domain.Entities;
 using Cinema.Utilities.Interfaces.Dal;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Cinema.Dal.Repository
 {
@@ -15,7 +12,7 @@ namespace Cinema.Dal.Repository
         {
 
             var review = _dbSet.Where(x => x.UserId == userId && x.MovieId == movieId).FirstOrDefault();
-            if(review != null)
+            if (review != null)
             {
                 return false;
             }

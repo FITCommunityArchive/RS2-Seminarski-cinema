@@ -7,7 +7,6 @@ using Cinema.Utilities.Interfaces.Dal;
 using Cinema.Utilities.Interfaces.Services;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Cinema.Services

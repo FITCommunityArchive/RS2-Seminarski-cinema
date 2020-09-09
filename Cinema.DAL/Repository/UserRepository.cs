@@ -1,11 +1,9 @@
-﻿using Cinema.Domain.Entities;
-using Cinema.Domain.Entities.Identity;
+﻿using Cinema.Domain.Entities.Identity;
 using Cinema.Shared.Enums;
 using Cinema.Shared.Pagination;
 using Cinema.Shared.Search;
 using Cinema.Utilities.Interfaces.Dal;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Internal;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -97,9 +95,9 @@ namespace Cinema.Dal.Repository
         public override async Task DeleteAsync(int id)
         {
             ApplicationUser entity = _dbSet
-                .Include(c=> c.UserRoles)
-                .Include(c=> c.Reservations).ThenInclude(c=>c.SeatReservations)
-                .Include(c=> c.Reservations).ThenInclude(c=>c.Invoice)
+                .Include(c => c.UserRoles)
+                .Include(c => c.Reservations).ThenInclude(c => c.SeatReservations)
+                .Include(c => c.Reservations).ThenInclude(c => c.Invoice)
                 .Where(x => x.Id == id).FirstOrDefault();
 
             if (entity != null)

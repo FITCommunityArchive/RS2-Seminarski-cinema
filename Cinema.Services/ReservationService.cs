@@ -11,17 +11,10 @@ using Cinema.Utilities.Exceptions;
 using Cinema.Utilities.Interfaces.Dal;
 using Cinema.Utilities.Interfaces.Integrations;
 using Cinema.Utilities.Interfaces.Services;
-using Microsoft.AspNetCore.Components.Forms;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net.Http;
-using System.Runtime.InteropServices;
-using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Cinema.Services
@@ -196,7 +189,7 @@ namespace Cinema.Services
             Invoice invoice = new Invoice
             {
                 Reservation = reservation,
-                PricingId = pricingId                
+                PricingId = pricingId
             };
 
             invoice.Price = invoice.Reservation.Screening.Pricing.Price * ticketQuantity;

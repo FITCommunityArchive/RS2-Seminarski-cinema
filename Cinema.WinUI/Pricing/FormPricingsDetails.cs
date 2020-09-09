@@ -2,12 +2,6 @@
 using Cinema.Models.Requests.Pricing;
 using Cinema.WinUI.Services;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -26,7 +20,7 @@ namespace Cinema.WinUI.Pricing
             _id = id;
             InitializeComponent();
 
-            if(!_id.HasValue)
+            if (!_id.HasValue)
             {
                 btnDelete.Visible = false;
             }

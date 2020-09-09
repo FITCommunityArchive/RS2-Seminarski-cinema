@@ -34,7 +34,8 @@ namespace Cinema.Mobile.ViewModels
         public MovieDto Movie { get; set; }
 
         public int _reviewScore = 0;
-        public int ReviewScore {
+        public int ReviewScore
+        {
             get { return _reviewScore; }
             set { SetProperty(ref _reviewScore, value); }
         }
@@ -95,9 +96,9 @@ namespace Cinema.Mobile.ViewModels
         {
             ReviewBar b = (ReviewBar)obj;
 
-            if(CanVote)
+            if (CanVote)
             {
-                ReviewUpsertRequest review = new ReviewUpsertRequest 
+                ReviewUpsertRequest review = new ReviewUpsertRequest
                 {
                     Rating = ReviewScore,
                     MovieId = Movie.Id,
@@ -105,13 +106,13 @@ namespace Cinema.Mobile.ViewModels
                     Text = ""
                 };
                 var result = _reviewsApi.Insert<ReviewUpsertRequest>(review);
-                if(result != null)
+                if (result != null)
                 {
                     CanVote = false;
-                    App.Current.MainPage.DisplayAlert("Success","Thank you for your vote.", "OK");
+                    App.Current.MainPage.DisplayAlert("Success", "Thank you for your vote.", "OK");
                 }
             }
-            
+
         }
 
 

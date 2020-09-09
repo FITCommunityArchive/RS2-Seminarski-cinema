@@ -105,8 +105,8 @@ namespace Cinema.Dal.Repository
 
         public double GetMovieReviewScore(int id)
         {
-            var score = _context.Reviews.Where(x => x.MovieId == id).Average(x => (int?)x.Rating) ?? 0; 
-            
+            var score = _context.Reviews.Where(x => x.MovieId == id).Average(x => (int?)x.Rating) ?? 0;
+
             return score;
         }
     }

@@ -1,60 +1,94 @@
 ﻿using Cinema.Domain.Entities;
 using Cinema.Shared.Enums;
+using Cinema.Shared.Pagination;
+using Cinema.Shared.Search;
 using Cinema.Utilities.Interfaces.Dal;
+using System;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace Cinema.Dal.Repository
 {
-    public class NewsRepository : Repository<News, int>
+    public class NewsRepository : Repository<News, int>, INewsRepository
     {
         public NewsRepository(ICinemaDbContext context) : base(context) { }
 
-        public IQueryable<News> Sort(IQueryable<News> query, SortOrder? sortOrder, string sortProperty)
+        public async Task<IPagedList<News>> GetPagedAsync(ISearchRequest searchRequest, string title, string author, int? typeId)
         {
-            if (sortOrder == SortOrder.ASC)
+            var query = _dbSet.AsQueryable();
+
+            if (!searchRequest.ReturnAll)
             {
-                switch (sortProperty)
-                {
-                    case "Title":
-                        query = query.OrderBy(s => s.Title);
-                        break;
-                    case "Description":
-                        query = query.OrderBy(s => s.Description);
-                        break;
-                    case "DateCreated":
-                        query = query.OrderBy(s => s.CreatedAt);
-                        break;
-                    case "TimeCreated":
-                        query = query.OrderBy(s => s.CreatedAt.TimeOfDay);
-                        break;
-                    case "Type":
-                        query = query.OrderBy(s => s.Type.Name);
-                        break;
-                }
+                query = ApplyFilter(query, title, author, typeId);
             }
-            else
+
+            if (searchRequest.SortOrder != null && searchRequest.SortColumn != null)
             {
-                switch (sortProperty)
-                {
-                    case "Title":
-                        query = query.OrderByDescending(s => s.Title);
-                        break;
-                    case "Description":
-                        query = query.OrderByDescending(s => s.Description);
-                        break;
-                    case "DateCreated":
-                        query = query.OrderByDescending(s => s.CreatedAt);
-                        break;
-                    case "TimeCreated":
-                        query = query.OrderByDescending(s => s.CreatedAt.TimeOfDay);
-                        break;
-                    case "Type":
-                        query = query.OrderByDescending(s => s.Type.Name);
-                        break;
-                }
+                query = ApplySorting(query, searchRequest);
+            }
+
+            if (searchRequest.Includes.Count() > 0)
+            {
+                query = AddIncludes(query, searchRequest.Includes);
+            }
+
+            var pagedList = await ApplyPaginationAsync(query, searchRequest.PageIndex, searchRequest.PageSize, searchRequest.ReturnAll);
+            return pagedList;
+        }
+
+        private IQueryable<News> ApplyFilter(IQueryable<News> query, string title, string author, int? typeId)
+        {
+            if (!string.IsNullOrEmpty(title))
+            {
+                title = title.ToLower();
+
+                query = query.Where(x => x.Title.ToLower().StartsWith(title));
+            }
+
+            if (!string.IsNullOrEmpty(author))
+            {
+                author = author.ToLower();
+                query = query.Where(x => (x.Author.FirstName + ' ' + x.Author.LastName).ToLower().StartsWith(author));
+            }
+
+            if (typeId.HasValue)
+            {
+                query = query.Where(x => x.TypeId == typeId);
             }
 
             return query;
+        }
+
+        protected override IQueryable<News> ApplySorting(IQueryable<News> query, ISearchRequest searchRequest)
+        {
+            Expression<Func<News, object>> expression = GetSortExpression(searchRequest);
+
+            if (searchRequest.SortOrder == SortOrder.ASC)
+            {
+                query = query.OrderBy(expression);
+            }
+            else
+            {
+                query = query.OrderByDescending(expression);
+            }
+
+            return query;
+        }
+
+        protected override Expression<Func<News, object>> GetSortExpression(ISearchRequest searchRequest)
+        {
+            switch (searchRequest.SortColumn)
+            {
+                case nameof(News.Title):
+                    return x => x.Title;
+                case nameof(News.Author):
+                    return x => x.Author.FirstName + ' ' + x.Author.LastName;
+                case nameof(News.Type):
+                    return x => x.Type.Name;
+                default:
+                    return x => x.Id;
+            }
         }
 
     }

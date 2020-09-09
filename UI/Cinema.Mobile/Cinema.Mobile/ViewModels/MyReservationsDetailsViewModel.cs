@@ -1,8 +1,5 @@
 ﻿using Cinema.Mobile.Services;
 using Cinema.Models.Dtos;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -33,7 +30,7 @@ namespace Cinema.Mobile.ViewModels
 
         public async Task Init()
         {
-            
+
             BtnIsEnabled = !Reservation.IsCancelled;
             await Task.CompletedTask;
         }
@@ -42,7 +39,7 @@ namespace Cinema.Mobile.ViewModels
         {
 
             var prompt = await App.Current.MainPage.DisplayAlert("Reservation Cancellation", "Are you sure you want to cancel your reservation for the " + Reservation.Screening.Movie.Title + "?", "Yes", "No");
-            if(prompt)
+            if (prompt)
             {
                 var result = await _screeningsApi.UpdateWithRoute<bool>(Reservation.Id, null, "status");
                 if (result)
