@@ -120,13 +120,13 @@ namespace Cinema.Web.API
             services.AddScoped<ICinemaDbContext, CinemaDbContext>();
 
             services.AddScoped<IService<NewsTypeDto, BaseSearchRequest>, BaseService<NewsTypeDto, BaseSearchRequest, NewsType>>();
+            services.AddScoped<IService<EventTypeDto, BaseSearchRequest>, BaseService<EventTypeDto, BaseSearchRequest, EventType>>();
             services.AddScoped<IService<ApplicationRoleDto, BaseSearchRequest>, BaseService<ApplicationRoleDto, BaseSearchRequest, ApplicationRole>>();
             services.AddScoped<IService<GenreDto, BaseSearchRequest>, BaseService<GenreDto, BaseSearchRequest, Genre>>();
             services.AddScoped<IService<HallDto, BaseSearchRequest>, BaseService<HallDto, BaseSearchRequest, Hall>>();
             services.AddScoped<ICRUDService<PricingDto, PricingSearchRequest, PricingUpsertRequest, PricingUpsertRequest>, PricingService>();
             services.AddScoped<ICRUDService<ApplicationUserDto, UserSearchRequest, UserInsertRequest, UserUpdateRequest>, UserService>();
             services.AddScoped<ICRUDService<ScreeningDto, ScreeningSearchRequest, ScreeningUpsertRequest, ScreeningUpsertRequest>, ScreeningService>();
-
 
             services.AddScoped<IMovieService, MovieService>();
             services.AddScoped<IScreeningService, ScreeningService>();
@@ -138,6 +138,7 @@ namespace Cinema.Web.API
             services.AddScoped<IReviewService, ReviewService>();
             services.AddScoped<IMovieRecommender, MovieRecommender>();
             services.AddScoped<INewsService, NewsService>();
+            services.AddScoped<IEventService, EventService>();
 
             services.AddScoped<IMovieRepository, MovieRepository>();
             services.AddScoped<IReviewRepository, ReviewRepository>();

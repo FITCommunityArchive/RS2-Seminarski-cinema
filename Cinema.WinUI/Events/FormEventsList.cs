@@ -1,5 +1,6 @@
 ﻿using Cinema.Models.Dtos;
 using Cinema.Models.Requests;
+using Cinema.Models.Requests.Events;
 using Cinema.Models.Requests.News;
 using Cinema.Shared.Constants;
 using Cinema.Shared.Pagination;
@@ -11,31 +12,42 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Cinema.WinUI.News
+namespace Cinema.WinUI.Events
 {
-    public partial class FormNewsList : BaseDataGridForm
+    public partial class FormEventsList : BaseDataGridForm
     {
-        private readonly ApiService _newsApi = new ApiService("News");
-        private readonly ApiService _newsTypesApi = new ApiService("NewsTypes");
-        private IPagedList<NewsTypeDto> _newsTypes = null;
+        private readonly ApiService _eventsApi = new ApiService("Events");
+        private readonly ApiService _eventTypesApi = new ApiService("EventTypes");
+        private IPagedList<EventTypeDto> _eventTypes = null;
         private IList<string> _nextFormPrincipal;
-        private FormNewsDetails _formNewsDetails = null;
+        private bool _dateFilterCleared = true;
+        //private FormNewsDetails _formNewsDetails = null;
 
-        public FormNewsList(IList<string> userPrincipal) : base(new string[] { Roles.Administrator, Roles.ContentEditor }, userPrincipal)
+        public FormEventsList(IList<string> userPrincipal) : base(new string[] { Roles.Administrator, Roles.ContentEditor }, userPrincipal)
         {
             _nextFormPrincipal = userPrincipal;
             InitializeComponent();
         }
 
 
-        private NewsSearchRequest GetSearchRequest()
+        private EventSearchRequest GetSearchRequest()
         {
-            NewsSearchRequest searchRequest = new NewsSearchRequest();
+            EventSearchRequest searchRequest = new EventSearchRequest();
 
-            searchRequest = ApplyDefaultSearchValues(searchRequest) as NewsSearchRequest;
+            searchRequest = ApplyDefaultSearchValues(searchRequest) as EventSearchRequest;
             searchRequest.PageIndex = pagination.PageIndex;
             searchRequest.Title = txtSearchBar.Text;
             searchRequest.Author = txtAuthor.Text;
+            searchRequest.Promoter = txtPromoter.Text;
+
+            if (!_dateFilterCleared)
+            {
+                searchRequest.DateAndTime = dtpEventDate.Value.ToUniversalTime();
+            }
+            else
+            {
+                searchRequest.DateAndTime = null;
+            }
 
             if (cmbType.SelectedValue != null && int.TryParse(cmbType.SelectedValue.ToString(), out int typeId))
             {
@@ -47,16 +59,16 @@ namespace Cinema.WinUI.News
             return searchRequest;
         }
 
-        private static NewsSearchRequest AddIncludes(ref NewsSearchRequest searchRequest)
+        private static EventSearchRequest AddIncludes(ref EventSearchRequest searchRequest)
         {
             searchRequest.Includes.Add("Author");
             searchRequest.Includes.Add("Type");
             return searchRequest;
         }
 
-        private async Task LoadNews(NewsSearchRequest searchRequest)
+        private async Task LoadNews(EventSearchRequest searchRequest)
         {
-            var result = await _newsApi.Get<PagedList<NewsDto>>(searchRequest);
+            var result = await _eventsApi.Get<PagedList<EventDto>>(searchRequest);
 
             grdList.AutoGenerateColumns = false;
             grdList.DataSource = result.Data;
@@ -66,29 +78,29 @@ namespace Cinema.WinUI.News
 
         private void InitializeDetailsForm(int? id)
         {
-            _formNewsDetails = new FormNewsDetails(id);
+/*            _formNewsDetails = new FormNewsDetails(id);
             _formNewsDetails.FormClosed += new System.Windows.Forms.FormClosedEventHandler(FormDetails_Closed);
-            _formNewsDetails.ShowDialog();
+            _formNewsDetails.ShowDialog();*/
         }
 
         #region Event methods
 
-        private async void FormNewsList_Load(object sender, EventArgs e)
+        private async void FormEventsList_Load(object sender, EventArgs e)
         {
             this.grdList.DoubleBuffered(true);
-            NewsSearchRequest searchRequest = new NewsSearchRequest();
+            EventSearchRequest searchRequest = new EventSearchRequest();
             AddIncludes(ref searchRequest);
 
-            searchRequest = ApplyDefaultSearchValues(searchRequest) as NewsSearchRequest;
+            searchRequest = ApplyDefaultSearchValues(searchRequest) as EventSearchRequest;
 
-            _newsTypes = await _newsTypesApi.Get<PagedList<NewsTypeDto>>(new BaseSearchRequest());
+            _eventTypes = await _eventTypesApi.Get<PagedList<EventTypeDto>>(new BaseSearchRequest());
 
             await LoadNews(searchRequest);
         }
 
         private async void pagination_PageChanged(object sender, EventArgs e)
         {
-            NewsSearchRequest searchRequest = GetSearchRequest();
+            EventSearchRequest searchRequest = GetSearchRequest();
             await LoadNews(searchRequest);
         }
 
@@ -98,7 +110,7 @@ namespace Cinema.WinUI.News
 
             ChangeSorting(clickedColumn.Name);
 
-            NewsSearchRequest searchRequest = GetSearchRequest();
+            EventSearchRequest searchRequest = GetSearchRequest();
             searchRequest.SortColumn = CurrentSortPropertyName;
             searchRequest.SortOrder = CurrentSortOrder;
 
@@ -113,15 +125,15 @@ namespace Cinema.WinUI.News
                 e.RowIndex >= 0)
             {
                 var clickedRow = senderGrid.Rows[e.RowIndex];
-                int.TryParse(clickedRow.Cells["id"].Value.ToString(), out int newsId);
+                int.TryParse(clickedRow.Cells["id"].Value.ToString(), out int eventId);
 
-                InitializeDetailsForm(newsId);
+                InitializeDetailsForm(eventId);
             }
         }
 
         private void FormDetails_Closed(object sender, EventArgs e)
         {
-            FormNewsList_Load(sender, e);
+            FormEventsList_Load(sender, e);
         }
 
         private void btnAddNew_ButtonClicked(object sender, EventArgs e)
@@ -131,11 +143,9 @@ namespace Cinema.WinUI.News
 
         private async void SearchChanged(object sender, EventArgs e)
         {
-            NewsSearchRequest searchRequest = GetSearchRequest();
+            EventSearchRequest searchRequest = GetSearchRequest();
             await LoadNews(searchRequest);
         }
-
-        #endregion
 
         private void grdList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
@@ -146,7 +156,7 @@ namespace Cinema.WinUI.News
         {
             if (cmbType.DataSource == null)
             {
-                cmbType.DataSource = _newsTypes.Data;
+                cmbType.DataSource = _eventTypes.Data;
                 cmbType.DisplayMember = nameof(NewsTypeDto.Name);
                 cmbType.ValueMember = nameof(NewsTypeDto.Id);
 
@@ -155,5 +165,30 @@ namespace Cinema.WinUI.News
                 cmbType.SelectedIndexChanged += new EventHandler(SearchChanged);
             }
         }
+
+        private void dtpEventDate_KeyDown(object sender, KeyEventArgs e)
+        {
+            if ((e.KeyCode == Keys.Back) || (e.KeyCode == Keys.Delete))
+            {
+                dtpEventDate.CustomFormat = " ";
+                dtpEventDate.Format = DateTimePickerFormat.Custom;
+                _dateFilterCleared = true;
+            }
+
+            SearchChanged(sender, e);
+        }
+
+        private void dtpEventDate_ValueChanged(object sender, EventArgs e)
+        {
+            if (dtpEventDate.Format == DateTimePickerFormat.Custom)
+            {
+                dtpEventDate.Format = DateTimePickerFormat.Short;
+            }
+
+            _dateFilterCleared = false;
+            SearchChanged(sender, e);
+        }
+
+        #endregion
     }
 }

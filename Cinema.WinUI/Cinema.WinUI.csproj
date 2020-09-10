@@ -187,6 +187,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants\ReservationStatusButtonText.cs" />
+    <Compile Include="Events\FormEventsList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Events\FormEventsList.Designer.cs">
+      <DependentUpon>FormEventsList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Exceptions\ScreeningAvailabilityException.cs" />
     <Compile Include="Helpers\dgvPrinter.cs" />
     <Compile Include="Helpers\ModuleExcel.cs" />
@@ -204,6 +210,12 @@
     </Compile>
     <Compile Include="News\FormNewsList.Designer.cs">
       <DependentUpon>FormNewsList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="News\FormNewsDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="News\FormNewsDetails.Designer.cs">
+      <DependentUpon>FormNewsDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="Pricing\FormPricings.cs">
       <SubType>Form</SubType>
@@ -389,6 +401,9 @@
     <Compile Include="Users\FormUsers.Designer.cs">
       <DependentUpon>FormUsers.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Events\FormEventsList.resx">
+      <DependentUpon>FormEventsList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -409,6 +424,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="News\FormNewsList.resx">
       <DependentUpon>FormNewsList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="News\FormNewsDetails.resx">
+      <DependentUpon>FormNewsDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pricing\FormPricings.resx">
       <DependentUpon>FormPricings.cs</DependentUpon>
@@ -537,6 +555,7 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\imagenotavailable.png" />
     <Content Include="Assets\logo-large.png" />
     <Content Include="Assets\logo-small.png" />
     <Content Include="Resources\Spinner.gif" />

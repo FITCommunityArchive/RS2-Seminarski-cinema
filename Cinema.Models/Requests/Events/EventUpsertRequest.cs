@@ -1,13 +1,15 @@
-﻿namespace Cinema.Models.Dtos
+﻿using System;
+
+namespace Cinema.Models.Requests.Events
 {
-    public class NewsDto : BaseDto
+    public class EventUpsertRequest
     {
         public string Title { get; set; }
         public string Description { get; set; }
         public byte[] Image { get; set; }
+        public DateTime DateAndTime { get; set; }
+        public string Promoter { get; set; }
         public int TypeId { get; set; }
-        public NewsTypeDto Type { get; set; }
         public int AuthorId { get; set; }
-        public ApplicationUserDto Author { get; set; }
     }
 }

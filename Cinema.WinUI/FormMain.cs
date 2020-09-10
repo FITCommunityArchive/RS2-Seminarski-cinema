@@ -1,5 +1,6 @@
 ﻿using Cinema.Shared.Constants;
 using Cinema.WinUI.Authorization;
+using Cinema.WinUI.Events;
 using Cinema.WinUI.Movies;
 using Cinema.WinUI.News;
 using Cinema.WinUI.Pricing;
@@ -146,7 +147,8 @@ namespace Cinema.WinUI
 
         private void btnEvents_Click(object sender, EventArgs e)
         {
-
+            FormEventsList formEventsList = new FormEventsList(_nextFormPrincipal);
+            openChildForm(formEventsList);
         }
     }
 }
