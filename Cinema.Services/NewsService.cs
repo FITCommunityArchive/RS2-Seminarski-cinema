@@ -12,13 +12,17 @@ namespace Cinema.Services
 {
     public class NewsService : INewsService
     {
+        private readonly IUnitOfWork _unit;
         private readonly INewsRepository _newsRepo;
         private readonly IMapper _mapper;
+        private readonly IAuthService _authService;
 
-        public NewsService(IUnitOfWork unit, IMapper mapper)
+        public NewsService(IUnitOfWork unit, IMapper mapper, IAuthService authService)
         {
+            _unit = unit;
             _newsRepo = unit.News;
             _mapper = mapper;
+            _authService = authService;
         }
 
         public async Task<NewsDto> GetByIdAsync(int id, ICollection<string> includes = null)
@@ -35,19 +39,41 @@ namespace Cinema.Services
             return dtoList;
         }
 
-        public Task<NewsDto> InsertAsync(NewsUpsertRequest req)
+        public async Task<NewsDto> InsertAsync(NewsUpsertRequest req)
         {
-            throw new System.NotImplementedException();
+            var news = _mapper.Map<News>(req);
+
+            int authorId = await _authService.GetCurrentUserIdAsync();
+            news.AuthorId = authorId;
+
+            await _newsRepo.InsertAsync(news);
+
+            await _unit.SaveAsync();
+
+            var dto = _mapper.Map<NewsDto>(news);
+            return dto;
         }
 
-        public Task<NewsDto> UpdateAsync(int id, NewsUpsertRequest req)
+        public async Task<NewsDto> UpdateAsync(int id, NewsUpsertRequest req)
         {
-            throw new System.NotImplementedException();
+            News news = _mapper.Map<News>(req);
+            news.Id = id;
+
+            await _newsRepo.UpdateAsync(news, id);
+
+            news = await _newsRepo.GetAsync(id);
+            await _unit.SaveAsync();
+
+            var dto = _mapper.Map<NewsDto>(news);
+            return dto;
         }
 
-        public Task<bool> DeleteAsync(int id)
+        public async Task<bool> DeleteAsync(int id)
         {
-            throw new System.NotImplementedException();
+            await _newsRepo.DeleteAsync(id);
+            await _unit.SaveAsync();
+
+            return true;
         }
     }
 }

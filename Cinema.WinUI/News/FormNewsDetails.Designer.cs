@@ -36,6 +36,7 @@
             this.lblBreadcrumbs = new System.Windows.Forms.Label();
             this.lblViewTitle = new System.Windows.Forms.Label();
             this.pnlDetails = new System.Windows.Forms.Panel();
+            this.btnUpload = new Cinema.WinUI.UserControls.Buttons.UploadButton();
             this.rtbDescription = new System.Windows.Forms.RichTextBox();
             this.txtNewsTitle = new Cinema.WinUI.UserControls.ExtendedTextBox();
             this.cmbNewsType = new System.Windows.Forms.ComboBox();
@@ -50,7 +51,6 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.lblFormCorner = new System.Windows.Forms.Label();
             this.pnlCornerLabel = new System.Windows.Forms.Panel();
-            this.uploadButton1 = new Cinema.WinUI.UserControls.Buttons.UploadButton();
             this.pnlFormTitle.SuspendLayout();
             this.pnlDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picImage)).BeginInit();
@@ -118,7 +118,7 @@
             // pnlDetails
             // 
             this.pnlDetails.BackColor = System.Drawing.Color.White;
-            this.pnlDetails.Controls.Add(this.uploadButton1);
+            this.pnlDetails.Controls.Add(this.btnUpload);
             this.pnlDetails.Controls.Add(this.rtbDescription);
             this.pnlDetails.Controls.Add(this.txtNewsTitle);
             this.pnlDetails.Controls.Add(this.cmbNewsType);
@@ -136,6 +136,16 @@
             this.pnlDetails.Padding = new System.Windows.Forms.Padding(15);
             this.pnlDetails.Size = new System.Drawing.Size(1473, 672);
             this.pnlDetails.TabIndex = 11;
+            // 
+            // btnUpload
+            // 
+            this.btnUpload.AutoSize = true;
+            this.btnUpload.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnUpload.Location = new System.Drawing.Point(41, 310);
+            this.btnUpload.Name = "btnUpload";
+            this.btnUpload.Size = new System.Drawing.Size(120, 40);
+            this.btnUpload.TabIndex = 37;
+            this.btnUpload.ButtonClicked += new System.EventHandler(this.btnUpload_ButtonClicked);
             // 
             // rtbDescription
             // 
@@ -283,15 +293,6 @@
             this.pnlCornerLabel.Size = new System.Drawing.Size(188, 50);
             this.pnlCornerLabel.TabIndex = 12;
             // 
-            // uploadButton1
-            // 
-            this.uploadButton1.AutoSize = true;
-            this.uploadButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.uploadButton1.Location = new System.Drawing.Point(41, 310);
-            this.uploadButton1.Name = "uploadButton1";
-            this.uploadButton1.Size = new System.Drawing.Size(120, 40);
-            this.uploadButton1.TabIndex = 37;
-            // 
             // FormNewsDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -338,6 +339,6 @@
         private System.Windows.Forms.ComboBox cmbNewsType;
         private UserControls.ExtendedTextBox txtNewsTitle;
         private System.Windows.Forms.RichTextBox rtbDescription;
-        private UserControls.Buttons.UploadButton uploadButton1;
+        private UserControls.Buttons.UploadButton btnUpload;
     }
 }

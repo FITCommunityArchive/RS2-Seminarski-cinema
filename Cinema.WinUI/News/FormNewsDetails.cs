@@ -4,10 +4,13 @@ using Cinema.Models.Requests.Movies;
 using Cinema.Models.Requests.News;
 using Cinema.Models.Requests.Screenings;
 using Cinema.Shared.Pagination;
+using Cinema.WinUI.Helpers;
 using Cinema.WinUI.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -19,6 +22,7 @@ namespace Cinema.WinUI.Screenings
         private readonly ApiService _newsTypesApi = new ApiService("NewsTypes");
         private int? _id = null;
         private IPagedList<NewsTypeDto> _newsTypes = null;
+        private NewsDto _news = null;
         private NewsUpsertRequest _request = new NewsUpsertRequest();
 
         public event EventHandler ItemDeleted;
@@ -44,9 +48,9 @@ namespace Cinema.WinUI.Screenings
         {
             IncludesSearchRequest searchRequest = GetIncludes();
 
-            var result = await _newsApi.GetById<NewsDto>(_id, searchRequest);
+            _news = await _newsApi.GetById<NewsDto>(_id, searchRequest);
 
-            LoadPropertyValues(result);
+            LoadPropertyValues(_news);
         }
 
         private static IncludesSearchRequest GetIncludes()
@@ -67,6 +71,11 @@ namespace Cinema.WinUI.Screenings
             txtNewsTitle.Text = result.Title;
             cmbNewsType.SelectedValue = result.TypeId;
             rtbDescription.Text = result.Description;
+
+            if (result.Image != null && result.Image.Length > 0)
+            {
+                picImage.Image = result.Image.ToImage();
+            }
         }
 
         private void LoadComboboxLists()
@@ -104,12 +113,13 @@ namespace Cinema.WinUI.Screenings
 
             _request.Title = txtNewsTitle.Text;
             _request.Description = rtbDescription.Text;
-            _request.TypeId = typeId;
-
+            _request.TypeId = typeId;         
+            
             NewsDto result;
 
             if (_id.HasValue)
             {
+                _request.AuthorId = _news.AuthorId;
                 result = await _newsApi.Update<NewsDto>(_id, _request);
             }
             else
@@ -141,6 +151,22 @@ namespace Cinema.WinUI.Screenings
 
             OnItemDeleted(EventArgs.Empty);
             this.Close();
+        }
+
+        private void btnUpload_ButtonClicked(object sender, EventArgs e)
+        {
+            var result = openFileDialog1.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                string fileName = openFileDialog1.FileName;
+
+                var file = File.ReadAllBytes(fileName);
+                _request.Image = file;
+
+                Image image = Image.FromFile(fileName);
+                picImage.Image = image;
+            }
         }
 
         #endregion
