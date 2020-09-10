@@ -2,9 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:vm="clr-namespace:Cinema.Mobile.ViewModels" xmlns:converters="clr-namespace:Cinema.Mobile.Helpers" xmlns:customcontrol="clr-namespace:Cinema.Mobile.Templates"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:vm="clr-namespace:Cinema.Mobile.ViewModels" xmlns:converters="clr-namespace:Cinema.Mobile.Helpers" xmlns:customcontrol="clr-namespace:Cinema.Mobile.Templates" xmlns:views="clr-namespace:Cinema.Mobile.Views"
              mc:Ignorable="d"
-             x:Class="Cinema.Mobile.Views.MovieDetailPage">
+             x:Class="Cinema.Mobile.Views.MovieDetailPage"
+             ControlTemplate="{StaticResource FooterBar}">
     <ContentPage.BindingContext>
         <vm:MovieDetailsViewModel></vm:MovieDetailsViewModel>
     </ContentPage.BindingContext>
@@ -12,18 +13,17 @@
         <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
     </ContentPage.Resources>
     <ContentPage.Content>
-
         <ScrollView Orientation="Vertical">
 
             <StackLayout Padding="25" HorizontalOptions="CenterAndExpand">
 
                 <Grid Padding="0" Margin="0, 0, 0, 30" HorizontalOptions="FillAndExpand" VerticalOptions="Start" RowSpacing="20" ColumnSpacing="20">
-            
+
                     <Grid.RowDefinitions>
                         <RowDefinition Height="200"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-            
+
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="100"/>
                         <ColumnDefinition Width="Auto"/>
@@ -36,7 +36,7 @@
                     </StackLayout>
 
                     <StackLayout Orientation="Vertical" Grid.Row="1" Grid.Column="0">
-                
+
                         <StackLayout Margin="0, 0, 0, 20">
                             <Label Text="Duration" TextColor="Gray" Style="{DynamicResource ListItemDetailTextStyle}"/>
                             <Label Text="{Binding Movie.Duration}" TextColor="Black" Style="{DynamicResource ListItemTextStyle}"/>
@@ -51,13 +51,13 @@
                             <Label Text="Country" TextColor="Gray" Style="{DynamicResource ListItemDetailTextStyle}"/>
                             <Label Text="{Binding Movie.Country}" TextColor="Black" Style="{DynamicResource ListItemTextStyle}"/>
                         </StackLayout>
-                
+
                     </StackLayout>
 
                     <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="1" Margin="0, 0, 0, 10">
 
                         <Label Text="{Binding Movie.Title}" TextColor="Gray" HorizontalOptions="Start" FontSize="Small" Style="{DynamicResource SubtitleStyle}"/>
-                
+
                         <StackLayout Orientation="Horizontal">
                             <Image Source="screeningdetailavataricon.png" HeightRequest="10"/>
                             <Label Text="{Binding Movie.Actors}" TextColor="Gray" FontSize="Micro" HorizontalOptions="Start" Style="{DynamicResource CaptionStyle}"/>
@@ -76,7 +76,7 @@
                         <StackLayout Margin="0, 10, 0, 10" BackgroundColor="LightGray" HeightRequest="1" />
 
                     </StackLayout>
-            
+
                     <StackLayout Orientation="Vertical" Grid.Row="1" Grid.Column="1">
                         <Label Text="{Binding Movie.Synopsis}" Style="{DynamicResource BodyStyle}" TextColor="Gray"/>
                         <StackLayout Margin="0, 10, 0, 0" BackgroundColor="LightGray" HeightRequest="1"/>
@@ -85,7 +85,7 @@
                             <Image Source="imdbicongray.png" HeightRequest="50" Margin="10, 0, 20, 0"/>
                             <Image Source="youtubeicongray.png" HeightRequest="50" Margin="0, 0, 20, 0"/>
                         </StackLayout>
-                        
+
                     </StackLayout>
 
                 </Grid>
@@ -105,7 +105,7 @@
                                             <Label Text="{Binding DateAndTime, StringFormat='{0:dd.MM.yyyy}'}" TextColor="Gray" FontAttributes="Bold" Style="{DynamicResource BodyStyle}"/>
                                             <StackLayout Orientation="Horizontal">
                                                 <StackLayout Orientation="Horizontal" VerticalOptions="Start">
-                                                    <Label Text="{Binding Hall.Name, StringFormat='{0} | '}" TextColor="Gray" Style="{DynamicResource BodyStyle}"/>                        
+                                                    <Label Text="{Binding Hall.Name, StringFormat='{0} | '}" TextColor="Gray" Style="{DynamicResource BodyStyle}"/>
                                                     <Label Text="{Binding DateAndTime, StringFormat='{0:HH:mm}'}" TextColor="Gray" Style="{DynamicResource BodyStyle}"/>
                                                     <StackLayout.GestureRecognizers>
                                                         <TapGestureRecognizer NumberOfTapsRequired="1"></TapGestureRecognizer>
@@ -125,7 +125,6 @@
 
             </StackLayout>
 
-        </ScrollView>      
-        
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

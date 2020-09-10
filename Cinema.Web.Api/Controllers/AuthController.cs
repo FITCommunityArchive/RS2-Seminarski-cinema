@@ -3,6 +3,8 @@ using Cinema.Utilities.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using System.Collections.Generic;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Cinema.Web.Api.Controllers
@@ -45,9 +47,9 @@ namespace Cinema.Web.Api.Controllers
         #endregion
 
         [AllowAnonymous, HttpGet(nameof(Decode))]
-        public async Task<string> Decode([FromQuery] string token)
+        public List<string> Decode([FromQuery] string token)
         {
-            return await _userService.DecodeJSONWebToken(token);
+            return _userService.DecodeJSONWebToken(token);
         }
 
     }

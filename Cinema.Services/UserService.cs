@@ -186,16 +186,20 @@ namespace Cinema.Services
         }
         #endregion
 
-        public async Task<string> DecodeJSONWebToken(string token)
+        public List<string> DecodeJSONWebToken(string token)
         {
 
             var handler = new JwtSecurityTokenHandler();
             var readToken = handler.ReadJwtToken(token);
 
-            var roleName = readToken.Claims.ToList()[1].Value;
-            var user = await _userManager.GetUsersInRoleAsync(roleName);
+            var claims = readToken.Claims;
 
-            return roleName;
+            var claimsList = new List<string>();
+            foreach(var claim in claims)
+            {
+                claimsList.Add(claim.Value);
+            }
+            return claimsList;
         }
 
         public async Task<bool> DeleteAsync(int id)

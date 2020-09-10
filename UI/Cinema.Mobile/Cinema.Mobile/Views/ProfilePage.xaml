@@ -5,7 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="Cinema.Mobile.Views.ProfilePage"
-             xmlns:viewModels="clr-namespace:Cinema.Mobile.ViewModels">
+             xmlns:viewModels="clr-namespace:Cinema.Mobile.ViewModels"
+             ControlTemplate="{StaticResource FooterBar}">
     <ContentPage.BindingContext>
         <viewModels:ProfileViewModel></viewModels:ProfileViewModel>
     </ContentPage.BindingContext>
