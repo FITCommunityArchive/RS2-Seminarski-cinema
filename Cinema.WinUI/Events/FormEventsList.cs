@@ -21,7 +21,7 @@ namespace Cinema.WinUI.Events
         private IPagedList<EventTypeDto> _eventTypes = null;
         private IList<string> _nextFormPrincipal;
         private bool _dateFilterCleared = true;
-        //private FormNewsDetails _formNewsDetails = null;
+        private FormEventDetails _formEventDetails = null;
 
         public FormEventsList(IList<string> userPrincipal) : base(new string[] { Roles.Administrator, Roles.ContentEditor }, userPrincipal)
         {
@@ -78,9 +78,9 @@ namespace Cinema.WinUI.Events
 
         private void InitializeDetailsForm(int? id)
         {
-/*            _formNewsDetails = new FormNewsDetails(id);
-            _formNewsDetails.FormClosed += new System.Windows.Forms.FormClosedEventHandler(FormDetails_Closed);
-            _formNewsDetails.ShowDialog();*/
+            _formEventDetails = new FormEventDetails(id);
+            _formEventDetails.FormClosed += new System.Windows.Forms.FormClosedEventHandler(FormDetails_Closed);
+            _formEventDetails.ShowDialog();
         }
 
         #region Event methods

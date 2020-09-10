@@ -193,6 +193,12 @@
     <Compile Include="Events\FormEventsList.Designer.cs">
       <DependentUpon>FormEventsList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Events\FormEventDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Events\FormEventDetails.Designer.cs">
+      <DependentUpon>FormEventDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Exceptions\ScreeningAvailabilityException.cs" />
     <Compile Include="Helpers\dgvPrinter.cs" />
     <Compile Include="Helpers\ModuleExcel.cs" />
@@ -403,6 +409,9 @@
     </Compile>
     <EmbeddedResource Include="Events\FormEventsList.resx">
       <DependentUpon>FormEventsList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Events\FormEventDetails.resx">
+      <DependentUpon>FormEventDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>

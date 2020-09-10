@@ -147,7 +147,7 @@ namespace Cinema.WinUI.Screenings
 
         private async void btnDelete_ButtonClicked(object sender, EventArgs e)
         {
-            var result = await _newsApi.Delete<ScreeningDto>(_id);
+            var result = await _newsApi.Delete<NewsDto>(_id);
 
             OnItemDeleted(EventArgs.Empty);
             this.Close();

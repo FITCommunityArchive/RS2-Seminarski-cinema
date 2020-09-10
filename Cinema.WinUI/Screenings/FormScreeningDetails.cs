@@ -181,8 +181,6 @@ namespace Cinema.WinUI.Screenings
             this.Close();
         }
 
-        #endregion
-
         private void dtpScreeningDate_Validating(object sender, CancelEventArgs e)
         {
             if (dtpScreeningDate.Value.ToUniversalTime() <= DateTime.UtcNow)
@@ -195,5 +193,7 @@ namespace Cinema.WinUI.Screenings
                 errorProvider1.SetError(dtpScreeningDate, null);
             }
         }
+
+        #endregion
     }
 }
