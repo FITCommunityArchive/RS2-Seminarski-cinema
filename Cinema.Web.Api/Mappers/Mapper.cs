@@ -2,6 +2,7 @@
 using Cinema.Domain.Entities;
 using Cinema.Domain.Entities.Identity;
 using Cinema.Models.Dtos;
+using Cinema.Models.Requests.Events;
 using Cinema.Models.Requests.Movies;
 using Cinema.Models.Requests.News;
 using Cinema.Models.Requests.Pricing;
@@ -60,6 +61,11 @@ namespace Cinema.Web.Api.Mappers
             CreateMap<News, NewsUpsertRequest>().ReverseMap();
 
             CreateMap<NewsType, NewsTypeDto>();
+
+            CreateMap<Event, EventDto>();
+            CreateMap<Event, EventUpsertRequest>().ReverseMap();
+
+            CreateMap<EventType, EventTypeDto>();
         }
     }
 }

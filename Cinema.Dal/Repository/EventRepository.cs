@@ -10,17 +10,17 @@ using System.Threading.Tasks;
 
 namespace Cinema.Dal.Repository
 {
-    public class NewsRepository : Repository<News, int>, INewsRepository
+    public class EventRepository : Repository<Event, int>, IEventRepository
     {
-        public NewsRepository(ICinemaDbContext context) : base(context) { }
+        public EventRepository(ICinemaDbContext context) : base(context) { }
 
-        public async Task<IPagedList<News>> GetPagedAsync(ISearchRequest searchRequest, string title, string author, int? typeId)
+        public async Task<IPagedList<Event>> GetPagedAsync(ISearchRequest searchRequest, string title, string author, string promoter, int? typeId, DateTime? eventDate)
         {
             var query = _dbSet.AsQueryable();
 
             if (!searchRequest.ReturnAll)
             {
-                query = ApplyFilter(query, title, author, typeId);
+                query = ApplyFilter(query, title, author, promoter, typeId, eventDate);
             }
 
             if (searchRequest.SortOrder != null && searchRequest.SortColumn != null)
@@ -37,7 +37,7 @@ namespace Cinema.Dal.Repository
             return pagedList;
         }
 
-        private IQueryable<News> ApplyFilter(IQueryable<News> query, string title, string author, int? typeId)
+        private IQueryable<Event> ApplyFilter(IQueryable<Event> query, string title, string author, string promoter, int? typeId, DateTime? eventDate)
         {
             if (!string.IsNullOrEmpty(title))
             {
@@ -46,10 +46,21 @@ namespace Cinema.Dal.Repository
                 query = query.Where(x => x.Title.ToLower().StartsWith(title));
             }
 
+            if (eventDate.HasValue)
+            {
+                query = query.Where(x => x.DateAndTime.Date == eventDate.Value.Date);
+            }
+
             if (!string.IsNullOrEmpty(author))
             {
                 author = author.ToLower();
                 query = query.Where(x => (x.Author.FirstName + ' ' + x.Author.LastName).ToLower().StartsWith(author));
+            }
+
+            if (!string.IsNullOrEmpty(author))
+            {
+                promoter = promoter.ToLower();
+                query = query.Where(x => x.Promoter.ToLower().StartsWith(promoter));
             }
 
             if (typeId.HasValue)
@@ -60,14 +71,14 @@ namespace Cinema.Dal.Repository
             return query;
         }
 
-        protected override Expression<Func<News, bool>> GetByIdExpression(int id)
+        protected override Expression<Func<Event, bool>> GetByIdExpression(int id)
         {
             return x => x.Id == id;
         }
 
-        protected override IQueryable<News> ApplySorting(IQueryable<News> query, ISearchRequest searchRequest)
+        protected override IQueryable<Event> ApplySorting(IQueryable<Event> query, ISearchRequest searchRequest)
         {
-            Expression<Func<News, object>> expression = GetSortExpression(searchRequest);
+            Expression<Func<Event, object>> expression = GetSortExpression(searchRequest);
 
             if (searchRequest.SortOrder == SortOrder.ASC)
             {
@@ -81,18 +92,22 @@ namespace Cinema.Dal.Repository
             return query;
         }
 
-        protected override Expression<Func<News, object>> GetSortExpression(ISearchRequest searchRequest)
+        protected override Expression<Func<Event, object>> GetSortExpression(ISearchRequest searchRequest)
         {
             switch (searchRequest.SortColumn)
             {
-                case nameof(News.Title):
+                case nameof(Event.Title):
                     return x => x.Title;
-                case nameof(News.Description):
+                case nameof(Event.Description):
                     return x => x.Description;
-                case nameof(News.Author):
+                case nameof(Event.Author):
                     return x => x.Author.FirstName + ' ' + x.Author.LastName;
-                case nameof(News.Type):
+                case nameof(Event.Type):
                     return x => x.Type.Name;
+                case nameof(Event.DateAndTime):
+                    return x => x.DateAndTime;
+                case nameof(Event.Promoter):
+                    return x => x.Promoter;
                 default:
                     return x => x.Id;
             }
