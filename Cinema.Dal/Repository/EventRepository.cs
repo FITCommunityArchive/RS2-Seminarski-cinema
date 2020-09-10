@@ -57,7 +57,7 @@ namespace Cinema.Dal.Repository
                 query = query.Where(x => (x.Author.FirstName + ' ' + x.Author.LastName).ToLower().StartsWith(author));
             }
 
-            if (!string.IsNullOrEmpty(author))
+            if (!string.IsNullOrEmpty(promoter))
             {
                 promoter = promoter.ToLower();
                 query = query.Where(x => x.Promoter.ToLower().StartsWith(promoter));
