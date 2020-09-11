@@ -2,9 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:viewModels="clr-namespace:Cinema.Mobile.ViewModels" xmlns:converters="clr-namespace:Cinema.Mobile.Helpers"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:viewModels="clr-namespace:Cinema.Mobile.ViewModels" 
+             xmlns:converters="clr-namespace:Cinema.Mobile.Helpers"
              mc:Ignorable="d"
-             x:Class="Cinema.Mobile.Views.NowShowingMoviesPage">
+             x:Class="Cinema.Mobile.Views.NowShowingMoviesPage"
+             ControlTemplate="{StaticResource FooterBar}">
     <ContentPage.BindingContext>
         <viewModels:NowShowingMoviesViewModel></viewModels:NowShowingMoviesViewModel>
     </ContentPage.BindingContext>
@@ -14,8 +17,8 @@
     <ContentPage.Content>
         <StackLayout BackgroundColor="#f3f3f5" Padding="0">
             <Label Text="Now Showing" BackgroundColor="White" FontSize="Title" TextColor="DimGray" FontAttributes="Bold" Padding="15"/>
-            <StackLayout Padding="25">
-                <Grid HorizontalOptions="CenterAndExpand" Padding="30">
+            <StackLayout Padding="25" VerticalOptions="FillAndExpand">
+                <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Padding="30">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"></RowDefinition>
                     </Grid.RowDefinitions>
@@ -30,6 +33,7 @@
                     <Label Text="Loading..." FontSize="Title"/>
                 </ScrollView>
             </StackLayout>
-        </StackLayout>      
+        </StackLayout>
+        
     </ContentPage.Content> 
 </ContentPage>
