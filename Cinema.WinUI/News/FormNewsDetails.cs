@@ -169,6 +169,42 @@ namespace Cinema.WinUI.Screenings
             }
         }
 
+        private void txtNewsTitle_Validating(object sender, CancelEventArgs e)
+        {
+            ValidateEmptyField(txtNewsTitle, e);
+        }
+
+        private void cmbNewsType_Validating(object sender, CancelEventArgs e)
+        {
+            if (cmbNewsType.SelectedValue == null)
+            {
+                errorProvider1.SetError(cmbNewsType, Properties.Resources.Validation_RequiredField);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider1.SetError(cmbNewsType, null);
+            }
+        }
+
+        private void rtbDescription_Validating(object sender, CancelEventArgs e)
+        {
+            ValidateEmptyField(rtbDescription, e);
+        }
+
+        private void ValidateEmptyField(Control control, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(control.Text))
+            {
+                errorProvider1.SetError(control, Properties.Resources.Validation_RequiredField);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider1.SetError(control, null);
+            }
+        }
+
         #endregion
     }
 }
