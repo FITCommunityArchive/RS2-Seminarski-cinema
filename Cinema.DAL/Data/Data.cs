@@ -174,7 +174,7 @@ namespace Cinema.Dal.Data
                         {
                             Id = reviewId++,
                             MovieId = j,
-                            Rating = rnd.Next(1,6),
+                            Rating = rnd.Next(1, 6),
                             Text = "Lorem ipsum",
                             UserId = i
                         }
@@ -1006,9 +1006,9 @@ namespace Cinema.Dal.Data
                 }
             );
 
-            
 
-            for (int i =0; i < 600;i++)
+
+            for (int i = 0; i < 600; i++)
             {
                 ApplicationUser customer = new ApplicationUser
                 {

@@ -195,7 +195,7 @@ namespace Cinema.Services
             var claims = readToken.Claims;
 
             var claimsList = new List<string>();
-            foreach(var claim in claims)
+            foreach (var claim in claims)
             {
                 claimsList.Add(claim.Value);
             }

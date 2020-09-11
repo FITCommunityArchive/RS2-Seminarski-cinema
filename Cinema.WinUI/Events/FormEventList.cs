@@ -4,7 +4,6 @@ using Cinema.Models.Requests.Events;
 using Cinema.Shared.Constants;
 using Cinema.Shared.Pagination;
 using Cinema.WinUI.Helpers;
-using Cinema.WinUI.Screenings;
 using Cinema.WinUI.Services;
 using System;
 using System.Collections.Generic;

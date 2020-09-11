@@ -1,8 +1,6 @@
 ﻿using Cinema.Models.Dtos;
 using Cinema.Models.Requests;
-using Cinema.Models.Requests.Movies;
 using Cinema.Models.Requests.News;
-using Cinema.Models.Requests.Screenings;
 using Cinema.Shared.Pagination;
 using Cinema.WinUI.Helpers;
 using Cinema.WinUI.Services;
@@ -113,8 +111,8 @@ namespace Cinema.WinUI.Screenings
 
             _request.Title = txtNewsTitle.Text;
             _request.Description = rtbDescription.Text;
-            _request.TypeId = typeId;         
-            
+            _request.TypeId = typeId;
+
             NewsDto result;
 
             if (_id.HasValue)

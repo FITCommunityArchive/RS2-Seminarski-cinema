@@ -1,8 +1,5 @@
 ﻿using Cinema.Dal.Data;
-using Cinema.Utilities.Interfaces.Dal;
-using Cinema.Utilities.Interfaces.Services;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.ML;
 using Microsoft.ML.Trainers;
 using System;
@@ -13,7 +10,7 @@ namespace MovieRecommender
 {
     class Program
     {
-        
+
 
         static void Main(string[] args)
         {

@@ -8,7 +8,7 @@ namespace Cinema.MovieRecommenderService.Models
         public float userId;
         [LoadColumn(1)]
         public float movieId;
-        [ColumnName("Label"),LoadColumn(2)]
+        [ColumnName("Label"), LoadColumn(2)]
         public float rating;
 
     }
