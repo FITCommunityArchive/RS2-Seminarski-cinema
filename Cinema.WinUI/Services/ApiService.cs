@@ -3,6 +3,7 @@ using Cinema.Shared.Helpers;
 using Flurl;
 using Flurl.Http;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Cinema.WinUI.Services
@@ -38,11 +39,11 @@ namespace Cinema.WinUI.Services
                 Token = dynamicJson.token;
 
                 var decodeUrl = $"{Properties.Settings.Default.APIUrl}/decode";
-                var decodeResult = await decodeUrl.SetQueryParams(new { token = Token }).GetStringAsync();
+                var decodeResult = await decodeUrl.SetQueryParams(new { token = Token }).GetJsonAsync<List<string>>();
 
-                if (decodeResult != null)
+                if (decodeResult.Count > 0)
                 {
-                    Role = decodeResult;
+                    Role = decodeResult[2];
                 }
 
                 return true;

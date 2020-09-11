@@ -4,7 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:viewModels="clr-namespace:Cinema.Mobile.ViewModels"
              mc:Ignorable="d"
-             x:Class="Cinema.Mobile.Views.MyReservationsPage">
+             x:Class="Cinema.Mobile.Views.MyReservationsPage"
+             ControlTemplate="{StaticResource FooterBar}">
     <ContentPage.BindingContext>
         <viewModels:MyReservationsViewModel></viewModels:MyReservationsViewModel>
     </ContentPage.BindingContext>
