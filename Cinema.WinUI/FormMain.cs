@@ -147,7 +147,7 @@ namespace Cinema.WinUI
 
         private void btnEvents_Click(object sender, EventArgs e)
         {
-            FormEventsList formEventsList = new FormEventsList(_nextFormPrincipal);
+            FormEventList formEventsList = new FormEventList(_nextFormPrincipal);
             openChildForm(formEventsList);
         }
     }

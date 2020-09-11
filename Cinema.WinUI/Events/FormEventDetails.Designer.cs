@@ -91,7 +91,7 @@
             this.lblBreadCrumbsCurrent.AutoSize = true;
             this.lblBreadCrumbsCurrent.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBreadCrumbsCurrent.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblBreadCrumbsCurrent.Location = new System.Drawing.Point(152, 63);
+            this.lblBreadCrumbsCurrent.Location = new System.Drawing.Point(161, 63);
             this.lblBreadCrumbsCurrent.Margin = new System.Windows.Forms.Padding(0);
             this.lblBreadCrumbsCurrent.Name = "lblBreadCrumbsCurrent";
             this.lblBreadCrumbsCurrent.Size = new System.Drawing.Size(107, 17);
@@ -154,7 +154,7 @@
             this.txtPromoter.BorderColor = System.Drawing.Color.DarkGray;
             this.txtPromoter.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPromoter.ForeColor = System.Drawing.Color.Gray;
-            this.txtPromoter.Location = new System.Drawing.Point(728, 198);
+            this.txtPromoter.Location = new System.Drawing.Point(728, 199);
             this.txtPromoter.Margin = new System.Windows.Forms.Padding(25);
             this.txtPromoter.Name = "txtPromoter";
             this.txtPromoter.Size = new System.Drawing.Size(703, 26);
@@ -166,7 +166,7 @@
             this.lblPromoter.BackColor = System.Drawing.Color.White;
             this.lblPromoter.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPromoter.ForeColor = System.Drawing.Color.Gray;
-            this.lblPromoter.Location = new System.Drawing.Point(586, 197);
+            this.lblPromoter.Location = new System.Drawing.Point(586, 203);
             this.lblPromoter.Margin = new System.Windows.Forms.Padding(15);
             this.lblPromoter.Name = "lblPromoter";
             this.lblPromoter.Size = new System.Drawing.Size(79, 18);
@@ -179,12 +179,12 @@
             this.dtpEventTime.CalendarTitleForeColor = System.Drawing.Color.Gray;
             this.dtpEventTime.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpEventTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpEventTime.Location = new System.Drawing.Point(728, 155);
+            this.dtpEventTime.Location = new System.Drawing.Point(728, 147);
             this.dtpEventTime.Name = "dtpEventTime";
             this.dtpEventTime.ShowUpDown = true;
             this.dtpEventTime.Size = new System.Drawing.Size(703, 26);
             this.dtpEventTime.TabIndex = 41;
-            this.dtpEventTime.Validating += new System.ComponentModel.CancelEventHandler(this.dtpEventTime_Validating);
+            this.dtpEventTime.Validating += new System.ComponentModel.CancelEventHandler(this.dtpEventDateAndTime_Validating);
             // 
             // lblScreeningTime
             // 
@@ -192,7 +192,7 @@
             this.lblScreeningTime.BackColor = System.Drawing.Color.White;
             this.lblScreeningTime.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblScreeningTime.ForeColor = System.Drawing.Color.Gray;
-            this.lblScreeningTime.Location = new System.Drawing.Point(586, 161);
+            this.lblScreeningTime.Location = new System.Drawing.Point(586, 147);
             this.lblScreeningTime.Margin = new System.Windows.Forms.Padding(15);
             this.lblScreeningTime.Name = "lblScreeningTime";
             this.lblScreeningTime.Size = new System.Drawing.Size(88, 18);
@@ -205,11 +205,11 @@
             this.dtpEventDate.CalendarTitleForeColor = System.Drawing.Color.Gray;
             this.dtpEventDate.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpEventDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpEventDate.Location = new System.Drawing.Point(728, 97);
+            this.dtpEventDate.Location = new System.Drawing.Point(728, 95);
             this.dtpEventDate.Name = "dtpEventDate";
             this.dtpEventDate.Size = new System.Drawing.Size(703, 26);
             this.dtpEventDate.TabIndex = 39;
-            this.dtpEventDate.Validating += new System.ComponentModel.CancelEventHandler(this.dtpEventDate_Validating);
+            this.dtpEventDate.Validating += new System.ComponentModel.CancelEventHandler(this.dtpEventDateAndTime_Validating);
             // 
             // lblSchedule
             // 
@@ -217,7 +217,7 @@
             this.lblSchedule.BackColor = System.Drawing.Color.White;
             this.lblSchedule.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSchedule.ForeColor = System.Drawing.Color.Gray;
-            this.lblSchedule.Location = new System.Drawing.Point(586, 103);
+            this.lblSchedule.Location = new System.Drawing.Point(586, 95);
             this.lblSchedule.Margin = new System.Windows.Forms.Padding(15);
             this.lblSchedule.Name = "lblSchedule";
             this.lblSchedule.Size = new System.Drawing.Size(88, 18);
@@ -237,7 +237,8 @@
             // rtbDescription
             // 
             this.rtbDescription.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtbDescription.Location = new System.Drawing.Point(728, 304);
+            this.rtbDescription.ForeColor = System.Drawing.Color.Gray;
+            this.rtbDescription.Location = new System.Drawing.Point(728, 303);
             this.rtbDescription.Name = "rtbDescription";
             this.rtbDescription.Size = new System.Drawing.Size(703, 254);
             this.rtbDescription.TabIndex = 36;
@@ -261,7 +262,7 @@
             this.cmbEventType.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEventType.ForeColor = System.Drawing.Color.Gray;
             this.cmbEventType.FormattingEnabled = true;
-            this.cmbEventType.Location = new System.Drawing.Point(730, 240);
+            this.cmbEventType.Location = new System.Drawing.Point(728, 251);
             this.cmbEventType.Name = "cmbEventType";
             this.cmbEventType.Size = new System.Drawing.Size(703, 26);
             this.cmbEventType.TabIndex = 30;
@@ -330,7 +331,7 @@
             this.lblNewsType.BackColor = System.Drawing.Color.White;
             this.lblNewsType.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNewsType.ForeColor = System.Drawing.Color.Gray;
-            this.lblNewsType.Location = new System.Drawing.Point(588, 239);
+            this.lblNewsType.Location = new System.Drawing.Point(586, 251);
             this.lblNewsType.Margin = new System.Windows.Forms.Padding(15);
             this.lblNewsType.Name = "lblNewsType";
             this.lblNewsType.Size = new System.Drawing.Size(88, 18);

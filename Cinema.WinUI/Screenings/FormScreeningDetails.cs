@@ -183,7 +183,7 @@ namespace Cinema.WinUI.Screenings
 
         private void dtpScreeningDate_Validating(object sender, CancelEventArgs e)
         {
-            if (dtpScreeningDate.Value.ToUniversalTime() <= DateTime.UtcNow)
+            if (dtpScreeningDate.Value.ToUniversalTime() <= DateTime.UtcNow.AddDays(-1))
             {
                 errorProvider1.SetError(dtpScreeningDate, Properties.Resources.Validation_FutureDateRequired);
                 e.Cancel = true;

@@ -1,7 +1,6 @@
 ﻿using Cinema.Models.Dtos;
 using Cinema.Models.Requests;
 using Cinema.Models.Requests.Events;
-using Cinema.Models.Requests.News;
 using Cinema.Shared.Constants;
 using Cinema.Shared.Pagination;
 using Cinema.WinUI.Helpers;
@@ -14,7 +13,7 @@ using System.Windows.Forms;
 
 namespace Cinema.WinUI.Events
 {
-    public partial class FormEventsList : BaseDataGridForm
+    public partial class FormEventList : BaseDataGridForm
     {
         private readonly ApiService _eventsApi = new ApiService("Events");
         private readonly ApiService _eventTypesApi = new ApiService("EventTypes");
@@ -23,7 +22,7 @@ namespace Cinema.WinUI.Events
         private bool _dateFilterCleared = true;
         private FormEventDetails _formEventDetails = null;
 
-        public FormEventsList(IList<string> userPrincipal) : base(new string[] { Roles.Administrator, Roles.ContentEditor }, userPrincipal)
+        public FormEventList(IList<string> userPrincipal) : base(new string[] { Roles.Administrator, Roles.ContentEditor }, userPrincipal)
         {
             _nextFormPrincipal = userPrincipal;
             InitializeComponent();
@@ -66,7 +65,7 @@ namespace Cinema.WinUI.Events
             return searchRequest;
         }
 
-        private async Task LoadNews(EventSearchRequest searchRequest)
+        private async Task LoadEvents(EventSearchRequest searchRequest)
         {
             var result = await _eventsApi.Get<PagedList<EventDto>>(searchRequest);
 
@@ -95,13 +94,13 @@ namespace Cinema.WinUI.Events
 
             _eventTypes = await _eventTypesApi.Get<PagedList<EventTypeDto>>(new BaseSearchRequest());
 
-            await LoadNews(searchRequest);
+            await LoadEvents(searchRequest);
         }
 
         private async void pagination_PageChanged(object sender, EventArgs e)
         {
             EventSearchRequest searchRequest = GetSearchRequest();
-            await LoadNews(searchRequest);
+            await LoadEvents(searchRequest);
         }
 
         private async void grdList_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -114,7 +113,7 @@ namespace Cinema.WinUI.Events
             searchRequest.SortColumn = CurrentSortPropertyName;
             searchRequest.SortOrder = CurrentSortOrder;
 
-            await LoadNews(searchRequest);
+            await LoadEvents(searchRequest);
         }
 
         private void grdList_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -144,7 +143,7 @@ namespace Cinema.WinUI.Events
         private async void SearchChanged(object sender, EventArgs e)
         {
             EventSearchRequest searchRequest = GetSearchRequest();
-            await LoadNews(searchRequest);
+            await LoadEvents(searchRequest);
         }
 
         private void grdList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -157,8 +156,8 @@ namespace Cinema.WinUI.Events
             if (cmbType.DataSource == null)
             {
                 cmbType.DataSource = _eventTypes.Data;
-                cmbType.DisplayMember = nameof(NewsTypeDto.Name);
-                cmbType.ValueMember = nameof(NewsTypeDto.Id);
+                cmbType.DisplayMember = nameof(EventTypeDto.Name);
+                cmbType.ValueMember = nameof(EventTypeDto.Id);
 
                 /* The handler is added code-first in order to prevent the SearchChanged method being triggered
                 * in the value initialisation for status above.*/

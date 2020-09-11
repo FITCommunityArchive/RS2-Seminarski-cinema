@@ -1,6 +1,6 @@
 ﻿namespace Cinema.WinUI.Events
 {
-    partial class FormEventsList
+    partial class FormEventList
     {
         /// <summary>
         /// Required designer variable.

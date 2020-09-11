@@ -1,9 +1,6 @@
 ﻿using Cinema.Models.Dtos;
 using Cinema.Models.Requests;
 using Cinema.Models.Requests.Events;
-using Cinema.Models.Requests.Movies;
-using Cinema.Models.Requests.News;
-using Cinema.Models.Requests.Screenings;
 using Cinema.Shared.Pagination;
 using Cinema.WinUI.Helpers;
 using Cinema.WinUI.Services;
@@ -45,7 +42,7 @@ namespace Cinema.WinUI.Events
         }
 
 
-        private async Task LoadNewsDetails()
+        private async Task LoadEventDetails()
         {
             IncludesSearchRequest searchRequest = GetIncludes();
 
@@ -73,8 +70,8 @@ namespace Cinema.WinUI.Events
             cmbEventType.SelectedValue = result.TypeId;
             rtbDescription.Text = result.Description;
             txtPromoter.Text = result.Promoter;
-            dtpEventDate.Value = result.DateAndTime;
-            dtpEventTime.Value = result.DateAndTime;
+            dtpEventDate.Value = result.DateAndTime.ToLocalTime();
+            dtpEventTime.Value = result.DateAndTime.ToLocalTime();
 
             if (result.Image != null && result.Image.Length > 0)
             {
@@ -85,8 +82,14 @@ namespace Cinema.WinUI.Events
         private void LoadComboboxLists()
         {
             cmbEventType.DataSource = _eventTypes.Data;
-            cmbEventType.DisplayMember = nameof(NewsTypeDto.Name);
-            cmbEventType.ValueMember = nameof(NewsTypeDto.Id);
+            cmbEventType.DisplayMember = nameof(EventTypeDto.Name);
+            cmbEventType.ValueMember = nameof(EventTypeDto.Id);
+        }
+
+        private DateTime GetEventUtcDateAndTime()
+        {
+            DateTime dateTime = dtpEventDate.Value.Date + dtpEventTime.Value.TimeOfDay;
+            return dateTime.ToUniversalTime();
         }
 
         #region Event methods
@@ -100,7 +103,7 @@ namespace Cinema.WinUI.Events
 
             if (_id.HasValue)
             {
-                await LoadNewsDetails();
+                await LoadEventDetails();
             }
             else
             {
@@ -114,28 +117,28 @@ namespace Cinema.WinUI.Events
             if (!this.ValidateChildren()) return;
 
             int typeId = (int)cmbEventType.SelectedValue;
-
-            DateTime dateTime = dtpEventDate.Value.ToUniversalTime().Date + dtpEventTime.Value.ToUniversalTime().TimeOfDay;
+            DateTime dateTime = GetEventUtcDateAndTime();
 
             _request.Title = txtEventTitle.Text;
             _request.Description = rtbDescription.Text;
             _request.TypeId = typeId;
             _request.Promoter = txtPromoter.Text;
+            _request.DateAndTime = dateTime;
 
-            NewsDto result;
+            EventDto result;
 
             if (_id.HasValue)
             {
                 _request.AuthorId = _event.AuthorId;
-                result = await _eventsApi.Update<NewsDto>(_id, _request);
+                result = await _eventsApi.Update<EventDto>(_id, _request);
             }
             else
             {
-                result = await _eventsApi.Insert<NewsDto>(_request);
+                result = await _eventsApi.Insert<EventDto>(_request);
                 _id = result.Id;
             }
 
-            await LoadNewsDetails();
+            await LoadEventDetails();
 
             if (result != null)
             {
@@ -189,33 +192,22 @@ namespace Cinema.WinUI.Events
             }
         }
 
-        private void dtpEventDate_Validating(object sender, CancelEventArgs e)
+        private void dtpEventDateAndTime_Validating(object sender, CancelEventArgs e)
         {
-            if (dtpEventDate.Value.ToUniversalTime() <= DateTime.UtcNow)
+            DateTime dateTime = GetEventUtcDateAndTime();
+
+            if (dateTime <= DateTime.UtcNow.AddDays(-1))
             {
                 errorProvider1.SetError(dtpEventDate, Properties.Resources.Validation_FutureDateRequired);
-                e.Cancel = true;
-            }
-            else
-            {
-                errorProvider1.SetError(dtpEventDate, null);
-            }
-        }
-
-        private void dtpEventTime_Validating(object sender, CancelEventArgs e)
-        {
-            if (dtpEventTime.Value.ToUniversalTime() <= DateTime.UtcNow)
-            {
                 errorProvider1.SetError(dtpEventTime, Properties.Resources.Validation_FutureDateRequired);
                 e.Cancel = true;
             }
             else
             {
+                errorProvider1.SetError(dtpEventDate, null);
                 errorProvider1.SetError(dtpEventTime, null);
             }
         }
-
-        #endregion
 
         private void txtEventTitle_Validating(object sender, CancelEventArgs e)
         {
@@ -240,5 +232,7 @@ namespace Cinema.WinUI.Events
                 errorProvider1.SetError(cmbEventType, null);
             }
         }
+
+        #endregion
     }
 }
