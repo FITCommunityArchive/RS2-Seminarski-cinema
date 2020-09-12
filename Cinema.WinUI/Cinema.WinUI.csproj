@@ -205,6 +205,7 @@
     <Compile Include="Helpers\ModulePDF.cs" />
     <Compile Include="Helpers\ParameterEventArgs.cs" />
     <Compile Include="Models\IncludesSearchRequest.cs" />
+    <Compile Include="Models\YearlySalesReportFlatDto.cs" />
     <Compile Include="Movies\FormMovieSynopsis.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -235,11 +236,11 @@
     <Compile Include="Pricing\FormPricingsDetails.Designer.cs">
       <DependentUpon>FormPricingsDetails.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\FormReports.cs">
+    <Compile Include="Reports\FormYearlySalesReport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Reports\FormReports.Designer.cs">
-      <DependentUpon>FormReports.cs</DependentUpon>
+    <Compile Include="Reports\FormYearlySalesReport.Designer.cs">
+      <DependentUpon>FormYearlySalesReport.cs</DependentUpon>
     </Compile>
     <Compile Include="Reservations\FormReservationList.cs">
       <SubType>Form</SubType>
@@ -453,8 +454,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Reports\FormReports.resx">
-      <DependentUpon>FormReports.cs</DependentUpon>
+    <EmbeddedResource Include="Reports\FormYearlySalesReport.resx">
+      <DependentUpon>FormYearlySalesReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reservations\FormReservationList.resx">
       <DependentUpon>FormReservationList.cs</DependentUpon>

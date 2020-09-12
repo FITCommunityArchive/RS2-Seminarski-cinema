@@ -162,7 +162,7 @@ namespace Cinema.WinUI.Movies
                 var clickedRow = senderGrid.Rows[e.RowIndex];
                 int.TryParse(clickedRow.Cells["id"].Value.ToString(), out int reservationId);
 
-                bool success = await _reservationsApi.UpdateWithRoute<bool>(reservationId, null, "status");
+                bool success = await _reservationsApi.Update<bool>(reservationId, null, "status");
 
                 if (success)
                 {
