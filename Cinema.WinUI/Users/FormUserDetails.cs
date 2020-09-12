@@ -198,7 +198,7 @@ namespace Cinema.WinUI.Users
 
         private void txtConfirmPassword_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if(txtPassword.Text != txtConfirmPassword.Text)
+            if(txtPassword.Visible && txtPassword.Text != txtConfirmPassword.Text)
             {
                 errorProvider1.SetError(sender as TextBox, Properties.Resources.Validation_PasswortMismatch);
                 e.Cancel = true;
@@ -250,7 +250,8 @@ namespace Cinema.WinUI.Users
 
         private void txtPassword_Validating(object sender, CancelEventArgs e)
         {
-            if(ValidateEmptyField(txtPassword, e))
+
+            if(txtPassword.Visible && ValidateEmptyField(txtPassword, e))
             {
                 ValidatePassword(txtPassword, e); 
             }
