@@ -2,6 +2,7 @@
 using Cinema.Models.Dtos;
 using Cinema.Models.Dtos.Reports;
 using Cinema.Models.Requests.Reports;
+using Cinema.Models.Requests.Screenings;
 using Cinema.Shared.Enums;
 using Cinema.Shared.Pagination;
 using Cinema.Shared.Search;
@@ -19,10 +20,14 @@ namespace Cinema.Services
     public class ReportService : IReportService
     {
         private readonly IReservationRepository _reservationRepo;
+        private readonly IScreeningService _screeningService;
+        private readonly IRepository<SeatReservation, int> _seatReservationRepo;
 
-        public ReportService(IUnitOfWork unit)
+        public ReportService(IUnitOfWork unit, IScreeningService screeningService)
         {
             _reservationRepo = unit.Reservations;
+            _seatReservationRepo = unit.Repository<SeatReservation, int>();
+            _screeningService = screeningService;
         }
 
         public async Task<YearlySalesReportDto> GetYearlySalesReportPerUserAsync(UserYearlySalesSearchRequest searchRequest)
@@ -47,6 +52,34 @@ namespace Cinema.Services
             monthlySales.YearlyTotalForPage = monthlySales.MonthlyTotalsForPage.Sum(x => x.Total);
 
             return monthlySales;
+        }
+
+        public async Task<PagedList<ScreeningCapacityDto>> GetScreeningCapacitiesAsync(ScreeningSearchRequest searchRequest)
+        {
+            List<string> screeningIncludes = new List<string> { nameof(Screening.Hall), nameof(Screening.Movie) };
+            searchRequest.Includes = screeningIncludes;
+
+            IPagedList<ScreeningDto> pagedScreenings = await _screeningService.GetPagedAsync(searchRequest);
+            IEnumerable<int> screeningIds = pagedScreenings.Data.Select(x => x.Id);
+
+            List<string> seatReservationIncludes = new List<string> { nameof(SeatReservation.Reservation) };
+            IEnumerable<SeatReservation> seatReservations = await _seatReservationRepo.GetAsync(x => screeningIds.Contains(x.Reservation.ScreeningId), seatReservationIncludes);
+
+            List<ScreeningCapacityDto> screeningCapacities = pagedScreenings.Data.Select(x => new ScreeningCapacityDto
+            {
+                Screening = x,
+                Capacity = x.Hall.NumberOfColumns * x.Hall.NumberOfRows,
+                Occupied = seatReservations.Count(y => y.Reservation.ScreeningId == x.Id)
+            }).ToList();
+
+            foreach (var screening in screeningCapacities)
+            {
+                screening.Free = screening.Capacity - screening.Occupied;
+            }
+
+            PagedList<ScreeningCapacityDto> pagedScreeningCapacities = PagedList<ScreeningCapacityDto>.Create(screeningCapacities, searchRequest.PageIndex, searchRequest.PageSize);
+
+            return pagedScreeningCapacities;
         }
 
         private List<UserMonthlySalesDto> ApplySorting(List<UserMonthlySalesDto> monthlySales, ISearchRequest searchRequest)
