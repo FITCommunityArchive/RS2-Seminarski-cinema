@@ -4,8 +4,11 @@ using Cinema.Shared.Pagination;
 using Cinema.WinUI.Services;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
+using System.Drawing;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -28,6 +31,8 @@ namespace Cinema.WinUI.Users
             InitializeComponent();
             _id = id;
             picLoading.Visible = false;
+            gbRoles.Controls.OfType<RadioButton>().First().Checked = true;
+            
             if (_id.HasValue)
             {
                 txtConfirmPassword.Visible = false;
@@ -189,6 +194,142 @@ namespace Cinema.WinUI.Users
 
             OnItemDeleted(EventArgs.Empty);
             this.Close();
+        }
+
+        private void txtConfirmPassword_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if(txtPassword != txtConfirmPassword)
+            {
+                errorProvider1.SetError(sender as TextBox, Properties.Resources.Validation_PasswortMismatch);
+                e.Cancel = true;
+            }
+        }
+
+        private void ValidateField(object sender, CancelEventArgs e)
+        {
+            TextBox input = sender as TextBox;
+
+            if(string.IsNullOrWhiteSpace(input.Text))
+            {
+                errorProvider1.SetError(input, Properties.Resources.Validation_RequiredField);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider1.SetError(input, null);
+            }
+
+            switch (input.Tag)
+            {
+                case "username":
+                    if (input.TextLength < 3)
+                    {
+                        errorProvider1.SetError(input, Properties.Resources.Validation_Min3Char);
+                        e.Cancel = true;
+                    }
+                    else
+                    {
+                        errorProvider1.SetError(input, null);
+                    }
+                    break;
+                case "firstName":
+                    if (input.TextLength < 3)
+                    {
+                        errorProvider1.SetError(input, Properties.Resources.Validation_Min3Char);
+                        e.Cancel = true;
+                    }
+                    else
+                    {
+                        errorProvider1.SetError(input, null);
+                    }
+                    break;
+                case "lastName":
+                    if (input.TextLength < 3)
+                    {
+                        errorProvider1.SetError(input, Properties.Resources.Validation_Min3Char);
+                        e.Cancel = true;
+                    }
+                    else
+                    {
+                        errorProvider1.SetError(input, null);
+                    }
+                    break;
+                case "password":
+                    if (!ValidatePassword(input.Text))
+                    {
+                        errorProvider1.SetError(input, Properties.Resources.Validation_InvalidPassword);
+                        e.Cancel = true;
+                    }
+                    else
+                    {
+                        errorProvider1.SetError(input, null);
+                    }
+                    break;
+                case "email":
+                    if (!ValidateEmail(input.Text))
+                    {
+                        errorProvider1.SetError(input, Properties.Resources.Validation_InvalidEmail);
+                        e.Cancel = true;
+                    }
+                    else
+                    {
+                        errorProvider1.SetError(input, null);
+                    }
+                    break;
+                case "phone":
+                    if (!ValidatePhone(input.Text))
+                    {
+                        errorProvider1.SetError(input, Properties.Resources.Validation_InvalidPhone);
+                        e.Cancel = true;
+                    }
+                    else
+                    {
+                        errorProvider1.SetError(input, null);
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void field_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            ValidateField(sender, e);
+        }
+
+        private bool ValidatePassword(string password)
+        {
+            string pattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[#$^+=!*()@%&]).{8,}$";
+            Regex r = new Regex(pattern);
+            if (r.IsMatch(password))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private bool ValidatePhone(string phone)
+        {
+            string pattern = "^([0-9]{9})$";
+            Regex r = new Regex(pattern);
+            if (r.IsMatch(phone))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private bool ValidateEmail(string email)
+        {
+            string pattern = "^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}" +
+         @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
+         @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
+            Regex r = new Regex(pattern);
+            if (r.IsMatch(email))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

@@ -28,18 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormUserDetails));
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.lblUsername = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnDelete = new Cinema.WinUI.UserControls.Buttons.DeleteButton();
+            this.lblErrors = new System.Windows.Forms.Label();
+            this.gbRoles = new System.Windows.Forms.GroupBox();
+            this.rbCustomer = new System.Windows.Forms.RadioButton();
+            this.rbContentEditor = new System.Windows.Forms.RadioButton();
+            this.rbAdmin = new System.Windows.Forms.RadioButton();
             this.txtConfirmPassword = new System.Windows.Forms.TextBox();
             this.lblPasswordConfirm = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.lblPassword = new System.Windows.Forms.Label();
             this.btnChangePassword = new System.Windows.Forms.Button();
             this.picLoading = new System.Windows.Forms.PictureBox();
-            this.btnSaveChanges = new Cinema.WinUI.UserControls.Buttons.SaveChangesButton();
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.lblPhone = new System.Windows.Forms.Label();
             this.txtLastName = new System.Windows.Forms.TextBox();
@@ -50,14 +54,14 @@
             this.lblEmail = new System.Windows.Forms.Label();
             this.txtFormTitle = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.rbAdmin = new System.Windows.Forms.RadioButton();
-            this.gbRoles = new System.Windows.Forms.GroupBox();
-            this.rbContentEditor = new System.Windows.Forms.RadioButton();
-            this.rbCustomer = new System.Windows.Forms.RadioButton();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnDelete = new Cinema.WinUI.UserControls.Buttons.DeleteButton();
+            this.btnSaveChanges = new Cinema.WinUI.UserControls.Buttons.SaveChangesButton();
             this.panel1.SuspendLayout();
+            this.gbRoles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLoading)).BeginInit();
             this.panel4.SuspendLayout();
-            this.gbRoles.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtUsername
@@ -68,6 +72,8 @@
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(232, 27);
             this.txtUsername.TabIndex = 0;
+            this.txtUsername.Tag = "username";
+            this.txtUsername.Validating += new System.ComponentModel.CancelEventHandler(this.field_Validating);
             // 
             // lblUsername
             // 
@@ -82,6 +88,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.lblErrors);
             this.panel1.Controls.Add(this.gbRoles);
             this.panel1.Controls.Add(this.btnDelete);
             this.panel1.Controls.Add(this.txtConfirmPassword);
@@ -106,16 +113,61 @@
             this.panel1.Size = new System.Drawing.Size(904, 422);
             this.panel1.TabIndex = 2;
             // 
-            // btnDelete
+            // lblErrors
             // 
-            this.btnDelete.AutoSize = true;
-            this.btnDelete.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnDelete.Location = new System.Drawing.Point(723, 338);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(90, 32);
-            this.btnDelete.TabIndex = 28;
-            this.btnDelete.ButtonClicked += new System.EventHandler(this.btnDelete_ButtonClicked);
+            this.lblErrors.AutoSize = true;
+            this.lblErrors.Location = new System.Drawing.Point(54, 17);
+            this.lblErrors.Name = "lblErrors";
+            this.lblErrors.Size = new System.Drawing.Size(0, 13);
+            this.lblErrors.TabIndex = 32;
+            // 
+            // gbRoles
+            // 
+            this.gbRoles.Controls.Add(this.rbCustomer);
+            this.gbRoles.Controls.Add(this.rbContentEditor);
+            this.gbRoles.Controls.Add(this.rbAdmin);
+            this.gbRoles.Location = new System.Drawing.Point(613, 66);
+            this.gbRoles.Name = "gbRoles";
+            this.gbRoles.Size = new System.Drawing.Size(200, 100);
+            this.gbRoles.TabIndex = 31;
+            this.gbRoles.TabStop = false;
+            this.gbRoles.Text = "Roles";
+            // 
+            // rbCustomer
+            // 
+            this.rbCustomer.AutoSize = true;
+            this.rbCustomer.Location = new System.Drawing.Point(11, 69);
+            this.rbCustomer.Name = "rbCustomer";
+            this.rbCustomer.Size = new System.Drawing.Size(69, 17);
+            this.rbCustomer.TabIndex = 32;
+            this.rbCustomer.TabStop = true;
+            this.rbCustomer.Tag = "-3";
+            this.rbCustomer.Text = "Customer";
+            this.rbCustomer.UseVisualStyleBackColor = true;
+            // 
+            // rbContentEditor
+            // 
+            this.rbContentEditor.AutoSize = true;
+            this.rbContentEditor.Location = new System.Drawing.Point(11, 46);
+            this.rbContentEditor.Name = "rbContentEditor";
+            this.rbContentEditor.Size = new System.Drawing.Size(91, 17);
+            this.rbContentEditor.TabIndex = 31;
+            this.rbContentEditor.TabStop = true;
+            this.rbContentEditor.Tag = "-2";
+            this.rbContentEditor.Text = "Content editor";
+            this.rbContentEditor.UseVisualStyleBackColor = true;
+            // 
+            // rbAdmin
+            // 
+            this.rbAdmin.AutoSize = true;
+            this.rbAdmin.Location = new System.Drawing.Point(11, 22);
+            this.rbAdmin.Name = "rbAdmin";
+            this.rbAdmin.Size = new System.Drawing.Size(85, 17);
+            this.rbAdmin.TabIndex = 30;
+            this.rbAdmin.TabStop = true;
+            this.rbAdmin.Tag = "-1";
+            this.rbAdmin.Text = "Administrator";
+            this.rbAdmin.UseVisualStyleBackColor = true;
             // 
             // txtConfirmPassword
             // 
@@ -123,8 +175,10 @@
             this.txtConfirmPassword.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtConfirmPassword.Location = new System.Drawing.Point(335, 264);
             this.txtConfirmPassword.Name = "txtConfirmPassword";
+            this.txtConfirmPassword.PasswordChar = '*';
             this.txtConfirmPassword.Size = new System.Drawing.Size(232, 27);
             this.txtConfirmPassword.TabIndex = 28;
+            this.txtConfirmPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtConfirmPassword_Validating);
             // 
             // lblPasswordConfirm
             // 
@@ -142,8 +196,11 @@
             this.txtPassword.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.Location = new System.Drawing.Point(335, 198);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(232, 27);
             this.txtPassword.TabIndex = 26;
+            this.txtPassword.Tag = "password";
+            this.txtPassword.Validating += new System.ComponentModel.CancelEventHandler(this.field_Validating);
             // 
             // lblPassword
             // 
@@ -176,17 +233,6 @@
             this.picLoading.TabIndex = 23;
             this.picLoading.TabStop = false;
             // 
-            // btnSaveChanges
-            // 
-            this.btnSaveChanges.AutoSize = true;
-            this.btnSaveChanges.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnSaveChanges.Location = new System.Drawing.Point(57, 338);
-            this.btnSaveChanges.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnSaveChanges.Name = "btnSaveChanges";
-            this.btnSaveChanges.Size = new System.Drawing.Size(90, 32);
-            this.btnSaveChanges.TabIndex = 22;
-            this.btnSaveChanges.ButtonClicked += new System.EventHandler(this.btnSaveChanges_ButtonClicked);
-            // 
             // txtPhone
             // 
             this.txtPhone.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -195,6 +241,8 @@
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(232, 27);
             this.txtPhone.TabIndex = 12;
+            this.txtPhone.Tag = "phone";
+            this.txtPhone.Validating += new System.ComponentModel.CancelEventHandler(this.field_Validating);
             // 
             // lblPhone
             // 
@@ -214,6 +262,8 @@
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(232, 27);
             this.txtLastName.TabIndex = 10;
+            this.txtLastName.Tag = "lastName";
+            this.txtLastName.Validating += new System.ComponentModel.CancelEventHandler(this.field_Validating);
             // 
             // lblLastName
             // 
@@ -233,6 +283,8 @@
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(232, 27);
             this.txtFirstName.TabIndex = 8;
+            this.txtFirstName.Tag = "firstName";
+            this.txtFirstName.Validating += new System.ComponentModel.CancelEventHandler(this.field_Validating);
             // 
             // lblFirstName
             // 
@@ -252,6 +304,8 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(232, 27);
             this.txtEmail.TabIndex = 6;
+            this.txtEmail.Tag = "email";
+            this.txtEmail.Validating += new System.ComponentModel.CancelEventHandler(this.field_Validating);
             // 
             // lblEmail
             // 
@@ -286,53 +340,32 @@
             this.panel4.Size = new System.Drawing.Size(961, 73);
             this.panel4.TabIndex = 5;
             // 
-            // rbAdmin
+            // errorProvider1
             // 
-            this.rbAdmin.AutoSize = true;
-            this.rbAdmin.Location = new System.Drawing.Point(11, 22);
-            this.rbAdmin.Name = "rbAdmin";
-            this.rbAdmin.Size = new System.Drawing.Size(85, 17);
-            this.rbAdmin.TabIndex = 30;
-            this.rbAdmin.TabStop = true;
-            this.rbAdmin.Tag = "-1";
-            this.rbAdmin.Text = "Administrator";
-            this.rbAdmin.UseVisualStyleBackColor = true;
+            this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProvider1.ContainerControl = this;
             // 
-            // gbRoles
+            // btnDelete
             // 
-            this.gbRoles.Controls.Add(this.rbCustomer);
-            this.gbRoles.Controls.Add(this.rbContentEditor);
-            this.gbRoles.Controls.Add(this.rbAdmin);
-            this.gbRoles.Location = new System.Drawing.Point(613, 66);
-            this.gbRoles.Name = "gbRoles";
-            this.gbRoles.Size = new System.Drawing.Size(200, 100);
-            this.gbRoles.TabIndex = 31;
-            this.gbRoles.TabStop = false;
-            this.gbRoles.Text = "Roles";
+            this.btnDelete.AutoSize = true;
+            this.btnDelete.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnDelete.Location = new System.Drawing.Point(723, 338);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(90, 32);
+            this.btnDelete.TabIndex = 28;
+            this.btnDelete.ButtonClicked += new System.EventHandler(this.btnDelete_ButtonClicked);
             // 
-            // rbContentEditor
+            // btnSaveChanges
             // 
-            this.rbContentEditor.AutoSize = true;
-            this.rbContentEditor.Location = new System.Drawing.Point(11, 46);
-            this.rbContentEditor.Name = "rbContentEditor";
-            this.rbContentEditor.Size = new System.Drawing.Size(91, 17);
-            this.rbContentEditor.TabIndex = 31;
-            this.rbContentEditor.TabStop = true;
-            this.rbContentEditor.Tag = "-2";
-            this.rbContentEditor.Text = "Content editor";
-            this.rbContentEditor.UseVisualStyleBackColor = true;
-            // 
-            // rbCustomer
-            // 
-            this.rbCustomer.AutoSize = true;
-            this.rbCustomer.Location = new System.Drawing.Point(11, 69);
-            this.rbCustomer.Name = "rbCustomer";
-            this.rbCustomer.Size = new System.Drawing.Size(69, 17);
-            this.rbCustomer.TabIndex = 32;
-            this.rbCustomer.TabStop = true;
-            this.rbCustomer.Tag = "-3";
-            this.rbCustomer.Text = "Customer";
-            this.rbCustomer.UseVisualStyleBackColor = true;
+            this.btnSaveChanges.AutoSize = true;
+            this.btnSaveChanges.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnSaveChanges.Location = new System.Drawing.Point(57, 338);
+            this.btnSaveChanges.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSaveChanges.Name = "btnSaveChanges";
+            this.btnSaveChanges.Size = new System.Drawing.Size(90, 32);
+            this.btnSaveChanges.TabIndex = 22;
+            this.btnSaveChanges.ButtonClicked += new System.EventHandler(this.btnSaveChanges_ButtonClicked);
             // 
             // FormUserDetails
             // 
@@ -347,11 +380,12 @@
             this.Load += new System.EventHandler(this.FormUserDetails_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.gbRoles.ResumeLayout(false);
+            this.gbRoles.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLoading)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            this.gbRoles.ResumeLayout(false);
-            this.gbRoles.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -383,5 +417,7 @@
         private System.Windows.Forms.GroupBox gbRoles;
         private System.Windows.Forms.RadioButton rbCustomer;
         private System.Windows.Forms.RadioButton rbContentEditor;
+        private System.Windows.Forms.Label lblErrors;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
