@@ -86,6 +86,7 @@ namespace Cinema.WinUI
             // 
             // btnEvents
             // 
+            this.btnEvents.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEvents.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnEvents.FlatAppearance.BorderSize = 0;
             this.btnEvents.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(42)))), ((int)(((byte)(97)))));
@@ -112,6 +113,7 @@ namespace Cinema.WinUI
             // 
             // btnNews
             // 
+            this.btnNews.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnNews.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnNews.FlatAppearance.BorderSize = 0;
             this.btnNews.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(42)))), ((int)(((byte)(97)))));
@@ -138,6 +140,7 @@ namespace Cinema.WinUI
             // 
             // btnPricing
             // 
+            this.btnPricing.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPricing.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnPricing.FlatAppearance.BorderSize = 0;
             this.btnPricing.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(42)))), ((int)(((byte)(97)))));
@@ -164,6 +167,7 @@ namespace Cinema.WinUI
             // 
             // btnReports
             // 
+            this.btnReports.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnReports.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnReports.FlatAppearance.BorderSize = 0;
             this.btnReports.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(42)))), ((int)(((byte)(97)))));
@@ -190,6 +194,7 @@ namespace Cinema.WinUI
             // 
             // btnReservations
             // 
+            this.btnReservations.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnReservations.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnReservations.FlatAppearance.BorderSize = 0;
             this.btnReservations.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(42)))), ((int)(((byte)(97)))));
@@ -224,6 +229,7 @@ namespace Cinema.WinUI
             // 
             // btnUsers
             // 
+            this.btnUsers.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnUsers.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnUsers.FlatAppearance.BorderSize = 0;
             this.btnUsers.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(42)))), ((int)(((byte)(97)))));
@@ -250,6 +256,7 @@ namespace Cinema.WinUI
             // 
             // btnScreenings
             // 
+            this.btnScreenings.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnScreenings.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnScreenings.FlatAppearance.BorderSize = 0;
             this.btnScreenings.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(42)))), ((int)(((byte)(97)))));
@@ -276,6 +283,7 @@ namespace Cinema.WinUI
             // 
             // btnMovies
             // 
+            this.btnMovies.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMovies.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnMovies.FlatAppearance.BorderSize = 0;
             this.btnMovies.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(42)))), ((int)(((byte)(97)))));
@@ -313,6 +321,7 @@ namespace Cinema.WinUI
             // 
             // btnDashboardSubmenu2
             // 
+            this.btnDashboardSubmenu2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDashboardSubmenu2.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnDashboardSubmenu2.FlatAppearance.BorderSize = 0;
             this.btnDashboardSubmenu2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(42)))), ((int)(((byte)(97)))));
@@ -332,6 +341,7 @@ namespace Cinema.WinUI
             // 
             // btnDashboardSubmenu1
             // 
+            this.btnDashboardSubmenu1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDashboardSubmenu1.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnDashboardSubmenu1.FlatAppearance.BorderSize = 0;
             this.btnDashboardSubmenu1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(42)))), ((int)(((byte)(97)))));
@@ -351,6 +361,7 @@ namespace Cinema.WinUI
             // 
             // btnDashboard
             // 
+            this.btnDashboard.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDashboard.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnDashboard.FlatAppearance.BorderSize = 0;
             this.btnDashboard.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(42)))), ((int)(((byte)(97)))));
@@ -377,6 +388,7 @@ namespace Cinema.WinUI
             // 
             // panelLogo
             // 
+            this.panelLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(54)))), ((int)(((byte)(123)))));
             this.panelLogo.Controls.Add(this.button1);
             this.panelLogo.Controls.Add(this.lblFullName);
             this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
@@ -411,8 +423,8 @@ namespace Cinema.WinUI
             // btnLogout
             // 
             this.btnLogout.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogout.FlatAppearance.BorderSize = 0;
+            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogout.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogout.ForeColor = System.Drawing.Color.Gray;

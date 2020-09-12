@@ -38,6 +38,7 @@ namespace Cinema.WinUI.Users
             else
             {
                 btnChangePassword.Visible = false;
+                btnDelete.Visible = false;
             }
         }
 
@@ -104,20 +105,10 @@ namespace Cinema.WinUI.Users
 
             LoadPropertyValues(result);
 
-            List<ApplicationRoleDto> userRole = _roles.Data.Where(x => result.UserRoles.Select(y => y.RoleId).Contains(x.Id)).ToList();
+            ApplicationRoleDto userRole = _roles.Data.Where(x => result.UserRoles.Select(y => y.RoleId).Contains(x.Id)).FirstOrDefault();
 
-            clbRoles.DataSource = userRole;
-            clbRoles.DisplayMember = nameof(ApplicationRoleDto.Name);
-
-            for (int i = 0; i < clbRoles.Items.Count; i++)
-            {
-                ApplicationRoleDto role = clbRoles.Items[i] as ApplicationRoleDto;
-
-                if (result.UserRoles.Select(x => x.RoleId).Contains(role.Id))
-                {
-                    clbRoles.SetItemChecked(i, true);
-                }
-            }
+            var roleRBtn = gbRoles.Controls.OfType<RadioButton>().Where(x => x.Text.ToLower() == userRole.Name.ToLower()).FirstOrDefault();
+            roleRBtn.Checked = true;
         }
 
         private async void btnSaveChanges_ButtonClicked(object sender, EventArgs e)
@@ -130,8 +121,8 @@ namespace Cinema.WinUI.Users
 
             SetLoading(true);
 
-            var roleId = clbRoles.CheckedItems.Cast<ApplicationRoleDto>().Select(x => x.Id).FirstOrDefault();
-
+            var checkedRBtn = gbRoles.Controls.OfType<RadioButton>().Where(x => x.Checked == true).FirstOrDefault();
+            int.TryParse(checkedRBtn.Tag.ToString(), out int roleId);
             try
             {
 
