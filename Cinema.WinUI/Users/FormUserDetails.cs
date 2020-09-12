@@ -198,138 +198,139 @@ namespace Cinema.WinUI.Users
 
         private void txtConfirmPassword_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if(txtPassword != txtConfirmPassword)
+            if(txtPassword.Text != txtConfirmPassword.Text)
             {
                 errorProvider1.SetError(sender as TextBox, Properties.Resources.Validation_PasswortMismatch);
                 e.Cancel = true;
             }
         }
 
-        private void ValidateField(object sender, CancelEventArgs e)
+        private void txtUsername_Validating(object sender, CancelEventArgs e)
         {
-            TextBox input = sender as TextBox;
-
-            if(string.IsNullOrWhiteSpace(input.Text))
+            if(ValidateEmptyField(txtUsername, e))
             {
-                errorProvider1.SetError(input, Properties.Resources.Validation_RequiredField);
+                ValidateFieldMin3Char(txtUsername, e);
+            }
+            
+        }
+
+        private void txtFirstName_Validating(object sender, CancelEventArgs e)
+        {
+            if(ValidateEmptyField(txtFirstName, e))
+            {
+                ValidateFieldMin3Char(txtFirstName, e);
+            }
+        }
+
+        private void txtLastName_Validating(object sender, CancelEventArgs e)
+        {
+            if(ValidateEmptyField(txtLastName, e))
+            {
+                ValidateFieldMin3Char(txtLastName, e);
+            }
+            
+        }
+
+        private void txtPhoneNumber_Validating(object sender, CancelEventArgs e)
+        {
+            if(ValidateEmptyField(txtPhone, e))
+            {
+                ValidatePhone(txtPhone, e);
+            }
+        }
+
+        private void txtEmail_Validating(object sender, CancelEventArgs e)
+        {
+            if(ValidateEmptyField(txtEmail, e))
+            {
+                ValidateEmail(txtEmail, e);
+            }
+            
+        }
+
+        private void txtPassword_Validating(object sender, CancelEventArgs e)
+        {
+            if(ValidateEmptyField(txtPassword, e))
+            {
+                ValidatePassword(txtPassword, e); 
+            }
+            
+        }
+
+        private bool ValidateEmptyField(Control control, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(control.Text))
+            {
+                errorProvider1.SetError(control, Properties.Resources.Validation_RequiredField);
+                e.Cancel = true;
+                return false;
+            }
+            else
+            {
+                errorProvider1.SetError(control, null);
+            }
+            return true;
+        }
+
+        private void ValidatePassword(Control control, CancelEventArgs e)
+        {
+            string pattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[#$^+=!*()@%&]).{8,}$";
+            Regex r = new Regex(pattern);
+            if (!r.IsMatch(control.Text))
+            {
+                errorProvider1.SetError(control, Properties.Resources.Validation_InvalidPassword);
                 e.Cancel = true;
             }
             else
             {
-                errorProvider1.SetError(input, null);
-            }
-
-            switch (input.Tag)
-            {
-                case "username":
-                    if (input.TextLength < 3)
-                    {
-                        errorProvider1.SetError(input, Properties.Resources.Validation_Min3Char);
-                        e.Cancel = true;
-                    }
-                    else
-                    {
-                        errorProvider1.SetError(input, null);
-                    }
-                    break;
-                case "firstName":
-                    if (input.TextLength < 3)
-                    {
-                        errorProvider1.SetError(input, Properties.Resources.Validation_Min3Char);
-                        e.Cancel = true;
-                    }
-                    else
-                    {
-                        errorProvider1.SetError(input, null);
-                    }
-                    break;
-                case "lastName":
-                    if (input.TextLength < 3)
-                    {
-                        errorProvider1.SetError(input, Properties.Resources.Validation_Min3Char);
-                        e.Cancel = true;
-                    }
-                    else
-                    {
-                        errorProvider1.SetError(input, null);
-                    }
-                    break;
-                case "password":
-                    if (!ValidatePassword(input.Text))
-                    {
-                        errorProvider1.SetError(input, Properties.Resources.Validation_InvalidPassword);
-                        e.Cancel = true;
-                    }
-                    else
-                    {
-                        errorProvider1.SetError(input, null);
-                    }
-                    break;
-                case "email":
-                    if (!ValidateEmail(input.Text))
-                    {
-                        errorProvider1.SetError(input, Properties.Resources.Validation_InvalidEmail);
-                        e.Cancel = true;
-                    }
-                    else
-                    {
-                        errorProvider1.SetError(input, null);
-                    }
-                    break;
-                case "phone":
-                    if (!ValidatePhone(input.Text))
-                    {
-                        errorProvider1.SetError(input, Properties.Resources.Validation_InvalidPhone);
-                        e.Cancel = true;
-                    }
-                    else
-                    {
-                        errorProvider1.SetError(input, null);
-                    }
-                    break;
-                default:
-                    break;
+                errorProvider1.SetError(control, null);
             }
         }
 
-        private void field_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            ValidateField(sender, e);
-        }
-
-        private bool ValidatePassword(string password)
-        {
-            string pattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[#$^+=!*()@%&]).{8,}$";
-            Regex r = new Regex(pattern);
-            if (r.IsMatch(password))
-            {
-                return true;
-            }
-            return false;
-        }
-
-        private bool ValidatePhone(string phone)
+        private void ValidatePhone(Control control, CancelEventArgs e)
         {
             string pattern = "^([0-9]{9})$";
             Regex r = new Regex(pattern);
-            if (r.IsMatch(phone))
+            if (!r.IsMatch(control.Text))
             {
-                return true;
+                errorProvider1.SetError(control, Properties.Resources.Validation_InvalidPhone);
+                e.Cancel = true;
             }
-            return false;
+            else
+            {
+                errorProvider1.SetError(control, null);
+            }
         }
 
-        private bool ValidateEmail(string email)
+        private void ValidateEmail(Control control,CancelEventArgs e)
         {
             string pattern = "^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}" +
          @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
          @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
             Regex r = new Regex(pattern);
-            if (r.IsMatch(email))
+            if (!r.IsMatch(control.Text))
             {
-                return true;
+                errorProvider1.SetError(control, Properties.Resources.Validation_InvalidEmail);
+                e.Cancel = true;
             }
-            return false;
+            else
+            {
+                errorProvider1.SetError(control, null);
+            }
         }
+
+        private void ValidateFieldMin3Char(Control control, CancelEventArgs e)
+        {
+            if(control.Text.Length < 3)
+            {
+                errorProvider1.SetError(control, Properties.Resources.Validation_Min3Char);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider1.SetError(control, null);
+            }
+        }
+
     }
 }
