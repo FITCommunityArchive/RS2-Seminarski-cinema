@@ -56,14 +56,14 @@ namespace Cinema.WinUI
 
         private void customizeDesign()
         {
-            panelDashboardSubmenu.Visible = false;
+            panelReportsSubmenu.Visible = false;
         }
 
         private void hideSubmenu()
         {
-            if (panelDashboardSubmenu.Visible == true)
+            if (panelReportsSubmenu.Visible == true)
             {
-                panelDashboardSubmenu.Visible = false;
+                panelReportsSubmenu.Visible = false;
             }
         }
 
@@ -116,13 +116,13 @@ namespace Cinema.WinUI
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
-            ShowSubmenu(panelDashboardSubmenu);
             openChildForm(new FormDashboard(_nextFormPrincipal));
         }
 
-        private void btnDashaboardSubmenu1_Click(object sender, EventArgs e)
+        private void btnDashaboardSubmenuYearlySales_Click(object sender, EventArgs e)
         {
-
+            FormYearlySalesReport formYearlySalesReport = new FormYearlySalesReport(_nextFormPrincipal);
+            openChildForm(formYearlySalesReport);
         }
 
         private void btnDashaboardSubmenu2_Click(object sender, EventArgs e)
@@ -143,8 +143,7 @@ namespace Cinema.WinUI
 
         private void btnReports_Click(object sender, EventArgs e)
         {
-            FormReports formReports = new FormReports(_nextFormPrincipal);
-            openChildForm(formReports);
+            ShowSubmenu(panelReportsSubmenu);
         }
 
         private void btnPricing_Click(object sender, EventArgs e)
@@ -161,7 +160,7 @@ namespace Cinema.WinUI
 
         private void btnEvents_Click(object sender, EventArgs e)
         {
-            FormEventsList formEventsList = new FormEventsList(_nextFormPrincipal);
+            FormEventList formEventsList = new FormEventList(_nextFormPrincipal);
             openChildForm(formEventsList);
         }
 

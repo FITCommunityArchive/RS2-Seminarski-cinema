@@ -1,8 +1,6 @@
-﻿using Cinema.Dal.Data;
-using Cinema.Domain.Entities;
+﻿using Cinema.Domain.Entities;
 using Cinema.MovieRecommenderService.Models;
 using Cinema.Utilities.Interfaces.Dal;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.ML;
 using Microsoft.ML;
 using Microsoft.ML.Trainers;
@@ -10,7 +8,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Cinema.MovieRecommenderService
 {
@@ -21,7 +18,7 @@ namespace Cinema.MovieRecommenderService
         private readonly PredictionEnginePool<MovieRating, MovieRatingPrediction> _predictionEnginePool;
         private readonly IUnitOfWork _unit;
         private readonly IReviewRepository _reviewRepo;
-        
+
         public MovieRecommender(IUnitOfWork unit, PredictionEnginePool<MovieRating, MovieRatingPrediction> predictionEnginePool)
         {
             _unit = unit;

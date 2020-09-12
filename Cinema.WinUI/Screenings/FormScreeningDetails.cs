@@ -67,7 +67,7 @@ namespace Cinema.WinUI.Screenings
         {
             LoadComboboxLists();
 
-            dtpScreeningDate.Value = result.DateAndTime;
+            dtpScreeningDate.Value = result.DateAndTime.ToLocalTime();
             cmbMovie.SelectedValue = result.Movie.Id;
             cmbHall.SelectedValue = result.Hall.Id;
             cmbPrice.SelectedValue = result.Pricing.Id;
@@ -181,11 +181,9 @@ namespace Cinema.WinUI.Screenings
             this.Close();
         }
 
-        #endregion
-
         private void dtpScreeningDate_Validating(object sender, CancelEventArgs e)
         {
-            if (dtpScreeningDate.Value.ToUniversalTime() <= DateTime.UtcNow)
+            if (dtpScreeningDate.Value.ToUniversalTime() <= DateTime.UtcNow.AddDays(-1))
             {
                 errorProvider1.SetError(dtpScreeningDate, Properties.Resources.Validation_FutureDateRequired);
                 e.Cancel = true;
@@ -195,5 +193,7 @@ namespace Cinema.WinUI.Screenings
                 errorProvider1.SetError(dtpScreeningDate, null);
             }
         }
+
+        #endregion
     }
 }

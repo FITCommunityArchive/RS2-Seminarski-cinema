@@ -66,13 +66,13 @@ namespace Cinema.Services
             foreach (var movie in movies)
             {
                 var score = _movieRecommender.PredictScore(userId, movie.Id);
-                if(Math.Round(score,1) > 3.5)
-                {       
+                if (Math.Round(score, 1) > 3.5)
+                {
                     moviesList.Add(movie);
                 }
             }
             //objListOrder.Sort((x, y) => x.OrderDate.CompareTo(y.OrderDate));
-            
+
             List<MovieDto> dtoList = _mapper.Map<List<MovieDto>>(moviesList);
             await Task.CompletedTask;
             return dtoList;

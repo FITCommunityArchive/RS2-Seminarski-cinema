@@ -139,6 +139,7 @@ namespace Cinema.Web.API
             services.AddScoped<IMovieRecommender, MovieRecommender>();
             services.AddScoped<INewsService, NewsService>();
             services.AddScoped<IEventService, EventService>();
+            services.AddScoped<IReportService, ReportService>();
 
             services.AddScoped<IMovieRepository, MovieRepository>();
             services.AddScoped<IReviewRepository, ReviewRepository>();
@@ -162,7 +163,7 @@ namespace Cinema.Web.API
                 //options.User.RequireUniqueEmail = true;
             }).AddEntityFrameworkStores<CinemaDbContext>().AddDefaultTokenProviders();
 
-            
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

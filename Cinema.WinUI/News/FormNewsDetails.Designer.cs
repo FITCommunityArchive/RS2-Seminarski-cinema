@@ -156,6 +156,7 @@
             this.rtbDescription.Size = new System.Drawing.Size(528, 335);
             this.rtbDescription.TabIndex = 36;
             this.rtbDescription.Text = "";
+            this.rtbDescription.Validating += new System.ComponentModel.CancelEventHandler(this.rtbDescription_Validating);
             // 
             // txtNewsTitle
             // 
@@ -167,6 +168,7 @@
             this.txtNewsTitle.Name = "txtNewsTitle";
             this.txtNewsTitle.Size = new System.Drawing.Size(528, 22);
             this.txtNewsTitle.TabIndex = 35;
+            this.txtNewsTitle.Validating += new System.ComponentModel.CancelEventHandler(this.txtNewsTitle_Validating);
             // 
             // cmbNewsType
             // 
@@ -178,6 +180,7 @@
             this.cmbNewsType.Name = "cmbNewsType";
             this.cmbNewsType.Size = new System.Drawing.Size(528, 22);
             this.cmbNewsType.TabIndex = 30;
+            this.cmbNewsType.Validating += new System.ComponentModel.CancelEventHandler(this.cmbNewsType_Validating);
             // 
             // btnDelete
             // 

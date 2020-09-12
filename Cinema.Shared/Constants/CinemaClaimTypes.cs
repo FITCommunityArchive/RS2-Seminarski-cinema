@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Cinema.Shared.Constants
+﻿namespace Cinema.Shared.Constants
 {
     public static class CinemaClaimTypes
     {

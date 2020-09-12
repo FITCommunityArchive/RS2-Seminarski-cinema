@@ -1,8 +1,6 @@
 ﻿using Cinema.Models.Dtos;
 using Cinema.Models.Requests;
-using Cinema.Models.Requests.Movies;
 using Cinema.Models.Requests.News;
-using Cinema.Models.Requests.Screenings;
 using Cinema.Shared.Pagination;
 using Cinema.WinUI.Helpers;
 using Cinema.WinUI.Services;
@@ -113,8 +111,8 @@ namespace Cinema.WinUI.Screenings
 
             _request.Title = txtNewsTitle.Text;
             _request.Description = rtbDescription.Text;
-            _request.TypeId = typeId;         
-            
+            _request.TypeId = typeId;
+
             NewsDto result;
 
             if (_id.HasValue)
@@ -147,7 +145,7 @@ namespace Cinema.WinUI.Screenings
 
         private async void btnDelete_ButtonClicked(object sender, EventArgs e)
         {
-            var result = await _newsApi.Delete<ScreeningDto>(_id);
+            var result = await _newsApi.Delete<NewsDto>(_id);
 
             OnItemDeleted(EventArgs.Empty);
             this.Close();
@@ -166,6 +164,42 @@ namespace Cinema.WinUI.Screenings
 
                 Image image = Image.FromFile(fileName);
                 picImage.Image = image;
+            }
+        }
+
+        private void txtNewsTitle_Validating(object sender, CancelEventArgs e)
+        {
+            ValidateEmptyField(txtNewsTitle, e);
+        }
+
+        private void cmbNewsType_Validating(object sender, CancelEventArgs e)
+        {
+            if (cmbNewsType.SelectedValue == null)
+            {
+                errorProvider1.SetError(cmbNewsType, Properties.Resources.Validation_RequiredField);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider1.SetError(cmbNewsType, null);
+            }
+        }
+
+        private void rtbDescription_Validating(object sender, CancelEventArgs e)
+        {
+            ValidateEmptyField(rtbDescription, e);
+        }
+
+        private void ValidateEmptyField(Control control, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(control.Text))
+            {
+                errorProvider1.SetError(control, Properties.Resources.Validation_RequiredField);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider1.SetError(control, null);
             }
         }
 
