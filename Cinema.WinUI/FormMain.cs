@@ -164,5 +164,16 @@ namespace Cinema.WinUI
             FormEventsList formEventsList = new FormEventsList(_nextFormPrincipal);
             openChildForm(formEventsList);
         }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            ApiService.Username = null;
+            ApiService.Password = null;
+            ApiService.Token = null;
+            ApiService.Role = null;
+            FormLogin formLogin = new FormLogin(_nextFormPrincipal);
+            this.Close();
+            formLogin.Show();
+        }
     }
 }

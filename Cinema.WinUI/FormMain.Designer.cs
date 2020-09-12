@@ -411,18 +411,26 @@ namespace Cinema.WinUI
             // btnLogout
             // 
             this.btnLogout.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogout.FlatAppearance.BorderSize = 0;
             this.btnLogout.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnLogout.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.btnLogout.IconColor = System.Drawing.Color.Black;
+            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.ForeColor = System.Drawing.Color.Gray;
+            this.btnLogout.IconChar = FontAwesome.Sharp.IconChar.SignOutAlt;
+            this.btnLogout.IconColor = System.Drawing.Color.Gray;
             this.btnLogout.IconSize = 16;
-            this.btnLogout.Location = new System.Drawing.Point(999, 5);
+            this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLogout.Location = new System.Drawing.Point(988, 5);
             this.btnLogout.Margin = new System.Windows.Forms.Padding(11, 2, 11, 2);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Rotation = 0D;
-            this.btnLogout.Size = new System.Drawing.Size(75, 23);
+            this.btnLogout.Size = new System.Drawing.Size(86, 23);
             this.btnLogout.TabIndex = 0;
             this.btnLogout.Text = "Log Out";
+            this.btnLogout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLogout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // panelBottomBar
             // 
@@ -480,9 +488,11 @@ namespace Cinema.WinUI
             // 
             this.lblWelcomeMessage.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblWelcomeMessage.AutoSize = true;
-            this.lblWelcomeMessage.Location = new System.Drawing.Point(931, 10);
+            this.lblWelcomeMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWelcomeMessage.ForeColor = System.Drawing.Color.Gray;
+            this.lblWelcomeMessage.Location = new System.Drawing.Point(910, 10);
             this.lblWelcomeMessage.Name = "lblWelcomeMessage";
-            this.lblWelcomeMessage.Size = new System.Drawing.Size(54, 13);
+            this.lblWelcomeMessage.Size = new System.Drawing.Size(64, 13);
             this.lblWelcomeMessage.TabIndex = 2;
             this.lblWelcomeMessage.Text = "Hello user";
             // 

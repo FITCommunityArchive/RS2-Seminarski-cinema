@@ -11,7 +11,7 @@ namespace Cinema.WinUI
         ApiService _service = new ApiService("login");
 
         IList<string> _nextFormPrincipal;
-        public FormLogin(IList<string> userPrincipal) : base(new string[] { "Guest" }, userPrincipal)
+        public FormLogin(IList<string> userPrincipal) : base(new string[] { "Guest","Administrator","Content Editor" }, userPrincipal)
         {
             _nextFormPrincipal = userPrincipal;
             InitializeComponent();
@@ -57,6 +57,7 @@ namespace Cinema.WinUI
                     SetLoading(false);
                     MessageBox.Show("You successufully logged in.", "Authentication", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                    _nextFormPrincipal.Clear();
                     _nextFormPrincipal.Add(ApiService.Role);
                     FormMain form1 = new FormMain(_nextFormPrincipal);
 
