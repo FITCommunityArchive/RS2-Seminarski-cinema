@@ -187,11 +187,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants\ReservationStatusButtonText.cs" />
-    <Compile Include="Events\FormEventsList.cs">
+    <Compile Include="Events\FormEventList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Events\FormEventsList.Designer.cs">
-      <DependentUpon>FormEventsList.cs</DependentUpon>
+    <Compile Include="Events\FormEventList.Designer.cs">
+      <DependentUpon>FormEventList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Events\FormEventDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Events\FormEventDetails.Designer.cs">
+      <DependentUpon>FormEventDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="Exceptions\ScreeningAvailabilityException.cs" />
     <Compile Include="Helpers\dgvPrinter.cs" />
@@ -199,6 +205,7 @@
     <Compile Include="Helpers\ModulePDF.cs" />
     <Compile Include="Helpers\ParameterEventArgs.cs" />
     <Compile Include="Models\IncludesSearchRequest.cs" />
+    <Compile Include="Models\YearlySalesReportFlatDto.cs" />
     <Compile Include="Movies\FormMovieSynopsis.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -229,11 +236,17 @@
     <Compile Include="Pricing\FormPricingsDetails.Designer.cs">
       <DependentUpon>FormPricingsDetails.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\FormReports.cs">
+    <Compile Include="Reports\FormScreeningCapacitiesReport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Reports\FormReports.Designer.cs">
-      <DependentUpon>FormReports.cs</DependentUpon>
+    <Compile Include="Reports\FormScreeningCapacitiesReport.Designer.cs">
+      <DependentUpon>FormScreeningCapacitiesReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\FormYearlySalesReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\FormYearlySalesReport.Designer.cs">
+      <DependentUpon>FormYearlySalesReport.cs</DependentUpon>
     </Compile>
     <Compile Include="Reservations\FormReservationList.cs">
       <SubType>Form</SubType>
@@ -401,8 +414,11 @@
     <Compile Include="Users\FormUsers.Designer.cs">
       <DependentUpon>FormUsers.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Events\FormEventsList.resx">
-      <DependentUpon>FormEventsList.cs</DependentUpon>
+    <EmbeddedResource Include="Events\FormEventList.resx">
+      <DependentUpon>FormEventList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Events\FormEventDetails.resx">
+      <DependentUpon>FormEventDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
@@ -444,8 +460,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Reports\FormReports.resx">
-      <DependentUpon>FormReports.cs</DependentUpon>
+    <EmbeddedResource Include="Reports\FormScreeningCapacitiesReport.resx">
+      <DependentUpon>FormScreeningCapacitiesReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\FormYearlySalesReport.resx">
+      <DependentUpon>FormYearlySalesReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reservations\FormReservationList.resx">
       <DependentUpon>FormReservationList.cs</DependentUpon>

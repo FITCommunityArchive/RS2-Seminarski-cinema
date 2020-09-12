@@ -1,12 +1,4 @@
-﻿using Cinema.Domain.Entities;
-using Cinema.MovieRecommenderService.Models;
-using Microsoft.Extensions.ML;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Cinema.MovieRecommenderService
+﻿namespace Cinema.MovieRecommenderService
 {
     public interface IMovieRecommender
     {

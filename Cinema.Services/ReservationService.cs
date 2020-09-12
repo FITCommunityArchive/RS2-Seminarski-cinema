@@ -3,6 +3,7 @@ using Cinema.Domain.Entities;
 using Cinema.Domain.Entities.Identity;
 using Cinema.EmailService;
 using Cinema.Models.Dtos;
+using Cinema.Models.Dtos.Reports;
 using Cinema.Models.Requests.Reservations;
 using Cinema.Shared.Constants;
 using Cinema.Shared.Enums;
@@ -15,6 +16,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Cinema.Services

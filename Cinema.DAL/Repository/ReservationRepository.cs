@@ -33,6 +33,36 @@ namespace Cinema.Dal.Repository
             return pagedList;
         }
 
+        public async Task<IEnumerable<Reservation>> GetForYearlySalesReportAsync(ISearchRequest searchRequest, int? year, int? userId, string userFullName)
+        {
+            var query = _dbSet.Include(x => x.User).Include(x => x.Invoice).AsQueryable();
+
+            if (year.HasValue)
+            {
+                query = query.Where(x => x.CreatedAt.Year == year);
+            }
+
+            if (userId.HasValue)
+            {
+                query = query.Where(x => x.UserId == userId);
+            }
+
+            if (!string.IsNullOrWhiteSpace(userFullName))
+            {
+                userFullName = userFullName.ToLower();
+                query = query.Where(x => (x.User.FirstName + " " + x.User.LastName).ToLower().StartsWith(userFullName));
+            }
+
+            query = ApplySorting(query, searchRequest);
+
+            if (searchRequest.Includes.Count() > 0)
+            {
+                query = AddIncludes(query, searchRequest.Includes);
+            }
+
+            return await query.ToListAsync();
+        }
+
         public async Task<IEnumerable<Reservation>> GetByScreeningIdAsync(int screeningId, bool isCancelled = false)
         {
             var query = _dbSet.Include(x => x.SeatReservations).ThenInclude(x => x.Seat)
@@ -40,6 +70,16 @@ namespace Cinema.Dal.Repository
 
             var list = await query.ToListAsync();
             return list;
+        }
+
+        public async Task<List<Reservation>> GetReservationsByUserId(int id)
+        {
+            return await _dbSet
+                .Include(x => x.Screening).ThenInclude(x => x.Movie)
+                .Include(x => x.Screening).ThenInclude(x => x.Hall)
+                .Include(x => x.User)
+                .Include(x => x.Invoice)
+                .Where(x => x.UserId == id).ToListAsync();
         }
 
         protected override Expression<Func<Reservation, bool>> GetByIdExpression(int id)
@@ -126,6 +166,10 @@ namespace Cinema.Dal.Repository
                     return x => x.Id;
                 case nameof(Reservation.User.FullName):
                     return x => x.User.FirstName + " " + x.User.LastName;
+                case "UserFullName":
+                    return x => x.User.FirstName + " " + x.User.LastName;
+                case "UserId":
+                    return x => x.UserId;
                 case nameof(Reservation.Invoice.Price):
                     return x => x.Invoice.Price;
                 case nameof(Reservation.CreatedAt):
@@ -135,16 +179,6 @@ namespace Cinema.Dal.Repository
                 default:
                     return x => x.Id;
             }
-        }
-
-        public async Task<List<Reservation>> GetReservationsByUserId(int id)
-        {
-            return await _dbSet
-                .Include(x => x.Screening).ThenInclude(x => x.Movie)
-                .Include(x => x.Screening).ThenInclude(x => x.Hall)
-                .Include(x => x.User)
-                .Include(x => x.Invoice)
-                .Where(x => x.UserId == id).ToListAsync();
         }
     }
 }

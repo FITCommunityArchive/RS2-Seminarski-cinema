@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Cinema.MovieRecommenderService;
+﻿using Cinema.MovieRecommenderService;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.ML;
 
 namespace Cinema.Web.Api.Controllers
 {
@@ -18,7 +13,7 @@ namespace Cinema.Web.Api.Controllers
         }
 
         [HttpPost("predict/{userId}/{movieId}")]
-        public ActionResult<int> Post(int userId,int movieId)
+        public ActionResult<int> Post(int userId, int movieId)
         {
             if (!ModelState.IsValid)
             {
@@ -33,7 +28,7 @@ namespace Cinema.Web.Api.Controllers
         public ActionResult<bool> TrainModel()
         {
             var result = _recommenderService.TrainModel();
-            if(result)
+            if (result)
             {
                 return true;
             }
