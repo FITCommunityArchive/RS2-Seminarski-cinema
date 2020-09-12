@@ -12,7 +12,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.Seed", "Cinema.Seed\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.Test", "Cinema.Test\Cinema.Test.csproj", "{5B8C3A5A-6E8C-483D-A0F3-CB371D819EC2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.Utilities", "Cinema.Utilities\Cinema.Utilities.csproj", "{B436E379-B478-4B5A-A359-48EE86282653}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.Common", "Cinema.Utilities\Cinema.Common.csproj", "{B436E379-B478-4B5A-A359-48EE86282653}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.Services", "Cinema.Services\Cinema.Services.csproj", "{ABC21100-AC7A-45D0-8D0E-D2D2721CA1B6}"
 EndProject
@@ -47,7 +47,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.Mobile", "UI\Cinema.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieRecommender", "MovieRecommender\MovieRecommender.csproj", "{69B8AB31-2471-4DD1-8528-6C3012FD9D06}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinema.MovieRecommenderService", "Cinema.MovieRecommenderService\Cinema.MovieRecommenderService.csproj", "{5AE9F036-5D53-4C61-9F60-8D73DEF5393D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.MovieRecommenderService", "Cinema.MovieRecommenderService\Cinema.MovieRecommenderService.csproj", "{5AE9F036-5D53-4C61-9F60-8D73DEF5393D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

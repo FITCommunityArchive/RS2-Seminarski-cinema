@@ -41,7 +41,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Cinema.Domain\Cinema.Domain.csproj" />
-    <ProjectReference Include="..\Cinema.Utilities\Cinema.Utilities.csproj" />
+    <ProjectReference Include="..\Cinema.Utilities\Cinema.Common.csproj" />
   </ItemGroup>
 
 </Project>
