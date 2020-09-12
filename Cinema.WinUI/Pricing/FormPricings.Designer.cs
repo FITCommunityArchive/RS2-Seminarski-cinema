@@ -272,7 +272,7 @@
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FormPricings";
+            this.Name.HeaderText = "FormPricings";
             this.Text = "eCinema - Pricing";
             this.Load += new System.EventHandler(this.FormPricing_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
