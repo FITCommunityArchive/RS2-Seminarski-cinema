@@ -28,13 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.pgnScreenings = new Cinema.WinUI.UserControls.Pagination();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pgnReservations = new Cinema.WinUI.UserControls.Pagination();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvUserSalesList = new System.Windows.Forms.DataGridView();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.btnExportExcel = new System.Windows.Forms.Button();
+            this.btnExportPDF = new System.Windows.Forms.Button();
+            this.txtCustomerName = new System.Windows.Forms.TextBox();
+            this.lblYear = new System.Windows.Forms.Label();
+            this.nmrUserId = new System.Windows.Forms.NumericUpDown();
+            this.nmrYear = new System.Windows.Forms.NumericUpDown();
+            this.nmrNumberOfEntries = new System.Windows.Forms.NumericUpDown();
+            this.lblShowEntries = new System.Windows.Forms.Label();
+            this.lblCustomerID = new System.Windows.Forms.Label();
+            this.lblCustomerName = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblReportTitle = new System.Windows.Forms.Label();
             this.UserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserFullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Jan = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,56 +73,19 @@
             this.Nov = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Dec = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.YearlyTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvScreeningsList = new System.Windows.Forms.DataGridView();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Hall = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DateAndTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnPrint = new System.Windows.Forms.Button();
-            this.btnExportExcel = new System.Windows.Forms.Button();
-            this.btnExportPDF = new System.Windows.Forms.Button();
-            this.txtCustomerName = new System.Windows.Forms.TextBox();
-            this.lblYear = new System.Windows.Forms.Label();
-            this.nmrUserId = new System.Windows.Forms.NumericUpDown();
-            this.nmrYear = new System.Windows.Forms.NumericUpDown();
-            this.nmrNumberOfEntries = new System.Windows.Forms.NumericUpDown();
-            this.lblShowEntries = new System.Windows.Forms.Label();
-            this.lblCustomerID = new System.Windows.Forms.Label();
-            this.lblCustomerName = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.lblReportTitle = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUserSalesList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvScreeningsList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmrUserId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmrYear)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmrNumberOfEntries)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // pgnScreenings
-            // 
-            this.pgnScreenings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.pgnScreenings.AutoSize = true;
-            this.pgnScreenings.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.pgnScreenings.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pgnScreenings.Location = new System.Drawing.Point(1250, 24);
-            this.pgnScreenings.Margin = new System.Windows.Forms.Padding(5);
-            this.pgnScreenings.Name = "pgnScreenings";
-            this.pgnScreenings.PageIndex = 0;
-            this.pgnScreenings.Size = new System.Drawing.Size(210, 35);
-            this.pgnScreenings.TabIndex = 11;
-            this.pgnScreenings.TotalPages = 0;
-            this.pgnScreenings.PageChanged += new System.EventHandler(this.pgnScreenings_PageChanged);
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.pgnReservations);
-            this.panel1.Controls.Add(this.pgnScreenings);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 716);
             this.panel1.Margin = new System.Windows.Forms.Padding(40, 37, 40, 37);
@@ -127,7 +113,6 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.dgvUserSalesList);
-            this.panel2.Controls.Add(this.dgvScreeningsList);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 91);
             this.panel2.Margin = new System.Windows.Forms.Padding(40, 37, 40, 37);
@@ -147,14 +132,14 @@
             this.dgvUserSalesList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvUserSalesList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.dgvUserSalesList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvUserSalesList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvUserSalesList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvUserSalesList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUserSalesList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.UserId,
@@ -183,242 +168,8 @@
             this.dgvUserSalesList.RowTemplate.Height = 24;
             this.dgvUserSalesList.Size = new System.Drawing.Size(1447, 595);
             this.dgvUserSalesList.TabIndex = 1;
-            this.dgvUserSalesList.Visible = false;
             this.dgvUserSalesList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvReportReservations_CellFormatting);
             this.dgvUserSalesList.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvUserSalesList_ColumnHeaderMouseClick);
-            // 
-            // UserId
-            // 
-            this.UserId.DataPropertyName = "UserId";
-            this.UserId.FillWeight = 50F;
-            this.UserId.HeaderText = "ID";
-            this.UserId.MinimumWidth = 6;
-            this.UserId.Name = "UserId";
-            this.UserId.ReadOnly = true;
-            // 
-            // UserFullName
-            // 
-            this.UserFullName.DataPropertyName = "UserFullName";
-            this.UserFullName.FillWeight = 200F;
-            this.UserFullName.HeaderText = "Customer name";
-            this.UserFullName.MinimumWidth = 6;
-            this.UserFullName.Name = "UserFullName";
-            this.UserFullName.ReadOnly = true;
-            // 
-            // Jan
-            // 
-            this.Jan.DataPropertyName = "1";
-            this.Jan.FillWeight = 70F;
-            this.Jan.HeaderText = "Jan";
-            this.Jan.MinimumWidth = 6;
-            this.Jan.Name = "Jan";
-            this.Jan.ReadOnly = true;
-            this.Jan.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // Feb
-            // 
-            this.Feb.DataPropertyName = "2";
-            this.Feb.FillWeight = 70F;
-            this.Feb.HeaderText = "Feb";
-            this.Feb.MinimumWidth = 6;
-            this.Feb.Name = "Feb";
-            this.Feb.ReadOnly = true;
-            this.Feb.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // Mar
-            // 
-            this.Mar.DataPropertyName = "3";
-            this.Mar.FillWeight = 70F;
-            this.Mar.HeaderText = "Mar";
-            this.Mar.MinimumWidth = 6;
-            this.Mar.Name = "Mar";
-            this.Mar.ReadOnly = true;
-            // 
-            // Apr
-            // 
-            this.Apr.DataPropertyName = "4";
-            this.Apr.FillWeight = 70F;
-            this.Apr.HeaderText = "Apr";
-            this.Apr.MinimumWidth = 6;
-            this.Apr.Name = "Apr";
-            this.Apr.ReadOnly = true;
-            // 
-            // May
-            // 
-            this.May.DataPropertyName = "5";
-            this.May.FillWeight = 70F;
-            this.May.HeaderText = "May";
-            this.May.MinimumWidth = 6;
-            this.May.Name = "May";
-            this.May.ReadOnly = true;
-            // 
-            // Jun
-            // 
-            this.Jun.DataPropertyName = "6";
-            this.Jun.FillWeight = 70F;
-            this.Jun.HeaderText = "Jun";
-            this.Jun.MinimumWidth = 6;
-            this.Jun.Name = "Jun";
-            this.Jun.ReadOnly = true;
-            // 
-            // Jul
-            // 
-            this.Jul.DataPropertyName = "7";
-            this.Jul.FillWeight = 70F;
-            this.Jul.HeaderText = "Jul";
-            this.Jul.MinimumWidth = 6;
-            this.Jul.Name = "Jul";
-            this.Jul.ReadOnly = true;
-            // 
-            // Aug
-            // 
-            this.Aug.DataPropertyName = "8";
-            this.Aug.FillWeight = 70F;
-            this.Aug.HeaderText = "Aug";
-            this.Aug.MinimumWidth = 6;
-            this.Aug.Name = "Aug";
-            this.Aug.ReadOnly = true;
-            // 
-            // Sep
-            // 
-            this.Sep.DataPropertyName = "9";
-            this.Sep.FillWeight = 70F;
-            this.Sep.HeaderText = "Sep";
-            this.Sep.MinimumWidth = 6;
-            this.Sep.Name = "Sep";
-            this.Sep.ReadOnly = true;
-            // 
-            // Oct
-            // 
-            this.Oct.DataPropertyName = "10";
-            this.Oct.FillWeight = 70F;
-            this.Oct.HeaderText = "Oct";
-            this.Oct.MinimumWidth = 6;
-            this.Oct.Name = "Oct";
-            this.Oct.ReadOnly = true;
-            // 
-            // Nov
-            // 
-            this.Nov.DataPropertyName = "11";
-            this.Nov.FillWeight = 70F;
-            this.Nov.HeaderText = "Nov";
-            this.Nov.MinimumWidth = 6;
-            this.Nov.Name = "Nov";
-            this.Nov.ReadOnly = true;
-            // 
-            // Dec
-            // 
-            this.Dec.DataPropertyName = "12";
-            this.Dec.FillWeight = 70F;
-            this.Dec.HeaderText = "Dec";
-            this.Dec.MinimumWidth = 6;
-            this.Dec.Name = "Dec";
-            this.Dec.ReadOnly = true;
-            // 
-            // YearlyTotal
-            // 
-            this.YearlyTotal.DataPropertyName = "YearlyTotal";
-            this.YearlyTotal.HeaderText = "Total";
-            this.YearlyTotal.MinimumWidth = 6;
-            this.YearlyTotal.Name = "YearlyTotal";
-            this.YearlyTotal.ReadOnly = true;
-            // 
-            // dgvScreeningsList
-            // 
-            this.dgvScreeningsList.AllowUserToAddRows = false;
-            this.dgvScreeningsList.AllowUserToDeleteRows = false;
-            this.dgvScreeningsList.AllowUserToResizeColumns = false;
-            this.dgvScreeningsList.AllowUserToResizeRows = false;
-            this.dgvScreeningsList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvScreeningsList.BackgroundColor = System.Drawing.Color.White;
-            this.dgvScreeningsList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvScreeningsList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
-            this.dgvScreeningsList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvScreeningsList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvScreeningsList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvScreeningsList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Id,
-            this.Title,
-            this.Hall,
-            this.DateAndTime,
-            this.Price,
-            this.Status});
-            this.dgvScreeningsList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvScreeningsList.GridColor = System.Drawing.Color.White;
-            this.dgvScreeningsList.Location = new System.Drawing.Point(15, 15);
-            this.dgvScreeningsList.Margin = new System.Windows.Forms.Padding(5, 15, 5, 5);
-            this.dgvScreeningsList.Name = "dgvScreeningsList";
-            this.dgvScreeningsList.ReadOnly = true;
-            this.dgvScreeningsList.RowHeadersVisible = false;
-            this.dgvScreeningsList.RowHeadersWidth = 51;
-            this.dgvScreeningsList.RowTemplate.Height = 24;
-            this.dgvScreeningsList.Size = new System.Drawing.Size(1447, 595);
-            this.dgvScreeningsList.TabIndex = 0;
-            this.dgvScreeningsList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvReports_CellFormatting);
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.MinimumWidth = 6;
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            // 
-            // Title
-            // 
-            this.Title.DataPropertyName = "Movie.Title";
-            this.Title.FillWeight = 175F;
-            this.Title.HeaderText = "Title";
-            this.Title.MinimumWidth = 50;
-            this.Title.Name = "Title";
-            this.Title.ReadOnly = true;
-            this.Title.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Hall
-            // 
-            this.Hall.DataPropertyName = "Hall.Name";
-            this.Hall.FillWeight = 70F;
-            this.Hall.HeaderText = "Hall";
-            this.Hall.MinimumWidth = 6;
-            this.Hall.Name = "Hall";
-            this.Hall.ReadOnly = true;
-            this.Hall.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // DateAndTime
-            // 
-            this.DateAndTime.DataPropertyName = "DateAndTime";
-            this.DateAndTime.FillWeight = 70F;
-            this.DateAndTime.HeaderText = "Date and Time";
-            this.DateAndTime.MinimumWidth = 6;
-            this.DateAndTime.Name = "DateAndTime";
-            this.DateAndTime.ReadOnly = true;
-            // 
-            // Price
-            // 
-            this.Price.DataPropertyName = "Pricing.Price";
-            this.Price.FillWeight = 70F;
-            this.Price.HeaderText = "Price";
-            this.Price.MinimumWidth = 6;
-            this.Price.Name = "Price";
-            this.Price.ReadOnly = true;
-            this.Price.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Status
-            // 
-            this.Status.DataPropertyName = "TimingStatus";
-            this.Status.FillWeight = 70F;
-            this.Status.HeaderText = "Status";
-            this.Status.MinimumWidth = 6;
-            this.Status.Name = "Status";
-            this.Status.ReadOnly = true;
             // 
             // btnPrint
             // 
@@ -558,9 +309,10 @@
             this.lblShowEntries.AutoSize = true;
             this.lblShowEntries.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblShowEntries.ForeColor = System.Drawing.Color.DimGray;
-            this.lblShowEntries.Location = new System.Drawing.Point(3, 22);
+            this.lblShowEntries.Location = new System.Drawing.Point(10, 22);
+            this.lblShowEntries.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
             this.lblShowEntries.Name = "lblShowEntries";
-            this.lblShowEntries.Size = new System.Drawing.Size(144, 18);
+            this.lblShowEntries.Size = new System.Drawing.Size(137, 18);
             this.lblShowEntries.TabIndex = 6;
             this.lblShowEntries.Text = "Show entries";
             // 
@@ -602,7 +354,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.tableLayoutPanel1.Controls.Add(this.lblCustomerName, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblCustomerID, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblShowEntries, 0, 0);
@@ -638,14 +390,176 @@
             this.lblReportTitle.TabIndex = 13;
             this.lblReportTitle.Text = "Sales per Customer";
             // 
+            // UserId
+            // 
+            this.UserId.DataPropertyName = "UserId";
+            this.UserId.FillWeight = 50F;
+            this.UserId.HeaderText = "ID";
+            this.UserId.MinimumWidth = 6;
+            this.UserId.Name = "UserId";
+            this.UserId.ReadOnly = true;
+            // 
+            // UserFullName
+            // 
+            this.UserFullName.DataPropertyName = "UserFullName";
+            this.UserFullName.FillWeight = 200F;
+            this.UserFullName.HeaderText = "Customer name";
+            this.UserFullName.MinimumWidth = 6;
+            this.UserFullName.Name = "UserFullName";
+            this.UserFullName.ReadOnly = true;
+            // 
+            // Jan
+            // 
+            this.Jan.DataPropertyName = "1";
+            dataGridViewCellStyle2.Format = "N0";
+            dataGridViewCellStyle2.NullValue = null;
+            this.Jan.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Jan.FillWeight = 70F;
+            this.Jan.HeaderText = "Jan";
+            this.Jan.MinimumWidth = 6;
+            this.Jan.Name = "Jan";
+            this.Jan.ReadOnly = true;
+            this.Jan.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // Feb
+            // 
+            this.Feb.DataPropertyName = "2";
+            dataGridViewCellStyle3.Format = "N0";
+            this.Feb.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Feb.FillWeight = 70F;
+            this.Feb.HeaderText = "Feb";
+            this.Feb.MinimumWidth = 6;
+            this.Feb.Name = "Feb";
+            this.Feb.ReadOnly = true;
+            this.Feb.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // Mar
+            // 
+            this.Mar.DataPropertyName = "3";
+            dataGridViewCellStyle4.Format = "N0";
+            this.Mar.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Mar.FillWeight = 70F;
+            this.Mar.HeaderText = "Mar";
+            this.Mar.MinimumWidth = 6;
+            this.Mar.Name = "Mar";
+            this.Mar.ReadOnly = true;
+            // 
+            // Apr
+            // 
+            this.Apr.DataPropertyName = "4";
+            dataGridViewCellStyle5.Format = "N0";
+            this.Apr.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Apr.FillWeight = 70F;
+            this.Apr.HeaderText = "Apr";
+            this.Apr.MinimumWidth = 6;
+            this.Apr.Name = "Apr";
+            this.Apr.ReadOnly = true;
+            // 
+            // May
+            // 
+            this.May.DataPropertyName = "5";
+            dataGridViewCellStyle6.Format = "N0";
+            this.May.DefaultCellStyle = dataGridViewCellStyle6;
+            this.May.FillWeight = 70F;
+            this.May.HeaderText = "May";
+            this.May.MinimumWidth = 6;
+            this.May.Name = "May";
+            this.May.ReadOnly = true;
+            // 
+            // Jun
+            // 
+            this.Jun.DataPropertyName = "6";
+            dataGridViewCellStyle7.Format = "N0";
+            this.Jun.DefaultCellStyle = dataGridViewCellStyle7;
+            this.Jun.FillWeight = 70F;
+            this.Jun.HeaderText = "Jun";
+            this.Jun.MinimumWidth = 6;
+            this.Jun.Name = "Jun";
+            this.Jun.ReadOnly = true;
+            // 
+            // Jul
+            // 
+            this.Jul.DataPropertyName = "7";
+            dataGridViewCellStyle8.Format = "N0";
+            this.Jul.DefaultCellStyle = dataGridViewCellStyle8;
+            this.Jul.FillWeight = 70F;
+            this.Jul.HeaderText = "Jul";
+            this.Jul.MinimumWidth = 6;
+            this.Jul.Name = "Jul";
+            this.Jul.ReadOnly = true;
+            // 
+            // Aug
+            // 
+            this.Aug.DataPropertyName = "8";
+            dataGridViewCellStyle9.Format = "N0";
+            this.Aug.DefaultCellStyle = dataGridViewCellStyle9;
+            this.Aug.FillWeight = 70F;
+            this.Aug.HeaderText = "Aug";
+            this.Aug.MinimumWidth = 6;
+            this.Aug.Name = "Aug";
+            this.Aug.ReadOnly = true;
+            // 
+            // Sep
+            // 
+            this.Sep.DataPropertyName = "9";
+            dataGridViewCellStyle10.Format = "N0";
+            this.Sep.DefaultCellStyle = dataGridViewCellStyle10;
+            this.Sep.FillWeight = 70F;
+            this.Sep.HeaderText = "Sep";
+            this.Sep.MinimumWidth = 6;
+            this.Sep.Name = "Sep";
+            this.Sep.ReadOnly = true;
+            // 
+            // Oct
+            // 
+            this.Oct.DataPropertyName = "10";
+            dataGridViewCellStyle11.Format = "N0";
+            this.Oct.DefaultCellStyle = dataGridViewCellStyle11;
+            this.Oct.FillWeight = 70F;
+            this.Oct.HeaderText = "Oct";
+            this.Oct.MinimumWidth = 6;
+            this.Oct.Name = "Oct";
+            this.Oct.ReadOnly = true;
+            // 
+            // Nov
+            // 
+            this.Nov.DataPropertyName = "11";
+            dataGridViewCellStyle12.Format = "N0";
+            this.Nov.DefaultCellStyle = dataGridViewCellStyle12;
+            this.Nov.FillWeight = 70F;
+            this.Nov.HeaderText = "Nov";
+            this.Nov.MinimumWidth = 6;
+            this.Nov.Name = "Nov";
+            this.Nov.ReadOnly = true;
+            // 
+            // Dec
+            // 
+            this.Dec.DataPropertyName = "12";
+            this.Dec.FillWeight = 70F;
+            this.Dec.HeaderText = "Dec";
+            this.Dec.MinimumWidth = 6;
+            this.Dec.Name = "Dec";
+            this.Dec.ReadOnly = true;
+            // 
+            // YearlyTotal
+            // 
+            this.YearlyTotal.DataPropertyName = "YearlyTotal";
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.Format = "N0";
+            this.YearlyTotal.DefaultCellStyle = dataGridViewCellStyle13;
+            this.YearlyTotal.HeaderText = "Total";
+            this.YearlyTotal.MinimumWidth = 6;
+            this.YearlyTotal.Name = "YearlyTotal";
+            this.YearlyTotal.ReadOnly = true;
+            // 
             // FormYearlySalesReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1477, 791);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormYearlySalesReport";
             this.Text = "FormReports";
@@ -654,7 +568,6 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUserSalesList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvScreeningsList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmrUserId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmrYear)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmrNumberOfEntries)).EndInit();
@@ -665,18 +578,23 @@
         }
 
         #endregion
-        private UserControls.Pagination pgnScreenings;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DataGridView dgvScreeningsList;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Title;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Hall;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DateAndTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
         private System.Windows.Forms.DataGridView dgvUserSalesList;
         private UserControls.Pagination pgnReservations;
+        private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.Button btnExportExcel;
+        private System.Windows.Forms.Button btnExportPDF;
+        private System.Windows.Forms.TextBox txtCustomerName;
+        private System.Windows.Forms.Label lblYear;
+        private System.Windows.Forms.NumericUpDown nmrUserId;
+        private System.Windows.Forms.NumericUpDown nmrYear;
+        private System.Windows.Forms.NumericUpDown nmrNumberOfEntries;
+        private System.Windows.Forms.Label lblShowEntries;
+        private System.Windows.Forms.Label lblCustomerID;
+        private System.Windows.Forms.Label lblCustomerName;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Label lblReportTitle;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserId;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserFullName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Jan;
@@ -692,18 +610,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Nov;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dec;
         private System.Windows.Forms.DataGridViewTextBoxColumn YearlyTotal;
-        private System.Windows.Forms.Button btnPrint;
-        private System.Windows.Forms.Button btnExportExcel;
-        private System.Windows.Forms.Button btnExportPDF;
-        private System.Windows.Forms.TextBox txtCustomerName;
-        private System.Windows.Forms.Label lblYear;
-        private System.Windows.Forms.NumericUpDown nmrUserId;
-        private System.Windows.Forms.NumericUpDown nmrYear;
-        private System.Windows.Forms.NumericUpDown nmrNumberOfEntries;
-        private System.Windows.Forms.Label lblShowEntries;
-        private System.Windows.Forms.Label lblCustomerID;
-        private System.Windows.Forms.Label lblCustomerName;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Label lblReportTitle;
     }
 }

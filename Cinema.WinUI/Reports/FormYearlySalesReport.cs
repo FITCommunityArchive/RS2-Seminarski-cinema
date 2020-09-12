@@ -32,38 +32,12 @@ namespace Cinema.WinUI.Reports
         {
             _nextFormPrincipal = userPrincipal;
             InitializeComponent();
-            dgvUserSalesList.Visible = true;
-            dgvScreeningsList.Visible = false;
-            pgnReservations.Visible = false;
         }
 
         private async void FormReports_Load(object sender, EventArgs e)
         {
-            LoadScreeningsData();
-
             _request = GetSearchRequest();
             await LoadYearlySalesReportData();
-        }
-
-        private async void LoadScreeningsData()
-        {
-            this.dgvScreeningsList.DoubleBuffered(true);
-            //load screenings
-            ScreeningSearchRequest searchRequest = new ScreeningSearchRequest();
-
-            searchRequest.Includes.Add("Movie");
-            searchRequest.Includes.Add("Hall");
-            searchRequest.Includes.Add("Pricing");
-
-            searchRequest = ApplyDefaultSearchValues(searchRequest) as ScreeningSearchRequest;
-            searchRequest.PageIndex = pgnScreenings.PageIndex;
-
-            var screenings = await _screeningsApi.Get<PagedList<ScreeningDto>>(searchRequest);
-
-            dgvScreeningsList.AutoGenerateColumns = false;
-            dgvScreeningsList.DataSource = screenings.Data;
-            pgnScreenings.PageIndex = screenings.PageIndex;
-            pgnScreenings.TotalPages = screenings.TotalPages;
         }
 
         private async Task LoadYearlySalesReportData()
@@ -197,7 +171,7 @@ namespace Cinema.WinUI.Reports
 
         private void dgvReports_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            BindNavigationColumns(dgvScreeningsList, sender, e);
+            BindNavigationColumns(dgvUserSalesList, sender, e);
         }
 
         private void dgvReportReservations_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -207,7 +181,7 @@ namespace Cinema.WinUI.Reports
 
         private void btnExportExcel_Click(object sender, EventArgs e)
         {
-            DataGridView dgv = GetCurrentGrid();
+            DataGridView dgv = dgvUserSalesList;
 
             string title = " Excel Export by eCinema";
             SaveFileDialog sfd = new SaveFileDialog();
@@ -223,32 +197,14 @@ namespace Cinema.WinUI.Reports
         private void btnExportPDF_Click(object sender, EventArgs e)
         {
 
-            DataGridView dgv = GetCurrentGrid();
+            DataGridView dgv = dgvUserSalesList;
             pdfGenerator.ToPDF(dgv);
-        }
-
-        private void btnLoadReservations_Click(object sender, EventArgs e)
-        {
-            dgvScreeningsList.Visible = false;
-            pgnScreenings.Visible = false;
-
-            dgvUserSalesList.Visible = true;
-            pgnReservations.Visible = true;
-        }
-
-        private void btnLoadScreenings_Click(object sender, EventArgs e)
-        {
-            dgvScreeningsList.Visible = true;
-            pgnScreenings.Visible = true;
-
-            dgvUserSalesList.Visible = false;
-            pgnReservations.Visible = false;
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
 
-            DataGridView dgv = GetCurrentGrid();
+            DataGridView dgv = dgvUserSalesList;
 
             DGVPrinter printer = new DGVPrinter();
             printer.Title = "eCinema Report";
@@ -265,21 +221,6 @@ namespace Cinema.WinUI.Reports
             printer.PrintDataGridView(dgv);
         }
 
-        private DataGridView GetCurrentGrid()
-        {
-            DataGridView dgv = null;
-            if (dgvUserSalesList.Visible == true)
-            {
-                dgv = dgvUserSalesList;
-            }
-            else if (dgvScreeningsList.Visible == true)
-            {
-                dgv = dgvScreeningsList;
-            }
-
-            return dgv;
-        }
-
         private async void dgvUserSalesList_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             DataGridViewColumn clickedColumn = dgvUserSalesList.Columns[e.ColumnIndex];
@@ -291,11 +232,6 @@ namespace Cinema.WinUI.Reports
             _request.SortOrder = CurrentSortOrder;
 
             await LoadYearlySalesReportData();
-        }
-
-        private void pgnScreenings_PageChanged(object sender, EventArgs e)
-        {
-            LoadScreeningsData();
         }
 
         private async void pgnReservations_PageChanged(object sender, EventArgs e)
