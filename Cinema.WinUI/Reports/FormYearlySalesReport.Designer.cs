@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pgnScreenings = new Cinema.WinUI.UserControls.Pagination();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pgnReservations = new Cinema.WinUI.UserControls.Pagination();
@@ -147,14 +147,14 @@
             this.dgvUserSalesList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvUserSalesList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.dgvUserSalesList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvUserSalesList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvUserSalesList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvUserSalesList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUserSalesList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.UserId,
@@ -185,6 +185,7 @@
             this.dgvUserSalesList.TabIndex = 1;
             this.dgvUserSalesList.Visible = false;
             this.dgvUserSalesList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvReportReservations_CellFormatting);
+            this.dgvUserSalesList.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvUserSalesList_ColumnHeaderMouseClick);
             // 
             // UserId
             // 
@@ -333,14 +334,14 @@
             this.dgvScreeningsList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvScreeningsList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.dgvScreeningsList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvScreeningsList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvScreeningsList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvScreeningsList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvScreeningsList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
@@ -427,10 +428,10 @@
             this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPrint.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrint.ForeColor = System.Drawing.Color.DimGray;
-            this.btnPrint.Location = new System.Drawing.Point(1313, 52);
+            this.btnPrint.Location = new System.Drawing.Point(1263, 52);
             this.btnPrint.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(124, 27);
+            this.btnPrint.Size = new System.Drawing.Size(174, 27);
             this.btnPrint.TabIndex = 4;
             this.btnPrint.Text = "Print";
             this.btnPrint.UseVisualStyleBackColor = true;
@@ -444,10 +445,10 @@
             this.btnExportExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExportExcel.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExportExcel.ForeColor = System.Drawing.Color.DimGray;
-            this.btnExportExcel.Location = new System.Drawing.Point(1013, 52);
+            this.btnExportExcel.Location = new System.Drawing.Point(863, 52);
             this.btnExportExcel.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
             this.btnExportExcel.Name = "btnExportExcel";
-            this.btnExportExcel.Size = new System.Drawing.Size(124, 27);
+            this.btnExportExcel.Size = new System.Drawing.Size(174, 27);
             this.btnExportExcel.TabIndex = 0;
             this.btnExportExcel.Text = "Export to excel";
             this.btnExportExcel.UseVisualStyleBackColor = true;
@@ -461,10 +462,10 @@
             this.btnExportPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExportPDF.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExportPDF.ForeColor = System.Drawing.Color.DimGray;
-            this.btnExportPDF.Location = new System.Drawing.Point(1163, 52);
+            this.btnExportPDF.Location = new System.Drawing.Point(1063, 52);
             this.btnExportPDF.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
             this.btnExportPDF.Name = "btnExportPDF";
-            this.btnExportPDF.Size = new System.Drawing.Size(124, 27);
+            this.btnExportPDF.Size = new System.Drawing.Size(174, 27);
             this.btnExportPDF.TabIndex = 1;
             this.btnExportPDF.Text = "Export to PDF";
             this.btnExportPDF.UseVisualStyleBackColor = true;
@@ -474,7 +475,7 @@
             // 
             this.txtCustomerName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCustomerName.Location = new System.Drawing.Point(610, 50);
+            this.txtCustomerName.Location = new System.Drawing.Point(460, 50);
             this.txtCustomerName.Margin = new System.Windows.Forms.Padding(10, 10, 10, 15);
             this.txtCustomerName.Name = "txtCustomerName";
             this.txtCustomerName.Size = new System.Drawing.Size(180, 22);
@@ -488,7 +489,7 @@
             this.lblYear.AutoSize = true;
             this.lblYear.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblYear.ForeColor = System.Drawing.Color.DimGray;
-            this.lblYear.Location = new System.Drawing.Point(303, 22);
+            this.lblYear.Location = new System.Drawing.Point(153, 22);
             this.lblYear.Name = "lblYear";
             this.lblYear.Size = new System.Drawing.Size(144, 18);
             this.lblYear.TabIndex = 9;
@@ -498,7 +499,7 @@
             // 
             this.nmrUserId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.nmrUserId.Location = new System.Drawing.Point(460, 50);
+            this.nmrUserId.Location = new System.Drawing.Point(310, 50);
             this.nmrUserId.Margin = new System.Windows.Forms.Padding(10);
             this.nmrUserId.Maximum = new decimal(new int[] {
             1215752192,
@@ -520,7 +521,7 @@
             // 
             this.nmrYear.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.nmrYear.Location = new System.Drawing.Point(310, 50);
+            this.nmrYear.Location = new System.Drawing.Point(160, 50);
             this.nmrYear.Margin = new System.Windows.Forms.Padding(10);
             this.nmrYear.Maximum = new decimal(new int[] {
             1000000,
@@ -545,7 +546,7 @@
             0,
             0});
             this.nmrNumberOfEntries.Name = "nmrNumberOfEntries";
-            this.nmrNumberOfEntries.Size = new System.Drawing.Size(280, 22);
+            this.nmrNumberOfEntries.Size = new System.Drawing.Size(130, 22);
             this.nmrNumberOfEntries.TabIndex = 5;
             this.nmrNumberOfEntries.ValueChanged += new System.EventHandler(this.SearchChanged);
             this.nmrNumberOfEntries.KeyDown += new System.Windows.Forms.KeyEventHandler(this.nmrNumberOfEntries_KeyDown);
@@ -559,7 +560,7 @@
             this.lblShowEntries.ForeColor = System.Drawing.Color.DimGray;
             this.lblShowEntries.Location = new System.Drawing.Point(3, 22);
             this.lblShowEntries.Name = "lblShowEntries";
-            this.lblShowEntries.Size = new System.Drawing.Size(294, 18);
+            this.lblShowEntries.Size = new System.Drawing.Size(144, 18);
             this.lblShowEntries.TabIndex = 6;
             this.lblShowEntries.Text = "Show entries";
             // 
@@ -570,7 +571,7 @@
             this.lblCustomerID.AutoSize = true;
             this.lblCustomerID.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCustomerID.ForeColor = System.Drawing.Color.DimGray;
-            this.lblCustomerID.Location = new System.Drawing.Point(453, 22);
+            this.lblCustomerID.Location = new System.Drawing.Point(303, 22);
             this.lblCustomerID.Name = "lblCustomerID";
             this.lblCustomerID.Size = new System.Drawing.Size(144, 18);
             this.lblCustomerID.TabIndex = 10;
@@ -583,7 +584,7 @@
             this.lblCustomerName.AutoSize = true;
             this.lblCustomerName.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCustomerName.ForeColor = System.Drawing.Color.DimGray;
-            this.lblCustomerName.Location = new System.Drawing.Point(603, 22);
+            this.lblCustomerName.Location = new System.Drawing.Point(453, 22);
             this.lblCustomerName.Name = "lblCustomerName";
             this.lblCustomerName.Size = new System.Drawing.Size(194, 18);
             this.lblCustomerName.TabIndex = 11;
@@ -593,14 +594,14 @@
             // 
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.White;
             this.tableLayoutPanel1.ColumnCount = 9;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 300F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.lblCustomerName, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblCustomerID, 2, 0);
@@ -631,9 +632,9 @@
             this.tableLayoutPanel1.SetColumnSpan(this.lblReportTitle, 2);
             this.lblReportTitle.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblReportTitle.ForeColor = System.Drawing.Color.DimGray;
-            this.lblReportTitle.Location = new System.Drawing.Point(1153, 7);
+            this.lblReportTitle.Location = new System.Drawing.Point(1053, 7);
             this.lblReportTitle.Name = "lblReportTitle";
-            this.lblReportTitle.Size = new System.Drawing.Size(294, 25);
+            this.lblReportTitle.Size = new System.Drawing.Size(394, 25);
             this.lblReportTitle.TabIndex = 13;
             this.lblReportTitle.Text = "Sales per Customer";
             // 

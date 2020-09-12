@@ -166,6 +166,10 @@ namespace Cinema.Dal.Repository
                     return x => x.Id;
                 case nameof(Reservation.User.FullName):
                     return x => x.User.FirstName + " " + x.User.LastName;
+                case "UserFullName":
+                    return x => x.User.FirstName + " " + x.User.LastName;
+                case "UserId":
+                    return x => x.UserId;
                 case nameof(Reservation.Invoice.Price):
                     return x => x.Invoice.Price;
                 case nameof(Reservation.CreatedAt):

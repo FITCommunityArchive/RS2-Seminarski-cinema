@@ -2,12 +2,16 @@
 using Cinema.Models.Dtos;
 using Cinema.Models.Dtos.Reports;
 using Cinema.Models.Requests.Reports;
+using Cinema.Shared.Enums;
 using Cinema.Shared.Pagination;
+using Cinema.Shared.Search;
 using Cinema.Utilities.Interfaces.Dal;
 using Cinema.Utilities.Interfaces.Services;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace Cinema.Services
@@ -24,6 +28,7 @@ namespace Cinema.Services
         public async Task<YearlySalesReportDto> GetYearlySalesReportPerUserAsync(UserYearlySalesSearchRequest searchRequest)
         {
             List<UserMonthlySalesDto> userSales = await GetUserSalesAsync(searchRequest);
+            userSales = ApplySorting(userSales, searchRequest);
 
             PagedList<UserMonthlySalesDto> pagedModel = PagedList<UserMonthlySalesDto>.Create(userSales, searchRequest.PageIndex, searchRequest.PageSize);
 
@@ -40,6 +45,22 @@ namespace Cinema.Services
             };
 
             monthlySales.YearlyTotalForPage = monthlySales.MonthlyTotalsForPage.Sum(x => x.Total);
+
+            return monthlySales;
+        }
+
+        private List<UserMonthlySalesDto> ApplySorting(List<UserMonthlySalesDto> monthlySales, ISearchRequest searchRequest)
+        {
+            if (searchRequest.SortColumn != "YearlyTotal") return monthlySales;
+
+            if (searchRequest.SortOrder == SortOrder.ASC)
+            {
+                monthlySales = monthlySales.OrderBy(x => x.UserYearlyTotal).ToList(); 
+            }
+            else
+            {
+                monthlySales = monthlySales.OrderByDescending(x => x.UserYearlyTotal).ToList();
+            }
 
             return monthlySales;
         }

@@ -70,11 +70,8 @@ namespace Cinema.WinUI.Reports
         {
             this.dgvUserSalesList.DoubleBuffered(true);
 
-            string route = "user-yearly-sales";
-                        
+            string route = "user-yearly-sales";                        
             var yearlySales = await _reportsApi.Get<YearlySalesReportDto>(_request, route);
-
-            //GenerateMonthColumns();
 
             var yearlySalesFlatModel = CreateFlatModel(yearlySales);
 
@@ -281,6 +278,19 @@ namespace Cinema.WinUI.Reports
             }
 
             return dgv;
+        }
+
+        private async void dgvUserSalesList_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            DataGridViewColumn clickedColumn = dgvUserSalesList.Columns[e.ColumnIndex];
+
+            ChangeSorting(clickedColumn.Name);
+
+            _request = GetSearchRequest();
+            _request.SortColumn = CurrentSortPropertyName;
+            _request.SortOrder = CurrentSortOrder;
+
+            await LoadYearlySalesReportData();
         }
 
         private void pgnScreenings_PageChanged(object sender, EventArgs e)
