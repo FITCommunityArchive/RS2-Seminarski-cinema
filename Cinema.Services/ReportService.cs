@@ -23,7 +23,7 @@ namespace Cinema.Services
 
         public async Task<YearlySalesReportDto> GetYearlySalesReportPerUserAsync(UserYearlySalesSearchRequest searchRequest)
         {
-            List<UserMonthlySalesDto> userSales = await GetUserSalesAsync(searchRequest.Year);
+            List<UserMonthlySalesDto> userSales = await GetUserSalesAsync(searchRequest);
 
             PagedList<UserMonthlySalesDto> pagedModel = PagedList<UserMonthlySalesDto>.Create(userSales, searchRequest.PageIndex, searchRequest.PageSize);
 
@@ -44,10 +44,9 @@ namespace Cinema.Services
             return monthlySales;
         }
 
-        private async Task<List<UserMonthlySalesDto>> GetUserSalesAsync(int year)
+        private async Task<List<UserMonthlySalesDto>> GetUserSalesAsync(UserYearlySalesSearchRequest searchRequest)
         {
-            List<string> includes = new List<string> { nameof(Reservation.User), nameof(Reservation.Invoice) };
-            IEnumerable<Reservation> reservations = await _reservationRepo.GetAsync(x => x.CreatedAt.Year == year, includes);
+            IEnumerable<Reservation> reservations = await _reservationRepo.GetForYearlySalesReportAsync(searchRequest, searchRequest.Year, searchRequest.UserId, searchRequest.UserFullName);
 
             List<UserMonthlySalesDto> userSales = reservations.Select(x => x.User).Distinct()
                                                                .Select(x => new UserMonthlySalesDto

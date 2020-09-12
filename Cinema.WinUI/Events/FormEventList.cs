@@ -27,7 +27,6 @@ namespace Cinema.WinUI.Events
             InitializeComponent();
         }
 
-
         private EventSearchRequest GetSearchRequest()
         {
             EventSearchRequest searchRequest = new EventSearchRequest();

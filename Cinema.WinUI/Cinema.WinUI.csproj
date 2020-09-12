@@ -236,6 +236,12 @@
     <Compile Include="Pricing\FormPricingsDetails.Designer.cs">
       <DependentUpon>FormPricingsDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\FormScreeningCapacitiesReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\FormScreeningCapacitiesReport.Designer.cs">
+      <DependentUpon>FormScreeningCapacitiesReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\FormYearlySalesReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -454,6 +460,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reports\FormScreeningCapacitiesReport.resx">
+      <DependentUpon>FormScreeningCapacitiesReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\FormYearlySalesReport.resx">
       <DependentUpon>FormYearlySalesReport.cs</DependentUpon>
     </EmbeddedResource>

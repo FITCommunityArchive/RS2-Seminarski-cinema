@@ -13,12 +13,11 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Cinema.WinUI.Reports
 {
-    public partial class FormYearlySalesReport : BaseDataGridForm
+    public partial class FormScreeningCapacitiesReport : BaseDataGridForm
     {
 
         moduleExcel excelGenerator = new moduleExcel();
@@ -26,9 +25,7 @@ namespace Cinema.WinUI.Reports
         private IList<string> _nextFormPrincipal;
         private readonly ApiService _screeningsApi = new ApiService("Screenings");
         private readonly ApiService _reportsApi = new ApiService("Reports");
-        private UserYearlySalesSearchRequest _request = new UserYearlySalesSearchRequest();
-
-        public FormYearlySalesReport(IList<string> userPrincipal) : base(new string[] { Roles.Administrator, Roles.ContentEditor }, userPrincipal)
+        public FormScreeningCapacitiesReport(IList<string> userPrincipal) : base(new string[] { Roles.Administrator, Roles.ContentEditor }, userPrincipal)
         {
             _nextFormPrincipal = userPrincipal;
             InitializeComponent();
@@ -37,12 +34,10 @@ namespace Cinema.WinUI.Reports
             pgnReservations.Visible = false;
         }
 
-        private async void FormReports_Load(object sender, EventArgs e)
+        private void FormReports_Load(object sender, EventArgs e)
         {
             LoadScreeningsData();
-
-            _request = GetSearchRequest();
-            await LoadYearlySalesReportData();
+            LoadYearlySalesReportData();
         }
 
         private async void LoadScreeningsData()
@@ -66,13 +61,21 @@ namespace Cinema.WinUI.Reports
             pgnScreenings.TotalPages = screenings.TotalPages;
         }
 
-        private async Task LoadYearlySalesReportData()
+        private async void LoadYearlySalesReportData()
         {
             this.dgvUserSalesList.DoubleBuffered(true);
 
             string route = "user-yearly-sales";
+
+            UserYearlySalesSearchRequest salesReportSearchRequest = new UserYearlySalesSearchRequest
+            {
+                Year = 2020
+            };
+
+            salesReportSearchRequest = ApplyDefaultSearchValues(salesReportSearchRequest) as UserYearlySalesSearchRequest;
+            salesReportSearchRequest.PageIndex = pgnReservations.PageIndex;
                         
-            var yearlySales = await _reportsApi.Get<YearlySalesReportDto>(_request, route);
+            var yearlySales = await _reportsApi.Get<YearlySalesReportDto>(salesReportSearchRequest, route);
 
             //GenerateMonthColumns();
 
@@ -89,33 +92,6 @@ namespace Cinema.WinUI.Reports
 
             pgnReservations.PageIndex = yearlySales.UserMonthlySales.PageIndex;
             pgnReservations.TotalPages = yearlySales.UserMonthlySales.TotalPages;
-        }
-
-        private UserYearlySalesSearchRequest GetSearchRequest()
-        {
-            UserYearlySalesSearchRequest searchRequest = new UserYearlySalesSearchRequest();
-
-            searchRequest = ApplyDefaultSearchValues(searchRequest) as UserYearlySalesSearchRequest;
-            searchRequest.PageIndex = pgnReservations.PageIndex;
-            searchRequest.UserFullName = txtCustomerName.Text;
-            searchRequest.Year = DateTime.UtcNow.Year;
-
-            if (nmrNumberOfEntries.Value > 0)
-            {
-                searchRequest.PageSize = (int)nmrNumberOfEntries.Value;
-            }
-
-            if (nmrYear.Value > 0)
-            {
-                searchRequest.Year = (int)nmrYear.Value;
-            }
-
-            if (nmrUserId.Value > 0)
-            {
-                searchRequest.UserId = (int)nmrUserId.Value;
-            }            
-
-            return searchRequest;
         }
 
         private List<YearlySalesReportFlatDto> CreateFlatModel(YearlySalesReportDto yearlySales)
@@ -288,40 +264,9 @@ namespace Cinema.WinUI.Reports
             LoadScreeningsData();
         }
 
-        private async void pgnReservations_PageChanged(object sender, EventArgs e)
+        private void pgnReservations_PageChanged(object sender, EventArgs e)
         {
-            await LoadYearlySalesReportData();
-        }
-
-        private async void SearchChanged(object sender, EventArgs e)
-        {
-            _request = GetSearchRequest();
-            await LoadYearlySalesReportData();
-        }
-
-        private void nmrYear_KeyDown(object sender, KeyEventArgs e)
-        {
-            ClearNumericUpDown(sender, e, nmrYear);
-        }
-
-        private void nmrNumberOfEntries_KeyDown(object sender, KeyEventArgs e)
-        {
-            ClearNumericUpDown(sender, e, nmrNumberOfEntries);
-        }
-
-        private void nmrUserId_KeyDown(object sender, KeyEventArgs e)
-        {
-            ClearNumericUpDown(sender, e, nmrUserId);
-        }
-
-        private void ClearNumericUpDown(object sender, KeyEventArgs e, NumericUpDown control)
-        {
-            if ((e.KeyCode == Keys.Back) || (e.KeyCode == Keys.Delete))
-            {
-                control.Value = 0;
-                control.ResetText();
-                SearchChanged(sender, e);
-            }
+            LoadYearlySalesReportData();
         }
     }
 }

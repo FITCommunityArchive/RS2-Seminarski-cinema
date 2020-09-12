@@ -33,6 +33,36 @@ namespace Cinema.Dal.Repository
             return pagedList;
         }
 
+        public async Task<IEnumerable<Reservation>> GetForYearlySalesReportAsync(ISearchRequest searchRequest, int? year, int? userId, string userFullName)
+        {
+            var query = _dbSet.Include(x => x.User).Include(x => x.Invoice).AsQueryable();
+
+            if (year.HasValue)
+            {
+                query = query.Where(x => x.CreatedAt.Year == year);
+            }
+
+            if (userId.HasValue)
+            {
+                query = query.Where(x => x.UserId == userId);
+            }
+
+            if (!string.IsNullOrWhiteSpace(userFullName))
+            {
+                userFullName = userFullName.ToLower();
+                query = query.Where(x => (x.User.FirstName + " " + x.User.LastName).ToLower().StartsWith(userFullName));
+            }
+
+            query = ApplySorting(query, searchRequest);
+
+            if (searchRequest.Includes.Count() > 0)
+            {
+                query = AddIncludes(query, searchRequest.Includes);
+            }
+
+            return await query.ToListAsync();
+        }
+
         public async Task<IEnumerable<Reservation>> GetByScreeningIdAsync(int screeningId, bool isCancelled = false)
         {
             var query = _dbSet.Include(x => x.SeatReservations).ThenInclude(x => x.Seat)
