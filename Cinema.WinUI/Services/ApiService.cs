@@ -56,6 +56,12 @@ namespace Cinema.WinUI.Services
             return false;
         }
 
+        public async Task<int> GetCurrentUserId()
+        {
+            var url = $"{Properties.Settings.Default.APIUrl}/Users/getCurrent";
+            return await url.WithOAuthBearerToken(Token).GetJsonAsync<int>();
+        }
+
         public async Task<bool> ResetPassword(int id, UserPasswordResetRequest request)
         {
             var resetPassUrl = $"{Properties.Settings.Default.APIUrl}/{_route}/{id}/resetPassword";

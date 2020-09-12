@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormNewsList));
             this.grdList = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -70,14 +71,14 @@
             this.grdList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.grdList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.grdList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grdList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.grdList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
@@ -87,14 +88,14 @@
             this.Type,
             this.DetailsAction});
             this.grdList.GridColor = System.Drawing.Color.White;
-            this.grdList.Location = new System.Drawing.Point(20, 30);
-            this.grdList.Margin = new System.Windows.Forms.Padding(5, 15, 5, 5);
+            this.grdList.Location = new System.Drawing.Point(15, 24);
+            this.grdList.Margin = new System.Windows.Forms.Padding(4, 12, 4, 4);
             this.grdList.Name = "grdList";
             this.grdList.ReadOnly = true;
             this.grdList.RowHeadersVisible = false;
             this.grdList.RowHeadersWidth = 51;
             this.grdList.RowTemplate.Height = 24;
-            this.grdList.Size = new System.Drawing.Size(1345, 470);
+            this.grdList.Size = new System.Drawing.Size(1009, 382);
             this.grdList.TabIndex = 0;
             this.grdList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdList_CellContentClick);
             this.grdList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grdList_CellFormatting);
@@ -149,11 +150,11 @@
             // 
             // DetailsAction
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            this.DetailsAction.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            this.DetailsAction.DefaultCellStyle = dataGridViewCellStyle4;
             this.DetailsAction.FillWeight = 50F;
             this.DetailsAction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DetailsAction.HeaderText = "Action";
@@ -170,10 +171,10 @@
             this.lblSearch.BackColor = System.Drawing.Color.White;
             this.lblSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSearch.ForeColor = System.Drawing.Color.Gray;
-            this.lblSearch.Location = new System.Drawing.Point(17, 15);
-            this.lblSearch.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
+            this.lblSearch.Location = new System.Drawing.Point(13, 12);
+            this.lblSearch.Margin = new System.Windows.Forms.Padding(2, 0, 2, 4);
             this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(77, 18);
+            this.lblSearch.Size = new System.Drawing.Size(64, 15);
             this.lblSearch.TabIndex = 2;
             this.lblSearch.Text = "News Title";
             // 
@@ -185,9 +186,9 @@
             this.pnlFormTitle.Controls.Add(this.txtFormTitle);
             this.pnlFormTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlFormTitle.Location = new System.Drawing.Point(0, 0);
-            this.pnlFormTitle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pnlFormTitle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlFormTitle.Name = "pnlFormTitle";
-            this.pnlFormTitle.Size = new System.Drawing.Size(1447, 90);
+            this.pnlFormTitle.Size = new System.Drawing.Size(1085, 73);
             this.pnlFormTitle.TabIndex = 8;
             // 
             // lblBreadCrumbsCurrent
@@ -195,10 +196,10 @@
             this.lblBreadCrumbsCurrent.AutoSize = true;
             this.lblBreadCrumbsCurrent.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBreadCrumbsCurrent.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblBreadCrumbsCurrent.Location = new System.Drawing.Point(99, 59);
+            this.lblBreadCrumbsCurrent.Location = new System.Drawing.Point(74, 48);
             this.lblBreadCrumbsCurrent.Margin = new System.Windows.Forms.Padding(0);
             this.lblBreadCrumbsCurrent.Name = "lblBreadCrumbsCurrent";
-            this.lblBreadCrumbsCurrent.Size = new System.Drawing.Size(50, 17);
+            this.lblBreadCrumbsCurrent.Size = new System.Drawing.Size(41, 13);
             this.lblBreadCrumbsCurrent.TabIndex = 5;
             this.lblBreadCrumbsCurrent.Text = "News";
             // 
@@ -206,10 +207,10 @@
             // 
             this.lblBreadcrumbs.AutoSize = true;
             this.lblBreadcrumbs.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBreadcrumbs.Location = new System.Drawing.Point(33, 59);
+            this.lblBreadcrumbs.Location = new System.Drawing.Point(25, 48);
             this.lblBreadcrumbs.Margin = new System.Windows.Forms.Padding(0);
             this.lblBreadcrumbs.Name = "lblBreadcrumbs";
-            this.lblBreadcrumbs.Size = new System.Drawing.Size(59, 17);
+            this.lblBreadcrumbs.Size = new System.Drawing.Size(49, 13);
             this.lblBreadcrumbs.TabIndex = 4;
             this.lblBreadcrumbs.Text = "Home /";
             // 
@@ -219,10 +220,10 @@
             this.txtFormTitle.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtFormTitle.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFormTitle.ForeColor = System.Drawing.Color.Gray;
-            this.txtFormTitle.Location = new System.Drawing.Point(37, 18);
-            this.txtFormTitle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtFormTitle.Location = new System.Drawing.Point(28, 15);
+            this.txtFormTitle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtFormTitle.Name = "txtFormTitle";
-            this.txtFormTitle.Size = new System.Drawing.Size(161, 33);
+            this.txtFormTitle.Size = new System.Drawing.Size(121, 27);
             this.txtFormTitle.TabIndex = 0;
             this.txtFormTitle.Text = "News";
             // 
@@ -235,11 +236,11 @@
             this.pnlSearchBars.Controls.Add(this.cmbType);
             this.pnlSearchBars.Controls.Add(this.lblSearch);
             this.pnlSearchBars.Controls.Add(this.txtSearchBar);
-            this.pnlSearchBars.Location = new System.Drawing.Point(29, 113);
-            this.pnlSearchBars.Margin = new System.Windows.Forms.Padding(20);
+            this.pnlSearchBars.Location = new System.Drawing.Point(22, 92);
+            this.pnlSearchBars.Margin = new System.Windows.Forms.Padding(15, 16, 15, 16);
             this.pnlSearchBars.Name = "pnlSearchBars";
-            this.pnlSearchBars.Padding = new System.Windows.Forms.Padding(15);
-            this.pnlSearchBars.Size = new System.Drawing.Size(1383, 89);
+            this.pnlSearchBars.Padding = new System.Windows.Forms.Padding(11, 12, 11, 12);
+            this.pnlSearchBars.Size = new System.Drawing.Size(1037, 72);
             this.pnlSearchBars.TabIndex = 9;
             // 
             // lblAuthor
@@ -248,10 +249,10 @@
             this.lblAuthor.BackColor = System.Drawing.Color.White;
             this.lblAuthor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAuthor.ForeColor = System.Drawing.Color.Gray;
-            this.lblAuthor.Location = new System.Drawing.Point(473, 15);
-            this.lblAuthor.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
+            this.lblAuthor.Location = new System.Drawing.Point(355, 12);
+            this.lblAuthor.Margin = new System.Windows.Forms.Padding(2, 0, 2, 4);
             this.lblAuthor.Name = "lblAuthor";
-            this.lblAuthor.Size = new System.Drawing.Size(51, 18);
+            this.lblAuthor.Size = new System.Drawing.Size(42, 15);
             this.lblAuthor.TabIndex = 10;
             this.lblAuthor.Text = "Author";
             // 
@@ -260,10 +261,10 @@
             this.txtAuthor.BorderColor = System.Drawing.Color.DarkGray;
             this.txtAuthor.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAuthor.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtAuthor.Location = new System.Drawing.Point(476, 37);
-            this.txtAuthor.Margin = new System.Windows.Forms.Padding(25);
+            this.txtAuthor.Location = new System.Drawing.Point(357, 30);
+            this.txtAuthor.Margin = new System.Windows.Forms.Padding(19, 20, 19, 20);
             this.txtAuthor.Name = "txtAuthor";
-            this.txtAuthor.Size = new System.Drawing.Size(182, 26);
+            this.txtAuthor.Size = new System.Drawing.Size(138, 22);
             this.txtAuthor.TabIndex = 9;
             this.txtAuthor.TextChanged += new System.EventHandler(this.SearchChanged);
             // 
@@ -273,10 +274,10 @@
             this.lblType.BackColor = System.Drawing.Color.White;
             this.lblType.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblType.ForeColor = System.Drawing.Color.Gray;
-            this.lblType.Location = new System.Drawing.Point(683, 15);
-            this.lblType.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
+            this.lblType.Location = new System.Drawing.Point(512, 12);
+            this.lblType.Margin = new System.Windows.Forms.Padding(2, 0, 2, 4);
             this.lblType.Name = "lblType";
-            this.lblType.Size = new System.Drawing.Size(40, 18);
+            this.lblType.Size = new System.Drawing.Size(33, 15);
             this.lblType.TabIndex = 8;
             this.lblType.Text = "Type";
             // 
@@ -285,9 +286,10 @@
             this.cmbType.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbType.ForeColor = System.Drawing.Color.Gray;
             this.cmbType.FormattingEnabled = true;
-            this.cmbType.Location = new System.Drawing.Point(686, 37);
+            this.cmbType.Location = new System.Drawing.Point(514, 30);
+            this.cmbType.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmbType.Name = "cmbType";
-            this.cmbType.Size = new System.Drawing.Size(188, 26);
+            this.cmbType.Size = new System.Drawing.Size(142, 22);
             this.cmbType.TabIndex = 7;
             this.cmbType.Click += new System.EventHandler(this.cmbType_Click);
             // 
@@ -296,10 +298,10 @@
             this.txtSearchBar.BorderColor = System.Drawing.Color.DarkGray;
             this.txtSearchBar.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearchBar.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtSearchBar.Location = new System.Drawing.Point(20, 37);
-            this.txtSearchBar.Margin = new System.Windows.Forms.Padding(15);
+            this.txtSearchBar.Location = new System.Drawing.Point(15, 30);
+            this.txtSearchBar.Margin = new System.Windows.Forms.Padding(11, 12, 11, 12);
             this.txtSearchBar.Name = "txtSearchBar";
-            this.txtSearchBar.Size = new System.Drawing.Size(416, 26);
+            this.txtSearchBar.Size = new System.Drawing.Size(313, 22);
             this.txtSearchBar.TabIndex = 1;
             this.txtSearchBar.TextChanged += new System.EventHandler(this.SearchChanged);
             // 
@@ -307,11 +309,11 @@
             // 
             this.pnlDataGrid.BackColor = System.Drawing.Color.White;
             this.pnlDataGrid.Controls.Add(this.grdList);
-            this.pnlDataGrid.Location = new System.Drawing.Point(29, 217);
-            this.pnlDataGrid.Margin = new System.Windows.Forms.Padding(20);
+            this.pnlDataGrid.Location = new System.Drawing.Point(22, 176);
+            this.pnlDataGrid.Margin = new System.Windows.Forms.Padding(15, 16, 15, 16);
             this.pnlDataGrid.Name = "pnlDataGrid";
-            this.pnlDataGrid.Padding = new System.Windows.Forms.Padding(15);
-            this.pnlDataGrid.Size = new System.Drawing.Size(1385, 502);
+            this.pnlDataGrid.Padding = new System.Windows.Forms.Padding(11, 12, 11, 12);
+            this.pnlDataGrid.Size = new System.Drawing.Size(1039, 408);
             this.pnlDataGrid.TabIndex = 10;
             // 
             // pnlContent
@@ -321,20 +323,20 @@
             this.pnlContent.Controls.Add(this.pnlSearchBars);
             this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlContent.Location = new System.Drawing.Point(0, 0);
-            this.pnlContent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pnlContent.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlContent.Name = "pnlContent";
-            this.pnlContent.Padding = new System.Windows.Forms.Padding(15);
-            this.pnlContent.Size = new System.Drawing.Size(1447, 800);
+            this.pnlContent.Padding = new System.Windows.Forms.Padding(11, 12, 11, 12);
+            this.pnlContent.Size = new System.Drawing.Size(1085, 650);
             this.pnlContent.TabIndex = 11;
             // 
             // btnAddNew
             // 
             this.btnAddNew.AutoSize = true;
             this.btnAddNew.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnAddNew.Location = new System.Drawing.Point(964, 723);
-            this.btnAddNew.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAddNew.Location = new System.Drawing.Point(723, 587);
+            this.btnAddNew.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAddNew.Name = "btnAddNew";
-            this.btnAddNew.Size = new System.Drawing.Size(120, 40);
+            this.btnAddNew.Size = new System.Drawing.Size(90, 32);
             this.btnAddNew.TabIndex = 11;
             this.btnAddNew.ButtonClicked += new System.EventHandler(this.btnAddNew_ButtonClicked);
             // 
@@ -343,8 +345,8 @@
             this.pagination.AutoSize = true;
             this.pagination.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.pagination.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pagination.Location = new System.Drawing.Point(1132, 726);
-            this.pagination.Margin = new System.Windows.Forms.Padding(5);
+            this.pagination.Location = new System.Drawing.Point(849, 590);
+            this.pagination.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pagination.Name = "pagination";
             this.pagination.PageIndex = 0;
             this.pagination.Size = new System.Drawing.Size(210, 35);
@@ -354,17 +356,18 @@
             // 
             // FormNewsList
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1447, 800);
+            this.ClientSize = new System.Drawing.Size(1085, 650);
             this.Controls.Add(this.pnlFormTitle);
             this.Controls.Add(this.pnlDataGrid);
             this.Controls.Add(this.pnlContent);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FormNewsList";
-            this.Text = "frmMoviesList";
+            this.Text = "eCinema - News";
             this.Load += new System.EventHandler(this.FormNewsList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdList)).EndInit();
             this.pnlFormTitle.ResumeLayout(false);

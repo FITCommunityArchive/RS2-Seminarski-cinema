@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormChangePassword));
             this.txtNewPassword = new System.Windows.Forms.TextBox();
             this.lblNewPassword = new System.Windows.Forms.Label();
             this.txtConfirmPassword = new System.Windows.Forms.TextBox();
@@ -76,9 +77,9 @@
             this.btnSaveChanges.AutoSize = true;
             this.btnSaveChanges.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnSaveChanges.Location = new System.Drawing.Point(61, 202);
-            this.btnSaveChanges.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSaveChanges.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSaveChanges.Name = "btnSaveChanges";
-            this.btnSaveChanges.Size = new System.Drawing.Size(120, 40);
+            this.btnSaveChanges.Size = new System.Drawing.Size(90, 32);
             this.btnSaveChanges.TabIndex = 23;
             this.btnSaveChanges.ButtonClicked += new System.EventHandler(this.btnSaveChanges_Click);
             this.btnSaveChanges.Click += new System.EventHandler(this.btnSaveChanges_Click);
@@ -93,8 +94,9 @@
             this.Controls.Add(this.lblConfirmPassword);
             this.Controls.Add(this.txtNewPassword);
             this.Controls.Add(this.lblNewPassword);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormChangePassword";
-            this.Text = "FormChangePassword";
+            this.Text = "eCinema - Change password";
             this.ResumeLayout(false);
             this.PerformLayout();
 

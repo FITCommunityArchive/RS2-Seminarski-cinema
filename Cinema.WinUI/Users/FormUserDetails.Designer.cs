@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormUserDetails));
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.lblUsername = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnDelete = new Cinema.WinUI.UserControls.Buttons.DeleteButton();
             this.txtConfirmPassword = new System.Windows.Forms.TextBox();
             this.lblPasswordConfirm = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
@@ -49,7 +51,6 @@
             this.lblEmail = new System.Windows.Forms.Label();
             this.txtFormTitle = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.btnDelete = new Cinema.WinUI.UserControls.Buttons.DeleteButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLoading)).BeginInit();
             this.panel4.SuspendLayout();
@@ -100,6 +101,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(904, 422);
             this.panel1.TabIndex = 2;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.AutoSize = true;
+            this.btnDelete.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnDelete.Location = new System.Drawing.Point(723, 338);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(90, 32);
+            this.btnDelete.TabIndex = 28;
+            this.btnDelete.ButtonClicked += new System.EventHandler(this.btnDelete_ButtonClicked);
             // 
             // txtConfirmPassword
             // 
@@ -173,9 +185,9 @@
             this.btnSaveChanges.AutoSize = true;
             this.btnSaveChanges.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnSaveChanges.Location = new System.Drawing.Point(57, 338);
-            this.btnSaveChanges.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSaveChanges.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSaveChanges.Name = "btnSaveChanges";
-            this.btnSaveChanges.Size = new System.Drawing.Size(120, 40);
+            this.btnSaveChanges.Size = new System.Drawing.Size(90, 32);
             this.btnSaveChanges.TabIndex = 22;
             this.btnSaveChanges.ButtonClicked += new System.EventHandler(this.btnSaveChanges_ButtonClicked);
             // 
@@ -278,17 +290,6 @@
             this.panel4.Size = new System.Drawing.Size(961, 73);
             this.panel4.TabIndex = 5;
             // 
-            // btnDelete
-            // 
-            this.btnDelete.AutoSize = true;
-            this.btnDelete.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnDelete.Location = new System.Drawing.Point(723, 338);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(2);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(120, 40);
-            this.btnDelete.TabIndex = 28;
-            this.btnDelete.ButtonClicked += new System.EventHandler(this.btnDelete_ButtonClicked);
-            // 
             // FormUserDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -296,8 +297,9 @@
             this.ClientSize = new System.Drawing.Size(961, 556);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormUserDetails";
-            this.Text = "FormUserDetails";
+            this.Text = "eCinema - User details";
             this.Load += new System.EventHandler(this.FormUserDetails_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
