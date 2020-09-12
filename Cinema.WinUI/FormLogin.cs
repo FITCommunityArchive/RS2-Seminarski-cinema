@@ -54,16 +54,23 @@ namespace Cinema.WinUI
 
                 if (maybeLogin == true)
                 {
-                    SetLoading(false);
-                    MessageBox.Show("You successufully logged in.", "Authentication", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    _nextFormPrincipal.Clear();
-                    _nextFormPrincipal.Add(ApiService.Role);
-                    FormMain form1 = new FormMain(_nextFormPrincipal);
+                    if (ApiService.Role.Equals("Customer"))
+                    {
+                        SetLoading(false);
+                        MessageBox.Show("Customers are not allowed to use dashboard.", "Authentication", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    } else
+                    {
+                        SetLoading(false);
+                        MessageBox.Show("You successufully logged in.", "Authentication", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    this.Close();
-                    form1.Show();
+                        _nextFormPrincipal.Clear();
+                        _nextFormPrincipal.Add(ApiService.Role);
+                        FormMain form1 = new FormMain(_nextFormPrincipal);
 
+                        this.Close();
+                        form1.Show();
+                    }
                 }
             }
             catch (Exception ex)
