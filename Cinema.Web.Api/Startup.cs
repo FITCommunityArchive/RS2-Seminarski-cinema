@@ -139,6 +139,7 @@ namespace Cinema.Web.API
             services.AddScoped<IMovieRecommender, MovieRecommender>();
             services.AddScoped<INewsService, NewsService>();
             services.AddScoped<IEventService, EventService>();
+            services.AddScoped<IReportService, ReportService>();
 
             services.AddScoped<IMovieRepository, MovieRepository>();
             services.AddScoped<IReviewRepository, ReviewRepository>();

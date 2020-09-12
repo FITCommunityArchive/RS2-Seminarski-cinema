@@ -67,7 +67,7 @@ namespace Cinema.WinUI.Screenings
         {
             LoadComboboxLists();
 
-            dtpScreeningDate.Value = result.DateAndTime;
+            dtpScreeningDate.Value = result.DateAndTime.ToLocalTime();
             cmbMovie.SelectedValue = result.Movie.Id;
             cmbHall.SelectedValue = result.Hall.Id;
             cmbPrice.SelectedValue = result.Pricing.Id;

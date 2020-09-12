@@ -42,6 +42,16 @@ namespace Cinema.Dal.Repository
             return list;
         }
 
+        public async Task<List<Reservation>> GetReservationsByUserId(int id)
+        {
+            return await _dbSet
+                .Include(x => x.Screening).ThenInclude(x => x.Movie)
+                .Include(x => x.Screening).ThenInclude(x => x.Hall)
+                .Include(x => x.User)
+                .Include(x => x.Invoice)
+                .Where(x => x.UserId == id).ToListAsync();
+        }
+
         protected override Expression<Func<Reservation, bool>> GetByIdExpression(int id)
         {
             return x => x.Id == id;
@@ -135,16 +145,6 @@ namespace Cinema.Dal.Repository
                 default:
                     return x => x.Id;
             }
-        }
-
-        public async Task<List<Reservation>> GetReservationsByUserId(int id)
-        {
-            return await _dbSet
-                .Include(x => x.Screening).ThenInclude(x => x.Movie)
-                .Include(x => x.Screening).ThenInclude(x => x.Hall)
-                .Include(x => x.User)
-                .Include(x => x.Invoice)
-                .Where(x => x.UserId == id).ToListAsync();
         }
     }
 }
