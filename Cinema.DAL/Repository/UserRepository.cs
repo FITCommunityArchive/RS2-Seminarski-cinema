@@ -13,17 +13,32 @@ namespace Cinema.Dal.Repository
     {
         public UserRepository(ICinemaDbContext context) : base(context) { }
 
-        public override async Task UpdateAsync(ApplicationUser newEnt, int id)
+        public async Task UpdateAsync(ApplicationUser newEnt, int id, int roleId)
         {
             ApplicationUser oldEnt = await GetAsync(id);
 
             if (oldEnt != null)
             {
                 ApplicationUserRole userRole = oldEnt.UserRoles.First();
-
+ 
                 if (userRole != null)
                 {
-                    userRole.RoleId = newEnt.UserRoles.First().RoleId;
+                    ApplicationUserRole newUserRole = new ApplicationUserRole();
+                    var existingUserRole = _context.UserRoles.IgnoreQueryFilters().Where(x => x.UserId == oldEnt.Id && x.RoleId == roleId).FirstOrDefault();
+
+                    if(existingUserRole != null)
+                    {
+                        existingUserRole.IsDeleted = false;
+                        oldEnt.UserRoles.First().IsDeleted = true;
+                    } else
+                    {
+                        newUserRole.RoleId = roleId;
+                        newUserRole.UserId = oldEnt.Id;
+
+                        oldEnt.UserRoles.Remove(userRole);
+                        oldEnt.UserRoles.Add(newUserRole);
+                    }
+                    
                 }
 
                 // Update operations should be handled outside of repositories (in services)

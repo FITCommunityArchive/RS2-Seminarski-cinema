@@ -56,16 +56,6 @@ namespace Cinema.WinUI.Users
             {
                 await LoadData();
             }
-            else
-            {
-                InsertNew();
-            }
-        }
-
-        private void InsertNew()
-        {
-            clbRoles.DataSource = _roles.Data;
-            clbRoles.DisplayMember = nameof(ApplicationRoleDto.Name);
         }
 
         private void SetLoading(bool displayLoader)
