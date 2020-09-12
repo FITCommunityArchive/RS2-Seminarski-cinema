@@ -1,6 +1,6 @@
 ﻿using Cinema.Domain.Entities;
 using Cinema.Domain.Entities.Identity;
-using Cinema.Utilities.Interfaces.Dal;
+using Cinema.Common.Interfaces.Dal;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;

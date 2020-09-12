@@ -40,8 +40,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Cinema.Common\Cinema.Common.csproj" />
     <ProjectReference Include="..\Cinema.Domain\Cinema.Domain.csproj" />
-    <ProjectReference Include="..\Cinema.Utilities\Cinema.Common.csproj" />
+    <ProjectReference Include="..\Cinema.Common\Cinema.Common.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,6 @@
 ﻿using Cinema.Models.Dtos;
 using Cinema.Models.Requests.Movies;
-using Cinema.Utilities.Interfaces.Services;
+using Cinema.Common.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;

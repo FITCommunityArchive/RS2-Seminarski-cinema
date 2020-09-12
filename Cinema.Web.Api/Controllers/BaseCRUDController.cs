@@ -1,5 +1,5 @@
 ﻿using Cinema.Models.Requests;
-using Cinema.Utilities.Interfaces.Services;
+using Cinema.Common.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 

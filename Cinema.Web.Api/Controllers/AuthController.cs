@@ -1,5 +1,5 @@
 ﻿using Cinema.Models.Requests.Users;
-using Cinema.Utilities.Interfaces;
+using Cinema.Common.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;

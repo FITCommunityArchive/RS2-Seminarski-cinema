@@ -1,6 +1,6 @@
 ﻿using Cinema.Domain.Entities;
 using Cinema.Domain.Entities.Identity;
-using Cinema.Utilities.Helpers;
+using Cinema.Common.Helpers;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
