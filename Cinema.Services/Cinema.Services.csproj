@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -21,12 +21,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Cinema.Common\Cinema.Common.csproj" />
     <ProjectReference Include="..\Cinema.Dal\Cinema.Dal.csproj" />
     <ProjectReference Include="..\Cinema.Domain\Cinema.Domain.csproj" />
     <ProjectReference Include="..\Cinema.EmailService\Cinema.EmailService.csproj" />
     <ProjectReference Include="..\Cinema.Models\Cinema.Models.csproj" />
     <ProjectReference Include="..\Cinema.MovieRecommenderService\Cinema.MovieRecommenderService.csproj" />
-    <ProjectReference Include="..\Cinema.Utilities\Cinema.Common.csproj" />
+    <ProjectReference Include="..\Cinema.Common\Cinema.Common.csproj" />
   </ItemGroup>
 
 </Project>

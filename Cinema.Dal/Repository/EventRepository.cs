@@ -2,7 +2,7 @@
 using Cinema.Shared.Enums;
 using Cinema.Shared.Pagination;
 using Cinema.Shared.Search;
-using Cinema.Utilities.Interfaces.Dal;
+using Cinema.Common.Interfaces.Dal;
 using System;
 using System.Linq;
 using System.Linq.Expressions;

@@ -1,5 +1,5 @@
 ﻿using Cinema.Domain.Entities;
-using Cinema.Utilities.Interfaces.Dal;
+using Cinema.Common.Interfaces.Dal;
 using System.Linq;
 
 namespace Cinema.Dal.Repository
