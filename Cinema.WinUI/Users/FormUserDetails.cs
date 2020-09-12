@@ -4,8 +4,11 @@ using Cinema.Shared.Pagination;
 using Cinema.WinUI.Services;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
+using System.Drawing;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -28,6 +31,8 @@ namespace Cinema.WinUI.Users
             InitializeComponent();
             _id = id;
             picLoading.Visible = false;
+            gbRoles.Controls.OfType<RadioButton>().First().Checked = true;
+            
             if (_id.HasValue)
             {
                 txtConfirmPassword.Visible = false;
@@ -38,6 +43,7 @@ namespace Cinema.WinUI.Users
             else
             {
                 btnChangePassword.Visible = false;
+                btnDelete.Visible = false;
             }
         }
 
@@ -55,16 +61,6 @@ namespace Cinema.WinUI.Users
             {
                 await LoadData();
             }
-            else
-            {
-                InsertNew();
-            }
-        }
-
-        private void InsertNew()
-        {
-            clbRoles.DataSource = _roles.Data;
-            clbRoles.DisplayMember = nameof(ApplicationRoleDto.Name);
         }
 
         private void SetLoading(bool displayLoader)
@@ -104,20 +100,10 @@ namespace Cinema.WinUI.Users
 
             LoadPropertyValues(result);
 
-            List<ApplicationRoleDto> userRole = _roles.Data.Where(x => result.UserRoles.Select(y => y.RoleId).Contains(x.Id)).ToList();
+            ApplicationRoleDto userRole = _roles.Data.Where(x => result.UserRoles.Select(y => y.RoleId).Contains(x.Id)).FirstOrDefault();
 
-            clbRoles.DataSource = userRole;
-            clbRoles.DisplayMember = nameof(ApplicationRoleDto.Name);
-
-            for (int i = 0; i < clbRoles.Items.Count; i++)
-            {
-                ApplicationRoleDto role = clbRoles.Items[i] as ApplicationRoleDto;
-
-                if (result.UserRoles.Select(x => x.RoleId).Contains(role.Id))
-                {
-                    clbRoles.SetItemChecked(i, true);
-                }
-            }
+            var roleRBtn = gbRoles.Controls.OfType<RadioButton>().Where(x => x.Text.ToLower() == userRole.Name.ToLower()).FirstOrDefault();
+            roleRBtn.Checked = true;
         }
 
         private async void btnSaveChanges_ButtonClicked(object sender, EventArgs e)
@@ -130,8 +116,8 @@ namespace Cinema.WinUI.Users
 
             SetLoading(true);
 
-            var roleId = clbRoles.CheckedItems.Cast<ApplicationRoleDto>().Select(x => x.Id).FirstOrDefault();
-
+            var checkedRBtn = gbRoles.Controls.OfType<RadioButton>().Where(x => x.Checked == true).FirstOrDefault();
+            int.TryParse(checkedRBtn.Tag.ToString(), out int roleId);
             try
             {
 
@@ -209,5 +195,143 @@ namespace Cinema.WinUI.Users
             OnItemDeleted(EventArgs.Empty);
             this.Close();
         }
+
+        private void txtConfirmPassword_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if(txtPassword.Visible && txtPassword.Text != txtConfirmPassword.Text)
+            {
+                errorProvider1.SetError(sender as TextBox, Properties.Resources.Validation_PasswortMismatch);
+                e.Cancel = true;
+            }
+        }
+
+        private void txtUsername_Validating(object sender, CancelEventArgs e)
+        {
+            if(ValidateEmptyField(txtUsername, e))
+            {
+                ValidateFieldMin3Char(txtUsername, e);
+            }
+            
+        }
+
+        private void txtFirstName_Validating(object sender, CancelEventArgs e)
+        {
+            if(ValidateEmptyField(txtFirstName, e))
+            {
+                ValidateFieldMin3Char(txtFirstName, e);
+            }
+        }
+
+        private void txtLastName_Validating(object sender, CancelEventArgs e)
+        {
+            if(ValidateEmptyField(txtLastName, e))
+            {
+                ValidateFieldMin3Char(txtLastName, e);
+            }
+            
+        }
+
+        private void txtPhoneNumber_Validating(object sender, CancelEventArgs e)
+        {
+            if(ValidateEmptyField(txtPhone, e))
+            {
+                ValidatePhone(txtPhone, e);
+            }
+        }
+
+        private void txtEmail_Validating(object sender, CancelEventArgs e)
+        {
+            if(ValidateEmptyField(txtEmail, e))
+            {
+                ValidateEmail(txtEmail, e);
+            }
+            
+        }
+
+        private void txtPassword_Validating(object sender, CancelEventArgs e)
+        {
+
+            if(txtPassword.Visible && ValidateEmptyField(txtPassword, e))
+            {
+                ValidatePassword(txtPassword, e); 
+            }
+            
+        }
+
+        private bool ValidateEmptyField(Control control, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(control.Text))
+            {
+                errorProvider1.SetError(control, Properties.Resources.Validation_RequiredField);
+                e.Cancel = true;
+                return false;
+            }
+            else
+            {
+                errorProvider1.SetError(control, null);
+            }
+            return true;
+        }
+
+        private void ValidatePassword(Control control, CancelEventArgs e)
+        {
+            string pattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[#$^+=!*()@%&]).{8,}$";
+            Regex r = new Regex(pattern);
+            if (!r.IsMatch(control.Text))
+            {
+                errorProvider1.SetError(control, Properties.Resources.Validation_InvalidPassword);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider1.SetError(control, null);
+            }
+        }
+
+        private void ValidatePhone(Control control, CancelEventArgs e)
+        {
+            string pattern = "^([0-9]{9})$";
+            Regex r = new Regex(pattern);
+            if (!r.IsMatch(control.Text))
+            {
+                errorProvider1.SetError(control, Properties.Resources.Validation_InvalidPhone);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider1.SetError(control, null);
+            }
+        }
+
+        private void ValidateEmail(Control control,CancelEventArgs e)
+        {
+            string pattern = "^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}" +
+         @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
+         @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
+            Regex r = new Regex(pattern);
+            if (!r.IsMatch(control.Text))
+            {
+                errorProvider1.SetError(control, Properties.Resources.Validation_InvalidEmail);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider1.SetError(control, null);
+            }
+        }
+
+        private void ValidateFieldMin3Char(Control control, CancelEventArgs e)
+        {
+            if(control.Text.Length < 3)
+            {
+                errorProvider1.SetError(control, Properties.Resources.Validation_Min3Char);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider1.SetError(control, null);
+            }
+        }
+
     }
 }

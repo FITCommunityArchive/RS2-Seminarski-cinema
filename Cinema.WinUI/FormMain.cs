@@ -1,4 +1,5 @@
-﻿using Cinema.Shared.Constants;
+﻿using Cinema.Models.Dtos;
+using Cinema.Shared.Constants;
 using Cinema.WinUI.Authorization;
 using Cinema.WinUI.Events;
 using Cinema.WinUI.Movies;
@@ -6,7 +7,9 @@ using Cinema.WinUI.News;
 using Cinema.WinUI.Pricing;
 using Cinema.WinUI.Reports;
 using Cinema.WinUI.Screenings;
+using Cinema.WinUI.Services;
 using Cinema.WinUI.Users;
+using FontAwesome.Sharp;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -15,6 +18,7 @@ namespace Cinema.WinUI
 {
     public partial class FormMain : SecureBaseForm
     {
+        private ApiService _usersApi = new ApiService("Users");
         private SecureBaseForm activeForm = null;
 
         private IList<string> _nextFormPrincipal;
@@ -28,16 +32,26 @@ namespace Cinema.WinUI
         private void Form1_UserIsAllowed(object sender, EventArgs e)
         {
             btnScreenings.Visible = this.ValidatedUserRoles.Contains("Administrator");
-            btnDashboard.Visible = this.ValidatedUserRoles.Contains("Administrator");
             btnMovies.Visible = this.ValidatedUserRoles.Contains("Administrator");
             btnUsers.Visible = this.ValidatedUserRoles.Contains("Administrator");
-            btnLogin.Visible = false;
+            btnReports.Visible = this.ValidatedUserRoles.Contains("Administrator");
+            btnPricing.Visible = this.ValidatedUserRoles.Contains("Administrator");
+            btnReservations.Visible = this.ValidatedUserRoles.Contains("Administrator");
+            
         }
 
-        private void FormMain_Load(object sender, EventArgs e)
+        private async void FormMain_Load(object sender, EventArgs e)
         {
+            var userId = await _usersApi.GetCurrentUserId();
+            var user = await _usersApi.GetById<ApplicationUserDto>(userId,null);
+
             FormDashboard formDashborad = new FormDashboard(_nextFormPrincipal);
             openChildForm(formDashborad);
+
+            if(user != null) { 
+                lblFullName.Text = user.FullName;
+                lblWelcomeMessage.Text = "Hello " + user.FirstName;
+            }
         }
 
         private void customizeDesign()
@@ -148,6 +162,17 @@ namespace Cinema.WinUI
         {
             FormEventList formEventsList = new FormEventList(_nextFormPrincipal);
             openChildForm(formEventsList);
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            ApiService.Username = null;
+            ApiService.Password = null;
+            ApiService.Token = null;
+            ApiService.Role = null;
+            FormLogin formLogin = new FormLogin(_nextFormPrincipal);
+            this.Close();
+            formLogin.Show();
         }
     }
 }

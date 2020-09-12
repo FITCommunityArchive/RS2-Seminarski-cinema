@@ -67,17 +67,17 @@
             this.pnlFormTitle.Controls.Add(this.lblViewTitle);
             this.pnlFormTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlFormTitle.Location = new System.Drawing.Point(0, 0);
-            this.pnlFormTitle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pnlFormTitle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlFormTitle.Name = "pnlFormTitle";
-            this.pnlFormTitle.Size = new System.Drawing.Size(1537, 90);
+            this.pnlFormTitle.Size = new System.Drawing.Size(1153, 73);
             this.pnlFormTitle.TabIndex = 9;
             // 
             // logoSmall1
             // 
-            this.logoSmall1.Location = new System.Drawing.Point(1340, 18);
-            this.logoSmall1.Margin = new System.Windows.Forms.Padding(5);
+            this.logoSmall1.Location = new System.Drawing.Point(1005, 15);
+            this.logoSmall1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.logoSmall1.Name = "logoSmall1";
-            this.logoSmall1.Size = new System.Drawing.Size(165, 60);
+            this.logoSmall1.Size = new System.Drawing.Size(124, 49);
             this.logoSmall1.TabIndex = 4;
             // 
             // lblBreadCrumbsCurrent
@@ -85,10 +85,10 @@
             this.lblBreadCrumbsCurrent.AutoSize = true;
             this.lblBreadCrumbsCurrent.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBreadCrumbsCurrent.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblBreadCrumbsCurrent.Location = new System.Drawing.Point(141, 63);
+            this.lblBreadCrumbsCurrent.Location = new System.Drawing.Point(106, 51);
             this.lblBreadCrumbsCurrent.Margin = new System.Windows.Forms.Padding(0);
             this.lblBreadCrumbsCurrent.Name = "lblBreadCrumbsCurrent";
-            this.lblBreadCrumbsCurrent.Size = new System.Drawing.Size(105, 17);
+            this.lblBreadCrumbsCurrent.Size = new System.Drawing.Size(89, 13);
             this.lblBreadCrumbsCurrent.TabIndex = 3;
             this.lblBreadCrumbsCurrent.Text = "News details";
             // 
@@ -96,10 +96,10 @@
             // 
             this.lblBreadcrumbs.AutoSize = true;
             this.lblBreadcrumbs.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBreadcrumbs.Location = new System.Drawing.Point(29, 63);
+            this.lblBreadcrumbs.Location = new System.Drawing.Point(22, 51);
             this.lblBreadcrumbs.Margin = new System.Windows.Forms.Padding(0);
             this.lblBreadcrumbs.Name = "lblBreadcrumbs";
-            this.lblBreadcrumbs.Size = new System.Drawing.Size(112, 17);
+            this.lblBreadcrumbs.Size = new System.Drawing.Size(92, 13);
             this.lblBreadcrumbs.TabIndex = 2;
             this.lblBreadcrumbs.Text = "Home / News /";
             // 
@@ -108,10 +108,9 @@
             this.lblViewTitle.AutoSize = true;
             this.lblViewTitle.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblViewTitle.ForeColor = System.Drawing.Color.Gray;
-            this.lblViewTitle.Location = new System.Drawing.Point(25, 11);
-            this.lblViewTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblViewTitle.Location = new System.Drawing.Point(19, 9);
             this.lblViewTitle.Name = "lblViewTitle";
-            this.lblViewTitle.Size = new System.Drawing.Size(185, 32);
+            this.lblViewTitle.Size = new System.Drawing.Size(146, 25);
             this.lblViewTitle.TabIndex = 1;
             this.lblViewTitle.Text = "News details";
             // 
@@ -130,29 +129,31 @@
             this.pnlDetails.Controls.Add(this.lblNewsType);
             this.pnlDetails.Controls.Add(this.lblTitle);
             this.pnlDetails.ForeColor = System.Drawing.Color.White;
-            this.pnlDetails.Location = new System.Drawing.Point(32, 187);
-            this.pnlDetails.Margin = new System.Windows.Forms.Padding(20);
+            this.pnlDetails.Location = new System.Drawing.Point(24, 152);
+            this.pnlDetails.Margin = new System.Windows.Forms.Padding(15, 16, 15, 16);
             this.pnlDetails.Name = "pnlDetails";
-            this.pnlDetails.Padding = new System.Windows.Forms.Padding(15);
-            this.pnlDetails.Size = new System.Drawing.Size(1473, 672);
+            this.pnlDetails.Padding = new System.Windows.Forms.Padding(11, 12, 11, 12);
+            this.pnlDetails.Size = new System.Drawing.Size(1105, 546);
             this.pnlDetails.TabIndex = 11;
             // 
             // btnUpload
             // 
             this.btnUpload.AutoSize = true;
             this.btnUpload.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnUpload.Location = new System.Drawing.Point(41, 310);
+            this.btnUpload.Location = new System.Drawing.Point(31, 252);
+            this.btnUpload.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnUpload.Name = "btnUpload";
-            this.btnUpload.Size = new System.Drawing.Size(120, 40);
+            this.btnUpload.Size = new System.Drawing.Size(90, 32);
             this.btnUpload.TabIndex = 37;
             this.btnUpload.ButtonClicked += new System.EventHandler(this.btnUpload_ButtonClicked);
             // 
             // rtbDescription
             // 
             this.rtbDescription.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtbDescription.Location = new System.Drawing.Point(728, 147);
+            this.rtbDescription.Location = new System.Drawing.Point(546, 119);
+            this.rtbDescription.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.rtbDescription.Name = "rtbDescription";
-            this.rtbDescription.Size = new System.Drawing.Size(703, 411);
+            this.rtbDescription.Size = new System.Drawing.Size(528, 335);
             this.rtbDescription.TabIndex = 36;
             this.rtbDescription.Text = "";
             this.rtbDescription.Validating += new System.ComponentModel.CancelEventHandler(this.rtbDescription_Validating);
@@ -162,10 +163,10 @@
             this.txtNewsTitle.BorderColor = System.Drawing.Color.DarkGray;
             this.txtNewsTitle.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNewsTitle.ForeColor = System.Drawing.Color.Gray;
-            this.txtNewsTitle.Location = new System.Drawing.Point(728, 43);
-            this.txtNewsTitle.Margin = new System.Windows.Forms.Padding(25);
+            this.txtNewsTitle.Location = new System.Drawing.Point(546, 35);
+            this.txtNewsTitle.Margin = new System.Windows.Forms.Padding(19, 20, 19, 20);
             this.txtNewsTitle.Name = "txtNewsTitle";
-            this.txtNewsTitle.Size = new System.Drawing.Size(703, 26);
+            this.txtNewsTitle.Size = new System.Drawing.Size(528, 22);
             this.txtNewsTitle.TabIndex = 35;
             this.txtNewsTitle.Validating += new System.ComponentModel.CancelEventHandler(this.txtNewsTitle_Validating);
             // 
@@ -174,9 +175,10 @@
             this.cmbNewsType.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbNewsType.ForeColor = System.Drawing.Color.Gray;
             this.cmbNewsType.FormattingEnabled = true;
-            this.cmbNewsType.Location = new System.Drawing.Point(728, 95);
+            this.cmbNewsType.Location = new System.Drawing.Point(546, 77);
+            this.cmbNewsType.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmbNewsType.Name = "cmbNewsType";
-            this.cmbNewsType.Size = new System.Drawing.Size(703, 26);
+            this.cmbNewsType.Size = new System.Drawing.Size(528, 22);
             this.cmbNewsType.TabIndex = 30;
             this.cmbNewsType.Validating += new System.ComponentModel.CancelEventHandler(this.cmbNewsType_Validating);
             // 
@@ -184,10 +186,10 @@
             // 
             this.btnDelete.AutoSize = true;
             this.btnDelete.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnDelete.Location = new System.Drawing.Point(887, 591);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDelete.Location = new System.Drawing.Point(665, 480);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(120, 40);
+            this.btnDelete.Size = new System.Drawing.Size(90, 32);
             this.btnDelete.TabIndex = 27;
             this.btnDelete.ButtonClicked += new System.EventHandler(this.btnDelete_ButtonClicked);
             // 
@@ -195,10 +197,9 @@
             // 
             this.btnBack.AutoSize = true;
             this.btnBack.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnBack.Location = new System.Drawing.Point(1046, 591);
-            this.btnBack.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBack.Location = new System.Drawing.Point(784, 480);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(120, 40);
+            this.btnBack.Size = new System.Drawing.Size(90, 32);
             this.btnBack.TabIndex = 25;
             this.btnBack.ButtonClicked += new System.EventHandler(this.btnBack_ButtonClicked);
             // 
@@ -206,20 +207,20 @@
             // 
             this.btnSaveChanges.AutoSize = true;
             this.btnSaveChanges.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnSaveChanges.Location = new System.Drawing.Point(728, 591);
-            this.btnSaveChanges.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSaveChanges.Location = new System.Drawing.Point(546, 480);
+            this.btnSaveChanges.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSaveChanges.Name = "btnSaveChanges";
-            this.btnSaveChanges.Size = new System.Drawing.Size(120, 40);
+            this.btnSaveChanges.Size = new System.Drawing.Size(90, 32);
             this.btnSaveChanges.TabIndex = 21;
             this.btnSaveChanges.ButtonClicked += new System.EventHandler(this.btnSaveChanges_ButtonClicked);
             // 
             // picImage
             // 
             this.picImage.Image = ((System.Drawing.Image)(resources.GetObject("picImage.Image")));
-            this.picImage.Location = new System.Drawing.Point(41, 30);
-            this.picImage.Margin = new System.Windows.Forms.Padding(27, 15, 15, 15);
+            this.picImage.Location = new System.Drawing.Point(31, 24);
+            this.picImage.Margin = new System.Windows.Forms.Padding(20, 12, 11, 12);
             this.picImage.Name = "picImage";
-            this.picImage.Size = new System.Drawing.Size(484, 262);
+            this.picImage.Size = new System.Drawing.Size(363, 213);
             this.picImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picImage.TabIndex = 20;
             this.picImage.TabStop = false;
@@ -230,10 +231,10 @@
             this.lblDescription.BackColor = System.Drawing.Color.White;
             this.lblDescription.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDescription.ForeColor = System.Drawing.Color.Gray;
-            this.lblDescription.Location = new System.Drawing.Point(586, 147);
-            this.lblDescription.Margin = new System.Windows.Forms.Padding(15);
+            this.lblDescription.Location = new System.Drawing.Point(440, 119);
+            this.lblDescription.Margin = new System.Windows.Forms.Padding(11, 12, 11, 12);
             this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(90, 18);
+            this.lblDescription.Size = new System.Drawing.Size(77, 14);
             this.lblDescription.TabIndex = 6;
             this.lblDescription.Text = "Description";
             // 
@@ -243,10 +244,10 @@
             this.lblNewsType.BackColor = System.Drawing.Color.White;
             this.lblNewsType.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNewsType.ForeColor = System.Drawing.Color.Gray;
-            this.lblNewsType.Location = new System.Drawing.Point(586, 94);
-            this.lblNewsType.Margin = new System.Windows.Forms.Padding(15);
+            this.lblNewsType.Location = new System.Drawing.Point(440, 76);
+            this.lblNewsType.Margin = new System.Windows.Forms.Padding(11, 12, 11, 12);
             this.lblNewsType.Name = "lblNewsType";
-            this.lblNewsType.Size = new System.Drawing.Size(87, 18);
+            this.lblNewsType.Size = new System.Drawing.Size(74, 14);
             this.lblNewsType.TabIndex = 5;
             this.lblNewsType.Text = "News type";
             // 
@@ -256,10 +257,10 @@
             this.lblTitle.BackColor = System.Drawing.Color.White;
             this.lblTitle.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.Gray;
-            this.lblTitle.Location = new System.Drawing.Point(586, 42);
-            this.lblTitle.Margin = new System.Windows.Forms.Padding(15);
+            this.lblTitle.Location = new System.Drawing.Point(440, 34);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(11, 12, 11, 12);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(38, 18);
+            this.lblTitle.Size = new System.Drawing.Size(33, 14);
             this.lblTitle.TabIndex = 3;
             this.lblTitle.Text = "Title";
             // 
@@ -277,11 +278,11 @@
             this.lblFormCorner.BackColor = System.Drawing.Color.White;
             this.lblFormCorner.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFormCorner.ForeColor = System.Drawing.Color.DimGray;
-            this.lblFormCorner.Location = new System.Drawing.Point(28, 6);
+            this.lblFormCorner.Location = new System.Drawing.Point(21, 5);
             this.lblFormCorner.Margin = new System.Windows.Forms.Padding(0);
             this.lblFormCorner.Name = "lblFormCorner";
-            this.lblFormCorner.Padding = new System.Windows.Forms.Padding(9, 9, 9, 12);
-            this.lblFormCorner.Size = new System.Drawing.Size(123, 44);
+            this.lblFormCorner.Padding = new System.Windows.Forms.Padding(7, 7, 7, 10);
+            this.lblFormCorner.Size = new System.Drawing.Size(95, 35);
             this.lblFormCorner.TabIndex = 0;
             this.lblFormCorner.Text = "News info";
             this.lblFormCorner.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -290,23 +291,23 @@
             // 
             this.pnlCornerLabel.BackColor = System.Drawing.Color.White;
             this.pnlCornerLabel.Controls.Add(this.lblFormCorner);
-            this.pnlCornerLabel.Location = new System.Drawing.Point(32, 139);
+            this.pnlCornerLabel.Location = new System.Drawing.Point(24, 113);
             this.pnlCornerLabel.Margin = new System.Windows.Forms.Padding(0);
             this.pnlCornerLabel.Name = "pnlCornerLabel";
-            this.pnlCornerLabel.Size = new System.Drawing.Size(188, 50);
+            this.pnlCornerLabel.Size = new System.Drawing.Size(141, 41);
             this.pnlCornerLabel.TabIndex = 12;
             // 
             // FormNewsDetails
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1537, 937);
+            this.ClientSize = new System.Drawing.Size(1153, 761);
             this.Controls.Add(this.pnlCornerLabel);
             this.Controls.Add(this.pnlDetails);
             this.Controls.Add(this.pnlFormTitle);
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormNewsDetails";
-            this.Text = "frmMovieDetails";
+            this.Text = "eCinema - News details";
             this.Load += new System.EventHandler(this.frmNewsDetails_Load);
             this.pnlFormTitle.ResumeLayout(false);
             this.pnlFormTitle.PerformLayout();

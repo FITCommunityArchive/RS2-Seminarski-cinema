@@ -61,6 +61,16 @@ namespace Cinema.WinUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap avatar {
+            get {
+                object obj = ResourceManager.GetObject("avatar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid column header name.
         /// </summary>
         internal static string Exception_InvalidColumnHeaderName {
@@ -112,6 +122,51 @@ namespace Cinema.WinUI.Properties {
         internal static string Validation_IntegerRequired {
             get {
                 return ResourceManager.GetString("Validation_IntegerRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email is invalid. Please input correct email address..
+        /// </summary>
+        internal static string Validation_InvalidEmail {
+            get {
+                return ResourceManager.GetString("Validation_InvalidEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The password should have at least one lower case letter, one upper case letter, one number and one special character..
+        /// </summary>
+        internal static string Validation_InvalidPassword {
+            get {
+                return ResourceManager.GetString("Validation_InvalidPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The phone number needs to consist of numbers only..
+        /// </summary>
+        internal static string Validation_InvalidPhone {
+            get {
+                return ResourceManager.GetString("Validation_InvalidPhone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The field must have at least 3 characters..
+        /// </summary>
+        internal static string Validation_Min3Char {
+            get {
+                return ResourceManager.GetString("Validation_Min3Char", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The passwords need to match..
+        /// </summary>
+        internal static string Validation_PasswortMismatch {
+            get {
+                return ResourceManager.GetString("Validation_PasswortMismatch", resourceCulture);
             }
         }
         

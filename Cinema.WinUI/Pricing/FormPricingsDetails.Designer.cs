@@ -28,18 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPricingsDetails));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtPrice = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.btnDelete = new Cinema.WinUI.UserControls.Buttons.DeleteButton();
             this.btnSaveChanges = new Cinema.WinUI.UserControls.Buttons.SaveChangesButton();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.txtPrice = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -84,31 +85,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Pricing details";
             // 
-            // txtName
-            // 
-            this.txtName.Location = new System.Drawing.Point(23, 36);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(100, 20);
-            this.txtName.TabIndex = 0;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(20, 20);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Name";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(151, 20);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(31, 13);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Price";
-            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.BackColor = System.Drawing.Color.White;
@@ -141,29 +117,38 @@
             this.panel1.Size = new System.Drawing.Size(525, 77);
             this.panel1.TabIndex = 0;
             // 
-            // btnDelete
+            // label3
             // 
-            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDelete.AutoSize = true;
-            this.btnDelete.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnDelete.Location = new System.Drawing.Point(255, 10);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(10);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(120, 40);
-            this.btnDelete.TabIndex = 29;
-            this.btnDelete.ButtonClicked += new System.EventHandler(this.btnDelete_ButtonClicked);
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(151, 20);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(31, 13);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Price";
             // 
-            // btnSaveChanges
+            // txtPrice
             // 
-            this.btnSaveChanges.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSaveChanges.AutoSize = true;
-            this.btnSaveChanges.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnSaveChanges.Location = new System.Drawing.Point(395, 10);
-            this.btnSaveChanges.Margin = new System.Windows.Forms.Padding(10);
-            this.btnSaveChanges.Name = "btnSaveChanges";
-            this.btnSaveChanges.Size = new System.Drawing.Size(120, 40);
-            this.btnSaveChanges.TabIndex = 28;
-            this.btnSaveChanges.ButtonClicked += new System.EventHandler(this.btnSaveChanges_ButtonClicked);
+            this.txtPrice.Location = new System.Drawing.Point(154, 36);
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.Size = new System.Drawing.Size(100, 20);
+            this.txtPrice.TabIndex = 2;
+            this.txtPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrice_KeyPress);
+            // 
+            // txtName
+            // 
+            this.txtName.Location = new System.Drawing.Point(23, 36);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(100, 20);
+            this.txtName.TabIndex = 0;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(20, 20);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Name";
             // 
             // tableLayoutPanel3
             // 
@@ -181,13 +166,29 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(525, 75);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
-            // txtPrice
+            // btnDelete
             // 
-            this.txtPrice.Location = new System.Drawing.Point(154, 36);
-            this.txtPrice.Name = "txtPrice";
-            this.txtPrice.Size = new System.Drawing.Size(100, 20);
-            this.txtPrice.TabIndex = 2;
-            this.txtPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrice_KeyPress);
+            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDelete.AutoSize = true;
+            this.btnDelete.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnDelete.Location = new System.Drawing.Point(285, 10);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(10);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(90, 32);
+            this.btnDelete.TabIndex = 29;
+            this.btnDelete.ButtonClicked += new System.EventHandler(this.btnDelete_ButtonClicked);
+            // 
+            // btnSaveChanges
+            // 
+            this.btnSaveChanges.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSaveChanges.AutoSize = true;
+            this.btnSaveChanges.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnSaveChanges.Location = new System.Drawing.Point(425, 10);
+            this.btnSaveChanges.Margin = new System.Windows.Forms.Padding(10);
+            this.btnSaveChanges.Name = "btnSaveChanges";
+            this.btnSaveChanges.Size = new System.Drawing.Size(90, 32);
+            this.btnSaveChanges.TabIndex = 28;
+            this.btnSaveChanges.ButtonClicked += new System.EventHandler(this.btnSaveChanges_ButtonClicked);
             // 
             // FormPricingsDetails
             // 
@@ -195,8 +196,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(585, 287);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormPricingsDetails";
-            this.Text = "FormPricingsDetails";
+            this.Text = "eCinema - Pricing details";
             this.Load += new System.EventHandler(this.FormPricingsDetails_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);

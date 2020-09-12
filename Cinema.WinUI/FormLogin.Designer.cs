@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.labelUsername = new System.Windows.Forms.Label();
             this.labelPasword = new System.Windows.Forms.Label();
@@ -121,9 +122,10 @@
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.labelUsername);
             this.Controls.Add(this.txtUsername);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "LoginForm";
+            this.Text = "eCinema - Login";
             ((System.ComponentModel.ISupportInitialize)(this.picLoading)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

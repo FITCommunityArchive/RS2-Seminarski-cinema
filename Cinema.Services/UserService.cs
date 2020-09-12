@@ -86,14 +86,7 @@ namespace Cinema.Services
             var user = await _userRepo.GetByIdWithRolesAsync(id);
             user = _mapper.Map(req, user);
 
-            await _userRepo.UpdateAsync(user, id);
-
-            if (user.UserRoles[0].RoleId != req.RoleId)
-            {
-                var getRoleName = await _roleRepo.GetAsync(req.RoleId);
-                await _userManager.RemoveFromRoleAsync(user, user.UserRoles[0].Role.Name);
-                await _userManager.AddToRoleAsync(user, getRoleName.Name);
-            }
+            await _userRepo.UpdateAsync(user, id,req.RoleId);
 
             await _unit.SaveAsync();
 

@@ -48,6 +48,7 @@
             this.DateAndTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+
             this.UserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserFullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Jan = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,6 +64,7 @@
             this.Nov = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Dec = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.YearlyTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -104,8 +106,10 @@
             this.pgnReservations.AutoSize = true;
             this.pgnReservations.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.pgnReservations.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+
             this.pgnReservations.Location = new System.Drawing.Point(1247, 24);
             this.pgnReservations.Margin = new System.Windows.Forms.Padding(5);
+
             this.pgnReservations.Name = "pgnReservations";
             this.pgnReservations.PageIndex = 0;
             this.pgnReservations.Size = new System.Drawing.Size(210, 35);
@@ -280,6 +284,7 @@
             this.dgvScreeningsList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvScreeningsList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.dgvScreeningsList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -512,7 +517,7 @@
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormReports";
-            this.Text = "FormReports";
+            this.Text = "eCinema - Reports";
             this.Load += new System.EventHandler(this.FormReports_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
