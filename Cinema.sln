@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.Common", "Cinema.Com
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.Services", "Cinema.Services\Cinema.Services.csproj", "{ABC21100-AC7A-45D0-8D0E-D2D2721CA1B6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.Dal", "Cinema.Dal\Cinema.Dal.csproj", "{B28027EC-C5A5-492A-B2A2-8F40A38551C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.Persistence", "Cinema.Persistence\Cinema.Persistence.csproj", "{B28027EC-C5A5-492A-B2A2-8F40A38551C2}"
 	ProjectSection(ProjectDependencies) = postProject
 		{76786E0F-B1F7-449B-8B29-2BBB32753F1A} = {76786E0F-B1F7-449B-8B29-2BBB32753F1A}
 	EndProjectSection
@@ -299,6 +299,8 @@ Global
 		{4A1D428E-6347-4F02-971A-3FF6BEE0E4B2}.Debug|ARM.Build.0 = Debug|ARM
 		{4A1D428E-6347-4F02-971A-3FF6BEE0E4B2}.Debug|ARM.Deploy.0 = Debug|ARM
 		{4A1D428E-6347-4F02-971A-3FF6BEE0E4B2}.Debug|iPhone.ActiveCfg = Debug|x86
+		{4A1D428E-6347-4F02-971A-3FF6BEE0E4B2}.Debug|iPhone.Build.0 = Debug|x86
+		{4A1D428E-6347-4F02-971A-3FF6BEE0E4B2}.Debug|iPhone.Deploy.0 = Debug|x86
 		{4A1D428E-6347-4F02-971A-3FF6BEE0E4B2}.Debug|iPhoneSimulator.ActiveCfg = Debug|x86
 		{4A1D428E-6347-4F02-971A-3FF6BEE0E4B2}.Debug|x64.ActiveCfg = Debug|x64
 		{4A1D428E-6347-4F02-971A-3FF6BEE0E4B2}.Debug|x64.Build.0 = Debug|x64
