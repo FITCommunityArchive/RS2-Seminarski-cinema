@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Cinema.Mobile.Views.EventsPage"
+             xmlns:viewModels="clr-namespace:Cinema.Mobile.ViewModels"
+             xmlns:templates="clr-namespace:Cinema.Mobile.Templates"
+             ControlTemplate="{StaticResource FooterBar}"
+             BackgroundColor="#f5f5f5" Padding="0">
+    <ContentPage.BindingContext>
+        <viewModels:EventsViewModel></viewModels:EventsViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#f5f5f5">
+            <Label Text="Events" VerticalOptions="Start" BackgroundColor="White" FontSize="Title" TextColor="DimGray" FontAttributes="Bold" Padding="15"/>
+            <Label Text="No events currently. Come back later." IsVisible="{Binding NoItems}" Padding="30"></Label>
+            <ListView x:Name="Events"
+                      ItemsSource="{Binding Events}"
+                      HorizontalScrollBarVisibility="Never"
+                      ItemTapped="OnListViewItemSelected"
+                      HasUnevenRows="True"
+                      SelectionMode="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <templates:EventCard Margin="0,0,0,30"></templates:EventCard>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

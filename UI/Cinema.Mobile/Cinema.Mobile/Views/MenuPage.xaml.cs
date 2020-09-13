@@ -1,5 +1,6 @@
 ﻿using Cinema.Mobile.Models;
 using Cinema.Mobile.Services;
+using Cinema.Mobile.StaticModels;
 using System.Collections.Generic;
 using System.ComponentModel;
 using Xamarin.Forms;
@@ -21,6 +22,8 @@ namespace Cinema.Mobile.Views
             {
                 new HomeMenuItem {Id = MenuItemType.NowShowing, Title="Now Showing" },
                 new HomeMenuItem {Id = MenuItemType.MyReservations, Title="My Reservations" },
+                new HomeMenuItem {Id = MenuItemType.News, Title="News" },
+                new HomeMenuItem {Id = MenuItemType.Events, Title="Events" },
                 new HomeMenuItem {Id = MenuItemType.Profile, Title="Profile" },
                 new HomeMenuItem {Id = MenuItemType.LogOut, Title="Log out" }
             };
@@ -37,7 +40,7 @@ namespace Cinema.Mobile.Views
 
                 if (id == (int)MenuItemType.LogOut)
                 {
-                    LogOut();
+                    FooterBarStaticModel.LogOut();
                 }
                 else
                 {
@@ -45,14 +48,6 @@ namespace Cinema.Mobile.Views
                     await RootPage.NavigateFromMenu(id);
                 }
             };
-        }
-
-        private void LogOut()
-        {
-            ApiService.Username = null;
-            ApiService.Password = null;
-            ApiService.Token = null;
-            Application.Current.MainPage = new NavigationPage(new LoginPage());
         }
     }
 }
