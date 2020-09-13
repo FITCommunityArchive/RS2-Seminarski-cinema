@@ -5,7 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="Cinema.Mobile.App"
-             xmlns:sm="clr-namespace:Cinema.Mobile.StaticModels">
+             xmlns:sm="clr-namespace:Cinema.Mobile.StaticModels"
+             xmlns:views="clr-namespace:Cinema.Mobile.Views">
 
     <Application.Resources>
         <ResourceDictionary>
@@ -37,8 +38,28 @@
                         </StackLayout>
                     </StackLayout>
                 </Frame>
-                
             </ControlTemplate>
+
+            <ControlTemplate x:Key="DefaultErrorViewTemplate">
+                <Grid IsVisible="{TemplateBinding ErrorState.HasError}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid WidthRequest="2" HorizontalOptions="Fill" Margin="1, 2" BackgroundColor="Red" />
+                    <StackLayout Grid.Column="1" BindableLayout.ItemsSource="{TemplateBinding ErrorState.Messages}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding}" FontSize="Micro" TextColor="Red" />
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+                </Grid>
+            </ControlTemplate>
+            <Style TargetType="views:ErrorView">
+                <Setter Property="ControlTemplate" Value="{StaticResource DefaultErrorViewTemplate}" />
+            </Style>
+
         </ResourceDictionary>
         <OnPlatform x:Key="MaterialFontFamily" x:TypeArguments="x:String">
             <On Platform="iOS" Value="Material Design Icons" />
