@@ -33,6 +33,7 @@ Technical implementations of Cinema.Web.Api:
 6.  Run "docker-compose build"
 6.  Run "docker-compose up"
 7. 	After a console message that the application has started appears, open http://localhost:5000/swagger/index.html in browser
+**NOTE: docker-compose build may take a few minutes, due to the number of Reviews being seeded (required for the MovieRecommenderService)**
 
 # Login Credentials
 

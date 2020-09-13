@@ -78,6 +78,18 @@ namespace Cinema.Persistence.Data
             builder.Entity<ApplicationRole>().HasQueryFilter(x => !x.IsDeleted);
             builder.Entity<ApplicationUserRole>().HasQueryFilter(x => !x.IsDeleted);
 
+            builder.Entity<Invoice>()
+                   .Property(p => p.TaxAmount)
+                   .HasColumnType("decimal(18,2)");
+
+            builder.Entity<Invoice>()
+                   .Property(p => p.Price)
+                   .HasColumnType("decimal(18,2)");
+
+            builder.Entity<Pricing>()
+                   .Property(p => p.Price)
+                   .HasColumnType("decimal(18,2)");
+
             builder.Entity<Reservation>()
                    .HasOne(x => x.Invoice)
                    .WithOne(x => x.Reservation)
