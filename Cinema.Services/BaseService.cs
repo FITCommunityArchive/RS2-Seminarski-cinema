@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using Cinema.Models.Requests;
-using Cinema.Shared.Pagination;
 using Cinema.Common.Interfaces.Dal;
 using Cinema.Common.Interfaces.Services;
+using Cinema.Models.Requests;
+using Cinema.Shared.Pagination;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

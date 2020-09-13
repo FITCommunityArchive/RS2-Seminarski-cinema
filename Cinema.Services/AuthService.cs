@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
-using Cinema.Domain.Entities.Identity;
-using Cinema.Models.Dtos;
-using Cinema.Shared.Constants;
 using Cinema.Common.Exceptions;
 using Cinema.Common.Interfaces.Dal;
 using Cinema.Common.Interfaces.Services;
+using Cinema.Domain.Entities.Identity;
+using Cinema.Models.Dtos;
+using Cinema.Shared.Constants;
 using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
 using System.Threading.Tasks;

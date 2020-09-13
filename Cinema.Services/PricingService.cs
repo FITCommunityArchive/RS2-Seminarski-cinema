@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
+using Cinema.Common.Interfaces.Dal;
 using Cinema.Domain.Entities;
 using Cinema.Models.Dtos;
 using Cinema.Models.Requests.Pricing;
-using Cinema.Common.Interfaces.Dal;
 
 namespace Cinema.Services
 {

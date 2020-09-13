@@ -1,6 +1,6 @@
-﻿using Cinema.Models.Dtos;
+﻿using Cinema.Common.Interfaces.Services;
+using Cinema.Models.Dtos;
 using Cinema.Models.Requests.Pricing;
-using Cinema.Common.Interfaces.Services;
 
 namespace Cinema.Web.Api.Controllers
 {

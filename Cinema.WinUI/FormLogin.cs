@@ -11,7 +11,7 @@ namespace Cinema.WinUI
         ApiService _service = new ApiService("login");
 
         IList<string> _nextFormPrincipal;
-        public FormLogin(IList<string> userPrincipal) : base(new string[] { "Guest","Administrator","Content Editor" }, userPrincipal)
+        public FormLogin(IList<string> userPrincipal) : base(new string[] { "Guest", "Administrator", "Content Editor" }, userPrincipal)
         {
             _nextFormPrincipal = userPrincipal;
             InitializeComponent();
@@ -59,7 +59,8 @@ namespace Cinema.WinUI
                     {
                         SetLoading(false);
                         MessageBox.Show("Customers are not allowed to use dashboard.", "Authentication", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    } else
+                    }
+                    else
                     {
                         SetLoading(false);
                         MessageBox.Show("You successufully logged in.", "Authentication", MessageBoxButtons.OK, MessageBoxIcon.Information);

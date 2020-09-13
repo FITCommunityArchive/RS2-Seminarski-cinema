@@ -1,6 +1,6 @@
-﻿using Cinema.Models.Dtos;
+﻿using Cinema.Common.Interfaces.Services;
+using Cinema.Models.Dtos;
 using Cinema.Models.Requests.Reviews;
-using Cinema.Common.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Cinema.Web.Api.Controllers

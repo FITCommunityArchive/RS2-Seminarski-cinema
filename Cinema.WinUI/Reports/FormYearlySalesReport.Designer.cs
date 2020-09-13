@@ -42,22 +42,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pgnReservations = new Cinema.WinUI.UserControls.Pagination();
+            this.pgnYearlySales = new Cinema.WinUI.UserControls.Pagination();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvUserSalesList = new System.Windows.Forms.DataGridView();
-            this.btnPrint = new System.Windows.Forms.Button();
-            this.btnExportExcel = new System.Windows.Forms.Button();
-            this.btnExportPDF = new System.Windows.Forms.Button();
-            this.txtCustomerName = new System.Windows.Forms.TextBox();
-            this.lblYear = new System.Windows.Forms.Label();
-            this.nmrUserId = new System.Windows.Forms.NumericUpDown();
-            this.nmrYear = new System.Windows.Forms.NumericUpDown();
-            this.nmrNumberOfEntries = new System.Windows.Forms.NumericUpDown();
-            this.lblShowEntries = new System.Windows.Forms.Label();
-            this.lblCustomerID = new System.Windows.Forms.Label();
-            this.lblCustomerName = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.lblReportTitle = new System.Windows.Forms.Label();
             this.UserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserFullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Jan = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -73,6 +60,19 @@
             this.Nov = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Dec = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.YearlyTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.btnExportExcel = new System.Windows.Forms.Button();
+            this.btnExportPDF = new System.Windows.Forms.Button();
+            this.txtCustomerName = new System.Windows.Forms.TextBox();
+            this.lblYear = new System.Windows.Forms.Label();
+            this.nmrUserId = new System.Windows.Forms.NumericUpDown();
+            this.nmrYear = new System.Windows.Forms.NumericUpDown();
+            this.nmrNumberOfEntries = new System.Windows.Forms.NumericUpDown();
+            this.lblShowEntries = new System.Windows.Forms.Label();
+            this.lblCustomerID = new System.Windows.Forms.Label();
+            this.lblCustomerName = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblReportTitle = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUserSalesList)).BeginInit();
@@ -85,7 +85,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.Controls.Add(this.pgnReservations);
+            this.panel1.Controls.Add(this.pgnYearlySales);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 716);
             this.panel1.Margin = new System.Windows.Forms.Padding(40, 37, 40, 37);
@@ -94,31 +94,31 @@
             this.panel1.Size = new System.Drawing.Size(1477, 75);
             this.panel1.TabIndex = 12;
             // 
-            // pgnReservations
+            // pgnYearlySales
             // 
-            this.pgnReservations.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.pgnReservations.AutoSize = true;
-            this.pgnReservations.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.pgnReservations.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pgnReservations.Location = new System.Drawing.Point(1247, 24);
-            this.pgnReservations.Margin = new System.Windows.Forms.Padding(5);
-            this.pgnReservations.Name = "pgnReservations";
-            this.pgnReservations.PageIndex = 0;
-            this.pgnReservations.Size = new System.Drawing.Size(210, 35);
-            this.pgnReservations.TabIndex = 12;
-            this.pgnReservations.TotalPages = 0;
-            this.pgnReservations.PageChanged += new System.EventHandler(this.pgnReservations_PageChanged);
+            this.pgnYearlySales.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pgnYearlySales.AutoSize = true;
+            this.pgnYearlySales.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.pgnYearlySales.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pgnYearlySales.Location = new System.Drawing.Point(1247, 24);
+            this.pgnYearlySales.Margin = new System.Windows.Forms.Padding(5);
+            this.pgnYearlySales.Name = "pgnYearlySales";
+            this.pgnYearlySales.PageIndex = 0;
+            this.pgnYearlySales.Size = new System.Drawing.Size(210, 35);
+            this.pgnYearlySales.TabIndex = 12;
+            this.pgnYearlySales.TotalPages = 0;
+            this.pgnYearlySales.PageChanged += new System.EventHandler(this.pgnYearlySales_PageChanged);
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.dgvUserSalesList);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 91);
+            this.panel2.Location = new System.Drawing.Point(0, 118);
             this.panel2.Margin = new System.Windows.Forms.Padding(40, 37, 40, 37);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(15);
-            this.panel2.Size = new System.Drawing.Size(1477, 625);
+            this.panel2.Size = new System.Drawing.Size(1477, 598);
             this.panel2.TabIndex = 12;
             // 
             // dgvUserSalesList
@@ -166,229 +166,10 @@
             this.dgvUserSalesList.RowHeadersVisible = false;
             this.dgvUserSalesList.RowHeadersWidth = 51;
             this.dgvUserSalesList.RowTemplate.Height = 24;
-            this.dgvUserSalesList.Size = new System.Drawing.Size(1447, 595);
+            this.dgvUserSalesList.Size = new System.Drawing.Size(1447, 568);
             this.dgvUserSalesList.TabIndex = 1;
             this.dgvUserSalesList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvReportReservations_CellFormatting);
             this.dgvUserSalesList.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvUserSalesList_ColumnHeaderMouseClick);
-            // 
-            // btnPrint
-            // 
-            this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPrint.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(218)))), ((int)(((byte)(218)))));
-            this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPrint.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrint.ForeColor = System.Drawing.Color.DimGray;
-            this.btnPrint.Location = new System.Drawing.Point(1263, 52);
-            this.btnPrint.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(174, 27);
-            this.btnPrint.TabIndex = 4;
-            this.btnPrint.Text = "Print";
-            this.btnPrint.UseVisualStyleBackColor = true;
-            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
-            // 
-            // btnExportExcel
-            // 
-            this.btnExportExcel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExportExcel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(218)))), ((int)(((byte)(218)))));
-            this.btnExportExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExportExcel.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExportExcel.ForeColor = System.Drawing.Color.DimGray;
-            this.btnExportExcel.Location = new System.Drawing.Point(863, 52);
-            this.btnExportExcel.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
-            this.btnExportExcel.Name = "btnExportExcel";
-            this.btnExportExcel.Size = new System.Drawing.Size(174, 27);
-            this.btnExportExcel.TabIndex = 0;
-            this.btnExportExcel.Text = "Export to excel";
-            this.btnExportExcel.UseVisualStyleBackColor = true;
-            this.btnExportExcel.Click += new System.EventHandler(this.btnExportExcel_Click);
-            // 
-            // btnExportPDF
-            // 
-            this.btnExportPDF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExportPDF.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(218)))), ((int)(((byte)(218)))));
-            this.btnExportPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExportPDF.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExportPDF.ForeColor = System.Drawing.Color.DimGray;
-            this.btnExportPDF.Location = new System.Drawing.Point(1063, 52);
-            this.btnExportPDF.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
-            this.btnExportPDF.Name = "btnExportPDF";
-            this.btnExportPDF.Size = new System.Drawing.Size(174, 27);
-            this.btnExportPDF.TabIndex = 1;
-            this.btnExportPDF.Text = "Export to PDF";
-            this.btnExportPDF.UseVisualStyleBackColor = true;
-            this.btnExportPDF.Click += new System.EventHandler(this.btnExportPDF_Click);
-            // 
-            // txtCustomerName
-            // 
-            this.txtCustomerName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCustomerName.Location = new System.Drawing.Point(460, 50);
-            this.txtCustomerName.Margin = new System.Windows.Forms.Padding(10, 10, 10, 15);
-            this.txtCustomerName.Name = "txtCustomerName";
-            this.txtCustomerName.Size = new System.Drawing.Size(180, 22);
-            this.txtCustomerName.TabIndex = 12;
-            this.txtCustomerName.TextChanged += new System.EventHandler(this.SearchChanged);
-            // 
-            // lblYear
-            // 
-            this.lblYear.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblYear.AutoSize = true;
-            this.lblYear.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblYear.ForeColor = System.Drawing.Color.DimGray;
-            this.lblYear.Location = new System.Drawing.Point(153, 22);
-            this.lblYear.Name = "lblYear";
-            this.lblYear.Size = new System.Drawing.Size(144, 18);
-            this.lblYear.TabIndex = 9;
-            this.lblYear.Text = "Year";
-            // 
-            // nmrUserId
-            // 
-            this.nmrUserId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.nmrUserId.Location = new System.Drawing.Point(310, 50);
-            this.nmrUserId.Margin = new System.Windows.Forms.Padding(10);
-            this.nmrUserId.Maximum = new decimal(new int[] {
-            1215752192,
-            23,
-            0,
-            0});
-            this.nmrUserId.Minimum = new decimal(new int[] {
-            -727379968,
-            232,
-            0,
-            -2147483648});
-            this.nmrUserId.Name = "nmrUserId";
-            this.nmrUserId.Size = new System.Drawing.Size(130, 22);
-            this.nmrUserId.TabIndex = 8;
-            this.nmrUserId.ValueChanged += new System.EventHandler(this.SearchChanged);
-            this.nmrUserId.KeyDown += new System.Windows.Forms.KeyEventHandler(this.nmrUserId_KeyDown);
-            // 
-            // nmrYear
-            // 
-            this.nmrYear.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.nmrYear.Location = new System.Drawing.Point(160, 50);
-            this.nmrYear.Margin = new System.Windows.Forms.Padding(10);
-            this.nmrYear.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.nmrYear.Name = "nmrYear";
-            this.nmrYear.Size = new System.Drawing.Size(130, 22);
-            this.nmrYear.TabIndex = 7;
-            this.nmrYear.ValueChanged += new System.EventHandler(this.SearchChanged);
-            this.nmrYear.KeyDown += new System.Windows.Forms.KeyEventHandler(this.nmrYear_KeyDown);
-            // 
-            // nmrNumberOfEntries
-            // 
-            this.nmrNumberOfEntries.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.nmrNumberOfEntries.Location = new System.Drawing.Point(10, 50);
-            this.nmrNumberOfEntries.Margin = new System.Windows.Forms.Padding(10);
-            this.nmrNumberOfEntries.Maximum = new decimal(new int[] {
-            10000000,
-            0,
-            0,
-            0});
-            this.nmrNumberOfEntries.Name = "nmrNumberOfEntries";
-            this.nmrNumberOfEntries.Size = new System.Drawing.Size(130, 22);
-            this.nmrNumberOfEntries.TabIndex = 5;
-            this.nmrNumberOfEntries.ValueChanged += new System.EventHandler(this.SearchChanged);
-            this.nmrNumberOfEntries.KeyDown += new System.Windows.Forms.KeyEventHandler(this.nmrNumberOfEntries_KeyDown);
-            // 
-            // lblShowEntries
-            // 
-            this.lblShowEntries.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblShowEntries.AutoSize = true;
-            this.lblShowEntries.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblShowEntries.ForeColor = System.Drawing.Color.DimGray;
-            this.lblShowEntries.Location = new System.Drawing.Point(10, 22);
-            this.lblShowEntries.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
-            this.lblShowEntries.Name = "lblShowEntries";
-            this.lblShowEntries.Size = new System.Drawing.Size(137, 18);
-            this.lblShowEntries.TabIndex = 6;
-            this.lblShowEntries.Text = "Show entries";
-            // 
-            // lblCustomerID
-            // 
-            this.lblCustomerID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblCustomerID.AutoSize = true;
-            this.lblCustomerID.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCustomerID.ForeColor = System.Drawing.Color.DimGray;
-            this.lblCustomerID.Location = new System.Drawing.Point(303, 22);
-            this.lblCustomerID.Name = "lblCustomerID";
-            this.lblCustomerID.Size = new System.Drawing.Size(144, 18);
-            this.lblCustomerID.TabIndex = 10;
-            this.lblCustomerID.Text = "ID";
-            // 
-            // lblCustomerName
-            // 
-            this.lblCustomerName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblCustomerName.AutoSize = true;
-            this.lblCustomerName.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCustomerName.ForeColor = System.Drawing.Color.DimGray;
-            this.lblCustomerName.Location = new System.Drawing.Point(453, 22);
-            this.lblCustomerName.Name = "lblCustomerName";
-            this.lblCustomerName.Size = new System.Drawing.Size(194, 18);
-            this.lblCustomerName.TabIndex = 11;
-            this.lblCustomerName.Text = "Customer Name";
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.White;
-            this.tableLayoutPanel1.ColumnCount = 9;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
-            this.tableLayoutPanel1.Controls.Add(this.lblCustomerName, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.lblCustomerID, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.lblShowEntries, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.nmrNumberOfEntries, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.nmrYear, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.nmrUserId, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.lblYear, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.txtCustomerName, 3, 1);
-            this.tableLayoutPanel1.Controls.Add(this.btnExportPDF, 6, 1);
-            this.tableLayoutPanel1.Controls.Add(this.btnExportExcel, 5, 1);
-            this.tableLayoutPanel1.Controls.Add(this.btnPrint, 7, 1);
-            this.tableLayoutPanel1.Controls.Add(this.lblReportTitle, 6, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 44.24779F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55.75221F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1477, 91);
-            this.tableLayoutPanel1.TabIndex = 13;
-            // 
-            // lblReportTitle
-            // 
-            this.lblReportTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblReportTitle.AutoSize = true;
-            this.tableLayoutPanel1.SetColumnSpan(this.lblReportTitle, 2);
-            this.lblReportTitle.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblReportTitle.ForeColor = System.Drawing.Color.DimGray;
-            this.lblReportTitle.Location = new System.Drawing.Point(1053, 7);
-            this.lblReportTitle.Name = "lblReportTitle";
-            this.lblReportTitle.Size = new System.Drawing.Size(394, 25);
-            this.lblReportTitle.TabIndex = 13;
-            this.lblReportTitle.Text = "Sales per Customer";
             // 
             // UserId
             // 
@@ -552,6 +333,225 @@
             this.YearlyTotal.Name = "YearlyTotal";
             this.YearlyTotal.ReadOnly = true;
             // 
+            // btnPrint
+            // 
+            this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPrint.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(218)))), ((int)(((byte)(218)))));
+            this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrint.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrint.ForeColor = System.Drawing.Color.DimGray;
+            this.btnPrint.Location = new System.Drawing.Point(1213, 64);
+            this.btnPrint.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(174, 42);
+            this.btnPrint.TabIndex = 4;
+            this.btnPrint.Text = "Print";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
+            // btnExportExcel
+            // 
+            this.btnExportExcel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExportExcel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(218)))), ((int)(((byte)(218)))));
+            this.btnExportExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExportExcel.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportExcel.ForeColor = System.Drawing.Color.DimGray;
+            this.btnExportExcel.Location = new System.Drawing.Point(813, 64);
+            this.btnExportExcel.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
+            this.btnExportExcel.Name = "btnExportExcel";
+            this.btnExportExcel.Size = new System.Drawing.Size(174, 42);
+            this.btnExportExcel.TabIndex = 0;
+            this.btnExportExcel.Text = "Export to excel";
+            this.btnExportExcel.UseVisualStyleBackColor = true;
+            this.btnExportExcel.Click += new System.EventHandler(this.btnExportExcel_Click);
+            // 
+            // btnExportPDF
+            // 
+            this.btnExportPDF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExportPDF.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(218)))), ((int)(((byte)(218)))));
+            this.btnExportPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExportPDF.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportPDF.ForeColor = System.Drawing.Color.DimGray;
+            this.btnExportPDF.Location = new System.Drawing.Point(1013, 64);
+            this.btnExportPDF.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
+            this.btnExportPDF.Name = "btnExportPDF";
+            this.btnExportPDF.Size = new System.Drawing.Size(174, 42);
+            this.btnExportPDF.TabIndex = 1;
+            this.btnExportPDF.Text = "Export to PDF";
+            this.btnExportPDF.UseVisualStyleBackColor = true;
+            this.btnExportPDF.Click += new System.EventHandler(this.btnExportPDF_Click);
+            // 
+            // txtCustomerName
+            // 
+            this.txtCustomerName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCustomerName.Location = new System.Drawing.Point(460, 62);
+            this.txtCustomerName.Margin = new System.Windows.Forms.Padding(10, 10, 10, 15);
+            this.txtCustomerName.Name = "txtCustomerName";
+            this.txtCustomerName.Size = new System.Drawing.Size(180, 22);
+            this.txtCustomerName.TabIndex = 12;
+            this.txtCustomerName.TextChanged += new System.EventHandler(this.SearchChanged);
+            // 
+            // lblYear
+            // 
+            this.lblYear.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblYear.AutoSize = true;
+            this.lblYear.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblYear.ForeColor = System.Drawing.Color.DimGray;
+            this.lblYear.Location = new System.Drawing.Point(153, 34);
+            this.lblYear.Name = "lblYear";
+            this.lblYear.Size = new System.Drawing.Size(144, 18);
+            this.lblYear.TabIndex = 9;
+            this.lblYear.Text = "Year";
+            // 
+            // nmrUserId
+            // 
+            this.nmrUserId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.nmrUserId.Location = new System.Drawing.Point(310, 62);
+            this.nmrUserId.Margin = new System.Windows.Forms.Padding(10);
+            this.nmrUserId.Maximum = new decimal(new int[] {
+            1215752192,
+            23,
+            0,
+            0});
+            this.nmrUserId.Minimum = new decimal(new int[] {
+            -727379968,
+            232,
+            0,
+            -2147483648});
+            this.nmrUserId.Name = "nmrUserId";
+            this.nmrUserId.Size = new System.Drawing.Size(130, 22);
+            this.nmrUserId.TabIndex = 8;
+            this.nmrUserId.ValueChanged += new System.EventHandler(this.SearchChanged);
+            this.nmrUserId.KeyDown += new System.Windows.Forms.KeyEventHandler(this.nmrUserId_KeyDown);
+            // 
+            // nmrYear
+            // 
+            this.nmrYear.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.nmrYear.Location = new System.Drawing.Point(160, 62);
+            this.nmrYear.Margin = new System.Windows.Forms.Padding(10);
+            this.nmrYear.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.nmrYear.Name = "nmrYear";
+            this.nmrYear.Size = new System.Drawing.Size(130, 22);
+            this.nmrYear.TabIndex = 7;
+            this.nmrYear.ValueChanged += new System.EventHandler(this.SearchChanged);
+            this.nmrYear.KeyDown += new System.Windows.Forms.KeyEventHandler(this.nmrYear_KeyDown);
+            // 
+            // nmrNumberOfEntries
+            // 
+            this.nmrNumberOfEntries.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.nmrNumberOfEntries.Location = new System.Drawing.Point(10, 62);
+            this.nmrNumberOfEntries.Margin = new System.Windows.Forms.Padding(10);
+            this.nmrNumberOfEntries.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.nmrNumberOfEntries.Name = "nmrNumberOfEntries";
+            this.nmrNumberOfEntries.Size = new System.Drawing.Size(130, 22);
+            this.nmrNumberOfEntries.TabIndex = 5;
+            this.nmrNumberOfEntries.ValueChanged += new System.EventHandler(this.SearchChanged);
+            this.nmrNumberOfEntries.KeyDown += new System.Windows.Forms.KeyEventHandler(this.nmrNumberOfEntries_KeyDown);
+            // 
+            // lblShowEntries
+            // 
+            this.lblShowEntries.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblShowEntries.AutoSize = true;
+            this.lblShowEntries.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblShowEntries.ForeColor = System.Drawing.Color.DimGray;
+            this.lblShowEntries.Location = new System.Drawing.Point(10, 34);
+            this.lblShowEntries.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
+            this.lblShowEntries.Name = "lblShowEntries";
+            this.lblShowEntries.Size = new System.Drawing.Size(137, 18);
+            this.lblShowEntries.TabIndex = 6;
+            this.lblShowEntries.Text = "Show entries";
+            // 
+            // lblCustomerID
+            // 
+            this.lblCustomerID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCustomerID.AutoSize = true;
+            this.lblCustomerID.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCustomerID.ForeColor = System.Drawing.Color.DimGray;
+            this.lblCustomerID.Location = new System.Drawing.Point(303, 34);
+            this.lblCustomerID.Name = "lblCustomerID";
+            this.lblCustomerID.Size = new System.Drawing.Size(144, 18);
+            this.lblCustomerID.TabIndex = 10;
+            this.lblCustomerID.Text = "ID";
+            // 
+            // lblCustomerName
+            // 
+            this.lblCustomerName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCustomerName.AutoSize = true;
+            this.lblCustomerName.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCustomerName.ForeColor = System.Drawing.Color.DimGray;
+            this.lblCustomerName.Location = new System.Drawing.Point(453, 34);
+            this.lblCustomerName.Name = "lblCustomerName";
+            this.lblCustomerName.Size = new System.Drawing.Size(194, 18);
+            this.lblCustomerName.TabIndex = 11;
+            this.lblCustomerName.Text = "Customer Name";
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.White;
+            this.tableLayoutPanel1.ColumnCount = 9;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 77F));
+            this.tableLayoutPanel1.Controls.Add(this.lblCustomerName, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lblCustomerID, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lblShowEntries, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.nmrNumberOfEntries, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.nmrYear, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.nmrUserId, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lblYear, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.txtCustomerName, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnExportPDF, 6, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnExportExcel, 5, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnPrint, 7, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lblReportTitle, 5, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 44.24779F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55.75221F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1477, 118);
+            this.tableLayoutPanel1.TabIndex = 13;
+            // 
+            // lblReportTitle
+            // 
+            this.lblReportTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblReportTitle.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.lblReportTitle, 3);
+            this.lblReportTitle.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblReportTitle.ForeColor = System.Drawing.Color.DimGray;
+            this.lblReportTitle.Location = new System.Drawing.Point(803, 13);
+            this.lblReportTitle.Name = "lblReportTitle";
+            this.lblReportTitle.Size = new System.Drawing.Size(594, 25);
+            this.lblReportTitle.TabIndex = 14;
+            this.lblReportTitle.Text = "Sales per Customer (without VAT)";
+            // 
             // FormYearlySalesReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -581,7 +581,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView dgvUserSalesList;
-        private UserControls.Pagination pgnReservations;
+        private UserControls.Pagination pgnYearlySales;
         private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.Button btnExportExcel;
         private System.Windows.Forms.Button btnExportPDF;
@@ -594,7 +594,6 @@
         private System.Windows.Forms.Label lblCustomerID;
         private System.Windows.Forms.Label lblCustomerName;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Label lblReportTitle;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserId;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserFullName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Jan;
@@ -610,5 +609,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Nov;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dec;
         private System.Windows.Forms.DataGridViewTextBoxColumn YearlyTotal;
+        private System.Windows.Forms.Label lblReportTitle;
     }
 }

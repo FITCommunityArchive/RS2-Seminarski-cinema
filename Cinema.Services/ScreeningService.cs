@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
+using Cinema.Common.Exceptions;
+using Cinema.Common.Interfaces.Dal;
+using Cinema.Common.Interfaces.Services;
 using Cinema.Domain.Entities;
 using Cinema.Models.Dtos;
 using Cinema.Models.Requests.Screenings;
 using Cinema.Models.SpecificModels;
 using Cinema.Shared.Enums;
 using Cinema.Shared.Pagination;
-using Cinema.Common.Exceptions;
-using Cinema.Common.Interfaces.Dal;
-using Cinema.Common.Interfaces.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,6 +42,20 @@ namespace Cinema.Services
         {
             var entity = await _screeningRepo.GetAsync(id, includes);
             return _mapper.Map<ScreeningDto>(entity);
+        }
+
+        public async Task<List<ScreeningDto>> GetAsync(ScreeningSearchRequest search)
+        {
+            var list = await _screeningRepo.GetAsync(search, search.SearchTerm, search.MovieId, search.Hall, search.Price, search.Status, search.Date);
+
+            var dtoList = _mapper.Map<List<ScreeningDto>>(list);
+
+            foreach (var screening in dtoList)
+            {
+                screening.TimingStatus = GetTimingStatus(screening);
+            }
+
+            return dtoList;
         }
 
         public async Task<IPagedList<ScreeningDto>> GetPagedAsync(ScreeningSearchRequest search)

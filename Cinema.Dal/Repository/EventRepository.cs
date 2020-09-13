@@ -1,8 +1,8 @@
-﻿using Cinema.Domain.Entities;
+﻿using Cinema.Common.Interfaces.Dal;
+using Cinema.Domain.Entities;
 using Cinema.Shared.Enums;
 using Cinema.Shared.Pagination;
 using Cinema.Shared.Search;
-using Cinema.Common.Interfaces.Dal;
 using System;
 using System.Linq;
 using System.Linq.Expressions;

@@ -1,17 +1,12 @@
-﻿using Cinema.Models.Dtos;
-using Cinema.Models.Dtos.Reports;
+﻿using Cinema.Models.Dtos.Reports;
 using Cinema.Models.Requests.Reports;
-using Cinema.Models.Requests.Reservations;
-using Cinema.Models.Requests.Screenings;
 using Cinema.Shared.Constants;
-using Cinema.Shared.Pagination;
 using Cinema.WinUI.Helpers;
 using Cinema.WinUI.Models;
 using Cinema.WinUI.Services;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -44,7 +39,7 @@ namespace Cinema.WinUI.Reports
         {
             this.dgvUserSalesList.DoubleBuffered(true);
 
-            string route = "user-yearly-sales";                        
+            string route = "user-yearly-sales";
             var yearlySales = await _reportsApi.Get<YearlySalesReportDto>(_request, route);
 
             var yearlySalesFlatModel = CreateFlatModel(yearlySales);
@@ -58,8 +53,8 @@ namespace Cinema.WinUI.Reports
 
             dgvUserSalesList.RefreshEdit();
 
-            pgnReservations.PageIndex = yearlySales.UserMonthlySales.PageIndex;
-            pgnReservations.TotalPages = yearlySales.UserMonthlySales.TotalPages;
+            pgnYearlySales.PageIndex = yearlySales.UserMonthlySales.PageIndex;
+            pgnYearlySales.TotalPages = yearlySales.UserMonthlySales.TotalPages;
         }
 
         private UserYearlySalesSearchRequest GetSearchRequest()
@@ -67,7 +62,7 @@ namespace Cinema.WinUI.Reports
             UserYearlySalesSearchRequest searchRequest = new UserYearlySalesSearchRequest();
 
             searchRequest = ApplyDefaultSearchValues(searchRequest) as UserYearlySalesSearchRequest;
-            searchRequest.PageIndex = pgnReservations.PageIndex;
+            searchRequest.PageIndex = pgnYearlySales.PageIndex;
             searchRequest.UserFullName = txtCustomerName.Text;
             searchRequest.Year = DateTime.UtcNow.Year;
 
@@ -84,7 +79,7 @@ namespace Cinema.WinUI.Reports
             if (nmrUserId.Value > 0)
             {
                 searchRequest.UserId = (int)nmrUserId.Value;
-            }            
+            }
 
             return searchRequest;
         }
@@ -108,7 +103,7 @@ namespace Cinema.WinUI.Reports
 
             flatModel.Add(totalRow);
 
-            return flatModel;            
+            return flatModel;
         }
 
         private void AppendUserValuesToColumns(List<YearlySalesReportFlatDto> data)
@@ -135,7 +130,7 @@ namespace Cinema.WinUI.Reports
                         }
                     }
                 }
-            }        
+            }
         }
 
         private int GetColumnMonthNumber(DataGridViewColumn column)
@@ -146,32 +141,6 @@ namespace Cinema.WinUI.Reports
             }
 
             return -1;
-        }
-
-        private static string GenerateMonthColumnDataPropertyName(int i)
-        {
-            return (i + 1).ToString();
-        }
-
-        private void GenerateMonthColumns()
-        {
-            for (int i = 0; i < 12; i++)
-            {
-                string monthName = CultureInfo.CurrentCulture.DateTimeFormat.GetAbbreviatedMonthName(i + 1);
-
-                DataGridViewTextBoxColumn monthColumn = new DataGridViewTextBoxColumn
-                {
-                    HeaderText = monthName,
-                    DataPropertyName = GenerateMonthColumnDataPropertyName(i)
-                };
-
-                dgvUserSalesList.Columns.Add(monthColumn);
-            }
-        }
-
-        private void dgvReports_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            BindNavigationColumns(dgvUserSalesList, sender, e);
         }
 
         private void dgvReportReservations_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -234,8 +203,9 @@ namespace Cinema.WinUI.Reports
             await LoadYearlySalesReportData();
         }
 
-        private async void pgnReservations_PageChanged(object sender, EventArgs e)
+        private async void pgnYearlySales_PageChanged(object sender, EventArgs e)
         {
+            _request = GetSearchRequest();
             await LoadYearlySalesReportData();
         }
 

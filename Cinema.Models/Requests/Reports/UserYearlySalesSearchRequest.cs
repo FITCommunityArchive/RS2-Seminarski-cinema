@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Cinema.Models.Requests.Reports
+﻿namespace Cinema.Models.Requests.Reports
 {
     public class UserYearlySalesSearchRequest : BaseSearchRequest
     {

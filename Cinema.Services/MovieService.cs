@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
+using Cinema.Common.Interfaces.Dal;
+using Cinema.Common.Interfaces.Services;
 using Cinema.Domain.Entities;
 using Cinema.Models.Dtos;
 using Cinema.Models.Requests.Movies;
 using Cinema.MovieRecommenderService;
 using Cinema.Shared.Pagination;
-using Cinema.Common.Interfaces.Dal;
-using Cinema.Common.Interfaces.Services;
 using Microsoft.EntityFrameworkCore.Internal;
 using System;
 using System.Collections.Generic;

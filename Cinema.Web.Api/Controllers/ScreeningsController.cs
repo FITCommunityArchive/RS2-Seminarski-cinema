@@ -1,7 +1,7 @@
-﻿using Cinema.Models.Dtos;
+﻿using Cinema.Common.Interfaces.Services;
+using Cinema.Models.Dtos;
 using Cinema.Models.Requests.Screenings;
 using Cinema.Models.SpecificModels;
-using Cinema.Common.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;

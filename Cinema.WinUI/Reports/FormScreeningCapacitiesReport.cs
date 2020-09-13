@@ -1,18 +1,14 @@
-﻿using Cinema.Models.Dtos;
-using Cinema.Models.Dtos.Reports;
-using Cinema.Models.Requests.Reports;
-using Cinema.Models.Requests.Reservations;
+﻿using Cinema.Models.Dtos.Reports;
 using Cinema.Models.Requests.Screenings;
 using Cinema.Shared.Constants;
+using Cinema.Shared.Enums;
 using Cinema.Shared.Pagination;
 using Cinema.WinUI.Helpers;
-using Cinema.WinUI.Models;
 using Cinema.WinUI.Services;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Globalization;
-using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Cinema.WinUI.Reports
@@ -23,170 +19,85 @@ namespace Cinema.WinUI.Reports
         moduleExcel excelGenerator = new moduleExcel();
         ModulePDF pdfGenerator = new ModulePDF();
         private IList<string> _nextFormPrincipal;
-        private readonly ApiService _screeningsApi = new ApiService("Screenings");
+        private bool _dateFilterCleared = true;
         private readonly ApiService _reportsApi = new ApiService("Reports");
+        private ScreeningSearchRequest _request = new ScreeningSearchRequest();
+
         public FormScreeningCapacitiesReport(IList<string> userPrincipal) : base(new string[] { Roles.Administrator, Roles.ContentEditor }, userPrincipal)
         {
             _nextFormPrincipal = userPrincipal;
             InitializeComponent();
-            dgvUserSalesList.Visible = true;
-            dgvScreeningsList.Visible = false;
-            pgnReservations.Visible = false;
         }
 
-        private void FormReports_Load(object sender, EventArgs e)
+        private async void FormReports_Load(object sender, EventArgs e)
         {
-            LoadScreeningsData();
-            LoadYearlySalesReportData();
+            _request = ApplyDefaultSearchValues(_request) as ScreeningSearchRequest;
+            _request.Status = TimingStatus.SCHEDULED;
+
+            cmbStatus.DataSource = Enum.GetValues(typeof(TimingStatus));
+            cmbStatus.SelectedItem = TimingStatus.SCHEDULED;
+
+            /* The handler is added code-first in order to prevent the SearchChanged method being triggered
+             * in the value initialisation for status above.*/
+            cmbStatus.SelectedIndexChanged += new EventHandler(SearchChanged);
+
+            await LoadScreeningCapacitiesData();
         }
 
-        private async void LoadScreeningsData()
+        private async Task LoadScreeningCapacitiesData()
         {
-            this.dgvScreeningsList.DoubleBuffered(true);
-            //load screenings
-            ScreeningSearchRequest searchRequest = new ScreeningSearchRequest();
+            this.dgvScreeningCapacitiesList.DoubleBuffered(true);
 
-            searchRequest.Includes.Add("Movie");
-            searchRequest.Includes.Add("Hall");
-            searchRequest.Includes.Add("Pricing");
+            string route = "screening-capacities";
+            var screeningCapacities = await _reportsApi.Get<PagedList<ScreeningCapacityDto>>(_request, route);
 
-            searchRequest = ApplyDefaultSearchValues(searchRequest) as ScreeningSearchRequest;
-            searchRequest.PageIndex = pgnScreenings.PageIndex;
+            dgvScreeningCapacitiesList.AutoGenerateColumns = false;
+            dgvScreeningCapacitiesList.DataSource = screeningCapacities.Data;
 
-            var screenings = await _screeningsApi.Get<PagedList<ScreeningDto>>(searchRequest);
-
-            dgvScreeningsList.AutoGenerateColumns = false;
-            dgvScreeningsList.DataSource = screenings.Data;
-            pgnScreenings.PageIndex = screenings.PageIndex;
-            pgnScreenings.TotalPages = screenings.TotalPages;
+            pgnReservations.PageIndex = screeningCapacities.PageIndex;
+            pgnReservations.TotalPages = screeningCapacities.TotalPages;
         }
 
-        private async void LoadYearlySalesReportData()
+        private ScreeningSearchRequest GetSearchRequest()
         {
-            this.dgvUserSalesList.DoubleBuffered(true);
+            _request = ApplyDefaultSearchValues(_request) as ScreeningSearchRequest;
+            _request.PageIndex = pgnReservations.PageIndex;
+            _request.SearchTerm = txtMovieTitle.Text;
+            _request.Hall = txtHallName.Text;
 
-            string route = "user-yearly-sales";
-
-            UserYearlySalesSearchRequest salesReportSearchRequest = new UserYearlySalesSearchRequest
+            if (!_dateFilterCleared)
             {
-                Year = 2020
-            };
-
-            salesReportSearchRequest = ApplyDefaultSearchValues(salesReportSearchRequest) as UserYearlySalesSearchRequest;
-            salesReportSearchRequest.PageIndex = pgnReservations.PageIndex;
-                        
-            var yearlySales = await _reportsApi.Get<YearlySalesReportDto>(salesReportSearchRequest, route);
-
-            //GenerateMonthColumns();
-
-            var yearlySalesFlatModel = CreateFlatModel(yearlySales);
-
-            dgvUserSalesList.AutoGenerateColumns = false;
-            dgvUserSalesList.DataSource = yearlySalesFlatModel;
-
-            AppendUserValuesToColumns(yearlySalesFlatModel);
-
-            CreateFlatModel(yearlySales);
-
-            dgvUserSalesList.RefreshEdit();
-
-            pgnReservations.PageIndex = yearlySales.UserMonthlySales.PageIndex;
-            pgnReservations.TotalPages = yearlySales.UserMonthlySales.TotalPages;
-        }
-
-        private List<YearlySalesReportFlatDto> CreateFlatModel(YearlySalesReportDto yearlySales)
-        {
-            List<YearlySalesReportFlatDto> flatModel = yearlySales.UserMonthlySales.Data.Select(x => new YearlySalesReportFlatDto
+                _request.Date = dtpScreeningDate.Value.ToUniversalTime();
+            }
+            else
             {
-                UserId = x.UserId.ToString(),
-                UserFullName = x.UserFullName,
-                YearlyTotal = x.UserYearlyTotal,
-                MonthlyTotals = x.UserMonthlyTotals.ToList()
-            }).ToList();
-
-            YearlySalesReportFlatDto totalRow = new YearlySalesReportFlatDto
-            {
-                UserId = "Total",
-                YearlyTotal = yearlySales.YearlyTotalForPage,
-                MonthlyTotals = yearlySales.MonthlyTotalsForPage.ToList()
-            };
-
-            flatModel.Add(totalRow);
-
-            return flatModel;            
-        }
-
-        private void AppendUserValuesToColumns(List<YearlySalesReportFlatDto> data)
-        {
-            for (int i = 0; i < dgvUserSalesList.Columns.Count; i++)
-            {
-                DataGridViewColumn column = dgvUserSalesList.Columns[i];
-                int monthNumber = GetColumnMonthNumber(column);
-
-                //check if it's a month column
-                if (monthNumber > 0)
-                {
-                    for (int j = 0; j < dgvUserSalesList.Rows.Count; j++)
-                    {
-                        var row = dgvUserSalesList.Rows[j];
-
-                        DataGridViewTextBoxCell cell = row.Cells[i] as DataGridViewTextBoxCell;
-
-                        MonthlySaleTotalDto userMonthlyTotal = data[j].MonthlyTotals.FirstOrDefault(x => x.MonthNumber == monthNumber);
-
-                        if (userMonthlyTotal != null)
-                        {
-                            cell.Value = userMonthlyTotal.Total;
-                        }
-                    }
-                }
-            }        
-        }
-
-        private int GetColumnMonthNumber(DataGridViewColumn column)
-        {
-            if (int.TryParse(column.DataPropertyName, out int monthNumber))
-            {
-                return monthNumber;
+                _request.Date = null;
             }
 
-            return -1;
-        }
-
-        private static string GenerateMonthColumnDataPropertyName(int i)
-        {
-            return (i + 1).ToString();
-        }
-
-        private void GenerateMonthColumns()
-        {
-            for (int i = 0; i < 12; i++)
+            if (nmrNumberOfEntries.Value > 0)
             {
-                string monthName = CultureInfo.CurrentCulture.DateTimeFormat.GetAbbreviatedMonthName(i + 1);
-
-                DataGridViewTextBoxColumn monthColumn = new DataGridViewTextBoxColumn
-                {
-                    HeaderText = monthName,
-                    DataPropertyName = GenerateMonthColumnDataPropertyName(i)
-                };
-
-                dgvUserSalesList.Columns.Add(monthColumn);
+                _request.PageSize = (int)nmrNumberOfEntries.Value;
             }
+
+            Enum.TryParse(cmbStatus.SelectedValue.ToString(), out TimingStatus timingStatus);
+            _request.Status = timingStatus;
+
+            return _request;
         }
 
         private void dgvReports_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            BindNavigationColumns(dgvScreeningsList, sender, e);
+            BindNavigationColumns(dgvScreeningCapacitiesList, sender, e);
         }
 
         private void dgvReportReservations_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            BindNavigationColumns(dgvUserSalesList, sender, e);
+            BindNavigationColumns(dgvScreeningCapacitiesList, sender, e);
         }
 
         private void btnExportExcel_Click(object sender, EventArgs e)
         {
-            DataGridView dgv = GetCurrentGrid();
+            DataGridView dgv = dgvScreeningCapacitiesList;
 
             string title = " Excel Export by eCinema";
             SaveFileDialog sfd = new SaveFileDialog();
@@ -202,32 +113,14 @@ namespace Cinema.WinUI.Reports
         private void btnExportPDF_Click(object sender, EventArgs e)
         {
 
-            DataGridView dgv = GetCurrentGrid();
+            DataGridView dgv = dgvScreeningCapacitiesList;
             pdfGenerator.ToPDF(dgv);
-        }
-
-        private void btnLoadReservations_Click(object sender, EventArgs e)
-        {
-            dgvScreeningsList.Visible = false;
-            pgnScreenings.Visible = false;
-
-            dgvUserSalesList.Visible = true;
-            pgnReservations.Visible = true;
-        }
-
-        private void btnLoadScreenings_Click(object sender, EventArgs e)
-        {
-            dgvScreeningsList.Visible = true;
-            pgnScreenings.Visible = true;
-
-            dgvUserSalesList.Visible = false;
-            pgnReservations.Visible = false;
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
 
-            DataGridView dgv = GetCurrentGrid();
+            DataGridView dgv = dgvScreeningCapacitiesList;
 
             DGVPrinter printer = new DGVPrinter();
             printer.Title = "eCinema Report";
@@ -244,29 +137,67 @@ namespace Cinema.WinUI.Reports
             printer.PrintDataGridView(dgv);
         }
 
-        private DataGridView GetCurrentGrid()
+        private async void dgvScreeningCapacitiesList_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            DataGridView dgv = null;
-            if (dgvUserSalesList.Visible == true)
-            {
-                dgv = dgvUserSalesList;
-            }
-            else if (dgvScreeningsList.Visible == true)
-            {
-                dgv = dgvScreeningsList;
-            }
+            DataGridViewColumn clickedColumn = dgvScreeningCapacitiesList.Columns[e.ColumnIndex];
 
-            return dgv;
+            ChangeSorting(clickedColumn.Name);
+
+            _request = GetSearchRequest();
+            _request.SortColumn = CurrentSortPropertyName;
+            _request.SortOrder = CurrentSortOrder;
+
+            await LoadScreeningCapacitiesData();
         }
 
-        private void pgnScreenings_PageChanged(object sender, EventArgs e)
+        private async void pgnReservations_PageChanged(object sender, EventArgs e)
         {
-            LoadScreeningsData();
+            _request = GetSearchRequest();
+            await LoadScreeningCapacitiesData();
         }
 
-        private void pgnReservations_PageChanged(object sender, EventArgs e)
+        private async void SearchChanged(object sender, EventArgs e)
         {
-            LoadYearlySalesReportData();
+            _request = GetSearchRequest();
+            await LoadScreeningCapacitiesData();
+        }
+
+        private void nmrNumberOfEntries_KeyDown(object sender, KeyEventArgs e)
+        {
+            ClearNumericUpDown(sender, e, nmrNumberOfEntries);
+        }
+
+        private void ClearNumericUpDown(object sender, KeyEventArgs e, NumericUpDown control)
+        {
+            if ((e.KeyCode == Keys.Back) || (e.KeyCode == Keys.Delete))
+            {
+                control.Value = 0;
+                control.ResetText();
+                SearchChanged(sender, e);
+            }
+        }
+
+        private void dtpScreeningDate_KeyDown(object sender, KeyEventArgs e)
+        {
+            if ((e.KeyCode == Keys.Back) || (e.KeyCode == Keys.Delete))
+            {
+                dtpScreeningDate.CustomFormat = " ";
+                dtpScreeningDate.Format = DateTimePickerFormat.Custom;
+                _dateFilterCleared = true;
+            }
+
+            SearchChanged(sender, e);
+        }
+
+        private void dtpScreeningDate_ValueChanged(object sender, EventArgs e)
+        {
+            if (dtpScreeningDate.Format == DateTimePickerFormat.Custom)
+            {
+                dtpScreeningDate.Format = DateTimePickerFormat.Short;
+            }
+
+            _dateFilterCleared = false;
+            SearchChanged(sender, e);
         }
     }
 }

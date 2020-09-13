@@ -1,9 +1,11 @@
-﻿using Cinema.Domain.Entities;
+﻿using Cinema.Common.Interfaces.Dal;
+using Cinema.Domain.Entities;
 using Cinema.Shared.Enums;
 using Cinema.Shared.Pagination;
 using Cinema.Shared.Search;
-using Cinema.Common.Interfaces.Dal;
+using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
@@ -14,7 +16,22 @@ namespace Cinema.Dal.Repository
     {
         public ScreeningRepository(ICinemaDbContext context) : base(context) { }
 
+        public async Task<IEnumerable<Screening>> GetAsync(ISearchRequest searchRequest, string searchTerm, int? movieId, string hall, decimal? price, TimingStatus? status, DateTime? screeningDate)
+        {
+            IQueryable<Screening> query = GetFilteredQueryable(searchRequest, searchTerm, movieId, hall, price, ref status, screeningDate);
+
+            return await query.ToListAsync();
+        }
+
         public async Task<IPagedList<Screening>> GetPagedAsync(ISearchRequest searchRequest, string searchTerm, int? movieId, string hall, decimal? price, TimingStatus? status, DateTime? screeningDate)
+        {
+            var query = GetFilteredQueryable(searchRequest, searchTerm, movieId, hall, price, ref status, screeningDate);
+
+            var pagedList = await ApplyPaginationAsync(query, searchRequest.PageIndex, searchRequest.PageSize);
+            return pagedList;
+        }
+
+        private IQueryable<Screening> GetFilteredQueryable(ISearchRequest searchRequest, string searchTerm, int? movieId, string hall, decimal? price, ref TimingStatus? status, DateTime? screeningDate)
         {
             var query = _dbSet.AsQueryable();
 
@@ -38,8 +55,7 @@ namespace Cinema.Dal.Repository
                 query = AddIncludes(query, searchRequest.Includes);
             }
 
-            var pagedList = await ApplyPaginationAsync(query, searchRequest.PageIndex, searchRequest.PageSize);
-            return pagedList;
+            return query;
         }
 
         protected override Expression<Func<Screening, bool>> GetByIdExpression(int id)

@@ -1,7 +1,7 @@
-﻿using Cinema.Models.Dtos;
-using Cinema.Models.Requests.Users;
-using Cinema.Common.Interfaces;
+﻿using Cinema.Common.Interfaces;
 using Cinema.Common.Interfaces.Services;
+using Cinema.Models.Dtos;
+using Cinema.Models.Requests.Users;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;

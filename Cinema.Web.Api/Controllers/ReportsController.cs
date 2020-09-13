@@ -1,8 +1,8 @@
-﻿using Cinema.Models.Dtos;
+﻿using Cinema.Common.Interfaces.Services;
 using Cinema.Models.Dtos.Reports;
 using Cinema.Models.Requests.Reports;
-using Cinema.Models.Requests.Reservations;
-using Cinema.Common.Interfaces.Services;
+using Cinema.Models.Requests.Screenings;
+using Cinema.Shared.Pagination;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -25,6 +25,13 @@ namespace Cinema.Web.Api.Controllers
         public async Task<ActionResult<YearlySalesReportDto>> GetYearlyUserSales([FromQuery] UserYearlySalesSearchRequest searchRequest)
         {
             var result = await _reportService.GetYearlySalesReportPerUserAsync(searchRequest);
+            return Ok(result);
+        }
+
+        [HttpGet("screening-capacities")]
+        public async Task<ActionResult<PagedList<ScreeningCapacityDto>>> GetYearlyUserSales([FromQuery] ScreeningSearchRequest searchRequest)
+        {
+            var result = await _reportService.GetScreeningCapacitiesAsync(searchRequest);
             return Ok(result);
         }
     }
