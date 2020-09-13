@@ -23,8 +23,6 @@
                 </Grid.ColumnDefinitions>
 
                 <Label Text="{Binding Article.Type.Name}" Grid.ColumnSpan="1" HorizontalTextAlignment="End" TextColor="#aaa"></Label>
-                <Label TextColor="#aaa" FontFamily="{DynamicResource MaterialFontFamily}" Grid.Row="1" HorizontalTextAlignment="End" FontSize="16" LineHeight="1" Text="{StaticResource IconClock}"></Label>
-                <Label Text="Date" FontSize="14" TextColor="#aaa" Grid.Column="1" HorizontalTextAlignment="End" Grid.Row="1"></Label>
 
                 <Label Padding="0,0,0,30" Text="{Binding Article.Title}" HorizontalTextAlignment="Center" Grid.Row="2" Grid.ColumnSpan="1" FontSize="32" FontAttributes="Bold"></Label>
                 <Label Text="{Binding Article.Description}" FontSize="16" Grid.Row="3" Grid.ColumnSpan="1"></Label>

@@ -20,11 +20,5 @@ namespace Cinema.Mobile.Views
             InitializeComponent();
             BindingContext = model = new EventDetailsViewModel { Event = article };
         }
-
-        protected async override void OnAppearing()
-        {
-            base.OnAppearing();
-            await model.Init();
-        }
     }
 }

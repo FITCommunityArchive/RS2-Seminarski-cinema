@@ -29,8 +29,19 @@
                 </Grid.ColumnDefinitions>
 
                 <Label Text="{Binding Event.Type.Name}" Grid.ColumnSpan="1" HorizontalTextAlignment="End" TextColor="#aaa"></Label>
-                <Label TextColor="#aaa" FontFamily="{DynamicResource MaterialFontFamily}" Grid.Row="1" HorizontalTextAlignment="End" FontSize="16" LineHeight="1" Text="{StaticResource IconClock}"></Label>
-                <Label Text="{Binding Event.DateAndTime,Converter={StaticResource cnvDateTimeConverter}}" FontSize="14" TextColor="#aaa" Grid.Column="1" HorizontalTextAlignment="End" Grid.Row="1"></Label>
+
+                <Grid WidthRequest="300" HorizontalOptions="CenterAndExpand" Grid.Row="1" Grid.ColumnSpan="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="32*"></ColumnDefinition>
+                        <ColumnDefinition Width="68*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label TextColor="#aaa" HorizontalTextAlignment="End" FontFamily="{DynamicResource MaterialFontFamily}" FontSize="16" Text="{StaticResource IconClock}"></Label>
+                    <Label Text="{Binding Event.DateAndTime,Converter={StaticResource cnvDateTimeConverter}}" Grid.Column="1" FontSize="14" HorizontalTextAlignment="Start" TextColor="#aaa"></Label>
+                </Grid>
+                
 
                 <Label Padding="0,0,0,30" Text="{Binding Event.Title}" HorizontalTextAlignment="Center" Grid.Row="2" Grid.ColumnSpan="1" FontSize="32" FontAttributes="Bold"></Label>
                 <Label Text="{Binding Event.Description}" FontSize="16" Grid.Row="3" Grid.ColumnSpan="1"></Label>

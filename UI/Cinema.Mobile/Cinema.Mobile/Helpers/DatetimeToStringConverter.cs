@@ -13,7 +13,7 @@ namespace Cinema.Mobile.Helpers
                 return string.Empty;
 
             var datetime = (DateTime)value;
-            //put your custom formatting here
+
             return datetime.ToLocalTime().ToString("g");
         }
 

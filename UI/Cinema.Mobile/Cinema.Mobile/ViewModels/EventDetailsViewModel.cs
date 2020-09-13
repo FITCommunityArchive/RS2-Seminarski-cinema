@@ -13,16 +13,9 @@ namespace Cinema.Mobile.ViewModels
     {
         public EventDetailsViewModel()
         {
-            InitCommand = new Command(async () => await Init());
         }
 
         public ICommand InitCommand { get; set; }
         public EventDto Event { get; set; }
-
-        public async Task Init()
-        {
-            await Task.CompletedTask;
-        }
-
     }
 }
