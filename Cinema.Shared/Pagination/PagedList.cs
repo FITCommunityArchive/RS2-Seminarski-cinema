@@ -95,6 +95,37 @@ namespace Cinema.Shared.Pagination
             return new PagedList<T>(items, count, pageIndex, pageSize);
         }
 
+        /// <summary>
+        /// Implicitily create a same-size paged list, using objects lists of different classes, containing the same number of elements
+        /// </summary>
+        /// <typeparam name="TOriginal"></typeparam>
+        /// <param name="newListSource"></param>
+        /// <param name="originalPagedList"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <returns></returns>
+        public static PagedList<T> Create<TOriginal>(ICollection<T> newListSource, IPagedList<TOriginal> originalPagedList, int pageIndex, int pageSize)
+        {
+            if (pageIndex == 0)
+            {
+                pageIndex = Paging.DEFAULT_PAGE_INDEX;
+            }
+
+            if (pageSize == 0)
+            {
+                pageSize = Paging.DEFAULT_PAGE_SIZE;
+            }
+
+            if (newListSource.Count != originalPagedList.Data.Count)
+            {
+                throw new ArgumentException("List and original PagedList must contain the same number of elements");
+            }
+
+            var count = originalPagedList.TotalPages;
+            var items = newListSource.ToList();
+            return new PagedList<T>(items, count, pageIndex, pageSize);
+        }
+
         public static PagedList<T> Create(ICollection<T> source, int pageIndex, int pageSize,
             SortOrder? currentSortOrder, string currentSort, string currentFilter)
         {

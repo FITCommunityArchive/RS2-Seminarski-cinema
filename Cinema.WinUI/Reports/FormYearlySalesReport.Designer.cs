@@ -42,7 +42,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pgnReservations = new Cinema.WinUI.UserControls.Pagination();
+            this.pgnYearlySales = new Cinema.WinUI.UserControls.Pagination();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvUserSalesList = new System.Windows.Forms.DataGridView();
             this.UserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -85,7 +85,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.Controls.Add(this.pgnReservations);
+            this.panel1.Controls.Add(this.pgnYearlySales);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 716);
             this.panel1.Margin = new System.Windows.Forms.Padding(40, 37, 40, 37);
@@ -94,20 +94,20 @@
             this.panel1.Size = new System.Drawing.Size(1477, 75);
             this.panel1.TabIndex = 12;
             // 
-            // pgnReservations
+            // pgnYearlySales
             // 
-            this.pgnReservations.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.pgnReservations.AutoSize = true;
-            this.pgnReservations.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.pgnReservations.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pgnReservations.Location = new System.Drawing.Point(1247, 24);
-            this.pgnReservations.Margin = new System.Windows.Forms.Padding(5);
-            this.pgnReservations.Name = "pgnReservations";
-            this.pgnReservations.PageIndex = 0;
-            this.pgnReservations.Size = new System.Drawing.Size(210, 35);
-            this.pgnReservations.TabIndex = 12;
-            this.pgnReservations.TotalPages = 0;
-            this.pgnReservations.PageChanged += new System.EventHandler(this.pgnReservations_PageChanged);
+            this.pgnYearlySales.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pgnYearlySales.AutoSize = true;
+            this.pgnYearlySales.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.pgnYearlySales.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pgnYearlySales.Location = new System.Drawing.Point(1247, 24);
+            this.pgnYearlySales.Margin = new System.Windows.Forms.Padding(5);
+            this.pgnYearlySales.Name = "pgnYearlySales";
+            this.pgnYearlySales.PageIndex = 0;
+            this.pgnYearlySales.Size = new System.Drawing.Size(210, 35);
+            this.pgnYearlySales.TabIndex = 12;
+            this.pgnYearlySales.TotalPages = 0;
+            this.pgnYearlySales.PageChanged += new System.EventHandler(this.pgnYearlySales_PageChanged);
             // 
             // panel2
             // 
@@ -581,7 +581,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView dgvUserSalesList;
-        private UserControls.Pagination pgnReservations;
+        private UserControls.Pagination pgnYearlySales;
         private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.Button btnExportExcel;
         private System.Windows.Forms.Button btnExportPDF;

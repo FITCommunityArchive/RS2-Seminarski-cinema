@@ -16,7 +16,22 @@ namespace Cinema.Dal.Repository
     {
         public ScreeningRepository(ICinemaDbContext context) : base(context) { }
 
+        public async Task<IEnumerable<Screening>> GetAsync(ISearchRequest searchRequest, string searchTerm, int? movieId, string hall, decimal? price, TimingStatus? status, DateTime? screeningDate)
+        {
+            IQueryable<Screening> query = GetFilteredQueryable(searchRequest, searchTerm, movieId, hall, price, ref status, screeningDate);
+
+            return await query.ToListAsync();
+        }
+
         public async Task<IPagedList<Screening>> GetPagedAsync(ISearchRequest searchRequest, string searchTerm, int? movieId, string hall, decimal? price, TimingStatus? status, DateTime? screeningDate)
+        {
+            var query = GetFilteredQueryable(searchRequest, searchTerm, movieId, hall, price, ref status, screeningDate);
+
+            var pagedList = await ApplyPaginationAsync(query, searchRequest.PageIndex, searchRequest.PageSize);
+            return pagedList;
+        }
+
+        private IQueryable<Screening> GetFilteredQueryable(ISearchRequest searchRequest, string searchTerm, int? movieId, string hall, decimal? price, ref TimingStatus? status, DateTime? screeningDate)
         {
             var query = _dbSet.AsQueryable();
 
@@ -40,8 +55,7 @@ namespace Cinema.Dal.Repository
                 query = AddIncludes(query, searchRequest.Includes);
             }
 
-            var pagedList = await ApplyPaginationAsync(query, searchRequest.PageIndex, searchRequest.PageSize);
-            return pagedList;
+            return query;
         }
 
         public async Task<IEnumerable<Screening>> GetWithSeatReservations(ISearchRequest searchRequest, string searchTerm, int? movieId, string hall, decimal? price, TimingStatus? status, DateTime? screeningDate)

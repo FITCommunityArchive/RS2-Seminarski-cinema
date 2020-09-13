@@ -120,7 +120,7 @@ namespace Cinema.WinUI
             this.btnReportsSubmenuCapacities.Text = "Screening Capacities";
             this.btnReportsSubmenuCapacities.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnReportsSubmenuCapacities.UseVisualStyleBackColor = true;
-            this.btnReportsSubmenuCapacities.Click += new System.EventHandler(this.btnDashaboardSubmenu2_Click);
+            this.btnReportsSubmenuCapacities.Click += new System.EventHandler(this.btnReportSubmenuScreeningCapacities_Click);
             // 
             // btnReportsSubmenuYearlySales
             // 
@@ -140,7 +140,7 @@ namespace Cinema.WinUI
             this.btnReportsSubmenuYearlySales.Text = "Yearly Sales";
             this.btnReportsSubmenuYearlySales.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnReportsSubmenuYearlySales.UseVisualStyleBackColor = true;
-            this.btnReportsSubmenuYearlySales.Click += new System.EventHandler(this.btnDashaboardSubmenuYearlySales_Click);
+            this.btnReportsSubmenuYearlySales.Click += new System.EventHandler(this.btnReportSubmenuYearlySales_Click);
             // 
             // btnReports
             // 
@@ -467,7 +467,7 @@ namespace Cinema.WinUI
             this.btnDashboardSubmenu2.Text = "Submenu 2";
             this.btnDashboardSubmenu2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDashboardSubmenu2.UseVisualStyleBackColor = true;
-            this.btnDashboardSubmenu2.Click += new System.EventHandler(this.btnDashaboardSubmenu2_Click);
+            this.btnDashboardSubmenu2.Click += new System.EventHandler(this.btnReportSubmenuScreeningCapacities_Click);
             // 
             // btnDashboardSubmenu1
             // 

@@ -44,6 +44,20 @@ namespace Cinema.Services
             return _mapper.Map<ScreeningDto>(entity);
         }
 
+        public async Task<List<ScreeningDto>> GetAsync(ScreeningSearchRequest search)
+        {
+            var list = await _screeningRepo.GetAsync(search, search.SearchTerm, search.MovieId, search.Hall, search.Price, search.Status, search.Date);
+
+            var dtoList = _mapper.Map<List<ScreeningDto>>(list);
+
+            foreach(var screening in dtoList)
+            {
+                screening.TimingStatus = GetTimingStatus(screening);
+            }
+
+            return dtoList;
+        }
+
         public async Task<IPagedList<ScreeningDto>> GetPagedAsync(ScreeningSearchRequest search)
         {
             var list = await _screeningRepo.GetPagedAsync(search, search.SearchTerm, search.MovieId, search.Hall, search.Price, search.Status, search.Date);

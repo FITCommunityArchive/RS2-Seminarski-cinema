@@ -119,16 +119,18 @@ namespace Cinema.WinUI
             openChildForm(new FormDashboard(_nextFormPrincipal));
         }
 
-        private void btnDashaboardSubmenuYearlySales_Click(object sender, EventArgs e)
+        private void btnReportSubmenuYearlySales_Click(object sender, EventArgs e)
         {
             FormYearlySalesReport formYearlySalesReport = new FormYearlySalesReport(_nextFormPrincipal);
             openChildForm(formYearlySalesReport);
         }
 
-        private void btnDashaboardSubmenu2_Click(object sender, EventArgs e)
+        private void btnReportSubmenuScreeningCapacities_Click(object sender, EventArgs e)
         {
-
+            FormScreeningCapacitiesReport formScreeningCapacitiesReport = new FormScreeningCapacitiesReport(_nextFormPrincipal);
+            openChildForm(formScreeningCapacitiesReport);
         }
+
         private void btnScreenings_Click(object sender, EventArgs e)
         {
             FormScreeningList formScreeningList = new FormScreeningList(_nextFormPrincipal);
