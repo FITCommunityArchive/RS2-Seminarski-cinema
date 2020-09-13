@@ -41,7 +41,6 @@ namespace Cinema.WinUI.Events
             LoadComboboxLists();
         }
 
-
         private async Task LoadEventDetails()
         {
             IncludesSearchRequest searchRequest = GetIncludes();

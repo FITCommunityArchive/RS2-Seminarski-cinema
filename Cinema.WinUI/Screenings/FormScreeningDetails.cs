@@ -42,7 +42,6 @@ namespace Cinema.WinUI.Screenings
             LoadComboboxLists();
         }
 
-
         private async Task LoadScreeningDetails()
         {
             IncludesSearchRequest searchRequest = GetIncludes();
@@ -86,19 +85,6 @@ namespace Cinema.WinUI.Screenings
             cmbPrice.DataSource = _pricings.Data;
             cmbPrice.DisplayMember = nameof(PricingDto.Name);
             cmbPrice.ValueMember = nameof(PricingDto.Id);
-        }
-
-        private void ValidateInteger(Control control, System.ComponentModel.CancelEventArgs e)
-        {
-            if (!int.TryParse(control.Text, out int result))
-            {
-                errorProvider1.SetError(control, Properties.Resources.Validation_IntegerRequired);
-                e.Cancel = true;
-            }
-            else
-            {
-                errorProvider1.SetError(control, null);
-            }
         }
 
         #region Event methods

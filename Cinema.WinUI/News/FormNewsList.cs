@@ -27,7 +27,6 @@ namespace Cinema.WinUI.News
             InitializeComponent();
         }
 
-
         private NewsSearchRequest GetSearchRequest()
         {
             NewsSearchRequest searchRequest = new NewsSearchRequest();
@@ -135,8 +134,6 @@ namespace Cinema.WinUI.News
             await LoadNews(searchRequest);
         }
 
-        #endregion
-
         private void grdList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             BindNavigationColumns(grdList, sender, e);
@@ -155,5 +152,7 @@ namespace Cinema.WinUI.News
                 cmbType.SelectedIndexChanged += new EventHandler(SearchChanged);
             }
         }
+
+        #endregion
     }
 }

@@ -151,8 +151,6 @@ namespace Cinema.WinUI.Screenings
             await LoadScreenings(searchRequest);
         }
 
-        #endregion
-
         private void grdScreeningsList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             BindNavigationColumns(grdScreeningsList, sender, e);
@@ -180,5 +178,7 @@ namespace Cinema.WinUI.Screenings
             _dateFilterCleared = false;
             SearchChanged(sender, e);
         }
+
+        #endregion
     }
 }
