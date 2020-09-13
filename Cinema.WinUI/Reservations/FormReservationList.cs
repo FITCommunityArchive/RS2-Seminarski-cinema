@@ -178,8 +178,6 @@ namespace Cinema.WinUI.Movies
             await LoadReservations(searchRequest);
         }
 
-        #endregion
-
         private void grdReservationsList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             BindNavigationColumns(grdReservationsList, sender, e);
@@ -207,5 +205,7 @@ namespace Cinema.WinUI.Movies
             _dateFilterCleared = false;
             SearchChanged(sender, e);
         }
+
+        #endregion
     }
 }

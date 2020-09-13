@@ -1,5 +1,4 @@
 ﻿using Cinema.Mobile.ViewModels;
-using Cinema.Models.Dtos;
 using System;
 
 using Xamarin.Forms;
@@ -19,17 +18,15 @@ namespace Cinema.Mobile.Views
             BindingContext = model = new ConfirmReservationViewModel { NewReservation = newReservationViewModel };
         }
 
-        protected async override void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
-            await model.Init();
-
             this.ConfirmReservationListView.HeightRequest = model.NewReservation.SelectedSeats.Count * _selectedSeatsRowHeight;
         }
 
         private async void OnButtonClicked(object sender, EventArgs args)
         {
-            ReservationDto result = await model.CheckoutReservation();
+            var result = await model.CheckoutReservation();
 
             if (result != null)
             {

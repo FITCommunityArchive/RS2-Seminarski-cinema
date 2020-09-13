@@ -55,7 +55,7 @@ namespace Cinema.Persistence.Data
         {
             int id = 0;
 
-            DateTime dateTime = DateTime.UtcNow.Date.AddHours(20).AddDays(-8);
+            DateTime dateTime = new DateTime(2020, 9, 20).AddHours(20).AddDays(-8);
 
             for (int j = 0; j < 10; j++)
             {
@@ -162,7 +162,6 @@ namespace Cinema.Persistence.Data
 
         private static void SeedReviews(ModelBuilder modelBuilder)
         {
-
             Random rnd = new Random();
             int reviewId = -999999;
             for (int i = -650; i < -51; i++)
@@ -176,11 +175,11 @@ namespace Cinema.Persistence.Data
                             MovieId = j,
                             Rating = rnd.Next(1, 6),
                             Text = "Lorem ipsum",
-                            UserId = i
+                            UserId = i,
+                            CreatedAt = new DateTime(2020, 9, 10)
                         }
                     );
                 }
-
             }
         }
 
@@ -905,10 +904,10 @@ namespace Cinema.Persistence.Data
             ApplicationUser admin = new ApplicationUser
             {
                 Id = adminId,
-                UserName = "sa",
+                UserName = "desktop",
                 Email = "admin@admin-test-cinema.com",
                 NormalizedEmail = "admin@admin-test-cinema.com".ToUpper(),
-                NormalizedUserName = "admin".ToUpper(),
+                NormalizedUserName = "desktop".ToUpper(),
                 FirstName = "Admin",
                 LastName = "Test",
                 TwoFactorEnabled = false,
@@ -918,7 +917,7 @@ namespace Cinema.Persistence.Data
             };
 
             PasswordHasher<ApplicationUser> ph = new PasswordHasher<ApplicationUser>();
-            admin.PasswordHash = ph.HashPassword(admin, "t");
+            admin.PasswordHash = ph.HashPassword(admin, "test");
 
             ApplicationUser contentEditor = new ApplicationUser
             {
@@ -935,7 +934,7 @@ namespace Cinema.Persistence.Data
                 PhoneNumberConfirmed = false
             };
 
-            contentEditor.PasswordHash = ph.HashPassword(contentEditor, "t");
+            contentEditor.PasswordHash = ph.HashPassword(contentEditor, "test");
 
             modelBuilder.Entity<ApplicationUser>().HasData(
                 admin, contentEditor
@@ -961,10 +960,10 @@ namespace Cinema.Persistence.Data
             ApplicationUser fistTestCustomer = new ApplicationUser
             {
                 Id = firstUserId,
-                UserName = "test.customer1",
+                UserName = "mobile",
                 Email = "test1@test-customer.com",
                 NormalizedEmail = "test1@test-customer.com".ToUpper(),
-                NormalizedUserName = "test.customer1".ToUpper(),
+                NormalizedUserName = "mobile".ToUpper(),
                 FirstName = "First",
                 LastName = "Customer",
                 TwoFactorEnabled = false,

@@ -1,11 +1,5 @@
-﻿using Cinema.Mobile.Services;
-using Cinema.Models.Dtos;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Cinema.Models.Dtos;
 using System.Windows.Input;
-using Xamarin.Forms;
 
 namespace Cinema.Mobile.ViewModels
 {

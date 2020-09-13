@@ -15,11 +15,9 @@ namespace Cinema.WinUI.Reports
 {
     public partial class FormYearlySalesReport : BaseDataGridForm
     {
-
         moduleExcel excelGenerator = new moduleExcel();
         ModulePDF pdfGenerator = new ModulePDF();
         private IList<string> _nextFormPrincipal;
-        private readonly ApiService _screeningsApi = new ApiService("Screenings");
         private readonly ApiService _reportsApi = new ApiService("Reports");
         private UserYearlySalesSearchRequest _request = new UserYearlySalesSearchRequest();
 

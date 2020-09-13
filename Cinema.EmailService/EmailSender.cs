@@ -1,7 +1,7 @@
-﻿using Cinema.Common.Exceptions;
-using MailKit.Net.Smtp;
+﻿using MailKit.Net.Smtp;
 using Microsoft.AspNetCore.Http;
 using MimeKit;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -133,10 +133,10 @@ namespace Cinema.EmailService
 
                     await client.SendAsync(mailMessage);
                 }
-                catch
+                catch (Exception ex)
                 {
                     //log an error message or throw an exception, or both.
-                    throw new EmailSendingFailedException();
+                    Console.WriteLine($"Error while sending the email. Error message: {ex.Message}");
                 }
                 finally
                 {

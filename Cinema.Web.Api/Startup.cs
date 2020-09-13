@@ -3,8 +3,6 @@ using Cinema.Common.Interfaces;
 using Cinema.Common.Interfaces.Dal;
 using Cinema.Common.Interfaces.Integrations;
 using Cinema.Common.Interfaces.Services;
-using Cinema.Persistence.Data;
-using Cinema.Persistence.Repository;
 using Cinema.Domain.Entities;
 using Cinema.Domain.Entities.Identity;
 using Cinema.EmailService;
@@ -14,6 +12,8 @@ using Cinema.Models.Requests.Pricing;
 using Cinema.Models.Requests.Screenings;
 using Cinema.Models.Requests.Users;
 using Cinema.MovieRecommenderService;
+using Cinema.Persistence.Data;
+using Cinema.Persistence.Repository;
 using Cinema.Services;
 using Cinema.Web.Api.Filters;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -144,7 +144,6 @@ namespace Cinema.Web.API
             services.AddScoped<IMovieRepository, MovieRepository>();
             services.AddScoped<IReviewRepository, ReviewRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<IInvoiceRepository, InvoiceRepository>();
             services.AddScoped<IReservationRepository, ReservationRepository>();
             services.AddScoped<ISeatReservationRepository, SeatReservationRepository>();
 
@@ -152,7 +151,6 @@ namespace Cinema.Web.API
             services.AddScoped<IRepository<Movie, int>, MovieRepository>();
             services.AddScoped<IRepository<Reservation, int>, ReservationRepository>();
             services.AddScoped<IRepository<SeatReservation, int>, SeatReservationRepository>();
-            services.AddScoped<IRepository<Invoice, int>, InvoiceRepository>();
 
             string connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<CinemaDbContext>(options => options.UseSqlServer(connection));
