@@ -4,6 +4,7 @@
     {
         NowShowing,
         MyReservations,
+        News,
         Profile,
         LogOut
     }
