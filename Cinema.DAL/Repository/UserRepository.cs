@@ -1,8 +1,8 @@
-﻿using Cinema.Domain.Entities.Identity;
+﻿using Cinema.Common.Interfaces.Dal;
+using Cinema.Domain.Entities.Identity;
 using Cinema.Shared.Enums;
 using Cinema.Shared.Pagination;
 using Cinema.Shared.Search;
-using Cinema.Common.Interfaces.Dal;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
@@ -20,17 +20,18 @@ namespace Cinema.Dal.Repository
             if (oldEnt != null)
             {
                 ApplicationUserRole userRole = oldEnt.UserRoles.First();
- 
+
                 if (userRole != null)
                 {
                     ApplicationUserRole newUserRole = new ApplicationUserRole();
                     var existingUserRole = _context.UserRoles.IgnoreQueryFilters().Where(x => x.UserId == oldEnt.Id && x.RoleId == roleId).FirstOrDefault();
 
-                    if(existingUserRole != null)
+                    if (existingUserRole != null)
                     {
                         existingUserRole.IsDeleted = false;
                         oldEnt.UserRoles.First().IsDeleted = true;
-                    } else
+                    }
+                    else
                     {
                         newUserRole.RoleId = roleId;
                         newUserRole.UserId = oldEnt.Id;
@@ -38,7 +39,7 @@ namespace Cinema.Dal.Repository
                         oldEnt.UserRoles.Remove(userRole);
                         oldEnt.UserRoles.Add(newUserRole);
                     }
-                    
+
                 }
 
                 // Update operations should be handled outside of repositories (in services)

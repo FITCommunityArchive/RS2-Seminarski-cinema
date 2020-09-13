@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
+using Cinema.Common.Exceptions;
+using Cinema.Common.Interfaces.Dal;
+using Cinema.Common.Interfaces.Services;
 using Cinema.Domain.Entities;
 using Cinema.Models.Dtos;
 using Cinema.Models.Requests.Screenings;
 using Cinema.Models.SpecificModels;
 using Cinema.Shared.Enums;
 using Cinema.Shared.Pagination;
-using Cinema.Common.Exceptions;
-using Cinema.Common.Interfaces.Dal;
-using Cinema.Common.Interfaces.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,7 +50,7 @@ namespace Cinema.Services
 
             var dtoList = _mapper.Map<List<ScreeningDto>>(list);
 
-            foreach(var screening in dtoList)
+            foreach (var screening in dtoList)
             {
                 screening.TimingStatus = GetTimingStatus(screening);
             }

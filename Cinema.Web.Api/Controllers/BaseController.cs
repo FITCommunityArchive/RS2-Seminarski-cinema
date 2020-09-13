@@ -1,6 +1,6 @@
-﻿using Cinema.Models.Requests;
+﻿using Cinema.Common.Interfaces.Services;
+using Cinema.Models.Requests;
 using Cinema.Shared.Pagination;
-using Cinema.Common.Interfaces.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;

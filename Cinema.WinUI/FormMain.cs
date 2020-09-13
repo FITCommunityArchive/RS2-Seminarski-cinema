@@ -9,7 +9,6 @@ using Cinema.WinUI.Reports;
 using Cinema.WinUI.Screenings;
 using Cinema.WinUI.Services;
 using Cinema.WinUI.Users;
-using FontAwesome.Sharp;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -37,18 +36,19 @@ namespace Cinema.WinUI
             btnReports.Visible = this.ValidatedUserRoles.Contains("Administrator");
             btnPricing.Visible = this.ValidatedUserRoles.Contains("Administrator");
             btnReservations.Visible = this.ValidatedUserRoles.Contains("Administrator");
-            
+
         }
 
         private async void FormMain_Load(object sender, EventArgs e)
         {
             var userId = await _usersApi.GetCurrentUserId();
-            var user = await _usersApi.GetById<ApplicationUserDto>(userId,null);
+            var user = await _usersApi.GetById<ApplicationUserDto>(userId, null);
 
             FormDashboard formDashborad = new FormDashboard(_nextFormPrincipal);
             openChildForm(formDashborad);
 
-            if(user != null) { 
+            if (user != null)
+            {
                 lblFullName.Text = user.FullName;
                 lblWelcomeMessage.Text = "Hello " + user.FirstName;
             }

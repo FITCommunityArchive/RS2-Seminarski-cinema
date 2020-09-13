@@ -3,10 +3,8 @@ using Cinema.Models.Requests.Users;
 using Cinema.Shared.Pagination;
 using Cinema.WinUI.Services;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -32,7 +30,7 @@ namespace Cinema.WinUI.Users
             _id = id;
             picLoading.Visible = false;
             gbRoles.Controls.OfType<RadioButton>().First().Checked = true;
-            
+
             if (_id.HasValue)
             {
                 txtConfirmPassword.Visible = false;
@@ -198,7 +196,7 @@ namespace Cinema.WinUI.Users
 
         private void txtConfirmPassword_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if(txtPassword.Visible && txtPassword.Text != txtConfirmPassword.Text)
+            if (txtPassword.Visible && txtPassword.Text != txtConfirmPassword.Text)
             {
                 errorProvider1.SetError(sender as TextBox, Properties.Resources.Validation_PasswortMismatch);
                 e.Cancel = true;
@@ -207,16 +205,16 @@ namespace Cinema.WinUI.Users
 
         private void txtUsername_Validating(object sender, CancelEventArgs e)
         {
-            if(ValidateEmptyField(txtUsername, e))
+            if (ValidateEmptyField(txtUsername, e))
             {
                 ValidateFieldMin3Char(txtUsername, e);
             }
-            
+
         }
 
         private void txtFirstName_Validating(object sender, CancelEventArgs e)
         {
-            if(ValidateEmptyField(txtFirstName, e))
+            if (ValidateEmptyField(txtFirstName, e))
             {
                 ValidateFieldMin3Char(txtFirstName, e);
             }
@@ -224,16 +222,16 @@ namespace Cinema.WinUI.Users
 
         private void txtLastName_Validating(object sender, CancelEventArgs e)
         {
-            if(ValidateEmptyField(txtLastName, e))
+            if (ValidateEmptyField(txtLastName, e))
             {
                 ValidateFieldMin3Char(txtLastName, e);
             }
-            
+
         }
 
         private void txtPhoneNumber_Validating(object sender, CancelEventArgs e)
         {
-            if(ValidateEmptyField(txtPhone, e))
+            if (ValidateEmptyField(txtPhone, e))
             {
                 ValidatePhone(txtPhone, e);
             }
@@ -241,21 +239,21 @@ namespace Cinema.WinUI.Users
 
         private void txtEmail_Validating(object sender, CancelEventArgs e)
         {
-            if(ValidateEmptyField(txtEmail, e))
+            if (ValidateEmptyField(txtEmail, e))
             {
                 ValidateEmail(txtEmail, e);
             }
-            
+
         }
 
         private void txtPassword_Validating(object sender, CancelEventArgs e)
         {
 
-            if(txtPassword.Visible && ValidateEmptyField(txtPassword, e))
+            if (txtPassword.Visible && ValidateEmptyField(txtPassword, e))
             {
-                ValidatePassword(txtPassword, e); 
+                ValidatePassword(txtPassword, e);
             }
-            
+
         }
 
         private bool ValidateEmptyField(Control control, CancelEventArgs e)
@@ -303,7 +301,7 @@ namespace Cinema.WinUI.Users
             }
         }
 
-        private void ValidateEmail(Control control,CancelEventArgs e)
+        private void ValidateEmail(Control control, CancelEventArgs e)
         {
             string pattern = "^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}" +
          @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
@@ -322,7 +320,7 @@ namespace Cinema.WinUI.Users
 
         private void ValidateFieldMin3Char(Control control, CancelEventArgs e)
         {
-            if(control.Text.Length < 3)
+            if (control.Text.Length < 3)
             {
                 errorProvider1.SetError(control, Properties.Resources.Validation_Min3Char);
                 e.Cancel = true;

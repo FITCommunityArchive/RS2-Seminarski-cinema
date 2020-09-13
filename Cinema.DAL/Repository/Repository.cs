@@ -1,7 +1,7 @@
-﻿using Cinema.Shared.Constants;
+﻿using Cinema.Common.Interfaces.Dal;
+using Cinema.Shared.Constants;
 using Cinema.Shared.Pagination;
 using Cinema.Shared.Search;
-using Cinema.Common.Interfaces.Dal;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

@@ -1,7 +1,7 @@
-﻿using Cinema.Domain.Entities;
+﻿using Cinema.Common.Interfaces.Dal;
+using Cinema.Domain.Entities;
 using Cinema.Shared.Constants;
 using Cinema.Shared.Enums;
-using Cinema.Common.Interfaces.Dal;
 using System.Linq;
 
 namespace Cinema.Dal.Repository

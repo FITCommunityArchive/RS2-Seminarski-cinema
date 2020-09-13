@@ -1,5 +1,5 @@
-﻿using Cinema.Domain.Entities;
-using Cinema.Common.Interfaces.Dal;
+﻿using Cinema.Common.Interfaces.Dal;
+using Cinema.Domain.Entities;
 
 namespace Cinema.Dal.Repository
 {

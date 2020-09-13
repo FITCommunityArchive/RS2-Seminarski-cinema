@@ -1,19 +1,13 @@
-﻿using Cinema.Models.Dtos;
-using Cinema.Models.Dtos.Reports;
-using Cinema.Models.Requests.Reports;
-using Cinema.Models.Requests.Reservations;
+﻿using Cinema.Models.Dtos.Reports;
 using Cinema.Models.Requests.Screenings;
 using Cinema.Shared.Constants;
 using Cinema.Shared.Enums;
 using Cinema.Shared.Pagination;
 using Cinema.WinUI.Helpers;
-using Cinema.WinUI.Models;
 using Cinema.WinUI.Services;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Globalization;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -54,7 +48,7 @@ namespace Cinema.WinUI.Reports
         {
             this.dgvScreeningCapacitiesList.DoubleBuffered(true);
 
-            string route = "screening-capacities";                        
+            string route = "screening-capacities";
             var screeningCapacities = await _reportsApi.Get<PagedList<ScreeningCapacityDto>>(_request, route);
 
             dgvScreeningCapacitiesList.AutoGenerateColumns = false;

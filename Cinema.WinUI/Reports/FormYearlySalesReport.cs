@@ -1,17 +1,12 @@
-﻿using Cinema.Models.Dtos;
-using Cinema.Models.Dtos.Reports;
+﻿using Cinema.Models.Dtos.Reports;
 using Cinema.Models.Requests.Reports;
-using Cinema.Models.Requests.Reservations;
-using Cinema.Models.Requests.Screenings;
 using Cinema.Shared.Constants;
-using Cinema.Shared.Pagination;
 using Cinema.WinUI.Helpers;
 using Cinema.WinUI.Models;
 using Cinema.WinUI.Services;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -44,7 +39,7 @@ namespace Cinema.WinUI.Reports
         {
             this.dgvUserSalesList.DoubleBuffered(true);
 
-            string route = "user-yearly-sales";                        
+            string route = "user-yearly-sales";
             var yearlySales = await _reportsApi.Get<YearlySalesReportDto>(_request, route);
 
             var yearlySalesFlatModel = CreateFlatModel(yearlySales);
@@ -84,7 +79,7 @@ namespace Cinema.WinUI.Reports
             if (nmrUserId.Value > 0)
             {
                 searchRequest.UserId = (int)nmrUserId.Value;
-            }            
+            }
 
             return searchRequest;
         }
@@ -108,7 +103,7 @@ namespace Cinema.WinUI.Reports
 
             flatModel.Add(totalRow);
 
-            return flatModel;            
+            return flatModel;
         }
 
         private void AppendUserValuesToColumns(List<YearlySalesReportFlatDto> data)
@@ -135,7 +130,7 @@ namespace Cinema.WinUI.Reports
                         }
                     }
                 }
-            }        
+            }
         }
 
         private int GetColumnMonthNumber(DataGridViewColumn column)

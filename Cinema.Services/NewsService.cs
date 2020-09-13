@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
+using Cinema.Common.Interfaces.Dal;
+using Cinema.Common.Interfaces.Services;
 using Cinema.Domain.Entities;
 using Cinema.Models.Dtos;
 using Cinema.Models.Requests.News;
 using Cinema.Shared.Pagination;
-using Cinema.Common.Interfaces.Dal;
-using Cinema.Common.Interfaces.Services;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

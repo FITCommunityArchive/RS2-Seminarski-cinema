@@ -1,6 +1,6 @@
+using Cinema.Common.Interfaces.Services;
 using Cinema.Models.Dtos;
 using Cinema.Models.Requests.Users;
-using Cinema.Common.Interfaces.Services;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

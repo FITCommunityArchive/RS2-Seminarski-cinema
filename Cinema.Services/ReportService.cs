@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Cinema.Common.Interfaces.Dal;
+using Cinema.Common.Interfaces.Services;
 using Cinema.Domain.Entities;
 using Cinema.Models.Dtos;
 using Cinema.Models.Dtos.Reports;
@@ -7,13 +9,9 @@ using Cinema.Models.Requests.Screenings;
 using Cinema.Shared.Enums;
 using Cinema.Shared.Pagination;
 using Cinema.Shared.Search;
-using Cinema.Common.Interfaces.Dal;
-using Cinema.Common.Interfaces.Services;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace Cinema.Services
@@ -69,7 +67,7 @@ namespace Cinema.Services
 
             List<string> seatReservationIncludes = new List<string> { nameof(SeatReservation.Reservation) };
             IEnumerable<SeatReservation> seatReservations = await _seatReservationRepo.GetAsync(x => screeningIds.Contains(x.Reservation.ScreeningId), seatReservationIncludes);
-            
+
             List<ScreeningCapacityDto> screeningCapacities = GetScreeningCapacities(screenings, seatReservations);
 
             screeningCapacities = ApplySortingForScreeningCapacitiesReport(screeningCapacities, searchRequest);
@@ -106,7 +104,7 @@ namespace Cinema.Services
         }
 
         private List<ScreeningCapacityDto> ApplySortingForScreeningCapacitiesReport(List<ScreeningCapacityDto> screeningCapacities, ISearchRequest searchRequest)
-        {     
+        {
             if (searchRequest.SortOrder == SortOrder.ASC)
             {
                 switch (searchRequest.SortColumn)
@@ -122,7 +120,7 @@ namespace Cinema.Services
                         break;
                     default:
                         break;
-                }                
+                }
             }
             else
             {
@@ -151,7 +149,7 @@ namespace Cinema.Services
 
             if (searchRequest.SortOrder == SortOrder.ASC)
             {
-                monthlySales = monthlySales.OrderBy(x => x.UserYearlyTotal).ToList(); 
+                monthlySales = monthlySales.OrderBy(x => x.UserYearlyTotal).ToList();
             }
             else
             {
