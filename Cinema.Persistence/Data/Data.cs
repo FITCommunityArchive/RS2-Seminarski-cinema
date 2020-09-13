@@ -905,10 +905,10 @@ namespace Cinema.Persistence.Data
             ApplicationUser admin = new ApplicationUser
             {
                 Id = adminId,
-                UserName = "sa",
+                UserName = "desktop",
                 Email = "admin@admin-test-cinema.com",
                 NormalizedEmail = "admin@admin-test-cinema.com".ToUpper(),
-                NormalizedUserName = "admin".ToUpper(),
+                NormalizedUserName = "desktop".ToUpper(),
                 FirstName = "Admin",
                 LastName = "Test",
                 TwoFactorEnabled = false,
@@ -918,7 +918,7 @@ namespace Cinema.Persistence.Data
             };
 
             PasswordHasher<ApplicationUser> ph = new PasswordHasher<ApplicationUser>();
-            admin.PasswordHash = ph.HashPassword(admin, "t");
+            admin.PasswordHash = ph.HashPassword(admin, "test");
 
             ApplicationUser contentEditor = new ApplicationUser
             {
@@ -935,7 +935,7 @@ namespace Cinema.Persistence.Data
                 PhoneNumberConfirmed = false
             };
 
-            contentEditor.PasswordHash = ph.HashPassword(contentEditor, "t");
+            contentEditor.PasswordHash = ph.HashPassword(contentEditor, "test");
 
             modelBuilder.Entity<ApplicationUser>().HasData(
                 admin, contentEditor
@@ -961,10 +961,10 @@ namespace Cinema.Persistence.Data
             ApplicationUser fistTestCustomer = new ApplicationUser
             {
                 Id = firstUserId,
-                UserName = "test.customer1",
+                UserName = "mobile",
                 Email = "test1@test-customer.com",
                 NormalizedEmail = "test1@test-customer.com".ToUpper(),
-                NormalizedUserName = "test.customer1".ToUpper(),
+                NormalizedUserName = "mobile".ToUpper(),
                 FirstName = "First",
                 LastName = "Customer",
                 TwoFactorEnabled = false,

@@ -18,7 +18,7 @@ services:
     build:
       context: .
     environment:
-      - ConnectionStrings:DefaultConnection=Server=cinema-sql,1433;Database=170138-170187;User=sa;Password=QWElkj132!;ConnectRetryCount=0
+      - ConnectionStrings:DefaultConnection=Server=cinema-sql,1433;Database=170138-170187;User=sa;Password=QWElkj132!;ConnectRetryCount=250
     ports:
       - 5000:80
     networks:
