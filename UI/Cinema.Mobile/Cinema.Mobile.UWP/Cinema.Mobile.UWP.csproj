@@ -104,6 +104,7 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="icon-logout.png" />
     <Content Include="imdbicongray.png" />
     <Content Include="logosmall.png" />
     <Content Include="movieposterplaceholder.png" />
