@@ -1,5 +1,6 @@
 ﻿using Cinema.Mobile.Services;
 using Cinema.Models.Dtos;
+using Cinema.Models.Requests.Events;
 using Cinema.Models.Requests.News;
 using Cinema.Shared.Pagination;
 using System;
@@ -12,12 +13,12 @@ using Xamarin.Forms;
 
 namespace Cinema.Mobile.ViewModels
 {
-    public class NewsViewModel :BaseViewModel
+    public class EventsViewModel : BaseViewModel
     {
 
-        private readonly ApiService _newsApi = new ApiService("News");
+        private readonly ApiService _eventsApi = new ApiService("Events");
 
-        public NewsViewModel()
+        public EventsViewModel()
         {
             InitCommand = new Command(async () => await Init());
         }
@@ -25,27 +26,27 @@ namespace Cinema.Mobile.ViewModels
         public ICommand InitCommand { get; set; }
         public bool NoItems { get; set; } = false;
 
-        public ObservableCollection<NewsDto> _news = new ObservableCollection<NewsDto>();
-        public ObservableCollection<NewsDto> News { get { return _news; } }
+        public ObservableCollection<EventDto> _events = new ObservableCollection<EventDto>();
+        public ObservableCollection<EventDto> Events { get { return _events; } }
 
         public async Task Init()
         {
-            NewsSearchRequest searchRequest = new NewsSearchRequest();
+            EventSearchRequest searchRequest = new EventSearchRequest();
             searchRequest.Includes.Add("Author");
             searchRequest.Includes.Add("Type");
 
-            var news = await _newsApi.Get<PagedList<NewsDto>>(searchRequest, null);
-            if (news.Data.Count == 0)
+            var events = await _eventsApi.Get<PagedList<EventDto>>(searchRequest, null);
+            if (events.Data.Count == 0)
             {
                 NoItems = true;
             }
             else
             {
                 //after each navigateBack button from the Reservations Details we need to clear the observableCollection since it will contain the existing data and populate it with the new (same) one again.
-                News.Clear();
-                foreach (NewsDto r in news.Data)
+                Events.Clear();
+                foreach (EventDto r in events.Data)
                 {
-                    News.Add(r);
+                    Events.Add(r);
                 }
             }
         }

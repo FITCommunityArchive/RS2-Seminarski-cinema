@@ -26,16 +26,25 @@
             <x:String x:Key="IconYoutube">&#x000f05c3;</x:String>
             <x:String x:Key="IconLogout">&#x000f0343;</x:String>
             <x:String x:Key="IconLogin">&#x000f0342;</x:String>
+            <x:String x:Key="IconClock">&#x000f0150;</x:String>
 
             <ControlTemplate x:Key="FooterBar">
                 <Frame OutlineColor="#00000088" HasShadow="true">
                     <StackLayout VerticalOptions="FillAndExpand">
                         <ContentPresenter VerticalOptions="FillAndExpand" />
-                        <StackLayout Padding="15" VerticalOptions="End" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" BackgroundColor="White">
-                            <Button TextColor="#2196F3" BackgroundColor="White" FontFamily="{DynamicResource MaterialFontFamily}" Command="{x:Static sm:FooterBarStaticModel.MovieBtnCommand}" FontSize="32" Text="{StaticResource IconTicket}"></Button>
-                            <Button TextColor="#2196F3" BackgroundColor="White" FontFamily="{DynamicResource MaterialFontFamily}" Command="{x:Static sm:FooterBarStaticModel.NewsBtnCommand}" FontSize="32" Text="{StaticResource IconNewspaper}"></Button>
-                            <Button TextColor="#2196F3" BackgroundColor="White" FontFamily="{DynamicResource MaterialFontFamily}" Command="{x:Static sm:FooterBarStaticModel.ProfileBtnCommand}" FontSize="32" Text="{StaticResource IconAccount}"></Button>
-                        </StackLayout>
+                        <Grid HorizontalOptions="FillAndExpand" BackgroundColor="White">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Padding="15" VerticalOptions="End" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" BackgroundColor="White">
+                                <Button TextColor="#2196F3" HorizontalOptions="Center" BackgroundColor="White" FontFamily="{DynamicResource MaterialFontFamily}" Command="{x:Static sm:FooterBarStaticModel.MovieBtnCommand}" FontSize="32" Text="{StaticResource IconTicket}"></Button>
+                                <Button TextColor="#2196F3" HorizontalOptions="Center" BackgroundColor="White" FontFamily="{DynamicResource MaterialFontFamily}" Command="{x:Static sm:FooterBarStaticModel.NewsBtnCommand}" FontSize="32" Text="{StaticResource IconNewspaper}"></Button>
+                                <Button TextColor="#2196F3" HorizontalOptions="Center" BackgroundColor="White" FontFamily="{DynamicResource MaterialFontFamily}" Command="{x:Static sm:FooterBarStaticModel.ProfileBtnCommand}" FontSize="32" Text="{StaticResource IconAccount}"></Button>
+                            </StackLayout>
+                        </Grid>
                     </StackLayout>
                 </Frame>
             </ControlTemplate>

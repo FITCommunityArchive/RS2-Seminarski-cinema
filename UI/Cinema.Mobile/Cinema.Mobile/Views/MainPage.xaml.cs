@@ -37,6 +37,9 @@ namespace Cinema.Mobile.Views
                     case (int)MenuItemType.News:
                         MenuPages.Add(id, new NavigationPage(new NewsPage()));
                         break;
+                    case (int)MenuItemType.Events:
+                        MenuPages.Add(id, new NavigationPage(new EventsPage()));
+                        break;
 
                     case (int)MenuItemType.Profile:
                         MenuPages.Add(id, new NavigationPage(new ProfilePage()));

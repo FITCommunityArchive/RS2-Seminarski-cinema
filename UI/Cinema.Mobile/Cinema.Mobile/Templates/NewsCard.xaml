@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Cinema.Mobile.Templates.NewsCard">
+    <ContentView.Content>
+        <StackLayout Orientation="Vertical">
+            <Grid VerticalOptions="CenterAndExpand"  
+                      Padding="30" 
+                      RowSpacing="10"
+                      HorizontalOptions="FillAndExpand"  
+                      BackgroundColor="White">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="70" />
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label Padding="0,10,0,10" FontAttributes="Bold" Text="{Binding Title}" FontSize="32" Grid.ColumnSpan="3" TextColor="Black"/>
+                <Label Text="{Binding Author.FullName}" Grid.Row="1" TextColor="#aaa" FontSize="14"></Label>
+                <Label TextColor="#aaa" FontFamily="{DynamicResource MaterialFontFamily}" Grid.Column="1" Grid.Row="1" FontSize="16" LineHeight="1" Text="{StaticResource IconClock}"></Label>
+                <Label Text="Date" FontSize="14" TextColor="#aaa" Grid.Column="2" Grid.Row="1"></Label>
+                
+                <Label Text="{Binding Description}" LineBreakMode="WordWrap" FontSize="16" Grid.Row="2" Grid.ColumnSpan="3"></Label>
+                <Label Padding="0,10,0,10" Text="Tags:" FontAttributes="Bold" Grid.Row="3" Grid.ColumnSpan="3" FontSize="14"></Label>
+                <Label Text="{Binding Type.Name}" Grid.Row="4" Grid.ColumnSpan="3" FontSize="14"></Label>
+            </Grid>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

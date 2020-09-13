@@ -12,14 +12,14 @@ using Xamarin.Forms.Xaml;
 namespace Cinema.Mobile.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class NewsPage : ContentPage
+    public partial class EventsPage : ContentPage
     {
 
-        NewsViewModel model = null;
-        public NewsPage()
+        EventsViewModel model = null;
+        public EventsPage()
         {
             InitializeComponent();
-            BindingContext = model = new NewsViewModel();
+            BindingContext = model = new EventsViewModel();
         }
         protected async override void OnAppearing()
         {
@@ -29,8 +29,8 @@ namespace Cinema.Mobile.Views
 
         public async void OnListViewItemSelected(object sender, ItemTappedEventArgs e)
         {
-            NewsDto article = e.Item as NewsDto;
-            await Navigation.PushAsync(new NewsDetailsPage(article));
+            EventDto article = e.Item as EventDto;
+            await Navigation.PushAsync(new EventDetailsPage(article));
         }
     }
 }

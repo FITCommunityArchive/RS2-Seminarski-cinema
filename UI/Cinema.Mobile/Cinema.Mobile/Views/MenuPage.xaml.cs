@@ -22,6 +22,7 @@ namespace Cinema.Mobile.Views
                 new HomeMenuItem {Id = MenuItemType.NowShowing, Title="Now Showing" },
                 new HomeMenuItem {Id = MenuItemType.MyReservations, Title="My Reservations" },
                 new HomeMenuItem {Id = MenuItemType.News, Title="News" },
+                new HomeMenuItem {Id = MenuItemType.Events, Title="Events" },
                 new HomeMenuItem {Id = MenuItemType.Profile, Title="Profile" },
                 new HomeMenuItem {Id = MenuItemType.LogOut, Title="Log out" }
             };

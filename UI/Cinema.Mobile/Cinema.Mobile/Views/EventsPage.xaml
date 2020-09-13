@@ -4,20 +4,20 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="Cinema.Mobile.Views.NewsPage"
+             x:Class="Cinema.Mobile.Views.EventsPage"
              xmlns:viewModels="clr-namespace:Cinema.Mobile.ViewModels"
              xmlns:templates="clr-namespace:Cinema.Mobile.Templates"
              ControlTemplate="{StaticResource FooterBar}"
              BackgroundColor="#f5f5f5" Padding="0">
     <ContentPage.BindingContext>
-        <viewModels:NewsViewModel></viewModels:NewsViewModel>
+        <viewModels:EventsViewModel></viewModels:EventsViewModel>
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout BackgroundColor="#f5f5f5">
-            <Label Text="News" VerticalOptions="Start" BackgroundColor="White" FontSize="Title" TextColor="DimGray" FontAttributes="Bold" Padding="15"/>
-            <Label Text="No news currently. Come back later." IsVisible="{Binding NoItems}" Padding="30"></Label>
-            <ListView x:Name="News"
-                      ItemsSource="{Binding News}"
+            <Label Text="Events" VerticalOptions="Start" BackgroundColor="White" FontSize="Title" TextColor="DimGray" FontAttributes="Bold" Padding="15"/>
+            <Label Text="No events currently. Come back later." IsVisible="{Binding NoItems}" Padding="30"></Label>
+            <ListView x:Name="Events"
+                      ItemsSource="{Binding Events}"
                       HorizontalScrollBarVisibility="Never"
                       ItemTapped="OnListViewItemSelected"
                       HasUnevenRows="True"
@@ -25,7 +25,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <templates:NewsCard Margin="0,0,0,30"></templates:NewsCard>
+                            <templates:EventCard Margin="0,0,0,30"></templates:EventCard>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
