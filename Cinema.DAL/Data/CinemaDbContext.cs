@@ -14,7 +14,6 @@ namespace Cinema.Dal.Data
                                         ApplicationUserClaim, ApplicationUserRole, ApplicationUserLogin,
                                         ApplicationRoleClaim, ApplicationUserToken>, ICinemaDbContext
     {
-        private string _connectionString;
         public CinemaDbContext(DbContextOptions<CinemaDbContext> options)
             : base(options)
         {
@@ -22,9 +21,8 @@ namespace Cinema.Dal.Data
             ChangeTracker.DeleteOrphansTiming = CascadeTiming.OnSaveChanges;
         }
 
-        public CinemaDbContext(string connectionString)
+        public CinemaDbContext()
         {
-            _connectionString = connectionString;
         }
 
         public DbSet<Event> Events { get; set; }
