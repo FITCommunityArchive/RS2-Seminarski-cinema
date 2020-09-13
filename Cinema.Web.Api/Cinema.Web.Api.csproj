@@ -9,6 +9,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="MLModels\MovieRecommenderModel.zip" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="MLModels\MovieRecommenderModel.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.6" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.5">
@@ -28,10 +38,6 @@
     <ProjectReference Include="..\Cinema.EmailService\Cinema.EmailService.csproj" />
     <ProjectReference Include="..\Cinema.MovieRecommenderService\Cinema.MovieRecommenderService.csproj" />
     <ProjectReference Include="..\Cinema.Services\Cinema.Services.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="MLModels\" />
   </ItemGroup>
 
 
