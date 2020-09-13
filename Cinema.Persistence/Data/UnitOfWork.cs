@@ -1,7 +1,7 @@
 ﻿using Cinema.Common.Interfaces.Dal;
-using Cinema.Persistence.Repository;
 using Cinema.Domain.Entities;
 using Cinema.Domain.Entities.Identity;
+using Cinema.Persistence.Repository;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;

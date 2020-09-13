@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Cinema.Mobile.Models
+﻿namespace Cinema.Mobile.Models
 {
     public interface IValidator
     {

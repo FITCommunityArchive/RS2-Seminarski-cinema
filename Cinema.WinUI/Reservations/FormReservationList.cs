@@ -177,7 +177,7 @@ namespace Cinema.WinUI.Movies
             ReservationSearchRequest searchRequest = GetSearchRequest();
             await LoadReservations(searchRequest);
         }
-        
+
         private void grdReservationsList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             BindNavigationColumns(grdReservationsList, sender, e);

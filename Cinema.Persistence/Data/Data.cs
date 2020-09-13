@@ -161,7 +161,7 @@ namespace Cinema.Persistence.Data
         }
 
         private static void SeedReviews(ModelBuilder modelBuilder)
-        {            
+        {
             Random rnd = new Random();
             int reviewId = -999999;
             for (int i = -650; i < -51; i++)

@@ -1,5 +1,4 @@
 ﻿using Cinema.Mobile.ViewModels;
-using Cinema.Models.Dtos;
 using System;
 
 using Xamarin.Forms;

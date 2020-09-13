@@ -4,7 +4,6 @@ using Cinema.Models.Requests.Reservations;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Xamarin.Forms;
 
 namespace Cinema.Mobile.ViewModels
 {

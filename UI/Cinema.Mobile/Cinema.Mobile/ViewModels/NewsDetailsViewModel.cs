@@ -1,8 +1,4 @@
-﻿using Cinema.Mobile.Services;
-using Cinema.Models.Dtos;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Cinema.Models.Dtos;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;

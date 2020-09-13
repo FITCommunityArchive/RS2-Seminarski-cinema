@@ -41,7 +41,8 @@ namespace Cinema.Mobile.ViewModels
         public string Username
         {
             get { return _username; }
-            set { 
+            set
+            {
                 SetProperty(ref _username, value);
                 OnPropertyChanged();
                 Validate();
@@ -53,7 +54,8 @@ namespace Cinema.Mobile.ViewModels
         public string Password
         {
             get { return _password; }
-            set { 
+            set
+            {
                 SetProperty(ref _password, value);
                 Validate();
                 Validate(nameof(Password));
@@ -64,7 +66,8 @@ namespace Cinema.Mobile.ViewModels
         public string RepeatPassword
         {
             get { return _repeatPassword; }
-            set { 
+            set
+            {
                 SetProperty(ref _repeatPassword, value);
                 Validate();
                 Validate(nameof(RepeatPassword));
@@ -75,7 +78,8 @@ namespace Cinema.Mobile.ViewModels
         public string Email
         {
             get { return _email; }
-            set { 
+            set
+            {
                 SetProperty(ref _email, value);
                 OnPropertyChanged();
                 Validate();
@@ -87,7 +91,8 @@ namespace Cinema.Mobile.ViewModels
         public string FirstName
         {
             get { return _firstName; }
-            set { 
+            set
+            {
                 SetProperty(ref _firstName, value);
                 Validate();
                 Validate(nameof(FirstName));
@@ -98,7 +103,8 @@ namespace Cinema.Mobile.ViewModels
         public string LastName
         {
             get { return _lastName; }
-            set { 
+            set
+            {
                 SetProperty(ref _lastName, value);
                 Validate();
                 Validate(nameof(LastName));

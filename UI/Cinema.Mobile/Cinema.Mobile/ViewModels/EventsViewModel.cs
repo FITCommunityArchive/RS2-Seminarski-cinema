@@ -1,12 +1,8 @@
 ﻿using Cinema.Mobile.Services;
 using Cinema.Models.Dtos;
 using Cinema.Models.Requests.Events;
-using Cinema.Models.Requests.News;
 using Cinema.Shared.Pagination;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
