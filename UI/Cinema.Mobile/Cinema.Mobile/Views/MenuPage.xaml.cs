@@ -1,5 +1,6 @@
 ﻿using Cinema.Mobile.Models;
 using Cinema.Mobile.Services;
+using Cinema.Mobile.StaticModels;
 using System.Collections.Generic;
 using System.ComponentModel;
 using Xamarin.Forms;
@@ -39,7 +40,7 @@ namespace Cinema.Mobile.Views
 
                 if (id == (int)MenuItemType.LogOut)
                 {
-                    LogOut();
+                    FooterBarStaticModel.LogOut();
                 }
                 else
                 {
@@ -47,14 +48,6 @@ namespace Cinema.Mobile.Views
                     await RootPage.NavigateFromMenu(id);
                 }
             };
-        }
-
-        private void LogOut()
-        {
-            ApiService.Username = null;
-            ApiService.Password = null;
-            ApiService.Token = null;
-            Application.Current.MainPage = new NavigationPage(new LoginPage());
         }
     }
 }
