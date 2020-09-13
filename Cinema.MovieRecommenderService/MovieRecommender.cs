@@ -1,6 +1,6 @@
 ﻿using Cinema.Domain.Entities;
 using Cinema.MovieRecommenderService.Models;
-using Cinema.Utilities.Interfaces.Dal;
+using Cinema.Common.Interfaces.Dal;
 using Microsoft.Extensions.ML;
 using Microsoft.ML;
 using Microsoft.ML.Trainers;

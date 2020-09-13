@@ -2,6 +2,7 @@
 using Cinema.Shared.Enums;
 using Cinema.Shared.Pagination;
 using Cinema.Shared.Search;
+using Cinema.Common.Interfaces.Dal;
 using Cinema.Utilities.Interfaces.Dal;
 using Microsoft.EntityFrameworkCore;
 using System;

@@ -1,4 +1,4 @@
-﻿using Cinema.Utilities.Exceptions;
+﻿using Cinema.Common.Exceptions;
 using MailKit.Net.Smtp;
 using Microsoft.AspNetCore.Http;
 using MimeKit;

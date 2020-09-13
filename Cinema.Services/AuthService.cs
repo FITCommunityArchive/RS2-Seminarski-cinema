@@ -2,9 +2,9 @@
 using Cinema.Domain.Entities.Identity;
 using Cinema.Models.Dtos;
 using Cinema.Shared.Constants;
-using Cinema.Utilities.Exceptions;
-using Cinema.Utilities.Interfaces.Dal;
-using Cinema.Utilities.Interfaces.Services;
+using Cinema.Common.Exceptions;
+using Cinema.Common.Interfaces.Dal;
+using Cinema.Common.Interfaces.Services;
 using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
 using System.Threading.Tasks;

@@ -1,6 +1,6 @@
 ﻿using Cinema.Models.Dtos;
 using Cinema.Models.Requests.Reservations;
-using Cinema.Utilities.Interfaces.Services;
+using Cinema.Common.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 

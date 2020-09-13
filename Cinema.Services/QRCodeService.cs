@@ -1,4 +1,4 @@
-﻿using Cinema.Utilities.Interfaces.Integrations;
+﻿using Cinema.Common.Interfaces.Integrations;
 using Microsoft.AspNetCore.Hosting;
 using QRCoder;
 using System;

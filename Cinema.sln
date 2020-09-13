@@ -12,7 +12,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.Seed", "Cinema.Seed\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.Test", "Cinema.Test\Cinema.Test.csproj", "{5B8C3A5A-6E8C-483D-A0F3-CB371D819EC2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.Common", "Cinema.Utilities\Cinema.Common.csproj", "{B436E379-B478-4B5A-A359-48EE86282653}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.Common", "Cinema.Common\Cinema.Common.csproj", "{B436E379-B478-4B5A-A359-48EE86282653}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema.Services", "Cinema.Services\Cinema.Services.csproj", "{ABC21100-AC7A-45D0-8D0E-D2D2721CA1B6}"
 EndProject

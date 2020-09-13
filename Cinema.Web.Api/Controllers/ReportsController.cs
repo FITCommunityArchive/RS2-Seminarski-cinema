@@ -2,6 +2,7 @@
 using Cinema.Models.Dtos.Reports;
 using Cinema.Models.Requests.Reports;
 using Cinema.Models.Requests.Reservations;
+using Cinema.Common.Interfaces.Services;
 using Cinema.Models.Requests.Screenings;
 using Cinema.Shared.Pagination;
 using Cinema.Utilities.Interfaces.Services;
