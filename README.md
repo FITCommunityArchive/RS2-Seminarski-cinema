@@ -1,8 +1,28 @@
 # Introduction 
-Cinema is a bundle of different applications:
-1. Cinema back-end REST API (ASP.NET Core 3.1)
-2. Cinema Desktop Client: provides movies, screenings, employees, and content management. (Windows Forms)
-3. Cinema Mobile: screening reservations and reviews mobile application. (Xamarin)
+Cinema is a bundle of the following applications:
+#### Cinema back-end REST API (ASP.NET Core 3.1)
+Technical implementations of Cinema.Web.Api:
+- SQL Server database
+- Repository pattern with Unit of Work
+- Service layer
+- ML .NET based movie recommender system
+- Email service
+- Automapper
+- JWT Authorization with Bearer scheme
+#### Cinema Desktop Client (Windows Forms)
+- Movies, screenings, pricing, employees, reservations and content management
+- Sales and screenings dashboard overview
+- Yearly sales report
+- Screening capacities report
+- Print to Excel/PDF/Printer feature
+#### Cinema Mobile (Xamarin)
+- Customer registration and profile edit
+- Now showing movies
+- Recommended movies
+- Screening reservations with seat overview and seat picker
+- Sending reservation code to email feature
+- "My reservations" overview with reservation cancelation
+- News and events overview
 
 # Getting Started
 1.	Clone/Download project
@@ -12,5 +32,25 @@ Cinema is a bundle of different applications:
 5. 	Open console, open "cinema" root folder in console
 6.  Run "docker-compose build"
 6.  Run "docker-compose up"
-7. 	After a console message that the application has started, open http://localhost:5000/swagger/index.html
+7. 	After a console message that the application has started appears, open http://localhost:5000/swagger/index.html in browser
+
+# Login Credentials
+
+#### Cinema Desktop:
+**username:** "desktop"
+**password:** "test"
+(role: administrator)
+
+**username:** "content.editor"
+**password:** "test"
+(role: content editor)
+
+#### Cinema Mobile:
+**username:** "mobile"
+**password:** "test"
+(role: customer)
+
+**username:** "customer598t"
+**password:** "test"
+(role: customer) (with enough data to show recommendations instantly)
 

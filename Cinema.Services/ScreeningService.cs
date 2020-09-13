@@ -119,14 +119,6 @@ namespace Cinema.Services
             return true;
         }
 
-        public async Task<bool> IsSeatReservedAsync(int id, int seatId)
-        {
-            Screening screening = await _screeningRepo.GetAsync(id);
-            IEnumerable<SeatReservation> screeningReservations = await _seatReservationRepo.GetAsync(x => x.Reservation.ScreeningId == id);
-
-            return screeningReservations.Select(x => x.SeatId).Contains(seatId);
-        }
-
         private TimingStatus GetTimingStatus(ScreeningDto screening)
         {
             if (screening.DateAndTime > DateTime.UtcNow)
@@ -148,12 +140,6 @@ namespace Cinema.Services
                 throw new ScreeningAvailabilityException(Shared.Constants.ValidationMessages.DATE_NOT_FUTURE);
             }
 
-            /* // Uncomment after setting identity entities with id key
-            if (!await ValidateScreeningHallAvailabilityAsync(screening))
-            {
-                throw new ScreeningAvailabilityException(Shared.Constants.ValidationMessages.HALL_ALREADY_OCCUPIED);
-            }*/
-
             await _screeningRepo.InsertAsync(screening);
             await _unit.SaveAsync();
 
@@ -170,12 +156,6 @@ namespace Cinema.Services
             {
                 throw new ScreeningAvailabilityException(Shared.Constants.ValidationMessages.DATE_NOT_FUTURE);
             }
-
-            /* // Uncomment after setting identity entities with id key
-            if (!await ValidateScreeningHallAvailabilityAsync(screening))
-            {
-                throw new ScreeningAvailabilityException(Shared.Constants.ValidationMessages.HALL_ALREADY_OCCUPIED);
-            }*/
 
             await _screeningRepo.UpdateAsync(screening, id);
             await _unit.SaveAsync();
@@ -195,31 +175,6 @@ namespace Cinema.Services
         private bool ValidateScreeningDate(Screening screening)
         {
             return screening.DateAndTime >= DateTime.UtcNow;
-        }
-
-
-        private async Task<bool> ValidateScreeningHallAvailabilityAsync(Screening screening)
-        {
-            Hall hall = await _hallRepo.GetAsync(screening.HallId, new List<string> { nameof(Hall.Screenings) });
-            Movie movie = await _movieRepo.GetAsync(screening.MovieId);
-
-            if (hall == null || movie == null) return false;
-
-            DateTime validatedStartTime = screening.DateAndTime;
-            DateTime validatedEndTime = screening.DateAndTime.AddMinutes(movie.Duration);
-
-            var hallScreenings = hall.Screenings.Where(x => x.DateAndTime.Date == validatedStartTime.Date).ToList();
-
-            foreach (var hallScreening in hallScreenings)
-            {
-                DateTime startTime = hallScreening.DateAndTime;
-                DateTime endTime = hallScreening.DateAndTime.AddMinutes(hallScreening.Movie.Duration);
-
-                if (validatedStartTime >= startTime && validatedStartTime <= endTime) return false;
-                if (validatedEndTime >= startTime && validatedEndTime <= endTime) return false;
-            }
-
-            return true;
         }
     }
 }
