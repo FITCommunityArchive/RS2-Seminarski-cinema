@@ -27,12 +27,13 @@ Technical implementations of Cinema.Web.Api:
 # Getting Started
 1.	Clone/Download project
 2.	Enter EmailConfiguration data in appsettings.json of Cinema.Web.Api (If data is already present, proceed to next step)
-3.  Set Cinema.WinUI and Cinema.Mobile.UWP as solution Startup projects
-4.  Start Docker Desktop
-5. 	Open console, open "cinema" root folder in console
-6.  Run "docker-compose build"
-6.  Run "docker-compose up"
-7. 	After a console message that the application has started appears, open http://localhost:5000/swagger/index.html in browser
+3.  Open Visual Studio, right click the solution and go to "Properties". Select "Common Properties", "Startup Project". Select "Multiple startup projects", and set Cinema.Mobile.UWP and Cinema.WinUI values to "Start"
+4.  While In solution "Properties", select "Configuration Properties". Check "Build" and "Deploy" checkboxes next to Cinema.Mobile.UWP
+5.  Start Docker Desktop
+6. 	Open console, then open "cinema" root folder in console
+7.  Run "docker-compose build"
+8.  Run "docker-compose up"
+9. 	After a console message that the application has started appears, open http://localhost:5000/swagger/index.html in browser
 **NOTE: docker-compose build may take a few minutes, due to the number of Reviews being seeded (required for the MovieRecommenderService)**
 
 # Login Credentials
