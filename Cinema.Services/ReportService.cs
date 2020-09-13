@@ -33,6 +33,11 @@ namespace Cinema.Services
             _mapper = mapper;
         }
 
+        /// <summary>
+        /// Gets summed sales per user and month, with a total sum and monthly sums for a year. The returned amounts are without VAT.
+        /// </summary>
+        /// <param name="searchRequest"></param>
+        /// <returns></returns>
         public async Task<YearlySalesReportDto> GetYearlySalesReportPerUserAsync(UserYearlySalesSearchRequest searchRequest)
         {
             List<UserMonthlySalesDto> userSales = await GetUserSalesAsync(searchRequest);
@@ -190,7 +195,7 @@ namespace Cinema.Services
                 decimal monthlyTotal = usersWithReservations.Where(x => x.Invoice != null
                                                                  && x.UserId == id
                                                                  && x.CreatedAt.Month == i + 1)
-                                                            .Sum(x => x.Invoice.Price + x.Invoice.TaxAmount);
+                                                            .Sum(x => x.Invoice.Price);
                 MonthlySaleTotalDto monthlySale = new MonthlySaleTotalDto
                 {
                     MonthNumber = i + 1,

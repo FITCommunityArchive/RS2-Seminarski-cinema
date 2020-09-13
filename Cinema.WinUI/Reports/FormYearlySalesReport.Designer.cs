@@ -528,7 +528,7 @@
             this.tableLayoutPanel1.Controls.Add(this.btnExportPDF, 6, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnExportExcel, 5, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnPrint, 7, 1);
-            this.tableLayoutPanel1.Controls.Add(this.lblReportTitle, 6, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lblReportTitle, 5, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
@@ -543,14 +543,14 @@
             // 
             this.lblReportTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblReportTitle.AutoSize = true;
-            this.tableLayoutPanel1.SetColumnSpan(this.lblReportTitle, 2);
+            this.tableLayoutPanel1.SetColumnSpan(this.lblReportTitle, 3);
             this.lblReportTitle.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblReportTitle.ForeColor = System.Drawing.Color.DimGray;
-            this.lblReportTitle.Location = new System.Drawing.Point(1003, 13);
+            this.lblReportTitle.Location = new System.Drawing.Point(803, 13);
             this.lblReportTitle.Name = "lblReportTitle";
-            this.lblReportTitle.Size = new System.Drawing.Size(394, 25);
-            this.lblReportTitle.TabIndex = 13;
-            this.lblReportTitle.Text = "Sales per Customer";
+            this.lblReportTitle.Size = new System.Drawing.Size(594, 25);
+            this.lblReportTitle.TabIndex = 14;
+            this.lblReportTitle.Text = "Sales per Customer (without VAT)";
             // 
             // FormYearlySalesReport
             // 
@@ -594,7 +594,6 @@
         private System.Windows.Forms.Label lblCustomerID;
         private System.Windows.Forms.Label lblCustomerName;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Label lblReportTitle;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserId;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserFullName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Jan;
@@ -610,5 +609,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Nov;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dec;
         private System.Windows.Forms.DataGridViewTextBoxColumn YearlyTotal;
+        private System.Windows.Forms.Label lblReportTitle;
     }
 }
