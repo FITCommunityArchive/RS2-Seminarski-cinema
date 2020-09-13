@@ -58,31 +58,6 @@ namespace Cinema.Dal.Repository
             return query;
         }
 
-        public async Task<IEnumerable<Screening>> GetWithSeatReservations(ISearchRequest searchRequest, string searchTerm, int? movieId, string hall, decimal? price, TimingStatus? status, DateTime? screeningDate)
-        {
-            var query = _dbSet.Include(x => x.Movie)
-                              .Include(x => x.Hall)
-                              .Include(x => x.Reservations).ThenInclude(x => x.SeatReservations)
-                              .AsQueryable();
-
-            if (status == null)
-            {
-                status = TimingStatus.SCHEDULED;
-            }
-
-            query = ApplyFilter(query, searchTerm, movieId, hall, price, status, screeningDate);
-
-            if (searchRequest.SortOrder == null || searchRequest.SortColumn == null)
-            {
-                searchRequest.SortOrder = SortOrder.DESC;
-                searchRequest.SortColumn = nameof(Screening.DateAndTime);
-            }
-
-            query = ApplySorting(query, searchRequest);
-
-            return await query.ToListAsync();
-        }
-
         protected override Expression<Func<Screening, bool>> GetByIdExpression(int id)
         {
             return x => x.Id == id;

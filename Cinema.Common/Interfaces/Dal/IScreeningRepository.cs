@@ -12,6 +12,5 @@ namespace Cinema.Common.Interfaces.Dal
     {
         Task<IEnumerable<Screening>> GetAsync(ISearchRequest searchRequest, string searchTerm, int? movieId, string hall, decimal? price, TimingStatus? status, DateTime? screeningDate);
         Task<IPagedList<Screening>> GetPagedAsync(ISearchRequest searchRequest, string searchTerm, int? movieId, string hall, decimal? price, TimingStatus? status, DateTime? screeningDate);
-        Task<IEnumerable<Screening>> GetWithSeatReservations(ISearchRequest searchRequest, string searchTerm, int? movieId, string hall, decimal? price, TimingStatus? status, DateTime? screeningDate);
     }
 }
