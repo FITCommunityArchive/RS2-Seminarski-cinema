@@ -110,11 +110,10 @@ namespace Cinema.Persistence.Repository
 
         public override async Task DeleteAsync(int id)
         {
-            ApplicationUser entity = _dbSet
-                .Include(c => c.UserRoles)
-                .Include(c => c.Reservations).ThenInclude(c => c.SeatReservations)
-                .Include(c => c.Reservations).ThenInclude(c => c.Invoice)
-                .Where(x => x.Id == id).FirstOrDefault();
+            ApplicationUser entity = await _dbSet.Include(c => c.UserRoles)
+                                                 .Include(c => c.Reservations).ThenInclude(c => c.SeatReservations)
+                                                 .Include(c => c.Reservations).ThenInclude(c => c.Invoice)
+                                                 .Where(x => x.Id == id).FirstOrDefaultAsync();
 
             if (entity != null)
             {

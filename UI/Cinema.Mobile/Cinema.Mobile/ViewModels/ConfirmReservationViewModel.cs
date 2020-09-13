@@ -14,16 +14,11 @@ namespace Cinema.Mobile.ViewModels
 
         public ConfirmReservationViewModel()
         {
-            InitCommand = new Command(async () => await Init());
         }
 
         public NewReservationViewModel NewReservation { get; set; }
 
         public ICommand InitCommand { get; private set; }
-
-        public async Task Init()
-        {
-        }
 
         public async Task<ReservationDto> CheckoutReservation()
         {
@@ -38,7 +33,7 @@ namespace Cinema.Mobile.ViewModels
                 SelectedSeats = NewReservation.SelectedSeats?.Select(x => x.SeatingModel.Seat.Id).ToList()
             };
 
-            ReservationDto result = await _reservationsApi.Insert<ReservationDto>(request);
+            var result = await _reservationsApi.Insert<ReservationDto>(request);
 
             return result;
         }
