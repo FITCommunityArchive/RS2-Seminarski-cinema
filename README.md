@@ -12,4 +12,5 @@ Cinema is a bundle of different applications:
 5. 	Open console, open "cinema" root folder in console
 6.  Run "docker-compose build"
 6.  Run "docker-compose up"
+7. 	After a console message that the application has started, open http://localhost:5000/swagger/index.html
 
