@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -9,11 +9,27 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="bombthesystem.jpg" />
+    <None Remove="madmax.jpg" />
     <None Remove="MLModels\MovieRecommenderModel.zip" />
+    <None Remove="pulpfiction.jpg" />
+    <None Remove="vforvendetta.jpg" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="bombthesystem.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="madmax.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="MLModels\MovieRecommenderModel.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pulpfiction.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vforvendetta.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>

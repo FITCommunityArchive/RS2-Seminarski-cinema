@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace Cinema.Persistence.Data
@@ -390,7 +391,7 @@ namespace Cinema.Persistence.Data
                 new Screening
                 {
                     Id = -14,
-                    MovieId = -4,
+                    MovieId = -1,
                     HallId = -1,
                     PricingId = -1,
                     CreatedAt = new DateTime(2020, 8, 12),
@@ -400,7 +401,7 @@ namespace Cinema.Persistence.Data
                 new Screening
                 {
                     Id = -15,
-                    MovieId = -4,
+                    MovieId = -8,
                     HallId = -1,
                     PricingId = -1,
                     CreatedAt = new DateTime(2020, 8, 12),
@@ -410,7 +411,7 @@ namespace Cinema.Persistence.Data
                 new Screening
                 {
                     Id = -16,
-                    MovieId = -4,
+                    MovieId = -9,
                     HallId = -1,
                     PricingId = -1,
                     CreatedAt = new DateTime(2020, 8, 12),
@@ -420,7 +421,7 @@ namespace Cinema.Persistence.Data
                 new Screening
                 {
                     Id = -17,
-                    MovieId = -4,
+                    MovieId = -10,
                     HallId = -1,
                     PricingId = -5,
                     CreatedAt = new DateTime(2020, 8, 12),
@@ -517,6 +518,11 @@ namespace Cinema.Persistence.Data
 
         private static void SeedMovies(ModelBuilder modelBuilder)
         {
+            byte[] bombTheSystemPoster = File.ReadAllBytes("bombthesystem.jpg");
+            byte[] madmaxPoster = File.ReadAllBytes("madmax.jpg");
+            byte[] pulpFictionPoster = File.ReadAllBytes("pulpfiction.jpg");
+            byte[] vForVendettaPoster = File.ReadAllBytes("vforvendetta.jpg");
+
             modelBuilder.Entity<Movie>().HasData(
                 new Movie
                 {
@@ -531,7 +537,8 @@ namespace Cinema.Persistence.Data
                     Directors = "Adam Bhala Lough",
                     Writers = "Adam Bhala Lough",
                     Actors = "Mark Webber, Jade Yorker, Jaclyn DeSantis",
-                    VideoLink = "https://www.imdb.com/video/vi1706754329?playlistId=tt0337585&ref_=tt_ov_vi"
+                    VideoLink = "https://www.imdb.com/video/vi1706754329?playlistId=tt0337585&ref_=tt_ov_vi",
+                    Poster = bombTheSystemPoster
                 },
                 new Movie
                 {
@@ -628,45 +635,48 @@ namespace Cinema.Persistence.Data
                     Id = -8,
                     CreatedAt = new DateTime(2020, 7, 7),
                     IsDeleted = false,
-                    Title = "Brothers Bloom, The",
-                    Duration = 61,
-                    Year = 2002,
-                    Country = "Russia",
-                    Synopsis = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                    Directors = "Constantine Ivatt",
-                    Writers = "Constantine Ivatt",
-                    Actors = "Farrand Jakubovicz",
-                    VideoLink = "https://www.imdb.com/video/vi1761450777?playlistId=tt0850253&ref_=tt_ov_vi"
+                    Title = "Mad Max: Fury Road",
+                    Duration = 120,
+                    Year = 2015,
+                    Country = "Australia, South Africa",
+                    Synopsis = "In a post-apocalyptic wasteland, a woman rebels against a tyrannical ruler in search for her homeland with the aid of a group of female prisoners, a psychotic worshiper, and a drifter named Max.",
+                    Directors = "George Miller",
+                    Writers = "George Miller, Brendan McCarthy, Nick Lathouris",
+                    Actors = "Tom Hardy, Charlize Theron, Nicholas Hoult",
+                    VideoLink = "https://www.imdb.com/video/vi3047862297?playlistId=tt1392190&ref_=tt_ov_vi",
+                    Poster = madmaxPoster
                 },
                 new Movie
                 {
                     Id = -9,
                     CreatedAt = new DateTime(2020, 7, 7),
                     IsDeleted = false,
-                    Title = "Police Academy 4: Citizens on Patrol",
-                    Duration = 96,
-                    Year = 1992,
-                    Country = "Japan",
-                    Synopsis = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                    Directors = "Katti Assard",
-                    Writers = "Katti Assard",
-                    Actors = "Christin Kernermann",
-                    VideoLink = "https://www.imdb.com/video/vi1761450777?playlistId=tt0850253&ref_=tt_ov_vi"
+                    Title = "Pulp Fiction",
+                    Duration = 154,
+                    Year = 1994,
+                    Country = "USA",
+                    Synopsis = "Jules Winnfield (Samuel L. Jackson) and Vincent Vega (John Travolta) are two hit men who are out to retrieve a suitcase stolen from their employer, mob boss Marsellus Wallace (Ving Rhames). Wallace has also asked Vincent to take his wife Mia (Uma Thurman) out a few days later when Wallace himself will be out of town. Butch Coolidge (Bruce Willis) is an aging boxer who is paid by Wallace to lose his fight. The lives of these seemingly unrelated people are woven together comprising of a series of funny, bizarre and uncalled-for incidents.",
+                    Directors = "Quentin Tarantino",
+                    Writers = " Quentin Tarantino, Roger Avary",
+                    Actors = "John Travolta, Uma Thurman, Samuel L. Jackson",
+                    VideoLink = "https://www.imdb.com/video/vi2620371481?playlistId=tt0110912&ref_=tt_ov_vi",
+                    Poster = pulpFictionPoster
                 },
                 new Movie
                 {
                     Id = -10,
                     CreatedAt = new DateTime(2020, 7, 7),
                     IsDeleted = false,
-                    Title = "Spy Kids",
-                    Duration = 2002,
-                    Year = 1992,
-                    Country = "Azerbaijan",
-                    Synopsis = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                    Directors = "Tades Bass",
-                    Writers = "Tades Bass",
-                    Actors = "Xerxes Slevin",
-                    VideoLink = "https://www.imdb.com/video/vi1761450777?playlistId=tt0850253&ref_=tt_ov_vi"
+                    Title = "V for Vendetta",
+                    Duration = 132,
+                    Year = 2005,
+                    Country = "USA, UK, Germany",
+                    Synopsis = "In the year 1998 , Evey Hammond is an average citizen of the United Kingdom, which is under the rule of the fascist and tyrannical Norsefire Party. She is an employee of the state-run British Television Network, but soon, she becomes the number one enemy of the state together with an enigmatic and larger-than-life freedom fighter known only by the letter \"V\". V informs Evey that she must hide in his underground lair for at least one year, and while she is reluctant to the idea at first, a bond soon forms between the two individuals. In the meanwhile, the mysterious past of V is gradually revealed to the police inspector tasked with capturing him, Eric Finch, and it is not long until he starts questioning everything his government stands for.",
+                    Directors = "James McTeigue",
+                    Writers = "Lilly Wachowski, Lana Wachowski",
+                    Actors = "Hugo Weaving, Natalie Portman, Rupert Graves",
+                    VideoLink = "https://www.imdb.com/video/vi4276093209?playlistId=tt0434409&ref_=tt_ov_vi",
+                    Poster = vForVendettaPoster
                 }
             );
         }
@@ -1005,8 +1015,6 @@ namespace Cinema.Persistence.Data
                 }
             );
 
-
-
             for (int i = 0; i < 600; i++)
             {
                 ApplicationUser customer = new ApplicationUser
@@ -1016,11 +1024,11 @@ namespace Cinema.Persistence.Data
                     Email = "customer" + i + "@test-customer" + i + ".com",
                     NormalizedEmail = "CUSTOMER" + i + "@TEST-CUSTOMER" + i + ".COM",
                     NormalizedUserName = "CUSTOMER" + i + "T",
-                    FirstName = "Decko" + i,
-                    LastName = "Deckic" + i,
+                    FirstName = "John" + i,
+                    LastName = "Doe" + i,
                     TwoFactorEnabled = false,
                     EmailConfirmed = true,
-                    PhoneNumber = RandomDigits(10),
+                    PhoneNumber = "06000000",
                     PhoneNumberConfirmed = false
                 };
 

@@ -20,6 +20,7 @@ namespace Cinema.Mobile.ViewModels
 
         private readonly ApiService _screeningsApi = new ApiService("Screenings");
         private readonly ApiService _reviewsApi = new ApiService("Reviews");
+        private readonly ApiService _moviesApi = new ApiService("Movies");
 
         public MovieDetailsViewModel()
         {
@@ -92,7 +93,7 @@ namespace Cinema.Mobile.ViewModels
         }
 
 
-        void onClicked(object obj)
+        private async void onClicked(object obj)
         {
             ReviewBar b = (ReviewBar)obj;
 
@@ -108,8 +109,13 @@ namespace Cinema.Mobile.ViewModels
                 var result = _reviewsApi.Insert<ReviewUpsertRequest>(review);
                 if (result != null)
                 {
+/*                    string reviewRoute = "review-score";
+                    double averageScore = await _moviesApi.GetById<double>(Movie.Id, reviewRoute);
+
+                    ReviewScoreAverage = averageScore;*/
+
                     CanVote = false;
-                    App.Current.MainPage.DisplayAlert("Success", "Thank you for your vote.", "OK");
+                    await App.Current.MainPage.DisplayAlert("Success", "Thank you for your vote.", "OK");
                 }
             }
 

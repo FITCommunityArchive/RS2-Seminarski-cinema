@@ -32,7 +32,7 @@ namespace Cinema.Web.Api.Controllers
         }
 
         [HttpGet("{id}/review-score")]
-        public double GetMovieReviewScore(int id)
+        public ActionResult<double> GetMovieReviewScore(int id)
         {
             return _movieService.GetMovieReviewScore(id);
         }
