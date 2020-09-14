@@ -41,6 +41,7 @@
             this.txtNewPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNewPassword.Location = new System.Drawing.Point(61, 94);
             this.txtNewPassword.Name = "txtNewPassword";
+            this.txtNewPassword.PasswordChar = '*';
             this.txtNewPassword.Size = new System.Drawing.Size(225, 26);
             this.txtNewPassword.TabIndex = 4;
             // 
@@ -59,6 +60,7 @@
             this.txtConfirmPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtConfirmPassword.Location = new System.Drawing.Point(61, 157);
             this.txtConfirmPassword.Name = "txtConfirmPassword";
+            this.txtConfirmPassword.PasswordChar = '*';
             this.txtConfirmPassword.Size = new System.Drawing.Size(225, 26);
             this.txtConfirmPassword.TabIndex = 6;
             // 
@@ -95,6 +97,8 @@
             this.Controls.Add(this.txtNewPassword);
             this.Controls.Add(this.lblNewPassword);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(374, 368);
+            this.MinimumSize = new System.Drawing.Size(374, 368);
             this.Name = "FormChangePassword";
             this.Text = "eCinema - Change password";
             this.ResumeLayout(false);

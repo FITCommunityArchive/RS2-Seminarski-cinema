@@ -82,7 +82,7 @@
             this.pnlFormTitle.Controls.Add(this.label1);
             this.pnlFormTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlFormTitle.Location = new System.Drawing.Point(0, 0);
-            this.pnlFormTitle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlFormTitle.Margin = new System.Windows.Forms.Padding(2);
             this.pnlFormTitle.Name = "pnlFormTitle";
             this.pnlFormTitle.Size = new System.Drawing.Size(1153, 73);
             this.pnlFormTitle.TabIndex = 9;
@@ -90,7 +90,7 @@
             // logoSmall1
             // 
             this.logoSmall1.Location = new System.Drawing.Point(1005, 15);
-            this.logoSmall1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.logoSmall1.Margin = new System.Windows.Forms.Padding(4);
             this.logoSmall1.Name = "logoSmall1";
             this.logoSmall1.Size = new System.Drawing.Size(124, 49);
             this.logoSmall1.TabIndex = 4;
@@ -100,7 +100,7 @@
             this.lblBreadCrumbsCurrent.AutoSize = true;
             this.lblBreadCrumbsCurrent.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBreadCrumbsCurrent.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblBreadCrumbsCurrent.Location = new System.Drawing.Point(123, 51);
+            this.lblBreadCrumbsCurrent.Location = new System.Drawing.Point(120, 45);
             this.lblBreadCrumbsCurrent.Margin = new System.Windows.Forms.Padding(0);
             this.lblBreadCrumbsCurrent.Name = "lblBreadCrumbsCurrent";
             this.lblBreadCrumbsCurrent.Size = new System.Drawing.Size(93, 13);
@@ -111,7 +111,7 @@
             // 
             this.lblBreadcrumbs.AutoSize = true;
             this.lblBreadcrumbs.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBreadcrumbs.Location = new System.Drawing.Point(22, 51);
+            this.lblBreadcrumbs.Location = new System.Drawing.Point(20, 45);
             this.lblBreadcrumbs.Margin = new System.Windows.Forms.Padding(0);
             this.lblBreadcrumbs.Name = "lblBreadcrumbs";
             this.lblBreadcrumbs.Size = new System.Drawing.Size(101, 13);
@@ -123,7 +123,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Gray;
-            this.label1.Location = new System.Drawing.Point(19, 9);
+            this.label1.Location = new System.Drawing.Point(20, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(151, 25);
             this.label1.TabIndex = 1;
@@ -219,7 +219,7 @@
             this.btnEdit.AutoSize = true;
             this.btnEdit.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnEdit.Location = new System.Drawing.Point(546, 509);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(4);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(90, 32);
             this.btnEdit.TabIndex = 26;
@@ -230,6 +230,7 @@
             this.btnBack.AutoSize = true;
             this.btnBack.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnBack.Location = new System.Drawing.Point(981, 509);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(90, 32);
             this.btnBack.TabIndex = 25;
@@ -534,6 +535,8 @@
             this.Controls.Add(this.pnlDetails);
             this.Controls.Add(this.pnlFormTitle);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(1169, 800);
+            this.MinimumSize = new System.Drawing.Size(1169, 800);
             this.Name = "FormMovieDetails";
             this.Text = "eCinema - Movie details";
             this.Load += new System.EventHandler(this.frmMovieDetails_Load);
