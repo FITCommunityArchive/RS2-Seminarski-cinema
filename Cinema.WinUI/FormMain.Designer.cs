@@ -545,9 +545,8 @@ namespace Cinema.WinUI
             // 
             // tlpTopBar
             // 
-            this.tlpTopBar.AutoSize = true;
             this.tlpTopBar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tlpTopBar.BackColor = System.Drawing.Color.White;
+            this.tlpTopBar.BackColor = System.Drawing.Color.Transparent;
             this.tlpTopBar.ColumnCount = 3;
             this.tlpTopBar.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpTopBar.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -602,7 +601,6 @@ namespace Cinema.WinUI
             this.panelBottomBar.ResumeLayout(false);
             this.panelBottomBar.PerformLayout();
             this.panelChildForm.ResumeLayout(false);
-            this.panelChildForm.PerformLayout();
             this.tlpTopBar.ResumeLayout(false);
             this.tlpTopBar.PerformLayout();
             this.ResumeLayout(false);
