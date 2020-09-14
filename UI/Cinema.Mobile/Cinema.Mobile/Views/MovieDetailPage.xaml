@@ -63,13 +63,17 @@
                             <Label Text="{Binding Movie.Actors}" TextColor="Gray" FontSize="Micro" HorizontalOptions="Start" Style="{DynamicResource CaptionStyle}"/>
                         </StackLayout>
 
-                        <StackLayout Orientation="Vertical">
-                            <Label Text="{Binding ReviewScoreAverage, StringFormat='Rating: {0}'}" />
-                            <customcontrol:ReviewBar x:Name="customReviewBar" HorizontalOptions="Start"  ImageWidth="25" ImageHeight="25" Command="{Binding reviewBarCommand}" SelectedStarValue="{Binding ReviewScore}"   FillStarImage="ratingfull.png" EmptyStarImage="ratingempty.png"/>
-                            <Label Text="{Binding SelectedStar}"  HorizontalTextAlignment="Start" />
-                            <Button Command="{Binding clickCommand}" IsVisible="{Binding CanVote}" WidthRequest="150" HorizontalOptions="Start"  CommandParameter="{x:Reference Name=customReviewBar}" Text="Vote" />
+                        <StackLayout Orientation="Horizontal">
+                            <StackLayout Orientation="Horizontal" Margin="0, 0, 10, 0">
+                                <customcontrol:ReviewBar x:Name="customReviewBar" HorizontalOptions="Start"  ImageWidth="25" ImageHeight="25" Command="{Binding reviewBarCommand}" SelectedStarValue="{Binding ReviewScore}" FillStarImage="ratingfull.png" EmptyStarImage="ratingempty.png"/>
+                                <Label Text="{Binding SelectedStar}"  HorizontalTextAlignment="Start"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" HorizontalOptions="StartAndExpand">
+                                <Label Padding="10, 0, 10, 0" Text="{Binding ReviewScoreAverage, StringFormat='{0:0.00}'}" VerticalTextAlignment="Center" FontAttributes="Bold" TextColor="White" BackgroundColor="#92c349" Margin="0, 0, 10, 0"/>
+                                <Button Command="{Binding clickCommand}" IsVisible="{Binding CanVote}" WidthRequest="150" HorizontalOptions="Start"  CommandParameter="{x:Reference Name=customReviewBar}" Text="Vote" />
+                            </StackLayout>
                         </StackLayout>
-
+                        
                         <Label Text="{Binding Movie.Writers, StringFormat='Writers: {0}'}" TextColor="Gray" FontSize="Micro" HorizontalOptions="Start" Style="{DynamicResource CaptionStyle}"/>
                         <Label Text="{Binding Movie.Directors, StringFormat='Directors: {0}'}" TextColor="Gray" FontSize="Micro" HorizontalOptions="Start" Style="{DynamicResource CaptionStyle}"/>
 
