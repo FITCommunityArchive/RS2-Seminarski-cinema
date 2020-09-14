@@ -33,6 +33,8 @@
     <Compile Remove="Migrations\20200913210734_AddedReviewsForEachUser.Designer.cs" />
     <Compile Remove="Migrations\20200914204525_AddMoviesAndReviews.cs" />
     <Compile Remove="Migrations\20200914204525_AddMoviesAndReviews.Designer.cs" />
+    <Compile Remove="Migrations\20200914205132_AddedMoviesAndReviewsData.cs" />
+    <Compile Remove="Migrations\20200914205132_AddedMoviesAndReviewsData.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
