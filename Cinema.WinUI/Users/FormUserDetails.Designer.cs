@@ -54,9 +54,11 @@
             this.lblFirstName = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
-            this.txtFormTitle = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.lblBreadCrumbsCurrent = new System.Windows.Forms.Label();
+            this.lblBreadcrumbs = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.gbRoles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLoading)).BeginInit();
@@ -339,23 +341,12 @@
             this.lblEmail.TabIndex = 7;
             this.lblEmail.Text = "Email";
             // 
-            // txtFormTitle
-            // 
-            this.txtFormTitle.BackColor = System.Drawing.Color.White;
-            this.txtFormTitle.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtFormTitle.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFormTitle.ForeColor = System.Drawing.Color.Gray;
-            this.txtFormTitle.Location = new System.Drawing.Point(28, 15);
-            this.txtFormTitle.Margin = new System.Windows.Forms.Padding(2);
-            this.txtFormTitle.Name = "txtFormTitle";
-            this.txtFormTitle.Size = new System.Drawing.Size(149, 27);
-            this.txtFormTitle.TabIndex = 1;
-            this.txtFormTitle.Text = "Add new user";
-            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Controls.Add(this.txtFormTitle);
+            this.panel4.Controls.Add(this.lblBreadCrumbsCurrent);
+            this.panel4.Controls.Add(this.lblBreadcrumbs);
+            this.panel4.Controls.Add(this.label4);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
@@ -367,6 +358,40 @@
             this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProvider1.ContainerControl = this;
             // 
+            // lblBreadCrumbsCurrent
+            // 
+            this.lblBreadCrumbsCurrent.AutoSize = true;
+            this.lblBreadCrumbsCurrent.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBreadCrumbsCurrent.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblBreadCrumbsCurrent.Location = new System.Drawing.Point(110, 45);
+            this.lblBreadCrumbsCurrent.Margin = new System.Windows.Forms.Padding(0);
+            this.lblBreadCrumbsCurrent.Name = "lblBreadCrumbsCurrent";
+            this.lblBreadCrumbsCurrent.Size = new System.Drawing.Size(85, 13);
+            this.lblBreadCrumbsCurrent.TabIndex = 9;
+            this.lblBreadCrumbsCurrent.Text = "User details";
+            // 
+            // lblBreadcrumbs
+            // 
+            this.lblBreadcrumbs.AutoSize = true;
+            this.lblBreadcrumbs.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBreadcrumbs.Location = new System.Drawing.Point(20, 45);
+            this.lblBreadcrumbs.Margin = new System.Windows.Forms.Padding(0);
+            this.lblBreadcrumbs.Name = "lblBreadcrumbs";
+            this.lblBreadcrumbs.Size = new System.Drawing.Size(88, 13);
+            this.lblBreadcrumbs.TabIndex = 8;
+            this.lblBreadcrumbs.Text = "Home / User /";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Gray;
+            this.label4.Location = new System.Drawing.Point(20, 10);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(137, 25);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "User details";
+            // 
             // FormUserDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -375,6 +400,8 @@
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(977, 595);
+            this.MinimumSize = new System.Drawing.Size(977, 595);
             this.Name = "FormUserDetails";
             this.Text = "eCinema - User details";
             this.Load += new System.EventHandler(this.FormUserDetails_Load);
@@ -395,7 +422,6 @@
         private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox txtFormTitle;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TextBox txtLastName;
         private System.Windows.Forms.Label lblLastName;
@@ -419,5 +445,8 @@
         private System.Windows.Forms.RadioButton rbContentEditor;
         private System.Windows.Forms.Label lblErrors;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Label lblBreadCrumbsCurrent;
+        private System.Windows.Forms.Label lblBreadcrumbs;
+        private System.Windows.Forms.Label label4;
     }
 }
