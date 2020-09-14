@@ -35,9 +35,9 @@
             this.tlpWidget = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.lblIncome = new System.Windows.Forms.Label();
-            this.lblMonthly = new System.Windows.Forms.Label();
-            this.lblIncomeCounter = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblIncomeAmount = new System.Windows.Forms.Label();
+            this.lblIncomePercent = new System.Windows.Forms.Label();
+            this.lblAnnual = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
             this.lblTickets = new System.Windows.Forms.Label();
@@ -46,20 +46,19 @@
             this.lblPercent = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.lblNewVisits = new System.Windows.Forms.Label();
-            this.lblVisits = new System.Windows.Forms.Label();
+            this.lblCustomers = new System.Windows.Forms.Label();
             this.lblToday = new System.Windows.Forms.Label();
-            this.lblVisitsCounter = new System.Windows.Forms.Label();
+            this.lblCustomersCounter = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.lblFirstMonth = new System.Windows.Forms.Label();
-            this.lblUserActivity = new System.Windows.Forms.Label();
+            this.lblCapacityCount = new System.Windows.Forms.Label();
+            this.lblCapacities = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.lblUserCounter = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.lblCapacitiesFreeOccupied = new System.Windows.Forms.Label();
+            this.lblOccupiedCount = new System.Windows.Forms.Label();
+            this.crtSalesPerMonth = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lblMainChartName = new System.Windows.Forms.Label();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvScreenings = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,13 +67,13 @@
             this.DateAndTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Action = new System.Windows.Forms.DataGridViewButtonColumn();
             this.pgnScreenings = new Cinema.WinUI.UserControls.Pagination();
+            this.label1 = new System.Windows.Forms.Label();
             this.tlpWidget.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.crtSalesPerMonth)).BeginInit();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvScreenings)).BeginInit();
@@ -84,24 +83,24 @@
             // 
             this.tlpWidget.BackColor = System.Drawing.Color.White;
             this.tlpWidget.ColumnCount = 3;
-            this.tlpWidget.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpWidget.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpWidget.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 84F));
+            this.tlpWidget.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 250F));
+            this.tlpWidget.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
+            this.tlpWidget.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 112F));
             this.tlpWidget.Controls.Add(this.label2, 0, 2);
             this.tlpWidget.Controls.Add(this.lblIncome, 0, 0);
-            this.tlpWidget.Controls.Add(this.lblMonthly, 2, 0);
-            this.tlpWidget.Controls.Add(this.lblIncomeCounter, 0, 1);
-            this.tlpWidget.Controls.Add(this.label1, 2, 2);
+            this.tlpWidget.Controls.Add(this.lblIncomeAmount, 0, 1);
+            this.tlpWidget.Controls.Add(this.lblIncomePercent, 2, 2);
+            this.tlpWidget.Controls.Add(this.lblAnnual, 2, 0);
             this.tlpWidget.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpWidget.Location = new System.Drawing.Point(10, 10);
-            this.tlpWidget.Margin = new System.Windows.Forms.Padding(10);
-            this.tlpWidget.MinimumSize = new System.Drawing.Size(0, 140);
+            this.tlpWidget.Location = new System.Drawing.Point(13, 12);
+            this.tlpWidget.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
+            this.tlpWidget.MinimumSize = new System.Drawing.Size(0, 172);
             this.tlpWidget.Name = "tlpWidget";
             this.tlpWidget.RowCount = 3;
             this.tlpWidget.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45.16129F));
             this.tlpWidget.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 54.83871F));
-            this.tlpWidget.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
-            this.tlpWidget.Size = new System.Drawing.Size(232, 140);
+            this.tlpWidget.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
+            this.tlpWidget.Size = new System.Drawing.Size(374, 173);
             this.tlpWidget.TabIndex = 0;
             this.tlpWidget.CellPaint += new System.Windows.Forms.TableLayoutCellPaintEventHandler(this.tlpWidget_CellPaint);
             // 
@@ -110,90 +109,93 @@
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(3, 100);
+            this.label2.Location = new System.Drawing.Point(4, 124);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Padding = new System.Windows.Forms.Padding(10);
-            this.label2.Size = new System.Drawing.Size(122, 33);
+            this.label2.Padding = new System.Windows.Forms.Padding(13, 12, 13, 12);
+            this.label2.Size = new System.Drawing.Size(242, 41);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Total income";
+            this.label2.Text = "Ticket Sales";
             // 
             // lblIncome
             // 
             this.lblIncome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblIncome.AutoSize = true;
             this.lblIncome.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIncome.Location = new System.Drawing.Point(3, 3);
+            this.lblIncome.Location = new System.Drawing.Point(4, 4);
+            this.lblIncome.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblIncome.Name = "lblIncome";
-            this.lblIncome.Padding = new System.Windows.Forms.Padding(10);
-            this.lblIncome.Size = new System.Drawing.Size(122, 36);
+            this.lblIncome.Padding = new System.Windows.Forms.Padding(13, 12, 13, 12);
+            this.lblIncome.Size = new System.Drawing.Size(242, 44);
             this.lblIncome.TabIndex = 1;
             this.lblIncome.Text = "Income";
             // 
-            // lblMonthly
+            // lblIncomeAmount
             // 
-            this.lblMonthly.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblMonthly.AutoSize = true;
-            this.lblMonthly.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(195)))), ((int)(((byte)(82)))));
-            this.lblMonthly.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMonthly.ForeColor = System.Drawing.Color.White;
-            this.lblMonthly.Location = new System.Drawing.Point(158, 12);
-            this.lblMonthly.Margin = new System.Windows.Forms.Padding(10);
-            this.lblMonthly.Name = "lblMonthly";
-            this.lblMonthly.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.lblMonthly.Size = new System.Drawing.Size(64, 17);
-            this.lblMonthly.TabIndex = 2;
-            this.lblMonthly.Text = "Monthly";
-            this.lblMonthly.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblIncomeAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblIncomeAmount.AutoSize = true;
+            this.tlpWidget.SetColumnSpan(this.lblIncomeAmount, 3);
+            this.lblIncomeAmount.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIncomeAmount.Location = new System.Drawing.Point(4, 55);
+            this.lblIncomeAmount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblIncomeAmount.Name = "lblIncomeAmount";
+            this.lblIncomeAmount.Padding = new System.Windows.Forms.Padding(13, 12, 13, 12);
+            this.lblIncomeAmount.Size = new System.Drawing.Size(369, 60);
+            this.lblIncomeAmount.TabIndex = 3;
+            this.lblIncomeAmount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // lblIncomeCounter
+            // lblIncomePercent
             // 
-            this.lblIncomeCounter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblIncomeCounter.AutoSize = true;
-            this.tlpWidget.SetColumnSpan(this.lblIncomeCounter, 3);
-            this.lblIncomeCounter.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIncomeCounter.Location = new System.Drawing.Point(3, 43);
-            this.lblIncomeCounter.Name = "lblIncomeCounter";
-            this.lblIncomeCounter.Padding = new System.Windows.Forms.Padding(10);
-            this.lblIncomeCounter.Size = new System.Drawing.Size(226, 49);
-            this.lblIncomeCounter.TabIndex = 3;
-            this.lblIncomeCounter.Text = "40 866,200";
-            this.lblIncomeCounter.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblIncomePercent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblIncomePercent.AutoSize = true;
+            this.lblIncomePercent.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIncomePercent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(195)))), ((int)(((byte)(82)))));
+            this.lblIncomePercent.Location = new System.Drawing.Point(269, 124);
+            this.lblIncomePercent.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblIncomePercent.Name = "lblIncomePercent";
+            this.lblIncomePercent.Padding = new System.Windows.Forms.Padding(13, 12, 13, 12);
+            this.lblIncomePercent.Size = new System.Drawing.Size(104, 41);
+            this.lblIncomePercent.TabIndex = 4;
+            this.lblIncomePercent.Text = "98%";
             // 
-            // label1
+            // lblAnnual
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(195)))), ((int)(((byte)(82)))));
-            this.label1.Location = new System.Drawing.Point(151, 100);
-            this.label1.Name = "label1";
-            this.label1.Padding = new System.Windows.Forms.Padding(10);
-            this.label1.Size = new System.Drawing.Size(78, 33);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "98%";
+            this.lblAnnual.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblAnnual.AutoSize = true;
+            this.lblAnnual.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(195)))), ((int)(((byte)(82)))));
+            this.lblAnnual.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAnnual.ForeColor = System.Drawing.Color.White;
+            this.lblAnnual.Location = new System.Drawing.Point(278, 16);
+            this.lblAnnual.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
+            this.lblAnnual.Name = "lblAnnual";
+            this.lblAnnual.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.lblAnnual.Size = new System.Drawing.Size(86, 21);
+            this.lblAnnual.TabIndex = 2;
+            this.lblAnnual.Text = "Annual";
+            this.lblAnnual.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.White;
             this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 13F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 84F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 112F));
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.lblTickets, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label5, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblTicketsCounter, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.lblPercent, 2, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(262, 10);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(10);
-            this.tableLayoutPanel1.MinimumSize = new System.Drawing.Size(0, 140);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(413, 12);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
+            this.tableLayoutPanel1.MinimumSize = new System.Drawing.Size(0, 172);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45.16129F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 54.83871F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(214, 140);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(294, 173);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // label3
@@ -201,22 +203,24 @@
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(3, 100);
+            this.label3.Location = new System.Drawing.Point(4, 124);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Padding = new System.Windows.Forms.Padding(10);
-            this.label3.Size = new System.Drawing.Size(111, 33);
+            this.label3.Padding = new System.Windows.Forms.Padding(13, 12, 13, 12);
+            this.label3.Size = new System.Drawing.Size(159, 41);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Total income";
+            this.label3.Text = "Tickets Count";
             // 
             // lblTickets
             // 
             this.lblTickets.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTickets.AutoSize = true;
             this.lblTickets.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTickets.Location = new System.Drawing.Point(3, 3);
+            this.lblTickets.Location = new System.Drawing.Point(4, 4);
+            this.lblTickets.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTickets.Name = "lblTickets";
-            this.lblTickets.Padding = new System.Windows.Forms.Padding(10);
-            this.lblTickets.Size = new System.Drawing.Size(111, 36);
+            this.lblTickets.Padding = new System.Windows.Forms.Padding(13, 12, 13, 12);
+            this.lblTickets.Size = new System.Drawing.Size(159, 44);
             this.lblTickets.TabIndex = 1;
             this.lblTickets.Text = "Tickets";
             // 
@@ -227,11 +231,11 @@
             this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(195)))), ((int)(((byte)(82)))));
             this.label5.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(140, 12);
-            this.label5.Margin = new System.Windows.Forms.Padding(10);
+            this.label5.Location = new System.Drawing.Point(195, 16);
+            this.label5.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
             this.label5.Name = "label5";
-            this.label5.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.label5.Size = new System.Drawing.Size(64, 17);
+            this.label5.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.label5.Size = new System.Drawing.Size(86, 21);
             this.label5.TabIndex = 2;
             this.label5.Text = "Annual";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -242,12 +246,12 @@
             this.lblTicketsCounter.AutoSize = true;
             this.tableLayoutPanel1.SetColumnSpan(this.lblTicketsCounter, 3);
             this.lblTicketsCounter.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTicketsCounter.Location = new System.Drawing.Point(3, 43);
+            this.lblTicketsCounter.Location = new System.Drawing.Point(4, 55);
+            this.lblTicketsCounter.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTicketsCounter.Name = "lblTicketsCounter";
-            this.lblTicketsCounter.Padding = new System.Windows.Forms.Padding(10);
-            this.lblTicketsCounter.Size = new System.Drawing.Size(208, 49);
+            this.lblTicketsCounter.Padding = new System.Windows.Forms.Padding(13, 12, 13, 12);
+            this.lblTicketsCounter.Size = new System.Drawing.Size(286, 60);
             this.lblTicketsCounter.TabIndex = 3;
-            this.lblTicketsCounter.Text = "275,800";
             this.lblTicketsCounter.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblPercent
@@ -256,10 +260,11 @@
             this.lblPercent.AutoSize = true;
             this.lblPercent.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPercent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(195)))), ((int)(((byte)(82)))));
-            this.lblPercent.Location = new System.Drawing.Point(133, 100);
+            this.lblPercent.Location = new System.Drawing.Point(186, 124);
+            this.lblPercent.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPercent.Name = "lblPercent";
-            this.lblPercent.Padding = new System.Windows.Forms.Padding(10);
-            this.lblPercent.Size = new System.Drawing.Size(78, 33);
+            this.lblPercent.Padding = new System.Windows.Forms.Padding(13, 12, 13, 12);
+            this.lblPercent.Size = new System.Drawing.Size(104, 41);
             this.lblPercent.TabIndex = 4;
             this.lblPercent.Text = "20%";
             // 
@@ -267,24 +272,24 @@
             // 
             this.tableLayoutPanel2.BackColor = System.Drawing.Color.White;
             this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 84F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 112F));
             this.tableLayoutPanel2.Controls.Add(this.lblNewVisits, 0, 2);
-            this.tableLayoutPanel2.Controls.Add(this.lblVisits, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.lblCustomers, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.lblToday, 2, 0);
-            this.tableLayoutPanel2.Controls.Add(this.lblVisitsCounter, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.lblCustomersCounter, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.label12, 2, 2);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(496, 10);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(10);
-            this.tableLayoutPanel2.MinimumSize = new System.Drawing.Size(0, 140);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(733, 12);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
+            this.tableLayoutPanel2.MinimumSize = new System.Drawing.Size(0, 172);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45.16129F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 54.83871F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(213, 140);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(294, 173);
             this.tableLayoutPanel2.TabIndex = 2;
             // 
             // lblNewVisits
@@ -292,24 +297,26 @@
             this.lblNewVisits.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblNewVisits.AutoSize = true;
             this.lblNewVisits.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNewVisits.Location = new System.Drawing.Point(3, 100);
+            this.lblNewVisits.Location = new System.Drawing.Point(4, 124);
+            this.lblNewVisits.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNewVisits.Name = "lblNewVisits";
-            this.lblNewVisits.Padding = new System.Windows.Forms.Padding(10);
-            this.lblNewVisits.Size = new System.Drawing.Size(103, 33);
+            this.lblNewVisits.Padding = new System.Windows.Forms.Padding(13, 12, 13, 12);
+            this.lblNewVisits.Size = new System.Drawing.Size(159, 41);
             this.lblNewVisits.TabIndex = 5;
             this.lblNewVisits.Text = "New visits";
             // 
-            // lblVisits
+            // lblCustomers
             // 
-            this.lblVisits.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblVisits.AutoSize = true;
-            this.lblVisits.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVisits.Location = new System.Drawing.Point(3, 3);
-            this.lblVisits.Name = "lblVisits";
-            this.lblVisits.Padding = new System.Windows.Forms.Padding(10);
-            this.lblVisits.Size = new System.Drawing.Size(103, 36);
-            this.lblVisits.TabIndex = 1;
-            this.lblVisits.Text = "Visits";
+            this.lblCustomers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCustomers.AutoSize = true;
+            this.lblCustomers.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCustomers.Location = new System.Drawing.Point(4, 4);
+            this.lblCustomers.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCustomers.Name = "lblCustomers";
+            this.lblCustomers.Padding = new System.Windows.Forms.Padding(13, 12, 13, 12);
+            this.lblCustomers.Size = new System.Drawing.Size(159, 44);
+            this.lblCustomers.TabIndex = 1;
+            this.lblCustomers.Text = "Customers";
             // 
             // lblToday
             // 
@@ -318,28 +325,28 @@
             this.lblToday.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(195)))), ((int)(((byte)(82)))));
             this.lblToday.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblToday.ForeColor = System.Drawing.Color.White;
-            this.lblToday.Location = new System.Drawing.Point(139, 12);
-            this.lblToday.Margin = new System.Windows.Forms.Padding(10);
+            this.lblToday.Location = new System.Drawing.Point(195, 16);
+            this.lblToday.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
             this.lblToday.Name = "lblToday";
-            this.lblToday.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.lblToday.Size = new System.Drawing.Size(64, 17);
+            this.lblToday.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.lblToday.Size = new System.Drawing.Size(86, 21);
             this.lblToday.TabIndex = 2;
-            this.lblToday.Text = "Today";
+            this.lblToday.Text = "Overall";
             this.lblToday.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblVisitsCounter
+            // lblCustomersCounter
             // 
-            this.lblVisitsCounter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblVisitsCounter.AutoSize = true;
-            this.tableLayoutPanel2.SetColumnSpan(this.lblVisitsCounter, 3);
-            this.lblVisitsCounter.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVisitsCounter.Location = new System.Drawing.Point(3, 43);
-            this.lblVisitsCounter.Name = "lblVisitsCounter";
-            this.lblVisitsCounter.Padding = new System.Windows.Forms.Padding(10);
-            this.lblVisitsCounter.Size = new System.Drawing.Size(207, 49);
-            this.lblVisitsCounter.TabIndex = 3;
-            this.lblVisitsCounter.Text = "106,120";
-            this.lblVisitsCounter.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblCustomersCounter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCustomersCounter.AutoSize = true;
+            this.tableLayoutPanel2.SetColumnSpan(this.lblCustomersCounter, 3);
+            this.lblCustomersCounter.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCustomersCounter.Location = new System.Drawing.Point(4, 55);
+            this.lblCustomersCounter.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCustomersCounter.Name = "lblCustomersCounter";
+            this.lblCustomersCounter.Padding = new System.Windows.Forms.Padding(13, 12, 13, 12);
+            this.lblCustomersCounter.Size = new System.Drawing.Size(286, 60);
+            this.lblCustomersCounter.TabIndex = 3;
+            this.lblCustomersCounter.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label12
             // 
@@ -347,10 +354,11 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(195)))), ((int)(((byte)(82)))));
-            this.label12.Location = new System.Drawing.Point(132, 100);
+            this.label12.Location = new System.Drawing.Point(186, 124);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Padding = new System.Windows.Forms.Padding(10);
-            this.label12.Size = new System.Drawing.Size(78, 33);
+            this.label12.Padding = new System.Windows.Forms.Padding(13, 12, 13, 12);
+            this.label12.Size = new System.Drawing.Size(104, 41);
             this.label12.TabIndex = 4;
             this.label12.Text = "44%";
             // 
@@ -359,47 +367,50 @@
             this.tableLayoutPanel3.BackColor = System.Drawing.Color.White;
             this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 84F));
-            this.tableLayoutPanel3.Controls.Add(this.lblFirstMonth, 0, 2);
-            this.tableLayoutPanel3.Controls.Add(this.lblUserActivity, 0, 0);
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Controls.Add(this.lblCapacityCount, 0, 2);
+            this.tableLayoutPanel3.Controls.Add(this.lblCapacities, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.label15, 2, 0);
-            this.tableLayoutPanel3.Controls.Add(this.lblUserCounter, 0, 1);
-            this.tableLayoutPanel3.Controls.Add(this.label17, 2, 2);
+            this.tableLayoutPanel3.Controls.Add(this.lblCapacitiesFreeOccupied, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.lblOccupiedCount, 2, 2);
+            this.tableLayoutPanel3.Controls.Add(this.label1, 2, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(729, 10);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(10);
-            this.tableLayoutPanel3.MinimumSize = new System.Drawing.Size(0, 140);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(1053, 12);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
+            this.tableLayoutPanel3.MinimumSize = new System.Drawing.Size(0, 172);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 3;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45.16129F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 54.83871F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(218, 140);
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(312, 173);
             this.tableLayoutPanel3.TabIndex = 3;
             // 
-            // lblFirstMonth
+            // lblCapacityCount
             // 
-            this.lblFirstMonth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblFirstMonth.AutoSize = true;
-            this.lblFirstMonth.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFirstMonth.Location = new System.Drawing.Point(3, 100);
-            this.lblFirstMonth.Name = "lblFirstMonth";
-            this.lblFirstMonth.Padding = new System.Windows.Forms.Padding(10);
-            this.lblFirstMonth.Size = new System.Drawing.Size(108, 33);
-            this.lblFirstMonth.TabIndex = 5;
-            this.lblFirstMonth.Text = "First month";
+            this.lblCapacityCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCapacityCount.AutoSize = true;
+            this.lblCapacityCount.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCapacityCount.Location = new System.Drawing.Point(4, 123);
+            this.lblCapacityCount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCapacityCount.Name = "lblCapacityCount";
+            this.lblCapacityCount.Padding = new System.Windows.Forms.Padding(13, 12, 13, 12);
+            this.lblCapacityCount.Size = new System.Drawing.Size(140, 49);
+            this.lblCapacityCount.TabIndex = 6;
+            this.lblCapacityCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblUserActivity
+            // lblCapacities
             // 
-            this.lblUserActivity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblUserActivity.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserActivity.Location = new System.Drawing.Point(3, 3);
-            this.lblUserActivity.Name = "lblUserActivity";
-            this.lblUserActivity.Padding = new System.Windows.Forms.Padding(10);
-            this.lblUserActivity.Size = new System.Drawing.Size(108, 36);
-            this.lblUserActivity.TabIndex = 1;
-            this.lblUserActivity.Text = "User activity";
+            this.lblCapacities.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCapacities.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCapacities.Location = new System.Drawing.Point(4, 5);
+            this.lblCapacities.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCapacities.Name = "lblCapacities";
+            this.lblCapacities.Padding = new System.Windows.Forms.Padding(13, 12, 13, 12);
+            this.lblCapacities.Size = new System.Drawing.Size(140, 44);
+            this.lblCapacities.TabIndex = 1;
+            this.lblCapacities.Text = "Screenings";
             // 
             // label15
             // 
@@ -408,59 +419,61 @@
             this.label15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(195)))), ((int)(((byte)(82)))));
             this.label15.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(144, 12);
-            this.label15.Margin = new System.Windows.Forms.Padding(10);
+            this.label15.Location = new System.Drawing.Point(176, 17);
+            this.label15.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
             this.label15.Name = "label15";
-            this.label15.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.label15.Size = new System.Drawing.Size(64, 17);
+            this.label15.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.label15.Size = new System.Drawing.Size(123, 21);
             this.label15.TabIndex = 2;
-            this.label15.Text = "Monthly";
+            this.label15.Text = "Now";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblUserCounter
+            // lblCapacitiesFreeOccupied
             // 
-            this.lblUserCounter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblUserCounter.AutoSize = true;
-            this.tableLayoutPanel3.SetColumnSpan(this.lblUserCounter, 3);
-            this.lblUserCounter.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserCounter.Location = new System.Drawing.Point(3, 43);
-            this.lblUserCounter.Name = "lblUserCounter";
-            this.lblUserCounter.Padding = new System.Windows.Forms.Padding(10);
-            this.lblUserCounter.Size = new System.Drawing.Size(212, 49);
-            this.lblUserCounter.TabIndex = 3;
-            this.lblUserCounter.Text = "80,600";
-            this.lblUserCounter.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblCapacitiesFreeOccupied.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCapacitiesFreeOccupied.AutoSize = true;
+            this.lblCapacitiesFreeOccupied.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCapacitiesFreeOccupied.Location = new System.Drawing.Point(4, 67);
+            this.lblCapacitiesFreeOccupied.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCapacitiesFreeOccupied.Name = "lblCapacitiesFreeOccupied";
+            this.lblCapacitiesFreeOccupied.Padding = new System.Windows.Forms.Padding(13, 12, 13, 12);
+            this.lblCapacitiesFreeOccupied.Size = new System.Drawing.Size(140, 42);
+            this.lblCapacitiesFreeOccupied.TabIndex = 3;
+            this.lblCapacitiesFreeOccupied.Text = "Capacity";
+            this.lblCapacitiesFreeOccupied.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label17
+            // lblOccupiedCount
             // 
-            this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(195)))), ((int)(((byte)(82)))));
-            this.label17.Location = new System.Drawing.Point(137, 100);
-            this.label17.Name = "label17";
-            this.label17.Padding = new System.Windows.Forms.Padding(10);
-            this.label17.Size = new System.Drawing.Size(78, 33);
-            this.label17.TabIndex = 4;
-            this.label17.Text = "38%";
+            this.lblOccupiedCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblOccupiedCount.AutoSize = true;
+            this.lblOccupiedCount.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOccupiedCount.ForeColor = System.Drawing.Color.Red;
+            this.lblOccupiedCount.Location = new System.Drawing.Point(167, 123);
+            this.lblOccupiedCount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblOccupiedCount.Name = "lblOccupiedCount";
+            this.lblOccupiedCount.Padding = new System.Windows.Forms.Padding(13, 12, 13, 12);
+            this.lblOccupiedCount.Size = new System.Drawing.Size(141, 49);
+            this.lblOccupiedCount.TabIndex = 7;
+            this.lblOccupiedCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // chart1
+            // crtSalesPerMonth
             // 
-            this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.crtSalesPerMonth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            this.tableLayoutPanel4.SetColumnSpan(this.chart1, 2);
+            this.crtSalesPerMonth.ChartAreas.Add(chartArea1);
+            this.tableLayoutPanel4.SetColumnSpan(this.crtSalesPerMonth, 2);
             legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(3, 51);
-            this.chart1.Name = "chart1";
+            this.crtSalesPerMonth.Legends.Add(legend1);
+            this.crtSalesPerMonth.Location = new System.Drawing.Point(4, 70);
+            this.crtSalesPerMonth.Margin = new System.Windows.Forms.Padding(4);
+            this.crtSalesPerMonth.Name = "crtSalesPerMonth";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(770, 205);
-            this.chart1.TabIndex = 4;
-            this.chart1.Text = "chart1";
+            series1.Name = "Sales per month";
+            this.crtSalesPerMonth.Series.Add(series1);
+            this.crtSalesPerMonth.Size = new System.Drawing.Size(1129, 239);
+            this.crtSalesPerMonth.TabIndex = 4;
+            this.crtSalesPerMonth.Text = "chart1";
             // 
             // tableLayoutPanel4
             // 
@@ -468,56 +481,41 @@
             this.tableLayoutPanel4.ColumnCount = 3;
             this.tableLayoutPanel5.SetColumnSpan(this.tableLayoutPanel4, 4);
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 659F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 161F));
-            this.tableLayoutPanel4.Controls.Add(this.label6, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.label7, 2, 0);
-            this.tableLayoutPanel4.Controls.Add(this.chart1, 0, 1);
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 879F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 215F));
+            this.tableLayoutPanel4.Controls.Add(this.lblMainChartName, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.crtSalesPerMonth, 0, 1);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(10, 170);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(10);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(13, 209);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.97248F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 83.02752F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(937, 264);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(1352, 325);
             this.tableLayoutPanel4.TabIndex = 5;
             // 
-            // label6
+            // lblMainChartName
             // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(3, 4);
-            this.label6.Name = "label6";
-            this.label6.Padding = new System.Windows.Forms.Padding(10);
-            this.label6.Size = new System.Drawing.Size(111, 36);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "Ticketing data";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label7
-            // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.White;
-            this.label7.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(786, 13);
-            this.label7.Margin = new System.Windows.Forms.Padding(10);
-            this.label7.Name = "label7";
-            this.label7.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.label7.Size = new System.Drawing.Size(141, 17);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "Monthly data";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblMainChartName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel4.SetColumnSpan(this.lblMainChartName, 2);
+            this.lblMainChartName.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMainChartName.Location = new System.Drawing.Point(4, 5);
+            this.lblMainChartName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblMainChartName.Name = "lblMainChartName";
+            this.lblMainChartName.Padding = new System.Windows.Forms.Padding(13, 12, 13, 12);
+            this.lblMainChartName.Size = new System.Drawing.Size(1129, 44);
+            this.lblMainChartName.TabIndex = 1;
+            this.lblMainChartName.Text = "Ticketing data";
+            this.lblMainChartName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel5
             // 
             this.tableLayoutPanel5.ColumnCount = 4;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 234F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 233F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 238F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 400F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 320F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 320F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 338F));
             this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel3, 3, 0);
             this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel4, 0, 1);
             this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel2, 2, 0);
@@ -527,13 +525,14 @@
             this.tableLayoutPanel5.Controls.Add(this.pgnScreenings, 3, 3);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 4;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 160F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 197F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 241F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(957, 730);
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 297F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(1348, 898);
             this.tableLayoutPanel5.TabIndex = 6;
             // 
             // dgvScreenings
@@ -562,16 +561,16 @@
             this.Hall,
             this.DateAndTime,
             this.Price,
-            this.Status,
-            this.Action});
+            this.Status});
             this.tableLayoutPanel5.SetColumnSpan(this.dgvScreenings, 4);
             this.dgvScreenings.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvScreenings.Location = new System.Drawing.Point(10, 454);
-            this.dgvScreenings.Margin = new System.Windows.Forms.Padding(10);
+            this.dgvScreenings.Location = new System.Drawing.Point(13, 558);
+            this.dgvScreenings.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
             this.dgvScreenings.Name = "dgvScreenings";
             this.dgvScreenings.ReadOnly = true;
             this.dgvScreenings.RowHeadersVisible = false;
-            this.dgvScreenings.Size = new System.Drawing.Size(937, 221);
+            this.dgvScreenings.RowHeadersWidth = 51;
+            this.dgvScreenings.Size = new System.Drawing.Size(1352, 273);
             this.dgvScreenings.TabIndex = 6;
             this.dgvScreenings.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvScreenings_CellFormatting);
             // 
@@ -579,6 +578,7 @@
             // 
             this.Id.DataPropertyName = "Id";
             this.Id.HeaderText = "Id";
+            this.Id.MinimumWidth = 6;
             this.Id.Name = "Id";
             this.Id.ReadOnly = true;
             this.Id.Visible = false;
@@ -587,6 +587,7 @@
             // 
             this.Title.DataPropertyName = "Movie.Title";
             this.Title.HeaderText = "Title";
+            this.Title.MinimumWidth = 6;
             this.Title.Name = "Title";
             this.Title.ReadOnly = true;
             // 
@@ -594,6 +595,7 @@
             // 
             this.Hall.DataPropertyName = "Hall.Name";
             this.Hall.HeaderText = "Hall";
+            this.Hall.MinimumWidth = 6;
             this.Hall.Name = "Hall";
             this.Hall.ReadOnly = true;
             // 
@@ -601,6 +603,7 @@
             // 
             this.DateAndTime.DataPropertyName = "DateAndTime";
             this.DateAndTime.HeaderText = "Date And Time";
+            this.DateAndTime.MinimumWidth = 6;
             this.DateAndTime.Name = "DateAndTime";
             this.DateAndTime.ReadOnly = true;
             // 
@@ -608,6 +611,7 @@
             // 
             this.Price.DataPropertyName = "Pricing.Price";
             this.Price.HeaderText = "Price";
+            this.Price.MinimumWidth = 6;
             this.Price.Name = "Price";
             this.Price.ReadOnly = true;
             // 
@@ -615,16 +619,9 @@
             // 
             this.Status.DataPropertyName = "TimingStatus";
             this.Status.HeaderText = "Status";
+            this.Status.MinimumWidth = 6;
             this.Status.Name = "Status";
             this.Status.ReadOnly = true;
-            // 
-            // Action
-            // 
-            this.Action.HeaderText = "Action";
-            this.Action.Name = "Action";
-            this.Action.ReadOnly = true;
-            this.Action.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Action.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // pgnScreenings
             // 
@@ -632,22 +629,37 @@
             this.pgnScreenings.AutoSize = true;
             this.pgnScreenings.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.pgnScreenings.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pgnScreenings.Location = new System.Drawing.Point(737, 689);
-            this.pgnScreenings.Margin = new System.Windows.Forms.Padding(4, 4, 10, 4);
+            this.pgnScreenings.Location = new System.Drawing.Point(1155, 848);
+            this.pgnScreenings.Margin = new System.Windows.Forms.Padding(5, 5, 13, 5);
             this.pgnScreenings.Name = "pgnScreenings";
             this.pgnScreenings.PageIndex = 0;
             this.pgnScreenings.Size = new System.Drawing.Size(210, 35);
             this.pgnScreenings.TabIndex = 11;
             this.pgnScreenings.TotalPages = 0;
             // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(167, 67);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Padding = new System.Windows.Forms.Padding(13, 12, 13, 12);
+            this.label1.Size = new System.Drawing.Size(141, 42);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Occupied";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // FormDashboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(957, 730);
+            this.ClientSize = new System.Drawing.Size(1348, 898);
             this.Controls.Add(this.tableLayoutPanel5);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormDashboard";
-            this.Text = "Form2";
+            this.Text = "eCinema";
             this.Load += new System.EventHandler(this.FormDashboard_Load);
             this.tlpWidget.ResumeLayout(false);
             this.tlpWidget.PerformLayout();
@@ -657,9 +669,8 @@
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.crtSalesPerMonth)).EndInit();
             this.tableLayoutPanel4.ResumeLayout(false);
-            this.tableLayoutPanel4.PerformLayout();
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvScreenings)).EndInit();
@@ -671,41 +682,40 @@
 
         private System.Windows.Forms.TableLayoutPanel tlpWidget;
         private System.Windows.Forms.Label lblIncome;
-        private System.Windows.Forms.Label lblMonthly;
-        private System.Windows.Forms.Label lblIncomeCounter;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblAnnual;
+        private System.Windows.Forms.Label lblIncomeAmount;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblTickets;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblTicketsCounter;
-        private System.Windows.Forms.Label lblPercent;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label lblNewVisits;
-        private System.Windows.Forms.Label lblVisits;
+        private System.Windows.Forms.Label lblCustomers;
         private System.Windows.Forms.Label lblToday;
-        private System.Windows.Forms.Label lblVisitsCounter;
+        private System.Windows.Forms.Label lblCustomersCounter;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.Label lblFirstMonth;
-        private System.Windows.Forms.Label lblUserActivity;
+        private System.Windows.Forms.Label lblCapacities;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label lblUserCounter;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.Label lblCapacitiesFreeOccupied;
+        private System.Windows.Forms.DataVisualization.Charting.Chart crtSalesPerMonth;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblMainChartName;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.DataGridView dgvScreenings;
         private UserControls.Pagination pgnScreenings;
+        private System.Windows.Forms.Label lblCapacityCount;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblIncomePercent;
+        private System.Windows.Forms.Label lblPercent;
+        private System.Windows.Forms.Label lblOccupiedCount;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Title;
         private System.Windows.Forms.DataGridViewTextBoxColumn Hall;
         private System.Windows.Forms.DataGridViewTextBoxColumn DateAndTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
-        private System.Windows.Forms.DataGridViewButtonColumn Action;
+        private System.Windows.Forms.Label label1;
     }
 }

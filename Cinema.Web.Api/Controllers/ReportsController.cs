@@ -21,6 +21,13 @@ namespace Cinema.Web.Api.Controllers
             _reportService = service;
         }
 
+        [HttpGet("dashboard-widgets")]
+        public async Task<ActionResult<YearlySalesReportDto>> GetDashboardWidgets()
+        {
+            var result = await _reportService.GetDashboardWidgetsDataAsync();
+            return Ok(result);
+        }
+
         [HttpGet("user-yearly-sales")]
         public async Task<ActionResult<YearlySalesReportDto>> GetYearlyUserSales([FromQuery] UserYearlySalesSearchRequest searchRequest)
         {

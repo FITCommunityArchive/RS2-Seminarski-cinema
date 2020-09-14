@@ -1,11 +1,16 @@
 ﻿using Cinema.Models.Dtos;
+using Cinema.Models.Dtos.Reports;
+using Cinema.Models.Requests.Reports;
 using Cinema.Models.Requests.Screenings;
+using Cinema.Shared.Constants;
 using Cinema.Shared.Pagination;
 using Cinema.WinUI.Helpers;
 using Cinema.WinUI.Services;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Cinema.WinUI
@@ -14,6 +19,7 @@ namespace Cinema.WinUI
     {
         private IList<string> _nextFormPrincipal;
 
+        private readonly ApiService _reportsApi = new ApiService("Reports");
         private readonly ApiService _screeningsApi = new ApiService("Screenings");
 
         public FormDashboard(IList<string> userPrincipal) : base(new string[] { "Administrator", "Content Editor" }, userPrincipal)
@@ -22,77 +28,74 @@ namespace Cinema.WinUI
             InitializeComponent();
         }
 
-        private void LoadCharts()
+        private async void LoadCharts()
         {
-            float x1 = float.Parse("22");
-            float x2 = float.Parse("33");
-            float x3 = float.Parse("11");
-            float x4 = float.Parse("1");
-            float x5 = float.Parse("34");
-            float x6 = float.Parse("14");
-            float x7 = float.Parse("17");
-            float x8 = float.Parse("18");
-            float x9 = float.Parse("2");
-            float x10 = float.Parse("40");
+            UserYearlySalesSearchRequest searchRequest = new UserYearlySalesSearchRequest();
 
-            var chart = chart1.ChartAreas[0];
+            searchRequest = ApplyDefaultSearchValues(searchRequest) as UserYearlySalesSearchRequest;
+            searchRequest.PageSize = int.MaxValue;
+            searchRequest.ReturnAll = true;
+            searchRequest.Year = DateTime.UtcNow.Year;
+
+            string route = "user-yearly-sales";
+            var yearlySales = await _reportsApi.Get<YearlySalesReportDto>(searchRequest, route);
+
+            lblMainChartName.Text = $"Ticketing data for the year {searchRequest.Year}";
+
+            List<float> monthlyTotals = new List<float>();
+
+            foreach (var monthlyTotal in yearlySales.MonthlyTotalsForPage)
+            {
+                monthlyTotals.Add((float)monthlyTotal.Total);
+            }
+
+            var chart = crtSalesPerMonth.ChartAreas[0];
             chart.AxisX.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
             chart.AxisY.LabelStyle.Format = "";
             chart.AxisY.LabelStyle.Format = "";
             chart.AxisY.LabelStyle.IsEndLabelVisible = true;
 
+            double maximumY = (double)yearlySales.MonthlyTotalsForPage.Max(x => x.Total) + 1000;
+            double intervalY = 1000;
+
+            if (maximumY > 5000)
+            {
+                intervalY = 2500;
+            }
+
             chart.AxisX.Minimum = 1;
-            chart.AxisX.Maximum = 10;
+            chart.AxisX.Maximum = 12;
             chart.AxisY.Minimum = 0;
-            chart.AxisY.Maximum = 50;
+            chart.AxisY.Maximum = maximumY;
             chart.AxisX.Interval = 1;
-            chart.AxisY.Interval = 5;
+            chart.AxisY.Interval = intervalY;
 
-            chart1.Series.Add("Tickets");
-            chart1.Series["Tickets"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            chart1.Series["Tickets"].Color = Color.Red;
+            string label = "Sales (without VAT)";
+            crtSalesPerMonth.Series.Add(label);
+            crtSalesPerMonth.Series[label].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            crtSalesPerMonth.Series[label].Color = Color.Red;
 
-            chart1.Series["Tickets"].Points.AddXY(1, x1);
-            chart1.Series["Tickets"].Points.AddXY(2, x2);
-            chart1.Series["Tickets"].Points.AddXY(3, x3);
-            chart1.Series["Tickets"].Points.AddXY(4, x4);
-            chart1.Series["Tickets"].Points.AddXY(5, x5);
-            chart1.Series["Tickets"].Points.AddXY(6, x6);
-            chart1.Series["Tickets"].Points.AddXY(7, x7);
-            chart1.Series["Tickets"].Points.AddXY(8, x8);
-            chart1.Series["Tickets"].Points.AddXY(9, x9);
-            chart1.Series["Tickets"].Points.AddXY(10, x10);
+            for (int i = 0; i < monthlyTotals.Count; i++)
+            {
+                crtSalesPerMonth.Series[label].Points.AddXY(i + 1, monthlyTotals[i]);
+            }
 
-
-
-            float a1 = float.Parse("1");
-            float a2 = float.Parse("22");
-            float a3 = float.Parse("5");
-            float a4 = float.Parse("24");
-            float a5 = float.Parse("3");
-            float a6 = float.Parse("30");
-            float a7 = float.Parse("5");
-            float a8 = float.Parse("15");
-            float a9 = float.Parse("20");
-            float a10 = float.Parse("12");
-
-
-            chart1.Series.Add("Payments");
-            chart1.Series["Payments"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            chart1.Series["Payments"].Color = Color.FromArgb(133, 195, 82);
-
-            chart1.Series["Payments"].Points.AddXY(1, a1);
-            chart1.Series["Payments"].Points.AddXY(2, a2);
-            chart1.Series["Payments"].Points.AddXY(3, a3);
-            chart1.Series["Payments"].Points.AddXY(4, a4);
-            chart1.Series["Payments"].Points.AddXY(5, a5);
-            chart1.Series["Payments"].Points.AddXY(6, a6);
-            chart1.Series["Payments"].Points.AddXY(7, a7);
-            chart1.Series["Payments"].Points.AddXY(8, a8);
-            chart1.Series["Payments"].Points.AddXY(9, a9);
-            chart1.Series["Payments"].Points.AddXY(10, a10);
+            await LoadWidgets(yearlySales);
         }
 
+        private async Task LoadWidgets(YearlySalesReportDto yearlySales)
+        {
+            string route = "dashboard-widgets";
+            var dashboardWidgets = await _reportsApi.Get<DashboardWidgetsDto>(null, route);
+
+            string currency = Currencies.DEFAULT;
+
+            lblCustomersCounter.Text = dashboardWidgets.CustomersCount.ToString();
+            lblTicketsCounter.Text = dashboardWidgets.TicketsSold.ToString();
+            lblIncomeAmount.Text = $"{((int)yearlySales.YearlyTotalForPage).ToString()} {currency}";
+            lblCapacityCount.Text = dashboardWidgets.TotalSeatCapacities.ToString();
+            lblOccupiedCount.Text = dashboardWidgets.TotalSeatsOccupied.ToString();
+        }
 
         private async void FormDashboard_Load(object sender, EventArgs e)
         {
@@ -142,6 +145,5 @@ namespace Cinema.WinUI
         {
             BindNavigationColumns(dgvScreenings, sender, e);
         }
-
     }
 }
