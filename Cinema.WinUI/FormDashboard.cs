@@ -73,7 +73,7 @@ namespace Cinema.WinUI
             string label = "Sales (without VAT)";
             crtSalesPerMonth.Series.Add(label);
             crtSalesPerMonth.Series[label].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            crtSalesPerMonth.Series[label].Color = Color.Red;
+            crtSalesPerMonth.Series[label].Color = Color.Green;
 
             for (int i = 0; i < monthlyTotals.Count; i++)
             {
