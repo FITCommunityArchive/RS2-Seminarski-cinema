@@ -2,10 +2,12 @@
 using Cinema.Common.Interfaces.Dal;
 using Cinema.Common.Interfaces.Services;
 using Cinema.Domain.Entities;
+using Cinema.Domain.Entities.Identity;
 using Cinema.Models.Dtos;
 using Cinema.Models.Dtos.Reports;
 using Cinema.Models.Requests.Reports;
 using Cinema.Models.Requests.Screenings;
+using Cinema.Shared.Constants;
 using Cinema.Shared.Enums;
 using Cinema.Shared.Pagination;
 using Cinema.Shared.Search;
@@ -20,15 +22,49 @@ namespace Cinema.Services
     {
         private readonly IReservationRepository _reservationRepo;
         private readonly IScreeningService _screeningService;
+        private readonly IUserRepository _userRepo;
         private readonly IMapper _mapper;
         private readonly IRepository<SeatReservation, int> _seatReservationRepo;
+        private readonly IRepository<ApplicationUserRole, int> _userRoleRepo;
 
         public ReportService(IUnitOfWork unit, IScreeningService screeningService, IMapper mapper)
         {
             _reservationRepo = unit.Reservations;
             _seatReservationRepo = unit.Repository<SeatReservation, int>();
+            _userRoleRepo = unit.Repository<ApplicationUserRole, int>();
             _screeningService = screeningService;
+            _userRepo = unit.Users;
             _mapper = mapper;
+        }
+
+        public async Task<DashboardWidgetsDto> GetDashboardWidgetsDataAsync()
+        {
+            var userRoleIncludes = new List<string> { nameof(ApplicationUserRole.Role) };
+            IEnumerable<ApplicationUserRole> userRoles = await _userRoleRepo.GetAsync(x => x.Role.Name.ToLower() == Roles.Customer.ToLower(), userRoleIncludes);
+            int usersCount = userRoles.Count();
+
+            var tickets = await _reservationRepo.GetAsync(x => x.CreatedAt.Year == DateTime.UtcNow.Year);
+
+            ScreeningSearchRequest screeningSearchRequest = new ScreeningSearchRequest
+            {
+                Status = TimingStatus.SCHEDULED,
+                ReturnAll = true,
+                PageSize = int.MaxValue               
+            };
+
+            var capacities = await GetScreeningCapacitiesAsync(screeningSearchRequest);
+
+            DashboardWidgetsDto dashboardWidgetsDto = new DashboardWidgetsDto
+            {
+                TicketsSold = tickets.Count(),
+                CustomersCount = usersCount,
+                TicketsCanceled = tickets.Count(x => x.IsCancelled),
+                TotalSeatCapacities = capacities.Data.Sum(x => x.Capacity),
+                TotalSeatsFree = capacities.Data.Sum(x => x.Free),
+                TotalSeatsOccupied = capacities.Data.Sum(x => x.Occupied)
+            };
+
+            return dashboardWidgetsDto;
         }
 
         /// <summary>

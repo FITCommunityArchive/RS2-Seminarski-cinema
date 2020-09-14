@@ -8,6 +8,7 @@ namespace Cinema.Common.Interfaces.Services
 {
     public interface IReportService
     {
+        Task<DashboardWidgetsDto> GetDashboardWidgetsDataAsync();
         Task<YearlySalesReportDto> GetYearlySalesReportPerUserAsync(UserYearlySalesSearchRequest searchRequest);
         Task<PagedList<ScreeningCapacityDto>> GetScreeningCapacitiesAsync(ScreeningSearchRequest searchRequest);
     }
