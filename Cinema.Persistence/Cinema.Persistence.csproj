@@ -29,6 +29,10 @@
     <Compile Remove="Migrations\20200908180640_AddedNewsAndEventsData.Designer.cs" />
     <Compile Remove="Migrations\20200906162651_AddReviewsForEachMovieByEachUser.cs" />
     <Compile Remove="Migrations\20200906162651_AddReviewsForEachMovieByEachUser.Designer.cs" />
+    <Compile Remove="Migrations\20200913210734_AddedReviewsForEachUser.cs" />
+    <Compile Remove="Migrations\20200913210734_AddedReviewsForEachUser.Designer.cs" />
+    <Compile Remove="Migrations\20200914204525_AddMoviesAndReviews.cs" />
+    <Compile Remove="Migrations\20200914204525_AddMoviesAndReviews.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
