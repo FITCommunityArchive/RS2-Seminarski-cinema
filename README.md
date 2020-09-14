@@ -69,3 +69,12 @@ Technical implementations of Cinema.Web.Api:
 ![eCinemaReservations](https://user-images.githubusercontent.com/7669004/93137848-68399c00-f6de-11ea-8c3b-a140efc8efec.png)
 ![eCinemaScreenings](https://user-images.githubusercontent.com/7669004/93137849-68399c00-f6de-11ea-9a15-daf128c5a23e.png)
 ![eCinemaUsers](https://user-images.githubusercontent.com/7669004/93137850-68399c00-f6de-11ea-9c41-b47c761c693f.png)
+
+![eCinemaMobile-login](https://user-images.githubusercontent.com/44144469/93139927-e186be00-f6e1-11ea-9a1f-3abc4a9598c5.jpg)
+![eCinemaNow-showing](https://user-images.githubusercontent.com/44144469/93139967-f2373400-f6e1-11ea-9776-9298de32316a.jpg)
+![eCinemaMovie-details](https://user-images.githubusercontent.com/44144469/93140011-04b16d80-f6e2-11ea-91f2-8de4e5501f65.jpg)
+![eCinemaReservation](https://user-images.githubusercontent.com/44144469/93140037-11ce5c80-f6e2-11ea-980b-add22e4363c8.jpg)
+![eCinemaMobileConfirm](https://user-images.githubusercontent.com/44144469/93139825-ba2ff100-f6e1-11ea-93cc-c09e6a1c80cf.jpg)
+![eCinemaThankyou](https://user-images.githubusercontent.com/44144469/93140079-21e63c00-f6e2-11ea-89e3-c7d2f224c942.jpg)
+![eCinemaMyreservations](https://user-images.githubusercontent.com/44144469/93140126-34f90c00-f6e2-11ea-8a25-2d0edf1ef028.jpg)
+![eCinemaNews](https://user-images.githubusercontent.com/44144469/93140137-3de9dd80-f6e2-11ea-9ebb-1d08cae6a4dd.jpg)
