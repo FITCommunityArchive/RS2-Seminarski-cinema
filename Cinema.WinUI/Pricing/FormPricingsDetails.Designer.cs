@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPricingsDetails));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
@@ -41,6 +40,9 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.btnDelete = new Cinema.WinUI.UserControls.Buttons.DeleteButton();
             this.btnSaveChanges = new Cinema.WinUI.UserControls.Buttons.SaveChangesButton();
+            this.lblBreadCrumbsCurrent = new System.Windows.Forms.Label();
+            this.lblBreadcrumbs = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -66,24 +68,15 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.lblBreadCrumbsCurrent);
+            this.panel2.Controls.Add(this.lblBreadcrumbs);
+            this.panel2.Controls.Add(this.label4);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(585, 75);
             this.panel2.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Verdana", 16.2F);
-            this.label1.ForeColor = System.Drawing.Color.Gray;
-            this.label1.Location = new System.Drawing.Point(27, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(165, 26);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Pricing details";
             // 
             // tableLayoutPanel2
             // 
@@ -154,7 +147,7 @@
             // 
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel3.Controls.Add(this.btnDelete, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.btnSaveChanges, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -171,7 +164,7 @@
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDelete.AutoSize = true;
             this.btnDelete.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnDelete.Location = new System.Drawing.Point(285, 10);
+            this.btnDelete.Location = new System.Drawing.Point(315, 10);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(10);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(90, 32);
@@ -190,6 +183,40 @@
             this.btnSaveChanges.TabIndex = 28;
             this.btnSaveChanges.ButtonClicked += new System.EventHandler(this.btnSaveChanges_ButtonClicked);
             // 
+            // lblBreadCrumbsCurrent
+            // 
+            this.lblBreadCrumbsCurrent.AutoSize = true;
+            this.lblBreadCrumbsCurrent.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBreadCrumbsCurrent.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblBreadCrumbsCurrent.Location = new System.Drawing.Point(120, 45);
+            this.lblBreadCrumbsCurrent.Margin = new System.Windows.Forms.Padding(0);
+            this.lblBreadCrumbsCurrent.Name = "lblBreadCrumbsCurrent";
+            this.lblBreadCrumbsCurrent.Size = new System.Drawing.Size(100, 13);
+            this.lblBreadCrumbsCurrent.TabIndex = 6;
+            this.lblBreadCrumbsCurrent.Text = "Pricing details";
+            // 
+            // lblBreadcrumbs
+            // 
+            this.lblBreadcrumbs.AutoSize = true;
+            this.lblBreadcrumbs.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBreadcrumbs.Location = new System.Drawing.Point(20, 45);
+            this.lblBreadcrumbs.Margin = new System.Windows.Forms.Padding(0);
+            this.lblBreadcrumbs.Name = "lblBreadcrumbs";
+            this.lblBreadcrumbs.Size = new System.Drawing.Size(100, 13);
+            this.lblBreadcrumbs.TabIndex = 5;
+            this.lblBreadcrumbs.Text = "Home / Pricing /";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Gray;
+            this.label4.Location = new System.Drawing.Point(20, 10);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(160, 25);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Pricing details";
+            // 
             // FormPricingsDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -197,6 +224,8 @@
             this.ClientSize = new System.Drawing.Size(585, 287);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(601, 326);
+            this.MinimumSize = new System.Drawing.Size(601, 326);
             this.Name = "FormPricingsDetails";
             this.Text = "eCinema - Pricing details";
             this.Load += new System.EventHandler(this.FormPricingsDetails_Load);
@@ -216,7 +245,6 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtName;
@@ -226,5 +254,8 @@
         private UserControls.Buttons.DeleteButton btnDelete;
         private UserControls.Buttons.SaveChangesButton btnSaveChanges;
         private System.Windows.Forms.TextBox txtPrice;
+        private System.Windows.Forms.Label lblBreadCrumbsCurrent;
+        private System.Windows.Forms.Label lblBreadcrumbs;
+        private System.Windows.Forms.Label label4;
     }
 }

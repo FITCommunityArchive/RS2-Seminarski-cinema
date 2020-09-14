@@ -149,7 +149,7 @@
             this.pgnPricing.Margin = new System.Windows.Forms.Padding(0);
             this.pgnPricing.Name = "pgnPricing";
             this.pgnPricing.PageIndex = 0;
-            this.pgnPricing.Size = new System.Drawing.Size(210, 40);
+            this.pgnPricing.Size = new System.Drawing.Size(210, 35);
             this.pgnPricing.TabIndex = 14;
             this.pgnPricing.TotalPages = 0;
             // 
@@ -158,10 +158,10 @@
             this.btnAddNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAddNew.AutoSize = true;
             this.btnAddNew.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnAddNew.Location = new System.Drawing.Point(384, 0);
+            this.btnAddNew.Location = new System.Drawing.Point(414, 0);
             this.btnAddNew.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
             this.btnAddNew.Name = "btnAddNew";
-            this.btnAddNew.Size = new System.Drawing.Size(120, 40);
+            this.btnAddNew.Size = new System.Drawing.Size(90, 32);
             this.btnAddNew.TabIndex = 15;
             // 
             // FormList
