@@ -26,7 +26,9 @@ namespace Cinema.Mobile.Views
 
         private async void OnButtonClicked(object sender, EventArgs args)
         {
-            var result = await model.CheckoutReservation();
+            this.ButtonConfirm.IsEnabled = false;
+
+            var result = await model.CheckoutReservation();            
 
             if (result != null)
             {

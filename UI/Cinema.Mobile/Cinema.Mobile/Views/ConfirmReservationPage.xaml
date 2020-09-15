@@ -97,7 +97,7 @@
                     
                 </Grid>
 
-                <Button Clicked="OnButtonClicked" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Text="Confirm" FontSize="Medium" FontAttributes="Bold" BackgroundColor="#7db471" TextColor="White" Padding="10">
+                <Button x:Name="ButtonConfirm" Clicked="OnButtonClicked" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Text="Confirm" FontSize="Medium" FontAttributes="Bold" BackgroundColor="#7db471" TextColor="White" Padding="10">
                     <Button.GestureRecognizers>
                         <TapGestureRecognizer NumberOfTapsRequired="1"></TapGestureRecognizer>
                     </Button.GestureRecognizers>
