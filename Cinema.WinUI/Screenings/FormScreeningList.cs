@@ -68,6 +68,11 @@ namespace Cinema.WinUI.Screenings
         {
             var result = await _screeningsApi.Get<PagedList<ScreeningDto>>(searchRequest);
 
+            foreach (var screening in result.Data)
+            {
+                screening.DateAndTime.ToLocalTime();
+            }
+
             grdScreeningsList.AutoGenerateColumns = false;
             grdScreeningsList.DataSource = result.Data;
             pagination.PageIndex = result.PageIndex;
