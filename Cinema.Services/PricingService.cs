@@ -1,26 +1,15 @@
-﻿using Cinema.Dal.Data;
+﻿using AutoMapper;
+using Cinema.Common.Interfaces.Dal;
 using Cinema.Domain.Entities;
-using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks;
+using Cinema.Models.Dtos;
+using Cinema.Models.Requests.Pricing;
 
 namespace Cinema.Services
 {
-    public class PricingService
+    public class PricingService : BaseCRUDService<PricingDto, PricingSearchRequest, Pricing, PricingUpsertRequest, PricingUpsertRequest>
     {
-        protected UnitOfWork _unit;
-        public PricingService(UnitOfWork unit)
+        public PricingService(IUnitOfWork unit, IMapper mapper) : base(unit, mapper)
         {
-            _unit = unit;
-        }
-
-        public Pricing PricingTier { get; set; }
-
-        public async Task<Pricing> GetPricingTierAsync(string tier)
-        {
-            //gets reserved seats first
-            PricingTier = await _unit.Pricings.Get().FirstOrDefaultAsync(x => x.Name == tier);
-
-            return PricingTier;
         }
     }
 }

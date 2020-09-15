@@ -1,0 +1,486 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8F698E5D-6B56-445C-A6E3-C4BAD23BCE21}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Cinema.WinUI</RootNamespace>
+    <AssemblyName>Cinema.WinUI</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.5.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>..\packages\Portable.BouncyCastle.1.8.5\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging, Version=3.4.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.3.4.1\lib\net40\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging.Core, Version=3.4.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.Core.3.4.1\lib\net40\Common.Logging.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Flurl, Version=2.8.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Flurl.2.8.2\lib\net40\Flurl.dll</HintPath>
+    </Reference>
+    <Reference Include="Flurl.Http, Version=2.4.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Flurl.Http.2.4.2\lib\net46\Flurl.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="FontAwesome.Sharp, Version=5.14.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FontAwesome.Sharp.5.14.1\lib\net472\FontAwesome.Sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.1, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.1\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.7.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Constants\ReservationStatusButtonText.cs" />
+    <Compile Include="Events\FormEventList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Events\FormEventList.Designer.cs">
+      <DependentUpon>FormEventList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Events\FormEventDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Events\FormEventDetails.Designer.cs">
+      <DependentUpon>FormEventDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Exceptions\ScreeningAvailabilityException.cs" />
+    <Compile Include="Helpers\dgvPrinter.cs" />
+    <Compile Include="Helpers\ModuleExcel.cs" />
+    <Compile Include="Helpers\ModulePDF.cs" />
+    <Compile Include="Helpers\ParameterEventArgs.cs" />
+    <Compile Include="Models\IncludesSearchRequest.cs" />
+    <Compile Include="Models\YearlySalesReportFlatDto.cs" />
+    <Compile Include="Movies\FormMovieSynopsis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Movies\FormMovieSynopsis.Designer.cs">
+      <DependentUpon>FormMovieSynopsis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="News\FormNewsList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="News\FormNewsList.Designer.cs">
+      <DependentUpon>FormNewsList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="News\FormNewsDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="News\FormNewsDetails.Designer.cs">
+      <DependentUpon>FormNewsDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pricing\FormPricings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pricing\FormPricings.Designer.cs">
+      <DependentUpon>FormPricings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pricing\FormPricingsDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pricing\FormPricingsDetails.Designer.cs">
+      <DependentUpon>FormPricingsDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\FormScreeningCapacitiesReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\FormScreeningCapacitiesReport.Designer.cs">
+      <DependentUpon>FormScreeningCapacitiesReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\FormYearlySalesReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\FormYearlySalesReport.Designer.cs">
+      <DependentUpon>FormYearlySalesReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reservations\FormReservationList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reservations\FormReservationList.Designer.cs">
+      <DependentUpon>FormReservationList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Schema\FormList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Schema\FormList.Designer.cs">
+      <DependentUpon>FormList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screenings\FormScreeningDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screenings\FormScreeningDetails.Designer.cs">
+      <DependentUpon>FormScreeningDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Services\ApiService.cs" />
+    <Compile Include="Authorization\SecureBaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Authorization\SecureBaseForm.Designer.cs">
+      <DependentUpon>SecureBaseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseDataGridForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Constants\Search.cs" />
+    <Compile Include="Constants\Paging.cs" />
+    <Compile Include="FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDashboard.Designer.cs">
+      <DependentUpon>FormDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\ExtensionMethods.cs" />
+    <Compile Include="Helpers\ImageHelper.cs" />
+    <Compile Include="Movies\FormMovieDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Movies\FormMovieDetails.Designer.cs">
+      <DependentUpon>FormMovieDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Movies\FormMovieList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Movies\FormMovieList.Designer.cs">
+      <DependentUpon>FormMovieList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Screenings\FormScreeningList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screenings\FormScreeningList.Designer.cs">
+      <DependentUpon>FormScreeningList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\BorderedTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Buttons\BackButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Buttons\BackButton.Designer.cs">
+      <DependentUpon>BackButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Buttons\DeleteButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Buttons\DeleteButton.Designer.cs">
+      <DependentUpon>DeleteButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Buttons\EditSynopsisButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Buttons\EditSynopsisButton.Designer.cs">
+      <DependentUpon>EditSynopsisButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Buttons\OKButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Buttons\OKButton.Designer.cs">
+      <DependentUpon>OKButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Buttons\EditButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Buttons\EditButton.Designer.cs">
+      <DependentUpon>EditButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ExtendedButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\ExtendedButton.Designer.cs">
+      <DependentUpon>ExtendedButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ExtendedTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\Buttons\UploadButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Buttons\UploadButton.Designer.cs">
+      <DependentUpon>UploadButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Buttons\SaveChangesButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Buttons\SaveChangesButton.Designer.cs">
+      <DependentUpon>SaveChangesButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Buttons\AddNewButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Buttons\AddNewButton.Designer.cs">
+      <DependentUpon>AddNewButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Logos\LogoLargeWhite.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Logos\LogoLargeWhite.Designer.cs">
+      <DependentUpon>LogoLargeWhite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Logos\LogoSmall.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Logos\LogoSmall.Designer.cs">
+      <DependentUpon>LogoSmall.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Pagination.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Pagination.Designer.cs">
+      <DependentUpon>Pagination.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\FormChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\FormChangePassword.Designer.cs">
+      <DependentUpon>FormChangePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\FormUserDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\FormUserDetails.Designer.cs">
+      <DependentUpon>FormUserDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\FormUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\FormUsers.Designer.cs">
+      <DependentUpon>FormUsers.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Events\FormEventList.resx">
+      <DependentUpon>FormEventList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Events\FormEventDetails.resx">
+      <DependentUpon>FormEventDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDashboard.resx">
+      <DependentUpon>FormDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Movies\FormMovieDetails.resx">
+      <DependentUpon>FormMovieDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Movies\FormMovieList.resx">
+      <DependentUpon>FormMovieList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Movies\FormMovieSynopsis.resx">
+      <DependentUpon>FormMovieSynopsis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="News\FormNewsList.resx">
+      <DependentUpon>FormNewsList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="News\FormNewsDetails.resx">
+      <DependentUpon>FormNewsDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pricing\FormPricings.resx">
+      <DependentUpon>FormPricings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pricing\FormPricingsDetails.resx">
+      <DependentUpon>FormPricingsDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Reports\FormScreeningCapacitiesReport.resx">
+      <DependentUpon>FormScreeningCapacitiesReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\FormYearlySalesReport.resx">
+      <DependentUpon>FormYearlySalesReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reservations\FormReservationList.resx">
+      <DependentUpon>FormReservationList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Schema\FormList.resx">
+      <DependentUpon>FormList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screenings\FormScreeningDetails.resx">
+      <DependentUpon>FormScreeningDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screenings\FormScreeningList.resx">
+      <DependentUpon>FormScreeningList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Buttons\BackButton.resx">
+      <DependentUpon>BackButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Buttons\DeleteButton.resx">
+      <DependentUpon>DeleteButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Buttons\EditSynopsisButton.resx">
+      <DependentUpon>EditSynopsisButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Buttons\OKButton.resx">
+      <DependentUpon>OKButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Buttons\EditButton.resx">
+      <DependentUpon>EditButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Buttons\UploadButton.resx">
+      <DependentUpon>UploadButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Buttons\SaveChangesButton.resx">
+      <DependentUpon>SaveChangesButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Buttons\AddNewButton.resx">
+      <DependentUpon>AddNewButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Logos\LogoLargeWhite.resx">
+      <DependentUpon>LogoLargeWhite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Logos\LogoSmall.resx">
+      <DependentUpon>LogoSmall.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Pagination.resx">
+      <DependentUpon>Pagination.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\FormChangePassword.resx">
+      <DependentUpon>FormChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\FormUserDetails.resx">
+      <DependentUpon>FormUserDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\FormUsers.resx">
+      <DependentUpon>FormUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cinema.Models\Cinema.Models.csproj">
+      <Project>{a756214a-dd55-44cc-a1c6-2e2bdb9542d9}</Project>
+      <Name>Cinema.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cinema.Shared\Cinema.Shared.csproj">
+      <Project>{968a0e7d-94bc-4462-b508-87769220014a}</Project>
+      <Name>Cinema.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>9</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="favicon.ico" />
+    <Content Include="Resources\avatar.png" />
+    <Content Include="Assets\imagenotavailable.png" />
+    <Content Include="Assets\logo-large.png" />
+    <Content Include="Assets\logo-small.png" />
+    <Content Include="Resources\favicon.ico" />
+    <Content Include="Resources\Spinner.gif" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>if exist "$(TargetPath).locked" del "$(TargetPath).locked"
+if exist "$(TargetPath)" if not exist "$(TargetPath).locked" move "$(TargetPath)" "$(TargetPath).locked"</PreBuildEvent>
+  </PropertyGroup>
+</Project>

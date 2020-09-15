@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Cinema.Common.Interfaces.Integrations;
+using Microsoft.AspNetCore.Hosting;
 using QRCoder;
 using System;
 using System.Drawing;
@@ -6,7 +7,7 @@ using System.IO;
 
 namespace Cinema.Services
 {
-    public class QRCodeService
+    public class QRCodeService : IQRCodeService
     {
 
         private readonly IWebHostEnvironment _webHostEnvironment;

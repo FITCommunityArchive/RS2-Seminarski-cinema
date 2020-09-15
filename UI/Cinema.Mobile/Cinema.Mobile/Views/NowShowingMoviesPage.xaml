@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:viewModels="clr-namespace:Cinema.Mobile.ViewModels" 
+             xmlns:converters="clr-namespace:Cinema.Mobile.Helpers"
+             mc:Ignorable="d"
+             x:Class="Cinema.Mobile.Views.NowShowingMoviesPage"
+             ControlTemplate="{StaticResource FooterBar}">
+    <ContentPage.BindingContext>
+        <viewModels:NowShowingMoviesViewModel></viewModels:NowShowingMoviesViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#f3f3f5" Padding="0">
+            <Label Text="Now Showing" BackgroundColor="White" FontSize="Title" TextColor="DimGray" FontAttributes="Bold" Padding="15"/>
+            <StackLayout Padding="25" VerticalOptions="FillAndExpand">
+                <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Padding="30">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="BtnNowShowingMovies" Text="Now showing" Clicked="NowShowing_Clicked" ></Button>
+                    <Button x:Name="BtnRecommendedMovies" Text="Recommended" Clicked="Recommended_Clicked" Grid.Column="1"></Button>
+                </Grid>
+                <ScrollView x:Name="NowShowingMoviesScrollView" Orientation="Vertical" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <Label Text="Loading..." FontSize="Title"/>
+                </ScrollView>
+            </StackLayout>
+        </StackLayout>
+        
+    </ContentPage.Content> 
+</ContentPage>

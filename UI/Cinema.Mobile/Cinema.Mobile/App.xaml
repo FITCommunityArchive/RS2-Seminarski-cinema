@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Cinema.Mobile.App"
+             xmlns:sm="clr-namespace:Cinema.Mobile.StaticModels"
+             xmlns:views="clr-namespace:Cinema.Mobile.Views">
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <!--Global Styles-->
+            <Color x:Key="NavigationPrimary">#2196F3</Color>
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
+                <Setter Property="BarTextColor" Value="White" />
+            </Style>
+
+            <!--Icons-->
+            <x:String x:Key="IconTicket">&#x000f0516;</x:String>
+            <x:String x:Key="IconTicketConfirm">&#x000f0518;</x:String>
+            <x:String x:Key="IconAccount">&#x000f0004;</x:String>
+            <x:String x:Key="IconNewspaper">&#x000f0395;</x:String>
+            <x:String x:Key="IconTwitter">&#x000f0544;</x:String>
+            <x:String x:Key="IconYoutube">&#x000f05c3;</x:String>
+            <x:String x:Key="IconLogout">&#x000f0343;</x:String>
+            <x:String x:Key="IconLogin">&#x000f0342;</x:String>
+            <x:String x:Key="IconClock">&#x000f0150;</x:String>
+
+            <ControlTemplate x:Key="FooterBar">
+                <Frame OutlineColor="#00000088" HasShadow="true">
+                    <StackLayout VerticalOptions="FillAndExpand">
+                        <ContentPresenter VerticalOptions="FillAndExpand" />
+                        <Grid HorizontalOptions="FillAndExpand" BackgroundColor="White">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Padding="15" VerticalOptions="End" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" BackgroundColor="White">
+                                <Button TextColor="#2196F3" HorizontalOptions="Center" BackgroundColor="White" FontFamily="{DynamicResource MaterialFontFamily}" Command="{x:Static sm:FooterBarStaticModel.MovieBtnCommand}" FontSize="32" Text="{StaticResource IconTicket}"></Button>
+                                <Button TextColor="#2196F3" HorizontalOptions="Center" BackgroundColor="White" FontFamily="{DynamicResource MaterialFontFamily}" Command="{x:Static sm:FooterBarStaticModel.NewsBtnCommand}" FontSize="32" Text="{StaticResource IconNewspaper}"></Button>
+                                <Button TextColor="#2196F3" HorizontalOptions="Center" BackgroundColor="White" FontFamily="{DynamicResource MaterialFontFamily}" Command="{x:Static sm:FooterBarStaticModel.ProfileBtnCommand}" FontSize="32" Text="{StaticResource IconAccount}"></Button>
+                            </StackLayout>
+                        </Grid>
+                    </StackLayout>
+                </Frame>
+            </ControlTemplate>
+
+            <ControlTemplate x:Key="DefaultErrorViewTemplate">
+                <Grid IsVisible="{TemplateBinding ErrorState.HasError}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid WidthRequest="2" HorizontalOptions="Fill" Margin="1, 2" BackgroundColor="Red" />
+                    <StackLayout Grid.Column="1" BindableLayout.ItemsSource="{TemplateBinding ErrorState.Messages}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding}" FontSize="Micro" TextColor="Red" />
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+                </Grid>
+            </ControlTemplate>
+            <Style TargetType="views:ErrorView">
+                <Setter Property="ControlTemplate" Value="{StaticResource DefaultErrorViewTemplate}" />
+            </Style>
+
+        </ResourceDictionary>
+        <OnPlatform x:Key="MaterialFontFamily" x:TypeArguments="x:String">
+            <On Platform="iOS" Value="Material Design Icons" />
+            <On Platform="Android" Value="materialdesignicons-webfont.ttf#Material Design Icons" />
+            <On Platform="UWP" Value="Assets/Fonts/materialdesignicons-webfont.ttf#Material Design Icons" />
+        </OnPlatform>
+    </Application.Resources>
+</Application>

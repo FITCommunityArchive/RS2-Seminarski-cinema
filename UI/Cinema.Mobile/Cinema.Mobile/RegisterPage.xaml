@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:Cinema.Mobile.ViewModels" 
+             xmlns:validator="clr-namespace:Cinema.Mobile.Views"
+             mc:Ignorable="d"
+             x:Class="Cinema.Mobile.RegisterPage">
+    <ContentPage.BindingContext>
+        <viewModels:RegisterViewModel></viewModels:RegisterViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="CenterAndExpand" Margin="10">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Text="eCinema Register" FontSize="30" HorizontalTextAlignment="Center" Margin="30" Grid.ColumnSpan="2"></Label>
+
+                <Label VerticalTextAlignment="Center" Text="First name" FontSize="18" Grid.Row="1"></Label>
+                <Entry x:Name="FirstName" Text="{Binding FirstName}" Grid.Column="1" Grid.Row="1" ></Entry>
+                <validator:ErrorView Grid.Row="2" Grid.ColumnSpan="2" ErrorState="{Binding ErrorStateManager[FirstName]}" />
+
+                <Label VerticalTextAlignment="Center" Text="Last name" FontSize="18" Grid.Row="3"></Label>
+                <Entry x:Name="LastName" Text="{Binding LastName}" Grid.Column="1" Grid.Row="3" ></Entry>
+                <validator:ErrorView Grid.Row="4" Grid.ColumnSpan="2" ErrorState="{Binding ErrorStateManager[LastName]}" />
+
+                <Label VerticalTextAlignment="Center" Text="Username" FontSize="18" Grid.Row="5"></Label>
+                <Entry x:Name="Username" Text="{Binding Username}" Grid.Column="1" Grid.Row="5" ></Entry>
+                <validator:ErrorView Grid.Row="6" Grid.ColumnSpan="2" ErrorState="{Binding ErrorStateManager[Username]}" />
+
+                <Label VerticalTextAlignment="Center" Text="Email" FontSize="18" Grid.Row="7"></Label>
+                <Entry x:Name="Email" Text="{Binding Email}" Grid.Column="1" Grid.Row="7" ></Entry>
+                <validator:ErrorView Grid.Row="8" Grid.ColumnSpan="2" ErrorState="{Binding ErrorStateManager[Email]}" />
+
+                <Label VerticalTextAlignment="Center" Text="Password" Grid.Row="9" FontSize="18" ></Label>
+                <Entry x:Name="Password" Text="{Binding Password}" IsPassword="True" Grid.Row="9" Grid.Column="1"></Entry>
+                <validator:ErrorView Grid.Row="10" Grid.ColumnSpan="2" ErrorState="{Binding ErrorStateManager[Password]}" />
+
+                <Label VerticalTextAlignment="Center" Text="Repeat Password" Grid.Row="11" FontSize="18" ></Label>
+                <Entry x:Name="RepeatPassword" Text="{Binding RepeatPassword}" IsPassword="True" Grid.Row="11" Grid.Column="1"></Entry>
+                <validator:ErrorView Grid.Row="12" Grid.ColumnSpan="2" ErrorState="{Binding ErrorStateManager[RepeatPassword]}" />
+
+                <Button x:Name="registerBtn" Text="Register" Command="{Binding RegisterCommand}" Grid.Row="13" Grid.ColumnSpan="2" />
+            </Grid>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

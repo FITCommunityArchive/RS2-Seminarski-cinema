@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Cinema.Mobile.Views.ProfilePage"
+             xmlns:viewModels="clr-namespace:Cinema.Mobile.ViewModels"
+             ControlTemplate="{StaticResource FooterBar}">
+    <ContentPage.BindingContext>
+        <viewModels:ProfileViewModel></viewModels:ProfileViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="FillAndExpand">
+            <Label Text="Profile" VerticalOptions="Start" BackgroundColor="White" FontSize="Title" TextColor="DimGray" FontAttributes="Bold" Padding="15"/>
+            <Grid Padding="30">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Label Text="First name" VerticalTextAlignment="Center" Grid.Row="1"></Label>
+                <Entry Text="{Binding CurrentUser.FirstName}" Grid.Row="1" Grid.Column="1"></Entry>
+
+                <Label Text="Last name" VerticalTextAlignment="Center" Grid.Row="2"></Label>
+                <Entry Text="{Binding CurrentUser.LastName}" Grid.Row="2" Grid.Column="1"></Entry>
+
+                <Label Text="Phone number" VerticalTextAlignment="Center" Grid.Row="3"></Label>
+                <Entry Text="{Binding CurrentUser.PhoneNumber}" Grid.Row="3" Grid.Column="1"></Entry>
+
+                <Button Text="Save changes" Grid.Row="4" Grid.Column="1" Command="{Binding SaveCommand}" IsEnabled="{Binding !IsBusy}" ></Button>
+                <AbsoluteLayout>
+                    <ActivityIndicator Color="Orange" IsRunning="{Binding !IsBusy}" />
+                </AbsoluteLayout>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

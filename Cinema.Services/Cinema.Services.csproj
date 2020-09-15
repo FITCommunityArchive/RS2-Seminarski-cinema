@@ -1,17 +1,18 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.0">
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.5">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="3.1.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.0">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="3.1.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.5">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -20,10 +21,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Cinema.Dal\Cinema.Dal.csproj" />
+    <ProjectReference Include="..\Cinema.Common\Cinema.Common.csproj" />
+    <ProjectReference Include="..\Cinema.Persistence\Cinema.Persistence.csproj" />
     <ProjectReference Include="..\Cinema.Domain\Cinema.Domain.csproj" />
-    <ProjectReference Include="..\Cinema.Dto\Cinema.Dto.csproj" />
-    <ProjectReference Include="..\Cinema.Utilities\Cinema.Utilities.csproj" />
+    <ProjectReference Include="..\Cinema.EmailService\Cinema.EmailService.csproj" />
+    <ProjectReference Include="..\Cinema.Models\Cinema.Models.csproj" />
+    <ProjectReference Include="..\Cinema.MovieRecommenderService\Cinema.MovieRecommenderService.csproj" />
+    <ProjectReference Include="..\Cinema.Common\Cinema.Common.csproj" />
   </ItemGroup>
 
 </Project>

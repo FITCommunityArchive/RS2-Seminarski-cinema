@@ -1,0 +1,54 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20200820202026_AddedReservationsInitialData.cs" />
+    <Compile Remove="Migrations\20200820202026_AddedReservationsInitialData.Designer.cs" />
+    <Compile Remove="Migrations\20200827210447_ChangeDeleteBehaviourToCascade.cs" />
+    <Compile Remove="Migrations\20200827210447_ChangeDeleteBehaviourToCascade.Designer.cs" />
+    <Compile Remove="Migrations\20200828073750_ChangeIDentityEntityDeletedToIsDeleted.cs" />
+    <Compile Remove="Migrations\20200828073750_ChangeIDentityEntityDeletedToIsDeleted.Designer.cs" />
+    <Compile Remove="Migrations\20200906202633_ChangedAdminEmail.cs" />
+    <Compile Remove="Migrations\20200906202633_ChangedAdminEmail.Designer.cs" />
+    <Compile Remove="Migrations\20200908172958_ChangedPostImageType.cs" />
+    <Compile Remove="Migrations\20200908172958_ChangedPostImageType.Designer.cs" />
+    <Compile Remove="Migrations\20200908173327_AddedPostImageByteArrayType.cs" />
+    <Compile Remove="Migrations\20200908173327_AddedPostImageByteArrayType.Designer.cs" />
+    <Compile Remove="Migrations\20200908173408_RemovedPostImageByteArrayType.cs" />
+    <Compile Remove="Migrations\20200908173408_RemovedPostImageByteArrayType.Designer.cs" />
+    <Compile Remove="Migrations\20200908173510_RenamedPostImageByteArrayType.cs" />
+    <Compile Remove="Migrations\20200908173510_RenamedPostImageByteArrayType.Designer.cs" />
+    <Compile Remove="Migrations\20200908174055_ChangedAuthorIdTypeInPost.cs" />
+    <Compile Remove="Migrations\20200908174055_ChangedAuthorIdTypeInPost.Designer.cs" />
+    <Compile Remove="Migrations\20200908175306_AddedContentEditorData.cs" />
+    <Compile Remove="Migrations\20200908175306_AddedContentEditorData.Designer.cs" />
+    <Compile Remove="Migrations\20200908180640_AddedNewsAndEventsData.cs" />
+    <Compile Remove="Migrations\20200908180640_AddedNewsAndEventsData.Designer.cs" />
+    <Compile Remove="Migrations\20200906162651_AddReviewsForEachMovieByEachUser.cs" />
+    <Compile Remove="Migrations\20200906162651_AddReviewsForEachMovieByEachUser.Designer.cs" />
+    <Compile Remove="Migrations\20200913210734_AddedReviewsForEachUser.cs" />
+    <Compile Remove="Migrations\20200913210734_AddedReviewsForEachUser.Designer.cs" />
+    <Compile Remove="Migrations\20200914204525_AddMoviesAndReviews.cs" />
+    <Compile Remove="Migrations\20200914204525_AddMoviesAndReviews.Designer.cs" />
+    <Compile Remove="Migrations\20200914205132_AddedMoviesAndReviewsData.cs" />
+    <Compile Remove="Migrations\20200914205132_AddedMoviesAndReviewsData.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Cinema.Common\Cinema.Common.csproj" />
+    <ProjectReference Include="..\Cinema.Domain\Cinema.Domain.csproj" />
+    <ProjectReference Include="..\Cinema.Common\Cinema.Common.csproj" />
+  </ItemGroup>
+
+</Project>

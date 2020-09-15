@@ -3,16 +3,16 @@ using System.Collections.Generic;
 
 namespace Cinema.Domain.Entities.Identity
 {
-    public class ApplicationRole : IdentityRole
+    public class ApplicationRole : IdentityRole<int>
     {
         public ApplicationRole()
         {
             UserRoles = new List<ApplicationUserRole>();
             //Users = new List<ApplicationUser>();
             RoleClaims = new List<ApplicationRoleClaim>();
-            Deleted = false;
+            IsDeleted = false;
         }
-        public bool Deleted { get; set; }
+        public bool IsDeleted { get; set; }
         //public virtual IList<ApplicationUser> Users { get; set; }
         public virtual IList<ApplicationUserRole> UserRoles { get; set; }
         public virtual IList<ApplicationRoleClaim> RoleClaims { get; set; }

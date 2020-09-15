@@ -1,0 +1,33 @@
+version: '3'
+services:
+#mssql docker
+  cinema-sql:
+    image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+    restart: unless-stopped
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=QWElkj132!
+      - MSSQL_PID=Developer
+    ports:
+      - 1401:1433
+    networks:
+      - cinemanet
+
+  cinema-api:
+    restart: unless-stopped
+    build:
+      context: .
+    environment:
+      - ConnectionStrings:DefaultConnection=Server=cinema-sql,1433;Database=170138-170187;User=sa;Password=QWElkj132!;ConnectRetryCount=250
+    ports:
+      - 5000:80
+    networks:
+      - cinemanet     
+    links:
+      - cinema-sql
+    depends_on:
+      - cinema-sql
+      
+networks:
+  cinemanet:
+    driver: bridge

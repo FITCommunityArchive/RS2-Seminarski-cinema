@@ -1,5 +1,8 @@
 ﻿using MailKit.Net.Smtp;
+using Microsoft.AspNetCore.Http;
 using MimeKit;
+using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,14 +18,28 @@ namespace Cinema.EmailService
             _emailConfig = emailConfig;
         }
 
-        public void SendEmail(Message message)
+        public async Task SendEmailAsync(IEnumerable<string> to, string subject, string content, IFormFileCollection attachments)
+        {
+            Message message = new Message(to, subject, content, attachments);
+
+            await SendEmailAsync(message);
+        }
+
+        public async Task SendEmailAsync(IEnumerable<string> to, string subject, string content)
+        {
+            Message message = new Message(to, subject, content);
+
+            await SendEmailAsync(message);
+        }
+
+        private void SendEmail(Message message)
         {
             var emailMessage = CreateEmailMessage(message);
 
             Send(emailMessage);
         }
 
-        public async Task SendEmailAsync(Message message)
+        private async Task SendEmailAsync(Message message)
         {
             var mailMessage = CreateEmailMessage(message);
 
@@ -38,19 +55,12 @@ namespace Cinema.EmailService
             emailMessage.To.AddRange(message.To);
             emailMessage.Subject = message.Subject;
 
-            //text setup of email content
-            //emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Text) { Text = message.Content };
-
-            //html setup of email content
-            //emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Html) { Text = string.Format("<h2 style='color:red;'>{0}</h2>", message.Content) };
-
-
-            //we replace body with bodyBuilder so we can include our attachment here
-
-            var bodyBuilder = new BodyBuilder { HtmlBody = string.Format("{0}", message.Content) };
+            //we replace body with bodyBuilder so we can include our attachment here                        
 
             if (message.Attachments != null && message.Attachments.Any())
             {
+                var bodyBuilder = new BodyBuilder { HtmlBody = string.Format("{0}", message.Content) };
+
                 byte[] fileBytes;
                 foreach (var attachment in message.Attachments)
                 {
@@ -62,11 +72,15 @@ namespace Cinema.EmailService
 
                     bodyBuilder.Attachments.Add(attachment.FileName, fileBytes, ContentType.Parse(attachment.ContentType));
                 }
+
+                emailMessage.Body = bodyBuilder.ToMessageBody();
+            }
+            else
+            {
+                emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Html) { Text = string.Format("{0}", message.Content) };
             }
 
-            emailMessage.Body = bodyBuilder.ToMessageBody();
             return emailMessage;
-
         }
 
         private void Send(MimeMessage mailMessage)
@@ -119,10 +133,10 @@ namespace Cinema.EmailService
 
                     await client.SendAsync(mailMessage);
                 }
-                catch
+                catch (Exception ex)
                 {
                     //log an error message or throw an exception, or both.
-                    throw;
+                    Console.WriteLine($"Error while sending the email. Error message: {ex.Message}");
                 }
                 finally
                 {

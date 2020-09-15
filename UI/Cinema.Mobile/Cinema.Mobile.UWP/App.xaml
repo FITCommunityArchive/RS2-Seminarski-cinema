@@ -1,0 +1,8 @@
+﻿<Application
+    x:Class="Cinema.Mobile.UWP.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Cinema.Mobile.UWP"
+    RequestedTheme="Light">
+
+</Application>
