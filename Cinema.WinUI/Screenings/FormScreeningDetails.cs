@@ -3,7 +3,9 @@ using Cinema.Models.Requests;
 using Cinema.Models.Requests.Movies;
 using Cinema.Models.Requests.Screenings;
 using Cinema.Shared.Pagination;
+using Cinema.WinUI.Helpers;
 using Cinema.WinUI.Services;
+using iTextSharp.text.pdf.qrcode;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -66,10 +68,16 @@ namespace Cinema.WinUI.Screenings
         {
             LoadComboboxLists();
 
-            dtpScreeningDate.Value = result.DateAndTime.ToLocalTime();
+            dtpScreeningDate.Value = result.DateAndTime;
+            dtpScreeningTime.Value = result.DateAndTime;
             cmbMovie.SelectedValue = result.Movie.Id;
             cmbHall.SelectedValue = result.Hall.Id;
             cmbPrice.SelectedValue = result.Pricing.Id;
+
+            if (result != null && result.Movie != null && result.Movie.Poster.Length > 0)
+            {
+                picPoster.Image = result.Movie.Poster.ToImage();
+            }
         }
 
         private void LoadComboboxLists()

@@ -174,7 +174,7 @@ namespace Cinema.Services
 
         private bool ValidateScreeningDate(Screening screening)
         {
-            return screening.DateAndTime >= DateTime.UtcNow;
+            return screening.DateAndTime.Date >= DateTime.UtcNow.Date;
         }
     }
 }
