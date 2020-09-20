@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pgnReservations = new Cinema.WinUI.UserControls.Pagination();
             this.dgvScreeningCapacitiesList = new System.Windows.Forms.DataGridView();
             this.ScreeningId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,7 +40,6 @@
             this.Occupied = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Free = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnPrint = new System.Windows.Forms.Button();
-            this.btnExportExcel = new System.Windows.Forms.Button();
             this.btnExportPDF = new System.Windows.Forms.Button();
             this.lblMovieTitle = new System.Windows.Forms.Label();
             this.nmrNumberOfEntries = new System.Windows.Forms.NumericUpDown();
@@ -55,29 +54,29 @@
             this.lblStatus = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.lblBreadCrumbsCurrent = new System.Windows.Forms.Label();
+            this.txtFormTitle = new System.Windows.Forms.TextBox();
+            this.lblBreadcrumbs = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.txtFormTitle = new System.Windows.Forms.TextBox();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.lblBreadCrumbsCurrent = new System.Windows.Forms.Label();
-            this.lblBreadcrumbs = new System.Windows.Forms.Label();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvScreeningCapacitiesList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmrNumberOfEntries)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // pgnReservations
@@ -86,8 +85,8 @@
             this.pgnReservations.AutoSize = true;
             this.pgnReservations.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.pgnReservations.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pgnReservations.Location = new System.Drawing.Point(998, 5);
-            this.pgnReservations.Margin = new System.Windows.Forms.Padding(5, 5, 0, 5);
+            this.pgnReservations.Location = new System.Drawing.Point(1401, 6);
+            this.pgnReservations.Margin = new System.Windows.Forms.Padding(7, 6, 0, 6);
             this.pgnReservations.Name = "pgnReservations";
             this.pgnReservations.PageIndex = 0;
             this.pgnReservations.Size = new System.Drawing.Size(210, 35);
@@ -106,14 +105,14 @@
             this.dgvScreeningCapacitiesList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvScreeningCapacitiesList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.dgvScreeningCapacitiesList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvScreeningCapacitiesList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvScreeningCapacitiesList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvScreeningCapacitiesList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvScreeningCapacitiesList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ScreeningId,
@@ -125,14 +124,14 @@
             this.Free});
             this.dgvScreeningCapacitiesList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvScreeningCapacitiesList.GridColor = System.Drawing.Color.White;
-            this.dgvScreeningCapacitiesList.Location = new System.Drawing.Point(15, 15);
-            this.dgvScreeningCapacitiesList.Margin = new System.Windows.Forms.Padding(4, 12, 4, 4);
+            this.dgvScreeningCapacitiesList.Location = new System.Drawing.Point(20, 18);
+            this.dgvScreeningCapacitiesList.Margin = new System.Windows.Forms.Padding(5, 15, 5, 5);
             this.dgvScreeningCapacitiesList.Name = "dgvScreeningCapacitiesList";
             this.dgvScreeningCapacitiesList.ReadOnly = true;
             this.dgvScreeningCapacitiesList.RowHeadersVisible = false;
             this.dgvScreeningCapacitiesList.RowHeadersWidth = 51;
             this.dgvScreeningCapacitiesList.RowTemplate.Height = 24;
-            this.dgvScreeningCapacitiesList.Size = new System.Drawing.Size(1178, 414);
+            this.dgvScreeningCapacitiesList.Size = new System.Drawing.Size(1571, 511);
             this.dgvScreeningCapacitiesList.TabIndex = 1;
             this.dgvScreeningCapacitiesList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvReportReservations_CellFormatting);
             this.dgvScreeningCapacitiesList.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvScreeningCapacitiesList_ColumnHeaderMouseClick);
@@ -159,8 +158,8 @@
             // Hall
             // 
             this.Hall.DataPropertyName = "Screening.Hall.Name";
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Hall.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Hall.DefaultCellStyle = dataGridViewCellStyle2;
             this.Hall.HeaderText = "Hall";
             this.Hall.MinimumWidth = 6;
             this.Hall.Name = "Hall";
@@ -207,32 +206,14 @@
             this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPrint.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrint.ForeColor = System.Drawing.Color.DimGray;
-            this.btnPrint.Location = new System.Drawing.Point(544, 20);
-            this.btnPrint.Margin = new System.Windows.Forms.Padding(5, 5, 0, 5);
+            this.btnPrint.Location = new System.Drawing.Point(717, 24);
+            this.btnPrint.Margin = new System.Windows.Forms.Padding(7, 6, 0, 6);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(45, 25);
+            this.btnPrint.Size = new System.Drawing.Size(69, 36);
             this.btnPrint.TabIndex = 4;
             this.btnPrint.Text = "Print";
             this.btnPrint.UseVisualStyleBackColor = true;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
-            // 
-            // btnExportExcel
-            // 
-            this.btnExportExcel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExportExcel.AutoSize = true;
-            this.btnExportExcel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(218)))), ((int)(((byte)(218)))));
-            this.btnExportExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExportExcel.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExportExcel.ForeColor = System.Drawing.Color.DimGray;
-            this.btnExportExcel.Location = new System.Drawing.Point(322, 20);
-            this.btnExportExcel.Margin = new System.Windows.Forms.Padding(5);
-            this.btnExportExcel.Name = "btnExportExcel";
-            this.btnExportExcel.Size = new System.Drawing.Size(105, 25);
-            this.btnExportExcel.TabIndex = 0;
-            this.btnExportExcel.Text = "Export to excel";
-            this.btnExportExcel.UseVisualStyleBackColor = true;
-            this.btnExportExcel.Click += new System.EventHandler(this.btnExportExcel_Click);
             // 
             // btnExportPDF
             // 
@@ -243,10 +224,10 @@
             this.btnExportPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExportPDF.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExportPDF.ForeColor = System.Drawing.Color.DimGray;
-            this.btnExportPDF.Location = new System.Drawing.Point(437, 20);
-            this.btnExportPDF.Margin = new System.Windows.Forms.Padding(5);
+            this.btnExportPDF.Location = new System.Drawing.Point(543, 24);
+            this.btnExportPDF.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.btnExportPDF.Name = "btnExportPDF";
-            this.btnExportPDF.Size = new System.Drawing.Size(97, 25);
+            this.btnExportPDF.Size = new System.Drawing.Size(160, 36);
             this.btnExportPDF.TabIndex = 1;
             this.btnExportPDF.Text = "Export to PDF";
             this.btnExportPDF.UseVisualStyleBackColor = true;
@@ -259,10 +240,10 @@
             this.lblMovieTitle.AutoSize = true;
             this.lblMovieTitle.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMovieTitle.ForeColor = System.Drawing.Color.DimGray;
-            this.lblMovieTitle.Location = new System.Drawing.Point(125, 16);
-            this.lblMovieTitle.Margin = new System.Windows.Forms.Padding(5);
+            this.lblMovieTitle.Location = new System.Drawing.Point(168, 19);
+            this.lblMovieTitle.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.lblMovieTitle.Name = "lblMovieTitle";
-            this.lblMovieTitle.Size = new System.Drawing.Size(110, 14);
+            this.lblMovieTitle.Size = new System.Drawing.Size(147, 18);
             this.lblMovieTitle.TabIndex = 9;
             this.lblMovieTitle.Text = "Movie title";
             // 
@@ -270,15 +251,15 @@
             // 
             this.nmrNumberOfEntries.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.nmrNumberOfEntries.Location = new System.Drawing.Point(15, 40);
-            this.nmrNumberOfEntries.Margin = new System.Windows.Forms.Padding(15, 5, 5, 5);
+            this.nmrNumberOfEntries.Location = new System.Drawing.Point(20, 49);
+            this.nmrNumberOfEntries.Margin = new System.Windows.Forms.Padding(20, 6, 7, 6);
             this.nmrNumberOfEntries.Maximum = new decimal(new int[] {
             10000000,
             0,
             0,
             0});
             this.nmrNumberOfEntries.Name = "nmrNumberOfEntries";
-            this.nmrNumberOfEntries.Size = new System.Drawing.Size(100, 20);
+            this.nmrNumberOfEntries.Size = new System.Drawing.Size(134, 22);
             this.nmrNumberOfEntries.TabIndex = 5;
             this.nmrNumberOfEntries.ValueChanged += new System.EventHandler(this.SearchChanged);
             this.nmrNumberOfEntries.KeyDown += new System.Windows.Forms.KeyEventHandler(this.nmrNumberOfEntries_KeyDown);
@@ -290,10 +271,10 @@
             this.lblShowEntries.AutoSize = true;
             this.lblShowEntries.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblShowEntries.ForeColor = System.Drawing.Color.DimGray;
-            this.lblShowEntries.Location = new System.Drawing.Point(15, 16);
-            this.lblShowEntries.Margin = new System.Windows.Forms.Padding(15, 5, 5, 5);
+            this.lblShowEntries.Location = new System.Drawing.Point(20, 19);
+            this.lblShowEntries.Margin = new System.Windows.Forms.Padding(20, 6, 7, 6);
             this.lblShowEntries.Name = "lblShowEntries";
-            this.lblShowEntries.Size = new System.Drawing.Size(100, 14);
+            this.lblShowEntries.Size = new System.Drawing.Size(134, 18);
             this.lblShowEntries.TabIndex = 6;
             this.lblShowEntries.Text = "Show entries";
             // 
@@ -304,10 +285,10 @@
             this.lblHallName.AutoSize = true;
             this.lblHallName.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHallName.ForeColor = System.Drawing.Color.DimGray;
-            this.lblHallName.Location = new System.Drawing.Point(245, 16);
-            this.lblHallName.Margin = new System.Windows.Forms.Padding(5);
+            this.lblHallName.Location = new System.Drawing.Point(329, 19);
+            this.lblHallName.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.lblHallName.Name = "lblHallName";
-            this.lblHallName.Size = new System.Drawing.Size(110, 14);
+            this.lblHallName.Size = new System.Drawing.Size(147, 18);
             this.lblHallName.TabIndex = 10;
             this.lblHallName.Text = "Hall";
             // 
@@ -318,10 +299,10 @@
             this.lblDate.AutoSize = true;
             this.lblDate.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDate.ForeColor = System.Drawing.Color.DimGray;
-            this.lblDate.Location = new System.Drawing.Point(365, 16);
-            this.lblDate.Margin = new System.Windows.Forms.Padding(5);
+            this.lblDate.Location = new System.Drawing.Point(490, 19);
+            this.lblDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(110, 14);
+            this.lblDate.Size = new System.Drawing.Size(147, 18);
             this.lblDate.TabIndex = 11;
             this.lblDate.Text = "Date";
             // 
@@ -331,10 +312,9 @@
             this.lblReportTitle.AutoSize = true;
             this.lblReportTitle.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblReportTitle.ForeColor = System.Drawing.Color.DimGray;
-            this.lblReportTitle.Location = new System.Drawing.Point(13, 16);
-            this.lblReportTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblReportTitle.Location = new System.Drawing.Point(17, 20);
             this.lblReportTitle.Name = "lblReportTitle";
-            this.lblReportTitle.Size = new System.Drawing.Size(189, 18);
+            this.lblReportTitle.Size = new System.Drawing.Size(244, 25);
             this.lblReportTitle.TabIndex = 13;
             this.lblReportTitle.Text = "Screening Capacities";
             // 
@@ -342,10 +322,10 @@
             // 
             this.txtMovieTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMovieTitle.Location = new System.Drawing.Point(125, 40);
-            this.txtMovieTitle.Margin = new System.Windows.Forms.Padding(5);
+            this.txtMovieTitle.Location = new System.Drawing.Point(168, 49);
+            this.txtMovieTitle.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.txtMovieTitle.Name = "txtMovieTitle";
-            this.txtMovieTitle.Size = new System.Drawing.Size(110, 20);
+            this.txtMovieTitle.Size = new System.Drawing.Size(147, 22);
             this.txtMovieTitle.TabIndex = 14;
             this.txtMovieTitle.TextChanged += new System.EventHandler(this.SearchChanged);
             // 
@@ -353,10 +333,10 @@
             // 
             this.txtHallName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtHallName.Location = new System.Drawing.Point(245, 40);
-            this.txtHallName.Margin = new System.Windows.Forms.Padding(5);
+            this.txtHallName.Location = new System.Drawing.Point(329, 49);
+            this.txtHallName.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.txtHallName.Name = "txtHallName";
-            this.txtHallName.Size = new System.Drawing.Size(110, 20);
+            this.txtHallName.Size = new System.Drawing.Size(147, 22);
             this.txtHallName.TabIndex = 15;
             this.txtHallName.TextChanged += new System.EventHandler(this.SearchChanged);
             // 
@@ -368,10 +348,10 @@
             this.dtpScreeningDate.CalendarTitleForeColor = System.Drawing.Color.Gray;
             this.dtpScreeningDate.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpScreeningDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpScreeningDate.Location = new System.Drawing.Point(365, 40);
-            this.dtpScreeningDate.Margin = new System.Windows.Forms.Padding(5);
+            this.dtpScreeningDate.Location = new System.Drawing.Point(490, 49);
+            this.dtpScreeningDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.dtpScreeningDate.Name = "dtpScreeningDate";
-            this.dtpScreeningDate.Size = new System.Drawing.Size(110, 22);
+            this.dtpScreeningDate.Size = new System.Drawing.Size(147, 26);
             this.dtpScreeningDate.TabIndex = 16;
             this.dtpScreeningDate.ValueChanged += new System.EventHandler(this.dtpScreeningDate_ValueChanged);
             this.dtpScreeningDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtpScreeningDate_KeyDown);
@@ -383,10 +363,10 @@
             this.cmbStatus.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbStatus.ForeColor = System.Drawing.Color.Gray;
             this.cmbStatus.FormattingEnabled = true;
-            this.cmbStatus.Location = new System.Drawing.Point(485, 40);
-            this.cmbStatus.Margin = new System.Windows.Forms.Padding(5);
+            this.cmbStatus.Location = new System.Drawing.Point(651, 49);
+            this.cmbStatus.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.cmbStatus.Name = "cmbStatus";
-            this.cmbStatus.Size = new System.Drawing.Size(114, 22);
+            this.cmbStatus.Size = new System.Drawing.Size(147, 26);
             this.cmbStatus.TabIndex = 17;
             // 
             // lblStatus
@@ -397,10 +377,10 @@
             this.lblStatus.BackColor = System.Drawing.Color.White;
             this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStatus.ForeColor = System.Drawing.Color.Gray;
-            this.lblStatus.Location = new System.Drawing.Point(485, 15);
-            this.lblStatus.Margin = new System.Windows.Forms.Padding(5);
+            this.lblStatus.Location = new System.Drawing.Point(651, 19);
+            this.lblStatus.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(114, 15);
+            this.lblStatus.Size = new System.Drawing.Size(147, 18);
             this.lblStatus.TabIndex = 18;
             this.lblStatus.Text = "Status";
             // 
@@ -413,12 +393,13 @@
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel2, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 75F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 92F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1268, 784);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 123F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1691, 965);
             this.tableLayoutPanel1.TabIndex = 19;
             // 
             // panel1
@@ -429,8 +410,57 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1268, 75);
+            this.panel1.Size = new System.Drawing.Size(1691, 92);
             this.panel1.TabIndex = 0;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Controls.Add(this.lblBreadCrumbsCurrent);
+            this.panel4.Controls.Add(this.txtFormTitle);
+            this.panel4.Controls.Add(this.lblBreadcrumbs);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Margin = new System.Windows.Forms.Padding(0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1691, 92);
+            this.panel4.TabIndex = 1;
+            // 
+            // lblBreadCrumbsCurrent
+            // 
+            this.lblBreadCrumbsCurrent.AutoSize = true;
+            this.lblBreadCrumbsCurrent.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBreadCrumbsCurrent.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblBreadCrumbsCurrent.Location = new System.Drawing.Point(107, 55);
+            this.lblBreadCrumbsCurrent.Margin = new System.Windows.Forms.Padding(0);
+            this.lblBreadCrumbsCurrent.Name = "lblBreadCrumbsCurrent";
+            this.lblBreadCrumbsCurrent.Size = new System.Drawing.Size(165, 17);
+            this.lblBreadCrumbsCurrent.TabIndex = 11;
+            this.lblBreadCrumbsCurrent.Text = "Screening capacities";
+            // 
+            // txtFormTitle
+            // 
+            this.txtFormTitle.BackColor = System.Drawing.Color.White;
+            this.txtFormTitle.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtFormTitle.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFormTitle.ForeColor = System.Drawing.Color.Gray;
+            this.txtFormTitle.Location = new System.Drawing.Point(40, 12);
+            this.txtFormTitle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtFormTitle.Name = "txtFormTitle";
+            this.txtFormTitle.Size = new System.Drawing.Size(121, 33);
+            this.txtFormTitle.TabIndex = 9;
+            this.txtFormTitle.Text = "Reports";
+            // 
+            // lblBreadcrumbs
+            // 
+            this.lblBreadcrumbs.AutoSize = true;
+            this.lblBreadcrumbs.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBreadcrumbs.Location = new System.Drawing.Point(40, 55);
+            this.lblBreadcrumbs.Margin = new System.Windows.Forms.Padding(0);
+            this.lblBreadcrumbs.Name = "lblBreadcrumbs";
+            this.lblBreadcrumbs.Size = new System.Drawing.Size(59, 17);
+            this.lblBreadcrumbs.TabIndex = 10;
+            this.lblBreadcrumbs.Text = "Home /";
             // 
             // tableLayoutPanel2
             // 
@@ -440,14 +470,14 @@
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.panel3, 0, 2);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(30, 105);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(30, 30, 30, 15);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(40, 129);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(40, 37, 40, 18);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 62F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 86F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1208, 564);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1611, 695);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // panel2
@@ -458,7 +488,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1208, 50);
+            this.panel2.Size = new System.Drawing.Size(1611, 62);
             this.panel2.TabIndex = 0;
             // 
             // tableLayoutPanel3
@@ -470,12 +500,12 @@
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.flowLayoutPanel1, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 50);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 62);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1208, 70);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1611, 86);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // tableLayoutPanel4
@@ -503,7 +533,7 @@
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(604, 70);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(805, 86);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // flowLayoutPanel1
@@ -513,14 +543,25 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanel1.Controls.Add(this.btnPrint);
             this.flowLayoutPanel1.Controls.Add(this.btnExportPDF);
-            this.flowLayoutPanel1.Controls.Add(this.btnExportExcel);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(604, 0);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(805, 0);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(15, 15, 0, 15);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(604, 70);
+            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(20, 18, 0, 18);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(806, 86);
             this.flowLayoutPanel1.TabIndex = 1;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.dgvScreeningCapacitiesList);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 148);
+            this.panel3.Margin = new System.Windows.Forms.Padding(0);
+            this.panel3.Name = "panel3";
+            this.panel3.Padding = new System.Windows.Forms.Padding(20, 18, 20, 18);
+            this.panel3.Size = new System.Drawing.Size(1611, 547);
+            this.panel3.TabIndex = 2;
             // 
             // flowLayoutPanel2
             // 
@@ -528,81 +569,21 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanel2.Controls.Add(this.pgnReservations);
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(30, 699);
-            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(30, 15, 30, 30);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(40, 860);
+            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(40, 18, 40, 37);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(1208, 55);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(1611, 68);
             this.flowLayoutPanel2.TabIndex = 2;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.Controls.Add(this.dgvScreeningCapacitiesList);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 120);
-            this.panel3.Margin = new System.Windows.Forms.Padding(0);
-            this.panel3.Name = "panel3";
-            this.panel3.Padding = new System.Windows.Forms.Padding(15);
-            this.panel3.Size = new System.Drawing.Size(1208, 444);
-            this.panel3.TabIndex = 2;
-            // 
-            // txtFormTitle
-            // 
-            this.txtFormTitle.BackColor = System.Drawing.Color.White;
-            this.txtFormTitle.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtFormTitle.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFormTitle.ForeColor = System.Drawing.Color.Gray;
-            this.txtFormTitle.Location = new System.Drawing.Point(30, 10);
-            this.txtFormTitle.Margin = new System.Windows.Forms.Padding(2);
-            this.txtFormTitle.Name = "txtFormTitle";
-            this.txtFormTitle.Size = new System.Drawing.Size(91, 27);
-            this.txtFormTitle.TabIndex = 9;
-            this.txtFormTitle.Text = "Reports";
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Controls.Add(this.lblBreadCrumbsCurrent);
-            this.panel4.Controls.Add(this.txtFormTitle);
-            this.panel4.Controls.Add(this.lblBreadcrumbs);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1268, 75);
-            this.panel4.TabIndex = 1;
-            // 
-            // lblBreadCrumbsCurrent
-            // 
-            this.lblBreadCrumbsCurrent.AutoSize = true;
-            this.lblBreadCrumbsCurrent.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBreadCrumbsCurrent.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblBreadCrumbsCurrent.Location = new System.Drawing.Point(80, 45);
-            this.lblBreadCrumbsCurrent.Margin = new System.Windows.Forms.Padding(0);
-            this.lblBreadCrumbsCurrent.Name = "lblBreadCrumbsCurrent";
-            this.lblBreadCrumbsCurrent.Size = new System.Drawing.Size(142, 13);
-            this.lblBreadCrumbsCurrent.TabIndex = 11;
-            this.lblBreadCrumbsCurrent.Text = "Screening capacities";
-            // 
-            // lblBreadcrumbs
-            // 
-            this.lblBreadcrumbs.AutoSize = true;
-            this.lblBreadcrumbs.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBreadcrumbs.Location = new System.Drawing.Point(30, 45);
-            this.lblBreadcrumbs.Margin = new System.Windows.Forms.Padding(0);
-            this.lblBreadcrumbs.Name = "lblBreadcrumbs";
-            this.lblBreadcrumbs.Size = new System.Drawing.Size(49, 13);
-            this.lblBreadcrumbs.TabIndex = 10;
-            this.lblBreadcrumbs.Text = "Home /";
             // 
             // FormScreeningCapacitiesReport
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1268, 784);
+            this.ClientSize = new System.Drawing.Size(1691, 965);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            this.MinimumSize = new System.Drawing.Size(800, 600);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MinimumSize = new System.Drawing.Size(1061, 728);
             this.Name = "FormScreeningCapacitiesReport";
             this.Text = "FormReports";
             this.Load += new System.EventHandler(this.FormReports_Load);
@@ -610,6 +591,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nmrNumberOfEntries)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -618,11 +601,9 @@
             this.tableLayoutPanel4.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
+            this.panel3.ResumeLayout(false);
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -631,7 +612,6 @@
         private System.Windows.Forms.DataGridView dgvScreeningCapacitiesList;
         private UserControls.Pagination pgnReservations;
         private System.Windows.Forms.Button btnPrint;
-        private System.Windows.Forms.Button btnExportExcel;
         private System.Windows.Forms.Button btnExportPDF;
         private System.Windows.Forms.Label lblMovieTitle;
         private System.Windows.Forms.NumericUpDown nmrNumberOfEntries;

@@ -15,8 +15,6 @@ namespace Cinema.WinUI.Reports
 {
     public partial class FormScreeningCapacitiesReport : BaseDataGridForm
     {
-
-        moduleExcel excelGenerator = new moduleExcel();
         ModulePDF pdfGenerator = new ModulePDF();
         private IList<string> _nextFormPrincipal;
         private bool _dateFilterCleared = true;
@@ -93,21 +91,6 @@ namespace Cinema.WinUI.Reports
         private void dgvReportReservations_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             BindNavigationColumns(dgvScreeningCapacitiesList, sender, e);
-        }
-
-        private void btnExportExcel_Click(object sender, EventArgs e)
-        {
-            DataGridView dgv = dgvScreeningCapacitiesList;
-
-            string title = " Excel Export by eCinema";
-            SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Filter = "Excel Documents (*.xls)|*.xls";
-            sfd.FileName = "eCinema.xls";
-            if (sfd.ShowDialog() == DialogResult.OK)
-            {
-                excelGenerator.ToCsV(dgv, title, sfd.FileName);
-                MessageBox.Show("Finish");
-            }
         }
 
         private void btnExportPDF_Click(object sender, EventArgs e)
