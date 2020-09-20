@@ -5,7 +5,6 @@ using Cinema.Models.Requests.Screenings;
 using Cinema.Shared.Pagination;
 using Cinema.WinUI.Helpers;
 using Cinema.WinUI.Services;
-using iTextSharp.text.pdf.qrcode;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

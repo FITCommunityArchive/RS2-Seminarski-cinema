@@ -1,5 +1,4 @@
 ﻿using Cinema.Mobile.Models;
-using Cinema.Mobile.Services;
 using Cinema.Mobile.StaticModels;
 using System.Collections.Generic;
 using System.ComponentModel;

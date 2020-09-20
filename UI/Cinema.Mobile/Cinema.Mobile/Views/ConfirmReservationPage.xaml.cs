@@ -28,7 +28,7 @@ namespace Cinema.Mobile.Views
         {
             this.ButtonConfirm.IsEnabled = false;
 
-            var result = await model.CheckoutReservation();            
+            var result = await model.CheckoutReservation();
 
             if (result != null)
             {
