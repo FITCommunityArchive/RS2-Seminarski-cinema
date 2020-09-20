@@ -15,7 +15,6 @@ namespace Cinema.WinUI.Reports
 {
     public partial class FormYearlySalesReport : BaseDataGridForm
     {
-        moduleExcel excelGenerator = new moduleExcel();
         ModulePDF pdfGenerator = new ModulePDF();
         private IList<string> _nextFormPrincipal;
         private readonly ApiService _reportsApi = new ApiService("Reports");
@@ -144,21 +143,6 @@ namespace Cinema.WinUI.Reports
         private void dgvReportReservations_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             BindNavigationColumns(dgvUserSalesList, sender, e);
-        }
-
-        private void btnExportExcel_Click(object sender, EventArgs e)
-        {
-            DataGridView dgv = dgvUserSalesList;
-
-            string title = " Excel Export by eCinema";
-            SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Filter = "Excel Documents (*.xls)|*.xls";
-            sfd.FileName = "eCinema.xls";
-            if (sfd.ShowDialog() == DialogResult.OK)
-            {
-                excelGenerator.ToCsV(dgv, title, sfd.FileName);
-                MessageBox.Show("Finish");
-            }
         }
 
         private void btnExportPDF_Click(object sender, EventArgs e)
