@@ -49,7 +49,7 @@ namespace Cinema.Services
             {
                 Status = TimingStatus.SCHEDULED,
                 ReturnAll = true,
-                PageSize = int.MaxValue               
+                PageSize = int.MaxValue
             };
 
             var capacities = await GetScreeningCapacitiesAsync(screeningSearchRequest);

@@ -109,10 +109,10 @@ namespace Cinema.Mobile.ViewModels
                 var result = _reviewsApi.Insert<ReviewUpsertRequest>(review);
                 if (result != null)
                 {
-/*                    string reviewRoute = "review-score";
-                    double averageScore = await _moviesApi.GetById<double>(Movie.Id, reviewRoute);
+                    /*                    string reviewRoute = "review-score";
+                                        double averageScore = await _moviesApi.GetById<double>(Movie.Id, reviewRoute);
 
-                    ReviewScoreAverage = averageScore;*/
+                                        ReviewScoreAverage = averageScore;*/
 
                     CanVote = false;
                     await App.Current.MainPage.DisplayAlert("Success", "Thank you for your vote.", "OK");
